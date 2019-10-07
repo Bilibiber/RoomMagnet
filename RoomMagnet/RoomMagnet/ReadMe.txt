@@ -1,7 +1,7 @@
-﻿Make sure You upload a running project
-Comment on change you made
+﻿Make sure You upload a running project to Github
+Comment on any changes you made
 
-Testing GitHub
+To Test GitHub Connections
 List your Name Below
 Mason
 
