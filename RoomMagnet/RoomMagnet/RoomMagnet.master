@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="RoomMagnet.master.cs" Inherits="RoomMagnet" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>
+    <asp:ContentPlaceHolder id="Title" runat="server">
+    </asp:ContentPlaceHolder>
+    </title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="Body" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
