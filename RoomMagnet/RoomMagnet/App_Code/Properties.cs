@@ -6,6 +6,7 @@ using System.Web;
 
 public class Property
 {
+
     private int PropertyID;
     private String StreetAddress;
     private String City;
