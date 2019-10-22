@@ -6,11 +6,12 @@ public class Email
 {
     public const string FromEmailAddress = "roommagnetofficial@gmail.com";
     public const string FromEmailPassword = "@a1S2d3F4";
-    public string ToEmailAddress;
+    private string ToEmailAddress;
     public const string GmailSmtp = "smtp.gmail.com";
     public const int GmailSmtpPort = 587;
     MailMessage mail = new MailMessage();
     SmtpClient smtpClient = new SmtpClient(GmailSmtp, GmailSmtpPort);
+    
     public Email(string EmailAddress)
     {
         this.ToEmailAddress = EmailAddress;
@@ -20,7 +21,14 @@ public class Email
         mail.From = new MailAddress(FromEmailAddress);
         mail.To.Add(EnteredEmailAddress);
         mail.Subject = "Welcome to RoomMagnet";
-        mail.Body = "Testing Email function";
+        string welcomemailstring = 
+            @"<html>
+            <body>
+            <p>balabala</p>                     
+            </body>
+            </html>";
+        mail.IsBodyHtml = true;
+        mail.Body = welcomemailstring;
 
         smtpClient.Credentials = new System.Net.NetworkCredential(FromEmailAddress, FromEmailPassword);
         smtpClient.EnableSsl = true;
