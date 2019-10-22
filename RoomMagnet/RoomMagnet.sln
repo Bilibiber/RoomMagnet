@@ -3,36 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RoomMagnet", "RoomMagnet\", "{991680C2-B916-48F4-963E-1DB838FD5BEE}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_59379"
-		Debug.AspNetCompiler.PhysicalPath = "RoomMagnet\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59379\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_59379"
-		Release.AspNetCompiler.PhysicalPath = "RoomMagnet\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59379\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "59379"
-		SlnRelativePath = "RoomMagnet\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{991680C2-B916-48F4-963E-1DB838FD5BEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{991680C2-B916-48F4-963E-1DB838FD5BEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
