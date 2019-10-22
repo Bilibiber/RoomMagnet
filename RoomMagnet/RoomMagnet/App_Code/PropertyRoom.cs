@@ -8,8 +8,6 @@ public class PropertyRoom
 {
     public PropertyRoom()
     {
-        //
-        // TODO: Add constructor logic here
-        //
+
     }
 }
