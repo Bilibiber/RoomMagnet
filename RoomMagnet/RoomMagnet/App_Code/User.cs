@@ -17,6 +17,8 @@ public class User
     private string backgroundURL;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
+    public static User[] Users = new User[1000];
+    public static int UserCount = 0;
 
     public User(string firstName, string LastName, string email, string passWord)
     {
@@ -26,7 +28,9 @@ public class User
         setEmail(email);
         setPassword(passWord);
         setLastupdated(DateTime.Now);
-        setBy("Room Magnet");
+        setBy("Room Magnet"); 
+        UserCount++;
+
     }
 
     public void setFirstName(string firstName)
