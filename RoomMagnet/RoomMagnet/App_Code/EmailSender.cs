@@ -45,5 +45,6 @@ public class Email
         smtpClient.Send(mail);
     }
     // to be continue........
+    //Fan Guo
 }
 
