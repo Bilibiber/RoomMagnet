@@ -32,10 +32,6 @@ public class PropertyRoom
     {
         this.ImagePath = ImagePath;
     }
-    public String getImagePath()
-    {
-        return ImagePath;
-    }
 
     public void setEffectiveDate(DateTime EffectiveDate)
     {
@@ -52,14 +48,5 @@ public class PropertyRoom
         this.MonthlyPrice = MonthlyPrice;
     }
 
-    public void setLastUpdated(DateTime LastUpdated)
-    {
-        this.LastUpdated = LastUpdated;
-    }
-
-    public void setLastUpdatedBy(String LastUpdatedBy)
-    {
-        this.LastUpdatedBy = LastUpdatedBy;
-    }
 
 }
