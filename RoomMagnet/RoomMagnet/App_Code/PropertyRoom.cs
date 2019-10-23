@@ -22,7 +22,10 @@ public class PropertyRoom
 
     }
 
-    public void set
+    public void setRoomID(int RoomID)
+    {
+        this.RoomID = RoomID;
+    }
 
 
 }
