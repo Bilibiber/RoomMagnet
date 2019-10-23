@@ -53,4 +53,9 @@ public class PropertyRoom
         this.LastUpdated = LastUpdated;
     }
 
+    public void setLastUpdatedBy(String LastUpdatedBy)
+    {
+        this.LastUpdatedBy = LastUpdatedBy;
+    }
+
 }
