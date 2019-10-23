@@ -31,6 +31,10 @@ public class PropertyRoom
     {
         this.ImagePath = ImagePath;
     }
+    public String getImagePath()
+    {
+        return ImagePath;
+    }
 
 
 }
