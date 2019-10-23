@@ -68,6 +68,6 @@ public class PropertyRoom
         this.RenterID = RenterID;
     }
 
-    //ChrisColeBranch PropertyRoom Finalized list of setters to push to MasterBranch
+    //ChrisColeBranch PropertyRoom Finalized list of setters to push to MasterBranch  (TEST 2 FOR TRENT)
 
 }
