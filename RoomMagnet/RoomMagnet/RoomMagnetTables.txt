@@ -56,7 +56,7 @@ CONSTRAINT PK_Renter PRIMARY KEY (RenterID),
 CONSTRAINT FK_RenterID FOREIGN KEY (RenterID) references Renter);
 
 CREATE table Property(
-PropertyID int not null,
+PropertyID int identity(1,1) not null,
 StreetAddress varchar(30) not null,
 City varchar(30) not null,
 HomeState char(2) not null,
