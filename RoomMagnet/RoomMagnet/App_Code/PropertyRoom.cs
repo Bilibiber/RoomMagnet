@@ -32,6 +32,10 @@ public class PropertyRoom
     {
         this.ImagePath = ImagePath;
     }
+    public String getImagePath()
+    {
+        return ImagePath;
+    }
 
     public void setEffectiveDate(DateTime EffectiveDate)
     {
