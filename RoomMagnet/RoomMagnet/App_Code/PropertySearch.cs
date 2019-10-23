@@ -15,6 +15,10 @@ public class PropertySearch
 
     public PropertySearch(int SearchID, String SearchHistory, DateTime SearchTime, int UserID)
     {
+        setSearchID(SearchID);
+        setSearchHistory(SearchHistory);
+        setSearchTime(SearchTime);
+        setUserID(UserID);
       
     }
 

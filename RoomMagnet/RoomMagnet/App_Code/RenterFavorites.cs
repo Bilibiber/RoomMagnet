@@ -13,6 +13,8 @@ public class RenterFavorites
 
     public RenterFavorites()
     {
+        setRenterID(RenterID);
+        setFavoriteProperties(FavoriteProperties);
 
     }
 
@@ -35,17 +37,5 @@ public class RenterFavorites
     {
         return this.FavoriteProperties;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
