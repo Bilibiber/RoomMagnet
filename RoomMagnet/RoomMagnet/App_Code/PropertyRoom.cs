@@ -48,4 +48,5 @@ public class PropertyRoom
         this.MonthlyPrice = MonthlyPrice;
     }
 
+
 }
