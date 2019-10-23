@@ -8,8 +8,6 @@ using System.Web;
 /// </summary>
 public class User
 {
-
-    <asd>ssdasd;
     private string firstName;
     private string lastName;
     private string middleName;
