@@ -27,10 +27,30 @@ public class PropertyRoom
         this.RoomID = RoomID;
     }
 
+       
     public void setImagePath(String ImagePath)
     {
         this.ImagePath = ImagePath;
     }
 
+    public void setEffectiveDate(DateTime EffectiveDate)
+    {
+        this.EffectiveDate = EffectiveDate;
+    }
+
+    public void setTerminationDate(DateTime TerminationDate)
+    {
+        this.TerminationDate = TerminationDate;
+    }
+
+    public void setMonthlyPrice(float MonthlyPrice)
+    {
+        this.MonthlyPrice = MonthlyPrice;
+    }
+
+    public void setLastUpdated(DateTime LastUpdated)
+    {
+        this.LastUpdated = LastUpdated;
+    }
 
 }
