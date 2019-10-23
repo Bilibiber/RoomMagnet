@@ -38,4 +38,9 @@ public class PropertyRoom
         this.EffectiveDate = EffectiveDate;
     }
 
+    public void setTerminationDate(DateTime TerminationDate)
+    {
+        this.TerminationDate = TerminationDate;
+    }
+
 }
