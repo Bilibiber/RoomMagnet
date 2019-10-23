@@ -18,6 +18,7 @@ public class Property
     private DateTime LastUpdated;
     private String LastUpdatedBy;
     private int HostID;
+
     public Property(int PropertyID, String StreetAddress, String City, String HomeState,
         String Country, String ZipCode, String Filters, String ImagePath, DateTime LastUpdated,
         String LastUpdatedBy, int HostID)

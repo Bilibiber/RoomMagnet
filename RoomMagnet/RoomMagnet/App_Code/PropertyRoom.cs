@@ -52,4 +52,9 @@ public class PropertyRoom
         this.MonthlyPrice = MonthlyPrice;
     }
 
+    public void setLastUpdated(DateTime LastUpdated)
+    {
+        this.LastUpdated = LastUpdated;
+    }
+
 }
