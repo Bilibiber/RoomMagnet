@@ -6,6 +6,7 @@ using System.Web;
 
 public class Property
 {
+
     private int PropertyID;
     private String StreetAddress;
     private String City;
@@ -22,7 +23,7 @@ public class Property
         String Country, String ZipCode, String Filters, String ImagePath, DateTime LastUpdated,
         String LastUpdatedBy, int HostID)
     {
-        
+
     }
     public void setPropertyID(int PropertyID)
     {
@@ -52,5 +53,5 @@ public class Property
     {
         this.ImagePath = ImagePath;
     }
-    
+
 }
