@@ -26,6 +26,7 @@
     <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePagePassword" Display="Dynamic" ValidationGroup="SignIn"></asp:RequiredFieldValidator>
     <asp:Button ID="HomePageSignUp" runat="server" Text="Sign Up" OnClick="HomePageSignUp_Click" />
     <asp:Button ID="HomePageLogin" runat="server" Text="Login" />
+            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
         </div>     
     </asp:Panel>
         

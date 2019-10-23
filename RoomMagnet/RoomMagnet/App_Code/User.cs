@@ -6,7 +6,7 @@ using System.Web;
 /// <summary>
 /// Summary description for User
 /// </summary>
-public class User
+public class Users
 {
     private string firstName;
     private string lastName;
@@ -17,10 +17,10 @@ public class User
     private string backgroundURL;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
-    public static User[] Users = new User[1000];
+    public static Users[] usersAdded = new Users[1000];
     public static int UserCount = 0;
 
-    public User(string firstName, string LastName, string email, string passWord)
+    public Users(string firstName, string LastName, string email, string passWord)
     {
         setFirstName(firstName);
         setLastName(lastName);
