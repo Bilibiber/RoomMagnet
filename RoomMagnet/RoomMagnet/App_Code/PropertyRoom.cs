@@ -79,6 +79,11 @@ public class PropertyRoom
     {
         return this.ImagePath;
     }
+
+    public DateTime getEffectiveDate()
+    {
+        return this.EffectiveDate;
+    }
 }
 
     //ChrisColeBranchTest v1
