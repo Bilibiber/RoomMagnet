@@ -27,5 +27,15 @@ public class PropertyRoom
         this.RoomID = RoomID;
     }
 
+       
+    public void setImagePath(String ImagePath)
+    {
+        this.ImagePath = ImagePath;
+    }
+
+    public void setEffectiveDate(DateTime EffectiveDate)
+    {
+        this.EffectiveDate = EffectiveDate;
+    }
 
 }
