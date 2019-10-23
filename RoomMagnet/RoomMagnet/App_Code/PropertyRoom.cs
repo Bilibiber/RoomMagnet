@@ -27,7 +27,7 @@ public class PropertyRoom
         this.RoomID = RoomID;
     }
 
-       
+
     public void setImagePath(String ImagePath)
     {
         this.ImagePath = ImagePath;
@@ -74,5 +74,11 @@ public class PropertyRoom
     {
         return this.RoomID;
     }
+
+    public String getImagePath()
+    {
+        return this.ImagePath;
+    }
+}
 
     //ChrisColeBranchTest v1
