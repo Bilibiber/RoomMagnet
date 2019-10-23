@@ -47,4 +47,9 @@ public class PropertyRoom
         this.TerminationDate = TerminationDate;
     }
 
+    public void setMonthlyPrice(float MonthlyPrice)
+    {
+        this.MonthlyPrice = MonthlyPrice;
+    }
+
 }
