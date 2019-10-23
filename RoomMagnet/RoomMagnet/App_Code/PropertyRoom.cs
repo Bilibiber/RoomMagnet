@@ -27,6 +27,7 @@ public class PropertyRoom
         this.RoomID = RoomID;
     }
 
+       
     public void setImagePath(String ImagePath)
     {
         this.ImagePath = ImagePath;
@@ -37,6 +38,14 @@ public class PropertyRoom
         this.EffectiveDate = EffectiveDate;
     }
 
+    public void setTerminationDate(DateTime TerminationDate)
+    {
+        this.TerminationDate = TerminationDate;
+    }
 
+    public void setMonthlyPrice(float MonthlyPrice)
+    {
+        this.MonthlyPrice = MonthlyPrice;
+    }
 
 }
