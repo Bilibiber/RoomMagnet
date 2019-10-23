@@ -58,7 +58,16 @@ public class PropertyRoom
         this.LastUpdatedBy = LastUpdatedBy;
     }
 
-    //Updated Master Branch PropertyRoom Setters
+    public void setPropertyID(int PropertyID)
+    {
+        this.PropertyID = PropertyID;
+    }
 
+    public void setRenterID(int RenterID)
+    {
+        this.RenterID = RenterID;
+    }
+
+    //ChrisColeBranch PropertyRoom Finalized list of setters to push to MasterBranch
 
 }
