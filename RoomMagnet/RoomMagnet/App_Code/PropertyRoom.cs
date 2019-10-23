@@ -70,4 +70,9 @@ public class PropertyRoom
 
     //ChrisColeBranch PropertyRoom Finalized list of setters to push to MasterBranch  (PLZ WORK v4 FOR TRENT)
 
-}
+    public int getRoomID()
+    {
+        return this.RoomID;
+    }
+
+    //ChrisColeBranchTest v1
