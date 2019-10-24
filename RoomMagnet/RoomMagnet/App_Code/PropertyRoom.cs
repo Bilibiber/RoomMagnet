@@ -84,6 +84,11 @@ public class PropertyRoom
     {
         return this.EffectiveDate;
     }
+
+    public DateTime getTerminationDate()
+    {
+        return this.TerminationDate;
+    }
 }
 
   
