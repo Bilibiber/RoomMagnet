@@ -90,9 +90,14 @@ public class PropertyRoom
         return this.TerminationDate;
     }
 
-    public float GetMonthyPrice()
+    public float getMonthyPrice()
     {
         return MonthlyPrice;
+    }
+
+    public DateTime getLastUpdated()
+    {
+        return this.LastUpdated;
     }
 }
 
