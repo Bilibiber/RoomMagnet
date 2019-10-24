@@ -72,8 +72,9 @@ public class PropertyRoom
 
     public int getRoomID()
     {
-        return this.RoomID;
+        return RoomID;
     }
+}
 
     public String getImagePath()
     {

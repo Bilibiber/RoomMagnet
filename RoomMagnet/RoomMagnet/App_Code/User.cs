@@ -17,19 +17,20 @@ public class User
     private string backgroundURL;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
+    public static User[] Users = new User[1000];
+    public static int UserCount = 0;
 
-    public User(string firstName, string LastName, string middleName, string email, string passWord, 
-        DateTime birthday, string backgroundURL, DateTime lastUpdated, string lastUpdatedBy)
+    public User(string firstName, string LastName, string email, string passWord)
     {
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
         setEmail(email);
-        setPassWord(passWord);
-        setBirthday(birthday);
-        setURL(backgroundURL);
-        setLastupdated(lastUpdated);
-        setBy(lastUpdatedBy);
+        setPassword(passWord);
+        setLastupdated(DateTime.Now);
+        setBy("Room Magnet"); 
+        UserCount++;
+
     }
 
     public void setFirstName(string firstName)
@@ -72,12 +73,12 @@ public class User
         return this.email;
     }
 
-    public void setPassWord(string passWord)
+    public void setPassword(string passWord)
     {
         this.passWord = passWord;
     }
 
-    public string getPassWord()
+    public string getPassword()
     {
         return this.passWord;
     }
