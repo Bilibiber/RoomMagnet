@@ -74,7 +74,6 @@ public class PropertyRoom
     {
         return RoomID;
     }
-}
 
     public String getImagePath()
     {
@@ -87,4 +86,4 @@ public class PropertyRoom
     }
 }
 
-    //ChrisColeBranchTest v1
+  
