@@ -40,7 +40,7 @@ public partial class Home : System.Web.UI.Page
         if (IsValidEmail(Email))
         {
             Users.usersAdded[Users.UserCount] = new Users(FirstName, LastName, Email, Password);
-            Users newUser= Users.usersAdded[Users.UserCount]
+            Users newUser = Users.usersAdded[Users.UserCount];
 
 
 
