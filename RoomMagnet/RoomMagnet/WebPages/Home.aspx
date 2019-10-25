@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <asp:Button ID="HomePageGetStarted" runat="server" Text="Get Started" CssClass="btn btn-primary" data-target="#SignUp" data-toggle="modal" OnClick="HomePageGetStarted_Click" autopostback="false" OnClientClick="return false" />
+    <asp:Button ID="HomePageGetStarted" runat="server" Text="Get Started" CssClass="btn btn-primary" data-target="#SignUp" data-toggle="modal"  OnClientClick="return false" />
         <div class="modal" id="SignUp" tabindex="-1">
             <div class=" modal-dialog">
                 <div class="modal-content">
@@ -31,9 +31,26 @@
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="HomePagePassword" ControlToValidate="HomePageComfirmPassword" ValidationGroup="SignUp"></asp:CompareValidator>
                         <div class="modal-footer">
                             <asp:Button ID="HomePageSignUp" runat="server" Text="Sign Up" ValidationGroup="SignUp" />
-                            <asp:Button ID="HomePageLogin" runat="server" Text="Login"  />
+                            <asp:Button ID="HomePageLogin" runat="server" Text="Login" data-target="#SignIn" data-toggle="modal" OnClientClick="return false"  data-dismiss="modal"/>
                             <asp:Button ID="HomePageCancle" runat="server" Text="Close"/>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="SignIn" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <asp:Label ID="SignInLbl" runat="server" Text="Sign In"></asp:Label>
+                    </div>
+                    <div class="modal-body">
+                        <asp:TextBox ID="SignInEmail" PlaceHolder="Email" runat="server" CssClass="form-control-plaintext"></asp:TextBox>
+                        <asp:TextBox ID="SignInPassword" PlaceHolder="Password" runat="server" CssClass="form-control-plaintext"></asp:TextBox>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="SignInLogIn" runat="server" Text="Sign In"  CssClass="btn btn-primary"/>
+                        <asp:Button ID="SignInClose" runat="server" Text="Close" CssClass="btn" />
                     </div>
                 </div>
             </div>
