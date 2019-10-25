@@ -19,17 +19,19 @@
                         </div>
                         <div class="form-group">
                             <asp:TextBox ID="HomePageFirstName" runat="server" PlaceHolder="First Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageFirstName" Display="Dynamic" ValidationGroup="SignIn"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageFirstName" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="HomePageLastName" runat="server" PlaceHolder="Last Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageLastName" Display="Dynamic" ValidationGroup="SignIn"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageLastName" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                         </div>
                         <asp:TextBox ID="HomePageEmail" runat="server" PlaceHolder="Email Address"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageEmail" Display="Dynamic" ValidationGroup="SignIn"></asp:RequiredFieldValidator>
-                        <asp:TextBox ID="HomePagePassword" runat="server" PlaceHolder="Password"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePagePassword"  ValidationGroup="SignIn"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageEmail" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                        <asp:TextBox type="Password" ID="HomePagePassword" runat="server" PlaceHolder="Password"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePagePassword"  ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                        <asp:TextBox  type="Password" ID="HomePageComfirmPassword" runat="server" PlaceHolder="Comfirm Password"></asp:TextBox>
+                        <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="HomePagePassword" ControlToValidate="HomePageComfirmPassword" ValidationGroup="SignUp"></asp:CompareValidator>
                         <div class="modal-footer">
-                            <asp:Button ID="HomePageSignUp" runat="server" Text="Sign Up" />
-                            <asp:Button ID="HomePageLogin" runat="server" Text="Login"  ValidationGroup="SignIn"/>
+                            <asp:Button ID="HomePageSignUp" runat="server" Text="Sign Up" ValidationGroup="SignUp" />
+                            <asp:Button ID="HomePageLogin" runat="server" Text="Login"  />
                             <asp:Button ID="HomePageCancle" runat="server" Text="Close"/>
                         </div>
                     </div>
