@@ -20,13 +20,14 @@ public class User
     public static User[] Users = new User[1000];
     public static int UserCount = 0;
 
-    public User(string firstName, string LastName, string email, string passWord)
+    public User(string firstName, string LastName, string email, string passWord, DateTime birthday)
     {
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
         setEmail(email);
         setPassword(passWord);
+        setBirthday(birthday);
         setLastupdated(DateTime.Now);
         setBy("Room Magnet"); 
         UserCount++;
