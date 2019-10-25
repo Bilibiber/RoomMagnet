@@ -11,6 +11,7 @@ public class User
     private string firstName;
     private string lastName;
     private string middleName;
+    private string gender;
     private string email;
     private string passWord;
     private DateTime birthday;
@@ -29,9 +30,8 @@ public class User
         setPassword(passWord);
         setBirthday(birthday);
         setLastupdated(DateTime.Now);
-        setBy("Room Magnet"); 
+        setBy("Room Magnet");
         UserCount++;
-
     }
 
     public void setFirstName(string firstName)
