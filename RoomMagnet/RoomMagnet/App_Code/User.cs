@@ -21,14 +21,17 @@ public class User
     public static User[] Users = new User[1000];
     public static int UserCount = 0;
 
-    public User(string firstName, string LastName, string email, string passWord, DateTime birthday)
+    public User(string firstName, string LastName, string MiddleName, string gender, string email, string passWord, DateTime birthday,
+        string url, DateTime lastupdated, string by)
     {
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
+        setgender(gender);
         setEmail(email);
         setPassword(passWord);
         setBirthday(birthday);
+        setURL(url);
         setLastupdated(DateTime.Now);
         setBy("Room Magnet");
         UserCount++;
@@ -62,6 +65,16 @@ public class User
     public string getMiddleName()
     {
         return this.middleName;
+    }
+
+    public void setgender(string gender)
+    {
+        this.gender = gender;
+    }
+
+    public string getgender()
+    {
+        return this.gender;
     }
 
     public void setEmail(string email)
