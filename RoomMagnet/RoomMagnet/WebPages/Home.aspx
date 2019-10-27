@@ -10,13 +10,13 @@
             <div class=" modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <asp:Label ID="SignInLabel" runat="server" Text="Create an Account" ForeColor="IndianRed"></asp:Label>
-                    </div>
-                    <div class="modal-body">
+                        <asp:Label ID="SignInLabel" runat="server" Text="Create an Account" ForeColor="IndianRed" CssClass="text-center"></asp:Label>
                         <div class="form-group">
                             <asp:Button ID="FacebookLogin" runat="server" Text="Continue with Facebook" />
                             <asp:Button ID="GmailLogin" runat="server" Text="Continue with Gmail" />
                         </div>
+                    </div>
+                    <div class="modal-body">
                         <div class="form-group">
                             <asp:TextBox ID="HomePageFirstName" runat="server" PlaceHolder="First Name"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageFirstName" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
@@ -29,8 +29,9 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePagePassword"  ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                         <asp:TextBox  type="Password" ID="HomePageComfirmPassword" runat="server" PlaceHolder="Comfirm Password"></asp:TextBox>
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="HomePagePassword" ControlToValidate="HomePageComfirmPassword" ValidationGroup="SignUp"></asp:CompareValidator>
+                        <%--Date of brith--%>
                         <div class="modal-footer">
-                            <asp:Button ID="HomePageSignUp" runat="server" Text="Sign Up" ValidationGroup="SignUp" />
+                            <asp:Button ID="HomePageSignUp" runat="server" Text="Sign Up" ValidationGroup="SignUp" OnClick="HomePageSignUp_Click" />
                             <asp:Button ID="HomePageLogin" runat="server" Text="Login" data-target="#SignIn" data-toggle="modal" OnClientClick="return false"  data-dismiss="modal"/>
                             <asp:Button ID="HomePageCancle" runat="server" Text="Close"/>
                         </div>
@@ -55,4 +56,5 @@
                 </div>
             </div>
         </div>
+    <asp:Button ID="HomePageDashBoard" runat="server" Text="My Dashboard" />
 </asp:Content>

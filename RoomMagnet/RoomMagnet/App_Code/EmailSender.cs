@@ -2,7 +2,7 @@
 /// <summary>
 /// Summary description for Email
 /// </summary>
-public class Email
+public class EmailSender
 {
     // Our Email 
     public const string FromEmailAddress = "roommagnetofficial@gmail.com";
@@ -17,9 +17,9 @@ public class Email
     // Enable the connectiong from website to email server
     SmtpClient smtpClient = new SmtpClient(GmailSmtp, GmailSmtpPort);
     
-    public Email(string EmailAddress)
+    public EmailSender ()
     {
-        this.ToEmailAddress = EmailAddress;
+
     }
     // Welcome email method
     public void SendWelcomeMail(string EnteredEmailAddress)
