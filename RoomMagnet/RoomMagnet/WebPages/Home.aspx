@@ -18,7 +18,7 @@
                         <asp:Label ID="SignInLabel" runat="server" Text="Create an Account" ForeColor="IndianRed" CssClass="text-center"></asp:Label>
                         <div class="form-group">
                             <asp:Button ID="FacebookLogin" runat="server" Text="Continue with Facebook" />
-                            <asp:Button ID="GmailLogin" runat="server" Text="Continue with Gmail" />
+                            <asp:Button ID="GmailLogin" runat="server" Text="Continue with Gmail"  OnClick="GmailSignIn_Click"/>
                         </div>
                     </div>
                     <div class="modal-body">
