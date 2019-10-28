@@ -6,7 +6,7 @@ public class EmailSender
 {
     // Our Email 
     public const string FromEmailAddress = "roommagnetofficial@gmail.com";
-    public const string FromEmailPassword = "@a1S2d3F4";
+    public const string FromEmailPassword = "CIS484roommagnet";
     // not useful rn
     private string ToEmailAddress;
     // server name and port to connect gmail server

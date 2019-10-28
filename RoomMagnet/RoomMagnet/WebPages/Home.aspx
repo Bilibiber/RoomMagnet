@@ -3,6 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+    <link href="PickaDay/pikaday.css" rel="stylesheet" />
+    <script src="PickaDay/pikaday.js"></script>
+    <link href="PickaDay/site.css" rel="stylesheet" />
+    <link href="PickaDay/theme.css" rel="stylesheet" />
+    <link href="PickaDay/triangle.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <asp:Button ID="HomePageGetStarted" runat="server" Text="Get Started" CssClass="btn btn-primary" data-target="#SignUp" data-toggle="modal"  OnClientClick="return false" />
@@ -30,10 +35,12 @@
                         <asp:TextBox  type="Password" ID="HomePageComfirmPassword" runat="server" PlaceHolder="Comfirm Password"></asp:TextBox>
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="HomePagePassword" ControlToValidate="HomePageComfirmPassword" ValidationGroup="SignUp"></asp:CompareValidator>
                         <%--Date of brith--%>
+                        <asp:TextBox ID="BirthdayText" runat="server" PlaceHolder="Date of Brith" TextMode="Date"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="BirthdayText" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                         <div class="modal-footer">
                             <asp:Button ID="HomePageSignUp" runat="server" Text="Sign Up" ValidationGroup="SignUp" OnClick="HomePageSignUp_Click" />
                             <asp:Button ID="HomePageLogin" runat="server" Text="Login" data-target="#SignIn" data-toggle="modal" OnClientClick="return false"  data-dismiss="modal"/>
-                            <asp:Button ID="HomePageCancle" runat="server" Text="Close"/>
+                            <asp:Button ID="HomePageClose" runat="server" Text="Close"/>
                         </div>
                     </div>
                 </div>
