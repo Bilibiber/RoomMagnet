@@ -11,6 +11,7 @@ public class Users
     private string firstName;
     private string lastName;
     private string middleName;
+    private string gender;
     private string email;
     private string passWord;
     private string roles;
@@ -29,9 +30,8 @@ public class Users
         setEmail(email);
         setPassword(passWord); 
         setLastupdated(DateTime.Now);
-        setBy("Room Magnet"); 
+        setBy("Room Magnet");
         UserCount++;
-
     }
     
     public void setFirstName(string firstName)
