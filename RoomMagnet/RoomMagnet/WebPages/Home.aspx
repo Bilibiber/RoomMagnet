@@ -59,5 +59,4 @@
                 </div>
             </div>
         </div>
-    <asp:Button ID="HomePageDashBoard" runat="server" Text="My Dashboard" />
 </asp:Content>
