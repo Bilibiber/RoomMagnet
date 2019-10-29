@@ -26,22 +26,25 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             if (Request.QueryString["code"] != null)
             {
                 GetToken(Request.QueryString["code"].ToString());
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
             }
+            
         }
+        
     }
     protected void GmailSignIn_Click(object sender, EventArgs e)
     {
         string url = "https://accounts.google.com/o/oauth2/v2/auth?scope=profile&include_granted_scopes=true&redirect_uri=" + redirection_url + "&response_type=code&client_id=" + clientid + "";
         Response.Redirect(url);
+       
     }
-    protected void HomePageSignUp_Click(object sender, EventArgs e)
+    protected void MasterPageSignUp_Click(object sender, EventArgs e)
     {
         try
         {
             EmailSender email = new EmailSender();
-            email.SendWelcomeMail(HomePageEmail.Text);
-            Users users = new Users(HomePageFirstName.Text, HomePageLastName.Text, HomePageEmail.Text, HomePagePassword.Text);
+            email.SendWelcomeMail(MasterPageEmail.Text);
+            Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text);
             if (cn.State == System.Data.ConnectionState.Closed)
             {
                 cn.Open();
@@ -93,10 +96,10 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         JavaScriptSerializer js = new JavaScriptSerializer();
         Userclass userinfo = js.Deserialize<Userclass>(responseFromServer);
         //imgprofile.ImageUrl = userinfo.picture;  to stored image come from google
-        HomePageFirstName.Text = userinfo.given_name;
-        HomePageLastName.Text = userinfo.family_name;
-        HomePageEmail.Text = userinfo.email;
-        
+        MasterPageFirstName.Text = userinfo.given_name;
+        MasterPageLastName.Text = userinfo.family_name;
+        MasterPageEmail.Text = userinfo.email;
+        MasterPageBirthday.Text = userinfo.birthday;
 
     }
 }
