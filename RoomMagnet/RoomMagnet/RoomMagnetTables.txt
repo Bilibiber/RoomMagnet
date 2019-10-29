@@ -25,7 +25,6 @@ CONSTRAINT PK_Convo PRIMARY KEY (ConversationID),
 CONSTRAINT FK_SenderID FOREIGN KEY (SenderID) references Users,
 CONSTRAINT FK_RecieverID FOREIGN KEY (RecieverID) references Users);
 
-
 Create table Message(
 MessageID int not null,
 MessageContent varchar(120) not null,
@@ -80,7 +79,6 @@ CONSTRAINT Fk_FavoriteProperties FOREIGN KEY (FavoriteProperties) references Pro
 CREATE table RoomMagnet(
 RoomMagnetID int not null,
 CONSTRAINT PK_RoomMagnet PRIMARY KEY (RoomMagnetID));
-
 
 CREATE table PropertyRoom(
 RoomID int not null,

@@ -61,8 +61,6 @@ public class PropertyRoom
         this.RenterID = RenterID;
     }
 
-    //ChrisColeBranch PropertyRoom Finalized list of setters to push to MasterBranch  (PLZ WORK v4 FOR TRENT)
-
     public int getRoomID()
     {
         return RoomID;
