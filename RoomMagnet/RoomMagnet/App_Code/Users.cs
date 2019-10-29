@@ -6,33 +6,34 @@ using System.Web;
 /// <summary>
 /// Summary description for User
 /// </summary>
-public class User
+public class Users
 {
     private string firstName;
     private string lastName;
     private string middleName;
+    private string gender;
     private string email;
     private string passWord;
+    private string roles;
     private DateTime birthday;
     private string backgroundURL;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
-    public static User[] Users = new User[1000];
     public static int UserCount = 0;
+    public static Users[] UserArray = new Users [1000];
 
-    public User(string firstName, string LastName, string email, string passWord)
+    public Users (string firstName, string LastName, string email, string passWord)
     {
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
         setEmail(email);
-        setPassword(passWord);
+        setPassword(passWord); 
         setLastupdated(DateTime.Now);
-        setBy("Room Magnet"); 
+        setBy("Room Magnet");
         UserCount++;
-
     }
-
+    
     public void setFirstName(string firstName)
     {
         this.firstName = firstName;

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 
 public class PropertyRoom
 {
@@ -16,17 +12,14 @@ public class PropertyRoom
     private int PropertyID;
     private int RenterID;
 
-
     public PropertyRoom()
     {
-
     }
 
     public void setRoomID(int RoomID)
     {
         this.RoomID = RoomID;
     }
-
 
     public void setImagePath(String ImagePath)
     {
@@ -99,8 +92,4 @@ public class PropertyRoom
     {
         return this.LastUpdated;
     }
-
-
 }
-
-  
