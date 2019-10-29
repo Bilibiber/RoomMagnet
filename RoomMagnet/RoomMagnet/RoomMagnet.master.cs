@@ -6,9 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ASPSnippets.GoogleAPI;
 using System.Web.Script.Serialization;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class RoomMagnet : System.Web.UI.MasterPage
 {
+    SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
         GoogleConnect.ClientId = "501924233388-4ts15v59i0l3orbfaeaqfh6e1cl5dg1h.apps.googleusercontent.com";
