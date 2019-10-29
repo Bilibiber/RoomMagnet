@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="false" CodeFile="RenterDashboard.aspx.vb" Inherits="WebPages_RenterDashboard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="Privacy.aspx.cs" Inherits="WebPages_Privacy" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" Runat="Server">
 </asp:Content>

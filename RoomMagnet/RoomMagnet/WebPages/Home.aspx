@@ -3,13 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <link href="PickaDay/pikaday.css" rel="stylesheet" />
-    <script src="PickaDay/pikaday.js"></script>
-    <link href="PickaDay/site.css" rel="stylesheet" />
-    <link href="PickaDay/theme.css" rel="stylesheet" />
-    <link href="PickaDay/triangle.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
+    <asp:Button ID="HomePageLogin" runat="server" Text="Login" data-target="#SignIn" data-toggle="modal" OnClientClick="return false"  data-dismiss="modal"/>
     <asp:Button ID="HomePageGetStarted" runat="server" Text="Get Started" CssClass="btn btn-primary" data-target="#SignUp" data-toggle="modal"  OnClientClick="return false" />
         <div class="modal" id="SignUp" tabindex="-1">
             <div class=" modal-dialog">
@@ -39,7 +35,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="BirthdayText" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                         <div class="modal-footer">
                             <asp:Button ID="HomePageSignUp" runat="server" Text="Sign Up" ValidationGroup="SignUp" OnClick="HomePageSignUp_Click" />
-                            <asp:Button ID="HomePageLogin" runat="server" Text="Login" data-target="#SignIn" data-toggle="modal" OnClientClick="return false"  data-dismiss="modal"/>
+                            
                             <asp:Button ID="HomePageClose" runat="server" Text="Close"/>
                         </div>
                     </div>

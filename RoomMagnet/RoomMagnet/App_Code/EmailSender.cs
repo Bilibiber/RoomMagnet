@@ -5,6 +5,7 @@
 public class EmailSender
 {
     // Our Email 
+    //Upcase
     public const string FromEmailAddress = "roommagnetofficial@gmail.com";
     public const string FromEmailPassword = "CIS484roommagnet";
     // not useful rn
