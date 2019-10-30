@@ -39,12 +39,25 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         {
             EmailSender email = new EmailSender();
             email.SendWelcomeMail(MasterPageEmail.Text);
-            Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text);
+            Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text,MasterPageBirthday.Text);
             if (cn.State == System.Data.ConnectionState.Closed)
             {
                 cn.Open();
             }
-            string SqlCommand = "insert into Users values(@FirstName,@LastName,@MiddleName,@Gender,@Email,@Password,@DOB,@BackgroundURL,@LastUpdated,@LastUpdatedBy)";
+            string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@LastUpdated,@LastUpdatedBy)";
+            SqlCommand sqlCommand = new SqlCommand(Sql, cn);
+            sqlCommand.Parameters.AddRange(
+                new SqlParameter[]
+                {
+                    new SqlParameter("@FirstName",users.getFirstName()),
+                    new SqlParameter("@LastName",users.getLastName()),
+                    new SqlParameter("@Email",users.getEmail()),
+                    new SqlParameter("@Password",users.getLastName()),
+                    new SqlParameter("@DateOfBirth",users.getBirthday()),
+                    new SqlParameter("@LastUpdated",users.getLastName()),
+                    new SqlParameter("@LastUpdatedBy",users.getLastName()),
+                });
+                
             cn.Close();
         }
         catch (Exception)

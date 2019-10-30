@@ -63,7 +63,8 @@
                                                     <!-- Collect the nav links, forms, and other content for toggling -->
                                                     <div class="collapse navbar-collapse" id="direo-navbar-collapse">
                                                         <ul class="navbar-nav">
-
+                                                            </ul>
+                                                        </div>
                                                             <!-- /.navbar-collapse -->
                                                 </nav>
                                             </div>

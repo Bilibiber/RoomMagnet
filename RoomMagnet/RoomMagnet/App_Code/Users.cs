@@ -22,8 +22,10 @@ public class Users
     public static int UserCount = 0;
     public static Users[] UserArray = new Users [1000];
 
-    public Users (string firstName, string LastName, string email, string passWord)
+    public Users (string firstName, string LastName, string email, string passWord,string DateofBirth)
     {
+        DateTime DOB = Convert.ToDateTime(DateofBirth);
+        setBirthday(DOB);
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
