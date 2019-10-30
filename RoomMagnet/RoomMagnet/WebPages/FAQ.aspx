@@ -6,11 +6,8 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
 
-    <label>
-
-
-
-    What makes RoomMagnet different?
+<label>
+What makes RoomMagnet different?
 RoomMagnet provides an easy to use platform where pre-screened Tenants and Hosts come together, and in exchange for a modest cost and/or in exchange for light domestic duties, enjoy reduced rent. It’s a win-win! Hosts monetize their extra living space and if they wish get a little help around the house. Tenants enjoy affordable housing.
 Who can use Roommagnet
 Roommagnet users must be at least 18 years of age and are seeking a minimum of 30 days stay in Host lodging. While Roommagnet is open to all who meet their minimum requirements we specialize in connecting Hosts with professional and semi-professionals such as, graduate students, international students, doctoral and nursing interns as well as college students seeking affordable off campus housing.
@@ -51,11 +48,11 @@ Send us an e mail, tell us a little about yourself ,send us an example of your w
  
         -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    </label>
+</label>
     
     
-    <label>
-        Why do I need a background screen?
+<label>
+Why do I need a background screen?
 Trust is a quality we all value. We at RoomMagnet understand that it is the most important
 aspect of the relationship between Hosts and Tenants. Consequently, RoomMagnet through
 Intellicorp Records Inc. provides a background screening capability for its users. (please see our
@@ -75,6 +72,7 @@ To initiate a personal background screen click the link below and when prompted 
 password: roommagnet33
 START BACKGROUND SCREENING
 Edit
-    </label>
+
+</label>
 </asp:Content>
 
