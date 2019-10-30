@@ -31,11 +31,26 @@
                             <div class="col-lg-12">
                                 <div class="logo-wrapper order-lg-0 order-sm-1">
                                  <div class="logo logo-top">
-                                            <a href="index.html"><img src="img/rm/logo-2.png" alt="logo image" class="img-fluid"></a>
+                                            <asp:Image ID="Image1" runat="server" ImageUrl="~/img/rm/logo-2.png" alt="logo image" class="img-fluid"/>
+                                     <%-- Go Back to the home page --%>
                                         </div>
+                                    
                                     </div>
-            <asp:Button ID="MasterPageGetStarted" runat="server" Text="Get Started" CssClass="btn btn-primary" data-target="#SignUp" data-toggle="modal" OnClientClick="return false" />
-            <asp:Button ID="MasterPageLogin" runat="server" Text="Login" data-target="#SignIn" data-toggle="modal" OnClientClick="return false" data-dismiss="modal" />
+                                <div>
+                                    <ul class="d-flex list-unstyled align-items-center">
+                                        <li>
+                                            <asp:LinkButton ID="LinkButton1" runat="server">Become a Host</asp:LinkButton>
+                                        </li>
+                                        <li>
+                                            <asp:Button ID="MasterPageGetStarted" runat="server" Text="Sign Up" CssClass="btn btn-primary" data-target="#SignUp" data-toggle="modal" OnClientClick="return false" />
+                                        </li>
+                                        <li>
+                                             <asp:Button ID="MasterPageLogin" runat="server" Text="Log in" data-target="#SignIn" data-toggle="modal" OnClientClick="return false" data-dismiss="modal" />
+                                        </li>
+                                    </ul>
+                                </div>
+           
+            
             <div class="modal" id="SignUp" tabindex="-1">
                 <div class=" modal-dialog">
                     <div class="modal-content">
