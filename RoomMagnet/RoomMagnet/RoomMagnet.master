@@ -124,7 +124,7 @@
                 </div>
                 <!-- end  -->
             </div>
-            </div><!-- ends: .mainmenu-wrapper -->
+            <!-- ends: .mainmenu-wrapper -->
         </section>
         <!-- ends: .intro-wrapper -->
         <div class="modal fade" id="SignIn" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
@@ -153,7 +153,7 @@
                                 <li>Not a member? <a href="">Sign up</a></li>
                                 <%-- Another button to call sign up modal --%>
                                 <li><a href="">Recover Password</a></li>
-                                <%-- Reset password, to another page --%>
+                                <%-- Reset password, to another page a link button? --%>
                             </ul>
                         </div>
                     </div>
@@ -173,11 +173,11 @@
                     <div class="modal-body">
                         <form action="/" id="signup-form">
                             <asp:TextBox ID="MasterPageFirstName" runat="server" PlaceHolder="First Name" CssClass="form-control"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageFirstName" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageFirstName" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageLastName" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageLastName"  ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="MasterPageEmail" runat="server" PlaceHolder="Email" CssClass="form-control"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageEmail"  ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                             <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPagePassword" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
@@ -188,6 +188,11 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                             <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" />
                         </form>
+                        <div class="form-excerpts">
+                        <ul class="list-unstyled">
+                            <li>Already a member? <a href="">Sign In</a></li>
+                            <li><a href="">Recover Password</a></li>
+                        </ul>
                         <div class="social-login">
                             <span>Or connect with</span>
                             <asp:Button ID="GmailLogin" runat="server" Text="Continue with Gmail" OnClick="GmailSignIn_Click" />
@@ -196,6 +201,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </form>
 </body>
