@@ -39,21 +39,25 @@
     <!-- Your second column here -->
       <br />
       <hr />
-      <asp:Label ID="hellow" runat="server" Text="Hello, world" ForeColor="#CC3300" Font-Size="XX-Large" Font-Bold="True"></asp:Label>
+      <asp:Label ID="hellow" runat="server" Text="Hello, world" ForeColor="#CC3300" Font-Size="1.5em" Font-Bold="True"></asp:Label>
       <br />
       <br />
+      &nbsp;&nbsp;&nbsp;
       <asp:Label ID="renterabout" runat="server" Text="About" Font-Bold="True"></asp:Label>
 
       <br />
       <br />
+      &nbsp;&nbsp;&nbsp;
       <asp:Label ID="renterAge" runat="server" Text="Age" Font-Bold="True"></asp:Label>
 
       <br />
       <br />
+      &nbsp;&nbsp;&nbsp;
       <asp:Label ID="renterGender" runat="server" Text="Gender" Font-Bold="True"></asp:Label>
 
       <br />
       <br />
+      &nbsp;&nbsp;&nbsp;
       <asp:Label ID="renterOccupation" runat="server" Text="Occupation" Font-Bold="True"></asp:Label>
 
       <br />
