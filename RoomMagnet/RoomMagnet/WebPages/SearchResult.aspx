@@ -20,10 +20,10 @@
         <div class="row">
             Min. Price
             <asp:TextBox ID="SearchResultMinPrice" runat="server"></asp:TextBox>
-            <asp:CompareValidator ID="SearchResultsMinPriceValidator" ControlToValidate="SearchResultsMinPrice" Operator="DataTypeCheck" Type="Currency" runat="server" Text="(Invalid Price)"></asp:CompareValidator>
+            <asp:CompareValidator ID="SearchResultsMinPriceValidator" ControlToValidate="SearchResultMinPrice" Operator="DataTypeCheck" Type="Currency" runat="server" Text="(Invalid Price)"></asp:CompareValidator>
             Max Price
             <asp:TextBox ID="SearchResultMaxPrice" runat="server"></asp:TextBox>
-            <asp:CompareValidator ID="SearchResultsMaxPriceValidator" ControlToValidate="SearchResultsMaxPrice" runat="server" Operator="DataTypeCheck" Type="Currency" Text="(Invalid Price)"></asp:CompareValidator>
+            <asp:CompareValidator ID="SearchResultsMaxPriceValidator" ControlToValidate="SearchResultMaxPrice" runat="server" Operator="DataTypeCheck" Type="Currency" Text="(Invalid Price)"></asp:CompareValidator>
             </div>
        </div>
 </asp:Content>
