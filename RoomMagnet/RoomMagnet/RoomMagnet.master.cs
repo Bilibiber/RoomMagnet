@@ -100,6 +100,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         MasterPageLastName.Text = userinfo.family_name;
         MasterPageEmail.Text = userinfo.email;
         MasterPageBirthday.Text = userinfo.birthday;
+        //a
 
     }
 }
