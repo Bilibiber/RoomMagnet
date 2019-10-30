@@ -29,8 +29,8 @@
                     <div class="col-lg-12">
                         <div class="logo-wrapper order-lg-0 order-sm-1">
                             <div class="logo logo-top">
-                                <asp:Image ID="Image1" runat="server" ImageUrl="~/img/rm/logo-2.png" alt="logo image" class="img-fluid" />
-                                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/img/rm/logo-2.png"/>
+                                <%--<asp:Image ID="Image1" runat="server" ImageUrl="~/img/rm/logo-2.png" alt="logo image" class="img-fluid" />--%>
+                                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/img/rm/logo-2.png" alt="logo image" CssClass="img-fluid" PostBackUrl="~/WebPages/Home.aspx"/>
                                 <%-- Go Back to the home page --%>
                             </div>
                         </div>
