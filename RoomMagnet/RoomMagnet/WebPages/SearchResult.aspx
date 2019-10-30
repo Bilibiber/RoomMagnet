@@ -9,7 +9,7 @@
     <h1>Search Result<asp:Label ID="SearchResultCount" runat="server" Text=""></asp:Label>
     </h1>
     <asp:TextBox ID="SearchResultText" runat="server" PlaceHolder="Enter a City or Zipcode"></asp:TextBox>
-    <asp:Button ID="SearchResultButton" runat="server" Text="Search" OnClick="SearchResultButton_Click" />
+    <asp:Button ID="SearchResultButton" runat="server" Text="Search"/>
     
     <div class="container">
         <u>Filters</u>
