@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using ASPSnippets.GoogleAPI;
+//using ASPSnippets.GoogleAPI;
 using System.Web.Script.Serialization;
 
 public partial class Home : System.Web.UI.Page
@@ -9,17 +9,17 @@ public partial class Home : System.Web.UI.Page
     SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
-        GoogleConnect.ClientId = "501924233388-4ts15v59i0l3orbfaeaqfh6e1cl5dg1h.apps.googleusercontent.com";
-        GoogleConnect.ClientSecret = "71rfQJWsTXIkCOuI6cZOdBtL";
-        GoogleConnect.RedirectUri = Request.Url.AbsoluteUri.Split('?')[0];
+        //GoogleConnect.ClientId = "501924233388-4ts15v59i0l3orbfaeaqfh6e1cl5dg1h.apps.googleusercontent.com";
+        //GoogleConnect.ClientSecret = "71rfQJWsTXIkCOuI6cZOdBtL";
+        //GoogleConnect.RedirectUri = Request.Url.AbsoluteUri.Split('?')[0];
 
         if (!string.IsNullOrEmpty(Request.QueryString["code"]))
         {
             string code = Request.QueryString["code"];
-            string json = GoogleConnect.Fetch("me", code);
-            GoogleProfile profile = new JavaScriptSerializer().Deserialize<GoogleProfile>(json);
-            HomePageFirstName.Text = profile.DisplayName;
-            HomePageEmail.Text = profile.Emails.Find(email => email.Type == "account").Value;
+            //string json = GoogleConnect.Fetch("me", code);
+            //GoogleProfile profile = new JavaScriptSerializer().Deserialize<GoogleProfile>(json);
+            //HomePageFirstName.Text = profile.DisplayName;
+            //HomePageEmail.Text = profile.Emails.Find(email => email.Type == "account").Value;
 
 
             //Image1.ImageUrl = profile.Image.Url;
@@ -56,6 +56,6 @@ public partial class Home : System.Web.UI.Page
     }
     protected void GmailSignIn_Click(object sender, EventArgs e)
     {
-        GoogleConnect.Authorize("profile", "email");
+        //GoogleConnect.Authorize("profile", "email");
     }
 }
