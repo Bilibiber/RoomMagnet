@@ -17,7 +17,7 @@
                                 <div class="single_search_field search_query">
                                     <input class="form-control search_fields" type="text" placeholder="Enter a city or zip code">
                                 </div>
-
+        <a>
                                 <div class="atbd_submit_btn">
                                     <button type="submit" class="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search">Search</button>
                                 </div>
