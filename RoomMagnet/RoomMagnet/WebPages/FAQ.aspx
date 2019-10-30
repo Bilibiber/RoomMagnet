@@ -7,6 +7,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
 
     <label>
+
+
     What makes RoomMagnet different?
 RoomMagnet provides an easy to use platform where pre-screened Tenants and Hosts come together, and in exchange for a modest cost and/or in exchange for light domestic duties, enjoy reduced rent. It’s a win-win! Hosts monetize their extra living space and if they wish get a little help around the house. Tenants enjoy affordable housing.
 Who can use Roommagnet
