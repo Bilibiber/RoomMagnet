@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+
     <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 
@@ -119,7 +120,7 @@
 
             <br />
             <br />
-            <asp:Button ID="renterSavedSearch" runat="server" Text="Saved Searches" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="renterSavedSearch_Click"></asp:Button>
+            <asp:Button ID="renterSavedSearch" runat="server" Text="Saved Searches" Font-Size="XX-Large" ForeColor="Red" BackColor="Gray" BorderStyle="None" OnClick="renterSavedSearch_Click"></asp:Button>
             <br />
             <asp:Button ID="renterMessage" runat="server" Text="My Message" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="renterMessage_Click"></asp:Button>
             <br />
@@ -129,7 +130,7 @@
             <br />
             <asp:Button ID="rentertohost" runat="server" Text="Become a Host" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="rentertohost_Click"></asp:Button>
             <br />
-            <asp:Button ID="renterSetting" runat="server" Text="Setting" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None"></asp:Button>
+            <asp:Button ID="renterSetting" runat="server" Text="Setting" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="renterSetting_Click"></asp:Button>
             <br />
             <asp:Button ID="renterLogOut" runat="server" Text="Log Out" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None"></asp:Button>
         </div>
@@ -429,6 +430,14 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+            </asp:Panel>
+
+            <%--setting panel--%>
+            <asp:Panel runat="server" ID="renterSettingpanel" Visible="False">
+                <div>
+                    <asp:Label runat="server" Text="Setting" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                    <br />
                 </div>
             </asp:Panel>
 
