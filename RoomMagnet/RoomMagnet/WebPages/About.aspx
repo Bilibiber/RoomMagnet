@@ -7,8 +7,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
 
     <label>
-
-
         Why did we create RoomMagnet?
 RoomMagnet brings together a solution to two social problems that are of major concern to society and continue to escalate internationally.
 The first is the cost of affordable housing. Costs for college students, interns and young professionals  continues to escalate at an alarming pace, making it more difficult to get a start on their careers.
@@ -24,11 +22,4 @@ We share the world and we share our space.
 Hosts develop lasting friendships, helping each other through the sharing economy
 It's a win-win
     </label>
-
 </asp:Content>
-
-
-
-
-
-

@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.SqlClient;
+using System.IO;
 using System.Net;
 using System.Text;
-using System.IO;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 
 public partial class RoomMagnet : System.Web.UI.MasterPage
 {
-    SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
-    string clientid = "501924233388-4ts15v59i0l3orbfaeaqfh6e1cl5dg1h.apps.googleusercontent.com";
-    string clientsecret = "71rfQJWsTXIkCOuI6cZOdBtL";
-    string redirection_url = "http://localhost:59379/WebPages/Home.aspx";
-    string url = "https://accounts.google.com/o/oauth2/token";
+    private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+    private string clientid = "501924233388-4ts15v59i0l3orbfaeaqfh6e1cl5dg1h.apps.googleusercontent.com";
+    private string clientsecret = "71rfQJWsTXIkCOuI6cZOdBtL";
+    private string redirection_url = "http://localhost:59379/WebPages/Home.aspx";
+    private string url = "https://accounts.google.com/o/oauth2/token";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -28,16 +24,15 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 GetToken(Request.QueryString["code"].ToString());
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
             }
-            
         }
-        
     }
+
     protected void GmailSignIn_Click(object sender, EventArgs e)
     {
         string url = "https://accounts.google.com/o/oauth2/v2/auth?scope=profile&include_granted_scopes=true&redirect_uri=" + redirection_url + "&response_type=code&client_id=" + clientid + "";
         Response.Redirect(url);
-       
     }
+
     protected void MasterPageSignUp_Click(object sender, EventArgs e)
     {
         try
@@ -54,12 +49,11 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         }
         catch (Exception)
         {
-
         }
     }
+
     public void GetToken(string code)
     {
-
         string poststring = "grant_type=authorization_code&code=" + code + "&client_id=" + clientid + "&client_secret=" + clientsecret + "&redirect_uri=" + redirection_url + "";
         var request = (HttpWebRequest)WebRequest.Create(url);
         request.ContentType = "application/x-www-form-urlencoded";
@@ -82,6 +76,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         Tokenclass obj = js.Deserialize<Tokenclass>(responseFromServer);
         GetuserProfile(obj.access_token);
     }
+
     public void GetuserProfile(string accesstoken)
     {
         string url = "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=" + accesstoken + "";
@@ -101,6 +96,5 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         MasterPageEmail.Text = userinfo.email;
         MasterPageBirthday.Text = userinfo.birthday;
         //a
-
     }
 }
