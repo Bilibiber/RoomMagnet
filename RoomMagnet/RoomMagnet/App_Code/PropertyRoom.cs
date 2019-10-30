@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 
 public class PropertyRoom
 {
@@ -16,17 +12,14 @@ public class PropertyRoom
     private int PropertyID;
     private int RenterID;
 
-
     public PropertyRoom()
     {
-
     }
 
     public void setRoomID(int RoomID)
     {
         this.RoomID = RoomID;
     }
-
 
     public void setImagePath(String ImagePath)
     {
@@ -68,12 +61,33 @@ public class PropertyRoom
         this.RenterID = RenterID;
     }
 
-    //ChrisColeBranch PropertyRoom Finalized list of setters to push to MasterBranch  (PLZ WORK v4 FOR TRENT)
-
     public int getRoomID()
     {
         return RoomID;
     }
-}
 
-    //ChrisColeBranchTest v1
+    public String getImagePath()
+    {
+        return this.ImagePath;
+    }
+
+    public DateTime getEffectiveDate()
+    {
+        return this.EffectiveDate;
+    }
+
+    public DateTime getTerminationDate()
+    {
+        return this.TerminationDate;
+    }
+
+    public float getMonthyPrice()
+    {
+        return MonthlyPrice;
+    }
+
+    public DateTime getLastUpdated()
+    {
+        return this.LastUpdated;
+    }
+}
