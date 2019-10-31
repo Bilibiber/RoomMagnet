@@ -4,11 +4,14 @@
 
 <html>
 <head runat="server">
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
-    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
+
     <link href="vendor_assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="vendor_assets/css/brands.css" rel="stylesheet" />
     <link href="vendor_assets/css/fontawesome.min.css" rel="stylesheet" />
@@ -63,9 +66,9 @@
                                                     <!-- Collect the nav links, forms, and other content for toggling -->
                                                     <div class="collapse navbar-collapse" id="direo-navbar-collapse">
                                                         <ul class="navbar-nav">
-                                                            </ul>
-                                                        </div>
-                                                            <!-- /.navbar-collapse -->
+                                                        </ul>
+                                                    </div>
+                                                    <!-- /.navbar-collapse -->
                                                 </nav>
                                             </div>
                                         </div>
@@ -78,10 +81,10 @@
                                                         <asp:LinkButton ID="MasterPageHomeImage" runat="server">Become a Host</asp:LinkButton>
                                                     </li>
                                                     <li>
-                                                        <asp:Button ID="MasterPageSignUp" runat="server" Text="Sign Up" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-target="#SignUp" data-toggle="modal" OnClientClick="return false" />
+                                                        <asp:Button ID="MasterPageSignUp" runat="server" Text="Sign Up" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" />
                                                     </li>
                                                     <li>
-                                                        <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-target="#SignIn" data-toggle="modal" OnClientClick="return false" data-dismiss="modal" />
+                                                        <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false"/>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -128,8 +131,8 @@
             <!-- ends: .mainmenu-wrapper -->
         </section>
         <!-- ends: .intro-wrapper -->
-        
-        <div class="modal fade" id="SignIn" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+
+        <%--        <div class="modal fade" id="SignIn" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -153,18 +156,18 @@
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
                                 <li>Not a member? <a href="">Sign up</a></li>
-                                <%-- Another button to call sign up modal --%>
+                                <%-- Another button to call sign up modal
                                 <li><a href="">Recover Password</a></li>
-                                <%-- Reset password, to another page a link button? --%>
+                                <%-- Reset password, to another page a link button?
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
         <%-- do roommaget have a video to play on website  --%>
-        
-        <div class="modal fade" id="SignUp" tabindex="-1" role="dialog" aria-labelledby="signup_modal_label" aria-hidden="true">
+
+        <%-- <div class="modal fade" id="SignUp" tabindex="-1" role="dialog" aria-labelledby="signup_modal_label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -189,7 +192,7 @@
                             <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="MasterPagePassword" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:CompareValidator>
                             <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Brith" TextMode="Date" CssClass="form-control"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                            <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False"/>
+                            <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
                             <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                             <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         </form>
@@ -207,12 +210,183 @@
                 </div>
             </div>
         </div>
+        </div>--%>
+        <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="login_modal_label"><i class="la la-lock"></i>Sign In</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/" id="login-form">
+                            <asp:TextBox ID="SignInEmail" PlaceHolder="Email" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="SignInEmailRequiredFieldValidator" runat="server" ErrorMessage="Required" ControlToValidate="SignInEmail" ValidationGroup="SignIn"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="SignInEmailRegularExpressionValidator" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="SignInEmail" Display="Dynamic" ValidationGroup="SignIn" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                            <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                            <div class="keep_signed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
+                                <input type="checkbox" class="custom-control-input" name="keep_signed_in" value="1" id="keep_signed_in">
+                                <label for="keep_signed_in" class="not_empty custom-control-label">Keep me signed in</label>
+                            </div>
+                            <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" />
+                        </form>
+                        <div class="form-excerpts">
+                            <ul class="list-unstyled">
+                                <li>Not a member? <a href="">Sign up</a></li>
+                                <li><a href="">Recover Password</a></li>
+                            </ul>
+                            <div class="social-login">
+                                <span>Or connect with</span>
+                                <p><a href="" class="btn btn-outline-secondary"><i class="fab fa-facebook-f"></i>Facebook</a><a href="" class="btn btn-outline-danger"><i class="fab fa-google-plus-g"></i> Google</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-    </form>
-    <footer>
-</footer>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
+        <div class="modal fade" id="signup_modal" tabindex="-1" role="dialog" aria-labelledby="signup_modal_label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signup_modal_label"><i class="la la-lock"></i>Sign Up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/" id="signup-form">
+                            <asp:TextBox ID="MasterPageFirstName" runat="server" PlaceHolder="First Name" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageFirstName" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageLastName" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="MasterPageEmail" runat="server" PlaceHolder="Email" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageEmail" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                            <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPagePassword" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:TextBox type="Password" ID="MasterPageComfirmPassword" runat="server" PlaceHolder="Comfirm Password" CssClass="form-control" ValidationGroup="SignUp"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="MasterPagePassword" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:CompareValidator>
+                            <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Brith" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
+                            <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
+                            <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
+                        </form>
+                        <div class="form-excerpts">
+                            <ul class="list-unstyled">
+                                <li>Already a member? <a href="">Sign In</a></li>
+                                <li><a href="">Recover Password</a></li>
+                            </ul>
+                            <div class="social-login">
+                                <span>Or Signup with</span>
+                                <asp:Button ID="GmailLogin" runat="server" Text="Continue with Gmail" OnClick="GmailSignIn_Click" UseSubmitBehavior="False" />
+                                <p><a href="" class="btn btn-outline-secondary"><i class="fab fa-facebook-f"></i>Facebook</a><a href="" class="btn btn-outline-danger"><i class="fab fa-google-plus-g"></i> Google</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <footer class="footer-three footer-grey footer-links">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 ">
+                            <div class="widget widget_pages">
+                                <h2 class="widget-title">Company Info</h2>
+                                <ul class="list-unstyled">
+                                    <li class="page-item"><a href="">About Us</a></li>
+                                    <li class="page-item"><a href="">Conact Us</a></li>
+                                    <li class="page-item"><a href="">Terms</a></li>
+                                    <li class="page-item"><a href="">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- ends: .col-lg-3 -->
+
+                        <div class="col-lg-3 ">
+                            <div class="widget widget_pages">
+                                <h2 class="widget-title">Helpful Links</h2>
+                                <ul class="list-unstyled">
+                                    <li class="page-item"><a href="">Sign In</a></li>
+                                    <li class="page-item"><a href="">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- ends: .col-lg-3 -->
+
+                        <div class="col-lg-3 ">
+                            <div class="widget widget_social">
+                                <h2 class="widget-title">Connect with Us</h2>
+                                <ul class="list-unstyled social-list">
+                                    <li><a href=""><span class="mail"><i class="la la-envelope"></i></span>Contact Support</a></li>
+                                    <li><a href="https://www.instagram.com/roommagnet/"><span class="instagram"><i class="fab fa-instagram"></i></span>Instagram</a></li>
+                                </ul>
+                            </div>
+                            <!-- ends: .widget -->
+                        </div>
+                        <!-- ends: .col-lg-3 -->
+
+                        <div class="col-lg-3 ">
+                            <div class="footer-logo">
+                                <img src="img/rm/logo-2.png">
+                            </div>
+                            <!-- ends: .widget -->
+                        </div>
+                        <!-- ends: .col-lg-3 -->
+                    </div>
+                </div>
+            </div>
+            <!-- ends: .footer-top -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="footer-bottom--content">
+                                <div class="col-lg-4">
+                                </div>
+
+                                <div class="col-lg-4 align-items-center mx-auto text-center">
+                                    <p class="m-0 copy-text">©2019 RoomMagnet</p>
+                                    <img src="img/rm/luminous-trans-small.png">
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <ul class="list-unstyled lng-list">
+                                        <li><a href="">English</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ends: .footer-bottom -->
+        </footer>
+        <!-- ends: .footer -->
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
+        <script src="vendor_assets/js/jquery/jquery-1.12.3.js"></script>
+        <script src="vendor_assets/js/bootstrap/popper.js"></script>
+        <script src="vendor_assets/js/bootstrap/bootstrap.min.js"></script>
+        <script src="vendor_assets/js/jquery-ui.min.js"></script>
+        <script src="vendor_assets/js/jquery.barrating.min.js"></script>
+        <script src="vendor_assets/js/jquery.counterup.min.js"></script>
+        <script src="vendor_assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="vendor_assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="vendor_assets/js/jquery.waypoints.min.js"></script>
+        <script src="vendor_assets/js/masonry.pkgd.min.js"></script>
+        <script src="vendor_assets/js/owl.carousel.min.js"></script>
+        <script src="vendor_assets/js/select2.full.min.js"></script>
+        <script src="vendor_assets/js/slick.min.js"></script>
+        <script src="theme_assets/js/locator.js"></script>
+        <script src="theme_assets/js/main.js"></script>
+        <script src="theme_assets/js/map.js"></script>
+    </form>
 </body>
 </html>
