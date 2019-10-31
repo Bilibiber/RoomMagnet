@@ -25,12 +25,14 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
             }
         }
+        if (IsPostBack)
+            return;
     }
 
     protected void GmailSignIn_Click(object sender, EventArgs e)
     {
         string url = "https://accounts.google.com/o/oauth2/v2/auth?scope=profile&include_granted_scopes=true&redirect_uri=" + redirection_url + "&response_type=code&client_id=" + clientid + "";
-        Response.Redirect(url);
+        Response.Redirect(url, false);
     }
 
     protected void MasterPageSignUp_Click(object sender, EventArgs e)

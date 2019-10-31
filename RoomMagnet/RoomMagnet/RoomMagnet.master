@@ -7,28 +7,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-
-    <link href="vendor_assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="vendor_assets/css/brands.css" rel="stylesheet" />
-    <link href="vendor_assets/css/fontawesome.min.css" rel="stylesheet" />
-    <link href="vendor_assets/css/jquery-ui.css" rel="stylesheet" />
-    <link href="vendor_assets/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
-    <link href="vendor_assets/css/magnific-popup.css" rel="stylesheet" />
-    <link href="vendor_assets/css/owl.carousel.min.css" rel="stylesheet" />
-    <link href="vendor_assets/css/select2.min.css" rel="stylesheet" />
-    <link href="vendor_assets/css/slick.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Css/style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript">
         function openModal() {
             $('#signup_modal').modal({ show: true });
         }
     </script>
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
     <title>
         <asp:ContentPlaceHolder ID="Title" runat="server">
         </asp:ContentPlaceHolder>
@@ -42,9 +30,6 @@
         </asp:ContentPlaceHolder>
         <%-- Nav Starts here --%>
         <section class="intro-wrapper bgimage">
-            <%--<div class="bg_image_holder">
-        <%--    <asp:Image ID="BackgroundImage" runat="server"  ImageUrl="~/img/rm/home-2.png" />
-        </div>--%>
             <div class="mainmenu-wrapper">
                 <div class="menu-area menu1 ">
                     <div class="top-menu-area">
@@ -105,15 +90,6 @@
                                                     <li><a href="add-listing.html">Add Listing</a></li>
                                                     <li><a href="">Logout</a></li>
                                                 </ul>
-                                                <div class="search_area">
-                                                    <form action="/">
-                                                        <div class="input-group input-group-light">
-                                                            <input type="text" class="form-control search_field" placeholder="Search here..." autocomplete="off">
-                                                        </div>
-                                                        <button type="submit" class="btn btn-sm btn-secondary">Search</button>
-                                                    </form>
-                                                </div>
-                                                <!-- ends: .search_area -->
                                             </div>
                                             <!-- ends: .author-info -->
                                         </div>
@@ -152,7 +128,8 @@
                             <label for="keep_signed_in" class="not_empty custom-control-label">Keep me signed in</label>
                         </div>
                         <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" />
-
+                        <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
+                        <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
                                 <li>Not a member? <a href="">Sign up</a></li>
@@ -193,8 +170,6 @@
                         <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Brith" TextMode="Date" CssClass="form-control"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                         <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
-                        <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
-                        <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
 
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
