@@ -176,6 +176,7 @@
                                 <li>Already a member? <a href="">Sign In</a></li>
                                 <li><a href="">Recover Password</a></li>
                             </ul>
+                            
                             <div class="social-login">
                                 <span>Or Signup with</span>
                                 <asp:Button ID="GmailLogin" runat="server" Text="Continue with Gmail" OnClick="GmailSignIn_Click" UseSubmitBehavior="False" />
