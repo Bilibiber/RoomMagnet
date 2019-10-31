@@ -21,7 +21,6 @@ public class Users
 
     public Users(string firstName, string LastName, string email, string passWord, string DateofBirth)
     {
-        
         string name = firstName + " " + LastName;
         setFirstName(firstName);
         setLastName(lastName);
