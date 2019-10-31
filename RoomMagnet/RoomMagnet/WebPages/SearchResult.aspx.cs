@@ -30,7 +30,15 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         {
             SearchResultMaxPrice.Text = "5000";
         }
-
+        string BedsCmpr;
+        if (SearchResultBedsAvailable.Text!="4+")
+        {
+            BedsCmpr = "=" + SearchResultBedsAvailable.Text;
+        }
+        else
+        {
+            BedsCmpr = ">= 4"; 
+        }
         connection.Open();
 
         int result;
@@ -41,10 +49,10 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
         + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (ZipCode = " + SearchResultText.Text + ")"
                 + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
-        + "(RentPrice >= " + SearchResultMinPrice.Text + ")";
-            //+"AND((BedsAvailable = " + SearchResultBedsAvailable.Text + ") OR 1=1)"
-            //+ "AND((StartDate = " + SearchResultStartDate.Text + ") OR 1=1)"
-            //+ "AND((EndDate = " + SearchResultsEndDate.Text + ") OR 1=1)";
+        + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
+            +"AND((BedsAvailable "+ BedsCmpr+ ")"
+            + "AND((StartDate = " + SearchResultStartDate.Text + ")"
+            + "AND((EndDate = " + SearchResultEndDate.Text + ")";
         }
         else
         {
@@ -52,10 +60,10 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
          + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
          + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = " + SearchResultText.Text + ")"
                  + " AND ((RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
-         + "(RentPrice >= " + SearchResultMinPrice.Text + ")";
-            //    +"AND((BedsAvailable = " + SearchResultBedsAvailable.Text + ") OR 1=1)"
-            //    + "AND((StartDate = " + SearchResultStartDate.Text + ") OR 1=1)"
-            //    + "AND((EndDate = " + SearchResultsEndDate.Text + ") OR 1=1)";
+         + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
+                +"AND (BedsAvailable " + BedsCmpr + ")"
+               + "AND((StartDate = " + SearchResultStartDate.Text + ")"
+               + "AND((EndDate = " + SearchResultEndDate.Text + ")";
         }
 
             if (SearchResultText.Text != String.Empty)
@@ -83,4 +91,14 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
 
         }
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        int nub = DropDownList1.SelectedValue;
     }
+
+    protected void SearchResultEndDate_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+}

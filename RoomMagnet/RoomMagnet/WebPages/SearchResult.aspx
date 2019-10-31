@@ -30,18 +30,27 @@
             Start Date
             <asp:TextBox ID="SearchResultStartDate" runat="server"></asp:TextBox>
             End Date
-            <asp:TextBox ID="SearchResultEndDate" runat="server"></asp:TextBox>
+            <asp:TextBox ID="SearchResultEndDate" runat="server" OnTextChanged="SearchResultEndDate_TextChanged"></asp:TextBox>
         </div>
 
         <div class="row">
             Beds Available
-            <asp:DropDownList ID="DropDownList1" runat="server">
-                <asp:ListItem>1</asp:ListItem>
-                <asp:ListItem>2</asp:ListItem>
-                <asp:ListItem>3</asp:ListItem>
-                <asp:ListItem>4+</asp:ListItem>
+            <asp:DropDownList ID="SearchResultBedsAvailable" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                <asp:ListItem Value="1">1</asp:ListItem>
+                <asp:ListItem Value="2">2</asp:ListItem>
+                <asp:ListItem Value="3">3</asp:ListItem>
+                <asp:ListItem Value="4">4+</asp:ListItem>
             </asp:DropDownList>
         </div>
+        <div class="row">
+            Home Type
+        <asp:DropDownList ID="SearchResultHomeType" runat="server">
+                <asp:ListItem>Apartment</asp:ListItem>
+                <asp:ListItem>Townhome</asp:ListItem>
+                <asp:ListItem>House</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+            
        </div>
 </asp:Content>
 
