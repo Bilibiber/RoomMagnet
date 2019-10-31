@@ -21,8 +21,9 @@ public class Users
 
     public Users(string firstName, string LastName, string email, string passWord, string DateofBirth)
     {
-        DateTime DOB = Convert.ToDateTime(DateofBirth);
+        
         string name = firstName + " " + LastName;
+        DateTime DOB = Convert.ToDateTime(DateofBirth);
         setBirthday(DOB);
         setFirstName(firstName);
         setLastName(lastName);

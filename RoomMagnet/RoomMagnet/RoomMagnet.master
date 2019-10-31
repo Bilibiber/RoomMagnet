@@ -7,10 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
+    <script src="Css/bootstrap.js"></script>
+    <script src="Css/bootstrap-modal.js"></script>
 
     <link href="vendor_assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="vendor_assets/css/brands.css" rel="stylesheet" />
@@ -24,7 +27,7 @@
     <link href="Css/style.css" rel="stylesheet" />
     <script type="text/javascript">
         function openModal() {
-            $('#SignUp').modal({ show: true });
+            $('#signup_modal').modal({ show: true });
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
@@ -237,7 +240,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/" id="login-form">
+                        
                             <asp:TextBox ID="SignInEmail" PlaceHolder="Email" runat="server" CssClass="form-control"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="SignInEmailRequiredFieldValidator" runat="server" ErrorMessage="Required" ControlToValidate="SignInEmail" ValidationGroup="SignIn"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="SignInEmailRegularExpressionValidator" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="SignInEmail" Display="Dynamic" ValidationGroup="SignIn" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
@@ -247,7 +250,7 @@
                                 <label for="keep_signed_in" class="not_empty custom-control-label">Keep me signed in</label>
                             </div>
                             <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" />
-                        </form>
+                        
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
                                 <li>Not a member? <a href="">Sign up</a></li>
@@ -262,7 +265,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="signup_modal" tabindex="-1" role="dialog" aria-labelledby="signup_modal_label" aria-hidden="true">
+        <div class="modal fade" id="signup_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="signup_modal_label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -272,7 +275,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/" id="signup-form">
+                        
                             <asp:TextBox ID="MasterPageFirstName" runat="server" PlaceHolder="First Name" CssClass="form-control"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageFirstName" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                             <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control"></asp:TextBox>
@@ -290,7 +293,7 @@
                             <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
                             <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                             <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
-                        </form>
+                       
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
                                 <li>Already a member? <a href="">Sign In</a></li>
