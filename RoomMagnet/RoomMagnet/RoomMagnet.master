@@ -26,10 +26,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ContentPlaceHolder ID="Body" runat="server">
-        </asp:ContentPlaceHolder>
         <%-- Nav Starts here --%>
-        <section class="intro-wrapper bgimage">
             <div class="mainmenu-wrapper">
                 <div class="menu-area menu1 ">
                     <div class="top-menu-area">
@@ -52,6 +49,7 @@
                                                     <!-- Collect the nav links, forms, and other content for toggling -->
                                                     <div class="collapse navbar-collapse" id="direo-navbar-collapse">
                                                         <ul class="navbar-nav">
+
                                                         </ul>
                                                     </div>
                                                     <!-- /.navbar-collapse -->
@@ -64,17 +62,11 @@
                                             <div class="author__access_area">
                                                 <ul class="d-flex list-unstyled align-items-center">
                                                     <li>
-                                                        <asp:LinkButton ID="MasterPageHomeImage" runat="server">Become a Host</asp:LinkButton>
-                                                    </li>
-                                                    <li>
                                                         <asp:Button ID="MasterPageSignUp" runat="server" Text="Sign Up" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" />
                                                     </li>
                                                     <li>
                                                         <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
                                                     </li>
-                                                    <li>
-                                                                               
-                                                        </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -109,7 +101,6 @@
                 <!-- end  -->
             </div>
             <!-- ends: .mainmenu-wrapper -->
-        </section>
         <!-- ends: .intro-wrapper -->
         <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -123,7 +114,7 @@
                     <div class="modal-body">
 
                         <asp:TextBox ID="SignInEmail" PlaceHolder="Email" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="SignInEmailRequiredFieldValidator" runat="server" ErrorMessage="Required" ControlToValidate="SignInEmail" ValidationGroup="SignIn"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="SignInEmailRequiredFieldValidator" runat="server" ErrorMessage="Required" ControlToValidate="SignInEmail" ValidationGroup="SignIn" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="SignInEmailRegularExpressionValidator" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="SignInEmail" Display="Dynamic" ValidationGroup="SignIn" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
 <%--                        <div class="keep_signed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
@@ -135,8 +126,9 @@
                         <asp:Label ID="SignInLbl" runat="server" Text="Label" ></asp:Label>
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
-                                <li>Not a member? <a href="">Sign up</a></li>
-                                <li><a href="">Recover Password</a></li>
+                                <li>Not a member? <asp:LinkButton ID="SignUpLinkButton" runat="server"  data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" data-dismiss="modal" >Sign Up</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/WebPages/RecoverPassword.aspx">Recover Passowrd</asp:LinkButton></li>
                             </ul>
 
                         </div>
@@ -156,38 +148,39 @@
                     <div class="modal-body">
 
                         <asp:TextBox ID="MasterPageFirstName" runat="server" PlaceHolder="First Name" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageFirstName" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageFirstName" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageLastName" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageLastName" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="MasterPageEmail" runat="server" PlaceHolder="Email" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageEmail" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageEmail" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPagePassword" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPagePassword" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:TextBox type="Password" ID="MasterPageComfirmPassword" runat="server" PlaceHolder="Comfirm Password" CssClass="form-control" ValidationGroup="SignUp"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="MasterPagePassword" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:CompareValidator>
                         <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Brith" TextMode="Date" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
 
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
-                                <li>Already a member? <a href="">Sign In</a></li>
+                                <li>Already a member?<asp:LinkButton ID="SignInLinkButton" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false">Sign In</asp:LinkButton> </li>
                                 <li><a href="">Recover Password</a></li>
                             </ul>
                             
                             <div class="social-login">
                                 <span>Or Signup with</span>
-                                <asp:Button ID="GmailLogin" runat="server" Text="Continue with Gmail" OnClick="GmailSignIn_Click" UseSubmitBehavior="False" />
-                                <p><a href="" class="btn btn-outline-secondary"><i class="fab fa-facebook-f"></i>Facebook</a><a href="" class="btn btn-outline-danger"><i class="fab fa-google-plus-g"></i> Google</a></p>
+                                <p>
+                                    <asp:ImageButton ID="ImageButton2" runat="server" Cssclass="btn btn-outline-danger" ImageUrl="~/img/btn_google_signin_dark_focus_web.png"  OnClick="GmailSignIn_Click" UseSubmitBehavior="False" /></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+                <asp:ContentPlaceHolder ID="Body" runat="server">
+        </asp:ContentPlaceHolder>
         <footer class="footer-three footer-grey footer-links">
             <div class="footer-top">
                 <div class="container">
@@ -197,10 +190,13 @@
                             <div class="widget widget_pages">
                                 <h2 class="widget-title">Company Info</h2>
                                 <ul class="list-unstyled">
-                                    <li class="page-item"><a href="">About Us</a></li>
-                                    <li class="page-item"><a href="">Conact Us</a></li>
-                                    <li class="page-item"><a href="">Terms</a></li>
-                                    <li class="page-item"><a href="">Privacy Policy</a></li>
+                                    <li class="page-item"><a href="About.aspx">About Us</a></li>
+                                    
+                                    <li class="page-item"><a href="Contact.aspx">Conact Us</a></li>
+
+                                    <li class="page-item"><a href="Terms.aspx">Terms</a></li>
+                                    
+                                    <li class="page-item"><a href="Privacy.aspx">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -209,9 +205,8 @@
                         <div class="col-lg-3 ">
                             <div class="widget widget_pages">
                                 <h2 class="widget-title">Helpful Links</h2>
-                                <ul class="list-unstyled">
-                                    <li class="page-item"><a href="">Sign In</a></li>
-                                    <li class="page-item"><a href="">FAQ</a></li>
+                                <ul class="list-unstyled">                                   
+                                    <li class="page-item"><a href="WebPages/FAQ.aspx">FAQ</a></li>                        
                                 </ul>
                             </div>
                         </div>
@@ -221,7 +216,7 @@
                             <div class="widget widget_social">
                                 <h2 class="widget-title">Connect with Us</h2>
                                 <ul class="list-unstyled social-list">
-                                    <li><a href=""><span class="mail"><i class="la la-envelope"></i></span>Contact Support</a></li>
+                                    <li><a href="Contact.aspx"><span class="mail"><i class="la la-envelope"></i></span>Contact Support</a></li>
                                     <li><a href="https://www.instagram.com/roommagnet/"><span class="instagram"><i class="fab fa-instagram"></i></span>Instagram</a></li>
                                 </ul>
                             </div>
@@ -231,7 +226,7 @@
 
                         <div class="col-lg-3 ">
                             <div class="footer-logo">
-                                <img src="~/img/rm/logo-2.png">
+                                <asp:Image ID="Image1" runat="server" ImageUrl="~/img/rm/logo-2.png" />
                             </div>
                             <!-- ends: .widget -->
                         </div>
@@ -255,7 +250,7 @@
 
                                 <div class="col-lg-4">
                                     <ul class="list-unstyled lng-list">
-                                        <li><a href="">English</a></li>
+                                        <li><a href="#">English</a></li>
                                     </ul>
                                 </div>
                             </div>
