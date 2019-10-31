@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
 
     <link href="vendor_assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
@@ -27,7 +27,23 @@
             $('#SignUp').modal({ show: true });
         }
     </script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
+    <script src="vendor_assets/js/jquery/jquery-1.12.3.js"></script>
+    <script src="vendor_assets/js/bootstrap/popper.js"></script>
+    <script src="vendor_assets/js/bootstrap/bootstrap.min.js"></script>
+    <script src="vendor_assets/js/jquery-ui.min.js"></script>
+    <script src="vendor_assets/js/jquery.barrating.min.js"></script>
+    <script src="vendor_assets/js/jquery.counterup.min.js"></script>
+    <script src="vendor_assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="vendor_assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="vendor_assets/js/jquery.waypoints.min.js"></script>
+    <script src="vendor_assets/js/masonry.pkgd.min.js"></script>
+    <script src="vendor_assets/js/owl.carousel.min.js"></script>
+    <script src="vendor_assets/js/select2.full.min.js"></script>
+    <script src="vendor_assets/js/slick.min.js"></script>
+    <script src="theme_assets/js/locator.js"></script>
+    <script src="theme_assets/js/main.js"></script>
+    <script src="theme_assets/js/map.js"></script>
     <title>
         <asp:ContentPlaceHolder ID="Title" runat="server">
         </asp:ContentPlaceHolder>
@@ -84,7 +100,7 @@
                                                         <asp:Button ID="MasterPageSignUp" runat="server" Text="Sign Up" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" />
                                                     </li>
                                                     <li>
-                                                        <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false"/>
+                                                        <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
                                                     </li>
                                                 </ul>
                                             </div>
@@ -369,24 +385,6 @@
             <!-- ends: .footer-bottom -->
         </footer>
         <!-- ends: .footer -->
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
-        <script src="vendor_assets/js/jquery/jquery-1.12.3.js"></script>
-        <script src="vendor_assets/js/bootstrap/popper.js"></script>
-        <script src="vendor_assets/js/bootstrap/bootstrap.min.js"></script>
-        <script src="vendor_assets/js/jquery-ui.min.js"></script>
-        <script src="vendor_assets/js/jquery.barrating.min.js"></script>
-        <script src="vendor_assets/js/jquery.counterup.min.js"></script>
-        <script src="vendor_assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="vendor_assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="vendor_assets/js/jquery.waypoints.min.js"></script>
-        <script src="vendor_assets/js/masonry.pkgd.min.js"></script>
-        <script src="vendor_assets/js/owl.carousel.min.js"></script>
-        <script src="vendor_assets/js/select2.full.min.js"></script>
-        <script src="vendor_assets/js/slick.min.js"></script>
-        <script src="theme_assets/js/locator.js"></script>
-        <script src="theme_assets/js/main.js"></script>
-        <script src="theme_assets/js/map.js"></script>
     </form>
 </body>
 </html>
