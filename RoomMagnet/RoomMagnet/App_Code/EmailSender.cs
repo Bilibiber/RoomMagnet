@@ -27,6 +27,7 @@ public class EmailSender
 
     public EmailSender()
     {
+
     }
 
     // Welcome email method

@@ -23,7 +23,7 @@ public class Users
     {
         string name = firstName + " " + LastName;
         setFirstName(firstName);
-        setLastName(lastName);
+        setLastName(LastName);
         setMiddleName(middleName);
         setEmail(email);
         setPassword(passWord);

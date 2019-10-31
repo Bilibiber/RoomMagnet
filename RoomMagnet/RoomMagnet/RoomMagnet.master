@@ -72,6 +72,9 @@
                                                     <li>
                                                         <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
                                                     </li>
+                                                    <li>
+                                                                               
+                                                        </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -123,22 +126,19 @@
                         <asp:RequiredFieldValidator ID="SignInEmailRequiredFieldValidator" runat="server" ErrorMessage="Required" ControlToValidate="SignInEmail" ValidationGroup="SignIn"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="SignInEmailRegularExpressionValidator" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="SignInEmail" Display="Dynamic" ValidationGroup="SignIn" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
-                        <div class="keep_signed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
+<%--                        <div class="keep_signed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
                             <input type="checkbox" class="custom-control-input" name="keep_signed_in" value="1" id="keep_signed_in">
                             <label for="keep_signed_in" class="not_empty custom-control-label">Keep me signed in</label>
-                        </div>
-                        <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" />
-                        <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
-                        <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
+                        </div>--%>
+                        <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn"  UseSubmitBehavior="false" OnClick="MasterPageSignIn_Click"/>
+                        <asp:Label ID="SignInErrorLbl" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="SignInLbl" runat="server" Text="Label" ></asp:Label>
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
                                 <li>Not a member? <a href="">Sign up</a></li>
                                 <li><a href="">Recover Password</a></li>
                             </ul>
-                            <div class="social-login">
-                                <span>Or connect with</span>
-                                <p><a href="" class="btn btn-outline-secondary"><i class="fab fa-facebook-f"></i>Facebook</a><a href="" class="btn btn-outline-danger"><i class="fab fa-google-plus-g"></i> Google</a></p>
-                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -37,13 +37,14 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
 
     protected void MasterPageSignUp_Click(object sender, EventArgs e)
     {
+        //EmailSender email = new EmailSender();
+        //email.SendWelcomeMail(MasterPageEmail.Text);
+        //Not working in showker Lab
         Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
         string MasterPagepassword = users.getPassword();
+        string HashedPassword = PasswordHash.HashPassword(MasterPagepassword);
         try
         {
-            EmailSender email = new EmailSender();
-            email.SendWelcomeMail(MasterPageEmail.Text);
-
             if (cn.State == System.Data.ConnectionState.Closed)
             {
                 cn.Open();
@@ -56,7 +57,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     new SqlParameter("@FirstName",users.getFirstName()),
                     new SqlParameter("@LastName",users.getLastName()),
                     new SqlParameter("@Email",users.getEmail()),
-                    new SqlParameter("@Password",PasswordHash.HashPassword(MasterPagepassword)),
+                    new SqlParameter("@Password",HashedPassword),
                     new SqlParameter("@DateOfBirth",users.getBirthday()),
                     new SqlParameter("@LastUpdated",users.getLastUpdated()),
                     new SqlParameter("@LastUpdatedBy",users.getLastUpdatedBy()),
@@ -99,10 +100,11 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                         SignInErrorLbl.Text = "Invaild Password";
                     }
                 }
+                SignInErrorLbl.Visible = true;
+                SignInErrorLbl.Text = "Email address not exist";
+                cn.Close();
             }
-            SignInErrorLbl.Visible = true;
-            SignInErrorLbl.Text = "Email address not exist";
-            cn.Close();
+
         }
         catch (Exception)
         {
