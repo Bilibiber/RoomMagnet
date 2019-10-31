@@ -1161,11 +1161,11 @@
 }
 
 .color-primary, .atbd_listing_info .atbd_listing_title a:hover, .atbd_listing_data_list ul p span, .atbd_listing_bottom_content .atbd_content_right .atbd_save:hover, .post--card .card-body h6 a:hover, .post--card .card-body .post-meta li a:hover, .post--card2 .card-body .post-meta li a:hover, .testimonial-carousel .owl-nav button:hover, .widget.widget_pages .page-item a:hover, .atbd_author_info_widget .atbd_widget_contact_info ul li span:first-child, .atbdp-widget-categories .atbdp_parent_category li > .cat-trigger:hover, .atbdp-widget-categories .atbdp_parent_category li a:hover, .atbd_categorized_listings .listings > li .listing_value span, .atbd_categorized_listings .listings > li .directory_tag span .atbd_cat_popup .atbd_cat_popup_wrapper span a:hover, .category-widget ul li a:hover, .footer-three .footer-bottom .footer-bottom--content .copy-text span, .listing-info .atbd_listing_action_area .atbd_action .action_button > a:hover, .listing-info .atbd_listing_action_area .atbd_share .atbd_director_social_wrap a:hover, .menu-area .mainmenu__menu .navbar-nav > li:hover > a, .menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu li:hover a, .menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner > ul li a:hover, .menu-area.menu--light .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner > ul li a:hover, .author__access_area ul li .access-link:hover, .mainmenu__menu .navbar-nav > li:hover > a, .place-list-wrapper ul li a:hover, .social-list li a:hover, .pagination .nav-links .page-numbers:hover, .price-range.rs-primary .amount, .price-range.rs-primary .amount-four, .range-slider.rs-primary .amount, .range-slider.rs-primary .amount-four, .contents-wrapper .contents h1 span, .contents-wrapper .contents .list-features li .list-count span, .section-title h2 span, .atbd_location_grid_wrap .atbd_location_grid:hover, .dashboard-nav .dashboard-nav-area .nav .nav-link.active, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td a:hover, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td > span, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td .remove-favorite, .post-author .author-info h5 span, .post-pagination .prev-post .title:hover, .post-pagination .next-post .title:hover {
-  color: #f5548e;
+  color: #ffffff;
 }
 
 .bg-primary, .atbd_listing_meta .atbd_listing_price, .atbdp-widget-categories .atbdp_parent_category li a:hover span, .atbdp-widget-tags ul li a:hover, .sort-rating .custom-control-label span, .tags-widget ul li a:hover, .listing-info .listing-info--meta .atbd_listing_category a span, .atbd_listing_gallery .gallery-images .slick-arrow:hover, .atbd_review_module .review_pagination .pagination .page-item .page-link:hover, .atbd_review_module .review_pagination .pagination .page-item.active .page-link, .social.social--small ul li a:hover, .select2-container--default .select2-results__option--highlighted[aria-selected], .select2-container--default .select2-selection--multiple .select2-selection__choice, .pagination .nav-links .page-numbers.current, .price-range.rs-primary .ui-slider-horizontal .ui-slider-range, .range-slider.rs-primary .ui-slider-horizontal .ui-slider-range, .all-listing-wrapper .atbd_listing_action_btn .view-mode .action-btn.active, .dashboard-nav .dashboard-nav-area .nav .nav-link.active:before, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td .remove-favorite:hover, .post-bottom .tags ul li a:hover, .post-bottom .social-share ul li a:hover, .comments-area .comment-lists ul .depth-1 .media .media-body .media_top .reply:hover {
-  background: #f5548e;
+  background: #bd2026;
 }
 
 .iborder-primary {
@@ -3565,7 +3565,7 @@ p {
 
 /* footer three */
 .footer-three .footer-top .widget {
-  margin-bottom: 2.66667rem;
+  margin-bottom: 1rem;
 }
 
 .footer-three .footer-bottom {
@@ -3577,11 +3577,11 @@ p {
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid #e3e6ef;
-  padding: 1.46667rem 0;
+  padding: 1rem 0;
 }
 
 .footer-three .footer-bottom .footer-bottom--content .footer-logo {
-  flex: 1;
+  flex: 1.5;
 }
 
 .footer-three .footer-bottom .footer-bottom--content .copy-text {
@@ -4625,7 +4625,7 @@ p {
 	--- MENU
 *****************************/
 .mainmenu-wrapper {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 0px solid rgba(255, 255, 255, 0.1);
   position: relative;
   z-index: 3;
 }
@@ -4667,47 +4667,7 @@ p {
   box-shadow: 0 5px 15px rgba(39, 43, 65, 0.1);
 }
 
-.menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu a {
-  display: block;
-  padding: 0.53333rem 1.66667rem;
-}
 
-.menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner {
-  position: relative;
-}
-
-.menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner > a:after {
-  content: '\f110';
-  font-family: "LineAwesome";
-  font-size: 0.66667rem;
-  padding-left: 0;
-  right: 1rem;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner > ul {
-  position: absolute;
-  left: 100%;
-  top: 0;
-  width: 10.66667rem;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.3s ease;
-  padding: 0.46667rem 0;
-  box-shadow: 0 5px 15px rgba(39, 43, 65, 0.1);
-}
-
-.menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner > ul li a {
-  display: block;
-  background: none;
-}
-
-.menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner:hover > ul {
-  visibility: visible;
-  opacity: 0;
-}
 
 .menu-area .author__notification_area ul li {
   padding: 30px 0;
@@ -4858,7 +4818,7 @@ p {
 *****************************/
 .top-menu-area {
   background: #fff;
-  border-bottom: 1px solid #e3e6ef;
+  border-bottom: 0px solid #e3e6ef;
 }
 
 .top-menu-area .menu-fullwidth {
@@ -4868,7 +4828,7 @@ p {
 }
 
 .top-menu-area .menu-fullwidth .logo-wrapper {
-  border-right: 1px solid;
+  border-right: 0px solid;
 }
 
 .top-menu-area .menu-fullwidth .menu-right {
@@ -4905,7 +4865,7 @@ p {
 .search-wrapper .search_module .search_area form .input-group .form-control {
   background: none;
   padding-left: 2.66667rem;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   transition: all 0.3s ease;
   width: 100%;
 }
@@ -4925,12 +4885,12 @@ p {
 }
 
 .search-wrapper .search_module.active .search_area form .input-group .form-control {
-  border: 1px solid;
+  border: 0px solid;
   border-radius: 3px 3px 0 0;
 }
 
 .search-wrapper .search-categories {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 0px solid rgba(255, 255, 255, 0.2);
   border-radius: 0 0 3px 3px;
   position: absolute;
   width: 100%;
@@ -5212,23 +5172,27 @@ p {
 }
 
 .btn-gradient.btn-gradient-one {
-  background: linear-gradient(to right, #f5548e, #903af9);
+  background:  #d0ac1b;
 }
 
 .btn-gradient.btn-gradient-one:before {
-  background: linear-gradient(to right, #903af9, #f5548e);
+  background: #8a8c8f;
 }
 
 .btn-gradient.btn-gradient-two {
-  background: linear-gradient(to right, #f5548e, #fa8b0c);
+  background: #d0ac1b;
 }
 
 .btn-gradient.btn-gradient-two:before {
-  background: linear-gradient(to right, #fa8b0c, #f5548e);
+  background: #8a8c8f;
 }
 
 .btn-gradient.btn-xs {
   line-height: 2.53333rem;
+}
+
+.btn-gradient.btn-gradient-two:hover {
+  color: #fff;
 }
 
 .play-btn {
@@ -6119,8 +6083,8 @@ p {
 }
 
 .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field {
-  margin-right: 0.4rem;
-  flex: 2;
+  margin-right: 0;
+  flex: 5;
 }
 
 .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field .form-control {
@@ -7489,5 +7453,23 @@ p {
     padding: 10px 0;
   }
 }
+
+.footer-logo{
+  padding-top: 60px;
+}
+
+.luminous-pad{
+  padding-left: 30px;
+}
+
+.footer-links{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.about-link a{
+  color: #333333;
+}
+
 
 /*# sourceMappingURL=maps/style.css.map */

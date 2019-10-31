@@ -35,11 +35,13 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
 
     protected void MasterPageSignUp_Click(object sender, EventArgs e)
     {
+        Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
+        string MasterPagepassword = users.getPassword();
         try
         {
             EmailSender email = new EmailSender();
             email.SendWelcomeMail(MasterPageEmail.Text);
-            Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text,MasterPageBirthday.Text);
+
             if (cn.State == System.Data.ConnectionState.Closed)
             {
                 cn.Open();
@@ -52,16 +54,58 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     new SqlParameter("@FirstName",users.getFirstName()),
                     new SqlParameter("@LastName",users.getLastName()),
                     new SqlParameter("@Email",users.getEmail()),
-                    new SqlParameter("@Password",users.getLastName()),
+                    new SqlParameter("@Password",PasswordHash.HashPassword(MasterPagepassword)),
                     new SqlParameter("@DateOfBirth",users.getBirthday()),
-                    new SqlParameter("@LastUpdated",users.getLastName()),
-                    new SqlParameter("@LastUpdatedBy",users.getLastName()),
+                    new SqlParameter("@LastUpdated",users.getLastUpdated()),
+                    new SqlParameter("@LastUpdatedBy",users.getLastUpdatedBy()),
                 });
-                
+            sqlCommand.ExecuteNonQuery();
+            cn.Close();
+        }
+        // client -side to show a notification
+        catch (Exception)
+        {
+            // client -side to show a error notification
+        }
+    }
+
+    protected void MasterPageSignIn_Click(object sender, EventArgs e)
+    {
+        string sql = "Select Password from Users where Email = @Email ";
+        try
+        {
+            if (cn.State == System.Data.ConnectionState.Closed)
+            {
+                cn.Open();
+            }
+            SqlCommand sqlCommand = new SqlCommand(sql, cn);
+            sqlCommand.Parameters.AddWithValue("@Email", SignInEmail.Text);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    string storedHash = reader["Password"].ToString();
+                    if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
+                    {
+                        SignInLbl.Visible = true;
+                        SignInLbl.Text = "Signed In";
+                    }
+                    else
+                    {
+                        SignInErrorLbl.Visible = true;
+                        SignInErrorLbl.Text = "Invaild Password";
+                    }
+                }
+            }
+            SignInErrorLbl.Visible = true;
+            SignInErrorLbl.Text = "Email address not exist";
             cn.Close();
         }
         catch (Exception)
         {
+            SignInErrorLbl.Visible = true;
+            SignInErrorLbl.Text = "DataBase Error please try again later";
         }
     }
 

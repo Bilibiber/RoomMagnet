@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 /// <summary>
 /// Summary description for User
@@ -20,22 +17,23 @@ public class Users
     private DateTime lastUpdated;
     private string lastUpdatedBy;
     public static int UserCount = 0;
-    public static Users[] UserArray = new Users [1000];
+    public static Users[] UserArray = new Users[1000];
 
-    public Users (string firstName, string LastName, string email, string passWord,string DateofBirth)
+    public Users(string firstName, string LastName, string email, string passWord, string DateofBirth)
     {
         DateTime DOB = Convert.ToDateTime(DateofBirth);
+        string name = firstName + " " + LastName;
         setBirthday(DOB);
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
         setEmail(email);
-        setPassword(passWord); 
+        setPassword(passWord);
         setLastupdated(DateTime.Now);
-        setBy("Room Magnet");
+        setLastUpdatedBy(name);
         UserCount++;
     }
-    
+
     public void setFirstName(string firstName)
     {
         this.firstName = firstName;
@@ -116,12 +114,12 @@ public class Users
         return this.lastUpdated;
     }
 
-    public void setBy(string by)
+    public void setLastUpdatedBy(string name)
     {
-        this.lastUpdatedBy = by;
+        this.lastUpdatedBy = name;
     }
 
-    public string getBy()
+    public string getLastUpdatedBy()
     {
         return this.lastUpdatedBy;
     }

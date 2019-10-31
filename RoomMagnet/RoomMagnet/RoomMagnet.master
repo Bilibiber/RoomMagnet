@@ -4,27 +4,27 @@
 
 <html>
 <head runat="server">
+        <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="vendor_assets/css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" href="vendor_assets/css/brands.css" />
-    <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="vendor_assets/css/jquery-ui.css" />
-    <link rel="stylesheet" href="vendor_assets/css/jquery.mCustomScrollbar.css" />
-    <link rel="stylesheet" href="vendor_assets/css/line-awesome.min.css" />
-    <link rel="stylesheet" href="vendor_assets/css/magnific-popup.css" />
-    <link rel="stylesheet" href="vendor_assets/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="vendor_assets/css/select2.min.css" />
-    <link rel="stylesheet" href="vendor_assets/css/slick.css" />
-    <link rel="stylesheet" href="Css/style.css" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
+    
+    <link href="vendor_assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="vendor_assets/css/brands.css" rel="stylesheet" />
+    <link href="vendor_assets/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="vendor_assets/css/jquery-ui.css" rel="stylesheet" />
+    <link href="vendor_assets/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="vendor_assets/css/magnific-popup.css" rel="stylesheet" />
+    <link href="vendor_assets/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="vendor_assets/css/select2.min.css" rel="stylesheet" />
+    <link href="vendor_assets/css/slick.css" rel="stylesheet" />
+    <link href="Css/style.css" rel="stylesheet" />
     <script type="text/javascript">
         function openModal() {
             $('#SignUp').modal({ show: true });
         }
     </script>
+
     <title>
         <asp:ContentPlaceHolder ID="Title" runat="server">
         </asp:ContentPlaceHolder>
@@ -128,6 +128,7 @@
             <!-- ends: .mainmenu-wrapper -->
         </section>
         <!-- ends: .intro-wrapper -->
+        
         <div class="modal fade" id="SignIn" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -162,6 +163,7 @@
             </div>
         </div>
         <%-- do roommaget have a video to play on website  --%>
+        
         <div class="modal fade" id="SignUp" tabindex="-1" role="dialog" aria-labelledby="signup_modal_label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -173,21 +175,23 @@
                     </div>
                     <div class="modal-body">
                         <form action="/" id="signup-form">
-                            <asp:TextBox ID="MasterPageFirstName" runat="server" PlaceHolder="First Name" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="MasterPageFirstName" runat="server" PlaceHolder="First Name" CssClass="form-control" ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageFirstName" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control" ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageLastName"  ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="MasterPageEmail" runat="server" PlaceHolder="Email" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="MasterPageEmail" runat="server" PlaceHolder="Email" CssClass="form-control" ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageEmail"  ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                            <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control" ></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPagePassword" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                            <asp:TextBox type="Password" ID="MasterPageComfirmPassword" runat="server" PlaceHolder="Comfirm Password" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox type="Password" ID="MasterPageComfirmPassword" runat="server" PlaceHolder="Comfirm Password" CssClass="form-control"  ValidationGroup="SignUp"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic" ></asp:RequiredFieldValidator>
                             <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="MasterPagePassword" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:CompareValidator>
                             <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Brith" TextMode="Date" CssClass="form-control"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                            <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
+                            <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False"/>
+                            <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
+                            <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         </form>
                         <div class="form-excerpts">
                         <ul class="list-unstyled">
@@ -204,8 +208,11 @@
             </div>
         </div>
         </div>
+        
     </form>
+    <footer>
+</footer>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
+
 </body>
 </html>
-<footer>
-</footer>
