@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using Microsoft.AspNetCore.Builder;
 
 public partial class WebPages_SearchResult : System.Web.UI.Page
 {
@@ -16,35 +17,70 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         SearchResultCount.Text = "(" + resultCount.ToString() + ")";
+        SearchLabel.Visible = false;
     }
 
     protected void SearchResultButton_Click(object sender, EventArgs e)
     {
-        connection.Open();
-        string sql = "Select Title, City, State, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, "
- + "[Property].ImagePath, [PropertyRoom].ImagePath from [Property] inner join [PropertyRoom]"
-+ " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = " + SearchResultText.Text + " OR ZipCode = " + SearchResultText.Text + ") AND "
-+ "((RentPrice<= " + SearchResultMaxPrice.Text + ") OR 1=1) AND "
-+ "((RentPrice>= " + SearchResultMinPrice.Text + ") OR 1=1)";
-        //+ "AND((BedsAvailable = " + SearchResultBedsAvailable.Text + ") OR 1=1)"
-        //+ "AND((StartDate = " + SearchResultStartDate.Text + ") OR 1=1)"
-        //+ "AND((EndDate = " + SearchResultsEndDate.Text + ") OR 1=1)";
-        SqlCommand search = new SqlCommand(sql, connection);
-        SqlDataReader reader = search.ExecuteReader();
-        if (reader.HasRows)
+        if (SearchResultMinPrice.Text==String.Empty)
         {
-            while (reader.Read())
-            {
-                string x = reader.GetString(0);
-                
-                PictureBox PropertyPic = new PictureBox();
-                //PropertyPic.Load(reader.GetString(7));
-                Console.WriteLine(reader.GetString(5));
-            }
-            reader.NextResult();
+            SearchResultMinPrice.Text = "0";
         }
-        connection.Close();
-        
-        
+        if (SearchResultMaxPrice.Text == String.Empty)
+        {
+            SearchResultMaxPrice.Text = "5000";
+        }
+
+        connection.Open();
+
+        int result;
+        string sql;
+        if (Int32.TryParse(SearchResultText.Text, out result))
+        {
+            sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
+        + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
+        + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (ZipCode = " + SearchResultText.Text + ")"
+                + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
+        + "(RentPrice >= " + SearchResultMinPrice.Text + ")";
+            //+"AND((BedsAvailable = " + SearchResultBedsAvailable.Text + ") OR 1=1)"
+            //+ "AND((StartDate = " + SearchResultStartDate.Text + ") OR 1=1)"
+            //+ "AND((EndDate = " + SearchResultsEndDate.Text + ") OR 1=1)";
+        }
+        else
+        {
+            sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
+         + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
+         + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = " + SearchResultText.Text + ")"
+                 + " AND ((RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
+         + "(RentPrice >= " + SearchResultMinPrice.Text + ")";
+            //    +"AND((BedsAvailable = " + SearchResultBedsAvailable.Text + ") OR 1=1)"
+            //    + "AND((StartDate = " + SearchResultStartDate.Text + ") OR 1=1)"
+            //    + "AND((EndDate = " + SearchResultsEndDate.Text + ") OR 1=1)";
+        }
+
+            if (SearchResultText.Text != String.Empty)
+            {
+                SqlCommand search = new SqlCommand(sql, connection);
+                SqlDataReader reader = search.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    string x = reader.GetString(0);
+
+                    PictureBox PropertyPic = new PictureBox();
+                    PropertyPic.Load(reader.GetString(7));
+                    Console.WriteLine(reader.GetString(5));
+                }
+                reader.NextResult();
+            }
+            connection.Close();
+            }
+            else
+            {
+                SearchLabel.Text = "Please enter something in the text bar.";
+            }
+
+
+        }
     }
-}

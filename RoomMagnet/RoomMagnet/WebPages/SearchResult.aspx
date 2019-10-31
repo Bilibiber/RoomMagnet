@@ -24,7 +24,24 @@
             Max Price
             <asp:TextBox ID="SearchResultMaxPrice" runat="server"></asp:TextBox>
             <asp:CompareValidator ID="SearchResultsMaxPriceValidator" ControlToValidate="SearchResultMaxPrice" runat="server" Operator="DataTypeCheck" Type="Currency" Text="(Invalid Price)"></asp:CompareValidator>
+            <asp:Label ID="SearchLabel" runat="server" Text=""></asp:Label>
             </div>
+        <div class="row">
+            Start Date
+            <asp:TextBox ID="SearchResultStartDate" runat="server"></asp:TextBox>
+            End Date
+            <asp:TextBox ID="SearchResultEndDate" runat="server"></asp:TextBox>
+        </div>
+
+        <div class="row">
+            Beds Available
+            <asp:DropDownList ID="DropDownList1" runat="server">
+                <asp:ListItem>1</asp:ListItem>
+                <asp:ListItem>2</asp:ListItem>
+                <asp:ListItem>3</asp:ListItem>
+                <asp:ListItem>4+</asp:ListItem>
+            </asp:DropDownList>
+        </div>
        </div>
 </asp:Content>
 
