@@ -30,6 +30,9 @@
             $('#signup_modal').modal({ show: true });
         }
     </script>
+    <script> $(document).ready(
+            function () { $.fn.modal.defaults.manager = $.fn.modalmanager.defaults.manager = 'body form:first'; }); 
+    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
     <script src="vendor_assets/js/jquery/jquery-1.12.3.js"></script>
     <script src="vendor_assets/js/bootstrap/popper.js"></script>

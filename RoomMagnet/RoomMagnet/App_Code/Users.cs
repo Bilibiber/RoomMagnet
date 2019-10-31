@@ -23,8 +23,6 @@ public class Users
     {
         
         string name = firstName + " " + LastName;
-        DateTime DOB = Convert.ToDateTime(DateofBirth);
-        setBirthday(DOB);
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
@@ -33,6 +31,8 @@ public class Users
         setLastupdated(DateTime.Now);
         setLastUpdatedBy(name);
         UserCount++;
+        DateTime DOB = Convert.ToDateTime(DateofBirth);
+        setBirthday(DOB);
     }
 
     public void setFirstName(string firstName)
