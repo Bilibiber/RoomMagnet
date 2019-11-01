@@ -152,6 +152,7 @@
                         <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageLastName" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="MasterPageEmail" runat="server" PlaceHolder="Email" CssClass="form-control"></asp:TextBox>
+                        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="CustomValidator"></asp:CustomValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageEmail" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control"></asp:TextBox>
@@ -166,13 +167,12 @@
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
                                 <li>Already a member?<asp:LinkButton ID="SignInLinkButton" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false">Sign In</asp:LinkButton> </li>
-                                <li><a href="">Recover Password</a></li>
                             </ul>
                             
                             <div class="social-login">
                                 <span>Or Signup with</span>
                                 <p>
-                                    <asp:ImageButton ID="ImageButton2" runat="server" Cssclass="btn btn-outline-danger" ImageUrl="~/img/btn_google_signin_dark_focus_web.png"  OnClick="GmailSignIn_Click" UseSubmitBehavior="False" /></p>
+                                    <asp:ImageButton ID="ImageButton2" runat="server" Cssclass="btn" ImageUrl="~/img/btn_google_signin_dark_focus_web.png"  OnClick="GmailSignIn_Click" UseSubmitBehavior="False" /></p>
                             </div>
                         </div>
                     </div>
