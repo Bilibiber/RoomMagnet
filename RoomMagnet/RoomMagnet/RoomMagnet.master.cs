@@ -40,20 +40,22 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         //EmailSender email = new EmailSender();
         //email.SendWelcomeMail(MasterPageEmail.Text);
         //Not working in showker Lab
-        Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
-        string MasterPagepassword = users.getPassword();
-        string HashedPassword = PasswordHash.HashPassword(MasterPagepassword);
-        try
+        if (SignUpEmailCustomValidator.IsValid)
         {
-            if (cn.State == System.Data.ConnectionState.Closed)
+            Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
+            string MasterPagepassword = users.getPassword();
+            string HashedPassword = PasswordHash.HashPassword(MasterPagepassword);
+            try
             {
-                cn.Open();
-            }
-            string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@LastUpdated,@LastUpdatedBy)";
-            SqlCommand sqlCommand = new SqlCommand(Sql, cn);
-            sqlCommand.Parameters.AddRange(
-                new SqlParameter[]
+                if (cn.State == System.Data.ConnectionState.Closed)
                 {
+                    cn.Open();
+                }
+                string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@LastUpdated,@LastUpdatedBy)";
+                SqlCommand sqlCommand = new SqlCommand(Sql, cn);
+                sqlCommand.Parameters.AddRange(
+                    new SqlParameter[]
+                    {
                     new SqlParameter("@FirstName",users.getFirstName()),
                     new SqlParameter("@LastName",users.getLastName()),
                     new SqlParameter("@Email",users.getEmail()),
@@ -61,14 +63,19 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     new SqlParameter("@DateOfBirth",users.getBirthday()),
                     new SqlParameter("@LastUpdated",users.getLastUpdated()),
                     new SqlParameter("@LastUpdatedBy",users.getLastUpdatedBy()),
-                });
-            sqlCommand.ExecuteNonQuery();
-            cn.Close();
+                    });
+                sqlCommand.ExecuteNonQuery();
+                cn.Close();
+            }
+            // client -side to show a notification
+            catch (Exception)
+            {
+                // client -side to show a error notification
+            }
         }
-        // client -side to show a notification
-        catch (Exception)
+        else
         {
-            // client -side to show a error notification
+            // lBL 
         }
     }
 
@@ -91,29 +98,35 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     string storedHash = reader["Password"].ToString();
                     if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
                     {
-                        SignInLbl.Visible = true;
-                        SignInLbl.Text = "Signed In";
+                        string SqlGetUserInfos = "Select UserID";
+                        MasterUserName.Visible = true;
+
+
                     }
                     else
                     {
-                        SignInErrorLbl.Visible = true;
-                        SignInErrorLbl.Text = "Invaild Password";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+                        PasswordErrorLbl.Visible = true;
+                        PasswordErrorLbl.Text = "Invaild Password";
                     }
                 }
             }
             else
             {
-                SignInErrorLbl.Visible = true;
-                SignInErrorLbl.Text = "Email address not exist";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+                EmailErrorLbl.Visible = true;
+                EmailErrorLbl.Text = "Email address not exist";
             }
             reader.Close();
             cn.Close();
         }
         catch (Exception)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
             SignInErrorLbl.Visible = true;
             SignInErrorLbl.Text = "DataBase Error please try again later";
         }
+        
     }
 
     public void GetToken(string code)
@@ -173,22 +186,19 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             string sql ="Select Email from Users";
             SqlCommand sqlCommand = new SqlCommand(sql,cn);
             SqlDataReader reader = sqlCommand.ExecuteReader();
-            if (reader.IsDBNull(0)==false && reader.HasRows)
+            if (reader.HasRows)
             {
                 while (reader.Read())
                 {
                     string EmailInDataBase = reader.GetString(0).ToString();
                     if (EmailInDataBase == MasterPageEmail.Text)
                     {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
                         args.IsValid = false;
                         break;
                     }
-                    else
-                    {
-                        args.IsValid = true;
-                    }
+ 
                 }
-                reader.NextResult();
             }
             else
             {
