@@ -100,11 +100,14 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                         SignInErrorLbl.Text = "Invaild Password";
                     }
                 }
+            }
+            else
+            {
                 SignInErrorLbl.Visible = true;
                 SignInErrorLbl.Text = "Email address not exist";
-                cn.Close();
             }
-
+            reader.Close();
+            cn.Close();
         }
         catch (Exception)
         {
@@ -157,5 +160,47 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         MasterPageEmail.Text = userinfo.email;
         MasterPageBirthday.Text = userinfo.birthday;
         //a
+    }
+
+    protected void SignUpEmailCustomValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+    {
+        try
+        {
+            if (cn.State == System.Data.ConnectionState.Closed)
+            {
+                cn.Open();
+            }
+            string sql ="Select Email from Users";
+            SqlCommand sqlCommand = new SqlCommand(sql,cn);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.IsDBNull(0)==false && reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    string EmailInDataBase = reader.GetString(0).ToString();
+                    if (EmailInDataBase == MasterPageEmail.Text)
+                    {
+                        args.IsValid = false;
+                        break;
+                    }
+                    else
+                    {
+                        args.IsValid = true;
+                    }
+                }
+                reader.NextResult();
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+            reader.Close();
+            cn.Close();
+        }
+        catch (Exception)
+        {
+            args.IsValid = false;
+            SignUpEmailCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
+        }
     }
 }
