@@ -6,7 +6,7 @@ using System.Web;
 /// <summary>
 /// Summary description for User
 /// </summary>
-public class User
+public class Users
 {
     private string firstName;
     private string lastName;
@@ -14,24 +14,21 @@ public class User
     private string gender;
     private string email;
     private string passWord;
+    private string roles;
     private DateTime birthday;
     private string backgroundURL;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
-    public static User[] Users = new User[1000];
     public static int UserCount = 0;
+    public static Users[] UserArray = new Users[1000];
 
-    public User(string firstName, string LastName, string MiddleName, string gender, string email, string passWord, DateTime birthday,
-        string url, DateTime lastupdated, string by)
+    public Users(string firstName, string LastName, string email, string passWord)
     {
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
-        setgender(gender);
         setEmail(email);
         setPassword(passWord);
-        setBirthday(birthday);
-        setURL(url);
         setLastupdated(DateTime.Now);
         setBy("Room Magnet");
         UserCount++;
@@ -65,16 +62,6 @@ public class User
     public string getMiddleName()
     {
         return this.middleName;
-    }
-
-    public void setgender(string gender)
-    {
-        this.gender = gender;
-    }
-
-    public string getgender()
-    {
-        return this.gender;
     }
 
     public void setEmail(string email)
