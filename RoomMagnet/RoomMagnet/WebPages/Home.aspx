@@ -5,59 +5,26 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <asp:Button ID="HomePageLogin" runat="server" Text="Login" data-target="#SignIn" data-toggle="modal" OnClientClick="return false"  data-dismiss="modal"/>
-    <asp:Button ID="HomePageGetStarted" runat="server" Text="Get Started" CssClass="btn btn-primary" data-target="#SignUp" data-toggle="modal"  OnClientClick="return false" />
-        <div class="modal" id="SignUp" tabindex="-1">
-            <div class=" modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <asp:Label ID="SignInLabel" runat="server" Text="Create an Account" ForeColor="IndianRed" CssClass="text-center"></asp:Label>
-                        <div class="form-group">
-                            <asp:Button ID="FacebookLogin" runat="server" Text="Continue with Facebook" />
-                            <asp:Button ID="GmailLogin" runat="server" Text="Continue with Gmail"  OnClick="GmailSignIn_Click"/>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <asp:TextBox ID="HomePageFirstName" runat="server" PlaceHolder="First Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageFirstName" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                            <asp:TextBox ID="HomePageLastName" runat="server" PlaceHolder="Last Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageLastName" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                        </div>
-                        <asp:TextBox ID="HomePageEmail" runat="server" PlaceHolder="Email Address"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePageEmail" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                        <asp:TextBox type="Password" ID="HomePagePassword" runat="server" PlaceHolder="Password"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="HomePagePassword"  ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                        <asp:TextBox  type="Password" ID="HomePageComfirmPassword" runat="server" PlaceHolder="Comfirm Password"></asp:TextBox>
-                        <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="HomePagePassword" ControlToValidate="HomePageComfirmPassword" ValidationGroup="SignUp"></asp:CompareValidator>
-                        <%--Date of brith--%>
-                        <asp:TextBox ID="BirthdayText" runat="server" PlaceHolder="Date of Brith" TextMode="Date"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="BirthdayText" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
-                        <div class="modal-footer">
-                            <asp:Button ID="HomePageSignUp" runat="server" Text="Sign Up" ValidationGroup="SignUp" OnClick="HomePageSignUp_Click" />
-                            
-                            <asp:Button ID="HomePageClose" runat="server" Text="Close"/>
-                        </div>
-                    </div>
+    <%--  <div class="directory_content_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="search_title_area">
+                            <h2 class="title">START INTERGENERATIONAL HOMESHARING WITH CONFIDENCE TODAY</h2>
+                        </div><!-- ends: .search_title_area -->
+                        <form action="/" class="search_form">
+                            <div class="atbd_seach_fields_wrapper">
+                                <div class="single_search_field search_query">
+                                    <input class="form-control search_fields" type="text" placeholder="Enter a city or zip code">
+                                </div>
+        <a>
+                                <div class="atbd_submit_btn">
+                                    <button type="submit" class="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search">Search</button>
+                                </div>
+                            </div>
+                        </form><!-- ends: .search_form -->
+                    </div><!-- ends: .col-lg-10 -->
                 </div>
             </div>
-        </div>
-        <div class="modal" id="SignIn" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <asp:Label ID="SignInLbl" runat="server" Text="Sign In"></asp:Label>
-                    </div>
-                    <div class="modal-body">
-                        <asp:TextBox ID="SignInEmail" PlaceHolder="Email" runat="server" CssClass="form-control-plaintext"></asp:TextBox>
-                        <asp:TextBox ID="SignInPassword" PlaceHolder="Password" runat="server" CssClass="form-control-plaintext"></asp:TextBox>
-                    </div>
-                    <div class="modal-footer">
-                        <asp:Button ID="SignInLogIn" runat="server" Text="Sign In"  CssClass="btn btn-primary"/>
-                        <asp:Button ID="SignInClose" runat="server" Text="Close" CssClass="btn" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    <asp:Button ID="HomePageDashBoard" runat="server" Text="My Dashboard" />
+        </div><!-- ends: .directory_search_area -->--%>
 </asp:Content>

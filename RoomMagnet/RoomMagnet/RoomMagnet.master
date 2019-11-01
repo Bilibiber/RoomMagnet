@@ -1,21 +1,210 @@
-﻿<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="RoomMagnet.master.cs" Inherits="RoomMagnet" %>
 
-<title>
-    <asp:contentplaceholder id="Title" runat="server">
-        </asp:contentplaceholder>
-</title>
+<!DOCTYPE html>
+
 <html>
 <head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="vendor_assets/css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="vendor_assets/css/brands.css" />
+    <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="vendor_assets/css/jquery-ui.css" />
+    <link rel="stylesheet" href="vendor_assets/css/jquery.mCustomScrollbar.css" />
+    <link rel="stylesheet" href="vendor_assets/css/line-awesome.min.css" />
+    <link rel="stylesheet" href="vendor_assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="vendor_assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="vendor_assets/css/select2.min.css" />
+    <link rel="stylesheet" href="vendor_assets/css/slick.css" />
+    <link rel="stylesheet" href="Css/style.css" />
+    <script type="text/javascript">
+        function openModal() {
+            $('#SignUp').modal({ show: true });
+        }
+    </script>
+    <title>
+        <asp:ContentPlaceHolder ID="Title" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="Body" runat="server">
-            </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="Body" runat="server">
+        </asp:ContentPlaceHolder>
+        <%-- Nav Starts here --%>
+        <section class="intro-wrapper bgimage">
+            <%--<div class="bg_image_holder">
+        <%--    <asp:Image ID="BackgroundImage" runat="server"  ImageUrl="~/img/rm/home-2.png" />
+        </div>--%>
+            <div class="mainmenu-wrapper">
+                <div class="menu-area menu1 ">
+                    <div class="top-menu-area">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="menu-fullwidth">
+                                        <div class="logo-wrapper order-lg-0 order-sm-1">
+                                            <div class="logo logo-top">
+                                                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/img/rm/logo-2.png" alt="logo image" CssClass="img-fluid" PostBackUrl="~/WebPages/Home.aspx" />
+                                            </div>
+                                        </div>
+                                        <!-- ends: .logo-wrapper -->
+                                        <div class="menu-container order-lg-1 order-sm-0">
+                                            <div class="d_menu menu--dark">
+                                                <nav class="navbar navbar-expand-lg mainmenu__menu">
+                                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#direo-navbar-collapse" aria-controls="direo-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                                                        <span class="navbar-toggler-icon icon-menu"><i class="la la-reorder"></i></span>
+                                                    </button>
+                                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                                    <div class="collapse navbar-collapse" id="direo-navbar-collapse">
+                                                        <ul class="navbar-nav">
 
+                                                            <!-- /.navbar-collapse -->
+                                                </nav>
+                                            </div>
+                                        </div>
+
+                                        <!-- start .author-area -->
+                                        <div class="author-area">
+                                            <div class="author__access_area">
+                                                <ul class="d-flex list-unstyled align-items-center">
+                                                    <li>
+                                                        <asp:LinkButton ID="MasterPageHomeImage" runat="server">Become a Host</asp:LinkButton>
+                                                    </li>
+                                                    <li>
+                                                        <asp:Button ID="MasterPageSignUp" runat="server" Text="Sign Up" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-target="#SignUp" data-toggle="modal" OnClientClick="return false" />
+                                                    </li>
+                                                    <li>
+                                                        <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-target="#SignIn" data-toggle="modal" OnClientClick="return false" data-dismiss="modal" />
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- end .author-area -->
+                                        <div class="offcanvas-menu d-none">
+                                            <a href="" class="offcanvas-menu__user"><i class="la la-user"></i></a>
+                                            <div class="offcanvas-menu__contents">
+                                                <a href="" class="offcanvas-menu__close"><i class="la la-times-circle"></i></a>
+                                                <div class="author-avatar">
+                                                    <img src="img/author-avatar.png" alt="" class="rounded-circle">
+                                                </div>
+                                                <ul class="list-unstyled">
+                                                    <li><a href="dashboard-listings.html">My Profile</a></li>
+                                                    <li><a href="dashboard-listings.html">My Listing</a></li>
+                                                    <li><a href="dashboard-listings.html">Favorite Listing</a></li>
+                                                    <li><a href="add-listing.html">Add Listing</a></li>
+                                                    <li><a href="">Logout</a></li>
+                                                </ul>
+                                                <div class="search_area">
+                                                    <form action="/">
+                                                        <div class="input-group input-group-light">
+                                                            <input type="text" class="form-control search_field" placeholder="Search here..." autocomplete="off">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-sm btn-secondary">Search</button>
+                                                    </form>
+                                                </div>
+                                                <!-- ends: .search_area -->
+                                            </div>
+                                            <!-- ends: .author-info -->
+                                        </div>
+                                        <!-- ends: .offcanvas-menu -->
+                                    </div>
+                                    <!-- ends: .menu-right -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end /.row -->
+                    </div>
+                    <!-- end /.container -->
+                </div>
+                <!-- end  -->
+            </div>
+            <!-- ends: .mainmenu-wrapper -->
+        </section>
+        <!-- ends: .intro-wrapper -->
+        <div class="modal fade" id="SignIn" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="login_modal_label"><i class="la la-lock"></i>Sign In</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/" id="login-form">
+                            <asp:TextBox ID="SignInEmail" PlaceHolder="Email" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="SignInEmailRequiredFieldValidator" runat="server" ErrorMessage="Required" ControlToValidate="SignInEmail" ValidationGroup="SignIn"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="SignInEmailRegularExpressionValidator" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="SignInEmail" Display="Dynamic" ValidationGroup="SignIn" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                            <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                            <div class="keep_signed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
+                                <input type="checkbox" class="custom-control-input" name="keep_signed_in" value="1" id="keep_signed_in">
+                                <label for="keep_signed_in" class="not_empty custom-control-label">Keep me signed in</label>
+                            </div>
+                            <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" />
+                        </form>
+                        <div class="form-excerpts">
+                            <ul class="list-unstyled">
+                                <li>Not a member? <a href="">Sign up</a></li>
+                                <%-- Another button to call sign up modal --%>
+                                <li><a href="">Recover Password</a></li>
+                                <%-- Reset password, to another page a link button? --%>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%-- do roommaget have a video to play on website  --%>
+        <div class="modal fade" id="SignUp" tabindex="-1" role="dialog" aria-labelledby="signup_modal_label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signup_modal_label"><i class="la la-lock"></i>Sign Up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/" id="signup-form">
+                            <asp:TextBox ID="MasterPageFirstName" runat="server" PlaceHolder="First Name" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageFirstName" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageLastName"  ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="MasterPageEmail" runat="server" PlaceHolder="Email" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPageEmail"  ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                            <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="(Required)" ControlToValidate="MasterPagePassword" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:TextBox type="Password" ID="MasterPageComfirmPassword" runat="server" PlaceHolder="Comfirm Password" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic" ></asp:RequiredFieldValidator>
+                            <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="MasterPagePassword" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:CompareValidator>
+                            <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Brith" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                            <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
+                        </form>
+                        <div class="form-excerpts">
+                        <ul class="list-unstyled">
+                            <li>Already a member? <a href="">Sign In</a></li>
+                            <li><a href="">Recover Password</a></li>
+                        </ul>
+                        <div class="social-login">
+                            <span>Or connect with</span>
+                            <asp:Button ID="GmailLogin" runat="server" Text="Continue with Gmail" OnClick="GmailSignIn_Click" UseSubmitBehavior="False" />
+                            <p><a href="" class="btn btn-outline-secondary"><i class="fab fa-facebook-f"></i>Facebook</a><a href="" class="btn btn-outline-danger"><i class="fab fa-google-plus-g"></i> Google</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </form>
 </body>
 </html>
+<footer>
+</footer>
