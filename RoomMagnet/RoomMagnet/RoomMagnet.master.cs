@@ -14,7 +14,8 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     private string clientsecret = "71rfQJWsTXIkCOuI6cZOdBtL";
     private string redirection_url = "http://localhost:59379/WebPages/Home.aspx";
     private string url = "https://accounts.google.com/o/oauth2/token";
-
+    string FName;
+    string LName;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -82,8 +83,11 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     protected void MasterPageSignIn_Click(object sender, EventArgs e)
     {
         string sql = "Select Password from Users where Email = @Email ";
+
+        Session["SignInEmail"] = SignInEmail.Text;
         try
         {
+            string storedHash;
             if (cn.State == System.Data.ConnectionState.Closed)
             {
                 cn.Open();
@@ -93,15 +97,13 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             SqlDataReader reader = sqlCommand.ExecuteReader();
             if (reader.HasRows)
             {
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    string storedHash = reader["Password"].ToString();
+                    storedHash = reader["Password"].ToString();
+                    reader.Close();
                     if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
                     {
-                        string SqlGetUserInfos = "Select UserID";
-                        MasterUserName.Visible = true;
-
-
+                        GetUserInfo();
                     }
                     else
                     {
@@ -117,7 +119,6 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 EmailErrorLbl.Visible = true;
                 EmailErrorLbl.Text = "Email address not exist";
             }
-            reader.Close();
             cn.Close();
         }
         catch (Exception)
@@ -128,7 +129,42 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         }
         
     }
-
+    public void GetUserInfo()
+    {
+        try
+        {
+            if (cn.State == System.Data.ConnectionState.Closed)
+            {
+                cn.Open();
+            }
+            string SqlGetUserInfos = "SELECT        Users.UserID, Users.FirstName, Users.LastName, Users.ImagePath, UserRoles.Roles" +
+                                                " FROM Users INNER JOIN UserRoles ON Users.UserID = UserRoles.UserID " +
+                                                "where Users.Email =@Email";
+            SqlCommand Finder = new SqlCommand(SqlGetUserInfos, cn);
+            Finder.Parameters.AddWithValue("@Email", Session["SignInEmail"]);
+            SqlDataReader dataReader = Finder.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                if (dataReader.Read())
+                {
+                    Session["UserID"] = dataReader.GetInt32(0);
+                    Session["FullName"] = dataReader.GetString(1) +" "+ dataReader.GetString(2);
+                    //Session["ImagePath"] = dataReader.GetString(3);
+                    Session["Roles"] = dataReader.GetString(4);
+                }
+            }
+            dataReader.Close();
+            MasterUserName.Visible = true;
+            MasterUserName.Text = Session["FullName"].ToString();
+        }
+        catch (Exception)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            SignInErrorLbl.Visible = true;
+            SignInErrorLbl.Text = "DataBase Error please try again later";
+        }
+        cn.Close();
+    }
     public void GetToken(string code)
     {
         string poststring = "grant_type=authorization_code&code=" + code + "&client_id=" + clientid + "&client_secret=" + clientsecret + "&redirect_uri=" + redirection_url + "";
