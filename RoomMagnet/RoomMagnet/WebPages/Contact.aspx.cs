@@ -14,15 +14,14 @@ public partial class WebPages_Contact : System.Web.UI.Page
         {
             if (Page.IsValid)
             {
+                string EmailBox = EmailBox.Text;
+                string NameBox = NameBox.Text;
+                string ContactMessageBox = ContactMessageBox.Text;
+                string body = String.Format("<h5>  Hello,</h5>", name);
+                body += "<p>Thank you for contacting us!</p>";
 
-               
-                // get values from form 
+                EmailUtility.SendEmail(EmailBox, "Contact Room Magnet", body);
 
-                // stuff to format body
-                
-
-                // then call sendEmail
-           
 
                 txtName.Enabled = false;
                 txtEmail.Enabled = false;

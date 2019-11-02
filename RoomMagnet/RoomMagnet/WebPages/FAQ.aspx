@@ -297,10 +297,10 @@
                             <div class="widget widget_pages">
                                 <h2 class="widget-title">Company Info</h2>
                                 <ul class="list-unstyled">
-                                    <li class="page-item"><a href="">About Us</a></li>
-                                    <li class="page-item"><a href="">Conact Us</a></li>
-                                    <li class="page-item"><a href="">Terms</a></li>
-                                    <li class="page-item"><a href="">Privacy Policy</a></li>
+                                    <li class="page-item"><a href="About.aspx">About Us</a></li>
+                                    <li class="page-item"><a href="Contact.aspx">Conact Us</a></li>
+                                    <li class="page-item"><a href="Terms.aspx">Terms</a></li>
+                                    <li class="page-item"><a href="privacy.aspx">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>
