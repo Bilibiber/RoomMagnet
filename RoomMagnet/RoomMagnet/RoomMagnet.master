@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="vendor_assets/css/select2.min.css" />
     <link rel="stylesheet" href="vendor_assets/css/slick.css" />
     <link rel="stylesheet" href="Css/style.css" />
+
+
     <script type="text/javascript">
         function openModal() {
             $('#SignUp').modal({ show: true });

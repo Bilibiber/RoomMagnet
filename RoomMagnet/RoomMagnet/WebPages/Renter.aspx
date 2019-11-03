@@ -3,6 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+    <%--renter update image--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.3.1/css/fileinput.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.3.1/js/fileinput.js"></script>
+
 
 
     <style type="text/css">
@@ -89,7 +96,7 @@
             <br />
 
 
-            <img src="https://timedotcom.files.wordpress.com/2018/09/bill-gates-africa.jpg" style="width: 300px;" />
+            <img src="https://timedotcom.files.wordpress.com/2018/09/bill-gates-africa.jpg" class="rounded mx-auto d-block" alt="userimage" style="width: 300px;" />
             <br />
             <br />
             <asp:Button ID="unverified" Text="UNVERIFIED" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="XX-Large" ForeColor="White" Style="text-align: center; width: 200px;" OnClick="unverified_Click"></asp:Button>
@@ -413,7 +420,18 @@
                             </td>
                         </tr>
                     </table>
-                </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">
+                            Attachment(s)
+                            (Attach multiple files.)
+                        </label>
+                        <div class="col-sm-9">
+                            <span class="btn btn-default btn-file">
+                                <input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="true" data-show-caption="true">
+                            </span>
+                            &nbsp;
+                        </div>
+                    </div>
             </asp:Panel>
 
             <%--setting panel--%>
