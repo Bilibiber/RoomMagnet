@@ -109,6 +109,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
 
     protected void rentertohost_Click(object sender, EventArgs e)
     {
+        Response.Redirect("AddProperty.aspx");
         renterinfor.Visible = false;
         rentersearch.Visible = false;
         rentermymessage.Visible = false;
@@ -141,12 +142,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentertohost.ForeColor = System.Drawing.Color.White;
         renterSetting.ForeColor = System.Drawing.Color.Red;
     }
-
-    protected void unverified_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("https://www.youtube.com");
-    }
-
 
     protected void post_Click(object sender, EventArgs e)
     {
