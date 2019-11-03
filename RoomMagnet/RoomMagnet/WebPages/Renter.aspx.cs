@@ -147,14 +147,14 @@ public partial class WebPages_Renter : System.Web.UI.Page
         Response.Redirect("https://www.youtube.com");
     }
 
-    protected void cancle_Click(object sender, EventArgs e)
-    {
-        renterSavedSearch_Click(sender, e);
-    }
 
     protected void post_Click(object sender, EventArgs e)
     {
     }
 
 
+    protected void cancel_Click(object sender, EventArgs e)
+    {
+        renterSavedSearch_Click(sender, e);
+    }
 }

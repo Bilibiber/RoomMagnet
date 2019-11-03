@@ -39,7 +39,7 @@
         <asp:ContentPlaceHolder ID="Body" runat="server">
         </asp:ContentPlaceHolder>
         <%-- Nav Starts here --%>
-        <section class="intro-wrapper bgimage">
+        <section class="intro-wrapper <%--bgimage--%>">
             <%--<div class="bg_image_holder">
         <%--    <asp:Image ID="BackgroundImage" runat="server"  ImageUrl="~/img/rm/home-2.png" />
         </div>--%>
