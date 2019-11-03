@@ -10,11 +10,27 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        othertextbox.Enabled = false;
         if (!IsPostBack)
         {
             addCountry.DataSource = objcountries();
             addCountry.DataBind();
         }
+
+        if (checkOther.Checked)
+        {
+            othertextbox.Enabled = true;
+        }
+
+        if(addCountry.Text == "United States")
+        {
+            addState.Enabled = true;
+        }
+        else{
+            addState.SelectedIndex = 0;
+            addState.Enabled = false;
+        }
+
     }
 
     public static List<string> objcountries()

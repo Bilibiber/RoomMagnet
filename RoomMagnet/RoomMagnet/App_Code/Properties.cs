@@ -9,11 +9,7 @@ public class Property
     private String Country;
     private String ZipCode;
     private int SquareFootage;
-    private int PermanentResidences;
-    private int TotalBedrooms;
-    private int TotalBathrooms;
     private int RentPrice;
-    private int AvailableBedrooms;
     private DateTime StartDate;
     private DateTime EndDate;
     private String Filters;
@@ -25,8 +21,8 @@ public class Property
     public static Property[] Properties = new Property[1000];
 
     public Property(String title, String StreetAddress, String City, String HomeState, String Country, String ZipCode,
-        int SquareFootage, int PermanentResidences, int TotalBedrooms, int TotalBathrooms, int RentPrice, int AvailableBedrooms,
-        DateTime StartDate, DateTime EndDate, String Filters, String ImagePath, DateTime LastUpdated, String LastUpdatedBy, int HostID)
+        int SquareFootage, int RentPrice, DateTime StartDate, DateTime EndDate, String Filters, 
+        String ImagePath, DateTime LastUpdated, String LastUpdatedBy, int HostID)
     {
         setTitle(title);
         setStreetAddress(StreetAddress);
@@ -35,11 +31,7 @@ public class Property
         setCountry(Country);
         setZipCode(ZipCode);
         setSquareFootage(SquareFootage);
-        setPermanentResidences(PermanentResidences);
-        setTotalBedrooms(TotalBedrooms);
-        setTotalBathrooms(TotalBathrooms);
         setRentPrice(RentPrice);
-        setAvailableBedrooms(AvailableBedrooms);
         setStartDate(StartDate);
         setEndDate(EndDate);
         setFilters(Filters);
@@ -117,35 +109,7 @@ public class Property
         return SquareFootage;
     }
 
-    public void setPermanentResidences(int PermanentResidences)
-    {
-        this.PermanentResidences = PermanentResidences;
-    }
-
-    public int getPermanentResidences()
-    {
-        return PermanentResidences;
-    }
-
-    public void setTotalBedrooms(int TotalBedrooms)
-    {
-        this.TotalBedrooms = TotalBedrooms;
-    }
-
-    public int getTotalBedrooms()
-    {
-        return TotalBedrooms;
-    }
-
-    public void setTotalBathrooms(int TotalBathrooms)
-    {
-        this.TotalBathrooms = TotalBathrooms;
-    }
-
-    public int getTotalBathrooms()
-    {
-        return TotalBathrooms;
-    }
+   
 
     public void setRentPrice(int RentPrice)
     {
@@ -157,15 +121,6 @@ public class Property
         return RentPrice;
     }
 
-    public void setAvailableBedrooms(int AvailableBedrooms)
-    {
-        this.AvailableBedrooms = AvailableBedrooms;
-    }
-
-    public int getAvailableBedrooms()
-    {
-        return AvailableBedrooms;
-    }
 
     public void setStartDate(DateTime StartDate)
     {
