@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography; // must be used
-using System.Web;
 
 public class PasswordHash
 {
