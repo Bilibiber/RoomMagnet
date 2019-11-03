@@ -59,6 +59,25 @@
             padding-left: 15px;
             padding-right: 15px;
         }
+
+        .auto-style13 {
+            width: 20px;
+            height: 33px;
+        }
+
+        .auto-style14 {
+            width: 200px;
+            height: 33px;
+        }
+
+        .auto-style15 {
+            height: 33px;
+        }
+
+        .auto-style16 {
+            width: 120px;
+            height: 33px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
@@ -163,25 +182,25 @@
                                 <asp:Label runat="server" Text="Title:" Font-Bold="True"></asp:Label>
                             </td>
                             <td class="auto-style10">
-                                <asp:TextBox runat="server" ID="addtitle"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="addtitle" MaxLength="75"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="requireTitle" runat="server" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" ControlToValidate="addtitle">Required</asp:RequiredFieldValidator>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style4">
+                            <td class="auto-style13"></td>
+                            <td class="auto-style14">
                                 <asp:Label runat="server" Text="Street Address:" Font-Bold="True"></asp:Label>
                             </td>
-                            <td>
+                            <td class="auto-style15">
                                 <asp:TextBox runat="server" ID="addStreet"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="requireStreet" runat="server" ControlToValidate="addStreet" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
                             </td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style11">
+                            <td class="auto-style13"></td>
+                            <td class="auto-style16">
                                 <asp:Label runat="server" Text="City:" Font-Bold="True"></asp:Label>
                             </td>
-                            <td>
+                            <td class="auto-style15">
                                 <asp:TextBox runat="server" ID="addCity"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="requireCity" runat="server" ControlToValidate="addCity" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
                             </td>
@@ -251,42 +270,33 @@
                             </td>
                             <td class="auto-style7"></td>
                             <td class="auto-style11">
-                                <asp:Label runat="server" Text="Zip:" Font-Bold="True"></asp:Label>
-                            </td>
+                                <asp:Label ID="Label3" runat="server" Text="Country" Font-Bold="True"></asp:Label></td>
                             <td>
-                                <asp:TextBox runat="server" ID="addZip"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requireZip" runat="server" ControlToValidate="addZip" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                                <asp:DropDownList ID="addCountry" runat="server" Width="170px" AppendDataBoundItems="True">
+                                    <asp:ListItem Value=""></asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="requireCountry" runat="server" ControlToValidate="addCountry" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="auto-style7"></td>
                             <td class="auto-style4">
-                                <asp:Label runat="server" Text="Square Footage of House:" Font-Bold="True"></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Font-Bold="True" Text="Zip:"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="addZip" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="requireZip" runat="server" ControlToValidate="addZip" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
+                            </td>
+                            <td class="auto-style7"></td>
+                            <td class="auto-style11">
+                                <asp:Label runat="server" Text="Square Footage of House:" Font-Bold="True" ID="Label1"></asp:Label>
                             </td>
                             <td>
                                 <asp:TextBox ID="addSquare" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="requireSquare" runat="server" ControlToValidate="addSquare" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style11">
-                                <asp:Label runat="server" Text="Permanent Residences:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="addResidences" runat="server" Width="80px">
-                                    <asp:ListItem Value=""></asp:ListItem>
-                                    <asp:ListItem Value="1">1</asp:ListItem>
-                                    <asp:ListItem Value="2">2</asp:ListItem>
-                                    <asp:ListItem Value="3">3</asp:ListItem>
-                                    <asp:ListItem Value="4">4</asp:ListItem>
-                                    <asp:ListItem Value="5">5</asp:ListItem>
-                                    <asp:ListItem Value="6">6</asp:ListItem>
-                                    <asp:ListItem Value="7">7</asp:ListItem>
-                                    <asp:ListItem Value="8">8</asp:ListItem>
-                                    <asp:ListItem Value="9">9</asp:ListItem>
-                                    <asp:ListItem Value="10">10</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="requireResidences" runat="server" ControlToValidate="addResidences" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+
                             </td>
                         </tr>
                         <tr>
@@ -352,6 +362,27 @@
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="requireBathrooms" runat="server" ControlToValidate="addBathrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
                             </td>
+                            <td class="auto-style7"></td>
+                            <td class="auto-style11">
+                                <asp:Label runat="server" Text="Permanent Residences:" Font-Bold="True"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="addResidences" runat="server" Width="80px">
+                                    <asp:ListItem Value=""></asp:ListItem>
+                                    <asp:ListItem Value="1">1</asp:ListItem>
+                                    <asp:ListItem Value="2">2</asp:ListItem>
+                                    <asp:ListItem Value="3">3</asp:ListItem>
+                                    <asp:ListItem Value="4">4</asp:ListItem>
+                                    <asp:ListItem Value="5">5</asp:ListItem>
+                                    <asp:ListItem Value="6">6</asp:ListItem>
+                                    <asp:ListItem Value="7">7</asp:ListItem>
+                                    <asp:ListItem Value="8">8</asp:ListItem>
+                                    <asp:ListItem Value="9">9</asp:ListItem>
+                                    <asp:ListItem Value="10">10</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="addResidences" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                            </td>
+
                         </tr>
                         <tr>
                             <td class="auto-style7"></td>
