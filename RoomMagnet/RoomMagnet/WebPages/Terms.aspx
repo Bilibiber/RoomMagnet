@@ -61,35 +61,39 @@
 
 
                     <div class="col-lg-12">
-                        <h3>Heading</h3>
+                        <h3>Example Drug Free Statement</h3>
                     </div><!-- ends: .col-lg-12 -->
                     <div class="col-lg-12 privacy title">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                      <p>Ultrices eros in cursus turpis. Commodo viverra maecenas accumsan lacus vel facilisis volutpat. Cras sed felis eget velit. Libero justo laoreet sit amet. Magna etiam tempor orci eu lobortis elementum nibh. Et magnis dis parturient montes nascetur. Laoreet non curabitur gravida arcu ac tortor. Sit amet aliquam id diam maecenas. Et leo duis ut diam quam. Iaculis at erat pellentesque adipiscing commodo elit at imperdiet dui. Vitae tortor condimentum lacinia quis vel eros donec ac odio. Risus viverra adipiscing at in tellus integer feugiat. Ut venenatis tellus in metus vulputate. Id aliquet lectus proin nibh nisl. Ultrices sagittis orci a scelerisque.</p>
+                      <p>In consideration of the execution or renewal of a lease of the dwelling unit identified in the Rental/Lease Agreement, 
+                          Owner/Agent and Resident agree as follows:1.Tenant 's, and any guest or other persons under the Resident ’s control shall 
+                          not engage in criminal activity , including drug -related criminal activity , on or near property premises . "Drug-related criminal activity " 
+                          means the illegal manufacture , sale, distribution , use, or possession with intent to manufacture, sell, distribute, or use of a controlled substance 
+                          (as defined in section 102 of the Controlled Substance Act (21 U.S.C. 802)).2.Tenant, and any guest or other persons under the Tenant’s control shall not 
+                          engage in any act intended to facilitate criminal activity, including drug-related criminal activity, on or near property premises.3.Tenant, guests or other 
+                          persons under the Tenant 's controlwill not permit the dwelling unit to be used for, or to facilitate , criminal activity, including drug-related criminal activity, 
+                          regardless of whether the individual engaging in such activity is a member of the household or a guest.4.Tenant and members of the household will not engage in the manufacture, 
+                          sale, or distribution of illegal drugs at any location, on ornear premises and property or otherwise which includes the use of cannabis or medical cannabis. Host may terminate this 
+                          agreement if tenant and/or guests engage in such activities and tenant's may be subject to charges, damages and eviction.5.Tenant, or a guest or other person under the Tenant's’s control 
+                          shall not engage in acts of disruptive drunkenness,violence or threats of violence, including, but not limited to the unlawful discharge of firearms on or near property/premises.6.VIOLATION 
+                          OF ANY OF THE ABOVE PROVISIONS SHALL BE A MATERIAL VIOLATION OF THE RENTALAGREEMENT AND GOOD CAUSE FOR TERMINATION OF TENANCY.A single violation of any of the provisions of this Addendum 
+                          shall be deemed a serious and material violation of the Rental/Lease Agreement. It sunderstood and agreed that a single violation shall be good cause for termination of the Rental Agreement. 
+                          Unless otherwise provided by law, proof of violation shall not require criminal conviction, but shall be by a preponderance of the evidence.7.In case of conflict between the provisions of this 
+                          Addendum and any other provisions of the Rental Agreement, the provisions of this Addendum shall govern.8.This Addendum is incorporated into the Rental Agreement executed or renewed this day between 
+                          Host and Tenant.Date___________________________Tenant____________________Date___________________________Host______________________</p>
+                      <p></p>
+
                     </div>
 
                     <div class="col-lg-12">
-                        <h3>Heading</h3>
+                        <h3>Fair Housing Policy</h3>
                     </div><!-- ends: .col-lg-12 -->
-
-                    <!-- use this if you need to add bullet points, if not delete -->
-                    <div class="col-lg-12">
-                      <ul>
-                          <li>item 1</li>
-                          <li>item 2</li>
-                          <li>item3</li>
-                        </ul>
+                    <div class="col-lg-12 privacy title">
+                   <p>The Fair HousingAct (Title VIII of the Civil Rights Act of 1968), prohibits discrimination in the rental of housing based on race, color, national origin, religion,handicap (disability),sex,
+                    familial status (including children under the age of 18 living with parents of legal custodians, pregnant women, and people securing custody of children under the age of 18).We encourage all 
+                    RoomMagnet users to comply, in all respects, with all laws, rules, and regulations regarding landlord and tenant, including the requirements imposed by the Fair Housing Act.</p>
                     </div>
-
-                    <!-- use this if you need to add numbered lists, if not delete -->
-                    <div class="col-lg-12">
-                      <ol>
-                        <li>item 1</li>
-                        <li>item 2</li>
-                        <li>item 3</li>
-                      </ol>
+                   
                     </div>
-                </div>
             </div>
         </section><!-- ends: .faq-wrapper -->
 
