@@ -163,7 +163,7 @@
                                             social news, sports, college life, then let’s talk. Send us an e mail, tell us a little about yourself ,send us an example of your writing and we’ll get back to you. 
                                             And if you’re unsure about your writing, we have great people here at RoomMagnet that will help turn your pieces into first rate work. Come on! We’re waiting for you.
                                             </p>
-<%--                                        </div>--%>
+                                       </div>
                                     </div>
                                 </div>
                             </div>

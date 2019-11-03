@@ -217,7 +217,7 @@
                             <div class="widget widget_pages">
                                 <h2 class="widget-title">Helpful Links</h2>
                                 <ul class="list-unstyled">
-                                    <li class="page-item"><a href="WebPages/FAQ.aspx">FAQ</a></li>
+                                    <li class="page-item"><a href="FAQ.aspx">FAQ</a></li>
                                 </ul>
                             </div>
                         </div>
