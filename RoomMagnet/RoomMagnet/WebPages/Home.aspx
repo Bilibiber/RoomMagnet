@@ -6,9 +6,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-      <section class="intro-wrapper bgimage overlay overlay--dark">
-          <div class="bg_image_holder">
-              <asp:Image ID="HomeImage" runat="server" ImageUrl="~/img/rm/home-2.png" />
+      <section class="intro-wrapper bgimage overlay--dark overlay">
+          <div class="home-image">
+              <asp:Image ID="HomeImage" runat="server" ImageUrl="~/img/home-2-large.png" alt="" />
           </div>
        <div class="directory_content_area">
             <div class="container">
@@ -16,18 +16,16 @@
                     <div class="col-lg-10 offset-lg-1">
                         <div class="search_title_area">
                             <h2 class="title">START INTERGENERATIONAL HOMESHARING WITH CONFIDENCE TODAY</h2>
-                        </div><!-- ends: .search_title_area -->
-                        <form action="/" class="search_form">
-                            <div class="atbd_seach_fields_wrapper">
+                        </div>
+                            <div class="atbd_seach_fields_wrapper input-group">
                                 <div class="single_search_field search_query">
                                     <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields" placeholder="Enter a city or zip code"></asp:TextBox>
                                 </div>
 
-                                <div class="atbd_submit_btn">
+                                <div class="atbd_submit_btn input-group-append">
                                     <asp:Button ID="HomePageSearchButton" runat="server" Text="Search"  CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search"/>
                                 </div>
                             </div>
-                        </form><!-- ends: .search_form -->
 
                     </div><!-- ends: .col-lg-10 -->
                 </div>

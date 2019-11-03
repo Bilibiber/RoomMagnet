@@ -7,11 +7,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Css/style.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="Css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="vendor_assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="vendor_assets/css/brands.css">
+    <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="vendor_assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="vendor_assets/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="vendor_assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="vendor_assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="vendor_assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor_assets/css/select2.min.css">
+    <link rel="stylesheet" href="vendor_assets/css/slick.css">
+
     <script type="text/javascript">
         function openModal() {
             $('#signup_modal').modal({ show: true });
@@ -46,25 +56,18 @@
                                     </div>
                                     <!-- ends: .logo-wrapper -->
                                     <div class="menu-container order-lg-1 order-sm-0">
-                                        <div class="d_menu menu--dark">
+                                        <div class="d_menu">
                                             <nav class="navbar navbar-expand-lg mainmenu__menu">
-                                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#direo-navbar-collapse" aria-controls="direo-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                                                    <span class="navbar-toggler-icon icon-menu"><i class="la la-reorder"></i></span>
-                                                </button>
                                                 <!-- Collect the nav links, forms, and other content for toggling -->
-                                                <div class="collapse navbar-collapse" id="direo-navbar-collapse">
-                                                    <ul class="navbar-nav">
-                                                    </ul>
-                                                </div>
                                                 <!-- /.navbar-collapse -->
                                             </nav>
                                         </div>
                                     </div>
 
                                     <!-- start .author-area -->
-                                    <div class="author-area">
+                                    <div class="author-area ml-auto">
                                         <div class="author__access_area">
-                                            <ul class="d-flex list-unstyled align-items-center">
+                                            <ul class="d-flex list-unstyled text-right">
                                                 <li>
                                                     <asp:Button ID="MasterPageSignUp" runat="server" Text="Sign Up" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" />
                                                 </li>
@@ -77,25 +80,6 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <!-- end .author-area -->
-                                    <%--                                        <div class="offcanvas-menu d-none">
-                                            <a href="" class="offcanvas-menu__user"><i class="la la-user"></i></a>
-                                            <div class="offcanvas-menu__contents">
-                                                <a href="" class="offcanvas-menu__close"><i class="la la-times-circle"></i></a>
-                                                <div class="author-avatar">
-                                                    <img src="img/author-avatar.png" alt="" class="rounded-circle">
-                                                </div>
-                                                <ul class="list-unstyled">
-                                                    <li><a href="dashboard-listings.html">My Profile</a></li>
-                                                    <li><a href="dashboard-listings.html">My Listing</a></li>
-                                                    <li><a href="dashboard-listings.html">Favorite Listing</a></li>
-                                                    <li><a href="add-listing.html">Add Listing</a></li>
-                                                    <li><a href="">Logout</a></li>
-                                                </ul>
-                                            </div>
-                                            <!-- ends: .author-info -->
-                                        </div>--%>
-                                    <!-- ends: .offcanvas-menu -->
                                 </div>
                                 <!-- ends: .menu-right -->
                             </div>
