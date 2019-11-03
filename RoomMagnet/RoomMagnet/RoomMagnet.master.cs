@@ -254,4 +254,8 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             SignUpEmailCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
         }
     }
+    protected void MasterPageSignOut_Click(object sender, EventArgs e)
+    {
+
+    }
 }

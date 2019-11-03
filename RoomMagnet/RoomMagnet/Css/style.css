@@ -6076,27 +6076,27 @@ p {
   margin: 0;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper {
+.directory_content_area   .atbd_seach_fields_wrapper {
   display: flex;
   background: #fff;
   padding: 0rem;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field {
+.directory_content_area   .atbd_seach_fields_wrapper .single_search_field {
   margin-right: 0;
   flex: 5;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field .form-control {
+.directory_content_area   .atbd_seach_fields_wrapper .single_search_field .form-control {
   box-shadow: none;
   width: 100%;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field.search_category, .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field.search_location {
+.directory_content_area   .atbd_seach_fields_wrapper .single_search_field.search_category, .directory_content_area .atbd_seach_fields_wrapper .single_search_field.search_location {
   position: relative;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field.search_category:before, .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field.search_location:before {
+.directory_content_area   .atbd_seach_fields_wrapper .single_search_field.search_category:before, .directory_content_area .atbd_seach_fields_wrapper .single_search_field.search_location:before {
   position: absolute;
   content: '\f110';
   font-family: "LineAwesome";
@@ -6108,7 +6108,7 @@ p {
   z-index: 1;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .atbd_submit_btn {
+.directory_content_area .atbd_seach_fields_wrapper .atbd_submit_btn {
   flex: 1;
 }
 
@@ -7274,10 +7274,10 @@ p {
   .section-title p {
     width: 100%;
   }
-  .directory_content_area .search_form .atbd_seach_fields_wrapper {
+  .directory_content_area   .atbd_seach_fields_wrapper {
     flex-wrap: wrap;
   }
-  .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field, .directory_content_area .search_form .atbd_seach_fields_wrapper .atbd_submit_btn {
+  .directory_content_area   .atbd_seach_fields_wrapper .single_search_field, .directory_content_area   .atbd_seach_fields_wrapper .atbd_submit_btn {
     flex: auto;
     width: 45%;
     margin: 5px;
@@ -7342,7 +7342,7 @@ p {
   .offcanvas-menu .offcanvas-menu__user {
     margin-right: 0;
   }
-  .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field, .directory_content_area .search_form .atbd_seach_fields_wrapper .atbd_submit_btn {
+  .directory_content_area   .atbd_seach_fields_wrapper .single_search_field, .directory_content_area   .atbd_seach_fields_wrapper .atbd_submit_btn {
     width: 100%;
   }
   .category--img figure img {
@@ -7470,6 +7470,13 @@ p {
 .about-link a{
   color: #333333;
 }
-
+.home-image {
+position:absolute;
+height:100%;
+width:100%;
+background-size: cover !important;
+background-position:center !important;
+background-repeat:no-repeat;
+}
 
 /*# sourceMappingURL=maps/style.css.map */
