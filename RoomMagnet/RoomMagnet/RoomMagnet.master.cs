@@ -256,6 +256,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     }
     protected void MasterPageSignOut_Click(object sender, EventArgs e)
     {
-
+        Session.Abandon();
+        Session.Clear();
+        Response.Redirect("Home.aspx");
+        //MasterUserName.Visible = false;
     }
 }
