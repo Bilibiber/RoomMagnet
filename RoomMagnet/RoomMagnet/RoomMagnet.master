@@ -169,7 +169,7 @@
                         <asp:TextBox type="Password" ID="MasterPageComfirmPassword" runat="server" PlaceHolder="Comfirm Password" CssClass="form-control" ValidationGroup="SignUp"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Not Match" ControlToCompare="MasterPagePassword" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:CompareValidator>
-                        <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Brith" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Birth"  onfocus="(this.type='date')" CssClass="form-control"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
 

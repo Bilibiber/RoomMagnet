@@ -127,7 +127,12 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             SignInErrorLbl.Visible = true;
             SignInErrorLbl.Text = "DataBase Error please try again later";
         }
-        
+        MasterPageBirthday.Text = string.Empty;
+        MasterPageComfirmPassword.Text = string.Empty;
+        MasterPageEmail.Text = string.Empty;
+        MasterPageFirstName.Text = string.Empty;
+        MasterPageLastName.Text = string.Empty;
+        MasterPagePassword.Text = string.Empty;
     }
     public void GetUserInfo()
     {
