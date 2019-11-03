@@ -14,7 +14,8 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     private string clientsecret = "71rfQJWsTXIkCOuI6cZOdBtL";
     private string redirection_url = "http://localhost:59379/WebPages/Home.aspx";
     private string url = "https://accounts.google.com/o/oauth2/token";
-
+    string FName;
+    string LName;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -25,33 +26,150 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
             }
         }
+        if (IsPostBack)
+            return;
     }
 
     protected void GmailSignIn_Click(object sender, EventArgs e)
     {
         string url = "https://accounts.google.com/o/oauth2/v2/auth?scope=profile&include_granted_scopes=true&redirect_uri=" + redirection_url + "&response_type=code&client_id=" + clientid + "";
-        Response.Redirect(url);
+        Response.Redirect(url, false);
     }
 
     protected void MasterPageSignUp_Click(object sender, EventArgs e)
     {
+        //EmailSender email = new EmailSender();
+        //email.SendWelcomeMail(MasterPageEmail.Text);
+        //Not working in showker Lab
+        if (SignUpEmailCustomValidator.IsValid)
+        {
+            Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
+            string MasterPagepassword = users.getPassword();
+            string HashedPassword = PasswordHash.HashPassword(MasterPagepassword);
+            try
+            {
+                if (cn.State == System.Data.ConnectionState.Closed)
+                {
+                    cn.Open();
+                }
+                string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@LastUpdated,@LastUpdatedBy)";
+                SqlCommand sqlCommand = new SqlCommand(Sql, cn);
+                sqlCommand.Parameters.AddRange(
+                    new SqlParameter[]
+                    {
+                    new SqlParameter("@FirstName",users.getFirstName()),
+                    new SqlParameter("@LastName",users.getLastName()),
+                    new SqlParameter("@Email",users.getEmail()),
+                    new SqlParameter("@Password",HashedPassword),
+                    new SqlParameter("@DateOfBirth",users.getBirthday()),
+                    new SqlParameter("@LastUpdated",users.getLastUpdated()),
+                    new SqlParameter("@LastUpdatedBy",users.getLastUpdatedBy()),
+                    });
+                sqlCommand.ExecuteNonQuery();
+                cn.Close();
+            }
+            // client -side to show a notification
+            catch (Exception)
+            {
+                // client -side to show a error notification
+            }
+        }
+        else
+        {
+            // lBL 
+        }
+    }
+
+    protected void MasterPageSignIn_Click(object sender, EventArgs e)
+    {
+        string sql = "Select Password from Users where Email = @Email ";
+
+        Session["SignInEmail"] = SignInEmail.Text;
         try
         {
-            EmailSender email = new EmailSender();
-            email.SendWelcomeMail(MasterPageEmail.Text);
-            Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text);
+            string storedHash;
             if (cn.State == System.Data.ConnectionState.Closed)
             {
                 cn.Open();
             }
-            string SqlCommand = "insert into Users values(@FirstName,@LastName,@MiddleName,@Gender,@Email,@Password,@DOB,@BackgroundURL,@LastUpdated,@LastUpdatedBy)";
+            SqlCommand sqlCommand = new SqlCommand(sql, cn);
+            sqlCommand.Parameters.AddWithValue("@Email", SignInEmail.Text);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                if (reader.Read())
+                {
+                    storedHash = reader["Password"].ToString();
+                    reader.Close();
+                    if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
+                    {
+                        GetUserInfo();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+                        PasswordErrorLbl.Visible = true;
+                        PasswordErrorLbl.Text = "Invaild Password";
+                    }
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+                EmailErrorLbl.Visible = true;
+                EmailErrorLbl.Text = "Email address not exist";
+            }
             cn.Close();
         }
         catch (Exception)
         {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            SignInErrorLbl.Visible = true;
+            SignInErrorLbl.Text = "DataBase Error please try again later";
         }
+        MasterPageBirthday.Text = string.Empty;
+        MasterPageComfirmPassword.Text = string.Empty;
+        MasterPageEmail.Text = string.Empty;
+        MasterPageFirstName.Text = string.Empty;
+        MasterPageLastName.Text = string.Empty;
+        MasterPagePassword.Text = string.Empty;
     }
-
+    public void GetUserInfo()
+    {
+        try
+        {
+            if (cn.State == System.Data.ConnectionState.Closed)
+            {
+                cn.Open();
+            }
+            string SqlGetUserInfos = "SELECT        Users.UserID, Users.FirstName, Users.LastName, Users.ImagePath, UserRoles.Roles" +
+                                                " FROM Users INNER JOIN UserRoles ON Users.UserID = UserRoles.UserID " +
+                                                "where Users.Email =@Email";
+            SqlCommand Finder = new SqlCommand(SqlGetUserInfos, cn);
+            Finder.Parameters.AddWithValue("@Email", Session["SignInEmail"]);
+            SqlDataReader dataReader = Finder.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                if (dataReader.Read())
+                {
+                    Session["UserID"] = dataReader.GetInt32(0);
+                    Session["FullName"] = dataReader.GetString(1) +" "+ dataReader.GetString(2);
+                    //Session["ImagePath"] = dataReader.GetString(3);
+                    Session["Roles"] = dataReader.GetString(4);
+                }
+            }
+            dataReader.Close();
+            MasterUserName.Visible = true;
+            MasterUserName.Text = Session["FullName"].ToString();
+        }
+        catch (Exception)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            SignInErrorLbl.Visible = true;
+            SignInErrorLbl.Text = "DataBase Error please try again later";
+        }
+        cn.Close();
+    }
     public void GetToken(string code)
     {
         string poststring = "grant_type=authorization_code&code=" + code + "&client_id=" + clientid + "&client_secret=" + clientsecret + "&redirect_uri=" + redirection_url + "";
@@ -96,5 +214,44 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         MasterPageEmail.Text = userinfo.email;
         MasterPageBirthday.Text = userinfo.birthday;
         //a
+    }
+
+    protected void SignUpEmailCustomValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+    {
+        try
+        {
+            if (cn.State == System.Data.ConnectionState.Closed)
+            {
+                cn.Open();
+            }
+            string sql ="Select Email from Users";
+            SqlCommand sqlCommand = new SqlCommand(sql,cn);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    string EmailInDataBase = reader.GetString(0).ToString();
+                    if (EmailInDataBase == MasterPageEmail.Text)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+                        args.IsValid = false;
+                        break;
+                    }
+ 
+                }
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+            reader.Close();
+            cn.Close();
+        }
+        catch (Exception)
+        {
+            args.IsValid = false;
+            SignUpEmailCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
+        }
     }
 }
