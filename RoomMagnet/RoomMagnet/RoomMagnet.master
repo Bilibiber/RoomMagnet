@@ -169,8 +169,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="Email Required" ControlToValidate="MasterPageEmail" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordLowerCase" runat="server" ErrorMessage="Password must be at least 8 characters long + "/n"
-                                                                                                                                      Password must contain at least one lower case character" ValidationExpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&£*\-_+=[\]{}|\\:',?/`~"();!]|\.(?!@)){8,16}$" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordLowerCase" runat="server" ErrorMessage="Password must be at least 8 characters long and contains at least one: Lower Case, Upper Case, Special Character" ValidationExpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&£*\-_+=[\]{}|\\:',?/`~();!]|\.(?!@)){8,16}$" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
                          <%--<asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordUpperCase" runat="server" ErrorMessage="Password must contain at least one upper case character" ValidationExpression="(?=.*[A-Z])" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
                          <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordNumber" runat="server" ErrorMessage="Password must contain at least one numeric value" ValidationExpression="(?=.*\d)" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
                          <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordSpecialCharacters" runat="server" ErrorMessage="Password must contain at least one special character. For example:% & , ; = $" ValidationExpression="[@#$%^&£*\-_+=[\]{}|\\:',?`~();!]" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
@@ -213,7 +212,7 @@
                                 <ul class="list-unstyled">
                                     <li class="page-item"><a href="About.aspx">About Us</a></li>
 
-                                    <li class="page-item"><a href="Contact.aspx">Conact Us</a></li>
+                                    <li class="page-item"><a href="Contact.aspx">Contact Us</a></li>
 
                                     <li class="page-item"><a href="Terms.aspx">Terms</a></li>
 
@@ -227,7 +226,7 @@
                             <div class="widget widget_pages">
                                 <h2 class="widget-title">Helpful Links</h2>
                                 <ul class="list-unstyled">
-                                    <li class="page-item"><a href="WebPages/FAQ.aspx">FAQ</a></li>
+                                    <li class="page-item"><a href="FAQ.aspx">FAQ</a></li>
                                 </ul>
                             </div>
                         </div>
