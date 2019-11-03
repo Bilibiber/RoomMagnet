@@ -25,6 +25,7 @@
             <asp:TextBox ID="SearchResultMaxPrice" runat="server"></asp:TextBox>
             <asp:CompareValidator ID="SearchResultsMaxPriceValidator" ControlToValidate="SearchResultMaxPrice" runat="server" Operator="DataTypeCheck" Type="Currency" Text="(Invalid Price)"></asp:CompareValidator>
             <asp:Label ID="SearchLabel" runat="server" Text=""></asp:Label>
+            <asp:Image ID="Image2" runat="server" ImageUrl="https://property-created.s3.us-west-2.amazonaws.com/Property%20Pictures/testProperty.jpg?X-Amz-Expires=3592&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXZN4IZI4EEHR4OUZ/20191103/us-west-2/s3/aws4_request&X-Amz-Date=20191103T213457Z&X-Amz-SignedHeaders=host&X-Amz-Signature=7c1b0de04f9f3cd5f8062a22fc4b910e306f72d5fdc67b0b9bd7265836b2b28a" />
             </div>
         <div class="row">
             Start Date

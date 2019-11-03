@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using Microsoft.AspNetCore.Builder;
+
 
 public partial class WebPages_SearchResult : System.Web.UI.Page
 {
@@ -51,8 +51,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                 + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
         + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
             +"AND((BedsAvailable "+ BedsCmpr+ ")"
-            + "AND((StartDate = " + SearchResultStartDate.Text + ")"
-            + "AND((EndDate = " + SearchResultEndDate.Text + ")";
+            + "AND(( StartDate >=" + SearchResultStartDate.Text + ")"
+            + "AND((EndDate <= " + SearchResultEndDate.Text + ")";
         }
         else
         {
@@ -62,8 +62,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                  + " AND ((RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
          + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
                 +"AND (BedsAvailable " + BedsCmpr + ")"
-               + "AND((StartDate = " + SearchResultStartDate.Text + ")"
-               + "AND((EndDate = " + SearchResultEndDate.Text + ")";
+               + "AND((StartDate >= " + SearchResultStartDate.Text + ")"
+               + "AND((EndDate <= " + SearchResultEndDate.Text + ")";
         }
 
             if (SearchResultText.Text != String.Empty)
@@ -77,8 +77,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                     string x = reader.GetString(0);
 
                     PictureBox PropertyPic = new PictureBox();
-                    PropertyPic.Load(reader.GetString(7));
-                    Console.WriteLine(reader.GetString(5));
+                    PropertyPic.Load("https://property-created.s3.us-west-2.amazonaws.com/Property%20Pictures/testProperty.jpg?X-Amz-Expires=3592&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXZN4IZI4EEHR4OUZ/20191103/us-west-2/s3/aws4_request&X-Amz-Date=20191103T213457Z&X-Amz-SignedHeaders=host&X-Amz-Signature=7c1b0de04f9f3cd5f8062a22fc4b910e306f72d5fdc67b0b9bd7265836b2b28a");
+                    
                 }
                 reader.NextResult();
             }
@@ -91,11 +91,6 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
 
         }
-
-    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        int nub = DropDownList1.SelectedValue;
-    }
 
     protected void SearchResultEndDate_TextChanged(object sender, EventArgs e)
     {
