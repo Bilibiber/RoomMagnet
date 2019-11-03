@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="WebPages_Contact" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Title" Runat="Server">
+    Contact Us
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Contact</title>
     <!-- inject:css-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="vendor_assets/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="vendor_assets/css/brands.css">
     <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css">
     <link rel="stylesheet" href="vendor_assets/css/jquery-ui.css">
@@ -25,96 +33,14 @@
 <body>
     <section class="header-breadcrumb bgimage overlay overlay--dark">
         <div class="bg_image_holder"><img src="img/rm/home-4.jpg" alt=""></div>
-        <div class="mainmenu-wrapper">
-            <div class="menu-area menu1 ">
-                <div class="top-menu-area">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="menu-fullwidth">
-                                    <div class="logo-wrapper order-lg-0 order-sm-1">
-                                        <div class="logo logo-top">
-                                            <a href="index.html"><img src="img/rm/logo-2.png" alt="logo image" class="img-fluid"></a>
-                                        </div>
-                                    </div><!-- ends: .logo-wrapper -->
-                                    <div class="menu-container order-lg-1 order-sm-0">
-                                        <div class="d_menu">
-                                            <nav class="navbar navbar-expand-lg mainmenu__menu">
-                                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#direo-navbar-collapse" aria-controls="direo-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                                                    <span class="navbar-toggler-icon icon-menu"><i class="la la-reorder"></i></span>
-                                                </button>
-                                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                                <div class="collapse navbar-collapse" id="direo-navbar-collapse">
-                                                    <ul class="navbar-nav">
-
-
-                                                <!-- /.navbar-collapse -->
-                                            </nav>
-                                        </div>
-                                    </div>
-
-
-                                        <!-- start .author-area -->
-                                        <div class="author-area">
-                                            <div class="author__access_area">
-                                                <ul class="d-flex list-unstyled align-items-center">
-                                                  <li>
-                                                    <a href="about.html">About</a>
-                                                  </li>
-                                                  <li>
-                                                      <a href="" class="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#signup_modal">Sign Up</a>
-                                                  </li>
-                                                  <li>
-                                                    <a href="" class="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal">Login</a>
-
-                                                  </li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- end .author-area -->
-                                        <div class="offcanvas-menu d-none">
-                                            <a href="" class="offcanvas-menu__user"><i class="la la-user"></i></a>
-                                            <div class="offcanvas-menu__contents">
-                                                <a href="" class="offcanvas-menu__close"><i class="la la-times-circle"></i></a>
-                                                <div class="author-avatar">
-                                                    <img src="img/author-avatar.png" alt="" class="rounded-circle">
-                                                </div>
-                                                <ul class="list-unstyled">
-                                                    <li><a href="dashboard-listings.html">My Profile</a></li>
-                                                    <li><a href="dashboard-listings.html">My Listing</a></li>
-                                                    <li><a href="dashboard-listings.html">Favorite Listing</a></li>
-                                                    <li><a href="add-listing.html">Add Listing</a></li>
-                                                    <li><a href="">Logout</a></li>
-                                                </ul>
-                                                <div class="search_area">
-                                                    <form action="/">
-                                                        <div class="input-group input-group-light">
-                                                            <input type="text" class="form-control search_field" placeholder="Search here..." autocomplete="off">
-                                                        </div>
-                                                        <button type="submit" class="btn btn-sm btn-secondary">Search</button>
-                                                    </form>
-                                                </div><!-- ends: .search_area -->
-                                            </div><!-- ends: .author-info -->
-                                        </div><!-- ends: .offcanvas-menu -->
-                                    </div><!-- ends: .menu-right -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end /.row -->
-                    </div>
-                    <!-- end /.container -->
-                </div>
-                <!-- end  -->
-            </div>
-        </div><!-- ends: .mainmenu-wrapper -->
+        
 
 
         <div class="breadcrumb-wrapper content_above">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <%--<h1 class="page-title">Contact Us</h1>--%>
+                        <h1 class="page-title">Contact Us</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -137,13 +63,13 @@
                         <div class="atbdp-widget-listing-contact contact-form">
                             <form id="atbdp-contact-form" class="form-vertical" role="form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="NameBox" placeholder="Name" required="">
+                                    <input type="text" class="form-control" id="atbdp-contact-name" placeholder="Name" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="EmailBox" placeholder="Email" required="">
+                                    <input type="email" class="form-control" id="atbdp-contact-email" placeholder="Email" required="">
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="ContactMessageBox" rows="6" placeholder="Message" required=""></textarea>
+                                    <textarea class="form-control" id="atbdp-contact-message" rows="6" placeholder="Message" required=""></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-gradient btn-gradient-one btn-block">Send Message</button>
                             </form>
@@ -175,80 +101,7 @@
     </section><!-- ends: .contact-area -->
 
 
-    <!-- begin footer -->
-      <footer class="footer-three footer-grey footer-links">
-          <div class="footer-top">
-              <div class="container">
-                  <div class="row">
-
-                      <div class="col-lg-3 ">
-                          <div class="widget widget_pages">
-                              <h2 class="widget-title">Company Info</h2>
-                              <ul class="list-unstyled">
-                                  <li class="page-item"><a href="">About Us</a></li>
-                                  <li class="page-item"><a href="">Conact Us</a></li>
-                                  <li class="page-item"><a href="">Terms</a></li>
-                                  <li class="page-item"><a href="">Privacy Policy</a></li>
-                              </ul>
-                          </div>
-                      </div><!-- ends: .col-lg-3 -->
-
-                      <div class="col-lg-3 ">
-                          <div class="widget widget_pages">
-                              <h2 class="widget-title">Helpful Links</h2>
-                              <ul class="list-unstyled">
-                                  <li class="page-item"><a href="">Sign In</a></li>
-                                  <li class="page-item"><a href="">FAQ</a></li>
-                              </ul>
-                          </div>
-                      </div><!-- ends: .col-lg-3 -->
-
-                      <div class="col-lg-3 " >
-                          <div class="widget widget_social">
-                              <h2 class="widget-title">Connect with Us</h2>
-                              <ul class="list-unstyled social-list">
-                                  <li><a href=""><span class="mail"><i class="la la-envelope"></i></span> Contact Support</a></li>
-                                  <li><a href="https://www.instagram.com/roommagnet/"><span class="instagram"><i class="fab fa-instagram"></i></span> Instagram</a></li>
-                              </ul>
-                          </div><!-- ends: .widget -->
-                      </div><!-- ends: .col-lg-3 -->
-
-                      <div class="col-lg-3 " >
-                          <div class="footer-logo">
-                              <img src="img/rm/logo-2.png">
-                          </div><!-- ends: .widget -->
-                      </div><!-- ends: .col-lg-3 -->
-
-                  </div>
-              </div>
-          </div><!-- ends: .footer-top -->
-          <div class="footer-bottom">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-lg-12">
-                          <div class="footer-bottom--content">
-                            <div class="col-lg-4">
-
-                            </div>
-
-                              <div class="col-lg-4 align-items-center mx-auto text-center">
-                                <p class="m-0 copy-text">©2019 RoomMagnet</p>
-                                <img src="img/rm/luminous-trans-small.png">
-
-                              </div>
-
-                                <div class="col-lg-4">
-                                  <ul class="list-unstyled lng-list">
-                                      <li><a href="">English</a></li>
-                                  </ul>
-                                </div>
-
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div><!-- ends: .footer-bottom -->
-      </footer><!-- ends: .footer -->
+    
 
     <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -334,3 +187,5 @@
 </body>
 
 </html>
+</asp:Content>
+

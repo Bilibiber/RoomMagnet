@@ -33,89 +33,7 @@
     <body>
         <section class="header-breadcrumb bgimage overlay overlay--dark">
             <div class="bg_image_holder"><img src="img/rm/home-5.jpg" alt="home"></div>
-            <div class="mainmenu-wrapper">
-                <div class="menu-area menu1 ">
-                    <div class="top-menu-area">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="menu-fullwidth">
-                                        <div class="logo-wrapper order-lg-0 order-sm-1">
-                                            <div class="logo logo-top">
-                                                <a href="index.html"><img src="img/rm/logo-2.png" alt="logo image" class="img-fluid"></a>
-                                            </div>
-                                        </div><!-- ends: .logo-wrapper -->
-                                        <div class="menu-container order-lg-1 order-sm-0">
-                                            <div class="d_menu">
-                                                <nav class="navbar navbar-expand-lg mainmenu__menu">
-                                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#direo-navbar-collapse" aria-controls="direo-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                                                        <span class="navbar-toggler-icon icon-menu"><i class="la la-reorder"></i></span>
-                                                    </button>
-                                                    <!-- Collect the nav links, forms, and other content for toggling -->
-                                                    <div class="collapse navbar-collapse" id="direo-navbar-collapse">
-                                                        <ul class="navbar-nav">
-
-
-                                                    <!-- /.navbar-collapse -->
-                                                </nav>
-                                            </div>
-                                        </div>
-
-
-                                            <!-- start .author-area -->
-                                            <div class="author-area">
-                                                <div class="author__access_area">
-                                                    <ul class="d-flex list-unstyled align-items-center">
-                                                      <li>
-                                                        <a href="about.html">About</a>
-                                                      </li>
-                                                      <li>
-                                                          <a href="" class="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#signup_modal">Sign Up</a>
-                                                      </li>
-                                                      <li>
-                                                        <a href="" class="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal">Login</a>
-
-                                                      </li>
-
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <!-- end .author-area -->
-                                            <div class="offcanvas-menu d-none">
-                                                <a href="" class="offcanvas-menu__user"><i class="la la-user"></i></a>
-                                                <div class="offcanvas-menu__contents">
-                                                    <a href="" class="offcanvas-menu__close"><i class="la la-times-circle"></i></a>
-                                                    <div class="author-avatar">
-                                                        <img src="img/author-avatar.png" alt="" class="rounded-circle">
-                                                    </div>
-                                                    <ul class="list-unstyled">
-                                                        <li><a href="dashboard-listings.html">My Profile</a></li>
-                                                        <li><a href="dashboard-listings.html">My Listing</a></li>
-                                                        <li><a href="dashboard-listings.html">Favorite Listing</a></li>
-                                                        <li><a href="add-listing.html">Add Listing</a></li>
-                                                        <li><a href="">Logout</a></li>
-                                                    </ul>
-                                                    <div class="search_area">
-                                                        <form action="/">
-                                                            <div class="input-group input-group-light">
-                                                                <input type="text" class="form-control search_field" placeholder="Search here..." autocomplete="off">
-                                                            </div>
-                                                            <button type="submit" class="btn btn-sm btn-secondary">Search</button>
-                                                        </form>
-                                                    </div><!-- ends: .search_area -->
-                                                </div><!-- ends: .author-info -->
-                                            </div><!-- ends: .offcanvas-menu -->
-                                        </div><!-- ends: .menu-right -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end /.row -->
-                        </div>
-                        <!-- end /.container -->
-                    </div>
-                    <!-- end  -->
-                </div>
-            </div><!-- ends: .mainmenu-wrapper -->
+            
 
             <div class="breadcrumb-wrapper content_above">
                 <div class="container">
@@ -151,90 +69,17 @@
                     </div>
 
                     <div class="col-lg-12">
-                        <h3>Part 2</h3>
+                        <h3>2. ANALYZING COMMUNICATIONS</h3>
                     </div><!-- ends: .col-lg-12 -->
                     <div class="col-lg-12">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                      <p>Ultrices eros in cursus turpis. Commodo viverra maecenas accumsan lacus vel facilisis volutpat. Cras sed felis eget velit. Libero justo laoreet sit amet. Magna etiam tempor orci eu lobortis elementum nibh. Et magnis dis parturient montes nascetur. Laoreet non curabitur gravida arcu ac tortor. Sit amet aliquam id diam maecenas. Et leo duis ut diam quam. Iaculis at erat pellentesque adipiscing commodo elit at imperdiet dui. Vitae tortor condimentum lacinia quis vel eros donec ac odio. Risus viverra adipiscing at in tellus integer feugiat. Ut venenatis tellus in metus vulputate. Id aliquet lectus proin nibh nisl. Ultrices sagittis orci a scelerisque.</p>
+                      <p>We may review, scan, or analyze your communications on the RoomMagnet Platform for fraud prevention, risk assessment regulatory compliance, investigation, product development, research, analytics, and customer support purposes. For example, as part of our fraud prevention efforts, we scan and analyze messages to mask contact information and references to other websites. </p>
+                      <p>In some cases, we may also scan, review, or analyze messages to debug, improve, and expand product offerings. We use automated methods where reasonably possible. However, occasionally we may need to manually review some communications, such as fraud investigations and customer support, or to assess and improve the functionality of these automated tools. We will not review, scan, or analyze your messaging communications to send third party messages to you, and we will not sell reviews or analyses of these communications.</p>
                     </div>
                 </div>
             </div>
         </section><!-- ends: .faq-wrapper -->
 
-        <!-- begin footer -->
-          <footer class="footer-three footer-grey footer-links">
-              <div class="footer-top">
-                  <div class="container">
-                      <div class="row">
-
-                          <div class="col-lg-3 ">
-                              <div class="widget widget_pages">
-                                  <h2 class="widget-title">Company Info</h2>
-                                  <ul class="list-unstyled">
-                                      <li class="page-item"><a href="">About Us</a></li>
-                                      <li class="page-item"><a href="">Conact Us</a></li>
-                                      <li class="page-item"><a href="">Terms</a></li>
-                                      <li class="page-item"><a href="">Privacy Policy</a></li>
-                                  </ul>
-                              </div>
-                          </div><!-- ends: .col-lg-3 -->
-
-                          <div class="col-lg-3 ">
-                              <div class="widget widget_pages">
-                                  <h2 class="widget-title">Helpful Links</h2>
-                                  <ul class="list-unstyled">
-                                      <li class="page-item"><a href="">Sign In</a></li>
-                                      <li class="page-item"><a href="">FAQ</a></li>
-                                  </ul>
-                              </div>
-                          </div><!-- ends: .col-lg-3 -->
-
-                          <div class="col-lg-3 " >
-                              <div class="widget widget_social">
-                                  <h2 class="widget-title">Connect with Us</h2>
-                                  <ul class="list-unstyled social-list">
-                                      <li><a href=""><span class="mail"><i class="la la-envelope"></i></span> Contact Support</a></li>
-                                      <li><a href="https://www.instagram.com/roommagnet/"><span class="instagram"><i class="fab fa-instagram"></i></span> Instagram</a></li>
-                                  </ul>
-                              </div><!-- ends: .widget -->
-                          </div><!-- ends: .col-lg-3 -->
-
-                          <div class="col-lg-3 " >
-                              <div class="footer-logo">
-                                  <img src="img/rm/logo-2.png">
-                              </div><!-- ends: .widget -->
-                          </div><!-- ends: .col-lg-3 -->
-
-                      </div>
-                  </div>
-              </div><!-- ends: .footer-top -->
-              <div class="footer-bottom">
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-lg-12">
-                              <div class="footer-bottom--content">
-                                <div class="col-lg-4">
-
-                                </div>
-
-                                  <div class="col-lg-4 align-items-center mx-auto text-center">
-                                    <p class="m-0 copy-text">©2019 RoomMagnet</p>
-                                    <img src="img/rm/luminous-trans-small.png">
-
-                                  </div>
-
-                                    <div class="col-lg-4">
-                                      <ul class="list-unstyled lng-list">
-                                          <li><a href="">English</a></li>
-                                      </ul>
-                                    </div>
-
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div><!-- ends: .footer-bottom -->
-          </footer><!-- ends: .footer -->
+        
 
         <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
