@@ -6,9 +6,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-      <section class="intro-wrapper bgimage overlay overlay--dark">
-          <div class="bg_image_holder">
-              <asp:Image ID="HomeImage" runat="server" ImageUrl="~/img/rm/home-2.png" />
+      <section class="intro-wrapper bgimage overlay--dark overlay">
+          <div class="home-image">
+              <asp:Image ID="HomeImage" runat="server" ImageUrl="~/img/home-2-large.png" alt="" />
           </div>
        <div class="directory_content_area">
             <div class="container">
@@ -16,18 +16,16 @@
                     <div class="col-lg-10 offset-lg-1">
                         <div class="search_title_area">
                             <h2 class="title">START INTERGENERATIONAL HOMESHARING WITH CONFIDENCE TODAY</h2>
-                        </div><!-- ends: .search_title_area -->
-                        <form action="/" class="search_form">
-                            <div class="atbd_seach_fields_wrapper">
+                        </div>
+                            <div class="atbd_seach_fields_wrapper input-group">
                                 <div class="single_search_field search_query">
                                     <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields" placeholder="Enter a city or zip code"></asp:TextBox>
                                 </div>
 
-                                <div class="atbd_submit_btn">
+                                <div class="atbd_submit_btn input-group-append">
                                     <asp:Button ID="HomePageSearchButton" runat="server" Text="Search"  CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search"/>
                                 </div>
                             </div>
-                        </form><!-- ends: .search_form -->
 
                     </div><!-- ends: .col-lg-10 -->
                 </div>
@@ -43,7 +41,7 @@
                         <p>Earn income renting to qualified adults.</p>
                     </div>
                     <div class="section-title text-left">
-                        <%--<a href="" class="btn btn-gradient btn-gradient-two">Become a Host</a>--%>
+                      <asp:Button ID="HomePageBecome" runat="server" Text="Become a Host" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" />
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -115,7 +113,7 @@
                                     <div class="atbd_listing_info text-center">
                                         <div class="atbd_content_upper">
                                             <h4 class="atbd_listing_title">
-                                                <a href="">Step 2</a>
+                                                Step 2
                                             </h4>
                                             <div class="atbd_listing_data_list">
                                                 <ul>

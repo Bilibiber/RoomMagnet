@@ -29,7 +29,7 @@ public class EmailUtility
         mail.Subject = subject;
         // email body, html tag friendly
         mail.IsBodyHtml = true;
-        mail.Body = body; ;
+        mail.Body = body;
 
         smtpClient.Credentials = new System.Net.NetworkCredential(FROMEMAILADDRESS, FROMEMAILPASSWORD);
         smtpClient.EnableSsl = true;
