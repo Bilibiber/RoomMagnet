@@ -11,4 +11,12 @@ public partial class WebPages_Setting : System.Web.UI.Page
     {
 
     }
+
+    protected void updateusersetting_Click(object sender, EventArgs e)
+    {
+
+        string email = Users.UserArray[0].getEmail();
+        Labeltest.Text = email;
+
+    }
 }

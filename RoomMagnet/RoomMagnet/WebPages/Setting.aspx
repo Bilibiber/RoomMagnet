@@ -70,9 +70,11 @@
 
         .container {
         }
+
         .auto-style1 {
             width: 243px;
         }
+
         .auto-style2 {
             width: 248px;
         }
@@ -193,8 +195,17 @@
                 </td>
             </tr>
         </table>
+        <br />
+        &nbsp;&nbsp;&nbsp;
         <asp:Label runat="server" Text="Add Description: "></asp:Label><br />
+        &nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="TextBox1" runat="server" Height="146px" Width="434px"></asp:TextBox>
+        <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Button ID="updateusersetting" runat="server" class="btn btn-danger" Text="Update" CausesValidation="False" OnClick="updateusersetting_Click" />
+        &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="Labeltest" runat="server" Text="Label"></asp:Label>
     </div>
 
 </asp:Content>
