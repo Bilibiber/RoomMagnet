@@ -31,6 +31,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         }
         if (IsPostBack)
             return;
+
     }
 
     protected void GmailSignIn_Click(object sender, EventArgs e)
@@ -272,12 +273,12 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     }
     protected void GotoDashBoard_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("Renter.aspx");
     }
 
     protected void GotoSetting_Click(object sender, EventArgs e)
     {
-
+        
     }
     protected void MasterPageSignOut_Click(object sender, EventArgs e)
     {
