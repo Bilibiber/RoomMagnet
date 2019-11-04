@@ -5,7 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
-    <p>
-    </p>
+    <div class="col-lg-12">
+                    <h3>SETTING NOTES TO ADD FROM BOB/JOE</h3>
+                    
+                </div>
 </asp:Content>
 
