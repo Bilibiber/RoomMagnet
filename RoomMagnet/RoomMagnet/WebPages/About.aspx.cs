@@ -11,12 +11,12 @@ public partial class WebPages_About : System.Web.UI.Page
     {
         if (Session["SignInEmail"] == null)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
         }
         else
         {
             var master = Master as RoomMagnet;
-            master.
+            master.AfterLogin();
         }
     }
 }

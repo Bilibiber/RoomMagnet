@@ -48,7 +48,6 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         {
             Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
             
-            ;
             string Welcomemailstring = "Welcome to RoomMagnet! UserName: "+ Session["FullName"] +" Password: " + Session["Password"];
 
             string EnteredEmailAddress = MasterPageEmail.Text;
