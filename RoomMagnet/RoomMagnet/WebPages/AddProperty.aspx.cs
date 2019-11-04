@@ -60,4 +60,9 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
     }
 
+
+    protected void testimage_Click(object sender, EventArgs e)
+    {
+        
+    }
 }

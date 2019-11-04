@@ -12,15 +12,17 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <style>
-    /*upload images*/
+        /*upload images*/
         .preview-images-zone {
-            width: 100%;
+            width: 72%;
             border: 1px solid #ddd;
             min-height: 180px;
             /* display: flex; */
             padding: 5px 5px 0px 5px;
             position: relative;
             overflow:auto;
+            top: 0px;
+            left: 0px;
         }
         .preview-images-zone > .preview-image:first-child {
             height: 185px;
@@ -312,6 +314,7 @@
                             </div>
                         </div>
                         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                    <asp:Button runat="server" Text="testimage" ID="testimage" OnClick="testimage_Click"></asp:Button>
             </asp:Panel>
 
     <%--renter Amenities panel--%>
