@@ -50,20 +50,20 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (ZipCode = " + SearchResultText.Text + ")"
                 + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
         + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
-            +"AND((BedsAvailable "+ BedsCmpr+ ")"
-            + "AND(( StartDate >=" + SearchResultStartDate.Text + ")"
-            + "AND((EndDate <= " + SearchResultEndDate.Text + ")";
+            +"AND (BedsAvailable "+ BedsCmpr+ ")"
+            + "AND (StartDate >=" + SearchResultStartDate.Text + ")"
+            + "AND (EndDate <= " + SearchResultEndDate.Text + ")";
         }
         else
         {
             sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
          + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
          + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = " + SearchResultText.Text + ")"
-                 + " AND ((RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
+                 + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
          + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
-                +"AND (BedsAvailable " + BedsCmpr + ")"
-               + "AND((StartDate >= " + SearchResultStartDate.Text + ")"
-               + "AND((EndDate <= " + SearchResultEndDate.Text + ")";
+                +" AND (AvailableBedrooms " + BedsCmpr + ")"
+               + " AND ([Property].StartDate >=  \'" + SearchResultStartDate.Text + "\')"
+               + " AND ([Property].EndDate <=  \'" + SearchResultEndDate.Text + "\')";
         }
 
             if (SearchResultText.Text != String.Empty)
