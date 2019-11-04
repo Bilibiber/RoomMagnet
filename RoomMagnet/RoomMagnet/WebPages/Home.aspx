@@ -113,7 +113,7 @@
                                     <div class="atbd_listing_info text-center">
                                         <div class="atbd_content_upper">
                                             <h4 class="atbd_listing_title">
-                                                <a href="">Step 2</a>
+                                                Step 2
                                             </h4>
                                             <div class="atbd_listing_data_list">
                                                 <ul>

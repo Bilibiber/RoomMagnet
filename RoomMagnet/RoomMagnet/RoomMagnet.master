@@ -55,15 +55,6 @@
                                         </div>
                                     </div>
                                     <!-- ends: .logo-wrapper -->
-                                    <div class="menu-container order-lg-1 order-sm-0">
-                                        <div class="d_menu">
-                                            <nav class="navbar navbar-expand-lg mainmenu__menu">
-                                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                                <!-- /.navbar-collapse -->
-                                            </nav>
-                                        </div>
-                                    </div>
-
                                     <!-- start .author-area -->
                                     <div class="author-area ml-auto">
                                         <div class="author__access_area">
@@ -74,12 +65,31 @@
                                                 <li>
                                                     <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
                                                 </li>
+                                                <li class="nav-item dropdown ml-auto">
+                                                    <asp:ImageButton ID="MasterPageUserProfileImage" runat="server" Visible="false" CssClass="nav-link dropdown-toggle rounded-circle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ImageUrl="~/img/40x40.png"/>
+                                                    
+                                                    <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                                                        <asp:LinkButton ID="GotoDashBoard" runat="server" CssClass="dropdown-item" OnClick="GotoDashBoard_Click">My Dashboard</asp:LinkButton>
+                                                        <asp:LinkButton ID="GotoSetting" runat="server" CssClass="dropdown-item" OnClick="GotoSetting_Click">Setting</asp:LinkButton>                                                      
+                                                          <div class="dropdown-divider"></div>
+                                                        <asp:LinkButton ID="LogOut" runat="server" CssClass="dropdown-item" OnClick="MasterPageSignOut_Click">Log Out</asp:LinkButton>
+                                                     </div>
+                                                </li>
                                                 <li>
                                                     <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
-                                                    <asp:Image ID="Image2" runat="server" />
-                                                    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="MasterPageSignOut_Click" />
                                                 </li>
+                                                
+                                                    
+                                                
+                                               
+<%--                                                    <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
+                                                    <asp:Image ID="Image2" runat="server" />
+                                                    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="MasterPageSignOut_Click" />--%>
+                                              
                                             </ul>
+                                            
+
+                                                        
                                         </div>
                                     </div>
                                 </div>

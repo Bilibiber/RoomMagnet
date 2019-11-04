@@ -78,6 +78,12 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         {
             // lBL 
         }
+        MasterPageBirthday.Text = string.Empty;
+        MasterPageComfirmPassword.Text = string.Empty;
+        MasterPageEmail.Text = string.Empty;
+        MasterPageFirstName.Text = string.Empty;
+        MasterPageLastName.Text = string.Empty;
+        MasterPagePassword.Text = string.Empty;
     }
 
     protected void MasterPageSignIn_Click(object sender, EventArgs e)
@@ -104,6 +110,8 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
                     {
                         GetUserInfo();
+                        MasterPageSignUp.Visible = false;
+                        MasterPageLogIn.Visible = false;
                     }
                     else
                     {
@@ -127,12 +135,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             SignInErrorLbl.Visible = true;
             SignInErrorLbl.Text = "DataBase Error please try again later";
         }
-        MasterPageBirthday.Text = string.Empty;
-        MasterPageComfirmPassword.Text = string.Empty;
-        MasterPageEmail.Text = string.Empty;
-        MasterPageFirstName.Text = string.Empty;
-        MasterPageLastName.Text = string.Empty;
-        MasterPagePassword.Text = string.Empty;
+
     }
     public void GetUserInfo()
     {
@@ -161,6 +164,8 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             dataReader.Close();
             MasterUserName.Visible = true;
             MasterUserName.Text = Session["FullName"].ToString();
+            MasterPageUserProfileImage.Visible = true;
+
         }
         catch (Exception)
         {
@@ -260,5 +265,15 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         Session.Clear();
         Response.Redirect("Home.aspx");
         //MasterUserName.Visible = false;
+    }
+
+    protected void GotoDashBoard_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void GotoSetting_Click(object sender, EventArgs e)
+    {
+
     }
 }
