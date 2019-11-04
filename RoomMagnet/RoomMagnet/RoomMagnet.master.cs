@@ -94,8 +94,6 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     protected void MasterPageSignIn_Click(object sender, EventArgs e)
     {
         string sql = "Select Password from Users where Email = @Email ";
-
-        Session["SignInEmail"] = SignInEmail.Text;
         try
         {
             string storedHash;
@@ -114,7 +112,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     reader.Close();
                     if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
                     {
+                        Session["SignInEmail"] = SignInEmail.Text;
                         GetUserInfo();
+                        AfterLogin();
                     }
                     else
                     {
@@ -170,8 +170,6 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 }
             }
             dataReader.Close();
-            MasterUserName.Visible = true;
-            MasterUserName.Text = Session["FullName"].ToString();
         }
         catch (Exception)
         {
@@ -180,6 +178,14 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             SignInErrorLbl.Text = "DataBase Error please try again later";
         }
         cn.Close();
+    }
+    public void AfterLogin()
+    {
+        MasterUserName.Visible = true;
+        MasterUserName.Text = Session["FullName"].ToString();
+        MasterPageUserProfileImage.Visible = true;
+        MasterPageSignUp.Visible = false;
+        MasterPageLogIn.Visible = false;
     }
     public void GetToken(string code)
     {
@@ -264,5 +270,20 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             args.IsValid = false;
             SignUpEmailCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
         }
+    }
+    protected void GotoDashBoard_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void GotoSetting_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void MasterPageSignOut_Click(object sender, EventArgs e)
+    {
+        Session.Abandon();
+        Session.Clear();
+        Response.Redirect("Home.aspx");
     }
 }
