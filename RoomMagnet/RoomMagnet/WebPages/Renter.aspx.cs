@@ -22,13 +22,47 @@ public partial class WebPages_Renter : System.Web.UI.Page
             var master = Master as RoomMagnet;
             master.AfterLogin();
         }
-    
+
+
         if (!IsPostBack)
         {
-            addCountry.DataSource = objcountries();
-            addCountry.DataBind();
-        }
+            SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+            db.Open();
+            System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
+            selectuser.Connection = db;
+            int userid = Convert.ToInt32(Session["UserID"]);
+            selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description], [DateOfBirth] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
+            SqlDataReader getinfor = selectuser.ExecuteReader();
+            while (getinfor.Read())
+            {
+                hellow.Text = "Hello, " + getinfor.GetString(0);
+                if (!getinfor.IsDBNull(1))
+                {
+                    userGender.Text = getinfor.GetString(1);
+                }
+                if (!getinfor.IsDBNull(2))
+                {
+                    userOccu.Text = getinfor.GetString(2);
+                }
+                if (!getinfor.IsDBNull(3))
+                {
+                    userDes.Text = getinfor.GetString(3);
+                }
+                if (!getinfor.IsDBNull(4))
+                {
+                    DateTime birth = getinfor.GetDateTime(4);
+                    DateTime now = DateTime.Now;
+                    int age = now.Year - birth.Year;
+                    if (now.Month < birth.Month || (now.Month == birth.Month && now.Day < birth.Day))
+                        age--;
+                    userAge.Text = age.ToString();
+                }
 
+            }
+            getinfor.Close();
+            db.Close();
+        }
 
 
     }
@@ -57,9 +91,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentermymessage.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.Red;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -75,9 +106,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentersearch.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.Red;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -93,9 +121,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentermymessage.Visible = false;
         renterconnection.Visible = true;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.Red;
@@ -111,9 +136,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentermymessage.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = true;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -130,9 +152,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentermymessage.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = true;
-        renteraddAmenities.Visible = true;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -142,14 +161,12 @@ public partial class WebPages_Renter : System.Web.UI.Page
     }
     protected void renterSetting_Click(object sender, EventArgs e)
     {
+        Response.Redirect("Setting.aspx");
         renterinfor.Visible = false;
         rentersearch.Visible = false;
         rentermymessage.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = true;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -158,25 +175,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterSetting.ForeColor = System.Drawing.Color.Red;
     }
 
-    protected void post_Click(object sender, EventArgs e)
-    {
-        /*
-         * This will be saved for the update user information button.
-         * There will be no information added to the host table outside of the update and signup pages
-         */
-        cn.Open();
-        string insert = "INSERT INTO [dbo].[Hosts]([HostID],[StreetAddress] ,[City],[HomeState],[Country],[ZipCode])" +
-            "VALUES" +
-            "(" + 2 + " @StreetAddress, @City, @HomeState, @Country, @ZipCode)";
-        SqlCommand inserted = new SqlCommand(insert, cn);
-        inserted.Parameters.AddWithValue("@StreetAddress", addStreet.Text);
-        inserted.Parameters.AddWithValue("@City", addCity.Text);
-        inserted.Parameters.AddWithValue("@HomeState", addState.SelectedValue);
-        inserted.Parameters.AddWithValue("@Country", addCountry.SelectedValue);
-        inserted.Parameters.AddWithValue("ZipCode", addZip.Text);
-        inserted.ExecuteNonQuery();
-        cn.Close();
-    }
 
 
     protected void cancel_Click(object sender, EventArgs e)

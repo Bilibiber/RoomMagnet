@@ -11,13 +11,25 @@ public partial class WebPages_Setting : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["SignInEmail"] == null)
+        {
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        }
+        else
+        {
+            var master = Master as RoomMagnet;
+            master.AfterLogin();
+        }
+
         if (!IsPostBack)
         {
             SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
             db.Open();
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
             selectuser.Connection = db;
-            selectuser.CommandText = "select [FirstName], [MiddleName], [LastName], [Gender], [Occupation], [Description] from [RoomMagnet].[dbo].[Users] where [UserID] = 24";
+            int userid = Convert.ToInt32(Session["UserID"]);
+            selectuser.CommandText = "select [FirstName], [MiddleName], [LastName], [Gender], [Occupation], [Description] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getinfor = selectuser.ExecuteReader();
             while (getinfor.Read())
             {
@@ -56,8 +68,9 @@ public partial class WebPages_Setting : System.Web.UI.Page
             db.Open();
             System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
             updateuser.Connection = db;
+            int userid = Convert.ToInt32(Session["UserID"]);
             updateuser.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
-                "Occupation = @Occupation, Description=@Description,LastUpdated=@LastUpdated,LastUpdatedBy=@LastUpdatedBy WHERE [UserID] = 24";
+                "Occupation = @Occupation, Description=@Description,LastUpdated=@LastUpdated,LastUpdatedBy=@LastUpdatedBy WHERE [UserID] = @UserID";
 
             updateuser.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
             updateuser.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
@@ -67,6 +80,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
             updateuser.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
             updateuser.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
             updateuser.Parameters.Add(new SqlParameter("@LastUpdatedBy", setfirstname.Text + " " + setlastname.Text));
+            updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
 
             updateuser.ExecuteNonQuery();
             db.Close();

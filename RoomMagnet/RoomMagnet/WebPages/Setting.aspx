@@ -81,6 +81,9 @@
         .auto-style2 {
             width: 300px;
         }
+        .auto-style3 {
+            width: 101px;
+        }
     </style>
 
     <%--user image--%>
@@ -113,7 +116,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <div id="settingpage">
-        <asp:Label ID="setting" runat="server" Text="Setting" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True" Width="80%" Style="align-content: center"></asp:Label>
+        <asp:Label ID="setting" runat="server" Text="Settings" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True" Width="80%" Style="align-content: center"></asp:Label>
         <br />
         <br />
         <div class="container">
@@ -136,40 +139,40 @@
         <table>
             <tr>
                 <td></td>
-                <td>
-                    <asp:Label runat="server" Text="FirstName"></asp:Label>
+                <td class="auto-style3">
+                    <asp:Label runat="server" Text="First Name"></asp:Label>
                 </td>
                 <td class="auto-style1">
-                    <asp:TextBox ID="setfirstname" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="Requiredfirstname" runat="server" ErrorMessage="Required" ControlToValidate="setfirstname" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                    <asp:TextBox ID="setfirstname" runat="server" MaxLength="25" CssClass="form-control" Width="147px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="Requiredfirstname" runat="server" ErrorMessage="Required" ControlToValidate="setfirstname" ForeColor="Red" ValidationGroup="settings" OnDataBinding="updateusersetting_Click">Required</asp:RequiredFieldValidator>
                 </td>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" Text="MiddleName"></asp:Label>
+                    <asp:Label runat="server" Text="Middle Name"></asp:Label>
                 </td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="setmiddlename" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="setmiddlename" runat="server" MaxLength="30"></asp:TextBox>
                 </td>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" Text="Lastname"></asp:Label>
+                    <asp:Label runat="server" Text="Last Name"></asp:Label>
                 </td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="setlastname" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="Requiredlastname" runat="server" ErrorMessage="Required" ControlToValidate="setlastname" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                    <asp:TextBox ID="setlastname" runat="server" MaxLength="30"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="Requiredlastname" runat="server" ErrorMessage="Required" ControlToValidate="setlastname" ForeColor="Red" ValidationGroup="settings" OnDataBinding="updateusersetting_Click">Required</asp:RequiredFieldValidator>
                 </td>
             </tr>
 
             <tr>
                 <td></td>
-                <td>
+                <td class="auto-style3">
                     <asp:Label runat="server" Text="Gender"></asp:Label>
                 </td>
                 <td class="auto-style1">
                     <asp:DropDownList ID="setgender" runat="server">
                         <asp:ListItem Value=""></asp:ListItem>
                         <asp:ListItem Value="male">Male</asp:ListItem>
-                        <asp:ListItem Value="Female">FeMale</asp:ListItem>
+                        <asp:ListItem Value="Female">Female</asp:ListItem>
                     </asp:DropDownList>
 
                 </td>
@@ -178,17 +181,18 @@
                     <asp:Label runat="server" Text="Occupation"></asp:Label>
                 </td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="setOccupation" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="setOccupation" runat="server" MaxLength="25"></asp:TextBox>
                 </td>
             </tr>
 
             <tr>
                 <td></td>
-                <td>
+                <td class="auto-style3">
                     <asp:Label runat="server" Text="Reset Password"></asp:Label>
                 </td>
                 <td class="auto-style1">
                     <asp:TextBox ID="setpassword" runat="server" type="password"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordLowerCase" runat="server" ControlToValidate="setpassword" Display="Dynamic" ErrorMessage="Password must be at least 8 characters long and contains at least one: Lower Case, Upper Case, Special Character" ForeColor="Red" ValidationExpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;£*\-_+=[\]{}|\\:',?/`~();!]|\.(?!@)){8,16}$" ValidationGroup="settings"></asp:RegularExpressionValidator>
                 </td>
                 <td></td>
                 <td>
@@ -196,7 +200,15 @@
                 </td>
                 <td class="auto-style2">
                     <asp:TextBox ID="setconfirmpass" runat="server" type="password"></asp:TextBox>
+                    <asp:CompareValidator ID="ComparePass" runat="server" ControlToValidate="setconfirmpass" Display="Dynamic" ErrorMessage="Password does not match" ForeColor="Red" ValidationGroup="settings" ControlToCompare="setpassword"></asp:CompareValidator>
                 </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td class="auto-style3">
+
+                    &nbsp;</td>
             </tr>
         </table>
         <br />
@@ -207,7 +219,7 @@
         <br />
         <br />
         &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="updateusersetting" runat="server" class="btn btn-danger" Text="Update" CausesValidation="False" OnClick="updateusersetting_Click" />
+        <asp:Button ID="updateusersetting" runat="server" class="btn btn-danger" Text="Update" OnClick="updateusersetting_Click" ValidationGroup="settings" />
         &nbsp;
     </div>
 
