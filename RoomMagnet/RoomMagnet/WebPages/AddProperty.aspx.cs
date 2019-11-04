@@ -89,7 +89,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         inserted.Parameters.AddWithValue("ZipCode", addZip.Text);
         inserted.Parameters.AddWithValue("@SquareFootage", addSquare.Text);
         inserted.Parameters.AddWithValue("@RentPrice", addPrice.Text);
-        inserted.Parameters.AddWithValue("@AvailableBedrooms", addAvailable.Text);
+        inserted.Parameters.AddWithValue("@AvailableBedrooms", 1);
         inserted.Parameters.AddWithValue("@StartDate", Convert.ToDateTime(addstartdate.Text));
         inserted.Parameters.AddWithValue("@EndDate", Convert.ToDateTime(addenddate.Text));
         inserted.Parameters.AddWithValue("@LastUpdated", DateTime.Now);

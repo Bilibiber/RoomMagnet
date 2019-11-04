@@ -25,7 +25,7 @@ public class EmailSender
     // Enable the connectiong from website to email server
     private SmtpClient smtpClient = new SmtpClient(GmailSmtp, GmailSmtpPort);
 
-    public EmailSenders()
+    public EmailSender()
     {
 
     }
