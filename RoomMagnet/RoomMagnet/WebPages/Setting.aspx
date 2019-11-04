@@ -3,6 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+
+    <%--user image--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -17,6 +19,7 @@
         body {
             background-color: #f5f5f5;
         }
+
 
         .imagePreview {
             width: 200%;
@@ -72,14 +75,15 @@
         }
 
         .auto-style1 {
-            width: 243px;
+            width: 300px;
         }
 
         .auto-style2 {
-            width: 248px;
+            width: 300px;
         }
     </style>
 
+    <%--user image--%>
     <script>
         $(".imgAdd").click(function () {
             $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
@@ -150,7 +154,7 @@
                 <td>
                     <asp:Label runat="server" Text="Lastname"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style2">
                     <asp:TextBox ID="setlastname" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="Requiredlastname" runat="server" ErrorMessage="Required" ControlToValidate="setlastname" ForeColor="Red">Required</asp:RequiredFieldValidator>
                 </td>
@@ -184,14 +188,14 @@
                     <asp:Label runat="server" Text="Reset Password"></asp:Label>
                 </td>
                 <td class="auto-style1">
-                    <asp:TextBox ID="setpassword" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="setpassword" runat="server" type="password"></asp:TextBox>
                 </td>
                 <td></td>
                 <td>
                     <asp:Label runat="server" Text="Confirm Password"></asp:Label>
                 </td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="setconfirmpass" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="setconfirmpass" runat="server" type="password"></asp:TextBox>
                 </td>
             </tr>
         </table>
@@ -199,13 +203,12 @@
         &nbsp;&nbsp;&nbsp;
         <asp:Label runat="server" Text="Add Description: "></asp:Label><br />
         &nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox1" runat="server" Height="146px" Width="434px"></asp:TextBox>
+        <asp:TextBox ID="setdescription" runat="server" Height="146px" Width="434px" MaxLength="150"></asp:TextBox>
         <br />
         <br />
         &nbsp;&nbsp;&nbsp;
         <asp:Button ID="updateusersetting" runat="server" class="btn btn-danger" Text="Update" CausesValidation="False" OnClick="updateusersetting_Click" />
-        &nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Labeltest" runat="server" Text="Label"></asp:Label>
+        &nbsp;
     </div>
 
 </asp:Content>

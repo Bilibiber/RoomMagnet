@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link href="Css/style.css" rel="stylesheet"/>
+    <link href="Css/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="vendor_assets/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="vendor_assets/css/brands.css">
     <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css">
@@ -66,30 +66,29 @@
                                                     <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
                                                 </li>
                                                 <li class="nav-item dropdown ml-auto">
-                                                    <asp:ImageButton ID="MasterPageUserProfileImage" runat="server" Visible="false" CssClass="nav-link dropdown-toggle rounded-circle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ImageUrl="~/img/40x40.png"/>
-                                                    
+                                                    <asp:ImageButton ID="MasterPageUserProfileImage" runat="server" Visible="false" CssClass="nav-link dropdown-toggle rounded-circle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ImageUrl="~/img/40x40.png" />
+
                                                     <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
                                                         <asp:LinkButton ID="GotoDashBoard" runat="server" CssClass="dropdown-item" OnClick="GotoDashBoard_Click">My Dashboard</asp:LinkButton>
-                                                        <asp:LinkButton ID="GotoSetting" runat="server" CssClass="dropdown-item" OnClick="GotoSetting_Click">Setting</asp:LinkButton>                                                      
-                                                          <div class="dropdown-divider"></div>
+                                                        <asp:LinkButton ID="GotoSetting" runat="server" CssClass="dropdown-item" OnClick="GotoSetting_Click">Setting</asp:LinkButton>
+                                                        <div class="dropdown-divider"></div>
                                                         <asp:LinkButton ID="LogOut" runat="server" CssClass="dropdown-item" OnClick="MasterPageSignOut_Click">Log Out</asp:LinkButton>
-                                                     </div>
+                                                    </div>
                                                 </li>
                                                 <li>
                                                     <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
                                                 </li>
-                                                
-                                                    
-                                                
-                                               
-<%--                                                    <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
+
+
+
+
+                                                <%--                                                    <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
                                                     <asp:Image ID="Image2" runat="server" />
                                                     <asp:Button ID="Button1" runat="server" Text="Button" OnClick="MasterPageSignOut_Click" />--%>
-                                              
                                             </ul>
-                                            
 
-                                                        
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +122,7 @@
                         <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:Label ID="PasswordErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <%--                        <div class="keep_signed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
-                            <input type="checkbox" class="custom-control-input" name="keep_signed_in" value="1" id="keep_signed_in">
+                            <input type="checkbox" class="custom-   control-input" name="keep_signed_in" value="1" id="keep_signed_in">
                             <label for="keep_signed_in" class="not_empty custom-control-label">Keep me signed in</label>
                         </div>--%>
                         <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" UseSubmitBehavior="false" OnClick="MasterPageSignIn_Click" />
@@ -154,19 +153,19 @@
 
                         <asp:TextBox ID="MasterPageFirstName" runat="server" PlaceHolder="First Name" CssClass="form-control" MaxLength="25"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="First Name Required" ControlToValidate="MasterPageFirstName" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorFirstName" runat="server" ErrorMessage="Special characters are not allowed. For example:% & , ; = $" ValidationExpression="[^%&,;= $x22]+" ControlToValidate="MasterPageFirstName" Display="Dynamic"  ValidationGroup="SignUp"></asp:RegularExpressionValidator>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorFirstNameLetters" runat="server" ErrorMessage="Numeric values are not allowed" ValidationExpression="^([^0-9]*)$" ControlToValidate="MasterPageFirstName" Display="Dynamic"  ValidationGroup="SignUp"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorFirstName" runat="server" ErrorMessage="Special characters are not allowed. For example:% & , ; = $" ValidationExpression="[^%&,;= $x22]+" ControlToValidate="MasterPageFirstName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorFirstNameLetters" runat="server" ErrorMessage="Numeric values are not allowed" ValidationExpression="^([^0-9]*)$" ControlToValidate="MasterPageFirstName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
                         <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorLastName" runat="server" ErrorMessage="Special characters are not allowed. For example:^%&’,;= $" ValidationExpression="[^%&,;= $x22]+" ControlToValidate="MasterPageLastName" Display="Dynamic"  ValidationGroup="SignUp"></asp:RegularExpressionValidator>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorLastNameLetters" runat="server" ErrorMessage="Numeric values are not allowed" ValidationExpression="^([^0-9]*)$" ControlToValidate="MasterPageLastName" Display="Dynamic"  ValidationGroup="SignUp"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorLastName" runat="server" ErrorMessage="Special characters are not allowed. For example:^%&’,;= $" ValidationExpression="[^%&,;= $x22]+" ControlToValidate="MasterPageLastName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorLastNameLetters" runat="server" ErrorMessage="Numeric values are not allowed" ValidationExpression="^([^0-9]*)$" ControlToValidate="MasterPageLastName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="Last Name Required" ControlToValidate="MasterPageLastName" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="MasterPageEmail" runat="server" PlaceHolder="Email" CssClass="form-control"></asp:TextBox>
                         <asp:CustomValidator ID="SignUpEmailCustomValidator" runat="server" ErrorMessage="Email already exists" ControlToValidate="MasterPageEmail" ValidationGroup="SignUp" Display="Dynamic" OnServerValidate="SignUpEmailCustomValidator_ServerValidate"></asp:CustomValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ErrorMessage="Email Required" ControlToValidate="MasterPageEmail" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordLowerCase" runat="server" ErrorMessage="Password must be at least 8 characters long and contains at least one: Lower Case, Upper Case, Special Character" ValidationExpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&£*\-_+=[\]{}|\\:',?/`~();!]|\.(?!@)){8,16}$" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
-                         <%--<asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordUpperCase" runat="server" ErrorMessage="Password must contain at least one upper case character" ValidationExpression="(?=.*[A-Z])" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordLowerCase" runat="server" ErrorMessage="Password must be at least 8 characters long and contains at least one: Lower Case, Upper Case, Special Character" ValidationExpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&£*\-_+=[\]{}|\\:',?/`~();!]|\.(?!@)){8,16}$" ControlToValidate="MasterPagePassword" Display="Dynamic" ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
+                        <%--<asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordUpperCase" runat="server" ErrorMessage="Password must contain at least one upper case character" ValidationExpression="(?=.*[A-Z])" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
                          <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordNumber" runat="server" ErrorMessage="Password must contain at least one numeric value" ValidationExpression="(?=.*\d)" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
                          <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordSpecialCharacters" runat="server" ErrorMessage="Password must contain at least one special character. For example:% & , ; = $" ValidationExpression="[@#$%^&£*\-_+=[\]{}|\\:',?`~();!]" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
                          <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordLength" runat="server" ErrorMessage="Password must be at least 8 characters long" ValidationExpression="^\d{8,16}$" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>--%>
@@ -174,7 +173,7 @@
                         <asp:TextBox type="Password" ID="MasterPageComfirmPassword" runat="server" PlaceHolder="Comfirm Password" CssClass="form-control" ValidationGroup="SignUp"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Comfirmation Password Required" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Does Not Match" ControlToCompare="MasterPagePassword" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:CompareValidator>
-                        <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Birth"  onfocus="(this.type='date')" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Birth" onfocus="(this.type='date')" CssClass="form-control"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Date of Birth Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
 
