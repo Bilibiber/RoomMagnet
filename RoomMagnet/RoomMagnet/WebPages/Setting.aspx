@@ -70,6 +70,12 @@
 
         .container {
         }
+        .auto-style1 {
+            width: 243px;
+        }
+        .auto-style2 {
+            width: 248px;
+        }
     </style>
 
     <script>
@@ -127,14 +133,15 @@
                 <td>
                     <asp:Label runat="server" Text="FirstName"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style1">
                     <asp:TextBox ID="setfirstname" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="Requiredfirstname" runat="server" ErrorMessage="Required" ControlToValidate="setfirstname" ForeColor="Red">Required</asp:RequiredFieldValidator>
                 </td>
                 <td></td>
                 <td>
                     <asp:Label runat="server" Text="MiddleName"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style2">
                     <asp:TextBox ID="setmiddlename" runat="server"></asp:TextBox>
                 </td>
                 <td></td>
@@ -143,6 +150,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="setlastname" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="Requiredlastname" runat="server" ErrorMessage="Required" ControlToValidate="setlastname" ForeColor="Red">Required</asp:RequiredFieldValidator>
                 </td>
             </tr>
 
@@ -151,7 +159,7 @@
                 <td>
                     <asp:Label runat="server" Text="Gender"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style1">
                     <asp:DropDownList ID="setgender" runat="server">
                         <asp:ListItem Value=""></asp:ListItem>
                         <asp:ListItem Value="male">Male</asp:ListItem>
@@ -163,7 +171,7 @@
                 <td>
                     <asp:Label runat="server" Text="Occupation"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style2">
                     <asp:TextBox ID="setOccupation" runat="server"></asp:TextBox>
                 </td>
             </tr>
@@ -171,16 +179,16 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Label runat="server" Text="Password"></asp:Label>
+                    <asp:Label runat="server" Text="Reset Password"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style1">
                     <asp:TextBox ID="setpassword" runat="server"></asp:TextBox>
                 </td>
                 <td></td>
                 <td>
                     <asp:Label runat="server" Text="Confirm Password"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style2">
                     <asp:TextBox ID="setconfirmpass" runat="server"></asp:TextBox>
                 </td>
             </tr>
