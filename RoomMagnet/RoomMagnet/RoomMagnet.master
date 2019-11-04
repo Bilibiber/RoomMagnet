@@ -105,6 +105,28 @@
         </div>
         <!-- ends: .mainmenu-wrapper -->
         <!-- ends: .intro-wrapper -->
+                <div class="modal fade" id="sign_up_notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">                       
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Image ID="GreenCheckImage" runat="server" />
+                        <div class="form-excerpts">
+                            <ul class="list-unstyled">
+                                <li>Not a member?
+                                    <asp:LinkButton ID="LinkButton2" runat="server" data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" data-dismiss="modal">Sign Up</asp:LinkButton></li>
+                                <li>
+                                    <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/WebPages/RecoverPassword.aspx">Recover Password</asp:LinkButton></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -134,7 +156,7 @@
                                 <li>Not a member?
                                     <asp:LinkButton ID="SignUpLinkButton" runat="server" data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" data-dismiss="modal">Sign Up</asp:LinkButton></li>
                                 <li>
-                                    <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/WebPages/RecoverPassword.aspx">Recover Passowrd</asp:LinkButton></li>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/WebPages/RecoverPassword.aspx">Recover Password</asp:LinkButton></li>
                             </ul>
                         </div>
                     </div>

@@ -269,7 +269,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
 
     protected void GotoDashBoard_Click(object sender, EventArgs e)
     {
-
+        GotoDashBoard.PostBackUrl = "~/WebPages/Renter.aspx";
     }
 
     protected void GotoSetting_Click(object sender, EventArgs e)
