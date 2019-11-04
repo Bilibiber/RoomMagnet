@@ -269,6 +269,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
 
     protected void GotoDashBoard_Click(object sender, EventArgs e)
     {
+        MasterUserName.Visible = true;
+        MasterUserName.Text = Session["FullName"].ToString();
+        MasterPageUserProfileImage.Visible = true;
         Response.Redirect("Renter.aspx");
     }
 
