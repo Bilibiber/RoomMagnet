@@ -78,7 +78,7 @@
 
                                                 </li>
                                                 <li>
-                                                    <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
+                                                    <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false" CssClass="username-padding"></asp:Label>
                                                 </li>
                                             </ul>
                                         </div>

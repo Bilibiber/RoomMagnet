@@ -19,11 +19,11 @@
                         </div>
                             <div class="atbd_seach_fields_wrapper input-group">
                                 <div class="single_search_field search_query">
-                                    <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields" placeholder="Enter a city or zip code"></asp:TextBox>
+                                    <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields border rounded-pill-left border-right-0" placeholder="Enter a city or zip code"></asp:TextBox>
                                 </div>
 
                                 <div class="atbd_submit_btn input-group-append">
-                                    <asp:Button ID="HomePageSearchButton" runat="server" Text="Search"  CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search"/>
+                                    <asp:Button ID="HomePageSearchButton" runat="server" Text="Search"  CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search border rounded-pill-right border-left-0"/>
                                 </div>
                             </div>
 
