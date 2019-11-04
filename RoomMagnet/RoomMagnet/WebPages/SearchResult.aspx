@@ -36,12 +36,16 @@
 
         <div class="row">
             Beds Available
-            <asp:DropDownList ID="SearchResultBedsAvailable" runat="server">
+<%--<<<<<<< HEAD--%>
+            <asp:ListItem ID="SearchResultBedsAvailable" runat="server" >
+<%--=======--%>
+            <%--<asp:ListItem ID="SearchResultBedsAvailable" runat="server">--%>
+<%-->>>>>>> 0591c91b12fd631acbb12b6e2777544fe5085073--%>
                 <asp:ListItem Value="1">1</asp:ListItem>
                 <asp:ListItem Value="2">2</asp:ListItem>
                 <asp:ListItem Value="3">3</asp:ListItem>
                 <asp:ListItem Value="4">4+</asp:ListItem>
-            </asp:DropDownList>
+            </asp:ListItem>
         </div>
         <div class="row">
             Home Type

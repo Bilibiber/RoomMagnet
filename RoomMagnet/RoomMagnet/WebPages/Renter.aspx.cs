@@ -5,16 +5,31 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class WebPages_Renter : System.Web.UI.Page
 {
+    private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["SignInEmail"] == null)
+        {
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        }
+        else
+        {
+            var master = Master as RoomMagnet;
+            master.AfterLogin();
+        }
+    
         if (!IsPostBack)
         {
             addCountry.DataSource = objcountries();
             addCountry.DataBind();
         }
+
+
 
     }
 
@@ -145,6 +160,22 @@ public partial class WebPages_Renter : System.Web.UI.Page
 
     protected void post_Click(object sender, EventArgs e)
     {
+        /*
+         * This will be saved for the update user information button.
+         * There will be no information added to the host table outside of the update and signup pages
+         */
+        cn.Open();
+        string insert = "INSERT INTO [dbo].[Hosts]([HostID],[StreetAddress] ,[City],[HomeState],[Country],[ZipCode])" +
+            "VALUES" +
+            "(" + 2 + " @StreetAddress, @City, @HomeState, @Country, @ZipCode)";
+        SqlCommand inserted = new SqlCommand(insert, cn);
+        inserted.Parameters.AddWithValue("@StreetAddress", addStreet.Text);
+        inserted.Parameters.AddWithValue("@City", addCity.Text);
+        inserted.Parameters.AddWithValue("@HomeState", addState.SelectedValue);
+        inserted.Parameters.AddWithValue("@Country", addCountry.SelectedValue);
+        inserted.Parameters.AddWithValue("ZipCode", addZip.Text);
+        inserted.ExecuteNonQuery();
+        cn.Close();
     }
 
 
