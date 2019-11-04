@@ -13,12 +13,4 @@ public class Userclass
         public string email { get; set; }
         public string picture { get; set; }
         public string birthday { get; set; }
-
-    
-    public Userclass()
-    {
-        //
-        // TODO: Add constructor logic here
-        //
-    }
 }
