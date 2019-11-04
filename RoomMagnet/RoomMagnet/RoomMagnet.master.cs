@@ -8,7 +8,9 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 
 public partial class RoomMagnet : System.Web.UI.MasterPage
+
 {
+    
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     private string clientid = "501924233388-4ts15v59i0l3orbfaeaqfh6e1cl5dg1h.apps.googleusercontent.com";
     private string clientsecret = "71rfQJWsTXIkCOuI6cZOdBtL";
@@ -18,6 +20,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     string LName;
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["UserCount"] = 0;
         if (!IsPostBack)
         {
             if (Request.QueryString["code"] != null)
@@ -44,6 +47,14 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         if (SignUpEmailCustomValidator.IsValid)
         {
             Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
+            
+            ;
+            string Welcomemailstring = "Welcome to RoomMagnet! UserName: "+ Session["FullName"] +" Password: " + Session["Password"];
+
+            string EnteredEmailAddress = MasterPageEmail.Text;
+            EmailSender email = new EmailSender();
+            email.SendWelcomeMail(EnteredEmailAddress, Welcomemailstring);
+           
             string MasterPagepassword = users.getPassword();
             string HashedPassword = PasswordHash.HashPassword(MasterPagepassword);
             try

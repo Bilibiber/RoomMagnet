@@ -25,13 +25,13 @@ public class EmailSender
     // Enable the connectiong from website to email server
     private SmtpClient smtpClient = new SmtpClient(GmailSmtp, GmailSmtpPort);
 
-    public EmailSender()
+    public EmailSenders()
     {
 
     }
 
     // Welcome email method
-    public void SendWelcomeMail(string EnteredEmailAddress)
+    public void SendWelcomeMail(string EnteredEmailAddress, string Welcomemailstring)
     {
         mail.From = new MailAddress(FromEmailAddress);
         // where we send out the email
@@ -39,14 +39,11 @@ public class EmailSender
         //email subject
         mail.Subject = "Welcome to RoomMagnet";
         // email body, html tag friendly
-        string welcomemailstring =
-            @"<html>
-            <body>
-            <p>balabala</p>
-            </body>
-            </html>";
+  
+      
+            
         mail.IsBodyHtml = true;
-        mail.Body = welcomemailstring;
+        mail.Body = Welcomemailstring;
 
         smtpClient.Credentials = new System.Net.NetworkCredential(FromEmailAddress, FromEmailPassword);
         smtpClient.EnableSsl = true;
