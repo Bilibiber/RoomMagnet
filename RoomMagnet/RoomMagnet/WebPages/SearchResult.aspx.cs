@@ -96,4 +96,9 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
 
     }
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs ex)
+    {
+
+    }
 }

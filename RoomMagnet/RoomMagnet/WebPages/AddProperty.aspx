@@ -12,15 +12,17 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <style>
-    /*upload images*/
+        /*upload images*/
         .preview-images-zone {
-            width: 100%;
+            width: 72%;
             border: 1px solid #ddd;
             min-height: 180px;
             /* display: flex; */
             padding: 5px 5px 0px 5px;
             position: relative;
             overflow:auto;
+            top: 0px;
+            left: 0px;
         }
         .preview-images-zone > .preview-image:first-child {
             height: 185px;
@@ -80,6 +82,9 @@
 
         .container {
             padding-top: 50px;
+        }
+        .auto-style1 {
+            height: 28px;
         }
     </style>
 
@@ -177,7 +182,7 @@
                                 <asp:Label runat="server" Text="State:" Font-Bold="True"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList runat="server" Width="80px" ID="addState">
+                                <asp:DropDownList runat="server" Width="80px" ID="addState" Enabled="False">
                                     <asp:ListItem Value=""></asp:ListItem>
                                     <asp:ListItem Value="AL">AL</asp:ListItem>
                                     <asp:ListItem Value="AK">AK</asp:ListItem>
@@ -237,7 +242,7 @@
                             <td class="auto-style11">
                                 <asp:Label ID="Label3" runat="server" Text="Country" Font-Bold="True"></asp:Label></td>
                             <td>
-                                <asp:DropDownList ID="addCountry" runat="server" Width="170px" AppendDataBoundItems="True">
+                                <asp:DropDownList ID="addCountry" runat="server" Width="170px" AppendDataBoundItems="True" AutoPostBack="True">
                                     <asp:ListItem Value=""></asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="requireCountry" runat="server" ControlToValidate="addCountry" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
@@ -262,93 +267,11 @@
                                 <asp:TextBox ID="addSquare" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="requireSquare" runat="server" ControlToValidate="addSquare" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style4">
-                                <asp:Label runat="server" Text="Total Bedrooms:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:DropDownList runat="server" Width="80px" ID="addBedrooms">
-                                    <asp:ListItem Value=""></asp:ListItem>
-                                    <asp:ListItem Value="1">1</asp:ListItem>
-                                    <asp:ListItem Value="2">2</asp:ListItem>
-                                    <asp:ListItem Value="3">3</asp:ListItem>
-                                    <asp:ListItem Value="4">4</asp:ListItem>
-                                    <asp:ListItem Value="5">5</asp:ListItem>
-                                    <asp:ListItem Value="6">6</asp:ListItem>
-                                    <asp:ListItem Value="7">7</asp:ListItem>
-                                    <asp:ListItem Value="8">8</asp:ListItem>
-                                    <asp:ListItem Value="9">9</asp:ListItem>
-                                    <asp:ListItem Value="10">10</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="requireBedrooms" runat="server" ControlToValidate="addBedrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style11">
-                                <asp:Label runat="server" Text="Available Bedrooms:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="addAvailable" runat="server" Width="80px">
-                                    <asp:ListItem Value=""></asp:ListItem>
-                                    <asp:ListItem Value="1">1</asp:ListItem>
-                                    <asp:ListItem Value="2">2</asp:ListItem>
-                                    <asp:ListItem Value="3">3</asp:ListItem>
-                                    <asp:ListItem Value="4">4</asp:ListItem>
-                                    <asp:ListItem Value="5">5</asp:ListItem>
-                                    <asp:ListItem Value="6">6</asp:ListItem>
-                                    <asp:ListItem Value="7">7</asp:ListItem>
-                                    <asp:ListItem Value="8">8</asp:ListItem>
-                                    <asp:ListItem Value="9">9</asp:ListItem>
-                                    <asp:ListItem Value="10">10</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="requireAvailable" runat="server" ControlToValidate="addAvailable" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style4">
-                                <asp:Label runat="server" Text="Total Bathrooms:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:DropDownList runat="server" Width="80px" ID="addBathrooms">
-                                    <asp:ListItem Value=""></asp:ListItem>
-                                    <asp:ListItem Value="1">1</asp:ListItem>
-                                    <asp:ListItem Value="2">2</asp:ListItem>
-                                    <asp:ListItem Value="3">3</asp:ListItem>
-                                    <asp:ListItem Value="4">4</asp:ListItem>
-                                    <asp:ListItem Value="5">5</asp:ListItem>
-                                    <asp:ListItem Value="6">6</asp:ListItem>
-                                    <asp:ListItem Value="7">7</asp:ListItem>
-                                    <asp:ListItem Value="8">8</asp:ListItem>
-                                    <asp:ListItem Value="9">9</asp:ListItem>
-                                    <asp:ListItem Value="10">10</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="requireBathrooms" runat="server" ControlToValidate="addBathrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style11">
-                                <asp:Label runat="server" Text="Permanent Residences:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:DropDownList ID="addResidences" runat="server" Width="80px">
-                                    <asp:ListItem Value=""></asp:ListItem>
-                                    <asp:ListItem Value="1">1</asp:ListItem>
-                                    <asp:ListItem Value="2">2</asp:ListItem>
-                                    <asp:ListItem Value="3">3</asp:ListItem>
-                                    <asp:ListItem Value="4">4</asp:ListItem>
-                                    <asp:ListItem Value="5">5</asp:ListItem>
-                                    <asp:ListItem Value="6">6</asp:ListItem>
-                                    <asp:ListItem Value="7">7</asp:ListItem>
-                                    <asp:ListItem Value="8">8</asp:ListItem>
-                                    <asp:ListItem Value="9">9</asp:ListItem>
-                                    <asp:ListItem Value="10">10</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="addResidences" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
+                                <asp:CompareValidator ID="Comparesquare" runat="server" ControlToValidate="addSquare" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
 
+                            </td>
                         </tr>
+                        
                         <tr>
                             <td class="auto-style7"></td>
                             <td class="auto-style4">
@@ -357,6 +280,7 @@
                             <td>
                                 <asp:TextBox ID="addPrice" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="requirePrice" runat="server" ControlToValidate="addPrice" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                                <asp:CompareValidator ID="Compareprice" runat="server" ControlToValidate="addPrice" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
                             </td>
                         </tr>
                         <tr>
@@ -390,6 +314,7 @@
                             </div>
                         </div>
                         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                    <asp:Button runat="server" Text="testimage" ID="testimage" OnClick="testimage_Click"></asp:Button>
             </asp:Panel>
 
     <%--renter Amenities panel--%>
@@ -403,71 +328,72 @@
                     <tr>
                         <td class="auto-style6"></td>
                         <td>
-                            <asp:CheckBox runat="server" Text=" Air Conditioning"></asp:CheckBox>
+                            <asp:CheckBox ID="checkcondition" runat="server" Text=" Air Conditioning"/>
                         </td>
                         <td class="auto-style6"></td>
                         <td>
-                            <asp:CheckBox runat="server" Text=" Carbon Monoxide Detector"></asp:CheckBox>
+                            <asp:CheckBox ID="checkcarbondetector" runat="server" Text=" Carbon Monoxide Detector"/>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <asp:CheckBox runat="server" Text=" Heating"></asp:CheckBox>
+                            <asp:CheckBox ID="checkheating" runat="server" Text=" Heating"/>
                         </td>
                         <td></td>
                         <td>
-                            <asp:CheckBox runat="server" Text=" Smoke Detector"></asp:CheckBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox runat="server" Text=" On-Site Laundry"></asp:CheckBox>
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox runat="server" Text=" Separate Entrance"></asp:CheckBox>
+                            <asp:CheckBox ID="checksomkedetector" runat="server" Text=" Smoke Detector"/>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <asp:CheckBox runat="server" Text=" Parking"></asp:CheckBox>
+                            <asp:CheckBox ID="check" runat="server" Text=" On-Site Laundry"/>
                         </td>
                         <td></td>
                         <td>
-                            <asp:CheckBox runat="server" Text=" Wi-Fi"></asp:CheckBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox runat="server" Text=" Furnished"></asp:CheckBox>
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox runat="server" Text=" TV"></asp:CheckBox>
+                            <asp:CheckBox ID="checkspeentrance" runat="server" Text=" Separate Entrance"/>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <asp:CheckBox runat="server" Text=" Pet-Friendly"></asp:CheckBox>
+                            <asp:CheckBox ID="checkParking" runat="server" Text=" Parking"/>
                         </td>
                         <td></td>
                         <td>
-                            <asp:CheckBox runat="server" Text=" Separate Bathroom"></asp:CheckBox>
+                            <asp:CheckBox ID="checkWifi" runat="server" Text=" Wi-Fi"/>
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <asp:CheckBox runat="server" Text=" Other(s)"></asp:CheckBox>
+                            <asp:CheckBox ID="checkFurnished" runat="server" Text=" Furnished"/>
                         </td>
                         <td></td>
                         <td>
-                            <asp:TextBox runat="server"></asp:TextBox>
+                            <asp:CheckBox ID="checkTV" runat="server" Text=" TV"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <asp:CheckBox ID="checksepbath" runat="server" Text=" Pet-Friendly"/>
+                            
+                        </td>
+                        <td></td>
+                        <td>
+                            <asp:CheckBox ID="checkspebath" runat="server" Text="Separate Bathroom"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style1">
+                            <asp:CheckBox ID="checkOther" runat="server" Text="Other(s)" AutoPostBack="True" />
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style1">
+                            <asp:TextBox runat="server" Enabled="False" ID="othertextbox"></asp:TextBox>
                         </td>
                     </tr>
                 </table>

@@ -13,11 +13,27 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
+        othertextbox.Enabled = false;
         if (!IsPostBack)
         {
             addCountry.DataSource = objcountries();
             addCountry.DataBind();
         }
+
+        if (checkOther.Checked)
+        {
+            othertextbox.Enabled = true;
+        }
+
+        if(addCountry.Text == "United States")
+        {
+            addState.Enabled = true;
+        }
+        else{
+            addState.SelectedIndex = 0;
+            addState.Enabled = false;
+        }
+
     }
 
     public static List<string> objcountries()
@@ -82,5 +98,11 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         inserted.ExecuteNonQuery();
         cn.Close();
 
+    }
+
+
+    protected void testimage_Click(object sender, EventArgs e)
+    {
+        
     }
 }
