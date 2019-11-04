@@ -237,7 +237,6 @@
             <br />
             <asp:Button ID="renterSetting" runat="server" Text="Setting" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="renterSetting_Click"></asp:Button>
             <br />
-            <asp:Button ID="renterLogOut" runat="server" Text="Log Out" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None"></asp:Button>
         </div>
         <div class="col-md-8">
             <!-- Your second column here -->
