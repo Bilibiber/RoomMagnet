@@ -76,6 +76,8 @@
                                                 </li>
                                                 <li>
                                                     <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
+                                                    <asp:Image ID="Image2" runat="server" />
+                                                    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="MasterPageSignOut_Click" />
                                                 </li>
                                             </ul>
                                         </div>

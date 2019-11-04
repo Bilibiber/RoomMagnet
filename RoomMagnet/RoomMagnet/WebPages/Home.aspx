@@ -41,7 +41,7 @@
                         <p>Earn income renting to qualified adults.</p>
                     </div>
                     <div class="section-title text-left">
-                        <%--<a href="" class="btn btn-gradient btn-gradient-two">Become a Host</a>--%>
+                      <asp:Button ID="HomePageBecome" runat="server" Text="Become a Host" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" />
                     </div>
                 </div>
                 <div class="col-lg-6">

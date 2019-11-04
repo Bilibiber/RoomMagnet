@@ -36,7 +36,7 @@
 
         <div class="row">
             Beds Available
-            <asp:DropDownList ID="SearchResultBedsAvailable" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+            <asp:DropDownList ID="SearchResultBedsAvailable" runat="server">
                 <asp:ListItem Value="1">1</asp:ListItem>
                 <asp:ListItem Value="2">2</asp:ListItem>
                 <asp:ListItem Value="3">3</asp:ListItem>
