@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" Runat="Server">
     Contact Us
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -51,8 +53,10 @@
                 </div>
             </div>
         </div><!-- ends: .breadcrumb-wrapper -->
+
+
     </section>
-    <section class="contact-area section-bg p-top-100 p-bottom-70">
+         <section class="contact-area section-bg p-top-100 p-bottom-70">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -63,15 +67,15 @@
                         <div class="atbdp-widget-listing-contact contact-form">
                             <form id="atbdp-contact-form" class="form-vertical" role="form">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="atbdp-contact-name" placeholder="Name" required="">
+                                    <asp:TextBox CssClass="form-control" runat="server" ID="Name" placeholder="Name" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="atbdp-contact-email" placeholder="Email" required="">
+                                    <asp:TextBox CssClass="form-control" runat="server" ID="Email" placeholder="Email" />
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="atbdp-contact-message" rows="6" placeholder="Message" required=""></textarea>
+                                    <asp:TextBox CssClass="form-control" runat="server" ID="Message" rows="6" placeholder="Message" />
                                 </div>
-                                <button type="submit" class="btn btn-gradient btn-gradient-one btn-block">Send Message</button>
+                                  <asp:Button Text="Send Message" CssClass="btn btn-gradient btn-gradient-one btn-block" ID="SendMessage" OnClick="SendEmail_OnClick" runat="server"/>
                             </form>
                         </div><!-- ends: .atbdp-widget-listing-contact -->
                     </div><!-- ends: .widget -->
@@ -99,7 +103,6 @@
             </div>
         </div>
     </section><!-- ends: .contact-area -->
-
 
     
 
