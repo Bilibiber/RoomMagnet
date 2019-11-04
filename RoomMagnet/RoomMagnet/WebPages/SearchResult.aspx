@@ -6,7 +6,7 @@
     
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
-    <h1>Search Result<asp:Label ID="SearchResultCount" runat="server" Text=""></asp:Label>
+    <h1>Search Result<asp:Label ID="SearchResultCount" runat="server" Text=""></asp:Label> 
     </h1>
     <asp:TextBox ID="SearchResultText" runat="server" PlaceHolder="Enter a City or Zipcode"></asp:TextBox>
     <asp:Button ID="SearchResultButton" runat="server" Text="Search" OnClick="SearchResultButton_Click"/>
@@ -31,21 +31,19 @@
             Start Date
             <asp:TextBox ID="SearchResultStartDate" runat="server"></asp:TextBox>
             End Date
-            <asp:TextBox ID="SearchResultEndDate" runat="server" OnTextChanged="SearchResultEndDate_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="SearchResultEndDate" runat="server" ></asp:TextBox>
         </div>
 
         <div class="row">
             Beds Available
-<%--<<<<<<< HEAD--%>
-            <asp:ListItem ID="SearchResultBedsAvailable" runat="server" >
-<%--=======--%>
-            <%--<asp:ListItem ID="SearchResultBedsAvailable" runat="server">--%>
-<%-->>>>>>> 0591c91b12fd631acbb12b6e2777544fe5085073--%>
+
+            <asp:DropDownList ID="SearchResultBedsAvailable" runat="server">
+
                 <asp:ListItem Value="1">1</asp:ListItem>
                 <asp:ListItem Value="2">2</asp:ListItem>
                 <asp:ListItem Value="3">3</asp:ListItem>
                 <asp:ListItem Value="4">4+</asp:ListItem>
-            </asp:ListItem>
+            </asp:DropDownList>
         </div>
         <div class="row">
             Home Type
@@ -57,5 +55,16 @@
         </div>
             
        </div>
+        <div class="media">
+            <asp:Image ID="Image1" CssClass="d-flex mr-3" imageUrl="~/img/rm/home-1.jpg"  runat="server" />
+            <div class="media-body">
+                <h3 class="mt-0"> <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label> </h3>
+                <asp:Label ID="Label2" runat="server" CssClass="small" Text="Label"></asp:Label>
+                <hr />
+                 <h5 class="mt-0"> <asp:Label ID="Label3" CssClass="la-font" runat="server" Text="Amenities"></asp:Label> </h5>
+                   <asp:Label ID="Label4" runat="server" CssClass="small" Text="Label"></asp:Label> 
+            </div>
+        </div>
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
 </asp:Content>
 
