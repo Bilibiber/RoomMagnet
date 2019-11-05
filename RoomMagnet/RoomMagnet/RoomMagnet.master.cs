@@ -48,12 +48,12 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         if (SignUpEmailCustomValidator.IsValid)
         {
             Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
-            
-            string Welcomemailstring = "Welcome to RoomMagnet! UserName: "+ Session["FullName"] +" Password: " + Session["Password"];
 
-            string EnteredEmailAddress = MasterPageEmail.Text;
-            EmailSender email = new EmailSender();
-            email.SendWelcomeMail(EnteredEmailAddress, Welcomemailstring);
+            //string Welcomemailstring = "Welcome to RoomMagnet!";
+
+            //string EnteredEmailAddress = MasterPageEmail.Text;
+            //EmailSender email = new EmailSender();
+            //email.SendWelcomeMail(EnteredEmailAddress, Welcomemailstring);
            
             string MasterPagepassword = users.getPassword();
             string HashedPassword = PasswordHash.HashPassword(MasterPagepassword);
@@ -78,7 +78,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     });
                 sqlCommand.ExecuteNonQuery();
                 cn.Close();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openNotificationModal();", true);
             }
+           
             // client -side to show a notification
             catch (Exception)
             {
@@ -291,4 +293,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     }
 
 
+
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("Home.aspx");
+    }
 }
