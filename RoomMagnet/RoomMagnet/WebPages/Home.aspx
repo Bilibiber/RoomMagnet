@@ -73,9 +73,10 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
-                                            <a href="">
-                                                <img src="img/p1.jpg" alt="listing image">
-                                            </a>
+                                            
+                                               
+                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/img/step1.png" />
+                                            
                                         </div><!-- ends: .atbd_listing_image -->
 
 
@@ -103,9 +104,9 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
-                                            <a href="">
-                                                <img src="img/p1.jpg" alt="listing image">
-                                            </a>
+                                            <asp:Image ID="Image2" runat="server" ImageUrl="~/img/step2.png" />
+                                           
+                                           
                                         </div><!-- ends: .atbd_listing_image -->
 
 
@@ -134,9 +135,9 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
-                                            <a href="">
-                                                <img src="img/p1.jpg" alt="listing image">
-                                            </a>
+                                           
+                                            <asp:Image ID="Image3" runat="server" ImageUrl="~/img/step3.png"/>
+                                           
                                         </div><!-- ends: .atbd_listing_image -->
 
 
@@ -164,9 +165,8 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
-                                            <a href="">
-                                                <img src="img/p1.jpg" alt="listing image">
-                                            </a>
+                                            
+                                            <asp:Image ID="Image4" runat="server" ImageUrl="~/img/step4.png" />
                                         </div><!-- ends: .atbd_listing_image -->
 
 
@@ -192,7 +192,7 @@
                         </div><!-- ends: .col-lg-3 -->
 
                         <div class="col-lg-12 text-center m-top-20">
-                            <asp:Button ID="HomePageLearnMore" runat="server" Text="Learn More"  CssClass="btn btn-gradient btn-gradient-two"/>
+                            <asp:Button ID="HomePageLearnMore" runat="server" Text="Learn More"  CssClass="btn btn-gradient btn-gradient-two" PostBackUrl="~/WebPages/About.aspx"/>
                         </div>
                     </div>
                 </div><!-- ends: .listing-cards-wrapper -->
@@ -221,14 +221,14 @@
                                     <div class="icon"><span class="circle-secondary"><i class="la la-check-circle"></i></span></div>
                                     <div class="list-content">
                                         <h4>Qualified Renters</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                       <%-- <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>--%>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon"><span class="circle-success"><i class="la la-money"></i></span></div>
                                     <div class="list-content">
                                         <h4>Secured Payments</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <%--<p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>--%>
                                     </div>
                                 </li>
                                 <li>
@@ -236,21 +236,17 @@
                                     <div class="list-content">
 
                                         <h4>Tailored Agreements</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <%--<p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>--%>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon"><span class="circle-primary"><i class="la la-lock"></i></span></div>
                                     <div class="list-content">
                                         <h4>Safety and Security</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                       <%-- <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>--%>
                                     </div>
                                 </li>
                             </ul><!-- ends: .feature-list-wrapper -->
-                            <ul class="action-btns list-unstyled">
-                                <li><a href="" class="btn btn-success">Become a Host</a></li>
-                                <li><a href="" class="btn btn-primary">Start Renting</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>

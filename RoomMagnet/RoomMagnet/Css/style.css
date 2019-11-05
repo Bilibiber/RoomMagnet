@@ -7528,5 +7528,8 @@ background-repeat:no-repeat;
 .btn{
     color:#fff !important;
 }
+.image-padding {
+padding-left:50px;
+}
 
 /*# sourceMappingURL=maps/style.css.map */
