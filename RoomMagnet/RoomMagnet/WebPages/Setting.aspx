@@ -226,7 +226,7 @@
                 &nbsp;&nbsp;&nbsp;
                 <asp:Label runat="server" Text="Add Description: "></asp:Label><br />
                 &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="setdescription" runat="server" Height="146px" Width="434px" MaxLength="150"></asp:TextBox>
+                <asp:TextBox ID="setdescription" runat="server" Height="104px" Width="634px" MaxLength="150"></asp:TextBox>
                 <br />
                 <br />
                 &nbsp;&nbsp;&nbsp;
