@@ -220,15 +220,15 @@
                                 <li>
                                     <div class="icon"><span class="circle-secondary"><i class="la la-check-circle"></i></span></div>
                                     <div class="list-content">
-                                        <h4>Qualified Renters</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <h4>Qualified Users</h4>
+                                        <p>Renters and Hosts all are required to complete a thorough background check before being verified as a RoomMagnet user.</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon"><span class="circle-success"><i class="la la-money"></i></span></div>
                                     <div class="list-content">
                                         <h4>Secured Payments</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <p>RoomMagnet utilizes a secure payment platform - stripe, to manage all payments to keep all parties money safe and secure.</p>
                                     </div>
                                 </li>
                                 <li>
@@ -236,14 +236,14 @@
                                     <div class="list-content">
 
                                         <h4>Tailored Agreements</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <p>Room Magnet provides sample legal documentation, but enables users to come up with their own flexible agreeements. For Example: Renters can do chores for discounted rent!</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon"><span class="circle-primary"><i class="la la-lock"></i></span></div>
                                     <div class="list-content">
                                         <h4>Safety and Security</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <p> Renters and hosts all are monitored when making any agreements to ensure fair agreeemnts and safety for all parties.</p>
                                     </div>
                                 </li>
                             </ul><!-- ends: .feature-list-wrapper -->
