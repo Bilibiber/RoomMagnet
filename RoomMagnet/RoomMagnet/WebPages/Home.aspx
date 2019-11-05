@@ -19,11 +19,11 @@
                         </div>
                             <div class="atbd_seach_fields_wrapper input-group">
                                 <div class="single_search_field search_query">
-                                    <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields" placeholder="Enter a city or zip code"></asp:TextBox>
+                                    <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields border rounded-pill-left border-right-0" placeholder="Enter a city or zip code"></asp:TextBox>
                                 </div>
 
                                 <div class="atbd_submit_btn input-group-append">
-                                    <asp:Button ID="HomePageSearchButton" runat="server" Text="Search"  CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search"/>
+                                    <asp:Button ID="HomePageSearchButton" runat="server" Text="Search"  CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search border rounded-pill-right border-left-0"/>
                                 </div>
                             </div>
 
@@ -73,9 +73,10 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
-                                            <a href="">
-                                                <img src="img/p1.jpg" alt="listing image">
-                                            </a>
+                                            
+                                               
+                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/img/step1.png" />
+                                            
                                         </div><!-- ends: .atbd_listing_image -->
 
 
@@ -103,9 +104,9 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
-                                            <a href="">
-                                                <img src="img/p1.jpg" alt="listing image">
-                                            </a>
+                                            <asp:Image ID="Image2" runat="server" ImageUrl="~/img/step2.png" />
+                                           
+                                           
                                         </div><!-- ends: .atbd_listing_image -->
 
 
@@ -134,9 +135,9 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
-                                            <a href="">
-                                                <img src="img/p1.jpg" alt="listing image">
-                                            </a>
+                                           
+                                            <asp:Image ID="Image3" runat="server" ImageUrl="~/img/step3.png"/>
+                                           
                                         </div><!-- ends: .atbd_listing_image -->
 
 
@@ -164,9 +165,8 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
-                                            <a href="">
-                                                <img src="img/p1.jpg" alt="listing image">
-                                            </a>
+                                            
+                                            <asp:Image ID="Image4" runat="server" ImageUrl="~/img/step4.png" />
                                         </div><!-- ends: .atbd_listing_image -->
 
 
@@ -192,7 +192,7 @@
                         </div><!-- ends: .col-lg-3 -->
 
                         <div class="col-lg-12 text-center m-top-20">
-                            <asp:Button ID="HomePageLearnMore" runat="server" Text="Learn More"  CssClass="btn btn-gradient btn-gradient-two"/>
+                            <asp:Button ID="HomePageLearnMore" runat="server" Text="Learn More"  CssClass="btn btn-gradient btn-gradient-two" PostBackUrl="~/WebPages/About.aspx"/>
                         </div>
                     </div>
                 </div><!-- ends: .listing-cards-wrapper -->
@@ -220,15 +220,15 @@
                                 <li>
                                     <div class="icon"><span class="circle-secondary"><i class="la la-check-circle"></i></span></div>
                                     <div class="list-content">
-                                        <h4>Qualified Renters</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <h4>Qualified Users</h4>
+                                        <p>Renters and hosts have to go through a background screening and renters have to favorite a property before a connection can be made.</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon"><span class="circle-success"><i class="la la-money"></i></span></div>
                                     <div class="list-content">
                                         <h4>Secured Payments</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <p>RoomMagnet utilizes the stripe payment system to provide secure payments and comfort to renters and hosts.</p>
                                     </div>
                                 </li>
                                 <li>
@@ -236,21 +236,17 @@
                                     <div class="list-content">
 
                                         <h4>Tailored Agreements</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <p>RoomMagnet provides flexibility for renters and hosts to make their own contracts, but also provides samples for those that would like one.</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="icon"><span class="circle-primary"><i class="la la-lock"></i></span></div>
                                     <div class="list-content">
                                         <h4>Safety and Security</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa officia deserunt mollit.</p>
+                                        <p>Renters and hosts must go through a rigorous background screening and video conferencing meeting with RoomMagnet as a third party before any formal arrangements can be made.</p>
                                     </div>
                                 </li>
                             </ul><!-- ends: .feature-list-wrapper -->
-                            <ul class="action-btns list-unstyled">
-                                <li><a href="" class="btn btn-success">Become a Host</a></li>
-                                <li><a href="" class="btn btn-primary">Start Renting</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>

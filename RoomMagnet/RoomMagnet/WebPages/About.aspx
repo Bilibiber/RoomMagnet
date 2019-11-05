@@ -6,31 +6,6 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About</title>
-    <!-- inject:css-->
-    <link rel="stylesheet" href="vendor_assets/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="vendor_assets/css/brands.css">
-    <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="vendor_assets/css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" href="vendor_assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="vendor_assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/select2.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/slick.css">
-    <link rel="stylesheet" href="style.css">
-    <!-- endinject -->
-    <link rel="icon" type="image/png" sizes="32x32" href="img/fevicon.png">
-</head>
-
-<body>
     <section class="about-wrapper bg-gradient-ps">
         
         <div class="about-intro content_above">
@@ -39,7 +14,6 @@
                     <div class="col-lg-5 col-md-6">
                         <h1>Put call to action here to become a host</h1>
                         <a href="" class="btn btn-gradient btn-gradient-two">Become a Host</a>
-                        </a>
                     </div>
                     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-0 col-sm-8 offset-sm-2">
                         <img src="img/about-illustration.png" alt="">
@@ -116,28 +90,7 @@
             </div>
         </div>
     </section><!-- ends: .about-contents -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
-    <!-- inject:js-->
-    <script src="vendor_assets/js/jquery/jquery-1.12.3.js"></script>
-    <script src="vendor_assets/js/bootstrap/popper.js"></script>
-    <script src="vendor_assets/js/bootstrap/bootstrap.min.js"></script>
-    <script src="vendor_assets/js/jquery-ui.min.js"></script>
-    <script src="vendor_assets/js/jquery.barrating.min.js"></script>
-    <script src="vendor_assets/js/jquery.counterup.min.js"></script>
-    <script src="vendor_assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="vendor_assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="vendor_assets/js/jquery.waypoints.min.js"></script>
-    <script src="vendor_assets/js/masonry.pkgd.min.js"></script>
-    <script src="vendor_assets/js/owl.carousel.min.js"></script>
-    <script src="vendor_assets/js/select2.full.min.js"></script>
-    <script src="vendor_assets/js/slick.min.js"></script>
-    <script src="theme_assets/js/locator.js"></script>
-    <script src="theme_assets/js/main.js"></script>
-    <script src="theme_assets/js/map.js"></script>
     <!-- endinject-->
-</body>
-
-</html>
 
 </asp:Content>
 

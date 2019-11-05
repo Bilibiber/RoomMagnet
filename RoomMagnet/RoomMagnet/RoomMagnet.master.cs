@@ -31,6 +31,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         }
         if (IsPostBack)
             return;
+
     }
 
     protected void GmailSignIn_Click(object sender, EventArgs e)
@@ -47,13 +48,12 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         if (SignUpEmailCustomValidator.IsValid)
         {
             Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
-            
-            ;
-            string Welcomemailstring = "Welcome to RoomMagnet! UserName: "+ Session["FullName"] +" Password: " + Session["Password"];
 
-            string EnteredEmailAddress = MasterPageEmail.Text;
-            EmailSender email = new EmailSender();
-            email.SendWelcomeMail(EnteredEmailAddress, Welcomemailstring);
+            //string Welcomemailstring = "Welcome to RoomMagnet!";
+
+            //string EnteredEmailAddress = MasterPageEmail.Text;
+            //EmailSender email = new EmailSender();
+            //email.SendWelcomeMail(EnteredEmailAddress, Welcomemailstring);
            
             string MasterPagepassword = users.getPassword();
             string HashedPassword = PasswordHash.HashPassword(MasterPagepassword);
@@ -78,7 +78,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     });
                 sqlCommand.ExecuteNonQuery();
                 cn.Close();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openNotificationModal();", true);
             }
+           
             // client -side to show a notification
             catch (Exception)
             {
@@ -94,8 +96,6 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     protected void MasterPageSignIn_Click(object sender, EventArgs e)
     {
         string sql = "Select Password from Users where Email = @Email ";
-
-        Session["SignInEmail"] = SignInEmail.Text;
         try
         {
             string storedHash;
@@ -114,7 +114,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     reader.Close();
                     if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
                     {
+                        Session["SignInEmail"] = SignInEmail.Text;
                         GetUserInfo();
+                        AfterLogin();
                     }
                     else
                     {
@@ -170,8 +172,6 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 }
             }
             dataReader.Close();
-            MasterUserName.Visible = true;
-            MasterUserName.Text = Session["FullName"].ToString();
         }
         catch (Exception)
         {
@@ -180,6 +180,14 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             SignInErrorLbl.Text = "DataBase Error please try again later";
         }
         cn.Close();
+    }
+    public void AfterLogin()
+    {
+        MasterUserName.Visible = true;
+        MasterUserName.Text = Session["FullName"].ToString();
+        MasterPageUserProfileImage.Visible = true;
+        MasterPageSignUp.Visible = false;
+        MasterPageLogIn.Visible = false;
     }
     public void GetToken(string code)
     {
@@ -265,4 +273,24 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             SignUpEmailCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
         }
     }
+    protected void GotoDashBoard_Click(object sender, EventArgs e)
+    {
+        MasterUserName.Visible = true;
+        MasterUserName.Text = Session["FullName"].ToString();
+        MasterPageUserProfileImage.Visible = true;
+        Response.Redirect("Renter.aspx");
+    }
+
+    protected void GotoSetting_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Setting.aspx");
+    }
+    protected void MasterPageSignOut_Click(object sender, EventArgs e)
+    {
+        Session.Abandon();
+        Session.Clear();
+        Response.Redirect("Home.aspx");
+    }
+
+
 }
