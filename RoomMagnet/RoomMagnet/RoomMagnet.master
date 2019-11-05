@@ -71,7 +71,7 @@
                                                     <li class="nav-item dropdown ml-auto dropdown-menu--inner">
                                                     <asp:ImageButton ID="MasterPageUserProfileImage" runat="server" Visible="false" CssClass="dropdown-toggle rounded-circle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ImageUrl="~/img/40x40.png"/>
 
-                                                    <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropDownMenuLink">
                                                         <asp:LinkButton ID="GotoDashBoard" runat="server" CssClass="dropdown-item" OnClick="GotoDashBoard_Click">My Dashboard</asp:LinkButton>
                                                         <asp:LinkButton ID="GotoSetting" runat="server" CssClass="dropdown-item" OnClick="GotoSetting_Click">Settings</asp:LinkButton>                                                      
                                                           <div class="dropdown-divider"></div>
