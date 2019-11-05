@@ -314,8 +314,7 @@
                             </div>
                         </div>
                         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                    <asp:Button runat="server" Text="testimage" ID="testimage" OnClick="testimage_Click"></asp:Button>
-            </asp:Panel>
+                    </asp:Panel>
 
     <%--renter Amenities panel--%>
 
