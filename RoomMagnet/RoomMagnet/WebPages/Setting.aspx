@@ -120,7 +120,7 @@
       <div class="card">
         <div class="card-header" id="headingOne">
           <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size: 2em; font-weight:bold;">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size: 2em; font-weight:bold; color:#bd2026;">
               General Settings
             </button>
           </h5>
@@ -135,7 +135,7 @@
                     <div class="row">
                         <div class="col-sm-2 imgUp">
                             <div class="imagePreview"></div>
-                            <label class="btn btn-primary">
+                            <label class="btn btn-primary" style="background-color:#bd2026;">
                                 Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px; height: 0px; overflow: hidden;">
                             </label>
                         </div>
@@ -226,11 +226,11 @@
                 &nbsp;&nbsp;&nbsp;
                 <asp:Label runat="server" Text="Add Description: "></asp:Label><br />
                 &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="setdescription" runat="server" Height="146px" Width="434px" MaxLength="150"></asp:TextBox>
+                <asp:TextBox ID="setdescription" runat="server" Height="104px" Width="634px" MaxLength="150"></asp:TextBox>
                 <br />
                 <br />
                 &nbsp;&nbsp;&nbsp;
-                <asp:Button ID="updateusersetting" runat="server" class="btn btn-danger" Text="Update" OnClick="updateusersetting_Click" ValidationGroup="settings" />
+                <asp:Button ID="updateusersetting" runat="server" class="btn btn-danger" Text="Update" OnClick="updateusersetting_Click" ValidationGroup="settings" style="background-color:#bd2026;"/>
                 &nbsp;
             </div>
           </div>

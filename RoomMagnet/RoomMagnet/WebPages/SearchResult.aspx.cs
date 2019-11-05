@@ -27,6 +27,12 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             var master = Master as RoomMagnet;
             master.AfterLogin();
         }
+        if (Session["HomePageSearchContent"] != null)
+        {
+            SearchResultText.Text = Session["HomePageSearchContent"].ToString();
+            SearchResultButton_Click(sender, e);
+            Session["HomePageSearchContent"] = null;
+        }
     }
 
     protected void SearchResultButton_Click(object sender, EventArgs e)
