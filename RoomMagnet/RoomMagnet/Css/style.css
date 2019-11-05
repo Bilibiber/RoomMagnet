@@ -4957,7 +4957,6 @@ p {
 }
 
 .author__access_area ul li {
-  margin-right: 2rem;
 }
 
 .author__access_area ul li:last-child {
@@ -4966,7 +4965,7 @@ p {
 
 .author__access_area ul li > span {
   display: inline-block;
-  padding: 13px;
+  padding: 10px;
 }
 
 .author__access_area ul li .author-info {
@@ -5103,8 +5102,8 @@ p {
 .offcanvas-menu .offcanvas-menu__contents .author-avatar {
   text-align: center;
   border-bottom: 1px solid #e3e6ef;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
+  padding: 0;
+  margin-bottom: 0rem;
 }
 
 .offcanvas-menu .offcanvas-menu__contents ul li a {
@@ -7520,4 +7519,14 @@ background-repeat:no-repeat;
 .username-padding {
     padding-top:15px;
 }
+
+.signup-padding{
+    padding-right:10px !important;
+    margin-right: 1rem;
+}
+
+.btn{
+    color:#fff !important;
+}
+
 /*# sourceMappingURL=maps/style.css.map */
