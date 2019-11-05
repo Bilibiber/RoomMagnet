@@ -87,7 +87,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         }
         read.Close();
         string insert = "INSERT INTO [dbo].[Property]([PropertyID],[Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage], [PermanentResidences], [TotalBedrooms], [TotalBathrooms], " +
-            "[RentPrice],[AvailableBedrooms],[StartDate],[EndDate],[Filters],[ImagePath],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (" + 2 + ", @Title, @StreetAddress, @City, @HomeState, @Country," +
+            "[RentPrice],[AvailableBedrooms],[StartDate],[EndDate],[Filters],[ImagePath],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (" + 7 + ", @Title, @StreetAddress, @City, @HomeState, @Country," +
             " @ZipCode, @SquareFootage," + 2 + "," + 2 + ", " + 2 +", @RentPrice, @AvailableBedrooms, @StartDate, @EndDate, 'hello', 'hello', @LastUpdated, @LastUpdatedBy, " + 1 + ")";
         SqlCommand inserted = new SqlCommand(insert, cn);
         inserted.Parameters.AddWithValue("@Title", addtitle.Text);
@@ -107,11 +107,8 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         inserted.ExecuteNonQuery();
         cn.Close();
 
+
     }
 
 
-    protected void testimage_Click(object sender, EventArgs e)
-    {
-        
-    }
 }
