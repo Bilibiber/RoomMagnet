@@ -55,4 +55,8 @@ public class GetObject
             Console.WriteLine("Unknown encountered on server. Message:'{0}' when writing an object", e.Message);
         }
     }
+    public GetObject()
+    {
+
+    }
 }

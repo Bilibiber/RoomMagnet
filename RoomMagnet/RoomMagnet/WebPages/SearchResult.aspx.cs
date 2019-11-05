@@ -71,7 +71,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         {
             sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
          + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
-         + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = " + SearchResultText.Text + ")"
+         + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = \'" + SearchResultText.Text + "\')"
                  + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
          + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
                 +" AND (AvailableBedrooms " + BedsCmpr + ")"
@@ -87,14 +87,52 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             {
                 while (reader.Read())
                 {
-                    decimal x = reader.GetDecimal(5);
-                    string y = String.Format("{0:0.##}", x);
-                    Label1.Text = reader.GetString(0);
-                    Label2.Text = reader.GetInt32(4).ToString() + " Beds Available" + "\n $" + y + "/Month"
-                        + "\n" + reader.GetString(1) + "," + reader.GetString(2);
                     resultCount++;
+                    decimal x;
+                    string y;
+                    if (resultCount == 1)
+                    {
+                        x = reader.GetDecimal(5);
+                        y = String.Format("{0:0.##}", x);
+                        Label1.Text = reader.GetString(0);
+                        Label1.Visible = true;
+                        Label2.Text = string.Format(reader.GetInt32(4).ToString() + " Beds Available{0}" + "$" + y + "/Month{0}"
+                            +  reader.GetString(1) + "," + reader.GetString(2), Environment.NewLine);
+                        Label2.Visible = true;
+                        Image2.ImageUrl = reader.GetString(8);
+                        Image2.Visible = true;
+
+                    }
                     
+                    if (resultCount==2)
+                    {
+                        x = reader.GetDecimal(5);
+                        y = String.Format("{0:0.##}", x);
+                        Label5.Text = reader.GetString(0);
+                        Label5.Visible = true;
+                        Label6.Text = reader.GetInt32(4).ToString() + " Beds Available" + Environment.NewLine + "$" + y + "/Month"
+                            + Environment.NewLine + reader.GetString(1) + "," + reader.GetString(2);
+                        Label6.Visible = true;
+                        Image3.ImageUrl = reader.GetString(8);
+                        Image3.Visible = true;
+                    }
+                    if (resultCount==3)
+                    {
+                        x = reader.GetDecimal(5);
+                        y = String.Format("{0:0.##}", x);
+                        Label9.Text = reader.GetString(0);
+                        Label9.Visible = true;
+                        Label10.Text = reader.GetInt32(4).ToString() + " Beds Available" + "\n $" + y + "/Month"
+                            + "\n" + reader.GetString(1) + "," + reader.GetString(2);
+                        Label10.Visible = true;
+
+                        Image4.ImageUrl = reader.GetString(8);
+                        Image4.Visible = true;
+                    }
                     
+           
+                  
+
                 }
                 reader.NextResult();
                 SearchResultCount.Text = "("+resultCount.ToString()+ ")";
@@ -107,6 +145,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                 SearchLabel.Text = "Please enter something in the text bar.";
             }
 
+            //GetObject objectI = new GetObject();
+        //objectI.RequestItem("testProperty.jpg");
 
         }
 
