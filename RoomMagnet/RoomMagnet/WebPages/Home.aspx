@@ -20,10 +20,11 @@
                             <div class="atbd_seach_fields_wrapper input-group">
                                 <div class="single_search_field search_query">
                                     <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields border rounded-pill-left border-right-0" placeholder="Enter a city or zip code"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="atbd_submit_btn input-group-append">
-                                    <asp:Button ID="HomePageSearchButton" runat="server" Text="Search"  CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search border rounded-pill-right border-left-0"/>
+                                    <asp:Button ID="HomePageSearchButton" runat="server" Text="Search"  CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search border rounded-pill-right border-left-0" OnClick="HomePageSearchButton_Click" ValidationGroup="HomePageSearch"/>
                                 </div>
                             </div>
 

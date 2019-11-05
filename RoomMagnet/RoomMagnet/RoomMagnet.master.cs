@@ -293,4 +293,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     }
 
 
+
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("Home.aspx");
+    }
 }

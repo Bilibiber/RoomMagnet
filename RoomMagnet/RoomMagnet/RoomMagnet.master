@@ -56,7 +56,7 @@
                                 <div class="menu-fullwidth">
                                     <div class="logo-wrapper order-lg-0 order-sm-1">
                                         <div class="logo logo-top">
-                                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/img/rm/logo-2.png" alt="logo image" CssClass="img-fluid" PostBackUrl="~/WebPages/Home.aspx" />
+                                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/img/rm/logo-2.png" alt="logo image" CssClass="img-fluid" OnClick="ImageButton1_Click" />
                                         </div>
                                     </div>
                                     <!-- ends: .logo-wrapper -->
