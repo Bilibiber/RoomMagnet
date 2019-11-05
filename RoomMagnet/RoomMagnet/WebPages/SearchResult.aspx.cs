@@ -18,6 +18,15 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
         SearchResultCount.Text = "(" + resultCount.ToString() + ")";
         SearchLabel.Visible = false;
+        if (Session["SignInEmail"] == null)
+        {
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        }
+        else
+        {
+            var master = Master as RoomMagnet;
+            master.AfterLogin();
+        }
     }
 
     protected void SearchResultButton_Click(object sender, EventArgs e)
