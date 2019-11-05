@@ -51,8 +51,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         }
         String startDate;
         String endDate;
-        startDate = " AND(StartDate >= " + SearchResultStartDate.Text + ")";
-        endDate = " AND (EndDate <= " + SearchResultEndDate.Text + ")";
+        startDate = " AND([Property].StartDate >= \'" + SearchResultStartDate.Text + "\')";
+        endDate = " AND ([Property].EndDate <= \'" + SearchResultEndDate.Text + "\')";
         if (SearchResultStartDate.Text== String.Empty)
         {
             startDate = " ";
