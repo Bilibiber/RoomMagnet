@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+
 //using ASPSnippets.GoogleAPI;
-using System.Web.Script.Serialization;
-using System.Web.UI;
 
 public partial class Home : System.Web.UI.Page
 {
-    SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+    private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["SignInEmail"] == null)
@@ -20,7 +20,6 @@ public partial class Home : System.Web.UI.Page
             master.AfterLogin();
         }
     }
-
 
     protected void HomePageSearchButton_Click(object sender, EventArgs e)
     {
