@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Web.UI;
@@ -29,6 +30,8 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
             }
         }
+
+       
         if (IsPostBack)
             return;
     }
