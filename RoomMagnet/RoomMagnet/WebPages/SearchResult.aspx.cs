@@ -37,6 +37,15 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
     protected void SearchResultButton_Click(object sender, EventArgs e)
     {
+        Label1.Visible = false;
+        Label2.Visible = false;
+        Image2.Visible = false;
+        Label5.Visible = false;
+        Label6.Visible = false;
+        Image3.Visible = false;
+        Label9.Visible = false;
+        Label10.Visible = false;
+        Image4.Visible = false;
         resultCount = 0;
         if (SearchResultMinPrice.Text==String.Empty)
         {
