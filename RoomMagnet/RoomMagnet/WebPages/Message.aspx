@@ -3,35 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+        <script src="../lib/js/signalr/dist/browser/signalr.js"></script>
+    <script src="../lib/js/signalr/dist/browser/Chat.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
- <div class="container">
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col-2">User</div>
-            <div class="col-4"><input type="text" id="userInput" /></div>
-        </div>
-        <div class="row">
-            <div class="col-2">Message</div>
-            <div class="col-4"><input type="text" id="messageInput" /></div>
-        </div>
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col-6">
-                <input type="button" id="sendButton" value="Send Message" />
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
+ <div>
+            <asp:TextBox ID="txtServerInfo" runat="server" Height="206px" TextMode="MultiLine" Width="700px"></asp:TextBox>
             <hr />
+            <asp:TextBox ID="txtClientInfo" runat="server" Height="197px" TextMode="MultiLine" Width="376px"></asp:TextBox>
+            <asp:TextBox ID="txtContent" runat="server" Height="119px" TextMode="MultiLine"></asp:TextBox>
+            <asp:Button ID="Button1" runat="server" Height="52px" OnClick="Button1_Click" Text="发送" Width="138px" />
         </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <ul id="messagesList"></ul>
-        </div>
-    </div>
-    <script src="../lib/@microsoft/signalr/dist/browser/signalr.js"></script>
-    <script src="../lib/@microsoft/chat.js"></script>
     </asp:Content>
