@@ -306,15 +306,22 @@
                     <%--upload images--%>
                         <div class="container" style="float:left; display:inline-block">
                             <fieldset class="form-group">
-                                <a href="javascript:void(0)" onclick="$('#pro-image').click()">Add Property Images</a>
+                                <a href="javascript:void(0)" onclick="$('#pro-image').click()">Preview Images</a>
                                 <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
+                                <%--<asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="true" --%> />
+                                <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
                             </fieldset>
+                            <input type="file" id="myfile" multiple="multiple" name="myfile" runat="server" size="100" />
+    <br />
+    <asp:Button ID="Button1" runat="server" Text="Upload" OnClick="Button1_Click" />
+    <br />
                             <div class="preview-images-zone">
 
                             </div>
                         </div>
                         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                    </asp:Panel>
+                    
+            </asp:Panel>
 
     <%--renter Amenities panel--%>
 

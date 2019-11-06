@@ -3,59 +3,108 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
+    <style>
+        body {
+            width:85%;
+            margin:auto;
+        }
+    </style>
     
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
-    <h1>Search Result<asp:Label ID="SearchResultCount" runat="server" Text=""></asp:Label>
+    <h1>Search Result<asp:Label ID="SearchResultCount" runat="server" Text=""></asp:Label> 
     </h1>
     <asp:TextBox ID="SearchResultText" runat="server" PlaceHolder="Enter a City or Zipcode"></asp:TextBox>
     <asp:Button ID="SearchResultButton" runat="server" Text="Search" OnClick="SearchResultButton_Click"/>
     
-    <div class="container">
-        <u>Filters</u>
-        <div class="row">
-         Price
+    <div>
+         <u>Filters</u>
+      </div>
+        <div >
+            Price
         </div>
         
-        <div class="row">
+       
             Min. Price
             <asp:TextBox ID="SearchResultMinPrice" runat="server"></asp:TextBox>
-            <asp:CompareValidator ID="SearchResultsMinPriceValidator" ControlToValidate="SearchResultMinPrice" Operator="DataTypeCheck" Type="Currency" runat="server" Text="(Invalid Price)"></asp:CompareValidator>
+            <asp:CompareValidator ID="SearchResultsMinPriceValidator" ControlToValidate="SearchResultMinPrice" Operator="DataTypeCheck" Type="Currency" runat="server" Text="(Invalid Price)" Display="Dynamic"></asp:CompareValidator>
             Max Price
             <asp:TextBox ID="SearchResultMaxPrice" runat="server"></asp:TextBox>
             <asp:CompareValidator ID="SearchResultsMaxPriceValidator" ControlToValidate="SearchResultMaxPrice" runat="server" Operator="DataTypeCheck" Type="Currency" Text="(Invalid Price)"></asp:CompareValidator>
             <asp:Label ID="SearchLabel" runat="server" Text=""></asp:Label>
-            <asp:Image ID="Image2" runat="server" ImageUrl="https://property-created.s3.us-west-2.amazonaws.com/Property%20Pictures/testProperty.jpg?X-Amz-Expires=3592&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAXZN4IZI4EEHR4OUZ/20191103/us-west-2/s3/aws4_request&X-Amz-Date=20191103T213457Z&X-Amz-SignedHeaders=host&X-Amz-Signature=7c1b0de04f9f3cd5f8062a22fc4b910e306f72d5fdc67b0b9bd7265836b2b28a" />
-            </div>
-        <div class="row">
-            Start Date
+            <div>
+                Start Date
             <asp:TextBox ID="SearchResultStartDate" runat="server"></asp:TextBox>
             End Date
-            <asp:TextBox ID="SearchResultEndDate" runat="server" OnTextChanged="SearchResultEndDate_TextChanged"></asp:TextBox>
-        </div>
-
-        <div class="row">
+            <asp:TextBox ID="SearchResultEndDate" runat="server" ></asp:TextBox>
+            <br />
             Beds Available
-<%--<<<<<<< HEAD--%>
-            <asp:ListItem ID="SearchResultBedsAvailable" runat="server" >
-<%--=======--%>
-            <%--<asp:ListItem ID="SearchResultBedsAvailable" runat="server">--%>
-<%-->>>>>>> 0591c91b12fd631acbb12b6e2777544fe5085073--%>
+
+            <asp:DropDownList ID="SearchResultBedsAvailable" runat="server">
+
                 <asp:ListItem Value="1">1</asp:ListItem>
                 <asp:ListItem Value="2">2</asp:ListItem>
                 <asp:ListItem Value="3">3</asp:ListItem>
                 <asp:ListItem Value="4">4+</asp:ListItem>
-            </asp:ListItem>
-        </div>
-        <div class="row">
-            Home Type
-        <asp:DropDownList ID="SearchResultHomeType" runat="server">
+            </asp:DropDownList>
+     
+        
+            
+        <asp:DropDownList ID="SearchResultHomeType" Visible="false" runat="server">
                 <asp:ListItem>Apartment</asp:ListItem>
                 <asp:ListItem>Townhome</asp:ListItem>
                 <asp:ListItem>House</asp:ListItem>
             </asp:DropDownList>
-        </div>
+
+
+
+
+
+           
+                <div class="container">
+                   <br />
+                    <asp:Image ID="Image2" Visible="false" runat="server"  style="width:200px;" />
+                <div class="media-body">
+                    <h3 class="mt-0"> <asp:Label ID="Label1" Visible="false" runat="server" Text="Label"></asp:Label> </h3>
+                    <asp:Label ID="Label2" runat="server" Visible="false" CssClass="small" Text="Label"></asp:Label>
+                    <hr />
+                     <h5 class="mt-0"> <asp:Label ID="Label3" Visible="false" CssClass="la-font" runat="server" Text="Amenities"></asp:Label> </h5>
+                       <asp:Label ID="Label4" runat="server" Visible="false" CssClass="small" Text="Label"></asp:Label>
+                    
+                </div>
+                    <asp:Image ID="Image3" runat="server" Visible="false"  style="width:200px;" />
+                <div class="media-body">
+                    <h3 class="mt-0"> <asp:Label ID="Label5" Visible="false" runat="server" Text="Label"></asp:Label> </h3>
+                    <asp:Label ID="Label6" runat="server" Visible="false" CssClass="small" Text="Label"></asp:Label>
+                    <hr />
+                     <h5 class="mt-0"> <asp:Label ID="Label7" Visible="false" CssClass="la-font" runat="server" Text="Amenities"></asp:Label> </h5>
+                       <asp:Label ID="Label8" runat="server" Visible="false" CssClass="small" Text="Label"></asp:Label>
+                    
+                </div>
+                    <asp:Image ID="Image4" runat="server" Visible="false"  style="width:200px;" />
+                <div class="media-body">
+                    <h3 class="mt-0"> <asp:Label ID="Label9" Visible="false" runat="server" Text="Label"></asp:Label> </h3>
+                    <asp:Label ID="Label10" runat="server" Visible="false" CssClass="small" Text="Label"></asp:Label>
+                    <hr />
+                     <h5 class="mt-0"> <asp:Label ID="Label11" Visible="false" CssClass="la-font" runat="server" Text="Amenities"></asp:Label> </h5>
+                       <asp:Label ID="Label12" runat="server" Visible="false" CssClass="small" Text="Label"></asp:Label>
+                    
+                </div>
+                    <asp:Image ID="Image5" runat="server" Visible="false"  style="width:200px;" />
+                <div class="media-body">
+                    <h3 class="mt-0"> <asp:Label ID="Label13" Visible="false" runat="server" Text="Label"></asp:Label> </h3>
+                    <asp:Label ID="Label14" runat="server" Visible="false" CssClass="small" Text="Label"></asp:Label>
+                    <hr />
+                     <h5 class="mt-0"> <asp:Label ID="Label15" Visible="false" CssClass="la-font" runat="server" Text="Amenities"></asp:Label> </h5>
+                       <asp:Label ID="Label16" runat="server" Visible="false" CssClass="small" Text="Label"></asp:Label>
+                </div>
+                
+            
+                </div>
+
+        
             
        </div>
+        
 </asp:Content>
 
