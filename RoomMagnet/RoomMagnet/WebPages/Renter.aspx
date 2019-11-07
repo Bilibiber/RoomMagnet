@@ -87,7 +87,7 @@
             height: 33px;
         }
 
-        .userimage{
+        .userimage {
             width: 200px;
             height: 180px;
             background-position: center center;
@@ -99,7 +99,7 @@
             box-shadow: 0px -3px 6px 2px rgba(0,0,0,0.2);
         }
 
-        
+
         /*upload images*/
         .preview-images-zone {
             width: 100%;
@@ -108,59 +108,68 @@
             /* display: flex; */
             padding: 5px 5px 0px 5px;
             position: relative;
-            overflow:auto;
+            overflow: auto;
         }
-        .preview-images-zone > .preview-image:first-child {
-            height: 185px;
-            width: 185px;
-            position: relative;
-            margin-right: 5px;
-        }
-        .preview-images-zone > .preview-image {
-            height: 90px;
-            width: 90px;
-            position: relative;
-            margin-right: 5px;
-            float: left;
-            margin-bottom: 5px;
-        }
-        .preview-images-zone > .preview-image > .image-zone {
-            width: 100%;
-            height: 100%;
-        }
-        .preview-images-zone > .preview-image > .image-zone > img {
-            width: 100%;
-            height: 100%;
-        }
-        .preview-images-zone > .preview-image > .tools-edit-image {
-            position: absolute;
-            z-index: 100;
-            color: #fff;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 10px;
-            display: none;
-        }
-        .preview-images-zone > .preview-image > .image-cancel {
-            font-size: 18px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            font-weight: bold;
-            margin-right: 10px;
-            cursor: pointer;
-            display: none;
-            z-index: 100;
-        }
+
+            .preview-images-zone > .preview-image:first-child {
+                height: 185px;
+                width: 185px;
+                position: relative;
+                margin-right: 5px;
+            }
+
+            .preview-images-zone > .preview-image {
+                height: 90px;
+                width: 90px;
+                position: relative;
+                margin-right: 5px;
+                float: left;
+                margin-bottom: 5px;
+            }
+
+                .preview-images-zone > .preview-image > .image-zone {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                    .preview-images-zone > .preview-image > .image-zone > img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .preview-images-zone > .preview-image > .tools-edit-image {
+                    position: absolute;
+                    z-index: 100;
+                    color: #fff;
+                    bottom: 0;
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    display: none;
+                }
+
+                .preview-images-zone > .preview-image > .image-cancel {
+                    font-size: 18px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-weight: bold;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    display: none;
+                    z-index: 100;
+                }
+
         .preview-image:hover > .image-zone {
             cursor: move;
             opacity: .5;
         }
+
         .preview-image:hover > .tools-edit-image,
         .preview-image:hover > .image-cancel {
             display: block;
         }
+
         .ui-sortable-helper {
             width: 90px !important;
             height: 90px !important;
@@ -172,14 +181,14 @@
     </style>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             document.getElementById('pro-image').addEventListener('change', readImage, false);
-    
-            $( ".preview-images-zone" ).sortable();
-    
-            $(document).on('click', '.image-cancel', function() {
+
+            $(".preview-images-zone").sortable();
+
+            $(document).on('click', '.image-cancel', function () {
                 let no = $(this).data('no');
-                $(".preview-image.preview-show-"+no).remove();
+                $(".preview-image.preview-show-" + no).remove();
             });
         });
 
@@ -194,16 +203,16 @@
                 for (let i = 0; i < files.length; i++) {
                     var file = files[i];
                     if (!file.type.match('image')) continue;
-            
+
                     var picReader = new FileReader();
-            
+
                     picReader.addEventListener('load', function (event) {
                         var picFile = event.target;
-                        var html =  '<div class="preview-image preview-show-' + num + '">' +
-                                    '<div class="image-cancel" data-no="' + num + '">x</div>' +
-                                    '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
-                                    '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">edit</a></div>' +
-                                    '</div>';
+                        var html = '<div class="preview-image preview-show-' + num + '">' +
+                            '<div class="image-cancel" data-no="' + num + '">x</div>' +
+                            '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+                            '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">edit</a></div>' +
+                            '</div>';
 
                         output.append(html);
                         num = num + 1;
@@ -229,15 +238,11 @@
             <br />
 
             <div class="userimage">
-                
             </div>
             <%--<img src="https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg" class="rounded mx-auto d-block" alt="userimage" style="width: 300px;" />--%>
             <br />
             <br />
-            <asp:TextBox ID="unverified" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="XX-Large" ForeColor="White" Style="text-align: center; width: 200px;">UNVERIFIED</asp:TextBox>
-            <asp:TextBox ID="pending" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="XX-Large" ForeColor="White" Style="text-align: center; width: 200px;" Enabled="False" Visible="False">PENDING</asp:TextBox>
-            <asp:TextBox ID="verified" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="XX-Large" ForeColor="White" Style="text-align: center; width: 200px;" Enabled="False" Visible="False">VERIFIED</asp:TextBox>
-
+            <asp:Label ID="userstatus" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="XX-Large" ForeColor="White" Style="text-align: center; width: 200px;"></asp:Label>
             <br />
             <br />
             <asp:Button ID="renterSavedSearch" runat="server" Text="Saved Searches" Font-Size="XX-Large" ForeColor="Red" BackColor="Gray" BorderStyle="None" OnClick="renterSavedSearch_Click"></asp:Button>
