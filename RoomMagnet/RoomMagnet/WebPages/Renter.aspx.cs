@@ -5,16 +5,67 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class WebPages_Renter : System.Web.UI.Page
 {
+    private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
+        string status = Session["Verified"].ToString().ToUpper();
+        userstatus.Text = status;
+        if (Session["SignInEmail"] == null)
+        {
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        }
+        else
+        {
+            var master = Master as RoomMagnet;
+            master.AfterLogin();
+        }
+
+
         if (!IsPostBack)
         {
-            addCountry.DataSource = objcountries();
-            addCountry.DataBind();
+            SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+            db.Open();
+            System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
+            selectuser.Connection = db;
+            int userid = Convert.ToInt32(Session["UserID"]);
+            selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description], [DateOfBirth] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
+            SqlDataReader getinfor = selectuser.ExecuteReader();
+            while (getinfor.Read())
+            {
+                hellow.Text = "Hello, " + getinfor.GetString(0);
+                if (!getinfor.IsDBNull(1))
+                {
+                    userGender.Text = getinfor.GetString(1);
+                }
+                if (!getinfor.IsDBNull(2))
+                {
+                    userOccu.Text = getinfor.GetString(2);
+                }
+                if (!getinfor.IsDBNull(3))
+                {
+                    userDes.Text = getinfor.GetString(3);
+                }
+                if (!getinfor.IsDBNull(4))
+                {
+                    DateTime birth = getinfor.GetDateTime(4);
+                    DateTime now = DateTime.Now;
+                    int age = now.Year - birth.Year;
+                    if (now.Month < birth.Month || (now.Month == birth.Month && now.Day < birth.Day))
+                        age--;
+                    userAge.Text = age.ToString();
+                }
+
+            }
+            getinfor.Close();
+            db.Close();
         }
+
 
     }
 
@@ -42,9 +93,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentermymessage.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.Red;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -60,9 +108,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentersearch.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.Red;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -78,9 +123,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentermymessage.Visible = false;
         renterconnection.Visible = true;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.Red;
@@ -96,9 +138,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentermymessage.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = true;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -115,9 +154,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentermymessage.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = true;
-        renteraddAmenities.Visible = true;
-        renterSettingpanel.Visible = false;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -127,14 +163,12 @@ public partial class WebPages_Renter : System.Web.UI.Page
     }
     protected void renterSetting_Click(object sender, EventArgs e)
     {
+        Response.Redirect("Setting.aspx");
         renterinfor.Visible = false;
         rentersearch.Visible = false;
         rentermymessage.Visible = false;
         renterconnection.Visible = false;
         renterpreferences.Visible = false;
-        renterbecomehost.Visible = false;
-        renteraddAmenities.Visible = false;
-        renterSettingpanel.Visible = true;
         renterSavedSearch.ForeColor = System.Drawing.Color.White;
         renterMessage.ForeColor = System.Drawing.Color.White;
         renterConnections.ForeColor = System.Drawing.Color.White;
@@ -143,9 +177,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterSetting.ForeColor = System.Drawing.Color.Red;
     }
 
-    protected void post_Click(object sender, EventArgs e)
-    {
-    }
 
 
     protected void cancel_Click(object sender, EventArgs e)

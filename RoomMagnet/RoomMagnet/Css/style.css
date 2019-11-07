@@ -1161,11 +1161,11 @@
 }
 
 .color-primary, .atbd_listing_info .atbd_listing_title a:hover, .atbd_listing_data_list ul p span, .atbd_listing_bottom_content .atbd_content_right .atbd_save:hover, .post--card .card-body h6 a:hover, .post--card .card-body .post-meta li a:hover, .post--card2 .card-body .post-meta li a:hover, .testimonial-carousel .owl-nav button:hover, .widget.widget_pages .page-item a:hover, .atbd_author_info_widget .atbd_widget_contact_info ul li span:first-child, .atbdp-widget-categories .atbdp_parent_category li > .cat-trigger:hover, .atbdp-widget-categories .atbdp_parent_category li a:hover, .atbd_categorized_listings .listings > li .listing_value span, .atbd_categorized_listings .listings > li .directory_tag span .atbd_cat_popup .atbd_cat_popup_wrapper span a:hover, .category-widget ul li a:hover, .footer-three .footer-bottom .footer-bottom--content .copy-text span, .listing-info .atbd_listing_action_area .atbd_action .action_button > a:hover, .listing-info .atbd_listing_action_area .atbd_share .atbd_director_social_wrap a:hover, .menu-area .mainmenu__menu .navbar-nav > li:hover > a, .menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu li:hover a, .menu-area .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner > ul li a:hover, .menu-area.menu--light .mainmenu__menu .navbar-nav > li.has_dropdown .dropdown-menu .dropdown-menu--inner > ul li a:hover, .author__access_area ul li .access-link:hover, .mainmenu__menu .navbar-nav > li:hover > a, .place-list-wrapper ul li a:hover, .social-list li a:hover, .pagination .nav-links .page-numbers:hover, .price-range.rs-primary .amount, .price-range.rs-primary .amount-four, .range-slider.rs-primary .amount, .range-slider.rs-primary .amount-four, .contents-wrapper .contents h1 span, .contents-wrapper .contents .list-features li .list-count span, .section-title h2 span, .atbd_location_grid_wrap .atbd_location_grid:hover, .dashboard-nav .dashboard-nav-area .nav .nav-link.active, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td a:hover, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td > span, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td .remove-favorite, .post-author .author-info h5 span, .post-pagination .prev-post .title:hover, .post-pagination .next-post .title:hover {
-  color: #ffffff;
+  color: #bd2026;
 }
 
 .bg-primary, .atbd_listing_meta .atbd_listing_price, .atbdp-widget-categories .atbdp_parent_category li a:hover span, .atbdp-widget-tags ul li a:hover, .sort-rating .custom-control-label span, .tags-widget ul li a:hover, .listing-info .listing-info--meta .atbd_listing_category a span, .atbd_listing_gallery .gallery-images .slick-arrow:hover, .atbd_review_module .review_pagination .pagination .page-item .page-link:hover, .atbd_review_module .review_pagination .pagination .page-item.active .page-link, .social.social--small ul li a:hover, .select2-container--default .select2-results__option--highlighted[aria-selected], .select2-container--default .select2-selection--multiple .select2-selection__choice, .pagination .nav-links .page-numbers.current, .price-range.rs-primary .ui-slider-horizontal .ui-slider-range, .range-slider.rs-primary .ui-slider-horizontal .ui-slider-range, .all-listing-wrapper .atbd_listing_action_btn .view-mode .action-btn.active, .dashboard-nav .dashboard-nav-area .nav .nav-link.active:before, .atbd_saved_items_wrapper .atbdb_content_module_contents .table tr td .remove-favorite:hover, .post-bottom .tags ul li a:hover, .post-bottom .social-share ul li a:hover, .comments-area .comment-lists ul .depth-1 .media .media-body .media_top .reply:hover {
-  background: #bd2026;
+  background: #fff;
 }
 
 .iborder-primary {
@@ -2849,7 +2849,7 @@ p {
 /* footer widget styles */
 .widget .widget-title {
   font-size: 1.2rem;
-  margin: 0 0 2.46667rem 0;
+  margin: 0 0 0.5rem 0;
 }
 
 .widget.widget_pages ul {
@@ -4957,7 +4957,6 @@ p {
 }
 
 .author__access_area ul li {
-  margin-right: 2rem;
 }
 
 .author__access_area ul li:last-child {
@@ -4966,7 +4965,7 @@ p {
 
 .author__access_area ul li > span {
   display: inline-block;
-  padding: 0 4px;
+  padding: 10px;
 }
 
 .author__access_area ul li .author-info {
@@ -5103,8 +5102,8 @@ p {
 .offcanvas-menu .offcanvas-menu__contents .author-avatar {
   text-align: center;
   border-bottom: 1px solid #e3e6ef;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
+  padding: 0;
+  margin-bottom: 0rem;
 }
 
 .offcanvas-menu .offcanvas-menu__contents ul li a {
@@ -5172,19 +5171,20 @@ p {
 }
 
 .btn-gradient.btn-gradient-one {
-  background:  #d0ac1b;
+  background:  #fee169;
 }
 
-.btn-gradient.btn-gradient-one:before {
+.btn-gradient.btn-gradient-one:hover {
   background: #8a8c8f;
 }
 
 .btn-gradient.btn-gradient-two {
-  background: #d0ac1b;
+  background: #bd2026;
 }
 
 .btn-gradient.btn-gradient-two:before {
   background: #8a8c8f;
+  color: #fff;
 }
 
 .btn-gradient.btn-xs {
@@ -5192,7 +5192,8 @@ p {
 }
 
 .btn-gradient.btn-gradient-two:hover {
-  color: #fff;
+  background: #8a8c8f;
+  color: #fff !important;
 }
 
 .play-btn {
@@ -5492,6 +5493,9 @@ p {
 .form-control {
   box-shadow: none;
   width: 100%;
+  height: 100%;
+  padding: 0.375rem 1.2rem;
+  height: 3.2rem;
 }
 
 .form-control:focus {
@@ -6076,44 +6080,44 @@ p {
   margin: 0;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper {
+.directory_content_area   .atbd_seach_fields_wrapper {
   display: flex;
-  background: #fff;
   padding: 0rem;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field {
+.directory_content_area   .atbd_seach_fields_wrapper .single_search_field {
   margin-right: 0;
   flex: 5;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field .form-control {
+.directory_content_area   .atbd_seach_fields_wrapper .single_search_field .form-control {
   box-shadow: none;
   width: 100%;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field.search_category, .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field.search_location {
+.directory_content_area   .atbd_seach_fields_wrapper .single_search_field.search_category, .directory_content_area .atbd_seach_fields_wrapper .single_search_field.search_location {
   position: relative;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field.search_category:before, .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field.search_location:before {
+.directory_content_area   .atbd_seach_fields_wrapper .single_search_field.search_category:before, .directory_content_area .atbd_seach_fields_wrapper .single_search_field.search_location:before {
   position: absolute;
   content: '\f110';
   font-family: "LineAwesome";
   font-size: 0.8rem;
   color: #9299b8;
-  right: 1.33333rem;
+  right: 0rem;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
 }
 
-.directory_content_area .search_form .atbd_seach_fields_wrapper .atbd_submit_btn {
+.directory_content_area .atbd_seach_fields_wrapper .atbd_submit_btn {
   flex: 1;
+
 }
 
 .directory_content_area .directory_home_category_area {
-  margin-top: 2.2rem;
+  margin-top: 0rem;
 }
 
 .directory_content_area .directory_home_category_area ul {
@@ -7274,13 +7278,13 @@ p {
   .section-title p {
     width: 100%;
   }
-  .directory_content_area .search_form .atbd_seach_fields_wrapper {
+  .directory_content_area   .atbd_seach_fields_wrapper {
     flex-wrap: wrap;
   }
-  .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field, .directory_content_area .search_form .atbd_seach_fields_wrapper .atbd_submit_btn {
+  .directory_content_area   .atbd_seach_fields_wrapper .single_search_field, .directory_content_area   .atbd_seach_fields_wrapper .atbd_submit_btn {
     flex: auto;
     width: 45%;
-    margin: 5px;
+    margin: 0px;
   }
   .atbd_listing_bottom_content {
     flex-wrap: wrap;
@@ -7342,9 +7346,13 @@ p {
   .offcanvas-menu .offcanvas-menu__user {
     margin-right: 0;
   }
-  .directory_content_area .search_form .atbd_seach_fields_wrapper .single_search_field, .directory_content_area .search_form .atbd_seach_fields_wrapper .atbd_submit_btn {
+  .directory_content_area   .atbd_seach_fields_wrapper .single_search_field, .directory_content_area   .atbd_seach_fields_wrapper .atbd_submit_btn {
     width: 100%;
+
   }
+
+
+
   .category--img figure img {
     width: 100%;
   }
@@ -7455,7 +7463,7 @@ p {
 }
 
 .footer-logo{
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 .luminous-pad{
@@ -7470,6 +7478,60 @@ p {
 .about-link a{
   color: #333333;
 }
+.home-image {
+position:absolute;
+height:100%;
+width:100%;
+background-size: cover !important;
+background-position:center !important;
+background-repeat:no-repeat;
+}
 
+/* Rounded pill classes for horizontal sides */
+.rounded-pill-left {
+  border-top-left-radius: 50rem !important;
+  border-bottom-left-radius: 50rem !important;
+}
+.rounded-pill-right {
+  border-top-right-radius: 50rem !important;
+  border-bottom-right-radius: 50rem !important;
+}
+
+/* Another classes to use */
+.rounded-t-l-0 {
+  border-top-left-radius: 0 !important;
+}
+.rounded-t-r-0 {
+  border-top-right-radius: 0 !important;
+}
+.rounded-b-l-0 {
+  border-bottom-left-radius: 0 !important;
+}
+.rounded-b-r-0 {
+  border-bottom-right-radius: 0 !important;
+}
+.rounded-x-l-0 {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.rounded-x-r-0 {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.username-padding {
+    padding-top:15px;
+}
+
+.signup-padding{
+    padding-right:10px !important;
+    margin-right: 1rem;
+}
+
+.btn{
+    color:#fff !important;
+}
+.image-padding {
+padding-left:50px;
+}
 
 /*# sourceMappingURL=maps/style.css.map */

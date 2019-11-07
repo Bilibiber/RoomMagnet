@@ -31,7 +31,7 @@ public class EmailSender
     }
 
     // Welcome email method
-    public void SendWelcomeMail(string EnteredEmailAddress)
+    public void SendWelcomeMail(string EnteredEmailAddress, string Welcomemailstring)
     {
         mail.From = new MailAddress(FromEmailAddress);
         // where we send out the email
@@ -39,19 +39,16 @@ public class EmailSender
         //email subject
         mail.Subject = "Welcome to RoomMagnet";
         // email body, html tag friendly
-        string welcomemailstring =
-            @"<html>
-            <body>
-            <p>balabala</p>
-            </body>
-            </html>";
+  
+      
+            
         mail.IsBodyHtml = true;
-        mail.Body = welcomemailstring;
+        mail.Body = Welcomemailstring;
 
         smtpClient.Credentials = new System.Net.NetworkCredential(FromEmailAddress, FromEmailPassword);
         smtpClient.EnableSsl = true;
         //Send out email via gmail server
-        smtpClient.Send(mail);
+        //smtpClient.Send(mail);
     }
 
     // to be continue........

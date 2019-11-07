@@ -1,4 +1,7 @@
-﻿Create table Users(
+﻿Removed aboutyourself tabel
+
+
+Create table Users(
 UserID int identity(1,1)  not null,
 FirstName varchar(25)not null,
 LastName varchar(30) not null,

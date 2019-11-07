@@ -8,16 +8,19 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 
 public partial class RoomMagnet : System.Web.UI.MasterPage
+
 {
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     private string clientid = "501924233388-4ts15v59i0l3orbfaeaqfh6e1cl5dg1h.apps.googleusercontent.com";
     private string clientsecret = "71rfQJWsTXIkCOuI6cZOdBtL";
     private string redirection_url = "http://localhost:59379/WebPages/Home.aspx";
     private string url = "https://accounts.google.com/o/oauth2/token";
-    string FName;
-    string LName;
+    private string FName;
+    private string LName;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["UserCount"] = 0;
         if (!IsPostBack)
         {
             if (Request.QueryString["code"] != null)
@@ -44,6 +47,13 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         if (SignUpEmailCustomValidator.IsValid)
         {
             Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
+
+            string Welcomemailstring = "Welcome to RoomMagnet!";
+
+            string EnteredEmailAddress = MasterPageEmail.Text;
+            EmailSender email = new EmailSender();
+            email.SendWelcomeMail(EnteredEmailAddress, Welcomemailstring);
+
             string MasterPagepassword = users.getPassword();
             string HashedPassword = PasswordHash.HashPassword(MasterPagepassword);
             try
@@ -52,8 +62,10 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 {
                     cn.Open();
                 }
-                string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@LastUpdated,@LastUpdatedBy)";
+                string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,UserRole,Verified,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@UserRole,@Verified,@LastUpdated,@LastUpdatedBy)";
                 SqlCommand sqlCommand = new SqlCommand(Sql, cn);
+                string role = "Renter";
+                string verified = "Unverified";
                 sqlCommand.Parameters.AddRange(
                     new SqlParameter[]
                     {
@@ -64,10 +76,20 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     new SqlParameter("@DateOfBirth",users.getBirthday()),
                     new SqlParameter("@LastUpdated",users.getLastUpdated()),
                     new SqlParameter("@LastUpdatedBy",users.getLastUpdatedBy()),
+                    new SqlParameter("@UserRole",role),
+                    new SqlParameter("@Verified",verified),
                     });
                 sqlCommand.ExecuteNonQuery();
                 cn.Close();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openNotificationModal();", true);
+                MasterPageBirthday.Text = string.Empty;
+                MasterPageComfirmPassword.Text = string.Empty;
+                MasterPageEmail.Text = string.Empty;
+                MasterPageFirstName.Text = string.Empty;
+                MasterPageLastName.Text = string.Empty;
+                MasterPagePassword.Text = string.Empty;
             }
+
             // client -side to show a notification
             catch (Exception)
             {
@@ -76,15 +98,13 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         }
         else
         {
-            // lBL 
+            // lBL
         }
     }
 
     protected void MasterPageSignIn_Click(object sender, EventArgs e)
     {
         string sql = "Select Password from Users where Email = @Email ";
-
-        Session["SignInEmail"] = SignInEmail.Text;
         try
         {
             string storedHash;
@@ -103,7 +123,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     reader.Close();
                     if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
                     {
+                        Session["SignInEmail"] = SignInEmail.Text;
                         GetUserInfo();
+                        AfterLogin();
                     }
                     else
                     {
@@ -127,13 +149,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             SignInErrorLbl.Visible = true;
             SignInErrorLbl.Text = "DataBase Error please try again later";
         }
-        MasterPageBirthday.Text = string.Empty;
-        MasterPageComfirmPassword.Text = string.Empty;
-        MasterPageEmail.Text = string.Empty;
-        MasterPageFirstName.Text = string.Empty;
-        MasterPageLastName.Text = string.Empty;
-        MasterPagePassword.Text = string.Empty;
+
     }
+
     public void GetUserInfo()
     {
         try
@@ -142,9 +160,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             {
                 cn.Open();
             }
-            string SqlGetUserInfos = "SELECT        Users.UserID, Users.FirstName, Users.LastName, Users.ImagePath, UserRoles.Roles" +
-                                                " FROM Users INNER JOIN UserRoles ON Users.UserID = UserRoles.UserID " +
-                                                "where Users.Email =@Email";
+            string SqlGetUserInfos = "SELECT UserID,FirstName,LastName,ImagePath,UserRole,Verified FROM Users where Users.Email =@Email";
             SqlCommand Finder = new SqlCommand(SqlGetUserInfos, cn);
             Finder.Parameters.AddWithValue("@Email", Session["SignInEmail"]);
             SqlDataReader dataReader = Finder.ExecuteReader();
@@ -153,14 +169,13 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 if (dataReader.Read())
                 {
                     Session["UserID"] = dataReader.GetInt32(0);
-                    Session["FullName"] = dataReader.GetString(1) +" "+ dataReader.GetString(2);
+                    Session["FullName"] = dataReader.GetString(1) + " " + dataReader.GetString(2);
                     //Session["ImagePath"] = dataReader.GetString(3);
                     Session["Roles"] = dataReader.GetString(4);
+                    Session["Verified"] = dataReader.GetString(5);
                 }
             }
             dataReader.Close();
-            MasterUserName.Visible = true;
-            MasterUserName.Text = Session["FullName"].ToString();
         }
         catch (Exception)
         {
@@ -170,6 +185,16 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         }
         cn.Close();
     }
+
+    public void AfterLogin()
+    {
+        MasterUserName.Visible = true;
+        MasterUserName.Text = Session["FullName"].ToString();
+        MasterPageUserProfileImage.Visible = true;
+        MasterPageSignUp.Visible = false;
+        MasterPageLogIn.Visible = false;
+    }
+
     public void GetToken(string code)
     {
         string poststring = "grant_type=authorization_code&code=" + code + "&client_id=" + clientid + "&client_secret=" + clientsecret + "&redirect_uri=" + redirection_url + "";
@@ -224,8 +249,8 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             {
                 cn.Open();
             }
-            string sql ="Select Email from Users";
-            SqlCommand sqlCommand = new SqlCommand(sql,cn);
+            string sql = "Select Email from Users";
+            SqlCommand sqlCommand = new SqlCommand(sql, cn);
             SqlDataReader reader = sqlCommand.ExecuteReader();
             if (reader.HasRows)
             {
@@ -238,7 +263,6 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                         args.IsValid = false;
                         break;
                     }
- 
                 }
             }
             else
@@ -253,5 +277,30 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             args.IsValid = false;
             SignUpEmailCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
         }
+    }
+
+    protected void GotoDashBoard_Click(object sender, EventArgs e)
+    {
+        MasterUserName.Visible = true;
+        MasterUserName.Text = Session["FullName"].ToString();
+        MasterPageUserProfileImage.Visible = true;
+        Response.Redirect("Renter.aspx");
+    }
+
+    protected void GotoSetting_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Setting.aspx");
+    }
+
+    protected void MasterPageSignOut_Click(object sender, EventArgs e)
+    {
+        Session.Abandon();
+        Session.Clear();
+        Response.Redirect("Home.aspx");
+    }
+
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("Home.aspx");
     }
 }
