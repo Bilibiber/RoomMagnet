@@ -25,7 +25,8 @@ public partial class WebPages_Setting : System.Web.UI.Page
         //if (!IsPostBack)
         //{
         //    setCountry.DataSource = objcountries();
-        //    setCountry.DataBind();
+        //    setCountry.DataBind();+		$exception	{"Invalid column name 'Description'."}	System.Data.SqlClient.SqlException
+
         //}
 
         if (!IsPostBack)
@@ -137,7 +138,13 @@ public partial class WebPages_Setting : System.Web.UI.Page
         {
 
         }
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
 
 
+    }
+
+    protected void goDashboard_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Renter.aspx");
     }
 }

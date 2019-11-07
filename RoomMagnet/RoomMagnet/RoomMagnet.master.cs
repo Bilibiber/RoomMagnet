@@ -62,8 +62,10 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 {
                     cn.Open();
                 }
-                string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@LastUpdated,@LastUpdatedBy)";
+                string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,UserRole,Verified,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@UserRole,@Verified,@LastUpdated,@LastUpdatedBy)";
                 SqlCommand sqlCommand = new SqlCommand(Sql, cn);
+                string role = "Renter";
+                string verified = "Unverified";
                 sqlCommand.Parameters.AddRange(
                     new SqlParameter[]
                     {
@@ -74,6 +76,8 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     new SqlParameter("@DateOfBirth",users.getBirthday()),
                     new SqlParameter("@LastUpdated",users.getLastUpdated()),
                     new SqlParameter("@LastUpdatedBy",users.getLastUpdatedBy()),
+                    new SqlParameter("@UserRole",role),
+                    new SqlParameter("@Verified",verified),
                     });
                 sqlCommand.ExecuteNonQuery();
                 cn.Close();
@@ -156,9 +160,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             {
                 cn.Open();
             }
-            string SqlGetUserInfos = "SELECT        Users.UserID, Users.FirstName, Users.LastName, Users.ImagePath, UserRoles.Roles" +
-                                                " FROM Users INNER JOIN UserRoles ON Users.UserID = UserRoles.UserID " +
-                                                "where Users.Email =@Email";
+            string SqlGetUserInfos = "SELECT UserID,FirstName,LastName,ImagePath,UserRole,Verified FROM Users where Users.Email =@Email";
             SqlCommand Finder = new SqlCommand(SqlGetUserInfos, cn);
             Finder.Parameters.AddWithValue("@Email", Session["SignInEmail"]);
             SqlDataReader dataReader = Finder.ExecuteReader();
@@ -170,6 +172,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     Session["FullName"] = dataReader.GetString(1) + " " + dataReader.GetString(2);
                     //Session["ImagePath"] = dataReader.GetString(3);
                     Session["Roles"] = dataReader.GetString(4);
+                    Session["Verified"] = dataReader.GetString(5);
                 }
             }
             dataReader.Close();

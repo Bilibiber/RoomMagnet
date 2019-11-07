@@ -48,7 +48,7 @@ public class EmailSender
         smtpClient.Credentials = new System.Net.NetworkCredential(FromEmailAddress, FromEmailPassword);
         smtpClient.EnableSsl = true;
         //Send out email via gmail server
-        smtpClient.Send(mail);
+        //smtpClient.Send(mail);
     }
 
     // to be continue........
