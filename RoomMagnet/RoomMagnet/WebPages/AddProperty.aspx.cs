@@ -73,8 +73,8 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         string FullName = Session["FullName"].ToString();
 
         string insert = "INSERT INTO [dbo].[Property]([Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage],[RentPrice],[AvailableBedrooms]," +
-            "[StartDate],[EndDate],[ImagePath],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country," +
-            " @ZipCode, @SquareFootage, @RentPrice, @AvailableBedrooms, @StartDate, @EndDate,@ImagePath,@LastUpdated, @LastUpdatedBy,@HostID)";
+            "[StartDate],[EndDate],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country,@ZipCode, @SquareFootage, @RentPrice," +
+            " @AvailableBedrooms, @StartDate, @EndDate,@LastUpdated, @LastUpdatedBy,@HostID)";
         SqlCommand inserted = new SqlCommand(insert, cn);
         inserted.Parameters.AddWithValue("@Title", addtitle.Text);
         inserted.Parameters.AddWithValue("@StreetAddress", addStreet.Text);
@@ -87,12 +87,13 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         inserted.Parameters.AddWithValue("@AvailableBedrooms", addBedrooms.Text);
         inserted.Parameters.AddWithValue("@StartDate", Convert.ToDateTime(addstartdate.Text));
         inserted.Parameters.AddWithValue("@EndDate", Convert.ToDateTime(addenddate.Text));
-        inserted.Parameters.AddWithValue("@ImagePath", addBedrooms.Text);
         inserted.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
         inserted.Parameters.AddWithValue("@LastUpdatedBy", FullName);
         inserted.Parameters.AddWithValue("@HostID", userid);
         inserted.ExecuteNonQuery();
+        cn.Close();
 
+        cn.Open();
         System.Data.SqlClient.SqlCommand selectpid = new System.Data.SqlClient.SqlCommand();
         selectpid.Connection = cn;
         selectpid.CommandText = "SELECT [PropertyID] FROM [dbo].[Property] where [StreetAddress] = @StreetAddress and [ZipCode] = @ZipCode";
@@ -105,13 +106,12 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             pid = Int32.Parse(getpid[0].ToString());
         }
         getpid.Close();
-        string insertto = "INSERT INTO[dbo].[Amenities] ([PropertyID],[AirConditioning],[Heating],[OnSiteLaundry],[Parking],[Furnished],[PetFriendly]," +
-            "[CarbonMonoxideDetector],[SmokeDetector],[SeperateEntrance],[WiFi],[TV],[SeparateBathroom],[Other]) VALUES(PropertyID= @PropertyID,AirConditioning=@AC,Heating=@Heating " +
-            ",OnSiteLaundry=@Laundry,Parking=@Parking,Furnished=@Furnished,PetFriendly=@Pet,CarbonMonoxideDetector=@Carbondetector,SmokeDetector=@SmokeDetector,SeperateEntrance=@SeperateEntrance" +
-            ",WiFi=@WiFi,TV=@TV,SeparateBathroom=@SeparateBathroom,Other=@Other)";
+        string insertto = "INSERT INTO[dbo].[Amenities] ([PropertyID],[AirConditioning],[Heating],[OnSiteLaundry],[Parking],[Furnished],[PetFriendly],[CarbonMonoxideDetector]," +
+            "[SmokeDetector],[SeperateEntrance],[WiFi],[TV],[SeparateBathroom],[Other]) VALUES(@PropertyID,@AC,@Heating,@Laundry,@Parking,@Furnished,@Pet,@Carbondetector," +
+            "@SmokeDetector,@SeperateEntrance,@WiFi,@TV,@SeparateBathroom,@Other)";
         SqlCommand insertTo = new SqlCommand(insertto, cn);
         insertTo.Parameters.AddWithValue("@PropertyID", pid);
-        insertTo.Parameters.AddWithValue("@AC", checkcondition.Checked? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@AC", checkcondition.Checked ? 'Y' : 'N');
         insertTo.Parameters.AddWithValue("@Heating", checkheating.Checked ? 'Y' : 'N');
         insertTo.Parameters.AddWithValue("@Laundry", checkLaundry.Checked ? 'Y' : 'N');
         insertTo.Parameters.AddWithValue("@Parking", checkParking.Checked ? 'Y' : 'N');
