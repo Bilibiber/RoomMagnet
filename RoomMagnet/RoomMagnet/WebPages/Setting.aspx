@@ -77,18 +77,34 @@
         .container {
         }
 
+        .1 {
+            width: 300px;
+        }
+
+        .2 {
+            width: 483px;
+        }
+
         .auto-style1 {
-            width: 300px;
+            width: 250px;
         }
-
         .auto-style2 {
-            width: 300px;
+            width: 120px;
+        }
+        .auto-style3 {
+            width: 151px;
+        }
+        .auto-style4 {
+            width: 217px;
+        }
+        .auto-style5 {
+            width: 238px;
+        }
+        .auto-style6 {
+            width: 198px;
         }
 
-        .auto-style3 {
-            width: 129px;
-        }
-    </style>
+        </style>
 
     <%--user image--%>
     <script>
@@ -159,54 +175,101 @@
 
                         <table>
                             <tr>
-                                <td></td>
-                                <td class="auto-style3">
+                                <td class="w-auto">
                                     <asp:label runat="server" text="First Name"></asp:label>
                                 </td>
-                                <td class="auto-style1">
-                                    <asp:textbox id="setfirstname" runat="server" maxlength="25" width="147px"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="Requiredfirstname" runat="server" errormessage="Required" controltovalidate="setfirstname" forecolor="Red" validationgroup="settings" ondatabinding="updateusersetting_Click">Required</asp:requiredfieldvalidator>
+                                <td class="w-auto">
+                                    <asp:textbox id="firstNameTxt" runat="server" maxlength="25" width="150px"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="Requiredfirstname" runat="server" errormessage="Required" controltovalidate="firstNameTxt" forecolor="Red" validationgroup="settings" ondatabinding="updateusersetting_Click">Required</asp:requiredfieldvalidator>
                                 </td>
-                                <td></td>
-                                <td>
+                                
+                                <td class="w-auto">
                                     <asp:label runat="server" text="Middle Name"></asp:label>
+                                    
                                 </td>
-                                <td class="auto-style2">
-                                    <asp:textbox id="setmiddlename" runat="server" maxlength="30"></asp:textbox>
+                                <td class="w-auto">
+                                    <asp:textbox id="setmiddlename" runat="server" maxlength="30" width="150px"></asp:textbox>
                                 </td>
-                                <td></td>
-                                <td>
-                                    <asp:label runat="server" text="Last Name"></asp:label>
+                                <td class="w-auto">
+                                    <asp:label runat="server" text="Last Name " ID="label2"></asp:label>
+                                    &nbsp;</td>
+                                <td class="w-auto">
+                                    <asp:textbox id="setlastname" runat="server" maxlength="30" width="150px"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="Requiredlastname0" runat="server" errormessage="Required" controltovalidate="setlastname" forecolor="Red" validationgroup="settings" ondatabinding="updateusersetting_Click">Required</asp:requiredfieldvalidator>
                                 </td>
-                                <td class="auto-style2">
-                                    <asp:textbox id="setlastname" runat="server" maxlength="30"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="Requiredlastname" runat="server" errormessage="Required" controltovalidate="setlastname" forecolor="Red" validationgroup="settings" ondatabinding="updateusersetting_Click">Required</asp:requiredfieldvalidator>
-                                </td>
+                                
+                                
                             </tr>
 
                             <tr>
-                                <td></td>
+                               
                                 <td class="auto-style3">
                                     <asp:label runat="server" text="Gender"></asp:label>
                                 </td>
                                 <td class="auto-style1">
                                     <asp:dropdownlist id="setgender" runat="server">
                                 <asp:ListItem Value=""></asp:ListItem>
-                                <asp:ListItem Value="male">Male</asp:ListItem>
+                                <asp:ListItem Value="Male">Male</asp:ListItem>
                                 <asp:ListItem Value="Female">Female</asp:ListItem>
                             </asp:dropdownlist>
                                 </td>
-                                <td></td>
-                                <td>
+                                <td class="auto-style2">
                                     <asp:label runat="server" text="Occupation"></asp:label>
                                 </td>
+                                
+                                <td class="auto-style4">
+                                    <asp:textbox id="setOccupation" runat="server" maxlength="25" width="150px"></asp:textbox>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                
+                                <td class="auto-style3">
+
+                                    <asp:Label ID="LblStreetAddress" runat="server" text="Street Address "></asp:Label>
+
+                                </td>
+                                <td class="auto-style1">
+
+                                    <asp:TextBox ID="streetAddressTxt" runat="server" MaxLength="50" width="150px"></asp:TextBox>
+
+                                </td>
                                 <td class="auto-style2">
-                                    <asp:textbox id="setOccupation" runat="server" maxlength="25"></asp:textbox>
+                                    <asp:Label ID="LblCity" runat="server" text="City "></asp:Label>
+                                </td>
+                                <td class="auto-style4">
+
+                                    <asp:TextBox ID="cityTxt" runat="server" MaxLength="50" width="150px"></asp:TextBox>
+
+                                </td>
+                                <td class="auto-style6">
+
+                                    <asp:Label ID="LblState" runat="server" Text="State "></asp:Label>
+
+                                </td>
+                                <td class="auto-style5">
+
+                                    <asp:TextBox ID="stateTxt" runat="server"></asp:TextBox>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblCountry" runat="server" Text="Country "></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="countryTxt" runat="server"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblZipCode" runat="server" Text="Zip Code"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="zipCodeTxt" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
-
                             <tr>
-                                <td></td>
+                                
                                 <td class="auto-style3">
                                     <asp:label runat="server" text="Reset Password"></asp:label>
                                 </td>
@@ -214,17 +277,18 @@
                                     <asp:textbox id="setpassword" runat="server" type="password"></asp:textbox>
                                     <asp:regularexpressionvalidator id="RegularExpressionValidatorPasswordLowerCase" runat="server" controltovalidate="setpassword" display="Dynamic" errormessage="Password must be at least 8 characters long and contains at least one: Lower Case, Upper Case, Special Character" forecolor="Red" validationexpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;£*\-_+=[\]{}|\\:',?/`~();!]|\.(?!@)){8,16}$" validationgroup="settings"></asp:regularexpressionvalidator>
                                 </td>
-                                <td></td>
-                                <td>
-                                    <asp:label runat="server" text="Confirm Password"></asp:label>
-                                </td>
                                 <td class="auto-style2">
+                                    <asp:label runat="server" text="Confirm Password" ID="label3"></asp:label>
+                                </td>
+                                <td class="auto-style4">
                                     <asp:textbox id="setconfirmpass" runat="server" type="password"></asp:textbox>
                                     <asp:comparevalidator id="ComparePass" runat="server" controltovalidate="setconfirmpass" display="Dynamic" errormessage="Password does not match" forecolor="Red" validationgroup="settings" controltocompare="setpassword"></asp:comparevalidator>
                                 </td>
+                                <td class="auto-style6">
+                                    &nbsp;</td>
                             </tr>
                             <tr>
-                                <td></td>
+                                
                                 <td class="auto-style3">&nbsp;</td>
                             </tr>
                         </table>
@@ -279,38 +343,38 @@
                 <table>
                     <tr>
                         <td></td>
-                        <td class="auto-style4">
+                        <td class="4">
                             <asp:Label runat="server" Text="Street Address: "></asp:Label>
                         </td>
-                        <td class="auto-style1">
+                        <td class="1">
                             <asp:TextBox ID="setStreet" runat="server" Width="250px" MaxLength="30"></asp:TextBox>
                             </td>
                         <td></td>
                         <td>
                             &nbsp;</td>
-                        <td class="auto-style2">
+                        <td class="2">
                             &nbsp;</td>
                     </tr>
 
                     <tr>
-                        <td class="auto-style5"></td>
-                        <td class="auto-style6">
+                        <td class="5"></td>
+                        <td class="6">
                             <asp:Label runat="server" Text="City"></asp:Label>
                             </td>
-                        <td class="auto-style7">
+                        <td class="7">
                             <asp:TextBox ID="setCity" runat="server"></asp:TextBox>
                         </td>
-                        <td class="auto-style5"></td>
-                        <td class="auto-style5">
+                        <td class="5"></td>
+                        <td class="5">
                             </td>
-                        <td class="auto-style7">
+                        <td class="7">
                             </td>
                     </tr>
 
                     <tr>
                         <td>
                         </td>
-                        <td class="auto-style4">
+                        <td class="4">
                             <asp:Label runat="server" Text="Country"></asp:Label>
                         </td>
                         <td>
@@ -321,10 +385,10 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td class="auto-style4">
+                        <td class="4">
                             <asp:Label runat="server" Text="Home State"></asp:Label>
                         </td>
-                        <td class="auto-style1">
+                        <td class="1">
                             <asp:DropDownList ID="setState" runat="server" Width="80px">
                                 <asp:ListItem Value=""></asp:ListItem>
                                     <asp:ListItem Value="AL">AL</asp:ListItem>

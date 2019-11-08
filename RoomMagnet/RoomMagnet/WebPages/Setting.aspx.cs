@@ -41,7 +41,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
             SqlDataReader getinfor = selectuser.ExecuteReader();
             while (getinfor.Read())
             {
-                setfirstname.Text = getinfor.GetString(0);
+                firstNameTxt.Text = getinfor.GetString(0);
                 if (!getinfor.IsDBNull(1))
                 {
                     setmiddlename.Text = getinfor.GetString(1);
@@ -99,14 +99,14 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 updateuser.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
                 "Occupation = @Occupation, Description=@Description,LastUpdated=@LastUpdated,LastUpdatedBy=@LastUpdatedBy WHERE [UserID] = @UserID";
 
-                updateuser.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
+                updateuser.Parameters.Add(new SqlParameter("@FirstName", firstNameTxt.Text));
                 updateuser.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
                 updateuser.Parameters.Add(new SqlParameter("@LastName", setlastname.Text));
                 updateuser.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
                 updateuser.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
                 updateuser.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
                 updateuser.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
-                updateuser.Parameters.Add(new SqlParameter("@LastUpdatedBy", setfirstname.Text + " " + setlastname.Text));
+                updateuser.Parameters.Add(new SqlParameter("@LastUpdatedBy", firstNameTxt.Text + " " + setlastname.Text));
                 updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
 
                 updateuser.ExecuteNonQuery();
@@ -117,14 +117,14 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 updateuser.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
                  "Occupation = @Occupation, Description=@Description,LastUpdated=@LastUpdated,LastUpdatedBy=@LastUpdatedBy, Password=@Password WHERE [UserID] = @UserID";
 
-                updateuser.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
+                updateuser.Parameters.Add(new SqlParameter("@FirstName", firstNameTxt.Text));
                 updateuser.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
                 updateuser.Parameters.Add(new SqlParameter("@LastName", setlastname.Text));
                 updateuser.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
                 updateuser.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
                 updateuser.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
                 updateuser.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
-                updateuser.Parameters.Add(new SqlParameter("@LastUpdatedBy", setfirstname.Text + " " + setlastname.Text));
+                updateuser.Parameters.Add(new SqlParameter("@LastUpdatedBy", firstNameTxt.Text + " " + setlastname.Text));
                 string newpass = PasswordHash.HashPassword(setconfirmpass.Text);
                 updateuser.Parameters.Add(new SqlParameter("@Password", newpass));
                 updateuser.Parameters.Add(new SqlParameter("@UserID", userid));

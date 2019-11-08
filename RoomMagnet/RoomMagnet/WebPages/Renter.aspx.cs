@@ -30,7 +30,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         {
             SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
             db.Open();
-            System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
+            SqlCommand selectuser = new SqlCommand();
             selectuser.Connection = db;
             int userid = Convert.ToInt32(Session["UserID"]);
             selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description], [DateOfBirth] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
