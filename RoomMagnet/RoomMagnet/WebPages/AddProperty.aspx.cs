@@ -74,6 +74,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     {
         cn.Open();
         int userid = Convert.ToInt32(Session["UserID"]);
+        userid = 1000;
         //string FullName = Session["FullName"].ToString();
         string FullName = "";
         string insert = "INSERT INTO [dbo].[Property]([Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage],[RentPrice],[AvailableBedrooms]," +

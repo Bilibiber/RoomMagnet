@@ -63,7 +63,7 @@
            
                 <div class="container">
                    <br />
-                    <asp:Image ID="Image2" Visible="false" runat="server"  style="width:200px;" />
+                    <asp:Image ID="Image2" Visible="true" runat="server"  style="width:200px;" />
                 <div class="media-body">
                     <h3 class="mt-0"> <asp:Label ID="Label1" Visible="false" runat="server" Text="Label"></asp:Label> </h3>
                     <asp:Label ID="Label2" runat="server" Visible="false" CssClass="small" Text="Label"></asp:Label>
