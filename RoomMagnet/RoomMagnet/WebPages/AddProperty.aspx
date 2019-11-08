@@ -329,11 +329,12 @@
                                 <a href="javascript:void(0)" onclick="$('#pro-image').click()">Preview Images</a>
                                 <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
                                 <%--<asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="true" --%> />
-                                <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="Label4" runat="server" Visible="false" Text="Label"></asp:Label>
+                                <asp:Button ID="UploadButton" runat="server" OnClick="UploadButton_Click" Text="Upload" />
                             </fieldset>
-                            <input type="file" id="myfile" multiple="multiple" name="myfile" runat="server" size="100" />
+                            
     <br />
-    <asp:Button ID="Button1" runat="server" Text="Upload" OnClick="Button1_Click" />
+    
     <br />
                             <div class="preview-images-zone">
                             </div>
