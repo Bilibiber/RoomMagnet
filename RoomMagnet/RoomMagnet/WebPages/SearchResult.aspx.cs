@@ -107,6 +107,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             {
                 SqlCommand search = new SqlCommand(sql, connection);
                 SqlDataReader reader = search.ExecuteReader();
+           
             if (reader.HasRows)
             {
                 while (reader.Read())
