@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="AddProperty.aspx.cs" Inherits="WebPages_AddProperty" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="Title" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
-        <%--renter update image--%>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+    <%--renter update image--%>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -20,61 +20,70 @@
             /* display: flex; */
             padding: 5px 5px 0px 5px;
             position: relative;
-            overflow:auto;
+            overflow: auto;
             top: 0px;
             left: 0px;
         }
-        .preview-images-zone > .preview-image:first-child {
-            height: 185px;
-            width: 185px;
-            position: relative;
-            margin-right: 5px;
-        }
-        .preview-images-zone > .preview-image {
-            height: 90px;
-            width: 90px;
-            position: relative;
-            margin-right: 5px;
-            float: left;
-            margin-bottom: 5px;
-        }
-        .preview-images-zone > .preview-image > .image-zone {
-            width: 100%;
-            height: 100%;
-        }
-        .preview-images-zone > .preview-image > .image-zone > img {
-            width: 100%;
-            height: 100%;
-        }
-        .preview-images-zone > .preview-image > .tools-edit-image {
-            position: absolute;
-            z-index: 100;
-            color: #fff;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 10px;
-            display: none;
-        }
-        .preview-images-zone > .preview-image > .image-cancel {
-            font-size: 18px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            font-weight: bold;
-            margin-right: 10px;
-            cursor: pointer;
-            display: none;
-            z-index: 100;
-        }
+
+            .preview-images-zone > .preview-image:first-child {
+                height: 185px;
+                width: 185px;
+                position: relative;
+                margin-right: 5px;
+            }
+
+            .preview-images-zone > .preview-image {
+                height: 90px;
+                width: 90px;
+                position: relative;
+                margin-right: 5px;
+                float: left;
+                margin-bottom: 5px;
+            }
+
+                .preview-images-zone > .preview-image > .image-zone {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                    .preview-images-zone > .preview-image > .image-zone > img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                .preview-images-zone > .preview-image > .tools-edit-image {
+                    position: absolute;
+                    z-index: 100;
+                    color: #fff;
+                    bottom: 0;
+                    width: 100%;
+                    text-align: center;
+                    margin-bottom: 10px;
+                    display: none;
+                }
+
+                .preview-images-zone > .preview-image > .image-cancel {
+                    font-size: 18px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-weight: bold;
+                    margin-right: 10px;
+                    cursor: pointer;
+                    display: none;
+                    z-index: 100;
+                }
+
         .preview-image:hover > .image-zone {
             cursor: move;
             opacity: .5;
         }
+
         .preview-image:hover > .tools-edit-image,
         .preview-image:hover > .image-cancel {
             display: block;
         }
+
         .ui-sortable-helper {
             width: 90px !important;
             height: 90px !important;
@@ -83,24 +92,23 @@
         .container {
             padding-top: 50px;
         }
+
         .auto-style1 {
             height: 28px;
         }
     </style>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             document.getElementById('pro-image').addEventListener('change', readImage, false);
-    
-            $( ".preview-images-zone" ).sortable();
-    
-            $(document).on('click', '.image-cancel', function() {
+
+            $(".preview-images-zone").sortable();
+
+            $(document).on('click', '.image-cancel', function () {
                 let no = $(this).data('no');
-                $(".preview-image.preview-show-"+no).remove();
+                $(".preview-image.preview-show-" + no).remove();
             });
         });
-
-
 
         var num = 4;
         function readImage() {
@@ -111,16 +119,16 @@
                 for (let i = 0; i < files.length; i++) {
                     var file = files[i];
                     if (!file.type.match('image')) continue;
-            
+
                     var picReader = new FileReader();
-            
+
                     picReader.addEventListener('load', function (event) {
                         var picFile = event.target;
-                        var html =  '<div class="preview-image preview-show-' + num + '">' +
-                                    '<div class="image-cancel" data-no="' + num + '">x</div>' +
-                                    '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
-                                    '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">edit</a></div>' +
-                                    '</div>';
+                        var html = '<div class="preview-image preview-show-' + num + '">' +
+                            '<div class="image-cancel" data-no="' + num + '">x</div>' +
+                            '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
+                            '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">edit</a></div>' +
+                            '</div>';
 
                         output.append(html);
                         num = num + 1;
@@ -133,13 +141,11 @@
                 console.log('Browser not support');
             }
         }
-
-
     </script>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
-     <%--become a host panel--%>
-            <asp:Panel runat="server" ID="renterbecomehost" Visible="true" style="width:70%; margin:auto;">
+<asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
+    <%--renter Amenities panel--%>
+    <asp:panel runat="server" id="renterbecomehost" visible="true" style="width: 70%; margin: auto;">
                 <div>
                     <asp:Label runat="server" Text="Add property" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -268,10 +274,9 @@
                                 <asp:RequiredFieldValidator ID="requireSquare" runat="server" ControlToValidate="addSquare" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
 
                                 <asp:CompareValidator ID="Comparesquare" runat="server" ControlToValidate="addSquare" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
-
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <td class="auto-style7"></td>
                             <td class="auto-style4">
@@ -281,6 +286,21 @@
                                 <asp:TextBox ID="addPrice" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="requirePrice" runat="server" ControlToValidate="addPrice" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
                                 <asp:CompareValidator ID="Compareprice" runat="server" ControlToValidate="addPrice" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
+                            </td>
+                            <td></td>
+                            <td>
+                                <asp:Label runat="server" Text="Avaliable Bedrooms: " Font-Bold="True"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:DropDownList id="addBedrooms" runat="server">
+                                    <asp:ListItem Value=""></asp:ListItem>
+                                    <asp:ListItem Value="1">1</asp:ListItem>
+                                    <asp:ListItem Value="2">2</asp:ListItem>
+                                    <asp:ListItem Value="3">3</asp:ListItem>
+                                    <asp:ListItem Value="4">4</asp:ListItem>
+                                    <asp:ListItem Value="5">5</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="requireBedroom" runat="server" ControlToValidate="addBedrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
@@ -302,7 +322,7 @@
                             </td>
                         </tr>
                     </table>
-                    
+
                     <%--upload images--%>
                         <div class="container" style="float:left; display:inline-block">
                             <fieldset class="form-group">
@@ -316,16 +336,14 @@
     <asp:Button ID="Button1" runat="server" Text="Upload" OnClick="Button1_Click" />
     <br />
                             <div class="preview-images-zone">
-
                             </div>
                         </div>
                         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                    
-            </asp:Panel>
+            </asp:panel>
 
     <%--renter Amenities panel--%>
 
-            <asp:Panel runat="server" ID="renteraddAmenities" Visible="true">
+    <asp:panel runat="server" id="renteraddAmenities" visible="true">
                 <div>
                     <asp:Label runat="server" Text="Amenities" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     <br />
@@ -334,62 +352,61 @@
                     <tr>
                         <td class="auto-style6"></td>
                         <td>
-                            <asp:CheckBox ID="checkcondition" runat="server" Text=" Air Conditioning"/>
+                            <asp:CheckBox ID="checkcondition" runat="server" Text=" Air Conditioning" />
                         </td>
                         <td class="auto-style6"></td>
                         <td>
-                            <asp:CheckBox ID="checkcarbondetector" runat="server" Text=" Carbon Monoxide Detector"/>
+                            <asp:CheckBox ID="checkcarbondetector" runat="server" Text=" Carbon Monoxide Detector" />
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <asp:CheckBox ID="checkheating" runat="server" Text=" Heating"/>
+                            <asp:CheckBox ID="checkheating" runat="server" Text=" Heating" />
                         </td>
                         <td></td>
                         <td>
-                            <asp:CheckBox ID="checksomkedetector" runat="server" Text=" Smoke Detector"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="check" runat="server" Text=" On-Site Laundry"/>
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkspeentrance" runat="server" Text=" Separate Entrance"/>
+                            <asp:CheckBox ID="checksomkedetector" runat="server" Text=" Smoke Detector" />
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <asp:CheckBox ID="checkParking" runat="server" Text=" Parking"/>
+                            <asp:CheckBox ID="checkLaundry" runat="server" Text=" On-Site Laundry" />
                         </td>
                         <td></td>
                         <td>
-                            <asp:CheckBox ID="checkWifi" runat="server" Text=" Wi-Fi"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkFurnished" runat="server" Text=" Furnished"/>
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkTV" runat="server" Text=" TV"/>
+                            <asp:CheckBox ID="checkspeentrance" runat="server" Text=" Separate Entrance" />
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <asp:CheckBox ID="checksepbath" runat="server" Text=" Pet-Friendly"/>
-                            
+                            <asp:CheckBox ID="checkParking" runat="server" Text=" Parking" />
                         </td>
                         <td></td>
                         <td>
-                            <asp:CheckBox ID="checkspebath" runat="server" Text="Separate Bathroom"/>
+                            <asp:CheckBox ID="checkWifi" runat="server" Text=" Wi-Fi" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <asp:CheckBox ID="checkFurnished" runat="server" Text=" Furnished" />
+                        </td>
+                        <td></td>
+                        <td>
+                            <asp:CheckBox ID="checkTV" runat="server" Text=" TV" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <asp:CheckBox ID="checkpet" runat="server" Text=" Pet-Friendly" />
+                        </td>
+                        <td></td>
+                        <td>
+                            <asp:CheckBox ID="checkspebath" runat="server" Text="Separate Bathroom" />
                         </td>
                     </tr>
                     <tr>
@@ -405,6 +422,5 @@
                 </table>
                 <br />
                 <asp:Button runat="server" class="btn btn-danger btn-lg" Text="Post" ValidationGroup="addproperty" ID="post" OnClick="post_Click"></asp:Button>
-            </asp:Panel>
+            </asp:panel>
 </asp:Content>
-

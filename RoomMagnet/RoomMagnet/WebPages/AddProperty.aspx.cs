@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.SqlClient;
+using System.Globalization;
 using System.IO;
+using System.Web;
 
 public partial class WebPages_AddProperty : System.Web.UI.Page
 {
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["SignInEmail"] == null)
@@ -35,15 +33,15 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             othertextbox.Enabled = true;
         }
 
-        if(addCountry.Text == "United States")
+        if (addCountry.Text == "United States")
         {
             addState.Enabled = true;
         }
-        else{
+        else
+        {
             addState.SelectedIndex = 0;
             addState.Enabled = false;
         }
-
     }
 
     public static List<string> objcountries()
@@ -71,50 +69,71 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     protected void post_Click(object sender, EventArgs e)
     {
         cn.Open();
-        int UserID=1;
-        string FirstName;
-        string LastName;
-        string FullName=" ";
+        int userid = Convert.ToInt32(Session["UserID"]);
+        string FullName = Session["FullName"].ToString();
 
-        string select = "Select UserID, FirstName, LastName from [Users] Where Email = 'bishopob@dukes.jmu.edu'";
-        SqlCommand selected = new SqlCommand(select, cn);
-        SqlDataReader read = selected.ExecuteReader();
-        if (read.Read())
-        {
-             UserID = read.GetInt32(0);
-             FirstName = read.GetString(1);
-             LastName = read.GetString(2);
-             FullName = FirstName + LastName;
-        }
-        read.Close();
-        string insert = "INSERT INTO [dbo].[Property]([PropertyID],[Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage], [PermanentResidences], [TotalBedrooms], [TotalBathrooms], " +
-            "[RentPrice],[AvailableBedrooms],[StartDate],[EndDate],[Filters],[ImagePath],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (" + 7 + ", @Title, @StreetAddress, @City, @HomeState, @Country," +
-            " @ZipCode, @SquareFootage," + 2 + "," + 2 + ", " + 2 +", @RentPrice, @AvailableBedrooms, @StartDate, @EndDate, 'hello', 'hello', @LastUpdated, @LastUpdatedBy, " + 1 + ")";
+        string insert = "INSERT INTO [dbo].[Property]([Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage],[RentPrice],[AvailableBedrooms]," +
+            "[StartDate],[EndDate],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country,@ZipCode, @SquareFootage, @RentPrice," +
+            " @AvailableBedrooms, @StartDate, @EndDate,@LastUpdated, @LastUpdatedBy,@HostID)";
         SqlCommand inserted = new SqlCommand(insert, cn);
         inserted.Parameters.AddWithValue("@Title", addtitle.Text);
         inserted.Parameters.AddWithValue("@StreetAddress", addStreet.Text);
         inserted.Parameters.AddWithValue("@City", addCity.Text);
         inserted.Parameters.AddWithValue("@HomeState", addState.SelectedValue);
         inserted.Parameters.AddWithValue("@Country", addCountry.SelectedValue);
-        inserted.Parameters.AddWithValue("ZipCode", addZip.Text);
+        inserted.Parameters.AddWithValue("@ZipCode", addZip.Text);
         inserted.Parameters.AddWithValue("@SquareFootage", addSquare.Text);
         inserted.Parameters.AddWithValue("@RentPrice", addPrice.Text);
-        inserted.Parameters.AddWithValue("@AvailableBedrooms", 1);
+        inserted.Parameters.AddWithValue("@AvailableBedrooms", addBedrooms.Text);
         inserted.Parameters.AddWithValue("@StartDate", Convert.ToDateTime(addstartdate.Text));
         inserted.Parameters.AddWithValue("@EndDate", Convert.ToDateTime(addenddate.Text));
         inserted.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
         inserted.Parameters.AddWithValue("@LastUpdatedBy", FullName);
-        //inserted.Parameters.AddWithValue("@HostID", UserID);
+        inserted.Parameters.AddWithValue("@HostID", userid);
         inserted.ExecuteNonQuery();
         cn.Close();
 
-    }
+        cn.Open();
+        System.Data.SqlClient.SqlCommand selectpid = new System.Data.SqlClient.SqlCommand();
+        selectpid.Connection = cn;
+        selectpid.CommandText = "SELECT [PropertyID] FROM [dbo].[Property] where [StreetAddress] = @StreetAddress and [ZipCode] = @ZipCode";
+        selectpid.Parameters.Add(new SqlParameter("@StreetAddress", addStreet.Text));
+        selectpid.Parameters.Add(new SqlParameter("@ZipCode", addZip.Text));
+        SqlDataReader getpid = selectpid.ExecuteReader();
+        int pid = -1;
+        while (getpid.Read())
+        {
+            pid = Int32.Parse(getpid[0].ToString());
+        }
+        getpid.Close();
+        string insertto = "INSERT INTO[dbo].[Amenities] ([PropertyID],[AirConditioning],[Heating],[OnSiteLaundry],[Parking],[Furnished],[PetFriendly],[CarbonMonoxideDetector]," +
+            "[SmokeDetector],[SeperateEntrance],[WiFi],[TV],[SeparateBathroom],[Other]) VALUES(@PropertyID,@AC,@Heating,@Laundry,@Parking,@Furnished,@Pet,@Carbondetector," +
+            "@SmokeDetector,@SeperateEntrance,@WiFi,@TV,@SeparateBathroom,@Other)";
+        SqlCommand insertTo = new SqlCommand(insertto, cn);
+        insertTo.Parameters.AddWithValue("@PropertyID", pid);
+        insertTo.Parameters.AddWithValue("@AC", checkcondition.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@Heating", checkheating.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@Laundry", checkLaundry.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@Parking", checkParking.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@Furnished", checkFurnished.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@Pet", checkpet.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@Carbondetector", checkcarbondetector.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@SmokeDetector", checksomkedetector.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@SeperateEntrance", checkspeentrance.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@WiFi", checkspeentrance.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@TV", checkTV.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@SeparateBathroom", checkspebath.Checked ? 'Y' : 'N');
+        insertTo.Parameters.AddWithValue("@Other", checkspeentrance.Checked ? othertextbox.Text : "");
+        insertTo.ExecuteNonQuery();
+        cn.Close();
 
+
+    }
 
     protected void testimage_Click(object sender, EventArgs e)
     {
-        
     }
+
     //public string SaveFile(HttpPostedFile file)
     //{
     //    // Specify the path to save the uploaded file to.
@@ -130,7 +149,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     //    string tempfileName = "";
 
     //    // Check to see if a file already exists with the
-    //    // same name as the file to upload.        
+    //    // same name as the file to upload.
     //    if (System.IO.File.Exists(pathToCheck))
     //    {
     //        int counter = 2;
@@ -162,9 +181,6 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     //    //FileUpload1.SaveAs(savePath);
     //    return savePath;
     //}
-
-    
-
 
     protected void Button1_Click(object sender, EventArgs e)
     {

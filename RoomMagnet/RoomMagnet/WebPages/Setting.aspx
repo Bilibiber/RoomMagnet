@@ -9,17 +9,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+    <%--    <%--update button show notification--%>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
     <style>
-        #settingpage, #settingAddress{
+        #settingpage, #settingAddress {
             width: 70%;
             margin: auto;
         }
 
-
         body {
             background-color: #f5f5f5;
         }
-
 
         .imagePreview {
             width: 200%;
@@ -81,10 +84,11 @@
         .auto-style2 {
             width: 300px;
         }
+
         .auto-style3 {
             width: 129px;
         }
-        </style>
+    </style>
 
     <%--user image--%>
     <script>
@@ -113,132 +117,154 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        function openModal() {
+            $('#updatesuccess').modal({ show: true });
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
 
     <div class="accordion" id="accordionExample">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size: 2em; font-weight:bold; color:#bd2026;">
-              General Settings
-            </button>
-          </h5>
-        </div>
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size: 2em; font-weight: bold; color: #bd2026;">
+                        General Settings
+                    </button>
+                </h5>
+            </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body">
-              <div id="settingpage">
-                <br />
-                <br />
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-2 imgUp">
-                            <div class="imagePreview"></div>
-                            <label class="btn btn-primary" style="background-color:#bd2026;">
-                                Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px; height: 0px; overflow: hidden;">
-                            </label>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div id="settingpage">
+                        <br />
+                        <br />
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-2 imgUp">
+                                    <div class="imagePreview"></div>
+                                    <label class="btn btn-primary" style="background-color: #bd2026;">
+                                        Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px; height: 0px; overflow: hidden;">
+                                    </label>
+                                </div>
+                                <!-- col-2 -->
+                            </div>
+                            <!-- row -->
                         </div>
-                        <!-- col-2 -->
-                    </div>
-                    <!-- row -->
-                </div>
-                <!-- container -->
+                        <!-- container -->
 
-                <br />
+                        <br />
 
-                <table>
-                    <tr>
-                        <td></td>
-                        <td class="auto-style3">
-                            <asp:Label runat="server" Text="First Name"></asp:Label>
-                        </td>
-                        <td class="auto-style1">
-                            <asp:TextBox ID="setfirstname" runat="server" MaxLength="25" Width="147px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="Requiredfirstname" runat="server" ErrorMessage="Required" ControlToValidate="setfirstname" ForeColor="Red" ValidationGroup="settings" OnDataBinding="updateusersetting_Click">Required</asp:RequiredFieldValidator>
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:Label runat="server" Text="Middle Name"></asp:Label>
-                        </td>
-                        <td class="auto-style2">
-                            <asp:TextBox ID="setmiddlename" runat="server" MaxLength="30"></asp:TextBox>
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:Label runat="server" Text="Last Name"></asp:Label>
-                        </td>
-                        <td class="auto-style2">
-                            <asp:TextBox ID="setlastname" runat="server" MaxLength="30"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="Requiredlastname" runat="server" ErrorMessage="Required" ControlToValidate="setlastname" ForeColor="Red" ValidationGroup="settings" OnDataBinding="updateusersetting_Click">Required</asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td class="auto-style3">
+                                    <asp:label runat="server" text="First Name"></asp:label>
+                                </td>
+                                <td class="auto-style1">
+                                    <asp:textbox id="setfirstname" runat="server" maxlength="25" width="147px"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="Requiredfirstname" runat="server" errormessage="Required" controltovalidate="setfirstname" forecolor="Red" validationgroup="settings" ondatabinding="updateusersetting_Click">Required</asp:requiredfieldvalidator>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <asp:label runat="server" text="Middle Name"></asp:label>
+                                </td>
+                                <td class="auto-style2">
+                                    <asp:textbox id="setmiddlename" runat="server" maxlength="30"></asp:textbox>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <asp:label runat="server" text="Last Name"></asp:label>
+                                </td>
+                                <td class="auto-style2">
+                                    <asp:textbox id="setlastname" runat="server" maxlength="30"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="Requiredlastname" runat="server" errormessage="Required" controltovalidate="setlastname" forecolor="Red" validationgroup="settings" ondatabinding="updateusersetting_Click">Required</asp:requiredfieldvalidator>
+                                </td>
+                            </tr>
 
-                    <tr>
-                        <td></td>
-                        <td class="auto-style3">
-                            <asp:Label runat="server" Text="Gender"></asp:Label>
-                        </td>
-                        <td class="auto-style1">
-                            <asp:DropDownList ID="setgender" runat="server">
+                            <tr>
+                                <td></td>
+                                <td class="auto-style3">
+                                    <asp:label runat="server" text="Gender"></asp:label>
+                                </td>
+                                <td class="auto-style1">
+                                    <asp:dropdownlist id="setgender" runat="server">
                                 <asp:ListItem Value=""></asp:ListItem>
                                 <asp:ListItem Value="male">Male</asp:ListItem>
                                 <asp:ListItem Value="Female">Female</asp:ListItem>
-                            </asp:DropDownList>
+                            </asp:dropdownlist>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <asp:label runat="server" text="Occupation"></asp:label>
+                                </td>
+                                <td class="auto-style2">
+                                    <asp:textbox id="setOccupation" runat="server" maxlength="25"></asp:textbox>
+                                </td>
+                            </tr>
 
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:Label runat="server" Text="Occupation"></asp:Label>
-                        </td>
-                        <td class="auto-style2">
-                            <asp:TextBox ID="setOccupation" runat="server" MaxLength="25"></asp:TextBox>
-                        </td>
-                    </tr>
+                            <tr>
+                                <td></td>
+                                <td class="auto-style3">
+                                    <asp:label runat="server" text="Reset Password"></asp:label>
+                                </td>
+                                <td class="auto-style1">
+                                    <asp:textbox id="setpassword" runat="server" type="password"></asp:textbox>
+                                    <asp:regularexpressionvalidator id="RegularExpressionValidatorPasswordLowerCase" runat="server" controltovalidate="setpassword" display="Dynamic" errormessage="Password must be at least 8 characters long and contains at least one: Lower Case, Upper Case, Special Character" forecolor="Red" validationexpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;£*\-_+=[\]{}|\\:',?/`~();!]|\.(?!@)){8,16}$" validationgroup="settings"></asp:regularexpressionvalidator>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <asp:label runat="server" text="Confirm Password"></asp:label>
+                                </td>
+                                <td class="auto-style2">
+                                    <asp:textbox id="setconfirmpass" runat="server" type="password"></asp:textbox>
+                                    <asp:comparevalidator id="ComparePass" runat="server" controltovalidate="setconfirmpass" display="Dynamic" errormessage="Password does not match" forecolor="Red" validationgroup="settings" controltocompare="setpassword"></asp:comparevalidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="auto-style3">&nbsp;</td>
+                            </tr>
+                        </table>
+                        <br />
+                        &nbsp;&nbsp;&nbsp;
+                <asp:label runat="server" text="Add Description: "></asp:label>
+                        <br />
+                        &nbsp;&nbsp;&nbsp;
+                <asp:textbox id="setdescription" runat="server" height="104px" width="634px" maxlength="150"></asp:textbox>
+                        <br />
+                        <br />
+                        &nbsp;&nbsp;&nbsp;
+                <asp:button id="updateusersetting" runat="server" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" text="Update" onclick="updateusersetting_Click" validationgroup="settings" style="background-color: #bd2026;" />
+                        &nbsp;
+                  <br />
+                        <!-- Modal -->
+                        <div class="modal fade" id="updatesuccess" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
 
-                    <tr>
-                        <td></td>
-                        <td class="auto-style3">
-                            <asp:Label runat="server" Text="Reset Password"></asp:Label>
-                        </td>
-                        <td class="auto-style1">
-                            <asp:TextBox ID="setpassword" runat="server" type="password"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordLowerCase" runat="server" ControlToValidate="setpassword" Display="Dynamic" ErrorMessage="Password must be at least 8 characters long and contains at least one: Lower Case, Upper Case, Special Character" ForeColor="Red" ValidationExpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;£*\-_+=[\]{}|\\:',?/`~();!]|\.(?!@)){8,16}$" ValidationGroup="settings"></asp:RegularExpressionValidator>
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:Label runat="server" Text="Confirm Password"></asp:Label>
-                        </td>
-                        <td class="auto-style2">
-                            <asp:TextBox ID="setconfirmpass" runat="server" type="password"></asp:TextBox>
-                            <asp:CompareValidator ID="ComparePass" runat="server" ControlToValidate="setconfirmpass" Display="Dynamic" ErrorMessage="Password does not match" ForeColor="Red" ValidationGroup="settings" ControlToCompare="setpassword"></asp:CompareValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td class="auto-style3">
-
-                            &nbsp;</td>
-                    </tr>
-                </table>
-                <br />
-                &nbsp;&nbsp;&nbsp;
-                <asp:Label runat="server" Text="Add Description: "></asp:Label><br />
-                &nbsp;&nbsp;&nbsp;
-                <asp:TextBox ID="setdescription" runat="server" Height="104px" Width="634px" MaxLength="150"></asp:TextBox>
-                <br />
-                <br />
-                &nbsp;&nbsp;&nbsp;
-                <asp:Button ID="updateusersetting" runat="server" class="btn btn-danger" Text="Update" OnClick="updateusersetting_Click" ValidationGroup="settings" style="background-color:#bd2026;"/>
-                &nbsp;
+                                <!-- Modal content-->
+                                <div class="modal-content" style="width: 100%;">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Update successfull!</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Go to dashboard to see changes</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:button runat="server" text="Dashboard" class="btn btn-default" style="background-color: #bd2026;" onclick="goDashboard_Click" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
 
-
-      <%--<div class="card">
+        <%--<div class="card">
         <div class="card-header" id="headingTwo">
           <h5 class="mb-0">
             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 2em; font-weight:bold;">
@@ -281,7 +307,6 @@
                             </td>
                     </tr>
 
-                    
                     <tr>
                         <td>
                         </td>
@@ -300,7 +325,7 @@
                             <asp:Label runat="server" Text="Home State"></asp:Label>
                         </td>
                         <td class="auto-style1">
-                            <asp:DropDownList ID="setState" runat="server" Width="80px" >
+                            <asp:DropDownList ID="setState" runat="server" Width="80px">
                                 <asp:ListItem Value=""></asp:ListItem>
                                     <asp:ListItem Value="AL">AL</asp:ListItem>
                                     <asp:ListItem Value="AK">AK</asp:ListItem>
@@ -376,8 +401,4 @@
         </div>
       </div>--%>
     </div>
-
-    
-
 </asp:Content>
-
