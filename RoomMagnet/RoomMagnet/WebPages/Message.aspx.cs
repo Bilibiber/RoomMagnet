@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -29,6 +28,7 @@ public partial class WebPages_Message : System.Web.UI.Page
 
         socket.Listen(4);
 
+        
         //if (!IsPostBack)
         //{
         //    SocketServer socket = new SocketServer(12345, "127.0.0.1", txtServerInfo);
@@ -38,7 +38,7 @@ public partial class WebPages_Message : System.Web.UI.Page
         //    // 在应用程序启动时运行的代码  
         //    //(new System.Threading.Thread(new System.Threading.ThreadStart(new Class1().CreatSocket))).Start();//开辟一个新线程  
         //}
-
+        
     }
     //protected void Button1_Click(object sender, EventArgs e)
     //{
