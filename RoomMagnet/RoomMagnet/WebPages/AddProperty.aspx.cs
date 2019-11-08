@@ -131,15 +131,15 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         insertTo.ExecuteNonQuery();
         
         string picInsert = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
-        for (int i = 0; i < Image.images.Length; i++)
+        for (int i = 0; i < Images.images.Length; i++)
         {
-            if (Image.images[i] != null)
+            if (Images.images[i] != null)
             {
                 SqlCommand picInsertTo = new SqlCommand(picInsert, cn);
                 picInsertTo.Parameters.AddWithValue("@PropertyID", pid );
-                picInsertTo.Parameters.AddWithValue("@ImagePath", Image.images[i].getByte());
+                picInsertTo.Parameters.AddWithValue("@ImagePath", Images.images[i].getByte());
                 picInsertTo.ExecuteNonQuery();
-                Image.images[i] = null;
+                Images.images[i] = null;
             }
         }
         cn.Close();
@@ -192,10 +192,10 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
             BinaryReader brs = new BinaryReader(stream);
             images = brs.ReadBytes((int)stream.Length);
-            Image newImage = new Image();
+            Images newImage = new Images();
             newImage.setByteCode(images);
 
-            Image.images[Image.imageCount - 1] = newImage;
+            Images.images[Images.imageCount - 1] = newImage;
 
         }));
         t.SetApartmentState(ApartmentState.STA);
