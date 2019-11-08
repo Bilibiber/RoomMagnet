@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
-using System.Linq;
+using System.IO;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 public partial class WebPages_Setting : System.Web.UI.Page
 {
@@ -14,7 +15,6 @@ public partial class WebPages_Setting : System.Web.UI.Page
     {
         if (Session["SignInEmail"] == null)
         {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
         }
         else
         {
@@ -25,7 +25,8 @@ public partial class WebPages_Setting : System.Web.UI.Page
         //if (!IsPostBack)
         //{
         //    setCountry.DataSource = objcountries();
-        //    setCountry.DataBind();+		$exception	{"Invalid column name 'Description'."}	System.Data.SqlClient.SqlException
+        //    setCountry.DataBind(); +     $exception  { "Invalid column name 'Description'."}
+        //    System.Data.SqlClient.SqlException
 
         //}
 
@@ -59,12 +60,10 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 {
                     setdescription.Text = getinfor.GetString(5);
                 }
-
             }
             getinfor.Close();
             db.Close();
         }
-
     }
 
     public static List<string> objcountries()
@@ -91,56 +90,112 @@ public partial class WebPages_Setting : System.Web.UI.Page
         try
         {
             db.Open();
-            System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
-            updateuser.Connection = db;
-            int userid = Convert.ToInt32(Session["UserID"]);
+            System.Data.SqlClient.SqlCommand updateusers = new System.Data.SqlClient.SqlCommand();
+            updateusers.Connection = db;
+            int usersid = Convert.ToInt32(Session["UserID"]);
             if (setconfirmpass.Text == "")
             {
-                updateuser.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
+                updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
                 "Occupation = @Occupation, Description=@Description,LastUpdated=@LastUpdated,LastUpdatedBy=@LastUpdatedBy WHERE [UserID] = @UserID";
 
-                updateuser.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
-                updateuser.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
-                updateuser.Parameters.Add(new SqlParameter("@LastName", setlastname.Text));
-                updateuser.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
-                updateuser.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
-                updateuser.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
-                updateuser.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
-                updateuser.Parameters.Add(new SqlParameter("@LastUpdatedBy", setfirstname.Text + " " + setlastname.Text));
-                updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
+                updateusers.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
+                updateusers.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
+                updateusers.Parameters.Add(new SqlParameter("@LastName", setlastname.Text));
+                updateusers.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
+                updateusers.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
+                updateusers.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
+                updateusers.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
+                updateusers.Parameters.Add(new SqlParameter("@LastUpdatedBy", setfirstname.Text + " " + setlastname.Text));
+                updateusers.Parameters.Add(new SqlParameter("@UserID", usersid));
 
-                updateuser.ExecuteNonQuery();
+                updateusers.ExecuteNonQuery();
                 db.Close();
             }
             else
             {
-                updateuser.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
+                updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
                  "Occupation = @Occupation, Description=@Description,LastUpdated=@LastUpdated,LastUpdatedBy=@LastUpdatedBy, Password=@Password WHERE [UserID] = @UserID";
 
-                updateuser.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
-                updateuser.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
-                updateuser.Parameters.Add(new SqlParameter("@LastName", setlastname.Text));
-                updateuser.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
-                updateuser.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
-                updateuser.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
-                updateuser.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
-                updateuser.Parameters.Add(new SqlParameter("@LastUpdatedBy", setfirstname.Text + " " + setlastname.Text));
+                updateusers.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
+                updateusers.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
+                updateusers.Parameters.Add(new SqlParameter("@LastName", setlastname.Text));
+                updateusers.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
+                updateusers.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
+                updateusers.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
+                updateusers.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
+                updateusers.Parameters.Add(new SqlParameter("@LastUpdatedBy", setfirstname.Text + " " + setlastname.Text));
                 string newpass = PasswordHash.HashPassword(setconfirmpass.Text);
-                updateuser.Parameters.Add(new SqlParameter("@Password", newpass));
-                updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
+                updateusers.Parameters.Add(new SqlParameter("@Password", newpass));
+                updateusers.Parameters.Add(new SqlParameter("@UserID", usersid));
 
-                updateuser.ExecuteNonQuery();
+                updateusers.ExecuteNonQuery();
                 db.Close();
             }
-
         }
         catch (Exception)
         {
-
         }
+
+        // update image
+        string filepath = Server.MapPath("\\Upload");
+        HttpFileCollection uploadedFiles = Request.Files;
+        string fileNames = String.Empty;
+        string filePaths = String.Empty;
+
+        for (int i = 0; i < uploadedFiles.Count; i++)
+        {
+            HttpPostedFile userPostedFile = uploadedFiles[i];
+            try
+            {
+                if (userPostedFile.ContentLength > 0)
+                {
+                    userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
+                    fileNames += userPostedFile.FileName + " ";
+                    filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        string imgLocation = "";
+
+        Thread t = new Thread((ThreadStart)(() =>
+        {
+            OpenFileDialog opendlg = new OpenFileDialog();
+            //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
+            if (opendlg.ShowDialog() == DialogResult.OK)
+            {
+                imgLocation = opendlg.FileName.ToString();
+            }
+            byte[] images = null;
+            FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+            BinaryReader brs = new BinaryReader(stream);
+            images = brs.ReadBytes((int)stream.Length);
+            Session["image"] = images;
+            byte[] sessionimg = (byte[])Session["image"];
+
+            db.Open();
+            System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
+            updateuser.Connection = db;
+            int userid = Convert.ToInt32(Session["UserID"]);
+            updateuser.CommandText = "UPDATE [dbo].[Users] SET [ImagePath] = @image  WHERE [UserID] = @UserID";
+
+            updateuser.Parameters.Add(new SqlParameter("@image", images));
+            updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
+            updateuser.ExecuteNonQuery();
+
+            db.Close();
+        }));
+
+        // Run your code from a thread that joins the STA Thread
+        t.SetApartmentState(ApartmentState.STA);
+        t.Start();
+        t.Join();
+
+        //Open modal
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
-
-
     }
 
     protected void goDashboard_Click(object sender, EventArgs e)

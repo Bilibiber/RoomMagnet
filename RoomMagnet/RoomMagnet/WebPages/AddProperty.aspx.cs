@@ -126,13 +126,9 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         insertTo.Parameters.AddWithValue("@Other", checkspeentrance.Checked ? othertextbox.Text : "");
         insertTo.ExecuteNonQuery();
         cn.Close();
-
-
     }
 
-    protected void testimage_Click(object sender, EventArgs e)
-    {
-    }
+
 
     //public string SaveFile(HttpPostedFile file)
     //{
@@ -174,7 +170,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     //        Label4.Text = "Your file was uploaded successfully.";
     //    }
     //    // Append the name of the file to upload to the path.
-    //   // savePath += fileName;
+    //    // savePath += fileName;
 
     //    // Call the SaveAs method to save the uploaded
     //    // file to the specified directory.
