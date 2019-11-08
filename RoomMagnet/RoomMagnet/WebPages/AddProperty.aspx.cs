@@ -7,7 +7,7 @@ using System.IO;
 using System.Web;
 using System.Windows.Forms;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 
 
 public partial class WebPages_AddProperty : System.Web.UI.Page
@@ -74,8 +74,8 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     {
         cn.Open();
         int userid = Convert.ToInt32(Session["UserID"]);
-        string FullName = Session["FullName"].ToString();
-
+        //string FullName = Session["FullName"].ToString();
+        string FullName = "";
         string insert = "INSERT INTO [dbo].[Property]([Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage],[RentPrice],[AvailableBedrooms]," +
             "[StartDate],[EndDate],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country,@ZipCode, @SquareFootage, @RentPrice," +
             " @AvailableBedrooms, @StartDate, @EndDate,@LastUpdated, @LastUpdatedBy,@HostID)";
@@ -129,16 +129,18 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         insertTo.Parameters.AddWithValue("@SeparateBathroom", checkspebath.Checked ? 'Y' : 'N');
         insertTo.Parameters.AddWithValue("@Other", checkspeentrance.Checked ? othertextbox.Text : "");
         insertTo.ExecuteNonQuery();
+        
         string picInsert = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
-        for ( int i=0; i< Image.images.Length; i++)
+        for (int i = 0; i < Image.images.Length; i++)
         {
             if (Image.images[i] != null)
             {
                 SqlCommand picInsertTo = new SqlCommand(picInsert, cn);
-                picInsertTo.Parameters.AddWithValue("@PropertyID", pid);
+                picInsertTo.Parameters.AddWithValue("@PropertyID", pid );
                 picInsertTo.Parameters.AddWithValue("@ImagePath", Image.images[i].getByte());
                 picInsertTo.ExecuteNonQuery();
-            }   
+                Image.images[i] = null;
+            }
         }
         cn.Close();
 
@@ -178,20 +180,26 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     string imgLocation = "";
     protected void UploadButton_Click(object sender, EventArgs e)
     {
-        OpenFileDialog opendlg = new OpenFileDialog();
-        //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
-        if(opendlg.ShowDialog()==DialogResult.OK)
+        Thread t = new Thread((ThreadStart)(() =>
         {
-            imgLocation = opendlg.FileName.ToString();
-        }
-        byte[] images = null;
-        FileStream stream = new FileStream(imgLocation, FileMode.Open,FileAccess.Read);
-        BinaryReader brs = new BinaryReader(stream);
-        images = brs.ReadBytes((int)stream.Length);
-        Image newImage = new Image();
-        newImage.setByteCode(images);
+            OpenFileDialog opendlg = new OpenFileDialog();
+            //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
+            if (opendlg.ShowDialog() == DialogResult.OK)
+            {
+                imgLocation = opendlg.FileName.ToString();
+            }
+            byte[] images = null;
+            FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+            BinaryReader brs = new BinaryReader(stream);
+            images = brs.ReadBytes((int)stream.Length);
+            Image newImage = new Image();
+            newImage.setByteCode(images);
 
-        Image.images[Image.imageCount-1] = newImage;
-     
+            Image.images[Image.imageCount - 1] = newImage;
+
+        }));
+        t.SetApartmentState(ApartmentState.STA);
+        t.Start();
+        t.Join();
     }
 }
