@@ -185,138 +185,139 @@
                         <div class="atbdb_content_module_contents">
                             <form action="/">
                                 <div class="form-group">
-                                    <asp:label runat="server" for="title" class="form-label">Title</asp:label>
-                                    <asp:textbox runat="server" id="addtitle" class="form-control" placeholder="Enter Title"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireTitle" runat="server" errormessage="Required" forecolor="Red" validationgroup="addproperty" controltovalidate="addtitle" Display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" for="title" class="form-label">Title</asp:Label>
+                                    <asp:TextBox runat="server" ID="addtitle" class="form-control" placeholder="Enter Title" MaxLength="50"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireTitle" runat="server" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" ControlToValidate="addtitle" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group ">
-                                    <asp:label runat="server" text="Street Address" class="form-label"></asp:label>
-                                    <asp:textbox runat="server" id="addStreet" placeholder="Street Address" class="form-control"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireStreet" runat="server" controltovalidate="addStreet" errormessage="Required" forecolor="Red" validationgroup="addproperty" Display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" Text="Street Address" class="form-label"></asp:Label>
+                                    <asp:TextBox runat="server" ID="addStreet" placeholder="Street Address" class="form-control" MaxLength="50"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireStreet" runat="server" ControlToValidate="addStreet" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group ">
-                                    <asp:label runat="server" text="City" class="form-label"></asp:label>
-                                    <asp:textbox runat="server" id="addCity" placeholder="City" class="form-control"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireCity" runat="server" controltovalidate="addCity" errormessage="Required" forecolor="Red" validationgroup="addproperty" Display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" Text="City" class="form-label"></asp:Label>
+                                    <asp:TextBox runat="server" ID="addCity" placeholder="City" class="form-control" MaxLength="30"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireCity" runat="server" ControlToValidate="addCity" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group">
-                                    <asp:label runat="server" text="State" class="form-label"></asp:label>
-                                    <asp:dropdownlist runat="server" id="replacestate" class="custom-select" enable="false"></asp:dropdownlist>
-                                    <asp:dropdownlist runat="server" id="addState" class="custom-select" Visible="False">
-                            <asp:ListItem Value=""></asp:ListItem>
-                            <asp:ListItem Value="AL">AL</asp:ListItem>
-                            <asp:ListItem Value="AK">AK</asp:ListItem>
-                            <asp:ListItem Value="AZ">AZ</asp:ListItem>
-                            <asp:ListItem Value="AR">AR</asp:ListItem>
-                            <asp:ListItem Value="CA">CA</asp:ListItem>
-                            <asp:ListItem Value="CO">CO</asp:ListItem>
-                            <asp:ListItem Value="CT">CT</asp:ListItem>
-                            <asp:ListItem Value="DC">DC</asp:ListItem>
-                            <asp:ListItem Value="DE">DE</asp:ListItem>
-                            <asp:ListItem Value="FL">FL</asp:ListItem>
-                            <asp:ListItem Value="GA">GA</asp:ListItem>
-                            <asp:ListItem Value="HI">HI</asp:ListItem>
-                            <asp:ListItem Value="ID">ID</asp:ListItem>
-                            <asp:ListItem Value="IL">IL</asp:ListItem>
-                            <asp:ListItem Value="IN">IN</asp:ListItem>
-                            <asp:ListItem Value="IA">IA</asp:ListItem>
-                            <asp:ListItem Value="KS">KS</asp:ListItem>
-                            <asp:ListItem Value="KY">KY</asp:ListItem>
-                            <asp:ListItem Value="LA">LA</asp:ListItem>
-                            <asp:ListItem Value="ME">ME</asp:ListItem>
-                            <asp:ListItem Value="MD">MD</asp:ListItem>
-                            <asp:ListItem Value="MA">MA</asp:ListItem>
-                            <asp:ListItem Value="MI">MI</asp:ListItem>
-                            <asp:ListItem Value="MN">MN</asp:ListItem>
-                            <asp:ListItem Value="MS">MS</asp:ListItem>
-                            <asp:ListItem Value="MO">MO</asp:ListItem>
-                            <asp:ListItem Value="MT">MT</asp:ListItem>
-                            <asp:ListItem Value="NE">NE</asp:ListItem>
-                            <asp:ListItem Value="NV">NV</asp:ListItem>
-                            <asp:ListItem Value="NH">NH</asp:ListItem>
-                            <asp:ListItem Value="NJ">NJ</asp:ListItem>
-                            <asp:ListItem Value="NM">NM</asp:ListItem>
-                            <asp:ListItem Value="NY">NY</asp:ListItem>
-                            <asp:ListItem Value="NC">NC</asp:ListItem>
-                            <asp:ListItem Value="ND">ND</asp:ListItem>
-                            <asp:ListItem Value="OH">OH</asp:ListItem>
-                            <asp:ListItem Value="OK">OK</asp:ListItem>
-                            <asp:ListItem Value="OR">OR</asp:ListItem>
-                            <asp:ListItem Value="PA">PA</asp:ListItem>
-                            <asp:ListItem Value="RI">RI</asp:ListItem>
-                            <asp:ListItem Value="SC">SC</asp:ListItem>
-                            <asp:ListItem Value="SD">SD</asp:ListItem>
-                            <asp:ListItem Value="TN">TN</asp:ListItem>
-                            <asp:ListItem Value="TX">TX</asp:ListItem>
-                            <asp:ListItem Value="UT">UT</asp:ListItem>
-                            <asp:ListItem Value="VT">VT</asp:ListItem>
-                            <asp:ListItem Value="VA">VA</asp:ListItem>
-                            <asp:ListItem Value="WA">WA</asp:ListItem>
-                            <asp:ListItem Value="WV">WV</asp:ListItem>
-                            <asp:ListItem Value="WI">WI</asp:ListItem>
-                            <asp:ListItem Value="WY">WY</asp:ListItem>
-                        </asp:dropdownlist>
+                                    <asp:Label runat="server" Text="State" class="form-label"></asp:Label>
+                                    <asp:DropDownList runat="server" ID="replacestate" class="custom-select" enable="false"></asp:DropDownList>
+                                    <asp:DropDownList runat="server" ID="addState" class="custom-select" Visible="False">
+                                        <asp:ListItem Value=""></asp:ListItem>
+                                        <asp:ListItem Value="AL">AL</asp:ListItem>
+                                        <asp:ListItem Value="AK">AK</asp:ListItem>
+                                        <asp:ListItem Value="AZ">AZ</asp:ListItem>
+                                        <asp:ListItem Value="AR">AR</asp:ListItem>
+                                        <asp:ListItem Value="CA">CA</asp:ListItem>
+                                        <asp:ListItem Value="CO">CO</asp:ListItem>
+                                        <asp:ListItem Value="CT">CT</asp:ListItem>
+                                        <asp:ListItem Value="DC">DC</asp:ListItem>
+                                        <asp:ListItem Value="DE">DE</asp:ListItem>
+                                        <asp:ListItem Value="FL">FL</asp:ListItem>
+                                        <asp:ListItem Value="GA">GA</asp:ListItem>
+                                        <asp:ListItem Value="HI">HI</asp:ListItem>
+                                        <asp:ListItem Value="ID">ID</asp:ListItem>
+                                        <asp:ListItem Value="IL">IL</asp:ListItem>
+                                        <asp:ListItem Value="IN">IN</asp:ListItem>
+                                        <asp:ListItem Value="IA">IA</asp:ListItem>
+                                        <asp:ListItem Value="KS">KS</asp:ListItem>
+                                        <asp:ListItem Value="KY">KY</asp:ListItem>
+                                        <asp:ListItem Value="LA">LA</asp:ListItem>
+                                        <asp:ListItem Value="ME">ME</asp:ListItem>
+                                        <asp:ListItem Value="MD">MD</asp:ListItem>
+                                        <asp:ListItem Value="MA">MA</asp:ListItem>
+                                        <asp:ListItem Value="MI">MI</asp:ListItem>
+                                        <asp:ListItem Value="MN">MN</asp:ListItem>
+                                        <asp:ListItem Value="MS">MS</asp:ListItem>
+                                        <asp:ListItem Value="MO">MO</asp:ListItem>
+                                        <asp:ListItem Value="MT">MT</asp:ListItem>
+                                        <asp:ListItem Value="NE">NE</asp:ListItem>
+                                        <asp:ListItem Value="NV">NV</asp:ListItem>
+                                        <asp:ListItem Value="NH">NH</asp:ListItem>
+                                        <asp:ListItem Value="NJ">NJ</asp:ListItem>
+                                        <asp:ListItem Value="NM">NM</asp:ListItem>
+                                        <asp:ListItem Value="NY">NY</asp:ListItem>
+                                        <asp:ListItem Value="NC">NC</asp:ListItem>
+                                        <asp:ListItem Value="ND">ND</asp:ListItem>
+                                        <asp:ListItem Value="OH">OH</asp:ListItem>
+                                        <asp:ListItem Value="OK">OK</asp:ListItem>
+                                        <asp:ListItem Value="OR">OR</asp:ListItem>
+                                        <asp:ListItem Value="PA">PA</asp:ListItem>
+                                        <asp:ListItem Value="RI">RI</asp:ListItem>
+                                        <asp:ListItem Value="SC">SC</asp:ListItem>
+                                        <asp:ListItem Value="SD">SD</asp:ListItem>
+                                        <asp:ListItem Value="TN">TN</asp:ListItem>
+                                        <asp:ListItem Value="TX">TX</asp:ListItem>
+                                        <asp:ListItem Value="UT">UT</asp:ListItem>
+                                        <asp:ListItem Value="VT">VT</asp:ListItem>
+                                        <asp:ListItem Value="VA">VA</asp:ListItem>
+                                        <asp:ListItem Value="WA">WA</asp:ListItem>
+                                        <asp:ListItem Value="WV">WV</asp:ListItem>
+                                        <asp:ListItem Value="WI">WI</asp:ListItem>
+                                        <asp:ListItem Value="WY">WY</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
 
                                 <div class="form-group ">
-                                    <asp:label runat="server" class="form-label " text="Zip"></asp:label>
-                                    <asp:textbox id="addZip" runat="server" placeholder="Zip Code" class="form-control"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireZip" runat="server" controltovalidate="addZip" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
-                                    <asp:comparevalidator id="CompareZip" runat="server" errormessage="Invalid" text="Invalid" controltovalidate="addZip" display="Dynamic" forecolor="Red" operator="DataTypeCheck" type="Integer"></asp:comparevalidator>
+                                    <asp:Label runat="server" class="form-label " Text="Zip"></asp:Label>
+                                    <asp:TextBox ID="addZip" runat="server" placeholder="Zip Code" class="form-control" MaxLength="10"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireZip" runat="server" ControlToValidate="addZip" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
                                 </div>
 
                                 <div class="form-group">
 
-                                    <asp:label runat="server" text="Country" class="form-label"></asp:label>
+                                    <asp:Label runat="server" Text="Country" class="form-label"></asp:Label>
                                     <div class="input-group">
 
-                                        <asp:dropdownlist id="addCountry" runat="server" appenddatabounditems="True" autopostback="True" class="custom-select">
+                                        <asp:DropDownList ID="addCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="custom-select">
                                             <asp:ListItem Value=""></asp:ListItem>
-                                        </asp:dropdownlist><br />
-                                        <asp:requiredfieldvalidator id="requireCountry" runat="server" controltovalidate="addCountry" errormessage="Required" forecolor="Red" validationgroup="addproperty" Display="Dynamic">Required</asp:requiredfieldvalidator>
+                                        </asp:DropDownList>
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="requireCountry" runat="server" ControlToValidate="addCountry" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:label runat="server" text="Square Footage of House" class="form-label"></asp:label>
+                                    <asp:Label runat="server" Text="Square Footage of House" class="form-label"></asp:Label>
 
-                                    <asp:textbox id="addSquare" runat="server" class="form-control"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireSquare" runat="server" controltovalidate="addSquare" errormessage="Required" forecolor="Red" validationgroup="addproperty" Display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:TextBox ID="addSquare" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireSquare" runat="server" ControlToValidate="addSquare" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
 
-                                    <asp:comparevalidator id="Comparesquare" runat="server" controltovalidate="addSquare" display="Dynamic" errormessage="Invalid" forecolor="Red" operator="DataTypeCheck" text="Invalid" type="Integer"></asp:comparevalidator>
+                                    <asp:CompareValidator ID="Comparesquare" runat="server" ControlToValidate="addSquare" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:label runat="server" text="Rent Price/Month" class="form-label"></asp:label>
+                                    <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
                                     <div class="pricing-option-inputs">
 
-                                        <asp:textbox id="addPrice" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:textbox>
-                                        <asp:requiredfieldvalidator id="requirePrice" runat="server" controltovalidate="addPrice" errormessage="Required" forecolor="Red" validationgroup="addproperty" Display="Dynamic">Required</asp:requiredfieldvalidator>
-                                        <asp:comparevalidator id="Compareprice" runat="server" controltovalidate="addPrice" display="Dynamic" errormessage="Invalid" forecolor="Red" operator="DataTypeCheck" text="Invalid" type="Integer"></asp:comparevalidator>
+                                        <asp:TextBox ID="addPrice" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="requirePrice" runat="server" ControlToValidate="addPrice" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                        <asp:CompareValidator ID="Compareprice" runat="server" ControlToValidate="addPrice" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <asp:label runat="server" text="Avaliable Bedrooms" class="form-label"></asp:label>
-                                    <asp:dropdownlist id="addBedrooms" runat="server" class="custom-select">
+                                    <asp:Label runat="server" Text="Avaliable Bedrooms" class="form-label"></asp:Label>
+                                    <asp:DropDownList ID="addBedrooms" runat="server" class="custom-select">
                                         <asp:ListItem Value=""></asp:ListItem>
                                         <asp:ListItem Value="1">1</asp:ListItem>
                                         <asp:ListItem Value="2">2</asp:ListItem>
                                         <asp:ListItem Value="3">3</asp:ListItem>
                                         <asp:ListItem Value="4">4</asp:ListItem>
                                         <asp:ListItem Value="5">5</asp:ListItem>
-                                    </asp:dropdownlist>
-                                    <asp:requiredfieldvalidator id="requireBedroom" runat="server" controltovalidate="addBedrooms" errormessage="Required" forecolor="Red" validationgroup="addproperty" Display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="requireBedroom" runat="server" ControlToValidate="addBedrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group">
-                                    <asp:label runat="server" text="Available Date" class="form-label"></asp:label>
-                                    <asp:textbox id="addstartdate" runat="server" textmode="Date" class="form-control"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requirestart" runat="server" controltovalidate="addstartdate" errormessage="Required" forecolor="Red" validationgroup="addproperty" Display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
+                                    <asp:TextBox ID="addstartdate" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requirestart" runat="server" ControlToValidate="addstartdate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:label runat="server" text="End Date" class="form-label"></asp:label>
-                                    <asp:textbox id="addenddate" runat="server" textmode="Date" class="form-control"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireend" runat="server" controltovalidate="addenddate" errormessage="Required" forecolor="Red" validationgroup="addproperty" Display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
+                                    <asp:TextBox ID="addenddate" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireend" runat="server" ControlToValidate="addenddate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                         </div>
                         <!-- ends: .form-group -->
@@ -364,8 +365,8 @@
                 <div class="row">
                     <div class="col-lg-12 text-center ">
                         <a href="#" id="listing_image_btn" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10">Post</a>
-                        <asp:button runat="server" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" text="Post" validationgroup="addproperty" id="Button1" onclick="post_Click"></asp:button>
-                        <asp:button runat="server" text="Cancel" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" id="cancel" onclick="cancel_Click"></asp:button>
+                        <asp:Button runat="server" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" Text="Post" ValidationGroup="addproperty" ID="Button1" OnClick="post_Click"></asp:Button>
+                        <asp:Button runat="server" Text="Cancel" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" ID="cancel" OnClick="cancel_Click"></asp:Button>
                     </div>
                 </div>
             </div>
@@ -454,7 +455,7 @@
 
             <%--renter Amenities panel--%>
 
-            <asp:panel runat="server" id="renteraddAmenities" visible="true">
+            <asp:Panel runat="server" ID="renteraddAmenities" Visible="true">
                 <div>
                     <asp:Label runat="server" Text="Amenities" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     <br />
@@ -533,6 +534,6 @@
                 </table>
                 <br />
                 <asp:Button runat="server" class="btn btn-danger btn-lg" Text="Post" ValidationGroup="addproperty" ID="post" OnClick="post_Click"></asp:Button>
-            </asp:panel>
+            </asp:Panel>
     </section>
 </asp:Content>

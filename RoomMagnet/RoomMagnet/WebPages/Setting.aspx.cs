@@ -53,7 +53,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
             selectuser.Connection = db;
             int userid = Convert.ToInt32(Session["UserID"]);
-            selectuser.CommandText = "select [FirstName], [MiddleName], [LastName], [Gender], [Occupation], [Description] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectuser.CommandText = "select [FirstName], [MiddleName], [LastName], [Gender], [Occupation], [Description], [StreetAddress],[City],[HomeState],[ZipCode] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getinfor = selectuser.ExecuteReader();
             while (getinfor.Read())
@@ -75,6 +75,22 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 if (!getinfor.IsDBNull(5))
                 {
                     setdescription.Text = getinfor.GetString(5);
+                }
+                if (!getinfor.IsDBNull(6))
+                {
+                    setStreet.Text = getinfor.GetString(6);
+                }
+                if (!getinfor.IsDBNull(7))
+                {
+                    setCity.Text = getinfor.GetString(7);
+                }
+                if (!getinfor.IsDBNull(8))
+                {
+                    setState.SelectedValue = getinfor.GetString(8);
+                }
+                if (!getinfor.IsDBNull(9))
+                {
+                    setZip.Text = getinfor.GetString(9);
                 }
             }
             getinfor.Close();
