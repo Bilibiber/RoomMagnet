@@ -17,6 +17,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     int resultCount;
     protected void Page_Load(object sender, EventArgs e)
     {
+        ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "Click", "initMap()", true);
         SearchResultCount.Text = "(" + resultCount.ToString() + ")";
         SearchLabel.Visible = false;
         if (Session["SignInEmail"] == null)
@@ -193,8 +194,10 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             {
                 SearchLabel.Text = "Please enter something in the text bar.";
             }
-        
 
+        
         }
 
+
+   
 }

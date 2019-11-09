@@ -20,7 +20,8 @@
         <asp:TextBox ID="address" runat="server" CssClass="form-control-sm" type="textbox" ClientIDMode="Static"></asp:TextBox>
     </div>
     <div>
-        <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" UseSubmitBehavior="true" OnClick="SearchResultButton_Click" OnClientClick="return true"/>
+        <asp:Button ID="searches" runat="server" Text="Searches" ClientIDMode="Static" OnClick="SearchResultButton_Click"   Visible="true" />
+        <asp:Button ID="search" runat="server" Text="Search"  Visible="true" UseSubmitBehavior="false"  />
     </div>
     <div id="map" style="width: 100%; height: 500px; border: 5px solid #5E5454;">
     </div>
@@ -32,10 +33,12 @@
                 center: { lat: -34.397, lng: 150.644 }
             });
             var geocoder = new google.maps.Geocoder();
-
+            
             document.getElementById('search').addEventListener('click', function () {
                 geocodeAddress(geocoder, map);
-            });
+            })
+            
+                
         }
         
 
@@ -51,10 +54,11 @@
                 } else {
                     alert('Geocode was not successful for the following reason: ' + status);
                 }
-            });
+            })
+                
         }
-        google.maps.event.addListener(window, 'load', initMap);
-            
+        document.getElementById('<%= searches.ClientID %>').click();
+        google.maps.event.addListener(window, 'load',  initMap);
     </script>
           <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu9-V7rNAJ0LWxj2senGo9wVHwgLXQr-0&callback=initMap&language=en">
