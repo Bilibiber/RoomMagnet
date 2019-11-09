@@ -14,6 +14,6 @@ public partial class WebPages_GoogleMapSearch : System.Web.UI.Page
 
     protected void search_Click(object sender, EventArgs e)
     {
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowMap", "getmap();", true);
+      
     }
 }
