@@ -133,14 +133,23 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Label1.Text = reader.GetString(0);
                         Label1.Visible = true;
                         Label2.Text = string.Format(reader.GetInt32(4).ToString() + " Beds Available{0}" + "$" + y + "/Month{0}"
-                            +  reader.GetString(1) + "," + reader.GetString(2), Environment.NewLine);
+                            + reader.GetString(1) + "," + reader.GetString(2), Environment.NewLine);
                         Label2.Visible = true;
-                        Image2.ImageUrl = reader.GetString(8);
-                        Image2.Visible = true;
+                        byte[] images = (byte[])reader[8];
+                        if (images == null)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            Image2.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                            Image2.Visible = true;
+
+                        }
 
                     }
-                    
-                    if (resultCount==2)
+
+                    if (resultCount == 2)
                     {
                         x = reader.GetDecimal(5);
                         y = String.Format("{0:0.##}", x);
@@ -152,7 +161,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Image3.ImageUrl = reader.GetString(8);
                         Image3.Visible = true;
                     }
-                    if (resultCount==3)
+                    if (resultCount == 3)
                     {
                         x = reader.GetDecimal(5);
                         y = String.Format("{0:0.##}", x);
@@ -164,10 +173,20 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
                         Image4.ImageUrl = reader.GetString(8);
                         Image4.Visible = true;
+                        byte[] images = (byte[])reader[8];
+                        if (images == null)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            Image2.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+
+                        }
                     }
-                    
-           
-                  
+
+
+
 
                 }
                 reader.NextResult();
