@@ -138,7 +138,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <asp:Label runat="server" Text="Add Description" class="not_empty" Font-Bold="true"></asp:Label>
-                                                <asp:TextBox ID="setdescription" runat="server" class="wp-editor-area form-control" autocomplete="off" placeholder="Describe yourself" MaxLength="150" multiline="true" Height="100" TextMode="MultiLine"></asp:TextBox>
+                                                <asp:TextBox ID="setdescription" runat="server" class="wp-editor-area form-control" autocomplete="off" placeholder="Describe yourself"  multiline="true" Height="100" TextMode="MultiLine"></asp:TextBox>
                                             </div>
                                         </div>
 

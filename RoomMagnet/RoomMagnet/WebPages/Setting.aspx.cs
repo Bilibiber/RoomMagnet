@@ -127,8 +127,9 @@ public partial class WebPages_Setting : System.Web.UI.Page
             int usersid = Convert.ToInt32(Session["UserID"]);
             if (setconfirmpass.Text == "")
             {
-                updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
-                "Occupation = @Occupation, Description=@Description,LastUpdated=@LastUpdated,LastUpdatedBy=@LastUpdatedBy WHERE [UserID] = @UserID";
+                updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender," +
+                    "Occupation = @Occupation, Description = @Description,StreetAddress=@StreetAddress,City=@City,HomeState=@HomeState,ZipCode=@ZipCode,LastUpdated=@LastUpdated," +
+                    "LastUpdatedBy=@LastUpdatedBy WHERE [UserID] = @UserID";
 
                 updateusers.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
                 updateusers.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
@@ -136,6 +137,10 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 updateusers.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
                 updateusers.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
                 updateusers.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
+                updateusers.Parameters.Add(new SqlParameter("@StreetAddress", setStreet.Text));
+                updateusers.Parameters.Add(new SqlParameter("@City", setCity.Text));
+                updateusers.Parameters.Add(new SqlParameter("@HomeState", setState.SelectedValue));
+                updateusers.Parameters.Add(new SqlParameter("@ZipCode", setZip.Text));
                 updateusers.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
                 updateusers.Parameters.Add(new SqlParameter("@LastUpdatedBy", setfirstname.Text + " " + setlastname.Text));
                 updateusers.Parameters.Add(new SqlParameter("@UserID", usersid));
@@ -146,7 +151,8 @@ public partial class WebPages_Setting : System.Web.UI.Page
             else
             {
                 updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
-                 "Occupation = @Occupation, Description=@Description,LastUpdated=@LastUpdated,LastUpdatedBy=@LastUpdatedBy, Password=@Password WHERE [UserID] = @UserID";
+                 "Occupation = @Occupation, Description=@Description,[StreetAddress]=@[StreetAddress],[City]=@[City],[HomeState]=@[HomeState],[ZipCode]=@[ZipCode]," +
+                 "LastUpdated=@LastUpdated, LastUpdatedBy=@LastUpdatedBy, Password=@Password WHERE [UserID] = @UserID";
 
                 updateusers.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
                 updateusers.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
@@ -154,6 +160,10 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 updateusers.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
                 updateusers.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
                 updateusers.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
+                updateusers.Parameters.Add(new SqlParameter("@StreetAddress", setStreet.Text));
+                updateusers.Parameters.Add(new SqlParameter("@City", setCity.Text));
+                updateusers.Parameters.Add(new SqlParameter("@HomeState", setState.SelectedValue));
+                updateusers.Parameters.Add(new SqlParameter("@ZipCode", setZip.Text));
                 updateusers.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
                 updateusers.Parameters.Add(new SqlParameter("@LastUpdatedBy", setfirstname.Text + " " + setlastname.Text));
                 string newpass = PasswordHash.HashPassword(setconfirmpass.Text);
@@ -167,7 +177,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
         catch (Exception)
         {
         }
-
+        db.Close();
         // update image
         string filepath = Server.MapPath("\\Upload");
         HttpFileCollection uploadedFiles = Request.Files;
