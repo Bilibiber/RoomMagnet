@@ -211,13 +211,14 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 imgLocation = opendlg.FileName.ToString();
             }
             byte[] images = null;
-            FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-
-            BinaryReader brs = new BinaryReader(stream);
-            images = brs.ReadBytes((int)stream.Length);
-            Session["image"] = images;
-
-            imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+            if (imgLocation != "")
+            {
+                FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                BinaryReader brs = new BinaryReader(stream);
+                images = brs.ReadBytes((int)stream.Length);
+                Session["image"] = images;
+                imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+            }
         }));
 
         // Run your code from a thread that joins the STA Thread

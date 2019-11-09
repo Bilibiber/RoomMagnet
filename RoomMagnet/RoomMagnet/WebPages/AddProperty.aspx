@@ -145,282 +145,282 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <%--renter Amenities panel--%>
-    <asp:panel runat="server" id="renterbecomehost" visible="true" style="width: 70%; margin: auto;">
-                <div>
-                    <asp:Label runat="server" Text="Add property" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Panel runat="server" ID="renterbecomehost" Visible="true" Style="width: 70%; margin: auto;">
+        <div>
+            <asp:Label runat="server" Text="Add property" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button runat="server" Text="Cancel" class="btn btn-secondary btn-sm" ID="cancel" OnClick="cancel_Click"></asp:Button>
-                    <br />
-                    <table>
-                        <tr>
-                            <td class="auto-style8"></td>
-                            <td class="auto-style9">
-                                <asp:Label runat="server" Text="Title:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td class="auto-style10">
-                                <asp:TextBox runat="server" ID="addtitle" MaxLength="75"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requireTitle" runat="server" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" ControlToValidate="addtitle">Required</asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
+            <br />
+            <table>
+                <tr>
+                    <td class="auto-style8"></td>
+                    <td class="auto-style9">
+                        <asp:Label runat="server" Text="Title:" Font-Bold="True"></asp:Label>
+                    </td>
+                    <td class="auto-style10">
+                        <asp:TextBox runat="server" ID="addtitle" MaxLength="75"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="requireTitle" runat="server" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" ControlToValidate="addtitle">Required</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
 
-                        <tr>
-                            <td class="auto-style13"></td>
-                            <td class="auto-style14">
-                                <asp:Label runat="server" Text="Street Address:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td class="auto-style15">
-                                <asp:TextBox runat="server" ID="addStreet"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requireStreet" runat="server" ControlToValidate="addStreet" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                            <td class="auto-style13"></td>
-                            <td class="auto-style16">
-                                <asp:Label runat="server" Text="City:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td class="auto-style15">
-                                <asp:TextBox runat="server" ID="addCity"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requireCity" runat="server" ControlToValidate="addCity" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
+                <tr>
+                    <td class="auto-style13"></td>
+                    <td class="auto-style14">
+                        <asp:Label runat="server" Text="Street Address:" Font-Bold="True"></asp:Label>
+                    </td>
+                    <td class="auto-style15">
+                        <asp:TextBox runat="server" ID="addStreet"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="requireStreet" runat="server" ControlToValidate="addStreet" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                    </td>
+                    <td class="auto-style13"></td>
+                    <td class="auto-style16">
+                        <asp:Label runat="server" Text="City:" Font-Bold="True"></asp:Label>
+                    </td>
+                    <td class="auto-style15">
+                        <asp:TextBox runat="server" ID="addCity"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="requireCity" runat="server" ControlToValidate="addCity" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
 
-                        <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style4">
-                                <asp:Label runat="server" Text="State:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:DropDownList runat="server" Width="80px" ID="addState" Enabled="False">
-                                    <asp:ListItem Value=""></asp:ListItem>
-                                    <asp:ListItem Value="AL">AL</asp:ListItem>
-                                    <asp:ListItem Value="AK">AK</asp:ListItem>
-                                    <asp:ListItem Value="AZ">AZ</asp:ListItem>
-                                    <asp:ListItem Value="AR">AR</asp:ListItem>
-                                    <asp:ListItem Value="CA">CA</asp:ListItem>
-                                    <asp:ListItem Value="CO">CO</asp:ListItem>
-                                    <asp:ListItem Value="CT">CT</asp:ListItem>
-                                    <asp:ListItem Value="DC">DC</asp:ListItem>
-                                    <asp:ListItem Value="DE">DE</asp:ListItem>
-                                    <asp:ListItem Value="FL">FL</asp:ListItem>
-                                    <asp:ListItem Value="GA">GA</asp:ListItem>
-                                    <asp:ListItem Value="HI">HI</asp:ListItem>
-                                    <asp:ListItem Value="ID">ID</asp:ListItem>
-                                    <asp:ListItem Value="IL">IL</asp:ListItem>
-                                    <asp:ListItem Value="IN">IN</asp:ListItem>
-                                    <asp:ListItem Value="IA">IA</asp:ListItem>
-                                    <asp:ListItem Value="KS">KS</asp:ListItem>
-                                    <asp:ListItem Value="KY">KY</asp:ListItem>
-                                    <asp:ListItem Value="LA">LA</asp:ListItem>
-                                    <asp:ListItem Value="ME">ME</asp:ListItem>
-                                    <asp:ListItem Value="MD">MD</asp:ListItem>
-                                    <asp:ListItem Value="MA">MA</asp:ListItem>
-                                    <asp:ListItem Value="MI">MI</asp:ListItem>
-                                    <asp:ListItem Value="MN">MN</asp:ListItem>
-                                    <asp:ListItem Value="MS">MS</asp:ListItem>
-                                    <asp:ListItem Value="MO">MO</asp:ListItem>
-                                    <asp:ListItem Value="MT">MT</asp:ListItem>
-                                    <asp:ListItem Value="NE">NE</asp:ListItem>
-                                    <asp:ListItem Value="NV">NV</asp:ListItem>
-                                    <asp:ListItem Value="NH">NH</asp:ListItem>
-                                    <asp:ListItem Value="NJ">NJ</asp:ListItem>
-                                    <asp:ListItem Value="NM">NM</asp:ListItem>
-                                    <asp:ListItem Value="NY">NY</asp:ListItem>
-                                    <asp:ListItem Value="NC">NC</asp:ListItem>
-                                    <asp:ListItem Value="ND">ND</asp:ListItem>
-                                    <asp:ListItem Value="OH">OH</asp:ListItem>
-                                    <asp:ListItem Value="OK">OK</asp:ListItem>
-                                    <asp:ListItem Value="OR">OR</asp:ListItem>
-                                    <asp:ListItem Value="PA">PA</asp:ListItem>
-                                    <asp:ListItem Value="RI">RI</asp:ListItem>
-                                    <asp:ListItem Value="SC">SC</asp:ListItem>
-                                    <asp:ListItem Value="SD">SD</asp:ListItem>
-                                    <asp:ListItem Value="TN">TN</asp:ListItem>
-                                    <asp:ListItem Value="TX">TX</asp:ListItem>
-                                    <asp:ListItem Value="UT">UT</asp:ListItem>
-                                    <asp:ListItem Value="VT">VT</asp:ListItem>
-                                    <asp:ListItem Value="VA">VA</asp:ListItem>
-                                    <asp:ListItem Value="WA">WA</asp:ListItem>
-                                    <asp:ListItem Value="WV">WV</asp:ListItem>
-                                    <asp:ListItem Value="WI">WI</asp:ListItem>
-                                    <asp:ListItem Value="WY">WY</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="requireState" runat="server" ControlToValidate="addState" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style11">
-                                <asp:Label ID="Label3" runat="server" Text="Country" Font-Bold="True"></asp:Label></td>
-                            <td>
-                                <asp:DropDownList ID="addCountry" runat="server" Width="170px" AppendDataBoundItems="True" AutoPostBack="True">
-                                    <asp:ListItem Value=""></asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="requireCountry" runat="server" ControlToValidate="addCountry" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
+                <tr>
+                    <td class="auto-style7"></td>
+                    <td class="auto-style4">
+                        <asp:Label runat="server" Text="State:" Font-Bold="True"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList runat="server" Width="80px" ID="addState" Enabled="False">
+                            <asp:ListItem Value=""></asp:ListItem>
+                            <asp:ListItem Value="AL">AL</asp:ListItem>
+                            <asp:ListItem Value="AK">AK</asp:ListItem>
+                            <asp:ListItem Value="AZ">AZ</asp:ListItem>
+                            <asp:ListItem Value="AR">AR</asp:ListItem>
+                            <asp:ListItem Value="CA">CA</asp:ListItem>
+                            <asp:ListItem Value="CO">CO</asp:ListItem>
+                            <asp:ListItem Value="CT">CT</asp:ListItem>
+                            <asp:ListItem Value="DC">DC</asp:ListItem>
+                            <asp:ListItem Value="DE">DE</asp:ListItem>
+                            <asp:ListItem Value="FL">FL</asp:ListItem>
+                            <asp:ListItem Value="GA">GA</asp:ListItem>
+                            <asp:ListItem Value="HI">HI</asp:ListItem>
+                            <asp:ListItem Value="ID">ID</asp:ListItem>
+                            <asp:ListItem Value="IL">IL</asp:ListItem>
+                            <asp:ListItem Value="IN">IN</asp:ListItem>
+                            <asp:ListItem Value="IA">IA</asp:ListItem>
+                            <asp:ListItem Value="KS">KS</asp:ListItem>
+                            <asp:ListItem Value="KY">KY</asp:ListItem>
+                            <asp:ListItem Value="LA">LA</asp:ListItem>
+                            <asp:ListItem Value="ME">ME</asp:ListItem>
+                            <asp:ListItem Value="MD">MD</asp:ListItem>
+                            <asp:ListItem Value="MA">MA</asp:ListItem>
+                            <asp:ListItem Value="MI">MI</asp:ListItem>
+                            <asp:ListItem Value="MN">MN</asp:ListItem>
+                            <asp:ListItem Value="MS">MS</asp:ListItem>
+                            <asp:ListItem Value="MO">MO</asp:ListItem>
+                            <asp:ListItem Value="MT">MT</asp:ListItem>
+                            <asp:ListItem Value="NE">NE</asp:ListItem>
+                            <asp:ListItem Value="NV">NV</asp:ListItem>
+                            <asp:ListItem Value="NH">NH</asp:ListItem>
+                            <asp:ListItem Value="NJ">NJ</asp:ListItem>
+                            <asp:ListItem Value="NM">NM</asp:ListItem>
+                            <asp:ListItem Value="NY">NY</asp:ListItem>
+                            <asp:ListItem Value="NC">NC</asp:ListItem>
+                            <asp:ListItem Value="ND">ND</asp:ListItem>
+                            <asp:ListItem Value="OH">OH</asp:ListItem>
+                            <asp:ListItem Value="OK">OK</asp:ListItem>
+                            <asp:ListItem Value="OR">OR</asp:ListItem>
+                            <asp:ListItem Value="PA">PA</asp:ListItem>
+                            <asp:ListItem Value="RI">RI</asp:ListItem>
+                            <asp:ListItem Value="SC">SC</asp:ListItem>
+                            <asp:ListItem Value="SD">SD</asp:ListItem>
+                            <asp:ListItem Value="TN">TN</asp:ListItem>
+                            <asp:ListItem Value="TX">TX</asp:ListItem>
+                            <asp:ListItem Value="UT">UT</asp:ListItem>
+                            <asp:ListItem Value="VT">VT</asp:ListItem>
+                            <asp:ListItem Value="VA">VA</asp:ListItem>
+                            <asp:ListItem Value="WA">WA</asp:ListItem>
+                            <asp:ListItem Value="WV">WV</asp:ListItem>
+                            <asp:ListItem Value="WI">WI</asp:ListItem>
+                            <asp:ListItem Value="WY">WY</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="requireState" runat="server" ControlToValidate="addState" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                    </td>
+                    <td class="auto-style7"></td>
+                    <td class="auto-style11">
+                        <asp:Label ID="Label3" runat="server" Text="Country" Font-Bold="True"></asp:Label></td>
+                    <td>
+                        <asp:DropDownList ID="addCountry" runat="server" Width="170px" AppendDataBoundItems="True" AutoPostBack="True">
+                            <asp:ListItem Value=""></asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="requireCountry" runat="server" ControlToValidate="addCountry" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
 
-                        <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style4">
-                                <asp:Label ID="Label2" runat="server" Font-Bold="True" Text="Zip:"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="addZip" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requireZip" runat="server" ControlToValidate="addZip" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                                <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
-                            </td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style11">
-                                <asp:Label runat="server" Text="Square Footage of House:" Font-Bold="True" ID="Label1"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="addSquare" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requireSquare" runat="server" ControlToValidate="addSquare" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                <tr>
+                    <td class="auto-style7"></td>
+                    <td class="auto-style4">
+                        <asp:Label ID="Label2" runat="server" Font-Bold="True" Text="Zip:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="addZip" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="requireZip" runat="server" ControlToValidate="addZip" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
+                    </td>
+                    <td class="auto-style7"></td>
+                    <td class="auto-style11">
+                        <asp:Label runat="server" Text="Square Footage of House:" Font-Bold="True" ID="Label1"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="addSquare" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="requireSquare" runat="server" ControlToValidate="addSquare" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
 
-                                <asp:CompareValidator ID="Comparesquare" runat="server" ControlToValidate="addSquare" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
-                            </td>
-                        </tr>
+                        <asp:CompareValidator ID="Comparesquare" runat="server" ControlToValidate="addSquare" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
+                    </td>
+                </tr>
 
-                        <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style4">
-                                <asp:Label runat="server" Text="Rent Price/Month:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="addPrice" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requirePrice" runat="server" ControlToValidate="addPrice" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                                <asp:CompareValidator ID="Compareprice" runat="server" ControlToValidate="addPrice" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
-                            </td>
-                            <td></td>
-                            <td>
-                                <asp:Label runat="server" Text="Avaliable Bedrooms: " Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:DropDownList id="addBedrooms" runat="server">
-                                    <asp:ListItem Value=""></asp:ListItem>
-                                    <asp:ListItem Value="1">1</asp:ListItem>
-                                    <asp:ListItem Value="2">2</asp:ListItem>
-                                    <asp:ListItem Value="3">3</asp:ListItem>
-                                    <asp:ListItem Value="4">4</asp:ListItem>
-                                    <asp:ListItem Value="5">5</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="requireBedroom" runat="server" ControlToValidate="addBedrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style4">
-                                <asp:Label runat="server" Text="Date Availability:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="addstartdate" runat="server" TextMode="Date"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requirestart" runat="server" ControlToValidate="addstartdate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                            <td class="auto-style7"></td>
-                            <td class="auto-style11">
-                                <asp:Label runat="server" Text="to:" Font-Bold="True"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="addenddate" runat="server" TextMode="Date"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requireend" runat="server" ControlToValidate="addenddate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
-                            </td>
-                        </tr>
-                    </table>
+                <tr>
+                    <td class="auto-style7"></td>
+                    <td class="auto-style4">
+                        <asp:Label runat="server" Text="Rent Price/Month:" Font-Bold="True"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="addPrice" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="requirePrice" runat="server" ControlToValidate="addPrice" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="Compareprice" runat="server" ControlToValidate="addPrice" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
+                    </td>
+                    <td></td>
+                    <td>
+                        <asp:Label runat="server" Text="Avaliable Bedrooms: " Font-Bold="True"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="addBedrooms" runat="server">
+                            <asp:ListItem Value=""></asp:ListItem>
+                            <asp:ListItem Value="1">1</asp:ListItem>
+                            <asp:ListItem Value="2">2</asp:ListItem>
+                            <asp:ListItem Value="3">3</asp:ListItem>
+                            <asp:ListItem Value="4">4</asp:ListItem>
+                            <asp:ListItem Value="5">5</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="requireBedroom" runat="server" ControlToValidate="addBedrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style7"></td>
+                    <td class="auto-style4">
+                        <asp:Label runat="server" Text="Date Availability:" Font-Bold="True"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="addstartdate" runat="server" TextMode="Date"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="requirestart" runat="server" ControlToValidate="addstartdate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                    </td>
+                    <td class="auto-style7"></td>
+                    <td class="auto-style11">
+                        <asp:Label runat="server" Text="to:" Font-Bold="True"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="addenddate" runat="server" TextMode="Date"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="requireend" runat="server" ControlToValidate="addenddate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty">Required</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+            </table>
 
-                    <%--upload images--%>
-                        <div class="container" style="float:left; display:inline-block">
-                            <fieldset class="form-group">
-                                <a href="javascript:void(0)" onclick="$('#pro-image').click()">Preview Images</a>
-                                <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
-                                <%--<asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="true" --%> />
+            <%--upload images--%>
+            <div class="container" style="float: left; display: inline-block">
+                <fieldset class="form-group">
+                    <a href="javascript:void(0)" onclick="$('#pro-image').click()">Preview Images</a>
+                    <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
+                    <%--<asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="true" --%> />
                                 <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
-                            </fieldset>
-                            <input type="file" id="myfile" multiple="multiple" name="myfile" runat="server" size="100" />
-    <br />
-    <asp:Button ID="Button1" runat="server" Text="Upload" OnClick="Button1_Click" />
-    <br />
-                            <div class="preview-images-zone">
-                            </div>
-                        </div>
-                        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-            </asp:panel>
+                </fieldset>
+                <input type="file" id="myfile" multiple="multiple" name="myfile" runat="server" size="100" />
+                <br />
+                <asp:Button ID="Button1" runat="server" Text="Upload" OnClick="Button1_Click"/>
+                <br />
+                <div class="preview-images-zone">
+                </div>
+            </div>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </asp:Panel>
 
     <%--renter Amenities panel--%>
 
-    <asp:panel runat="server" id="renteraddAmenities" visible="true">
-                <div>
-                    <asp:Label runat="server" Text="Amenities" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
-                    <br />
-                </div>
-                <table>
-                    <tr>
-                        <td class="auto-style6"></td>
-                        <td>
-                            <asp:CheckBox ID="checkcondition" runat="server" Text=" Air Conditioning" />
-                        </td>
-                        <td class="auto-style6"></td>
-                        <td>
-                            <asp:CheckBox ID="checkcarbondetector" runat="server" Text=" Carbon Monoxide Detector" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkheating" runat="server" Text=" Heating" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checksomkedetector" runat="server" Text=" Smoke Detector" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkLaundry" runat="server" Text=" On-Site Laundry" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkspeentrance" runat="server" Text=" Separate Entrance" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkParking" runat="server" Text=" Parking" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkWifi" runat="server" Text=" Wi-Fi" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkFurnished" runat="server" Text=" Furnished" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkTV" runat="server" Text=" TV" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkpet" runat="server" Text=" Pet-Friendly" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkspebath" runat="server" Text="Separate Bathroom" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style1">
-                            <asp:CheckBox ID="checkOther" runat="server" Text="Other(s)" AutoPostBack="True" />
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style1">
-                            <asp:TextBox runat="server" Enabled="False" ID="othertextbox"></asp:TextBox>
-                        </td>
-                    </tr>
-                </table>
-                <br />
-                <asp:Button runat="server" class="btn btn-danger btn-lg" Text="Post" ValidationGroup="addproperty" ID="post" OnClick="post_Click"></asp:Button>
-            </asp:panel>
+    <asp:Panel runat="server" ID="renteraddAmenities" Visible="true">
+        <div>
+            <asp:Label runat="server" Text="Amenities" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+            <br />
+        </div>
+        <table>
+            <tr>
+                <td class="auto-style6"></td>
+                <td>
+                    <asp:CheckBox ID="checkcondition" runat="server" Text=" Air Conditioning" />
+                </td>
+                <td class="auto-style6"></td>
+                <td>
+                    <asp:CheckBox ID="checkcarbondetector" runat="server" Text=" Carbon Monoxide Detector" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checkheating" runat="server" Text=" Heating" />
+                </td>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checksomkedetector" runat="server" Text=" Smoke Detector" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checkLaundry" runat="server" Text=" On-Site Laundry" />
+                </td>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checkspeentrance" runat="server" Text=" Separate Entrance" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checkParking" runat="server" Text=" Parking" />
+                </td>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checkWifi" runat="server" Text=" Wi-Fi" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checkFurnished" runat="server" Text=" Furnished" />
+                </td>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checkTV" runat="server" Text=" TV" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checkpet" runat="server" Text=" Pet-Friendly" />
+                </td>
+                <td></td>
+                <td>
+                    <asp:CheckBox ID="checkspebath" runat="server" Text="Separate Bathroom" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style1"></td>
+                <td class="auto-style1">
+                    <asp:CheckBox ID="checkOther" runat="server" Text="Other(s)" AutoPostBack="True" />
+                </td>
+                <td class="auto-style1"></td>
+                <td class="auto-style1">
+                    <asp:TextBox runat="server" Enabled="False" ID="othertextbox"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <asp:Button runat="server" class="btn btn-danger btn-lg" Text="Post" ValidationGroup="addproperty" ID="post" OnClick="post_Click"></asp:Button>
+    </asp:Panel>
 </asp:Content>
