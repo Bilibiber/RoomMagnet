@@ -333,7 +333,8 @@
                 </fieldset>
                 <input type="file" id="myfile" multiple="multiple" name="myfile" runat="server" size="100" />
                 <br />
-                <asp:Button ID="Button1" runat="server" Text="Upload" OnClick="Button1_Click"/>
+                <asp:Button ID="Button1" runat="server" Text="Upload" OnClick="Button1_Click" />
+                <asp:Button ID="UploadButton" runat="server" Text="Button" OnClick="UploadButton_Click" />
                 <br />
                 <div class="preview-images-zone">
                 </div>

@@ -176,6 +176,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         Thread t = new Thread((ThreadStart)(() =>
         {
             OpenFileDialog opendlg = new OpenFileDialog();
+            opendlg.Multiselect = true;
             //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
             if (opendlg.ShowDialog() == DialogResult.OK)
             {
