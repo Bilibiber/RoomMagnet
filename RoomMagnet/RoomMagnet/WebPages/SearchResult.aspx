@@ -7,7 +7,7 @@
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 8,
-                center: { lat: -34.397, lng: 150.644 }
+                center: { lat: 38.4495688, lng: -78.8689156 }
             });
             var geocoder = new google.maps.Geocoder();
 
@@ -30,7 +30,7 @@
                 }
             });
         }
-        google.maps.event.addListener(window, 'load', initMap);
+        //google.maps.event.addListener(window, 'load', initMap);
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu9-V7rNAJ0LWxj2senGo9wVHwgLXQr-0&callback=initMap&language=en">
@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <asp:TextBox ID="address" runat="server" CssClass="form-control" type="textbox" ClientIDMode="Static" placeholder="Enter a zipCode or city with state"></asp:TextBox>
-                    <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" UseSubmitBehavior="false" OnClientClick="return true" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" />
+                    <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" OnClientClick="return true" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="SearchResultButton_Click" />
                 </div>
             </div>
         </div>
@@ -61,7 +61,8 @@
                             <!-- Views dropdown -->
 
                             <div class="dropdown">
-                                <a class="action-btn dropdown-toggle" role="button" id="FilterdropdownMenuLink2" data-toggle="modal" data-target="#Filters" aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span></a>
+                                <a class="action-btn dropdown-toggle" role="button" id="FilterdropdownMenuLink2" data-toggle="modal" data-target="#Filters" aria-haspopup="true" aria-expanded="false">Filters <span class="caret" ></span></a>
+                                &nbsp;&nbsp;&nbsp;
                                 <a class="action-btn dropdown-toggle" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by <span class="caret"></span></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
                                     <%-- Change to link button --%>
@@ -84,7 +85,7 @@
                     <div class="listings-sidebar">
                         <div class="atbdb_content_module_contents">
 
-                            <div id="map" style="width: 500px; height: 500px; border: 5px #5E5454;" class="fa-map">
+                            <div id="map" style="width: 100%; height: 500px; border: 5px #5E5454;">
                             </div>
                         </div>
                     </div>
