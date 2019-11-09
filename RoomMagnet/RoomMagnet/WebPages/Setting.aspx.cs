@@ -6,7 +6,6 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Web;
-using System.Web.UI;
 using System.Windows.Forms;
 
 public partial class WebPages_Setting : System.Web.UI.Page
@@ -188,9 +187,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
         updateuser.ExecuteNonQuery();
 
         db.Close();
-
-        //Open modal
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+        ClientScript.RegisterStartupScript(this.GetType(), "p", "ShowPopup();", true);
     }
 
     protected void goDashboard_Click(object sender, EventArgs e)

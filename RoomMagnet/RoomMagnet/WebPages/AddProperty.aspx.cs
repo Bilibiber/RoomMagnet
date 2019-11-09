@@ -37,12 +37,14 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
         if (addCountry.Text == "United States")
         {
-            addState.Enabled = true;
+            addState.Visible = true;
+            replacestate.Visible = false;
         }
         else
         {
             addState.SelectedIndex = 0;
-            addState.Enabled = false;
+            addState.Visible = false;
+            replacestate.Visible = true;
         }
     }
 
@@ -164,7 +166,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             }
             catch (Exception)
             {
-                Label4.Text = "An unexpected error has occurred";
+                
             }
         }
     }

@@ -111,8 +111,8 @@
     </script>
 
     <script type="text/javascript">
-        function openModal() {
-            $('#updatesuccess').modal({ show: true });
+        function ShowPopup() {
+            $("#btnShowPopup").click();
         }
     </script>
 </asp:Content>
@@ -133,7 +133,7 @@
                     <div id="settingpage">
                         <br />
                         <br />
-<%--                        <div id="viewimage">
+                        <%--                        <div id="viewimage">
                             <asp:Image runat="server" id="imgpreview" Height="200" Width="200" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px; border-radius: 50%;" />
                             <asp:FileUpload ID="fuimage" runat="server" onchange="showpreview(this);" />
                         </div>--%>
@@ -141,6 +141,10 @@
                         <asp:Image ID="imgpreview" runat="server" Height="200" Width="200" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px; border-radius: 50%;" />
                         <br />
                         <asp:Button ID="Upload" runat="server" Text="Upload" OnClick="Upload_Click" />
+                        <button type="button" style="display: none;" id="btnShowPopup" class="btn btn-primary btn-lg"
+                            data-toggle="modal" data-target="#myModal">
+                            Launch demo modal
+                        </button>
                         <%--<div class="container">
                             <div class="row">
                                 <div class="col-sm-2 imgUp">
@@ -239,25 +243,27 @@
                 <asp:Button ID="updateusersetting" runat="server" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" Text="Update" OnClick="updateusersetting_Click" ValidationGroup="settings" Style="background-color: #bd2026;" />
                         &nbsp;
                   <br />
-                        <!-- Modal -->
-                        <div class="modal fade" id="updatesuccess" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content" style="width: 100%;">
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Update successfull!</h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Update done Successfully</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Go to dashboard to see changes</p>
+                                        <asp:Label ID="lblMessage" runat="server" Text="Go Dashabord to see all changes" />
                                     </div>
                                     <div class="modal-footer">
                                         <asp:Button runat="server" Text="Dashboard" class="btn btn-default" Style="background-color: #bd2026;" OnClick="goDashboard_Click" />
                                     </div>
                                 </div>
+                                <!-- /.modal-content -->
                             </div>
+                            <!-- /.modal-dialog -->
                         </div>
+                        <!-- /.modal -->
                     </div>
                 </div>
             </div>
