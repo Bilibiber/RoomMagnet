@@ -11,9 +11,11 @@ using System.Configuration;
 
 
 public partial class WebPages_SearchResult : System.Web.UI.Page
+    
 {
     SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     int resultCount;
+    string OrderBy=String.Empty;
     protected void Page_Load(object sender, EventArgs e)
     {
         SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
@@ -80,30 +82,39 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
         int result;
         string sql;
+        if (SearchResultBedsAvailable.Text== String.Empty)
+        {
+            BedsCmpr = "> 0";
+        }
         if (Int32.TryParse(address.Text, out result))
         {
             sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
-        + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
-        + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (ZipCode = " + address.Text + ")"
+        + "ImagePath from [Property] inner join [ImagePath]"
+        + " on [Property].PropertyID = [ImagePath].PropertyID WHERE (ZipCode = " + address.Text + ")"
                 + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
         + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
-            +"AND (AvailableBedrooms "+ BedsCmpr+ ")"
+            + "AND (AvailableBedrooms " + BedsCmpr + ")"
             + startDate
-            + endDate;
+            + endDate + OrderBy;
         }
         else
         {
+            //Needs validator to make sure User enters a city, state
+            string City = address.Text.Substring(0, address.Text.IndexOf(','));
+            string State = address.Text.Substring(address.Text.IndexOf(',') + 1);
+
             sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
-         + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
-         + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = \'" + address.Text + "\')"
+         + "ImagePath from [Property] inner join [ImagePath] "
+         + " on [Property].PropertyID = [ImagePath].PropertyID WHERE (City = \'" + City + "\')" + "And (HomeState = \'" + State + "\')"
                  + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
          + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
-                +" AND (AvailableBedrooms " + BedsCmpr + ")"
+                + " AND (AvailableBedrooms " + BedsCmpr + ")"
                + startDate
-               + endDate;
+               + endDate + OrderBy;
         }
+        OrderBy = String.Empty;
 
-            if (address.Text != String.Empty)
+        if (address.Text != String.Empty)
             {
                 SqlCommand search = new SqlCommand(sql, connection);
                 SqlDataReader reader = search.ExecuteReader();
@@ -193,8 +204,20 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     //}
     //public static string GetAddressformap()
     //{
-        
-    //}
-  
 
+    //}
+
+
+
+    protected void HighToLow_Click(object sender, EventArgs e)
+    {
+        OrderBy = "ORDER BY RentPrice desc";
+        SearchResultButton_Click(sender, e);
+    }
+
+    protected void LowToHigh_Click(object sender, EventArgs e)
+    {
+        OrderBy = "ORDER BY RentPrice asc";
+        SearchResultButton_Click(sender, e);
+    }
 }

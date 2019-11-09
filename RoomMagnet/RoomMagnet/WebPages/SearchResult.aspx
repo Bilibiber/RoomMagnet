@@ -66,8 +66,9 @@
                                 <a class="action-btn dropdown-toggle" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by <span class="caret"></span></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
                                     <%-- Change to link button --%>
-                                    <a class="dropdown-item" href="">Price ( low to high )</a>
-                                    <a class="dropdown-item" href="">Price ( high to low )</a>
+                                    <a class="dropdown-item" href=""><asp:LinkButton ID="LowToHigh" OnClick="LowToHigh_Click" runat="server">Price ( low to high )</asp:LinkButton></a>
+                                    <a class="dropdown-item" href="">
+                                        <asp:LinkButton ID="HighToLow" OnClick="HighToLow_Click" runat="server">Price ( high to low )</asp:LinkButton></a>
                                 </div>
                             </div>
                         </div>
