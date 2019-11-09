@@ -16,8 +16,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     int resultCount;
     protected void Page_Load(object sender, EventArgs e)
     {
-        SearchResultCount.Text = "(" + resultCount.ToString() + ")";
-        SearchLabel.Visible = false;
+        SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
+        
         if (Session["SignInEmail"] == null)
         {
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -29,7 +29,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         }
         if (Session["HomePageSearchContent"] != null)
         {
-            SearchResultText.Text = Session["HomePageSearchContent"].ToString();
+            address.Text = Session["HomePageSearchContent"].ToString();
             SearchResultButton_Click(sender, e);
             Session["HomePageSearchContent"] = null;
         }
@@ -80,11 +80,11 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
         int result;
         string sql;
-        if (Int32.TryParse(SearchResultText.Text, out result))
+        if (Int32.TryParse(address.Text, out result))
         {
             sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
         + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
-        + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (ZipCode = " + SearchResultText.Text + ")"
+        + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (ZipCode = " + address.Text + ")"
                 + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
         + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
             +"AND (AvailableBedrooms "+ BedsCmpr+ ")"
@@ -95,7 +95,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         {
             sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
          + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
-         + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = \'" + SearchResultText.Text + "\')"
+         + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = \'" + address.Text + "\')"
                  + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
          + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
                 +" AND (AvailableBedrooms " + BedsCmpr + ")"
@@ -103,7 +103,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                + endDate;
         }
 
-            if (SearchResultText.Text != String.Empty)
+            if (address.Text != String.Empty)
             {
                 SqlCommand search = new SqlCommand(sql, connection);
                 SqlDataReader reader = search.ExecuteReader();
@@ -167,7 +167,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             }
             else
             {
-                SearchLabel.Text = "Please enter something in the text bar.";
+                //SearchLabel.Text = "Please enter something in the text bar.";
             }
 
         //GetObject objectI = new GetObject();
