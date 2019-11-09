@@ -133,13 +133,14 @@
                     <div id="settingpage">
                         <br />
                         <br />
-                        <div id="viewimage">
-                            <%--                            <asp:img id="imgpreview" height="200" width="200" src="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px; border-radius: 50%;" />--%>
+<%--                        <div id="viewimage">
+                            <asp:Image runat="server" id="imgpreview" Height="200" Width="200" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px; border-radius: 50%;" />
                             <asp:FileUpload ID="fuimage" runat="server" onchange="showpreview(this);" />
-                        </div>
+                        </div>--%>
 
-                        <asp:Image ID="imgpreview" runat="server" Height="200" Width="200" src="" Style="border-width: 0px; border-radius: 50%;" />
-                        
+                        <asp:Image ID="imgpreview" runat="server" Height="200" Width="200" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px; border-radius: 50%;" />
+                        <br />
+                        <asp:Button ID="Upload" runat="server" Text="Upload" OnClick="Upload_Click" />
                         <%--<div class="container">
                             <div class="row">
                                 <div class="col-sm-2 imgUp">

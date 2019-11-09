@@ -13,6 +13,24 @@ public partial class WebPages_Setting : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+        if (!IsPostBack)
+        {
+            db.Open();
+            System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
+            selectimg.Connection = db;
+            int userid = Convert.ToInt32(Session["UserID"]);
+            selectimg.CommandText = "select [ImagePath] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectimg.Parameters.Add(new SqlParameter("@UserID", userid));
+            SqlDataReader getimg = selectimg.ExecuteReader();
+            while (getimg.Read())
+            {
+                byte[] img = (byte[])getimg[0];
+                imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+            }
+            getimg.Close();
+            db.Close();
+        }
         if (Session["SignInEmail"] == null)
         {
         }
@@ -32,7 +50,6 @@ public partial class WebPages_Setting : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
             db.Open();
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
             selectuser.Connection = db;
@@ -159,6 +176,30 @@ public partial class WebPages_Setting : System.Web.UI.Page
             }
         }
 
+        db.Open();
+        byte[] sessionimg = (byte[])Session["image"];
+        System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
+        updateuser.Connection = db;
+        int userid = Convert.ToInt32(Session["UserID"]);
+        updateuser.CommandText = "UPDATE [dbo].[Users] SET [ImagePath] = @image  WHERE [UserID] = @UserID";
+
+        updateuser.Parameters.Add(new SqlParameter("@image", sessionimg));
+        updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
+        updateuser.ExecuteNonQuery();
+
+        db.Close();
+
+        //Open modal
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+    }
+
+    protected void goDashboard_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Renter.aspx");
+    }
+
+    protected void Upload_Click(object sender, EventArgs e)
+    {
         string imgLocation = "";
 
         Thread t = new Thread((ThreadStart)(() =>
@@ -171,35 +212,17 @@ public partial class WebPages_Setting : System.Web.UI.Page
             }
             byte[] images = null;
             FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+
             BinaryReader brs = new BinaryReader(stream);
             images = brs.ReadBytes((int)stream.Length);
             Session["image"] = images;
-            byte[] sessionimg = (byte[])Session["image"];
 
-            db.Open();
-            System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
-            updateuser.Connection = db;
-            int userid = Convert.ToInt32(Session["UserID"]);
-            updateuser.CommandText = "UPDATE [dbo].[Users] SET [ImagePath] = @image  WHERE [UserID] = @UserID";
-
-            updateuser.Parameters.Add(new SqlParameter("@image", images));
-            updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
-            updateuser.ExecuteNonQuery();
-
-            db.Close();
+            imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
         }));
 
         // Run your code from a thread that joins the STA Thread
         t.SetApartmentState(ApartmentState.STA);
         t.Start();
         t.Join();
-
-        //Open modal
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
-    }
-
-    protected void goDashboard_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Renter.aspx");
     }
 }

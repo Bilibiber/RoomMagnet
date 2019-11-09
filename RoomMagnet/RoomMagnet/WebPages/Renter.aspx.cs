@@ -13,6 +13,24 @@ public partial class WebPages_Renter : System.Web.UI.Page
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            cn.Open();
+            System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
+            selectimg.Connection = cn;
+            int userid = Convert.ToInt32(Session["UserID"]);
+            selectimg.CommandText = "select [ImagePath] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectimg.Parameters.Add(new SqlParameter("@UserID", userid));
+            SqlDataReader getimg = selectimg.ExecuteReader();
+            while (getimg.Read())
+            {
+                byte[] img = (byte[])getimg[0];
+                imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+            }
+            getimg.Close();
+            cn.Close();
+        }
+
         string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
         if (Session["SignInEmail"] == null)

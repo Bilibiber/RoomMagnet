@@ -11,8 +11,6 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-
-
     <style type="text/css">
         .auto-style1 {
             width: 117px;
@@ -98,7 +96,6 @@
             display: inline-block;
             box-shadow: 0px -3px 6px 2px rgba(0,0,0,0.2);
         }
-
 
         /*upload images*/
         .preview-images-zone {
@@ -192,8 +189,6 @@
             });
         });
 
-
-
         var num = 4;
         function readImage() {
             if (window.File && window.FileList && window.FileReader) {
@@ -225,8 +220,6 @@
                 console.log('Browser not support');
             }
         }
-
-
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
@@ -234,35 +227,33 @@
         <div class="auto-style12" style="border-style: none; background-color: gray; text-align: center; background-repeat: repeat;">
             <!-- Your first column here -->
 
-
             <br />
 
-            <div class="userimage">
-            </div>
-            <%--<img src="https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg" class="rounded mx-auto d-block" alt="userimage" style="width: 300px;" />--%>
+            <asp:image id="imgpreview" runat="server" height="200" width="200" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px; border-radius: 50%;" />
+
             <br />
             <br />
-            <asp:Label ID="userstatus" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="XX-Large" ForeColor="White" Style="text-align: center; width: 200px;"></asp:Label>
+            <asp:label id="userstatus" runat="server" backcolor="#CC3300" borderstyle="None" font-size="XX-Large" forecolor="White" style="text-align: center; width: 200px;"></asp:label>
             <br />
             <br />
-            <asp:Button ID="renterSavedSearch" runat="server" Text="Saved Searches" Font-Size="XX-Large" ForeColor="Red" BackColor="Gray" BorderStyle="None" OnClick="renterSavedSearch_Click"></asp:Button>
+            <asp:button id="renterSavedSearch" runat="server" text="Saved Searches" font-size="XX-Large" forecolor="Red" backcolor="Gray" borderstyle="None" onclick="renterSavedSearch_Click"></asp:button>
             <br />
-            <asp:Button ID="renterMessage" runat="server" Text="My Message" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="renterMessage_Click"></asp:Button>
+            <asp:button id="renterMessage" runat="server" text="My Message" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="renterMessage_Click"></asp:button>
             <br />
-            <asp:Button ID="renterConnections" runat="server" Text="Connections" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="renterConnections_Click"></asp:Button>
+            <asp:button id="renterConnections" runat="server" text="Connections" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="renterConnections_Click"></asp:button>
             <br />
-            <asp:Button ID="renterPreference" runat="server" Text="Preferences" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="renterPreference_Click"></asp:Button>
+            <asp:button id="renterPreference" runat="server" text="Preferences" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="renterPreference_Click"></asp:button>
             <br />
-            <asp:Button ID="rentertohost" runat="server" Text="Become a Host" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="rentertohost_Click"></asp:Button>
+            <asp:button id="rentertohost" runat="server" text="Become a Host" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="rentertohost_Click"></asp:button>
             <br />
-            <asp:Button ID="renterSetting" runat="server" Text="Settings" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="renterSetting_Click"></asp:Button>
+            <asp:button id="renterSetting" runat="server" text="Settings" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="renterSetting_Click"></asp:button>
             <br />
         </div>
         <div class="col-md-8">
             <!-- Your second column here -->
             <br />
             <hr />
-            <asp:Panel runat="server" ID="renterinfor">
+            <asp:panel runat="server" id="renterinfor">
                 <asp:Label ID="hellow" runat="server" Text="Hello, world" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                 <br />
                 <br />
@@ -309,47 +300,40 @@
                         </td>
                         <td class="auto-style3"></td>
                     </tr>
-
                 </table>
-            </asp:Panel>
-
-
+            </asp:panel>
 
             <hr />
 
             <%-- saved id panel--%>
-            <asp:Panel runat="server" ID="rentersearch">
+            <asp:panel runat="server" id="rentersearch">
                 <div id="saveSearch">
                     <asp:Label ID="save" runat="server" Text="Saved Searches" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     <br />
                     <asp:Button ID="renterEditSearch" runat="server" BackColor="White" BorderStyle="None" ForeColor="#666666" Text="Edit" />
                 </div>
-            </asp:Panel>
-
+            </asp:panel>
 
             <%--message panel--%>
-            <asp:Panel runat="server" ID="rentermymessage" Visible="False">
+            <asp:panel runat="server" id="rentermymessage" visible="False">
                 <div id="message">
                     <asp:Label ID="mymessage" runat="server" Text="My Message" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                 </div>
-            </asp:Panel>
+            </asp:panel>
 
             <%--connection panel--%>
-            <asp:Panel runat="server" ID="renterconnection" Visible="False">
+            <asp:panel runat="server" id="renterconnection" visible="False">
                 <div>
                     <asp:Label runat="server" Text="Connection" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                 </div>
-            </asp:Panel>
+            </asp:panel>
 
             <%--preference panel--%>
-            <asp:Panel runat="server" ID="renterpreferences" Visible="False">
+            <asp:panel runat="server" id="renterpreferences" visible="False">
                 <div>
                     <asp:Label runat="server" Text="Preference" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                 </div>
-            </asp:Panel>
-
-
+            </asp:panel>
         </div>
     </div>
 </asp:Content>
-
