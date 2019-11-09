@@ -170,9 +170,31 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                 SearchLabel.Text = "Please enter something in the text bar.";
             }
 
-            //GetObject objectI = new GetObject();
+        //GetObject objectI = new GetObject();
         //objectI.RequestItem("testProperty.jpg");
+    }
+    //public string queryToJSON(String GoogleMapQuery)
+    //{
+    //    try
+    //    {
+    //        if (connection.State == System.Data.ConnectionState.Closed)
+    //        {
+    //            connection.Open();
+    //        }
+    //        SqlCommand sc = conn
+    //        sc.CommandText = GoogleMapQuery;
+    //        SqlDataReader sdr = sc.ExecuteReader()
 
-        }
+    //    }
+    //    catch (Exception)
+    //    {
+
+    //    }
+    //}
+    //public static string GetAddressformap()
+    //{
+        
+    //}
+  
 
 }
