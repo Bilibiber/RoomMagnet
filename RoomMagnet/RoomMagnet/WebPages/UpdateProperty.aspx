@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="AddProperty.aspx.cs" Inherits="WebPages_AddProperty" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="UpdateProperty.aspx.cs" Inherits="WebPages_AddProperty" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
@@ -147,11 +147,25 @@
     <%--renter Amenities panel--%>
     <asp:panel runat="server" id="renterbecomehost" visible="true" style="width: 70%; margin: auto;">
                 <div>
-                    <asp:Label runat="server" Text="Add property" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                    <asp:Label runat="server" Text="Update Property" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:Button runat="server" Text="Cancel" class="btn btn-secondary btn-sm" ID="cancel" OnClick="cancel_Click"></asp:Button>
                     <br />
                     <table>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <asp:Label runat="server" Text="Select property:" Font-Bold="True"></asp:Label>
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="selectProperty" runat="server" OnSelectedIndexChanged="selectProperty_SelectedIndexChanged" AutoPostBack="True" ></asp:DropDownList>
+                            </td>
+                            <td></td>
+                            <td>
+                                <asp:DropDownList ID="selectid" runat="server"></asp:DropDownList>
+                            </td>
+                        </tr>
                         <tr>
                             <td class="auto-style8"></td>
                             <td class="auto-style9">
