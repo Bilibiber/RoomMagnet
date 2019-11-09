@@ -14,18 +14,7 @@
 
 
     <style type="text/css">
-        .auto-style1 {
-            width: 117px;
-        }
-
-        .auto-style2 {
-            width: 898px;
-        }
-
-        .auto-style3 {
-            width: 758px;
-        }
-
+        
         .auto-style12 {
             position: relative;
             width: 100%;
@@ -129,6 +118,9 @@
         .container {
             padding-top: 50px;
         }
+        .auto-style13 {
+            height: 24px;
+        }
     </style>
 
     <script>
@@ -190,23 +182,20 @@
 
             <div class="userimage">
             </div>
-            <%--<img src="https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg" class="rounded mx-auto d-block" alt="userimage" style="width: 300px;" />--%>
+            <%--connection panel--%>
             <br />
             
             <br />
-            <asp:Button ID="adminDashboard" runat="server" Text="Dashboard" Font-Size="XX-Large" ForeColor="Red" BackColor="Gray" BorderStyle="None" OnClick="adminDashboard_Click"></asp:Button>
+            <asp:Button ID="adminDashboard" runat="server" Text="Dashboard" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminDashboard_Click"></asp:Button>              
             <br />
-            <asp:Button ID="adminStatistics" runat="server" Text="Statistics" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="adminStatistics_Click"></asp:Button>
+            <asp:Button ID="adminStatistics" runat="server" Text="Statistics" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminStatistics_Click"></asp:Button>
             <br />
-            <asp:Button ID="adminEmployee" runat="server" Text="Employee" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="adminEmployee_Click"></asp:Button>
+            <asp:Button ID="adminEmployee" runat="server" Text="Employee" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminEmployee_Click"></asp:Button>
             <br />
-            <asp:Button ID="adminTasks" runat="server" Text="Tasks" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="adminTasks_Click"></asp:Button>
-            <br />
-            <%--<asp:Button ID="rentertohost" runat="server" Text="Become a Host" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="rentertohost_Click"></asp:Button>
-            <br />--%>
-            <asp:Button ID="adminSettings" runat="server" Text="Settings" Font-Size="XX-Large" ForeColor="White" BackColor="Gray" BorderStyle="None" OnClick="adminSetting_Click"></asp:Button>
+            <asp:Button ID="adminVerification" runat="server" Text="Verification" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminVerification_Click"></asp:Button>
             <br />
         </div>
+            
         <div class="col-md-8">
             <!-- Your second column here -->
             <br />
@@ -216,39 +205,123 @@
                 <br />
                 <br />
             </asp:Panel>
-
-
-
             <hr />
 
-            <%-- saved id panel--%>
-            <asp:Panel runat="server" ID="adminHomePanel">
-                <div id="saveSearch">
-                    <asp:Label ID="Home" runat="server" Text="Home" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+            <%--Dashboard panel--%>
+            <asp:Panel runat="server" ID="adminDashboardPanel">
+                <div id="adminDashboard1">
+                    <asp:Label ID="Dashboard" runat="server" Text="Dashboard" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     <br />
-                    <asp:Button ID="adminHomeButton" runat="server" BackColor="White" BorderStyle="None" ForeColor="#666666" Text="Edit" />
+                    <div class='tableauPlaceholder' id='viz1573326382746' style='position: relative'>
+                <noscript><a href='#'>
+                    <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ta&#47;TabeleauforRoomMagnet&#47;Sheet1&#47;1_rss.png'  style='border: none' />
+                          </a>
+                </noscript>
+
+                <object class='tableauViz' style='display:none;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                    <param name='embed_code_version' value='3' /> 
+                    <param name='site_root' value='' />
+                    <param name='name' value='TabeleauforRoomMagnet&#47;Sheet1' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ta&#47;TabeleauforRoomMagnet&#47;Sheet1&#47;1.png' /> 
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='filter' value='publish=yes' />
+                </object>
+
+                </div>                
+            <script 
+                type='text/javascript'> 
+                var divElement = document.getElementById('viz1573326382746');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                vizElement.style.width = '100%';
+                vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);               
+            </script>
                 </div>
             </asp:Panel>
 
 
-            <%--message panel--%>
+            <%--Statistics panel--%>
             <asp:Panel runat="server" ID="adminStatisticsPanel" Visible="False">
                 <div id="Statistics">
                     <asp:Label ID="statisticsPanel" runat="server" Text="Statistics" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                    
                 </div>
             </asp:Panel>
 
-            <%--connection panel--%>
+            <%--Employees panel--%>
             <asp:Panel runat="server" ID="adminEmployeesPanel" Visible="False">
                 <div>
-                    <asp:Label runat="server" Text="Employees" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                    <asp:Label ID ="employeePanel" runat="server" Text="Employees" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:DropDownList ID="emailDropDown" runat="server" AppendDataBoundItems="true" DataTextField="Email" OnTextChanged="adminEmployee_Click"></asp:DropDownList>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="UpdateBtn" runat="server" Text="Update" OnClick="update_Btn" />
+                    &nbsp;<table>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeName" runat="server" Text="Name" Font-Bold="True"></asp:Label>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <asp:Label ID="employeeName1" runat="server" Text=""></asp:Label>
+                        </td>
+                        <td class="auto-style3"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="adminAge" runat="server" Text="Age" Font-Bold="True"></asp:Label>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <p>
+                                <asp:Label ID="employeeAge" runat="server"></asp:Label>
+                            </p>
+                        </td>
+                        <td class="auto-style3"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeGenderLbl" runat="server" Text="Gender" Font-Bold="True"></asp:Label>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <p>
+                                <asp:Label ID="employeeGender" runat="server"></asp:Label>
+                            </p>
+                        </td>
+                        <td class="auto-style3"></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style13">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeOccupation" runat="server" Text="Occupation" Font-Bold="True"></asp:Label>
+                        </td>
+                        <td class="auto-style13"></td>
+                        <td class="auto-style13">
+                            <p>
+                                <asp:Label ID="employeeOccu" runat="server" ViewStateMode="Disabled"></asp:Label>
+                            </p>
+                        </td>
+                        <td class="auto-style13"></td>
+                    </tr>
+
+                </table>
                 </div>
             </asp:Panel>
 
-            <%--preference panel--%>
-            <asp:Panel runat="server" ID="adminTasksPanel" Visible="False">
+            <%--Verification panel--%>
+            <asp:Panel runat="server" ID="adminVerificationPanel" Visible="False">
                 <div>
-                    <asp:Label runat="server" Text="Tasks" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                    <asp:Label ID="verificationPanel" runat="server" Text="Verification" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                    <br />
+                    <asp:DropDownList ID="UnverifiedDropDown" runat="server" AppendDataBoundItems="true" DataTextField="Email" OnTextChanged="adminVerification_Click"></asp:DropDownList>
+                    <br />
+                    <asp:Button ID="VerificationButton" runat="server" Text="Change" OnClick="VerificationButton_Click" />
                 </div>
             </asp:Panel>
 
