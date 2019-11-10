@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Web;
+using System.Web.UI;
 using System.Windows.Forms;
 
 public partial class WebPages_Setting : System.Web.UI.Page
@@ -24,8 +25,17 @@ public partial class WebPages_Setting : System.Web.UI.Page
             SqlDataReader getimg = selectimg.ExecuteReader();
             while (getimg.Read())
             {
-                byte[] img = (byte[])getimg[0];
-                imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+                //byte[] img = (byte[])getimg[0];
+                //imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+                if (getimg[0].ToString() != "Null")
+                {
+                    byte[] img = (byte[])getimg[0];
+                    imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+                }
+                else
+                {
+                    imgpreview.ImageUrl = "http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg";
+                }
             }
             getimg.Close();
             db.Close();
@@ -39,13 +49,11 @@ public partial class WebPages_Setting : System.Web.UI.Page
             master.AfterLogin();
         }
 
-        //if (!IsPostBack)
-        //{
-        //    setCountry.DataSource = objcountries();
-        //    setCountry.DataBind(); +     $exception  { "Invalid column name 'Description'."}
-        //    System.Data.SqlClient.SqlException
-
-        //}
+        if (!IsPostBack)
+        {
+            setCountry.DataSource = objcountries();
+            setCountry.DataBind();
+        }
 
         if (!IsPostBack)
         {
@@ -53,7 +61,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
             selectuser.Connection = db;
             int userid = Convert.ToInt32(Session["UserID"]);
-            selectuser.CommandText = "select [FirstName], [MiddleName], [LastName], [Gender], [Occupation], [Description], [StreetAddress],[City],[HomeState],[ZipCode] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectuser.CommandText = "select [FirstName], [MiddleName], [LastName], [Gender], [Occupation], [Description], [StreetAddress],[City],[HomeState],[ZipCode],[Country] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getinfor = selectuser.ExecuteReader();
             while (getinfor.Read())
@@ -92,6 +100,10 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 {
                     setZip.Text = getinfor.GetString(9);
                 }
+                if (!getinfor.IsDBNull(10))
+                {
+                    setCountry.SelectedValue = getinfor.GetString(10);
+                }
             }
             getinfor.Close();
             db.Close();
@@ -128,7 +140,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
             if (setconfirmpass.Text == "")
             {
                 updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender," +
-                    "Occupation = @Occupation, Description = @Description,StreetAddress=@StreetAddress,City=@City,HomeState=@HomeState,ZipCode=@ZipCode,LastUpdated=@LastUpdated," +
+                    "Occupation = @Occupation, Description = @Description,StreetAddress=@StreetAddress,City=@City,Country=@Country,HomeState=@HomeState,ZipCode=@ZipCode,LastUpdated=@LastUpdated," +
                     "LastUpdatedBy=@LastUpdatedBy WHERE [UserID] = @UserID";
 
                 updateusers.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
@@ -139,6 +151,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 updateusers.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
                 updateusers.Parameters.Add(new SqlParameter("@StreetAddress", setStreet.Text));
                 updateusers.Parameters.Add(new SqlParameter("@City", setCity.Text));
+                updateusers.Parameters.Add(new SqlParameter("@Country", setCountry.SelectedValue));
                 updateusers.Parameters.Add(new SqlParameter("@HomeState", setState.SelectedValue));
                 updateusers.Parameters.Add(new SqlParameter("@ZipCode", setZip.Text));
                 updateusers.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
@@ -151,7 +164,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
             else
             {
                 updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
-                 "Occupation = @Occupation, Description=@Description,[StreetAddress]=@[StreetAddress],[City]=@[City],[HomeState]=@[HomeState],[ZipCode]=@[ZipCode]," +
+                 "Occupation = @Occupation, Description=@Description,[StreetAddress]=@[StreetAddress],[City]=@[City],Country=@Country,[HomeState]=@[HomeState],[ZipCode]=@[ZipCode]," +
                  "LastUpdated=@LastUpdated, LastUpdatedBy=@LastUpdatedBy, Password=@Password WHERE [UserID] = @UserID";
 
                 updateusers.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
@@ -162,6 +175,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 updateusers.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
                 updateusers.Parameters.Add(new SqlParameter("@StreetAddress", setStreet.Text));
                 updateusers.Parameters.Add(new SqlParameter("@City", setCity.Text));
+                updateusers.Parameters.Add(new SqlParameter("@Country", setCountry.SelectedValue));
                 updateusers.Parameters.Add(new SqlParameter("@HomeState", setState.SelectedValue));
                 updateusers.Parameters.Add(new SqlParameter("@ZipCode", setZip.Text));
                 updateusers.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
@@ -178,6 +192,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
         {
         }
         db.Close();
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "p", "ShowPopup();", true);
         // update image
         string filepath = Server.MapPath("\\Upload");
         HttpFileCollection uploadedFiles = Request.Files;
@@ -200,20 +215,24 @@ public partial class WebPages_Setting : System.Web.UI.Page
             {
             }
         }
+        if (imgpreview.ImageUrl != "http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg")
+        {
+            db.Open();
+            byte[] sessionimg = (byte[])Session["image"];
+            System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
+            updateuser.Connection = db;
+            int userid = Convert.ToInt32(Session["UserID"]);
+            updateuser.CommandText = "UPDATE [dbo].[Users] SET [ImagePath] = @image  WHERE [UserID] = @UserID";
 
-        db.Open();
-        byte[] sessionimg = (byte[])Session["image"];
-        System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
-        updateuser.Connection = db;
-        int userid = Convert.ToInt32(Session["UserID"]);
-        updateuser.CommandText = "UPDATE [dbo].[Users] SET [ImagePath] = @image  WHERE [UserID] = @UserID";
+            updateuser.Parameters.Add(new SqlParameter("@image", sessionimg));
+            updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
+            updateuser.ExecuteNonQuery();
 
-        updateuser.Parameters.Add(new SqlParameter("@image", sessionimg));
-        updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
-        updateuser.ExecuteNonQuery();
+            db.Close();
+        }
 
-        db.Close();
-        ClientScript.RegisterStartupScript(this.GetType(), "p", "ShowPopup();", true);
+        
+
     }
 
     protected void goDashboard_Click(object sender, EventArgs e)

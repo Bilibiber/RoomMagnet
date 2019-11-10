@@ -21,102 +21,9 @@
     <!-- endinject -->
     <link rel="icon" type="image/png" sizes="32x32" href="img/fevicon.png">
 
-    <%--renter update image--%>
-    <%--    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    <style>
-        /*upload images*/
-        .preview-images-zone {
-            width: 72%;
-            border: 1px solid #ddd;
-            min-height: 180px;
-            /* display: flex; */
-            padding: 5px 5px 0px 5px;
-            position: relative;
-            overflow: auto;
-            top: 0px;
-            left: 0px;
-        }
-
-            .preview-images-zone > .preview-image:first-child {
-                height: 185px;
-                width: 185px;
-                position: relative;
-                margin-right: 5px;
-            }
-
-            .preview-images-zone > .preview-image {
-                height: 90px;
-                width: 90px;
-                position: relative;
-                margin-right: 5px;
-                float: left;
-                margin-bottom: 5px;
-            }
-
-                .preview-images-zone > .preview-image > .image-zone {
-                    width: 100%;
-                    height: 100%;
-                }
-
-                    .preview-images-zone > .preview-image > .image-zone > img {
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                .preview-images-zone > .preview-image > .tools-edit-image {
-                    position: absolute;
-                    z-index: 100;
-                    color: #fff;
-                    bottom: 0;
-                    width: 100%;
-                    text-align: center;
-                    margin-bottom: 10px;
-                    display: none;
-                }
-
-                .preview-images-zone > .preview-image > .image-cancel {
-                    font-size: 18px;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    font-weight: bold;
-                    margin-right: 10px;
-                    cursor: pointer;
-                    display: none;
-                    z-index: 100;
-                }
-
-        .preview-image:hover > .image-zone {
-            cursor: move;
-            opacity: .5;
-        }
-
-        .preview-image:hover > .tools-edit-image,
-        .preview-image:hover > .image-cancel {
-            display: block;
-        }
-
-        .ui-sortable-helper {
-            width: 90px !important;
-            height: 90px !important;
-        }
-
-        .container {
-            padding-top: 50px;
-        }
-
-        .auto-style1 {
-            height: 28px;
-        }
-    </style>
-
-    <script>
+ <%--   <script>
         $(document).ready(function () {
             document.getElementById('pro-image').addEventListener('change', readImage, false);
 
@@ -160,6 +67,7 @@
             }
         }
     </script>--%>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <%--renter Amenities panel--%>
@@ -198,6 +106,18 @@
                                     <asp:Label runat="server" Text="City" class="form-label"></asp:Label>
                                     <asp:TextBox runat="server" ID="addCity" placeholder="City" class="form-control" MaxLength="30"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="requireCity" runat="server" ControlToValidate="addCity" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                </div>
+                                <div class="form-group">
+
+                                    <asp:Label runat="server" Text="Country" class="form-label"></asp:Label>
+                                    <div class="input-group">
+
+                                        <asp:DropDownList ID="addCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="custom-select">
+                                            <asp:ListItem Value=""></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <br />
+                                        <asp:RequiredFieldValidator ID="requireCountry" runat="server" ControlToValidate="addCountry" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <asp:Label runat="server" Text="State" class="form-label"></asp:Label>
@@ -263,19 +183,6 @@
                                     <asp:TextBox ID="addZip" runat="server" placeholder="Zip Code" class="form-control" MaxLength="10"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="requireZip" runat="server" ControlToValidate="addZip" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                     <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
-                                </div>
-
-                                <div class="form-group">
-
-                                    <asp:Label runat="server" Text="Country" class="form-label"></asp:Label>
-                                    <div class="input-group">
-
-                                        <asp:DropDownList ID="addCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="custom-select">
-                                            <asp:ListItem Value=""></asp:ListItem>
-                                        </asp:DropDownList>
-                                        <br />
-                                        <asp:RequiredFieldValidator ID="requireCountry" runat="server" ControlToValidate="addCountry" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                                    </div>
                                 </div>
 
                                 <div class="form-group">

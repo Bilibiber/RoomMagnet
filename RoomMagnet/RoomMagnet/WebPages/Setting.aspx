@@ -138,7 +138,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <asp:Label runat="server" Text="Add Description" class="not_empty" Font-Bold="true"></asp:Label>
-                                                <asp:TextBox ID="setdescription" runat="server" class="wp-editor-area form-control" autocomplete="off" placeholder="Describe yourself"  multiline="true" Height="100" TextMode="MultiLine"></asp:TextBox>
+                                                <asp:TextBox ID="setdescription" runat="server" class="wp-editor-area form-control" autocomplete="off" placeholder="Describe yourself" multiline="true" Height="100" TextMode="MultiLine"></asp:TextBox>
                                             </div>
                                         </div>
 
@@ -152,6 +152,14 @@
                                             <div class="form-group">
                                                 <asp:Label runat="server" Text="City" class="not_empty" Font-Bold="true"></asp:Label>
                                                 <asp:TextBox ID="setCity" runat="server" class="form-control" MaxLength="30"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <asp:Label runat="server" Text="Country" class="not_empty" Font-Bold="true"></asp:Label>
+                                                <asp:DropDownList ID="setCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="custom-select">
+                                                    <asp:ListItem Value=""></asp:ListItem>
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -222,22 +230,22 @@
                                         </div>
                                     </div>
                                     <!--ends social info .row-->
-                                    <asp:Button ID="updateusersetting" runat="server" class="btn btn-primary" data-toggle="modal" data-target="#myModal" Text="Update" OnClick="updateusersetting_Click" ValidationGroup="settings" Style="background-color: #bd2026;" />
+                                    <asp:Button ID="updateusersetting" runat="server" class="btn btn-primary" data-toggle="modal" data-target="#myModal" Text="Update" OnClick="updateusersetting_Click" OnClientClick="return false" ValidationGroup="settings" />
 
                                     <%--modal--%>
-                                    <div class="modal fade" id="myModal">
-                                        <div class="modal-dialog">
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Update done Successfully</h4>
+                                                    <asp:Image ID="ModalImage" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span></button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <asp:Label ID="lblMessage" runat="server" Text="Go Dashabord to see all changes" />
+                                                <div class="modal-body text-center">
+                                                    <asp:Label ID="lblMessage" runat="server" Text="Changes Saved" />
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <asp:Button runat="server" Text="Dashboard" class="btn btn-default" Style="background-color: #bd2026;" OnClick="goDashboard_Click" />
+                                                <div class="modal-footer" style="align-content:center; margin:auto; ">
+                                                    <asp:Button runat="server" Text="Dashboard" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="goDashboard_Click" />
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->
@@ -245,6 +253,7 @@
                                         <!-- /.modal-dialog -->
                                     </div>
                                     <!-- /.modal -->
+
                                     <!-- ends: .tab-pane -->
                                 </div>
                             </div>
