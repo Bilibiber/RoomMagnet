@@ -19,8 +19,29 @@ public partial class WebPages_Admin : System.Web.UI.Page
         adminVerification.ForeColor = System.Drawing.Color.White;
         adminEmployee.ForeColor = System.Drawing.Color.White;
 
-
-        
+        if (IsPostBack.Equals(false))
+        {
+            SqlCommand selectEmployees = new SqlCommand();
+            selectEmployees.Connection = cn;
+            String com = "SELECT [Email] FROM [dbo].[Users] WHERE [UserRole] = 'a';";
+            SqlDataAdapter selectEmployeesDA = new SqlDataAdapter(com, cn);
+            DataTable dt = new DataTable();
+            selectEmployeesDA.Fill(dt);
+            emailDropDown.DataSource = dt;
+            emailDropDown.DataBind();
+        }
+        if (IsPostBack.Equals(false))
+        {
+            SqlCommand selectUnverifiedUsers = new SqlCommand();
+            selectUnverifiedUsers.Connection = cn;
+            String com = "SELECT [Email] FROM [dbo].[Users] WHERE [UserRole] = 'Renter' AND [Verified] = 'Unverified';";
+            SqlDataAdapter selectUsersDA = new SqlDataAdapter(com, cn);
+            DataTable dt = new DataTable();
+            selectUsersDA.Fill(dt);
+            UnverifiedDropDown.DataSource = dt;
+            UnverifiedDropDown.DataBind();
+        }
+            
 
         if (Session["SignInEmail"] == null)
         {
@@ -30,10 +51,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
         {
             var master = Master as RoomMagnet;
             master.AfterLogin();
-        }
-
-
-        
+        }       
             //SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
             //db.Open();
             //SqlCommand selectuser = new SqlCommand();
@@ -41,9 +59,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
             //int userid = Convert.ToInt32(Session["UserID"]);
             //selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description], [DateOfBirth] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             //selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
-            //SqlDataReader getinfor = selectuser.ExecuteReader();
-
-    
+            //SqlDataReader getinfor = selectuser.ExecuteReader();    
     }
 
     public static List<string> objcountries()
@@ -77,7 +93,6 @@ public partial class WebPages_Admin : System.Web.UI.Page
         adminStatisticsPanel.ForeColor = System.Drawing.Color.White;
         adminEmployeesPanel.ForeColor = System.Drawing.Color.White;
         adminVerificationPanel.ForeColor = System.Drawing.Color.White;
-
     }
 
     protected void adminStatistics_Click(object sender, EventArgs e)
@@ -119,19 +134,6 @@ public partial class WebPages_Admin : System.Web.UI.Page
         employeeGenderLbl.ForeColor = System.Drawing.Color.Black;
         employeeOccu.ForeColor = System.Drawing.Color.Black;
         employeeOccupation.ForeColor = System.Drawing.Color.Black;
-
-        SqlCommand selectEmployees = new SqlCommand();
-        selectEmployees.Connection = cn;
-        String com = "SELECT [Email] FROM [dbo].[Users] WHERE [UserRole] = 'a';";
-        SqlDataAdapter selectEmployeesDA = new SqlDataAdapter(com, cn);
-        DataTable dt = new DataTable();
-        selectEmployeesDA.Fill(dt);
-        emailDropDown.DataSource = dt;
-        emailDropDown.DataBind();
-
-        
-
-
     }
 
     protected void adminVerification_Click(object sender, EventArgs e)
@@ -148,18 +150,6 @@ public partial class WebPages_Admin : System.Web.UI.Page
         adminStatisticsPanel.ForeColor = System.Drawing.Color.White;
         adminEmployeesPanel.ForeColor = System.Drawing.Color.White;
         adminVerificationPanel.ForeColor = System.Drawing.Color.Red;
-
-        SqlCommand selectUnverifiedUsers = new SqlCommand();
-        selectUnverifiedUsers.Connection = cn;
-        String com = "SELECT [Email] FROM [dbo].[Users] WHERE [UserRole] = 'Renter' AND [Verified] = 'Unverified';";
-        SqlDataAdapter selectUsersDA = new SqlDataAdapter(com, cn);
-        DataTable dt = new DataTable();
-        selectUsersDA.Fill(dt);
-        UnverifiedDropDown.DataSource = dt;
-        UnverifiedDropDown.DataBind();
-
-
-
     }
 
     protected void adminNameChange(object sender, EventArgs e)
@@ -167,7 +157,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
 
     }
 
-    protected void update_Btn(object sender, EventArgs e)
+    protected void view_Btn(object sender, EventArgs e)
     {
         cn.Open();
         SqlCommand com1 = new SqlCommand("SELECT [FirstName], [LastName], [Gender], [Occupation] AS FullName FROM [dbo].[Users] where [Email] = @Email", cn);
@@ -208,10 +198,14 @@ public partial class WebPages_Admin : System.Web.UI.Page
 
         }
         cn.Close();
-
     }
 
     protected void VerificationButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void update_Btn(object sender, EventArgs e)
     {
 
     }

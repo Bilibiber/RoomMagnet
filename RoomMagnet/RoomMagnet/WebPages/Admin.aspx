@@ -264,15 +264,14 @@
                     <br />
                     <br />
                     <asp:DropDownList ID="emailDropDown" runat="server" AppendDataBoundItems="true" DataTextField="Email" OnTextChanged="adminEmployee_Click"></asp:DropDownList>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="UpdateBtn" runat="server" Text="Update" OnClick="update_Btn" />
-                    &nbsp;<table>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <table>
                     <tr>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeName" runat="server" Text="Name" Font-Bold="True"></asp:Label>
                         </td>
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
-                            <asp:Label ID="employeeName1" runat="server" Text=""></asp:Label>
+                            <asp:TextBox ID="employeeName1" runat="server" Text=""></asp:TextBox>
                         </td>
                         <td class="auto-style3"></td>
                     </tr>
@@ -282,7 +281,7 @@
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
                             <p>
-                                <asp:Label ID="employeeAge" runat="server"></asp:Label>
+                                <asp:TextBox ID="employeeAge" runat="server"></asp:TextBox>
                             </p>
                         </td>
                         <td class="auto-style3"></td>
@@ -293,7 +292,7 @@
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
                             <p>
-                                <asp:Label ID="employeeGender" runat="server"></asp:Label>
+                                <asp:TextBox ID="employeeGender" runat="server"></asp:TextBox>
                             </p>
                         </td>
                         <td class="auto-style3"></td>
@@ -304,13 +303,18 @@
                         <td class="auto-style13"></td>
                         <td class="auto-style13">
                             <p>
-                                <asp:Label ID="employeeOccu" runat="server" ViewStateMode="Disabled"></asp:Label>
+                                <asp:TextBox ID="employeeOccu" runat="server" ViewStateMode="Disabled"></asp:TextBox>
                             </p>
                         </td>
                         <td class="auto-style13"></td>
                     </tr>
 
                 </table>
+                    <br />
+                    <asp:Button ID="ViewBtn" runat="server" OnClick="view_Btn" Text="View Data" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="UpdateBtn" runat="server" OnClick="update_Btn" Text="Update Data" />
+                    <br />
                 </div>
             </asp:Panel>
 
