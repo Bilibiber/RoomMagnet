@@ -11,13 +11,15 @@ using System.Configuration;
 
 
 public partial class WebPages_SearchResult : System.Web.UI.Page
+    
 {
     SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     int resultCount;
+    string OrderBy=String.Empty;
     protected void Page_Load(object sender, EventArgs e)
     {
-        SearchResultCount.Text = "(" + resultCount.ToString() + ")";
-        SearchLabel.Visible = false;
+        SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
+        
         if (Session["SignInEmail"] == null)
         {
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -29,7 +31,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         }
         if (Session["HomePageSearchContent"] != null)
         {
-            SearchResultText.Text = Session["HomePageSearchContent"].ToString();
+            address.Text = Session["HomePageSearchContent"].ToString();
             SearchResultButton_Click(sender, e);
             Session["HomePageSearchContent"] = null;
         }
@@ -80,33 +82,43 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
         int result;
         string sql;
-        if (Int32.TryParse(SearchResultText.Text, out result))
+        if (SearchResultBedsAvailable.Text== String.Empty)
+        {
+            BedsCmpr = "> 0";
+        }
+        if (Int32.TryParse(address.Text, out result))
         {
             sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
-        + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
-        + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (ZipCode = " + SearchResultText.Text + ")"
+        + "ImagePath from [Property] inner join [ImagePath]"
+        + " on [Property].PropertyID = [ImagePath].PropertyID WHERE (ZipCode = " + address.Text + ")"
                 + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
         + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
-            +"AND (AvailableBedrooms "+ BedsCmpr+ ")"
+            + "AND (AvailableBedrooms " + BedsCmpr + ")"
             + startDate
-            + endDate;
+            + endDate + OrderBy;
         }
         else
         {
+            //Needs validator to make sure User enters a city, state
+            string City = address.Text.Substring(0, address.Text.IndexOf(','));
+            string State = address.Text.Substring(address.Text.IndexOf(',') + 1);
+
             sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, [Property].StartDate, [Property].EndDate, "
-         + "[Property].ImagePath, [PropertyRoom].ImagePath,[PropertyRoom].StartDate, [PropertyRoom].EndDate from [Property] inner join [PropertyRoom]"
-         + " on [Property].PropertyID = [PropertyRoom].PropertyID WHERE (City = \'" + SearchResultText.Text + "\')"
+         + "ImagePath from [Property] inner join [ImagePath] "
+         + " on [Property].PropertyID = [ImagePath].PropertyID WHERE (City = \'" + City + "\')" + "And (HomeState = \'" + State + "\')"
                  + " AND (RentPrice <= " + SearchResultMaxPrice.Text + ") AND "
          + "(RentPrice >= " + SearchResultMinPrice.Text + ")"
-                +" AND (AvailableBedrooms " + BedsCmpr + ")"
+                + " AND (AvailableBedrooms " + BedsCmpr + ")"
                + startDate
-               + endDate;
+               + endDate + OrderBy;
         }
+        OrderBy = String.Empty;
 
-            if (SearchResultText.Text != String.Empty)
+        if (address.Text != String.Empty)
             {
                 SqlCommand search = new SqlCommand(sql, connection);
                 SqlDataReader reader = search.ExecuteReader();
+           
             if (reader.HasRows)
             {
                 while (reader.Read())
@@ -121,14 +133,23 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Label1.Text = reader.GetString(0);
                         Label1.Visible = true;
                         Label2.Text = string.Format(reader.GetInt32(4).ToString() + " Beds Available{0}" + "$" + y + "/Month{0}"
-                            +  reader.GetString(1) + "," + reader.GetString(2), Environment.NewLine);
+                            + reader.GetString(1) + "," + reader.GetString(2), Environment.NewLine);
                         Label2.Visible = true;
-                        Image2.ImageUrl = reader.GetString(8);
-                        Image2.Visible = true;
+                        byte[] images = (byte[])reader[8];
+                        if (images == null)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            Image2.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                            Image2.Visible = true;
+
+                        }
 
                     }
-                    
-                    if (resultCount==2)
+
+                    if (resultCount == 2)
                     {
                         x = reader.GetDecimal(5);
                         y = String.Format("{0:0.##}", x);
@@ -140,7 +161,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Image3.ImageUrl = reader.GetString(8);
                         Image3.Visible = true;
                     }
-                    if (resultCount==3)
+                    if (resultCount == 3)
                     {
                         x = reader.GetDecimal(5);
                         y = String.Format("{0:0.##}", x);
@@ -152,10 +173,20 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
                         Image4.ImageUrl = reader.GetString(8);
                         Image4.Visible = true;
+                        byte[] images = (byte[])reader[8];
+                        if (images == null)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            Image2.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+
+                        }
                     }
-                    
-           
-                  
+
+
+
 
                 }
                 reader.NextResult();
@@ -166,12 +197,46 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             }
             else
             {
-                SearchLabel.Text = "Please enter something in the text bar.";
+                //SearchLabel.Text = "Please enter something in the text bar.";
             }
 
-            //GetObject objectI = new GetObject();
+        //GetObject objectI = new GetObject();
         //objectI.RequestItem("testProperty.jpg");
+    }
+    //public string queryToJSON(String GoogleMapQuery)
+    //{
+    //    try
+    //    {
+    //        if (connection.State == System.Data.ConnectionState.Closed)
+    //        {
+    //            connection.Open();
+    //        }
+    //        SqlCommand sc = conn
+    //        sc.CommandText = GoogleMapQuery;
+    //        SqlDataReader sdr = sc.ExecuteReader()
 
-        }
+    //    }
+    //    catch (Exception)
+    //    {
 
+    //    }
+    //}
+    //public static string GetAddressformap()
+    //{
+
+    //}
+
+
+
+    protected void HighToLow_Click(object sender, EventArgs e)
+    {
+        OrderBy = "ORDER BY RentPrice desc";
+        SearchResultButton_Click(sender, e);
+    }
+
+    protected void LowToHigh_Click(object sender, EventArgs e)
+    {
+        OrderBy = "ORDER BY RentPrice asc";
+        SearchResultButton_Click(sender, e);
+    }
 }
