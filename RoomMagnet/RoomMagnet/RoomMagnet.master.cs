@@ -65,7 +65,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 {
                     cn.Open();
                 }
-                string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,UserRole,Verified,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@UserRole,@Verified,@LastUpdated,@LastUpdatedBy)";
+                string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,UserRole,Verified,SignUpDate,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@UserRole,@Verified,@SignUpDate,@LastUpdated,@LastUpdatedBy)";
                 SqlCommand sqlCommand = new SqlCommand(Sql, cn);
                 string role = "Renter";
                 string verified = "Unverified";
@@ -79,6 +79,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     new SqlParameter("@DateOfBirth",users.getBirthday()),
                     new SqlParameter("@LastUpdated",users.getLastUpdated()),
                     new SqlParameter("@LastUpdatedBy",users.getLastUpdatedBy()),
+                    new SqlParameter("@SignUpDate",DateTime.Now),
                     new SqlParameter("@UserRole",role),
                     new SqlParameter("@Verified",verified),
                     });
