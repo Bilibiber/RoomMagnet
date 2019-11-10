@@ -3,38 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <script>
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 8,
-                center: { lat: 38.4495688, lng: -78.8689156 }
-            });
-            var geocoder = new google.maps.Geocoder();
-
-            document.getElementById('search').addEventListener('click', function () {
-                geocodeAddress(geocoder, map);
-            });
-        }
-
-        function geocodeAddress(geocoder, resultsMap) {
-            var address = document.getElementById('address').value;
-            geocoder.geocode({ 'address': address }, function (results, status) {
-                if (status === 'OK') {
-                    resultsMap.setCenter(results[0].geometry.location);
-                    var marker = new google.maps.Marker({
-                        map: resultsMap,
-                        position: results[0].geometry.location
-                    });
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-        }
-        //google.maps.event.addListener(window, 'load', initMap);
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu9-V7rNAJ0LWxj2senGo9wVHwgLXQr-0&callback=initMap&language=en">
-    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <section class="all-listing-wrapper section-bg">
@@ -42,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <asp:TextBox ID="address" runat="server" CssClass="form-control" type="textbox" ClientIDMode="Static" placeholder="Enter a zipCode or city with state"></asp:TextBox>
-                    <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" OnClientClick="return true" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="SearchResultButton_Click" />
+                    <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" OnClientClick="return true" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="SearchResultButton_Click" UseSubmitBehavior="false" />
                 </div>
             </div>
         </div>
@@ -396,7 +364,40 @@
             </div>
         </div>
     </div>
+      <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: { lat: 38.4495688, lng: -78.8689156 }
+            });
+            var geocoder = new google.maps.Geocoder();
 
+            document.getElementById('search').addEventListener('click', function () {
+                geocodeAddress(geocoder, map);
+            });
+            
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            var address = document.getElementById('address').value;
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+        google.maps.event.addListener(window, 'load', initMap);
+    </script>
+   <%-- &callback=initMap--%>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu9-V7rNAJ0LWxj2senGo9wVHwgLXQr-0&language=en">
+    </script>
     <div class="container">
         <br />
         <asp:Image ID="Image2" Visible="false" runat="server" Style="width: 200px;" />
