@@ -139,15 +139,15 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                    <a href=""><span class="la la-bed"></span>1 Bed</a>
-                                                    <a href=""><span class="la la-bath"></span>1 Bathroom</a>
+                                                     <a><span class="la la-bed"></span></a> <div class="numberCircle"><asp:label runat="server" ID="Property1Bed" text="1 Bed"></asp:label> </div>
+                                                    <a href=""><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property1Bath" text=" 1 Bathroom"></asp:label> </div>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
                                                 <li>
                                                     <div class="atbd_author atbd_author--thumb">
                                                         <a href="">
-                                                            <img src="img/author-thumb2.jpg" alt="Author Image">
+                                                            <asp:imagebutton runat="server" ID="Property1HostPic" alt="Author Image"></asp:imagebutton>
                                                             <span class="custom-tooltip">Name, Owner</span>
                                                         </a>
                                                     </div>
@@ -179,7 +179,7 @@
                                     <div class="atbd_listing_info">
                                         <div class="atbd_content_upper">
                                             <h4 class="atbd_listing_title">
-                                                <a href=""><asp:Label ID="Property2Title" Visible="false" runat="server" Text="Label"></asp:Label></a>
+                                                <a href=""><asp:Label ID="Property2Title"  runat="server" Text="Label"></asp:Label></a>
                                             </h4>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">4.5<i class="la la-star"></i></span>
@@ -197,15 +197,15 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                    <a href=""><span class="la la-bed"></span>1 Bed</a>
-                                                    <a href=""><span class="la la-bath"></span>1 Bathroom</a>
+                                                    <a><span class="la la-bed"></span></a> <div class="numberCircle"><asp:label runat="server" ID="Property2Bed" text="1 Bed"></asp:label> </div>
+                                                    <a href=""><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="PropertyBath" text=" 1 Bathroom"></asp:label> </div>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
                                                 <li>
                                                     <div class="atbd_author atbd_author--thumb">
                                                         <a href="">
-                                                            <img src="img/author-thumb2.jpg" alt="Author Image">
+                                                            <asp:imagebutton runat="server" ID="Property2HostPic" alt="Author Image"></asp:imagebutton>
                                                             <span class="custom-tooltip">Name, Owner</span>
                                                         </a>
                                                     </div>
@@ -241,7 +241,6 @@
                                             </h4>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">4.5<i class="la la-star"></i></span>
-                                                <span class="atbd_meta atbd_listing_price">$1,100</span>
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
@@ -256,15 +255,15 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                    <a href=""><span class="la la-bed"></span>1 Bed</a>
-                                                    <a href=""><span class="la la-bath"></span>1 Bathroom</a>
+                                                    <a><span class="la la-bed"></span></a> <div class="numberCircle"><asp:label runat="server" ID="Property3Bed" text="1 Bed"></asp:label> </div>
+                                                    <a href=""><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property3Bath" text=" 1 Bathroom"></asp:label> </div>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
                                                 <li>
                                                     <div class="atbd_author atbd_author--thumb">
                                                         <a href="">
-                                                            <img src="img/author-thumb2.jpg" alt="Author Image">
+                                                            <asp:imagebutton runat="server" alt="Author Image" ID="Property3HostPic"></asp:imagebutton>
                                                             <span class="custom-tooltip">Name, Owner</span>
                                                         </a>
                                                     </div>
@@ -300,7 +299,6 @@
                                             </h4>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">4.5<i class="la la-star"></i></span>
-                                                <span class="atbd_meta atbd_listing_price">$1,100</span>
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
@@ -315,15 +313,15 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                    <a href=""><span class="la la-bed"></span>1 Bed</a>
-                                                    <a href=""><span class="la la-bath"></span>1 Bathroom</a>
+                                                    <a><span class="la la-bed"></span></a> <div class="numberCircle"><asp:label runat="server" ID="Property4Bed" text="1 Bed"></asp:label> </div>
+                                                    <a href=""><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property4Bath" text=" 1 Bathroom"></asp:label> </div>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
                                                 <li>
                                                     <div class="atbd_author atbd_author--thumb">
                                                         <a href="">
-                                                            <img src="img/author-thumb2.jpg" alt="Author Image">
+                                                            <asp:imagebutton runat="server" alt="Author Image" ID="Property4HostPic"></asp:imagebutton>
                                                             
                                                                 
                                                             <span class="custom-tooltip">Name, Owner</span>
@@ -374,15 +372,15 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                    <a href=""><span class="la la-bed"></span>1 Bed</a>
-                                                    <a href=""><span class="la la-bath"></span>1 Bathroom</a>
+                                                    <a><span class="la la-bed"></span></a> <div class="numberCircle"><asp:label runat="server" ID="Property5Bed" text="1 Bed"></asp:label> </div>
+                                                    <a href=""><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property5Bath" text=" 1 Bathroom"></asp:label> </div>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
                                                 <li>
                                                     <div class="atbd_author atbd_author--thumb">
                                                         <a href="">
-                                                            <asp:ImageButton ID="ImageButton1" runat="server" />
+                                                            <asp:ImageButton ID="Property5HostPic" alt="Author Image" runat="server" />
                                                             <div class="media-body">
                                                                 
                                                             <span class="custom-tooltip">Name, Owner</span>
