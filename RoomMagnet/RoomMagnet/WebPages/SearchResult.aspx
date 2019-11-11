@@ -51,25 +51,19 @@
                 <div class="col-lg-12">
                     <div class="atbd_generic_header">
                         <div class="atbd_generic_header_title">
-               <%-- <div class="atbd_seach_fields_wrapper input-group">
-                    <asp:TextBox ID="address" runat="server" CssClass="form-control" type="textbox" ClientIDMode="Static" placeholder="Enter a zipCode or city with state"></asp:TextBox>
-                    <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="SearchResultButton_Click" />
-                </div>--%>
                                <div class="atbd_seach_fields_wrapper input-group">
                             <div class="single_search_field search_query">
-                                <asp:TextBox ID="address" runat="server" CssClass="form-control search_fields Searchtxt-width" type="textbox" ClientIDMode="Static" placeholder="Enter a city or zip code"></asp:TextBox>
-                                
+                                <asp:TextBox ID="address" runat="server" CssClass="form-control search_fields Searchtxt-width inputgroup-height" type="textbox" ClientIDMode="Static" placeholder="Enter a city or zip code"></asp:TextBox>
                             </div>
 
                             <div class="atbd_submit_btn input-group-append searchtxt-padding">
-                                <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" CssClass="btn btn-primary" OnClick="SearchResultButton_Click" />
+                                <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" CssClass="btn btn-primary inputgroup-height textcenter" OnClick="SearchResultButton_Click" />
                             </div>
                         </div>
                         </div>
                         <!-- ends: .atbd_generic_header_title -->
                         <div class="atbd_listing_action_btn btn-toolbar" role="toolbar">
                             <!-- Views dropdown -->
-
                             <div class="dropdown">
                                 <a class="action-btn dropdown-toggle" role="button" id="FilterdropdownMenuLink2" data-toggle="modal" data-target="#Filters" aria-haspopup="true" aria-expanded="false">Filters <span class="caret" ></span></a>
                                 &nbsp;&nbsp;&nbsp;
@@ -88,14 +82,13 @@
             </div>
         </div>
         <!-- ends: .col-lg-12 -->
-
         <div class="col-lg-12 listing-items">
             <div class="row">
                 <div class="col-lg-6 order-lg-0 order-1 mt-5 mt-lg-0">
                     <div class="listings-sidebar">
                         <div class="atbdb_content_module_contents">
 
-                            <div id="map" style="width: 100%; height: 500px; border: 5px #5E5454;">
+                            <div id="map" style="width: 100%; height: 800px; border: 5px #5E5454;">
                             </div>
                         </div>
                     </div>
@@ -117,10 +110,10 @@
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
-                                        <div class="atbd_listing_image">
-                                            <a href="">
-                                                <asp:ImageButton ID="Property1Image" OnClick="Property1Image_Click" runat="server" />
-                                            </a>
+                                        <div class="atbd_listing_image fill">
+                                            
+                                                <asp:ImageButton ID="Property1Image" OnClick="Property1Image_Click" runat="server" CssClass="imgfill" />
+                                            
                                         </div>
                                         <!-- ends: .atbd_listing_image -->
                                     </figure>
@@ -129,13 +122,12 @@
                                     <div class="atbd_listing_info">
                                         <div class="atbd_content_upper">
                                             <h4 class="atbd_listing_title">
-                                                <a href=""><asp:Label ID="Property1Title" Visible="false" runat="server" Text="Label"></asp:Label> </a>
+                                                <asp:Label ID="Property1Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                             </h4>
                                             <div class="atbd_listing_meta">
-                                                <span class="atbd_meta atbd_listing_rating">4.5<i class="la la-star"></i></span>
-                                                        <a href="">
-                                                            <asp:imagebutton runat="server" ID="Property1HostPic" alt="Author Image" style="height:55px; width:55px; border-radius:50%;"></asp:imagebutton>
-                                                        </a>
+                                                <span class="atbd_meta atbd_listing_rating">
+                                                    <asp:Label ID="Label1" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>                                                    
+                                                                            
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
@@ -151,16 +143,14 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                     <a><span class="la la-bed"></span></a> <div class="numberCircle"><asp:label runat="server" ID="Property1Bed" text="1 Bed"></asp:label> </div>
-                                                    <a href=""><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property1Bath" text=" 1 Bathroom"></asp:label> </div>
+                                                     <a><span class="la la-bed"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property1Bed" text="1 Bed"></asp:label> </div>
+                                                     <a><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property1Bath" text="1 Bathroom"></asp:label> </div>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
                                                 <li>
-                                                    <div class="atbd_author atbd_author--thumb">
-                                                        <a href="">
-                                                            <span class="custom-tooltip">Name, Owner</span>
-                                                        </a>
+                                                    <div class="atbd_author atbd_author--thumb fill">
+                                                        <asp:imagebutton runat="server" ID="Property1HostPic" alt="Author Image" CssClass="imgfill rounded-circle hostimage"></asp:imagebutton>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -412,7 +402,7 @@
                                 <nav class="navigation pagination d-flex justify-content-end" role="navigation">
                                     <div class="nav-links">
                                         <a class="prev page-numbers" href=""><span class="la la-long-arrow-left"></span></a>
-                                        <a <asp:LinkButton ID="LinkButton1" runat="server" Text="1"> </asp:LinkButton></a>
+                                        <a><asp:LinkButton ID="LinkButton1" runat="server" Text="1"> </asp:LinkButton></a>
                                         <span aria-current="page" class="page-numbers current">2</span>
                                         <a class="page-numbers" href="">3</a>
                                         <a class="next page-numbers" href=""><span class="la la-long-arrow-right"></span></a>
@@ -425,7 +415,6 @@
                 </div>
             </div>
             <!-- ends: .listing-items -->
-        </div>
     </section>
 
     <div class="modal fade" id="Filters" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
