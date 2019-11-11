@@ -19,7 +19,12 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
-        
+        Property1Image.Visible = false; Property1Title.Visible = false; Property1RentPrice.Visible = false; Property1CityState.Visible = false;
+        Property2Image.Visible = false; Property2Title.Visible = false; Property2RentPrice.Visible = false; Property2CityState.Visible = false;
+        Property3Image.Visible = false; Property3Title.Visible = false; Property3RentPrice.Visible = false; Property3CityState.Visible = false;
+        Property4Image.Visible = false; Property4Title.Visible = false; Property4RentPrice.Visible = false; Property4CityState.Visible = false;
+        Property5Image.Visible = false; Property5Title.Visible = false; Property5RentPrice.Visible = false; Property5CityState.Visible = false;
+
         if (Session["SignInEmail"] == null)
         {
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -37,17 +42,15 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         }
     }
 
+    protected void ApplyButton_Click(object sender, EventArgs e)
+    {
+        SearchResultButton_Click(sender, e);
+
+    }
     protected void SearchResultButton_Click(object sender, EventArgs e)
     {
-        Label1.Visible = false;
-        Label2.Visible = false;
-        Image2.Visible = false;
-        Label5.Visible = false;
-        Label6.Visible = false;
-        Image3.Visible = false;
-        Label9.Visible = false;
-        Label10.Visible = false;
-        Image4.Visible = false;
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "ReLoadTheMap", "geocodeAddress()", true);
+
         resultCount = 0;
         if (SearchResultMinPrice.Text==String.Empty)
         {
@@ -130,11 +133,14 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                     {
                         x = reader.GetDecimal(5);
                         y = String.Format("{0:0.##}", x);
-                        Label1.Text = reader.GetString(0);
-                        Label1.Visible = true;
-                        Label2.Text = string.Format(reader.GetInt32(4).ToString() + " Beds Available{0}" + "$" + y + "/Month{0}"
-                            + reader.GetString(1) + "," + reader.GetString(2), Environment.NewLine);
-                        Label2.Visible = true;
+                        Property1Title.Text = reader.GetString(0);
+                        Property1Title.Visible = true;
+                        
+
+                        Property1RentPrice.Text = "$" + y + "/Month";
+                        Property1RentPrice.Visible = true;
+                        Property1CityState.Text= reader.GetString(1) + "," + reader.GetString(2);
+                        Property1CityState.Visible = true;
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -142,8 +148,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         }
                         else
                         {
-                            Image2.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
-                            Image2.Visible = true;
+                            Property1Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                            Property1Image.Visible = true;
 
                         }
 
@@ -153,26 +159,14 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                     {
                         x = reader.GetDecimal(5);
                         y = String.Format("{0:0.##}", x);
-                        Label5.Text = reader.GetString(0);
-                        Label5.Visible = true;
-                        Label6.Text = reader.GetInt32(4).ToString() + " Beds Available" + Environment.NewLine + "$" + y + "/Month"
-                            + Environment.NewLine + reader.GetString(1) + "," + reader.GetString(2);
-                        Label6.Visible = true;
-                        Image3.ImageUrl = reader.GetString(8);
-                        Image3.Visible = true;
-                    }
-                    if (resultCount == 3)
-                    {
-                        x = reader.GetDecimal(5);
-                        y = String.Format("{0:0.##}", x);
-                        Label9.Text = reader.GetString(0);
-                        Label9.Visible = true;
-                        Label10.Text = reader.GetInt32(4).ToString() + " Beds Available" + "\n $" + y + "/Month"
-                            + "\n" + reader.GetString(1) + "," + reader.GetString(2);
-                        Label10.Visible = true;
+                        Property2Title.Text = reader.GetString(0);
+                        Property2Title.Visible = true;
 
-                        Image4.ImageUrl = reader.GetString(8);
-                        Image4.Visible = true;
+
+                        Property2RentPrice.Text = "$" + y + "/Month";
+                        Property2RentPrice.Visible = true;
+                        Property2CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
+                        Property2CityState.Visible = true;
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -180,10 +174,80 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         }
                         else
                         {
-                            Image2.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                            Property2Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                            Property2Image.Visible = true;
 
                         }
                     }
+                    if (resultCount == 3)
+                        {
+                            x = reader.GetDecimal(5);
+                            y = String.Format("{0:0.##}", x);
+                            Property3Title.Text = reader.GetString(0);
+                            Property3Title.Visible = true;
+                            Property3RentPrice.Text = "$" + y + "/Month";
+                            Property3RentPrice.Visible = true;
+                            Property3CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
+                            Property3CityState.Visible = true;
+                            byte[] images = (byte[])reader[8];
+                            if (images == null)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                Property3Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                                Property3Image.Visible = true;
+
+                            }
+                        }
+                    if (resultCount == 4)
+                        {
+                            x = reader.GetDecimal(5);
+                            y = String.Format("{0:0.##}", x);
+                            Property4Title.Text = reader.GetString(0);
+                            Property4Title.Visible = true;
+
+
+                            Property4RentPrice.Text = "$" + y + "/Month";
+                            Property4RentPrice.Visible = true;
+                            Property4CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
+                            Property4CityState.Visible = true;
+                            byte[] images = (byte[])reader[8];
+                            if (images == null)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                Property4Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                                Property4Image.Visible = true;
+
+                            }
+                        }
+                    if (resultCount ==5)
+                        {
+                            x = reader.GetDecimal(5);
+                            y = String.Format("{0:0.##}", x);
+                            Property5Title.Text = reader.GetString(0);
+                            Property5Title.Visible = true;
+                            Property5RentPrice.Text = "$" + y + "/Month";
+                            Property5RentPrice.Visible = true;
+                            Property5CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
+                            Property5CityState.Visible = true;
+                            byte[] images = (byte[])reader[8];
+                            if (images == null)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                Property5Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                                Property5Image.Visible = true;
+
+                            }
+                        }
+
 
 
 
@@ -238,5 +302,158 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
         OrderBy = "ORDER BY RentPrice asc";
         SearchResultButton_Click(sender, e);
+    }
+
+    protected void Property1Image_Click(object sender, ImageClickEventArgs e)
+    {
+        connection.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, connection);
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[8];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if(CmprImageURL == Property1Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+
+                }
+            }
+        }
+        connection.Close();
+    }
+    protected void Property2Image_Click(object sender, ImageClickEventArgs e)
+    {
+        connection.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, connection);
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[8];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property2Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+
+                }
+            }
+        }
+        connection.Close();
+    }
+
+    protected void Property3Image_Click(object sender, ImageClickEventArgs e)
+    {
+        connection.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, connection);
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[8];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property3Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+
+                }
+            }
+        }
+        connection.Close();
+    }
+
+    protected void Property4Image_Click(object sender, ImageClickEventArgs e)
+    {
+        connection.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, connection);
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[8];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property4Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+
+                }
+            }
+        }
+        connection.Close();
+    }
+
+    protected void Property5Image_Click(object sender, ImageClickEventArgs e)
+    {
+        connection.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, connection);
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[8];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property5Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+
+                }
+            }
+        }
     }
 }
