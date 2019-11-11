@@ -4,11 +4,9 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Web;
 using System.Windows.Forms;
-using System.Linq;
-using System.Threading;
-
 
 public partial class WebPages_AddProperty : System.Web.UI.Page
 {
@@ -39,12 +37,14 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
         if (addCountry.Text == "United States")
         {
-            addState.Enabled = true;
+            addState.Visible = true;
+            replacestate.Visible = false;
         }
         else
         {
             addState.SelectedIndex = 0;
-            addState.Enabled = false;
+            addState.Visible = false;
+            replacestate.Visible = true;
         }
     }
 
@@ -74,8 +74,8 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     {
         cn.Open();
         int userid = Convert.ToInt32(Session["UserID"]);
-        //string FullName = Session["FullName"].ToString();
-        string FullName = "";
+        string FullName = Session["FullName"].ToString();
+
         string insert = "INSERT INTO [dbo].[Property]([Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage],[RentPrice],[AvailableBedrooms]," +
             "[StartDate],[EndDate],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country,@ZipCode, @SquareFootage, @RentPrice," +
             " @AvailableBedrooms, @StartDate, @EndDate,@LastUpdated, @LastUpdatedBy,@HostID)";
@@ -129,77 +129,139 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         insertTo.Parameters.AddWithValue("@SeparateBathroom", checkspebath.Checked ? 'Y' : 'N');
         insertTo.Parameters.AddWithValue("@Other", checkspeentrance.Checked ? othertextbox.Text : "");
         insertTo.ExecuteNonQuery();
-        
-        string picInsert = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
-        for (int i = 0; i < Image.images.Length; i++)
-        {
-            if (Image.images[i] != null)
-            {
-                SqlCommand picInsertTo = new SqlCommand(picInsert, cn);
-                picInsertTo.Parameters.AddWithValue("@PropertyID", pid );
-                picInsertTo.Parameters.AddWithValue("@ImagePath", Image.images[i].getByte());
-                picInsertTo.ExecuteNonQuery();
-                Image.images[i] = null;
-            }
-        }
+
+        //string picInsert = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
+        //for (int i = 0; i < Images.images.Length; i++)
+        //{
+        //    if (Images.images[i] != null)
+        //    {
+        //        SqlCommand picInsertTo = new SqlCommand(picInsert, cn);
+        //        picInsertTo.Parameters.AddWithValue("@PropertyID", pid);
+        //        picInsertTo.Parameters.AddWithValue("@ImagePath", Images.images[i].getByte());
+        //        picInsertTo.ExecuteNonQuery();
+        //        Images.images[i] = null;
+        //    }
+        //}
         cn.Close();
-
-
     }
 
-    protected void testimage_Click(object sender, EventArgs e)
-    {
-    }
+    //protected void Button1_Click(object sender, EventArgs e)
+    //{
+    //    string filepath = Server.MapPath("\\Upload");
+    //    HttpFileCollection uploadedFiles = Request.Files;
+    //    string fileNames = String.Empty;
+    //    string filePaths = String.Empty;
 
+    //    for (int i = 0; i < uploadedFiles.Count; i++)
+    //    {
+    //        HttpPostedFile userPostedFile = uploadedFiles[i];
+    //        try
+    //        {
+    //            if (userPostedFile.ContentLength > 0)
+    //            {
+    //                userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
+    //                fileNames += userPostedFile.FileName + " ";
+    //                filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
+    //            }
+    //        }
+    //        catch (Exception)
+    //        {
+    //        }
+    //    }
+    //}
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        string filepath = Server.MapPath("\\Upload");
-        HttpFileCollection uploadedFiles = Request.Files;
-        string fileNames = String.Empty;
-        string filePaths = String.Empty;
+    //private string imgLocation = "";
 
-        for (int i = 0; i < uploadedFiles.Count; i++)
-        {
-            HttpPostedFile userPostedFile = uploadedFiles[i];
-            try
-            {
-                if (userPostedFile.ContentLength > 0)
-                {
-                    userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
-                    fileNames += userPostedFile.FileName + " ";
-                    filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
-                }
-            }
-            catch (Exception)
-            {
-                Label4.Text = "An unexpected error has occurred";
-            }
-        }
-    }
-    string imgLocation = "";
-    protected void UploadButton_Click(object sender, EventArgs e)
+    protected void Upload_Click(object sender, EventArgs e)
     {
+        string imgLocation = "";
+
         Thread t = new Thread((ThreadStart)(() =>
         {
             OpenFileDialog opendlg = new OpenFileDialog();
+            opendlg.Multiselect = true;
             //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
             if (opendlg.ShowDialog() == DialogResult.OK)
             {
                 imgLocation = opendlg.FileName.ToString();
             }
             byte[] images = null;
-            FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-            BinaryReader brs = new BinaryReader(stream);
-            images = brs.ReadBytes((int)stream.Length);
-            Image newImage = new Image();
-            newImage.setByteCode(images);
+            if (imgLocation != "")
+            {
+                FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                BinaryReader brs = new BinaryReader(stream);
+                images = brs.ReadBytes((int)stream.Length);
+                Session["image"] = images;
 
-            Image.images[Image.imageCount - 1] = newImage;
-
+                imgpreview1.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                imgpreview1.Visible = true;
+            }
         }));
+
+        // Run your code from a thread that joins the STA Thread
         t.SetApartmentState(ApartmentState.STA);
         t.Start();
         t.Join();
     }
+
+    protected void uploadImages_Click(object sender, EventArgs e)
+    {
+        //Thread t = new Thread((ThreadStart)(() =>
+        //{
+        //    OpenFileDialog opendlg = new OpenFileDialog();
+        //    opendlg.Multiselect = true;
+        //    //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
+        //    if (opendlg.ShowDialog() == DialogResult.OK)
+        //    {
+        //        imgLocation = opendlg.FileName.ToString();
+        //    }
+        //    byte[] images = null;
+        //    FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+        //    BinaryReader brs = new BinaryReader(stream);
+        //    images = brs.ReadBytes((int)stream.Length);
+        //    Images newImage = new Images();
+        //    newImage.setByteCode(images);
+
+        //    Images.images[Images.imageCount - 1] = newImage;
+        //}));
+        //t.SetApartmentState(ApartmentState.STA);
+        //t.Start();
+        //t.Join();
+
+        //string filepath = Server.MapPath("\\Upload");
+        //HttpFileCollection uploadedFiles = Request.Files;
+        //string fileNames = String.Empty;
+        //string filePaths = String.Empty;
+
+        //for (int i = 0; i < uploadedFiles.Count; i++)
+        //{
+        //    HttpPostedFile userPostedFile = uploadedFiles[i];
+        //    try
+        //    {
+        //        if (userPostedFile.ContentLength > 0)
+        //        {
+        //            userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
+        //            fileNames += userPostedFile.FileName + " ";
+        //            filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
+
+        //for (int i = 0; i < Request.Files.Count; i++)
+        //{
+        //    HttpPostedFile file = Request.Files[i];
+        //    if (file.ContentLength > 0)
+        //    {
+        //        string fname = Path.GetFileName(file.FileName);
+        //        file.SaveAs(Server.MapPath(Path.Combine("~/SavedImages/", fname)));
+
+        //    }
+        //}
+        //Label1.Text = Request.Files.Count + " Images Has Been Saved Successfully   " + Request.Files.Count;
+
+    }
+
 }
