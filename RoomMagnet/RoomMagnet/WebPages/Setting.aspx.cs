@@ -192,7 +192,8 @@ public partial class WebPages_Setting : System.Web.UI.Page
         {
         }
         db.Close();
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "p", "ShowPopup();", true);
+
+
         // update image
         string filepath = Server.MapPath("\\Upload");
         HttpFileCollection uploadedFiles = Request.Files;
@@ -231,7 +232,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
             db.Close();
         }
 
-        
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "p", "ShowPopup();", true);
 
     }
 

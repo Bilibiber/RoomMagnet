@@ -6,7 +6,7 @@
 
     <title>Add Property</title>
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
-    <!-- inject:css-->
+<%--    <!-- inject:css-->
     <link rel="stylesheet" href="vendor_assets/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="vendor_assets/css/brands.css">
     <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css">
@@ -19,11 +19,9 @@
     <link rel="stylesheet" href="vendor_assets/css/slick.css">
     <link rel="stylesheet" href="style.css">
     <!-- endinject -->
-    <link rel="icon" type="image/png" sizes="32x32" href="img/fevicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/fevicon.png">--%>
 
-
-
- <%--   <script>
+    <%--   <script>
         $(document).ready(function () {
             document.getElementById('pro-image').addEventListener('change', readImage, false);
 
@@ -67,7 +65,28 @@
             }
         }
     </script>--%>
+    <script src="<script src="../jquery/jquery-3.2.1.min.js"></script>"></script>
+    <script>
+        $(document).ready(function () {
+            $("#File1").change(function () {
 
+                var previewimages = $("#showimage");
+                previewimages.html("");
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = $("<img />");
+                        img.attr("style", "height:150px;width: 150px;");
+                        img.attr("src", e.target.result);
+                        previewimages.append(img);
+                    }
+                    reader.readAsDataURL(file[0]);
+                });
+
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <%--renter Amenities panel--%>
@@ -245,21 +264,43 @@
                                 <div class="atbd_area_title">
                                     <h4><span class="la la-calendar-check-o"></span>Images</h4>
                                 </div>
+                                <br />
+                                <asp:Image ID="imgpreview1" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
+                                <asp:Image ID="imgpreview2" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
+                                <asp:Image ID="imgpreview3" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
+                                <asp:Image ID="imgpreview4" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
+                                <asp:Image ID="imgpreview5" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
+                                <asp:Image ID="imgpreview6" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
+                                <asp:Image ID="imgpreview7" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
+                        <br />
+                        <br />
+                        <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />
                             </div>
-                            <div class="atbdb_content_module_contents">
+
+<%--    <input type="file" multiple="multiple" name="File1" id="File1" accept="image/*" />
+    <br /><br />
+    <div id="showimage">
+    </div>
+    <hr />
+    <asp:Button ID="Button2" runat="server" Text="Upload and Save"  OnClick="uploadImages_Click" />
+
+    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>--%>
+                            <%--                            <div class="atbdb_content_module_contents">
                                 <div id="_listing_gallery">
                                     <div class="add_listing_form_wrapper" id="gallery_upload">
 
                                         <div class="form-group text-center">
                                             <!-- image container, which can be manipulated with js -->
-
+                                            <input type="file" multiple="multiple" name="File1" id ="File1" accept="image/*" />
+                                            <br /><br />
+                                            <div id="showimage"></div>
                                             <!--  add & remove image links -->
-                                            <a href="#" id="listing_image_btn" class="btn btn-xs btn-primary m-right-10">Upload Images</a>
+                                            <asp:Button ID="uploadImages" runat="server" Text="Upload Images" class="btn btn-xs btn-primary m-right-10" OnClick="uploadImages_Click" />
                                         </div>
                                     </div>
                                     <!--ends add_listing_form_wrapper-->
                                 </div>
-                            </div>
+                            </div>--%>
                             <!-- ends: .atbdb_content_module_contents -->
                         </div>
                         <!-- ends: .atbd_content_module -->
@@ -271,9 +312,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center ">
-                        <a href="#" id="listing_image_btn" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10">Post</a>
                         <asp:Button runat="server" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" Text="Post" ValidationGroup="addproperty" ID="Button1" OnClick="post_Click"></asp:Button>
                         <asp:Button runat="server" Text="Cancel" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" ID="cancel" OnClick="cancel_Click"></asp:Button>
+                        <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>--%>
                     </div>
                 </div>
             </div>

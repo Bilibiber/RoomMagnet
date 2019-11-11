@@ -230,7 +230,7 @@
                                         </div>
                                     </div>
                                     <!--ends social info .row-->
-                                    <asp:Button ID="updateusersetting" runat="server" class="btn btn-primary" data-toggle="modal" data-target="#myModal" Text="Update" OnClick="updateusersetting_Click" OnClientClick="return false" ValidationGroup="settings" />
+                                    <asp:Button ID="updateusersetting" runat="server" class="btn btn-primary" data-toggle="modal" data-target="#myModal" Text="Update" OnClick="updateusersetting_Click" ValidationGroup="settings" />
 
                                     <%--modal--%>
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog">

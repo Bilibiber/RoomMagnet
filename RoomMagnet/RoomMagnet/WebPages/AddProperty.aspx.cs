@@ -145,35 +145,37 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         cn.Close();
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    //protected void Button1_Click(object sender, EventArgs e)
+    //{
+    //    string filepath = Server.MapPath("\\Upload");
+    //    HttpFileCollection uploadedFiles = Request.Files;
+    //    string fileNames = String.Empty;
+    //    string filePaths = String.Empty;
+
+    //    for (int i = 0; i < uploadedFiles.Count; i++)
+    //    {
+    //        HttpPostedFile userPostedFile = uploadedFiles[i];
+    //        try
+    //        {
+    //            if (userPostedFile.ContentLength > 0)
+    //            {
+    //                userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
+    //                fileNames += userPostedFile.FileName + " ";
+    //                filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
+    //            }
+    //        }
+    //        catch (Exception)
+    //        {
+    //        }
+    //    }
+    //}
+
+    //private string imgLocation = "";
+
+    protected void Upload_Click(object sender, EventArgs e)
     {
-        string filepath = Server.MapPath("\\Upload");
-        HttpFileCollection uploadedFiles = Request.Files;
-        string fileNames = String.Empty;
-        string filePaths = String.Empty;
+        string imgLocation = "";
 
-        for (int i = 0; i < uploadedFiles.Count; i++)
-        {
-            HttpPostedFile userPostedFile = uploadedFiles[i];
-            try
-            {
-                if (userPostedFile.ContentLength > 0)
-                {
-                    userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
-                    fileNames += userPostedFile.FileName + " ";
-                    filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
-                }
-            }
-            catch (Exception)
-            {
-            }
-        }
-    }
-
-    private string imgLocation = "";
-
-    protected void UploadButton_Click(object sender, EventArgs e)
-    {
         Thread t = new Thread((ThreadStart)(() =>
         {
             OpenFileDialog opendlg = new OpenFileDialog();
@@ -184,16 +186,82 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
                 imgLocation = opendlg.FileName.ToString();
             }
             byte[] images = null;
-            FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-            BinaryReader brs = new BinaryReader(stream);
-            images = brs.ReadBytes((int)stream.Length);
-            Images newImage = new Images();
-            newImage.setByteCode(images);
+            if (imgLocation != "")
+            {
+                FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+                BinaryReader brs = new BinaryReader(stream);
+                images = brs.ReadBytes((int)stream.Length);
+                Session["image"] = images;
 
-            Images.images[Images.imageCount - 1] = newImage;
+                imgpreview1.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                imgpreview1.Visible = true;
+            }
         }));
+
+        // Run your code from a thread that joins the STA Thread
         t.SetApartmentState(ApartmentState.STA);
         t.Start();
         t.Join();
     }
+
+    protected void uploadImages_Click(object sender, EventArgs e)
+    {
+        //Thread t = new Thread((ThreadStart)(() =>
+        //{
+        //    OpenFileDialog opendlg = new OpenFileDialog();
+        //    opendlg.Multiselect = true;
+        //    //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
+        //    if (opendlg.ShowDialog() == DialogResult.OK)
+        //    {
+        //        imgLocation = opendlg.FileName.ToString();
+        //    }
+        //    byte[] images = null;
+        //    FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+        //    BinaryReader brs = new BinaryReader(stream);
+        //    images = brs.ReadBytes((int)stream.Length);
+        //    Images newImage = new Images();
+        //    newImage.setByteCode(images);
+
+        //    Images.images[Images.imageCount - 1] = newImage;
+        //}));
+        //t.SetApartmentState(ApartmentState.STA);
+        //t.Start();
+        //t.Join();
+
+        //string filepath = Server.MapPath("\\Upload");
+        //HttpFileCollection uploadedFiles = Request.Files;
+        //string fileNames = String.Empty;
+        //string filePaths = String.Empty;
+
+        //for (int i = 0; i < uploadedFiles.Count; i++)
+        //{
+        //    HttpPostedFile userPostedFile = uploadedFiles[i];
+        //    try
+        //    {
+        //        if (userPostedFile.ContentLength > 0)
+        //        {
+        //            userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
+        //            fileNames += userPostedFile.FileName + " ";
+        //            filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
+
+        //for (int i = 0; i < Request.Files.Count; i++)
+        //{
+        //    HttpPostedFile file = Request.Files[i];
+        //    if (file.ContentLength > 0)
+        //    {
+        //        string fname = Path.GetFileName(file.FileName);
+        //        file.SaveAs(Server.MapPath(Path.Combine("~/SavedImages/", fname)));
+
+        //    }
+        //}
+        //Label1.Text = Request.Files.Count + " Images Has Been Saved Successfully   " + Request.Files.Count;
+
+    }
+
 }
