@@ -124,6 +124,9 @@
                                             <h4 class="atbd_listing_title">
                                                 <asp:Label ID="Property1Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                             </h4>
+                                            <div class="mt-0 form-label">
+                                                                    <asp:Label ID="Property1CityState" runat="server" Text="Label"></asp:Label>
+                                                                </div>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">
                                                     <asp:Label ID="Label1" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>                                                    
@@ -132,10 +135,8 @@
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
 
-                                                                <h5 class="mt-0">
-                                                                    <asp:Label ID="Property1RentPrice" runat="server" Text="Label"></asp:Label>
-                                                                    <asp:Label ID="Property1CityState" runat="server" Text="Label"></asp:Label>
-                                                                </h5>
+                                                                <div class="mt-0 form-label">
+                                                                    <asp:Label ID="Property1RentPrice" runat="server" Text="Label"></asp:Label></div>                                  
                                             </div>
                                             <!-- End atbd listing meta -->
                                         </div>
@@ -143,8 +144,8 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                     <a><span class="la la-bed"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property1Bed" text="1 Bed"></asp:label> </div>
-                                                     <a><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property1Bath" text="1 Bathroom"></asp:label> </div>
+                                                     <span class="fas fa-bed icon-padding"></span><div class="numberCircle"><asp:label runat="server" ID="Property1Bed" text="1 Bed" CssClass="icon-padding"></asp:label> </div>
+                                                     <span class="fas fa-bath icon-padding"></span><div class="numberCircle"><asp:label runat="server" ID="Property1Bath" text="1 Bathroom" CssClass="icon-padding"></asp:label> </div>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
