@@ -124,6 +124,10 @@
                                             </h4>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">4.5<i class="la la-star"></i></span>
+                                                        <a href="">
+                                                            <asp:imagebutton runat="server" ID="Property1HostPic" alt="Author Image" style="height:55px; width:55px; border-radius:50%;"></asp:imagebutton>
+                                                        </a>
+
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
@@ -147,7 +151,6 @@
                                                 <li>
                                                     <div class="atbd_author atbd_author--thumb">
                                                         <a href="">
-                                                            <asp:imagebutton runat="server" ID="Property1HostPic" alt="Author Image"></asp:imagebutton>
                                                             <span class="custom-tooltip">Name, Owner</span>
                                                         </a>
                                                     </div>
@@ -198,7 +201,7 @@
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
                                                     <a><span class="la la-bed"></span></a> <div class="numberCircle"><asp:label runat="server" ID="Property2Bed" text="1 Bed"></asp:label> </div>
-                                                    <a href=""><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="PropertyBath" text=" 1 Bathroom"></asp:label> </div>
+                                                    <a href=""><span class="la la-bath"></span></a><div class="numberCircle"><asp:label runat="server" ID="Property2Bath" text=" 1 Bathroom"></asp:label> </div>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
