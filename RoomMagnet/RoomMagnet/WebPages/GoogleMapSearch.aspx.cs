@@ -12,12 +12,8 @@ public partial class WebPages_GoogleMapSearch : System.Web.UI.Page
 
     }
 
-    protected void SubmitButton_Click(object sender, EventArgs ex)
+    protected void search_Click(object sender, EventArgs e)
     {
-        
-
+      
     }
-
-   
-       
 }
