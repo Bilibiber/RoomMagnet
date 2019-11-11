@@ -69,6 +69,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 SqlCommand sqlCommand = new SqlCommand(Sql, cn);
                 string role = "Renter";
                 string verified = "Unverified";
+                
                 sqlCommand.Parameters.AddRange(
                     new SqlParameter[]
                     {
@@ -173,8 +174,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 if (dataReader.Read())
                 {
                     Session["UserID"] = dataReader.GetInt32(0);
-                    Session["FullName"] = dataReader.GetString(1) + " " + dataReader.GetString(2);
-                    //Session["ImagePath"] = dataReader.GetString(3);
+                    Session["FullName"] = dataReader.GetString(1) + " " + dataReader.GetString(2); 
                     Session["Roles"] = dataReader.GetString(4);
                     Session["Verified"] = dataReader.GetString(5);
                 }
@@ -194,6 +194,41 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     {
         MasterUserName.Visible = true;
         MasterUserName.Text = Session["FullName"].ToString();
+        cn.Open();
+        string SqlGetUserInfos = "SELECT ImagePath FROM Users where Users.Email =@Email";
+        SqlCommand Finder = new SqlCommand(SqlGetUserInfos, cn);
+        Finder.Parameters.AddWithValue("@Email", Session["SignInEmail"]);
+        SqlDataReader dataReader = Finder.ExecuteReader();
+        if (dataReader.HasRows)
+        {
+            if (dataReader.Read())
+            {
+                if (dataReader[0].ToString() != "NULL")
+                {
+
+                    if (!Convert.IsDBNull(dataReader[0]))
+                    {
+                        byte[] img = (byte[])dataReader[0];
+                        Session["ImagePath"] = dataReader[0].ToString();
+                        MasterPageUserProfileImage.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+                    }
+                    else
+                    {
+                        MasterPageUserProfileImage.ImageUrl = "~/img/40x40.png";
+                    }
+
+
+
+                }
+                else
+                {
+                    MasterPageUserProfileImage.ImageUrl = "~/img/mason-user.png";
+                }
+
+            }
+        }
+        dataReader.Close();
+        cn.Close();
         MasterPageUserProfileImage.Visible = true;
         MasterPageSignUp.Visible = false;
         MasterPageLogIn.Visible = false;
@@ -288,7 +323,10 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         MasterUserName.Visible = true;
         MasterUserName.Text = Session["FullName"].ToString();
         MasterPageUserProfileImage.Visible = true;
-        Response.Redirect("Renter.aspx");
+        if (Session["Roles"].ToString() == "Renter")
+        {
+            Response.Redirect("Renter.aspx");
+        }
     }
 
     protected void GotoSetting_Click(object sender, EventArgs e)
