@@ -216,13 +216,34 @@ public partial class WebPages_Admin : System.Web.UI.Page
         
     }
 
-    protected void update_Btn(object sender, EventArgs e)
+    protected void updateData_Btn(object sender, EventArgs e)
     {
+
+        string[] names = employeeName1.Text.Split(' ');
+        string firstName = names[0];
+        string lastName = names[1];
+
         cn.Open();
-        SqlCommand updateVerify = new SqlCommand("UPDATE [dbo].[Users] SET  WHERE ");
+        SqlCommand updateVerify = new SqlCommand("UPDATE [dbo].[Users] SET [FirstName] = @FirstName, [LastName] = @LastName, [Occupation] = @Occupation, [Gender] = @Gender  WHERE [Email] = @Email");
         updateVerify.Connection = cn;
-        updateVerify.Parameters.AddWithValue("@Email", UnverifiedDropDown.SelectedValue);
+        updateVerify.Parameters.AddWithValue("@Email", emailDropDown.SelectedValue);
+        updateVerify.Parameters.AddWithValue("@FirstName", firstName);
+        updateVerify.Parameters.AddWithValue("@LastName", lastName);
+        updateVerify.Parameters.AddWithValue("@Occupation", employeeOccu.Text);
+        updateVerify.Parameters.AddWithValue("@Gender", employeeGender.Text);
         updateVerify.ExecuteNonQuery();
         cn.Close();
+    }
+
+    protected void DeleteButton_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        SqlCommand deleteUser = new SqlCommand("DELETE FROM [dbo].[Users] WHERE [Email] = @Email");
+        deleteUser.Connection = cn;
+        deleteUser.Parameters.AddWithValue("@Email", UnverifiedDropDown.SelectedValue);
+        deleteUser.ExecuteNonQuery();
+        cn.Close();
+
+        UnverifiedDropDown.Items.Remove(UnverifiedDropDown.Items.FindByValue(UnverifiedDropDown.SelectedValue));
     }
 }

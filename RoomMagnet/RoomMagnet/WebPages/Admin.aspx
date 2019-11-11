@@ -182,7 +182,7 @@
 
             <div class="userimage">
             </div>
-            <%--connection panel--%>
+            <%--Employees panel--%>
             <br />
             
             <br />
@@ -207,7 +207,7 @@
             </asp:Panel>
             <hr />
 
-            <%--Dashboard panel--%>
+            <%--Verification panel--%>
             <asp:Panel runat="server" ID="adminDashboardPanel">
                 <div id="adminDashboard1">
                     <asp:Label ID="Dashboard" runat="server" Text="Dashboard" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
@@ -273,7 +273,6 @@
                         <td class="auto-style2">
                             <asp:TextBox ID="employeeName1" runat="server" Text=""></asp:TextBox>
                         </td>
-                        <td class="auto-style3"></td>
                     </tr>
                     <tr>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="adminAge" runat="server" Text="Age" Font-Bold="True"></asp:Label>
@@ -284,7 +283,6 @@
                                 <asp:TextBox ID="employeeAge" runat="server"></asp:TextBox>
                             </p>
                         </td>
-                        <td class="auto-style3"></td>
                     </tr>
                     <tr>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeGenderLbl" runat="server" Text="Gender" Font-Bold="True"></asp:Label>
@@ -295,7 +293,6 @@
                                 <asp:TextBox ID="employeeGender" runat="server"></asp:TextBox>
                             </p>
                         </td>
-                        <td class="auto-style3"></td>
                     </tr>
                     <tr>
                         <td class="auto-style13">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeOccupation" runat="server" Text="Occupation" Font-Bold="True"></asp:Label>
@@ -306,14 +303,13 @@
                                 <asp:TextBox ID="employeeOccu" runat="server" ViewStateMode="Disabled"></asp:TextBox>
                             </p>
                         </td>
-                        <td class="auto-style13"></td>
                     </tr>
 
                 </table>
                     <br />
                     <asp:Button ID="ViewBtn" runat="server" OnClick="view_Btn" Text="View Data" />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="UpdateBtn" runat="server" OnClick="update_Btn" Text="Update Data" />
+                    <asp:Button ID="UpdateDataBtn" runat="server" OnClick="updateData_Btn" Text="Update Data" />
                     <br />
                 </div>
             </asp:Panel>
@@ -325,7 +321,9 @@
                     <br />
                     <asp:DropDownList ID="UnverifiedDropDown" runat="server" AppendDataBoundItems="true" DataTextField="Email" OnTextChanged="adminVerification_Click" OnSelectedIndexChanged="adminVerification_Click"></asp:DropDownList>
                     <br />
-                    <asp:Button ID="VerificationButton" runat="server" Text="Change" OnClick="VerificationButton_Click" />
+                    <asp:Button ID="VerificationButton" runat="server" Text="Verify" OnClick="VerificationButton_Click" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="DeleteButton" runat="server" Text="Delete" OnClick="DeleteButton_Click" />
                 </div>
             </asp:Panel>
 
