@@ -29,12 +29,21 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 //imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
                 if (getimg[0].ToString() != "Null")
                 {
-                    byte[] img = (byte[])getimg[0];
-                    imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+                    if (!Convert.IsDBNull(getimg[0]))
+                    {
+                        byte[] img = (byte[])getimg[0];
+                        imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+                    }
+                    else
+                    {
+                        imgpreview.ImageUrl = "http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg";
+                    }
+
+                    
                 }
                 else
                 {
-                    imgpreview.ImageUrl = "http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg";
+                    
                 }
             }
             getimg.Close();
