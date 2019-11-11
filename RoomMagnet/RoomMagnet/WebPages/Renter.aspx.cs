@@ -1,18 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.SqlClient;
+using System.Globalization;
 
 public partial class WebPages_Renter : System.Web.UI.Page
 {
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            cn.Open();
+            System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
+            selectimg.Connection = cn;
+            int userid = Convert.ToInt32(Session["UserID"]);
+            selectimg.CommandText = "select [ImagePath] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectimg.Parameters.Add(new SqlParameter("@UserID", userid));
+            SqlDataReader getimg = selectimg.ExecuteReader();
+            while (getimg.Read())
+            {
+                if (getimg[0].ToString() != "Null")
+                {
+                    byte[] img = (byte[])getimg[0];
+                    imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+                }
+                else
+                {
+                    imgpreview.ImageUrl = "http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg";
+                }
+            }
+            getimg.Close();
+            cn.Close();
+        }
+
         string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
         if (Session["SignInEmail"] == null)
@@ -24,7 +46,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
             var master = Master as RoomMagnet;
             master.AfterLogin();
         }
-
 
         if (!IsPostBack)
         {
@@ -60,13 +81,10 @@ public partial class WebPages_Renter : System.Web.UI.Page
                         age--;
                     userAge.Text = age.ToString();
                 }
-
             }
             getinfor.Close();
             db.Close();
         }
-
-
     }
 
     public static List<string> objcountries()
@@ -161,6 +179,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentertohost.ForeColor = System.Drawing.Color.Red;
         renterSetting.ForeColor = System.Drawing.Color.White;
     }
+
     protected void renterSetting_Click(object sender, EventArgs e)
     {
         Response.Redirect("Setting.aspx");
@@ -176,8 +195,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         rentertohost.ForeColor = System.Drawing.Color.White;
         renterSetting.ForeColor = System.Drawing.Color.Red;
     }
-
-
 
     protected void cancel_Click(object sender, EventArgs e)
     {
