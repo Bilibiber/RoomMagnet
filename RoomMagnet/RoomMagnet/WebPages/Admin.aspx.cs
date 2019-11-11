@@ -150,6 +150,9 @@ public partial class WebPages_Admin : System.Web.UI.Page
         adminStatisticsPanel.ForeColor = System.Drawing.Color.White;
         adminEmployeesPanel.ForeColor = System.Drawing.Color.White;
         adminVerificationPanel.ForeColor = System.Drawing.Color.Red;
+
+        
+
     }
 
     protected void adminNameChange(object sender, EventArgs e)
@@ -194,19 +197,32 @@ public partial class WebPages_Admin : System.Web.UI.Page
                 employeeOccu.Text = occupation;
                 
             }
-
-
         }
         cn.Close();
     }
 
     protected void VerificationButton_Click(object sender, EventArgs e)
     {
+        cn.Open();
+        SqlCommand updateVerify = new SqlCommand("UPDATE [dbo].[Users] SET [Verified] = 'Verified' WHERE [Email] = @Email");
+        updateVerify.Connection = cn;
+        updateVerify.Parameters.AddWithValue("@Email", UnverifiedDropDown.SelectedValue);
+        updateVerify.ExecuteNonQuery();
+        cn.Close();
 
+        UnverifiedDropDown.Items.Remove(UnverifiedDropDown.Items.FindByValue(UnverifiedDropDown.SelectedValue));
+
+
+        
     }
 
     protected void update_Btn(object sender, EventArgs e)
     {
-
+        cn.Open();
+        SqlCommand updateVerify = new SqlCommand("UPDATE [dbo].[Users] SET  WHERE ");
+        updateVerify.Connection = cn;
+        updateVerify.Parameters.AddWithValue("@Email", UnverifiedDropDown.SelectedValue);
+        updateVerify.ExecuteNonQuery();
+        cn.Close();
     }
 }
