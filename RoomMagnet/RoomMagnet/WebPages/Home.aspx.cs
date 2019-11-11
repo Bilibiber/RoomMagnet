@@ -23,7 +23,7 @@ public partial class Home : System.Web.UI.Page
 
     protected void HomePageSearchButton_Click(object sender, EventArgs e)
     {
-        Session["HomePageSearchContent"] = HomePageSearchText.Text;
+        //Session["HomePageSearchContent"] = HomePageSearchText.Text;
         Response.Redirect("SearchResult.aspx");
     }
 }

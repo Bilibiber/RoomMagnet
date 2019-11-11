@@ -6,6 +6,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
+    <script>
+        function navigateToSearchPage() {
+            var searchBoxText = document.getElementById("HomePageSearchText").value;
+            console.log(searchBoxText);
+            var params = new URLSearchParams({
+                searchString: searchBoxText
+
+            });
+
+            var url = "SearchResult.aspx?" + params.toString();
+            window.location = url;
+
+        }
+
+    </script>
+
+
+
     <section class="intro-wrapper bgimage overlay--dark overlay">
         <div class="home-image">
             <asp:Image ID="HomeImage" runat="server" ImageUrl="~/img/home-2-large.png" alt="" />
@@ -19,12 +37,14 @@
                         </div>
                         <div class="atbd_seach_fields_wrapper input-group">
                             <div class="single_search_field search_query">
-                                <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields border rounded-pill-left border-right-0" placeholder="Enter a city or zip code"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <%--                            <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search border rounded-pill-right border-left-0" placeholder="Enter a city or zip code"></asp:TextBox>--%>
+                                <input type="text" id="HomePageSearchText" class="form-control search_fields border rounded-pill-left border-right-0" placeholder="Enter City, State" />
+                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic"></asp:RequiredFieldValidator>--%>
                             </div>
 
                             <div class="atbd_submit_btn input-group-append">
-                                <asp:Button ID="HomePageSearchButton" runat="server" Text="Search" CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search border rounded-pill-right border-left-0" OnClick="HomePageSearchButton_Click" ValidationGroup="HomePageSearch" />
+                                <%--                                <asp:Button ID="HomePageSearchButton" Text="Search" CssClass="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search border rounded-pill-right border-left-0" onclick="navigateToSearchPage()" ValidationGroup="HomePageSearch" />--%>
+                                <input type="button" class="btn btn-block btn-gradient btn-gradient-one btn-sm btn_search border rounded-pill-right border-left-0" onclick="navigateToSearchPage()" value="Search" />
                             </div>
                         </div>
                     </div>
