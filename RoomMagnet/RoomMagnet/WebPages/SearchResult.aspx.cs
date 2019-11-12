@@ -358,7 +358,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         {
             while (reader.Read())
             {
-                byte[] images = (byte[])reader[8];
+                byte[] images = (byte[])reader[1];
                 int PropertyID = reader.GetInt32(0);
                 if (images == null)
                 {
