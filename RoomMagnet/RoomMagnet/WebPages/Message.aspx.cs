@@ -22,11 +22,6 @@ public partial class WebPages_Message : System.Web.UI.Page
             master.AfterLogin();
         }
 
-        var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-        socket.Bind(new IPEndPoint(IPAddress.Any, 4530));
-
-        socket.Listen(4);
 
         
         //if (!IsPostBack)
