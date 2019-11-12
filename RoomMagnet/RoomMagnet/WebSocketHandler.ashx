@@ -34,18 +34,18 @@ public class WebSocketHandler : IHttpHandler
         */
         const int maxMessageSize = 1024;
 
-        //received bits的缓冲区
+        
         var receivedDataBuffer = new ArraySegment<Byte>(new Byte[maxMessageSize]);
 
         var cancellationToken = new CancellationToken();
 
-        //检查WebSocket状态
+        
         while (webSocket.State == WebSocketState.Open)
         {
-            //读取数据
+            
             WebSocketReceiveResult webSocketReceiveResult = await webSocket.ReceiveAsync(receivedDataBuffer, cancellationToken);
 
-            //如果输入帧为取消帧，发送close命令
+            
             if (webSocketReceiveResult.MessageType == WebSocketMessageType.Close)
             {
                 await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, String.Empty, cancellationToken);
@@ -54,14 +54,14 @@ public class WebSocketHandler : IHttpHandler
             {
                 byte[] payloadData = receivedDataBuffer.Array.Where(b => b != 0).ToArray();
 
-                //因为我们知道这是一个字符串，我们转换它
+                
                 string receiveString = System.Text.Encoding.UTF8.GetString(payloadData, 0, payloadData.Length);
 
-                //将字符串转换为字节数组.
-                var newString = String.Format("Hello, " + receiveString + " ! Time {0}", DateTime.Now.ToString());
+                
+                var newString = String.Format("Message: " + receiveString + "Time {0}", DateTime.Now.ToString());
                 Byte[] bytes = System.Text.Encoding.UTF8.GetBytes(newString);
 
-                //发回数据
+                
                 await webSocket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, cancellationToken);
             }
 
