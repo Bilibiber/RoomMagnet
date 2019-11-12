@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Windows.Controls;
 
 
 public partial class WebPages_SearchResult : System.Web.UI.Page
@@ -18,6 +19,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     int resultCount;
     string OrderBy= String.Empty;
     ArrayList RatingsPID = new ArrayList();
+    int RowCount;
     protected void Page_Load(object sender, EventArgs e)
     {
         SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
@@ -144,6 +146,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SqlDataAdapter dataReader = new SqlDataAdapter(search);
             dataReader.Fill(ds);
             int otherNum = 0;
+            RowCount = ds.Rows.Count;
+           // AddNewButtons();
             if(otherNum< ds.Rows.Count)
             //if (reader.HasRows)
             //{
@@ -397,7 +401,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                     readers.Close();
                 }
                 RatingsPID.Clear();
-            }
+                
+        }
             else
             {
                 //SearchLabel.Text = "Please enter something in the text bar.";
@@ -416,6 +421,25 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         OrderBy = "ORDER BY RentPrice asc";
         SearchResultButton_Click(sender, e);
     }
+
+    //public void AddNewButtons()
+    //{
+        
+    //    ArrayList Buttons = new ArrayList();
+    //    for (int i = 0; i < RowCount; i++)
+    //    {
+    //        if (i % 5 == 0)
+    //        {
+    //            System.Windows.Controls.Button pageBtn = new System.Windows.Controls.Button();
+    //            Buttons.Add(pageBtn);
+    //        }
+    //    }
+    //    for (int x = 0; x< Buttons.Count; x++)
+    //    {
+    //        this.Controls.Add((System.Web.UI.WebControls.Button)Buttons[x]);
+    //    }
+    //    Buttons.Clear();
+    //}
 
     protected void Property1Image_Click(object sender, ImageClickEventArgs e)
     {

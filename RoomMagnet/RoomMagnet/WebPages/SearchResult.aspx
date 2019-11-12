@@ -399,9 +399,9 @@
                                         <a class="page-numbers">
                                             <asp:Button ID="Button1" runat="server" CssClass="page-numbers" /><span class="la la-long-arrow-left"></span></a>
                                         <asp:LinkButton ID="LinkButton1" runat="server" Text="1" CssClass="page-numbers"> </asp:LinkButton>
-                                        <span aria-current="page" class="page-numbers current">2</span>
+                                        <%--<span aria-current="page" class="page-numbers current">2</span>
                                         <a class="page-numbers"  href=""> </a>
-                                        <a class="next page-numbers" href=""><span class="la la-long-arrow-right"></span></a>
+                                        <a class="next page-numbers" href=""><span class="la la-long-arrow-right"></span></a>--%>
                                     </div>
                                 </nav>
                             </div>
@@ -440,7 +440,7 @@
 
                     <div class="form-group">
                         <asp:DropDownList ID="SearchResultBedsAvailable" runat="server" CssClass="form-control">
-                            <asp:ListItem Value="" default="" Selected="">Beds Available</asp:ListItem>
+                            <asp:ListItem Value="">Beds Available</asp:ListItem>
                             <asp:ListItem Value="1">1</asp:ListItem>
                             <asp:ListItem Value="2">2</asp:ListItem>
                             <asp:ListItem Value="3">3</asp:ListItem>
