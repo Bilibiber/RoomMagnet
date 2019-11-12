@@ -6,7 +6,7 @@
 
     <title>Add Property</title>
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
-<%--    <!-- inject:css-->
+    <%--    <!-- inject:css-->
     <link rel="stylesheet" href="vendor_assets/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="vendor_assets/css/brands.css">
     <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css">
@@ -65,7 +65,7 @@
             }
         }
     </script>--%>
-    <script src="<script src="../jquery/jquery-3.2.1.min.js"></script>"></script>
+    <script src="../jquery/jquery-3.2.1.min.js"></script>
     <script>
         $(document).ready(function () {
             $("#File1").change(function () {
@@ -87,6 +87,15 @@
             });
         });
     </script>
+    <style type="text/css">
+        .auto-style1 {
+            position: relative;
+            display: block;
+            padding-left: 1.25rem;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <%--renter Amenities panel--%>
@@ -112,36 +121,36 @@
                         <div class="atbdb_content_module_contents">
                             <form action="/">
                                 <div class="form-group">
-                                    <asp:Label runat="server" for="title" class="form-label">Title</asp:Label>
-                                    <asp:TextBox runat="server" ID="addtitle" class="form-control" placeholder="Enter Title" MaxLength="50"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="requireTitle" runat="server" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" ControlToValidate="addtitle" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    <asp:label runat="server" for="title" class="form-label">Title</asp:label>
+                                    <asp:textbox runat="server" id="addtitle" class="form-control" placeholder="Enter Title" maxlength="50"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="requireTitle" runat="server" errormessage="Required" forecolor="Red" validationgroup="addproperty" controltovalidate="addtitle" display="Dynamic">Required</asp:requiredfieldvalidator>
                                 </div>
                                 <div class="form-group ">
-                                    <asp:Label runat="server" Text="Street Address" class="form-label"></asp:Label>
-                                    <asp:TextBox runat="server" ID="addStreet" placeholder="Street Address" class="form-control" MaxLength="50"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="requireStreet" runat="server" ControlToValidate="addStreet" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    <asp:label runat="server" text="Street Address" class="form-label"></asp:label>
+                                    <asp:textbox runat="server" id="addStreet" placeholder="Street Address" class="form-control" maxlength="50"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="requireStreet" runat="server" controltovalidate="addStreet" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
                                 </div>
                                 <div class="form-group ">
-                                    <asp:Label runat="server" Text="City" class="form-label"></asp:Label>
-                                    <asp:TextBox runat="server" ID="addCity" placeholder="City" class="form-control" MaxLength="30"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="requireCity" runat="server" ControlToValidate="addCity" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    <asp:label runat="server" text="City" class="form-label"></asp:label>
+                                    <asp:textbox runat="server" id="addCity" placeholder="City" class="form-control" maxlength="30"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="requireCity" runat="server" controltovalidate="addCity" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
                                 </div>
                                 <div class="form-group">
 
-                                    <asp:Label runat="server" Text="Country" class="form-label"></asp:Label>
+                                    <asp:label runat="server" text="Country" class="form-label"></asp:label>
                                     <div class="input-group">
 
-                                        <asp:DropDownList ID="addCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="custom-select">
+                                        <asp:dropdownlist id="addCountry" runat="server" appenddatabounditems="True" autopostback="True" class="custom-select">
                                             <asp:ListItem Value=""></asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:dropdownlist>
                                         <br />
-                                        <asp:RequiredFieldValidator ID="requireCountry" runat="server" ControlToValidate="addCountry" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                        <asp:requiredfieldvalidator id="requireCountry" runat="server" controltovalidate="addCountry" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <asp:Label runat="server" Text="State" class="form-label"></asp:Label>
-                                    <asp:DropDownList runat="server" ID="replacestate" class="custom-select" enable="false"></asp:DropDownList>
-                                    <asp:DropDownList runat="server" ID="addState" class="custom-select" Visible="False">
+                                    <asp:label runat="server" text="State" class="form-label"></asp:label>
+                                    <asp:dropdownlist runat="server" id="replacestate" class="custom-select" enable="false"></asp:dropdownlist>
+                                    <asp:dropdownlist runat="server" id="addState" class="custom-select" visible="False">
                                         <asp:ListItem Value=""></asp:ListItem>
                                         <asp:ListItem Value="AL">AL</asp:ListItem>
                                         <asp:ListItem Value="AK">AK</asp:ListItem>
@@ -194,59 +203,116 @@
                                         <asp:ListItem Value="WV">WV</asp:ListItem>
                                         <asp:ListItem Value="WI">WI</asp:ListItem>
                                         <asp:ListItem Value="WY">WY</asp:ListItem>
-                                    </asp:DropDownList>
+                                    </asp:dropdownlist>
                                 </div>
 
                                 <div class="form-group ">
-                                    <asp:Label runat="server" class="form-label " Text="Zip"></asp:Label>
-                                    <asp:TextBox ID="addZip" runat="server" placeholder="Zip Code" class="form-control" MaxLength="10"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="requireZip" runat="server" ControlToValidate="addZip" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                                    <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
+                                    <asp:label runat="server" class="form-label " text="Zip"></asp:label>
+                                    <asp:textbox id="addZip" runat="server" placeholder="Zip Code" class="form-control" maxlength="10"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="requireZip" runat="server" controltovalidate="addZip" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:comparevalidator id="CompareZip" runat="server" errormessage="Invalid" text="Invalid" controltovalidate="addZip" display="Dynamic" forecolor="Red" operator="DataTypeCheck" type="Integer"></asp:comparevalidator>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:Label runat="server" Text="Square Footage of House" class="form-label"></asp:Label>
+                                    <asp:label runat="server" text="Square Footage of House" class="form-label"></asp:label>
 
-                                    <asp:TextBox ID="addSquare" runat="server" class="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="requireSquare" runat="server" ControlToValidate="addSquare" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    <asp:textbox id="addSquare" runat="server" class="form-control"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="requireSquare" runat="server" controltovalidate="addSquare" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
 
-                                    <asp:CompareValidator ID="Comparesquare" runat="server" ControlToValidate="addSquare" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
+                                    <asp:comparevalidator id="Comparesquare" runat="server" controltovalidate="addSquare" display="Dynamic" errormessage="Invalid" forecolor="Red" operator="DataTypeCheck" text="Invalid" type="Integer"></asp:comparevalidator>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
+                                    <asp:label runat="server" text="Rent Price/Month" class="form-label"></asp:label>
                                     <div class="pricing-option-inputs">
 
-                                        <asp:TextBox ID="addPrice" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="requirePrice" runat="server" ControlToValidate="addPrice" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                                        <asp:CompareValidator ID="Compareprice" runat="server" ControlToValidate="addPrice" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
+                                        <asp:textbox id="addPrice" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:textbox>
+                                        <asp:requiredfieldvalidator id="requirePrice" runat="server" controltovalidate="addPrice" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                        <asp:comparevalidator id="Compareprice" runat="server" controltovalidate="addPrice" display="Dynamic" errormessage="Invalid" forecolor="Red" operator="DataTypeCheck" text="Invalid" type="Integer"></asp:comparevalidator>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <asp:Label runat="server" Text="Avaliable Bedrooms" class="form-label"></asp:Label>
-                                    <asp:DropDownList ID="addBedrooms" runat="server" class="custom-select">
+                                    <asp:label runat="server" text="Avaliable Bedrooms" class="form-label"></asp:label>
+                                    <asp:dropdownlist id="addBedrooms" runat="server" class="custom-select">
                                         <asp:ListItem Value=""></asp:ListItem>
                                         <asp:ListItem Value="1">1</asp:ListItem>
                                         <asp:ListItem Value="2">2</asp:ListItem>
                                         <asp:ListItem Value="3">3</asp:ListItem>
                                         <asp:ListItem Value="4">4</asp:ListItem>
                                         <asp:ListItem Value="5">5</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="requireBedroom" runat="server" ControlToValidate="addBedrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    </asp:dropdownlist>
+                                    <asp:requiredfieldvalidator id="requireBedroom" runat="server" controltovalidate="addBedrooms" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
                                 </div>
                                 <div class="form-group">
-                                    <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
-                                    <asp:TextBox ID="addstartdate" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="requirestart" runat="server" ControlToValidate="addstartdate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    <asp:label runat="server" text="Available Date" class="form-label"></asp:label>
+                                    <asp:textbox id="addstartdate" runat="server" textmode="Date" class="form-control"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="requirestart" runat="server" controltovalidate="addstartdate" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
-                                    <asp:TextBox ID="addenddate" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="requireend" runat="server" ControlToValidate="addenddate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    <asp:label runat="server" text="End Date" class="form-label"></asp:label>
+                                    <asp:textbox id="addenddate" runat="server" textmode="Date" class="form-control"></asp:textbox>
+                                    <asp:requiredfieldvalidator id="requireend" runat="server" controltovalidate="addenddate" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
                                 </div>
                         </div>
                         <!-- ends: .form-group -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 offset-lg-1">
+                                    <div class="atbd_content_module">
+                                        <div class="atbd_content_module__tittle_area">
+                                            <div class="atbd_area_title">
+                                                <h4><span class="la la-thumbs-up"></span>Amenities (Check all that apply)</h4>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-lg-10 amenities-checks">
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkheating" runat="server" class="form-check-input" Text="  Heating" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkLaundry" runat="server" class="form-check-input" Text="  On-Site Laundry" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkParking" runat="server" class="form-check-input" Text=" Parking" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkFurnished" runat="server" class="form-check-input" Text=" Furnished" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkpet" runat="server" class="form-check-input" Text=" Pet-Friendly" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkcarbondetector" runat="server" class="form-check-input" Text=" Carbon Monoxide Detector" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checksomkedetector" runat="server" class="form-check-input" Text=" Smoke Detector" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkspeentrance" runat="server" class="form-check-input" Text=" Separate Entrance" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkWifi" runat="server" class="form-check-input" Text=" Wi-Fi" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkTV" runat="server" class="form-check-input" Text=" TV" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkspebath" runat="server" class="form-check-input" Text="Separate Bathroom" /><br />
+                                                </div>
+                                                <div class="form-check">
+                                                    <asp:CheckBox ID="checkOther" class="form-check-input" runat="server" Text="Other(s)" AutoPostBack="True" /><br />
+                                                    <asp:TextBox runat="server" class="form-control" Enabled="False" ID="othertextbox"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </form>
                     </div>
                     <!-- ends: .atbdb_content_module_contents -->
@@ -265,19 +331,19 @@
                                     <h4><span class="la la-calendar-check-o"></span>Images</h4>
                                 </div>
                                 <br />
-                                <asp:Image ID="imgpreview1" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
-                                <asp:Image ID="imgpreview2" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
-                                <asp:Image ID="imgpreview3" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
-                                <asp:Image ID="imgpreview4" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
-                                <asp:Image ID="imgpreview5" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
-                                <asp:Image ID="imgpreview6" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
-                                <asp:Image ID="imgpreview7" runat="server" Height="100" Width="100" ImageUrl="" Style="border-width: 0px;" Visible="False" />
-                        <br />
-                        <br />
-                        <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />
+                                <asp:image id="imgpreview1" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
+                                <asp:image id="imgpreview2" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
+                                <asp:image id="imgpreview3" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
+                                <asp:image id="imgpreview4" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
+                                <asp:image id="imgpreview5" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
+                                <asp:image id="imgpreview6" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
+                                <asp:image id="imgpreview7" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
+                                <br />
+                                <br />
+                                <asp:button id="Upload" runat="server" text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" onclick="Upload_Click" />
                             </div>
 
-<%--    <input type="file" multiple="multiple" name="File1" id="File1" accept="image/*" />
+                            <%--    <input type="file" multiple="multiple" name="File1" id="File1" accept="image/*" />
     <br /><br />
     <div id="showimage">
     </div>
@@ -312,14 +378,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center ">
-                        <asp:Button runat="server" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" Text="Post" ValidationGroup="addproperty" ID="Button1" OnClick="post_Click"></asp:Button>
-                        <asp:Button runat="server" Text="Cancel" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" ID="cancel" OnClick="cancel_Click"></asp:Button>
+                        <asp:Button runat="server" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" Text="Post" ValidationGroup="addproperty" ID="post" OnClick="post_Click"></asp:Button>
+                        <asp:button runat="server" text="Cancel" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" id="cancel" onclick="cancel_Click"></asp:button>
                         <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>--%>
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+          <%--  <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -399,89 +465,9 @@
             <script src="theme_assets/js/locator.js"></script>
             <script src="theme_assets/js/main.js"></script>
             <script src="theme_assets/js/map.js"></script>
-            <!-- endinject-->
+            <!-- endinject-->--%>
 
-            <%--renter Amenities panel--%>
-
-            <asp:Panel runat="server" ID="renteraddAmenities" Visible="true">
-                <div>
-                    <asp:Label runat="server" Text="Amenities" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
-                    <br />
-                </div>
-                <table>
-                    <tr>
-                        <td class="auto-style6"></td>
-                        <td>
-                            <asp:CheckBox ID="checkcondition" runat="server" Text=" Air Conditioning" />
-                        </td>
-                        <td class="auto-style6"></td>
-                        <td>
-                            <asp:CheckBox ID="checkcarbondetector" runat="server" Text=" Carbon Monoxide Detector" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkheating" runat="server" Text=" Heating" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checksomkedetector" runat="server" Text=" Smoke Detector" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkLaundry" runat="server" Text=" On-Site Laundry" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkspeentrance" runat="server" Text=" Separate Entrance" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkParking" runat="server" Text=" Parking" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkWifi" runat="server" Text=" Wi-Fi" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkFurnished" runat="server" Text=" Furnished" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkTV" runat="server" Text=" TV" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkpet" runat="server" Text=" Pet-Friendly" />
-                        </td>
-                        <td></td>
-                        <td>
-                            <asp:CheckBox ID="checkspebath" runat="server" Text="Separate Bathroom" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style1">
-                            <asp:CheckBox ID="checkOther" runat="server" Text="Other(s)" AutoPostBack="True" />
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style1">
-                            <asp:TextBox runat="server" Enabled="False" ID="othertextbox"></asp:TextBox>
-                        </td>
-                    </tr>
-                </table>
                 <br />
-                <asp:Button runat="server" class="btn btn-danger btn-lg" Text="Post" ValidationGroup="addproperty" ID="post" OnClick="post_Click"></asp:Button>
-            </asp:Panel>
+                
     </section>
 </asp:Content>

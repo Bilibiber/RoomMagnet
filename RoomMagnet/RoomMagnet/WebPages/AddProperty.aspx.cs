@@ -127,7 +127,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         insertTo.Parameters.AddWithValue("@WiFi", checkspeentrance.Checked ? 'Y' : 'N');
         insertTo.Parameters.AddWithValue("@TV", checkTV.Checked ? 'Y' : 'N');
         insertTo.Parameters.AddWithValue("@SeparateBathroom", checkspebath.Checked ? 'Y' : 'N');
-        insertTo.Parameters.AddWithValue("@Other", checkspeentrance.Checked ? othertextbox.Text : "");
+        insertTo.Parameters.AddWithValue("@Other", checkOther.Checked ? othertextbox.Text : "");
         insertTo.ExecuteNonQuery();
 
         //string picInsert = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
