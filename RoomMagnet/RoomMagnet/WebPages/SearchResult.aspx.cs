@@ -22,6 +22,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     ArrayList RatingsPID = new ArrayList();
     int RowCount = 0;
     int RowNum;
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
@@ -462,7 +463,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         {
             while (reader.Read())
             {
-                byte[] images = (byte[])reader[8];
+                byte[] images = (byte[])reader[1];
                 int PropertyID = reader.GetInt32(0);
                 if (images == null)
                 {
@@ -494,7 +495,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         {
             while (reader.Read())
             {
-                byte[] images = (byte[])reader[8];
+                byte[] images = (byte[])reader[1];
                 int PropertyID = reader.GetInt32(0);
                 if (images == null)
                 {
@@ -526,7 +527,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         {
             while (reader.Read())
             {
-                byte[] images = (byte[])reader[8];
+                byte[] images = (byte[])reader[1];
                 int PropertyID = reader.GetInt32(0);
                 if (images == null)
                 {
@@ -558,7 +559,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         {
             while (reader.Read())
             {
-                byte[] images = (byte[])reader[8];
+                byte[] images = (byte[])reader[1];
                 int PropertyID = reader.GetInt32(0);
                 if (images == null)
                 {

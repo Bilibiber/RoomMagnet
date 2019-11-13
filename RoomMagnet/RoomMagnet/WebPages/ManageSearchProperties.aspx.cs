@@ -17,7 +17,7 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //set all amentities labels to visible = false;
         propertyImage5.Visible = false;
         propertyImage6.Visible = false;
         propertyImage3.Visible = false;
@@ -28,10 +28,10 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
     "Wifi, TV, SeparateBathroom, [Rating].Descriptions, NumStars, [Rating].LastUpdated, [Rating].LastUpdatedBy from [Property] inner join [ImagePath]" +
     "on [Property].PropertyID = [ImagePath].PropertyID INNER JOIN [PropertyRoom] ON [Property].PropertyID = [PropertyRoom].PropertyID" +
     " INNER JOIN [Users] ON [Property].HostID = [Users].UserID INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID INNER JOIN [Rating] ON [Property].PropertyID= " +
-    "[Rating].PropertyID WHERE ([Property].PropertyID = " + 1003 + ")";
+    "[Rating].PropertyID WHERE ([Property].PropertyID = " + Session["ResultPropertyID"] + ")";
 
 
-        //Session["ResultPropertyID"]
+        
         connection.Open();
         string title;
         string city;
@@ -139,6 +139,19 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
 
                 }
 
+                //Titletxt.text = Title;
+
+
+                //do this for all amenities and make panel to display in aspx
+                //if (airConditioning == "Y")
+                //{
+                //    airConditioningLbl.Text = "Air Conditioning";
+                //    airConditioningLbl.Visible = true;
+
+                //}
+
+
+
             }
             connection.Close();
         }
@@ -150,12 +163,13 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
         string propertyIdString = Request["PropertyID"];
         string userSignInEmail = (string)Session["SignInEmail"];
         int userId = pullUserID(userSignInEmail);
-        int propertyId = Convert.ToInt32(propertyIdString);
+        int propertyId = (int)Session["ResultPropertyID"];
         addPropertytoUserFav(userId, propertyId);
     }
 
     private int pullUserID(string email)
     {
+        //We need to double check that we don't allow a user to create multiple accounts with the same email
         int userId = -1;
         SqlConnection con = new SqlConnection(connectionString);
         string userIdQuery = "SELECT TOP 1 UserID from Users WHERE Email = @email";
