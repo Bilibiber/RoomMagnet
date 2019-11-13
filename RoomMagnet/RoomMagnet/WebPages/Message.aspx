@@ -5,7 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <div>
         <table>
             <tr>
                 <td colspan="2">
@@ -16,11 +15,11 @@
                 <td style="width: 100px; text-align: right"></td>
                 <td style="width: 94px; text-align: center">
                 <asp:label id="Label1" runat="server" text="You are sending message to : UserName"></asp:label>
-            </tr>s
+            </tr>
             <tr>
                 <td style="width: 100px; height: 260px"></td>
                 <td style="width: 94px; height: 260px">
-                    <asp:textbox id="txtmsg" runat="server" height="250px" textmode="MultiLine" width="472px"></asp:textbox>
+                    <asp:textbox id="txtmsg" runat="server" height="250px" textmode="MultiLine" width="472px" ReadOnly="true"></asp:textbox>
                 </td>
             </tr>
             <tr>
@@ -41,9 +40,8 @@
             </tr>
             <tr>
                 <td>
-                    <asp:button ID="BN" runat="server" text="Button" onclick="Clear_Click" value="Clear"/>
+                    <asp:button ID="BN" runat="server" text="Clear" onclick="Clear_Click"/>
                 </td>
             </tr>
         </table>
-    </div>
 </asp:Content>
