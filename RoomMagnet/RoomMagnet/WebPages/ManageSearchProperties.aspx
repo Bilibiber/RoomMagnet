@@ -21,9 +21,8 @@
     <br <asp:Label ID="Label3" runat="server" Text="Description: "></asp:Label>    <asp:TextBox ID="TextBox3" runat="server" />
     <br <asp:Label ID="Label4" runat="server" Text="Start Date: "></asp:Label>    <asp:TextBox ID="TextBox4" runat="server" /> 
     <br <asp:Label ID="Label5" runat="server" Text="End Date: "></asp:Label>    <asp:TextBox ID="TextBox5" runat="server" /> 
-    <asp:Button ID="Button1" Text="Reserve Property " runat="server" 
-        
-        />
+    <asp:Button ID="Button1" Text="Book Now " runat="server" />
+    <asp:Button ID="Button2" Text="Save to Favorites" runat="server" OnClick="SavetoFav_OnClick"/>
 
 
     

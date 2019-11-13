@@ -13,9 +13,11 @@ using System.Configuration;
 public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
 {
     SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+    private string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString();
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //set all amentities labels to visible = false;
         propertyImage5.Visible = false;
         propertyImage6.Visible = false;
         propertyImage3.Visible = false;
@@ -23,13 +25,13 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
 
         String sql = "Select Title, [Property].City, [Property].HomeState, [Property].ZipCode, AvailableBedrooms, [Property].RentPrice, [Property].StartDate, [Property].EndDate, " +
       "[ImagePath].ImagePath, AvailableBathrooms,[Users].ImagePath, AirConditioning, Heating, OnSiteLaundry,Parking,Furnished,PetFriendly,CarbonMonoxideDetector, SmokeDetector,SeperateEntrance," +
-    "Wifi, TV, SeperateBathroom, [Rating].Descriptions, NumStars, [Rating].LastUpdated, [Rating].LastUpdatedBy from [Property] inner join [ImagePath]" +
+    "Wifi, TV, SeparateBathroom, [Rating].Descriptions, NumStars, [Rating].LastUpdated, [Rating].LastUpdatedBy from [Property] inner join [ImagePath]" +
     "on [Property].PropertyID = [ImagePath].PropertyID INNER JOIN [PropertyRoom] ON [Property].PropertyID = [PropertyRoom].PropertyID" +
     " INNER JOIN [Users] ON [Property].HostID = [Users].UserID INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID INNER JOIN [Rating] ON [Property].PropertyID= " +
-    "[Rating].PropertyID WHERE ([Property].PropertyID = " + 1003 + ")";
+    "[Rating].PropertyID WHERE ([Property].PropertyID = " + Session["ResultPropertyID"] + ")";
 
 
-        //Session["ResultPropertyID"]
+        
         connection.Open();
         string title;
         string city;
@@ -48,7 +50,7 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
         string petFriendly;
         string carbonMonoxideDetector;
         string smokeDetector;
-        string seperateEntrance;
+        string separateEntrance;
         string wifi;
         string tv;
         string seperateBathroom;
@@ -124,7 +126,7 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
                     petFriendly = reader.GetString(15);
                     carbonMonoxideDetector = reader.GetString(16);
                     smokeDetector = reader.GetString(17);
-                    seperateEntrance = reader.GetString(18);
+                    separateEntrance = reader.GetString(18);
                     wifi = reader.GetString(19);
                     tv = reader.GetString(20);
                     seperateBathroom = reader.GetString(21);
@@ -137,8 +139,77 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
 
                 }
 
+                //Titletxt.text = Title;
+
+
+                //do this for all amenities and make panel to display in aspx
+                //if (airConditioning == "Y")
+                //{
+                //    airConditioningLbl.Text = "Air Conditioning";
+                //    airConditioningLbl.Visible = true;
+
+                //}
+
+
+
             }
             connection.Close();
         }
     }
+
+
+    protected void SavetoFav_OnClick(object sender, EventArgs a)
+    {
+        string userSignInEmail = (string)Session["SignInEmail"];
+        int userId = pullUserID(userSignInEmail);
+        int propertyId = (int)Session["ResultPropertyID"];
+        addPropertytoUserFav(userId, propertyId);
+    }
+
+    private int pullUserID(string email)
+    {
+        //We need to double check that we don't allow a user to create multiple accounts with the same email
+        int userId = -1;
+        SqlConnection con = new SqlConnection(connectionString);
+        string userIdQuery = "SELECT TOP 1 UserID from Users WHERE Email = @email";
+        con.Open();
+        SqlCommand cmd = new SqlCommand(userIdQuery, con);
+        cmd.Parameters.AddWithValue("@email", email);
+
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            reader.Read();
+            userId = reader.GetInt32(0);
+        }
+
+        return userId;
+
+    }
+
+    protected void addPropertytoUserFav(int userId, int propertyId)
+    {
+        SqlConnection con = new SqlConnection(connectionString);
+        string insertQuery = "INSERT INTO Favorites (UserID, PropertyID) VALUES (@userId, @propertyId);";
+        con.Open();
+
+        SqlCommand cmd = new SqlCommand(insertQuery, con);
+        cmd.Parameters.AddWithValue("@userId", userId);
+        cmd.Parameters.AddWithValue("@propertyId", propertyId);
+
+        cmd.ExecuteNonQuery();
+
+    }
+
+
+    //JS code
+    //let params = new URLSearchParameters({
+    //PropertyID: 1000
+    //};
+    //let url = "/ManageSearchProperties.aspx?" + params.toString();
+    //window.location = url;
+
+
+
 }
