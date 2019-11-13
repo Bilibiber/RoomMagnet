@@ -16,6 +16,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
 {
     SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+
     int resultCount;
 
     string OrderBy = String.Empty;
@@ -617,4 +618,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         RowCount = 25;
         SearchResultButton_Click(sender, e);
     }
+
+
+    
 }

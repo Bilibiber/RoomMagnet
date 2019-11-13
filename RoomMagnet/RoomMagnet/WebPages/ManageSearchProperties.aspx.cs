@@ -160,7 +160,6 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
 
     protected void SavetoFav_OnClick(object sender, EventArgs a)
     {
-        string propertyIdString = Request["PropertyID"];
         string userSignInEmail = (string)Session["SignInEmail"];
         int userId = pullUserID(userSignInEmail);
         int propertyId = (int)Session["ResultPropertyID"];

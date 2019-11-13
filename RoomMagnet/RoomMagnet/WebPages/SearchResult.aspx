@@ -142,6 +142,7 @@
                                                                     <asp:Label ID="Property1StartDate" runat="server" Text="Label"></asp:Label>
 
                                                                     <asp:Label ID="Property1EndDate" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:LinkButton ID="Property1Save" OnClick="" runat="server">LinkButton</asp:LinkButton>
 
                                                                     </div>
                                                                 </div>
