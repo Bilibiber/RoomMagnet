@@ -330,7 +330,14 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
                 while (Resultreader.Read())
                 {
-                    RowNum = (int)Resultreader.GetInt64(0);
+                    if (Resultreader.IsDBNull(0) == false)
+                    {
+                        RowNum =  (int)Resultreader.GetInt64(0);
+                    }
+                    else
+                    {
+                        RowNum = 0;
+                    }
                 }
             }
             Resultreader.Close();
