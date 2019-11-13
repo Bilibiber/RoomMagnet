@@ -25,11 +25,12 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
-        Property1Image.Visible = false; Property1Title.Visible = false; Property1RentPrice.Visible = false; Property1CityState.Visible = false; Property1HostPic.Visible = false;
-        Property2Image.Visible = false; Property2Title.Visible = false; Property2RentPrice.Visible = false; Property2CityState.Visible = false; Property2HostPic.Visible = false;
-        Property3Image.Visible = false; Property3Title.Visible = false; Property3RentPrice.Visible = false; Property3CityState.Visible = false; Property3HostPic.Visible = false;
-        Property4Image.Visible = false; Property4Title.Visible = false; Property4RentPrice.Visible = false; Property4CityState.Visible = false; Property4HostPic.Visible = false;
-        Property5Image.Visible = false; Property5Title.Visible = false; Property5RentPrice.Visible = false; Property5CityState.Visible = false; Property5HostPic.Visible = false;
+        Property1Space.Visible = false;
+        Property2Space.Visible = false;
+        Property3Space.Visible = false;
+        Property4Space.Visible = false;
+        Property5Space.Visible = false;
+        ResultPg2.Visible = false; ResultPg3.Visible = false; ResultPg4.Visible = false; ResultPg5.Visible = false; ResultPg6.Visible = false;
 
         if (Session["SignInEmail"] == null)
         {
@@ -57,11 +58,11 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "ReLoadTheMap", "geocodeAddress()", true);
 
-        Property1Image.Visible = false; Property1Title.Visible = false; Property1RentPrice.Visible = false; Property1CityState.Visible = false; Property1HostPic.Visible = false;
-        Property2Image.Visible = false; Property2Title.Visible = false; Property2RentPrice.Visible = false; Property2CityState.Visible = false; Property2HostPic.Visible = false;
-        Property3Image.Visible = false; Property3Title.Visible = false; Property3RentPrice.Visible = false; Property3CityState.Visible = false; Property3HostPic.Visible = false;
-        Property4Image.Visible = false; Property4Title.Visible = false; Property4RentPrice.Visible = false; Property4CityState.Visible = false; Property4HostPic.Visible = false;
-        Property5Image.Visible = false; Property5Title.Visible = false; Property5RentPrice.Visible = false; Property5CityState.Visible = false; Property5HostPic.Visible = false;
+        Property1Space.Visible = false;
+        Property2Space.Visible = false;
+        Property3Space.Visible = false;
+        Property4Space.Visible = false;
+        Property5Space.Visible = false;
 
         ResultPg2.Visible = false; ResultPg3.Visible = false; ResultPg4.Visible = false; ResultPg5.Visible = false; ResultPg6.Visible = false;
         resultCount = 0;
@@ -124,7 +125,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
               "AND(AvailableBedrooms " + BedsCmpr + ")" + startDate + endDate + HomeType + ") ";
             tempsql = sql;
 
-            sql += " Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, PropertyID, row_num from cte_Property where row_num >" + RowCount + OrderBy;
+            sql += " Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, PropertyID, row_num from cte_Property where row_num >" + RowCount;
             sql2 = tempsql + " Select Max(row_num) from cte_Property";
         }
         else
@@ -177,6 +178,9 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property1CityState.Visible = true;
                         Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                        Property1StartDate.Text = "Start Date: " +reader.GetDateTime(6).ToShortDateString();
+                        Property1EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -188,6 +192,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property1Image.Visible = true;
 
                         }
+                        Property1Space.Visible = true;
 
                     }
 
@@ -206,6 +211,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property2CityState.Visible = true;
                         Property2Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property2Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                        Property2StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
+                        Property2EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -217,6 +224,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property2Image.Visible = true;
 
                         }
+                        Property2Space.Visible = true;
 
                     }
                     if (resultCount == 3)
@@ -232,6 +240,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property3CityState.Visible = true;
                         Property3Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property3Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                        Property3StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
+                        Property3EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -243,6 +253,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property3Image.Visible = true;
 
                         }
+                        Property3Space.Visible = true;
 
                     }
                     if (resultCount == 4)
@@ -260,6 +271,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property4CityState.Visible = true;
                         Property4Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property4Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                        Property4StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
+                        Property4EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -271,6 +284,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property4Image.Visible = true;
 
                         }
+                        Property4Space.Visible = true;
 
                     }
                     if (resultCount == 5)
@@ -286,6 +300,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property5CityState.Visible = true;
                         Property5Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property5Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                        Property5StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
+                        Property5EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -297,6 +313,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property5Image.Visible = true;
 
                         }
+                        Property5Space.Visible = true;
 
                     }
 
@@ -571,21 +588,25 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
     protected void ResultPg3_Click(object sender, EventArgs e)
     {
-
+        RowCount = 10;
+        SearchResultButton_Click(sender, e);
     }
 
     protected void ResultPg4_Click(object sender, EventArgs e)
     {
-
+        RowCount = 15;
+        SearchResultButton_Click(sender, e);
     }
 
     protected void ResultPg5_Click(object sender, EventArgs e)
     {
-
+        RowCount = 20;
+        SearchResultButton_Click(sender, e);
     }
 
     protected void ResultPg6_Click(object sender, EventArgs e)
     {
-
+        RowCount = 25;
+        SearchResultButton_Click(sender, e);
     }
 }

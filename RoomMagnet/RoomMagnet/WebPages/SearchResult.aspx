@@ -106,7 +106,7 @@
                         </div>
                     <div class="row">
                         </div>
-                        <div class="col-lg-12">
+                        <div id="Property1Space" runat="server" class="col-lg-12">
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
@@ -129,6 +129,7 @@
                                                                 </div>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">
+
                                                     <asp:Label ID="Property1Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>                                                    
                                                                             
                                             </div>
@@ -136,7 +137,15 @@
                                             <div class="atbd_listing_data_list">
 
                                                                 <div class="mt-0 form-label">
-                                                                    <asp:Label ID="Property1RentPrice" runat="server" Text="Label"></asp:Label></div>                                  
+                                                                    <asp:Label ID="Property1RentPrice" runat="server" Text="Label"></asp:Label>
+                                                                    <div class="row">
+                                                                    <asp:Label ID="Property1StartDate" runat="server" Text="Label"></asp:Label>
+
+                                                                    <asp:Label ID="Property1EndDate" runat="server" Text="Label"></asp:Label>
+
+                                                                    </div>
+                                                                </div>
+                                            </div>
                                             </div>
                                             <!-- End atbd listing meta -->
                                         </div>
@@ -149,11 +158,7 @@
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
-                                                <li>
-                                                    <div class="atbd_author atbd_author--thumb fill">
-                                                        <asp:imagebutton runat="server" ID="Property1HostPic" alt="Author Image" CssClass="imgfill rounded-circle hostimage"></asp:imagebutton>
-                                                    </div>
-                                                </li>
+    
                                             </ul>
                                         </div>
                                         <!-- end .atbd_listing_bottom_content -->
@@ -164,7 +169,7 @@
                             </div>
                         </div>
                         <!-- ends: .col-lg-12 -->
-                    <div class="col-lg-12">
+                    <div id="Property2Space" runat="server" class="col-lg-12">
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
@@ -194,7 +199,14 @@
                                             <div class="atbd_listing_data_list">
 
                                                                 <div class="mt-0 form-label">
-                                                                    <asp:Label ID="Property2RentPrice" runat="server" Text="Label"></asp:Label></div>                                  
+                                                                    <asp:Label ID="Property2RentPrice" runat="server" Text="Label"></asp:Label>
+                                                                    <div class="row">
+                                                                        <asp:Label ID="Property2StartDate" runat="server" Text="Label"></asp:Label>
+
+                                                                    <asp:Label ID="Property2EndDate" runat="server" Text="Label"></asp:Label>
+
+                                                                    </div>
+                                                                </div>                                  
                                             </div>
                                             <!-- End atbd listing meta -->
                                         </div>
@@ -208,9 +220,7 @@
                                             </div>
                                             <ul class="atbd_content_right">
                                                 <li>
-                                                    <div class="atbd_author atbd_author--thumb fill">
-                                                        <asp:imagebutton runat="server" ID="Property2HostPic" alt="Author Image" CssClass="imgfill rounded-circle hostimage"></asp:imagebutton>
-                                                    </div>
+                                                    
                                                 </li>
                                             </ul>
                                         </div>
@@ -221,7 +231,7 @@
                                 <!-- atbd_single_listing_wrapper -->
                             </div>
                         </div>
-                     <div class="col-lg-12">
+                     <div id="Property3Space" runat="server" class="col-lg-12">
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
@@ -251,7 +261,12 @@
                                             <div class="atbd_listing_data_list">
 
                                                                 <div class="mt-0 form-label">
-                                                                    <asp:Label ID="Property3RentPrice" runat="server" Text="Label"></asp:Label></div>                                  
+                                                                    <asp:Label ID="Property3RentPrice" runat="server" Text="Label"></asp:Label>
+                                                                    <div class="row">
+                                                                    <asp:Label ID="Property3StartDate" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="Property3EndDate" runat="server" Text="Label"></asp:Label>
+                                                                    </div>
+                                                                </div>                                  
                                             </div>
                                             <!-- End atbd listing meta -->
                                         </div>
@@ -265,9 +280,7 @@
                                             </div>
                                             <ul class="atbd_content_right">
                                                 <li>
-                                                    <div class="atbd_author atbd_author--thumb fill">
-                                                        <asp:imagebutton runat="server" ID="Property3HostPic" alt="Author Image" CssClass="imgfill rounded-circle hostimage"></asp:imagebutton>
-                                                    </div>
+                                                    
                                                 </li>
                                             </ul>
                                         </div>
@@ -278,7 +291,7 @@
                                 <!-- atbd_single_listing_wrapper -->
                             </div>
                         </div>
-                    <div class="col-lg-12">
+                    <div id= "Property4Space" runat="server" class="col-lg-12">
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
@@ -308,7 +321,8 @@
                                             <div class="atbd_listing_data_list">
 
                                                                 <div class="mt-0 form-label">
-                                                                    <asp:Label ID="Property4RentPrice" runat="server" Text="Label"></asp:Label></div>                                  
+                                                                    <asp:Label ID="Property4RentPrice" runat="server" Text="Label"></asp:Label>
+                                                                </div>                                  
                                             </div>
                                             <!-- End atbd listing meta -->
                                         </div>
@@ -316,15 +330,16 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                     <span class="fas fa-bed icon-padding"></span><div class="numberCircle"><asp:label runat="server" ID="Property4Bed" text="1 Bed" CssClass="icon-padding"></asp:label> </div>
+                                                     <span class="fas fa-bed icon-padding">
+                                                                    <asp:Label ID="Property4StartDate" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="Property4EndDate" runat="server" Text="Label"></asp:Label>
+                                                                </span><div class="numberCircle"><asp:label runat="server" ID="Property4Bed" text="1 Bed" CssClass="icon-padding"></asp:label> </div>
                                                      <span class="fas fa-bath icon-padding"></span><div class="numberCircle"><asp:label runat="server" ID="Property4Bath" text="1 Bathroom" CssClass="icon-padding"></asp:label> </div>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
                                                 <li>
-                                                    <div class="atbd_author atbd_author--thumb fill">
-                                                        <asp:imagebutton runat="server" ID="Property4HostPic" alt="Author Image" CssClass="imgfill rounded-circle hostimage"></asp:imagebutton>
-                                                    </div>
+                                                    
                                                 </li>
                                             </ul>
                                         </div>
@@ -335,7 +350,7 @@
                                 <!-- atbd_single_listing_wrapper -->
                             </div>
                         </div>
-                    <div class="col-lg-12">
+                    <div id="Property5Space" runat="server" class="col-lg-12">
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
@@ -365,7 +380,10 @@
                                             <div class="atbd_listing_data_list">
 
                                                                 <div class="mt-0 form-label">
-                                                                    <asp:Label ID="Property5RentPrice" runat="server" Text="Label"></asp:Label></div>                                  
+                                                                    <asp:Label ID="Property5RentPrice" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="Property5StartDate" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="Property5EndDate" runat="server" Text="Label"></asp:Label>
+                                                                </div>                                  
                                             </div>
                                             <!-- End atbd listing meta -->
                                         </div>
@@ -373,17 +391,15 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                     <span class="fas fa-bed icon-padding"></span><div class="numberCircle"><asp:label runat="server" ID="Property5Bed" text="1 Bed" CssClass="icon-padding"></asp:label> </div>
+                                                     <span class="fas fa-bed icon-padding">
+
+                                                                    
+                                                                    
+                                                                </span><div class="numberCircle"><asp:label runat="server" ID="Property5Bed" text="1 Bed" CssClass="icon-padding"></asp:label> </div>
                                                      <span class="fas fa-bath icon-padding"></span><div class="numberCircle"><asp:label runat="server" ID="Property5Bath" text="1 Bathroom" CssClass="icon-padding"></asp:label> </div>
                                                 </div>
                                             </div>
-                                            <ul class="atbd_content_right">
-                                                <li>
-                                                    <div class="atbd_author atbd_author--thumb fill">
-                                                        <asp:imagebutton runat="server" ID="Property5HostPic" alt="Author Image" CssClass="imgfill rounded-circle hostimage"></asp:imagebutton>
-                                                    </div>
-                                                </li>
-                                            </ul>
+            
                                         </div>
                                         <!-- end .atbd_listing_bottom_content -->
                                     </div>
