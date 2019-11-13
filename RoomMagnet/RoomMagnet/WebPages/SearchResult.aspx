@@ -398,7 +398,14 @@
                                     <div class="nav-links">
                                         <a class="page-numbers">
                                             <asp:Button ID="Button1" runat="server" CssClass="page-numbers" /><span class="la la-long-arrow-left"></span></a>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" Text="1" CssClass="page-numbers"> </asp:LinkButton>
+                                        <asp:LinkButton ID="ResultPg1" runat="server" Text="1" OnClick="ResultPg1_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                        <asp:LinkButton ID="ResultPg2" runat="server" Text="2" OnClick="ResultPg2_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                        <asp:LinkButton ID="ResultPg3" runat="server" Text="3" OnClick="ResultPg3_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                        <asp:LinkButton ID="ResultPg4" runat="server" Text="4" OnClick="ResultPg4_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                        <asp:LinkButton ID="ResultPg5" runat="server" Text="5" OnClick="ResultPg5_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                        <asp:LinkButton ID="ResultPg6" runat="server" Text="6" OnClick="ResultPg6_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                    <a class="page-numbers">
+                                        <asp:Button ID="Button2" runat="server" CssClass="page-numbers" /><span class="la la-long-arrow-right"></span></a>
                                         <%--<span aria-current="page" class="page-numbers current">2</span>
                                         <a class="page-numbers"  href=""> </a>
                                         <a class="next page-numbers" href=""><span class="la la-long-arrow-right"></span></a>--%>
