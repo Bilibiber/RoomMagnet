@@ -181,7 +181,7 @@
                                 <asp:LinkButton ID="renterConnections" runat="server" style="font-size:1.5em;" onclick="renterConnections_Click"><i class="la la-users" style="font-size:1em;"></i>Connections</asp:LinkButton>
                             </li>
                             <li class="nav-item">
-                                <asp:LinkButton ID="renterMessage" runat="server" style="font-size:1.5em;" onclick="renterMessage_Click"><i class="la la-comments" style="font-size:1em;"></i>Message</asp:LinkButton>
+                                <asp:LinkButton ID="renterMessage" runat="server" style="font-size:1.5em;" onclick="renterMessage_Click"><i class="la la-comments" style="font-size:1em;"></i>Messages</asp:LinkButton>
                             </li>
                         </ul>
                         <asp:button id="rentertohost" runat="server" class="btn btn-primary" text="Become a Host" borderstyle="None" onclick="rentertohost_Click" style="font-size:1.5em;"></asp:button>
