@@ -23,7 +23,7 @@ public partial class WebPages_Message : System.Web.UI.Page
     {
         if (Session["SingInEmail"] == null)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
         }
         else
         {
@@ -45,14 +45,15 @@ public partial class WebPages_Message : System.Web.UI.Page
             ReceiverName = fn + " " + ln;
             ReceiverID = dataReader.GetInt32(2);
         }
+        
         SenderID = Session["UserID"].ToString();
         dataReader.Close();
 
         
-        string sql2 = "Select ConversationID FROM Conversations where SenderID=" + SenderID + "ReceiverID=" + ReceiverID;
+        string sql2 = "Select ConversationID FROM Conversations where SenderID=" + SenderID + "And ReceiverID=" + ReceiverID;
         SqlCommand sqlCommand2 = new SqlCommand(sql2,cn);
         SqlDataReader reader = sqlCommand2.ExecuteReader();
-        if (dataReader.Read())
+        if (reader.Read())
         {
             OldConversationID = reader.GetInt32(0);
         }
@@ -61,10 +62,12 @@ public partial class WebPages_Message : System.Web.UI.Page
             reader.Close();
             string sql3 = "Insert into Conversations values (@SenderId,@ReceiverID)";
             SqlCommand sqlCommand3 = new SqlCommand(sql3,cn);
+            sqlCommand3.Parameters.AddWithValue("@SenderId", SenderID);
+            sqlCommand3.Parameters.AddWithValue("@ReceiverID", ReceiverID);
             sqlCommand3.ExecuteNonQuery();
             //after instering finds the new conversation ID 
 
-            string sql4 = "Select ConversationID FROM Conversations where SenderID = " + SenderID + "ReceiverID = " + ReceiverID;
+            string sql4 = "Select ConversationID FROM Conversations where SenderID = " + SenderID + " AND ReceiverID = " + ReceiverID;
             SqlCommand sqlCommand4 = new SqlCommand(sql4, cn);
             SqlDataReader reader2 = sqlCommand4.ExecuteReader();
             if (reader2.Read())
@@ -75,22 +78,37 @@ public partial class WebPages_Message : System.Web.UI.Page
 
         }
         reader.Close();
+        if (OldConversationID != 0)
+        {
+            string sql5 = "Select MessageContent from Message where ConversationID=" + OldConversationID;
+            SqlCommand sqlCommand5 = new SqlCommand(sql5, cn);
+            SqlDataReader reader3 = sqlCommand5.ExecuteReader();
+            if (reader3.HasRows)
+            {
+                while (reader3.Read())
+                {
+                    txtmsg.Text = Application["message"]+reader3.GetString(0)+ Environment.NewLine;
+                }
+                reader3.NextResult();
+            }
+            reader3.Close();
+        }
         cn.Close();
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+       
         string Sendername = Session["FullName"].ToString();
         string message = txtsend.Text;
         string my = Sendername + ":" +message;
 
-        Application["message"] = Application["message"] + my + Environment.NewLine;
+        
         txtsend.Text = "";
         
 
-        try
-        {
+     
             cn.Open();
-            if (NewConversationID==0)
+            if (NewConversationID == 0)
             {
                 string sql = "Insert into Message(ConversationID,MessageContent,LastUpdated,LastUpdatedBy) values (@ConversationID,@MessageContent,@LastUpdated,@LastUpdatedBy)";
                 SqlCommand command = new SqlCommand(sql, cn);
@@ -98,13 +116,25 @@ public partial class WebPages_Message : System.Web.UI.Page
                 command.Parameters.AddWithValue("@MessageContent", my);
                 command.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
                 command.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
-            }
-           
-        }
-        catch
-        {
+            command.ExecuteNonQuery();
 
-        }
+
+            }
+            else
+            {
+                string sql2 = "Insert into Message(ConversationID,MessageContent,LastUpdated,LastUpdatedBy) values (@ConversationID,@MessageContent,@LastUpdated,@LastUpdatedBy)";
+                SqlCommand command2 = new SqlCommand(sql2, cn);
+                command2.Parameters.AddWithValue("@ConversationID", NewConversationID);
+                command2.Parameters.AddWithValue("@MessageContent", my);
+                command2.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
+                command2.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
+                NewConversationID = 0;
+            command2.ExecuteNonQuery();
+            }
+        cn.Close();
+    
+
+       
         Response.Redirect("Message.aspx");
     }
     protected void Clear_Click(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Stripe.aspx.cs" Inherits="WebPages_Stripe" %>
+﻿<%--<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Stripe.aspx.cs" Inherits="WebPages_Stripe" %>
 
 <!DOCTYPE html>
 
@@ -12,4 +12,4 @@
         </div>
     </form>
 </body>
-</html>
+</html>--%>
