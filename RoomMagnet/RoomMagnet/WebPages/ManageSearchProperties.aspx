@@ -16,20 +16,34 @@
     <asp:Image ID="propertyImage3" runat="server" Width="325px" />
     <asp:Image ID="propertyImage4" runat="server" Height="369px" Width="321px" />
 
-    <br <asp:Label ID="RentPrice" runat="server" Text="Rent Price: "></asp:Label>    <asp:TextBox ID="RentPriceTxtBx" runat="server" /> 
-    <br <asp:Label ID="Label1" runat="server" Text="Amenities: "></asp:Label>    <asp:TextBox ID="TextBox1" runat="server" /> 
-    <br <asp:Label ID="Label3" runat="server" Text="Description: "></asp:Label>    <asp:TextBox ID="TextBox3" runat="server" />
-    <br <asp:Label ID="Label4" runat="server" Text="Start Date: "></asp:Label>    <asp:TextBox ID="TextBox4" runat="server" /> 
-    <br <asp:Label ID="Label5" runat="server" Text="End Date: "></asp:Label>    <asp:TextBox ID="TextBox5" runat="server" /> 
-    <asp:Button ID="Button1" Text="Book Now " runat="server" />
-    <asp:Button ID="Button2" Text="Save to Favorites" runat="server" OnClick="SavetoFav_OnClick"/>
+    <br <asp:Label ID="RentPrice" runat="server" Text="Rent Price: "></asp:Label> <asp:TextBox id="RentPriceTxtBx" runat="server"></asp:TextBox> 
+    <br <asp:Label ID="availableBedroomsLbl" runat="server" Text="Air Conditioning "></asp:Label>  
+    <br <asp:Label ID="startDateLbl" runat="server" Text="Start Date:  "></asp:Label>  
+    <br <asp:Label ID="endDateLbl" runat="server" Text="End Date: "></asp:Label>  
+    <br <asp:Label ID="availableBathroomsLbl" runat="server" Text="Available Bathrooms: "></asp:Label>  
+    <br <asp:Label ID="descriptionsLbl" runat="server" Text="Description: "></asp:Label>  
+    <br <asp:Label ID="numStarsLbl" runat="server" Text="Number of Stars: "></asp:Label>  
+    <br <asp:Label ID="lastUpdatedLbl" runat="server" Text="Last Updated: "></asp:Label>  
+    <br <asp:Label ID="ratingLbl" runat="server" Text="Ratings:  "></asp:Label>  
 
 
-    
-
-
-    
-
+    <div id="amenitiesLbl" runat="server" Text="Amenities: " visible="false">
+    <br <asp:Label ID="airConditioningLbl" runat="server" Text="Air Conditioning "></asp:Label>  
+    <br <asp:Label ID="heatingLbl" runat="server" Text="Heating "></asp:Label>  
+    <br <asp:Label ID="onSiteLaundryLbl" runat="server" Text="On Site Laundry "></asp:Label>  
+    <br <asp:Label ID="parkingLbl" runat="server" Text="Parking "></asp:Label>  
+    <br <asp:Label ID="furnishedLbl" runat="server" Text="Furnished "></asp:Label>  
+    <br <asp:Label ID="petFriendlyLbl" runat="server" Text="Pet Friendly "></asp:Label>  
+    <br <asp:Label ID="carbonMonoxideDetectorLbl" runat="server" Text="Carbon Monoxide Detector "></asp:Label>  
+    <br <asp:Label ID="smokeDetectorLbl" runat="server" Text="Smoke Detector "></asp:Label>  
+    <br <asp:Label ID="separateEntranceLbl" runat="server" Text="Seperate Entrance "></asp:Label>  
+    <br <asp:Label ID="wifiLbl" runat="server" Text="WiFi "></asp:Label>  
+    <br <asp:Label ID="tvLbl" runat="server" Text="TV "></asp:Label>  
+    <br <asp:Label ID="seperateBathroomLbl" runat="server" Text="Seperate Bathroom "></asp:Label>    
+    </div>
+       
+    <asp:Button ID="bookNowBtn" Text="Book Now " runat="server" />
+    <asp:Button ID="saveToFavoritesBtn" Text="Save to Favorites" runat="server" OnClick="SavetoFav_OnClick"/>
 
 
 </asp:Content>

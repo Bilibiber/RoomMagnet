@@ -12,79 +12,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <style type="text/css">
-        .auto-style1 {
-            width: 117px;
-        }
-
-        .auto-style2 {
-            width: 898px;
-        }
-
-        .auto-style3 {
-            width: 758px;
-        }
-
-        .auto-style4 {
-            width: 200px;
-        }
-
-        .auto-style6 {
-            width: 40px;
-        }
-
-        .auto-style7 {
-            width: 20px;
-        }
-
-        .auto-style8 {
-            width: 25px;
-            height: 74px;
-        }
-
-        .auto-style9 {
-            width: 200px;
-            height: 74px;
-        }
-
-        .auto-style10 {
-            height: 74px;
-        }
-
-        .auto-style11 {
-            width: 120px;
-        }
-
-        .auto-style12 {
-            position: relative;
-            width: 100%;
-            -ms-flex: 0 0 33.333333%;
-            flex: 0 0 33.333333%;
-            max-width: 33.333333%;
-            left: 0px;
-            top: 0px;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-
-        .auto-style13 {
-            width: 20px;
-            height: 33px;
-        }
-
-        .auto-style14 {
-            width: 200px;
-            height: 33px;
-        }
-
-        .auto-style15 {
-            height: 33px;
-        }
-
-        .auto-style16 {
-            width: 120px;
-            height: 33px;
-        }
-
+        
         .userimage {
             width: 200px;
             height: 180px;
@@ -223,94 +151,84 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <div class="modal-body row">
-        <div class="auto-style12" style="border-style: none; background-color: gray; text-align: center; background-repeat: repeat;">
-            <!-- Your first column here -->
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic text-center">
+                        <asp:image id="imgpreview" runat="server" height="200" width="200" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px; border-radius: 50%;" />
+                        <br />
+                        <asp:label id="userstatus" runat="server" backcolor="#CC3300" borderstyle="None" font-size="X-Large" forecolor="White" style="text-align: center; width: 150px;"></asp:label>
+                    </div>
+                    <!-- END SIDEBAR USERPIC -->
 
-            <br />
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu dashboard-size nav flex-column">
+                        <div class="text-center name-about">
+                            
+                            <asp:Label ID="hellow" runat="server" Text="Hello, world" Font-Size="2em" Font-Bold="True"></asp:Label>
+                            <br />
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="nav-item">
+                                <asp:LinkButton ID="renterprofile" runat="server" style="font-size:1.5em;" OnClick="renterProfile_Click" BackColor="#C6D6E2"> <i class="la la-user" style="font-size:1em;"></i>My Profile</asp:LinkButton>
+                            </li>
+                            <li class="nav-item">
+                                <asp:LinkButton ID="renterFavorites" runat="server" style="font-size:1.5em;" OnClick="renterFavorites_Click"><i class="la la-home" style="font-size:1em;"></i>My Favorites</asp:LinkButton>
+                            </li>
+                            <li class="nav-item" style="margin-top: 0px">
+                                <asp:LinkButton ID="renterConnections" runat="server" style="font-size:1.5em;" onclick="renterConnections_Click"><i class="la la-users" style="font-size:1em;"></i>Connections</asp:LinkButton>
+                            </li>
+                            <li class="nav-item">
+                                <asp:LinkButton ID="renterMessage" runat="server" style="font-size:1.5em;" onclick="renterMessage_Click"><i class="la la-comments" style="font-size:1em;"></i>Messages</asp:LinkButton>
+                            </li>
+                        </ul>
+                        <asp:button id="rentertohost" runat="server" class="btn btn-primary" text="Become a Host" borderstyle="None" onclick="rentertohost_Click" style="font-size:1.5em;"></asp:button>
+                    </div>
+                    <!-- END MENU -->
+                </div>
+            </div>
 
-            <asp:image id="imgpreview" runat="server" height="200" width="200" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px; border-radius: 50%;" />
+            
 
-            <br />
-            <br />
-            <asp:label id="userstatus" runat="server" backcolor="#CC3300" borderstyle="None" font-size="XX-Large" forecolor="White" style="text-align: center; width: 200px;"></asp:label>
-            <br />
-            <br />
-            <asp:button id="renterSavedSearch" runat="server" text="Saved Searches" font-size="XX-Large" forecolor="Red" backcolor="Gray" borderstyle="None" onclick="renterSavedSearch_Click"></asp:button>
-            <br />
-            <asp:button id="renterMessage" runat="server" text="My Message" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="renterMessage_Click"></asp:button>
-            <br />
-            <asp:button id="renterConnections" runat="server" text="Connections" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="renterConnections_Click"></asp:button>
-            <br />
-            <asp:button id="renterPreference" runat="server" text="Preferences" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="renterPreference_Click"></asp:button>
-            <br />
-            <asp:button id="rentertohost" runat="server" text="Become a Host" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="rentertohost_Click"></asp:button>
-            <br />
-            <asp:button id="renterSetting" runat="server" text="Settings" font-size="XX-Large" forecolor="White" backcolor="Gray" borderstyle="None" onclick="renterSetting_Click"></asp:button>
-            <br />
-        </div>
-        <div class="col-md-8">
-            <!-- Your second column here -->
-            <br />
-            <hr />
-            <asp:panel runat="server" id="renterinfor">
-                <asp:Label ID="hellow" runat="server" Text="Hello, world" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
-                <br />
-                <br />
-                <table>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="renterabout" runat="server" Text="About" Font-Bold="True"></asp:Label>
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
+            <div class="col-md-9">
+                <%--renter profile--%>
+                <asp:Panel ID="panelprofile" runat="server">
+                    <div class="profile-content atbd_content_module">
+                    <div class="atbd_content_module__tittle_area about-titles">
+                        <div class="atbd_area_title">
+                            <h4 style="font-size:2em;"><span class="la la-user" style="font-size:1em; color:black;"></span >My Profile </h4>
+                            <asp:LinkButton ID="editprofile" runat="server" OnClick="editprofile_Click">Edit</asp:LinkButton>
+                        </div>
+                    </div>
+                    <div class="profile-des">
+                        <div class="">
+                            <h5>&nbsp;</h5>
+                            <h5>About</h5>
                             <asp:Label ID="userDes" runat="server" Text=""></asp:Label>
-                        </td>
-                        <td class="auto-style3"></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="renterAge" runat="server" Text="Age" Font-Bold="True"></asp:Label>
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
-                            <p>
-                                <asp:Label ID="userAge" runat="server" Text=""></asp:Label>
-                            </p>
-                        </td>
-                        <td class="auto-style3"></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="renterGender" runat="server" Text="Gender" Font-Bold="True"></asp:Label>
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
-                            <p>
-                                <asp:Label ID="userGender" runat="server" Text=""></asp:Label>
-                            </p>
-                        </td>
-                        <td class="auto-style3"></td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="renterOccupation" runat="server" Text="Occupation" Font-Bold="True"></asp:Label>
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
-                            <p>
-                                <asp:Label ID="userOccu" runat="server" Text=""></asp:Label>
-                            </p>
-                        </td>
-                        <td class="auto-style3"></td>
-                    </tr>
-                </table>
-            </asp:panel>
+                            <br />
+                            <br />
+                        </div>
+                        <div class="about-des">
+                            <h5 style="display: inline">Gender</h5>
+                            <asp:Label ID="userGender" runat="server" Text="" style="display: inline"></asp:Label>
+                            <br />
+                            <br />
+                        </div>
+                        <div class="about-des">
+                            <h5 style="display: inline">Occupation</h5>
+                            <asp:Label ID="userOccu" runat="server" Text="" style="display: inline"></asp:Label>
+                        </div>
+                    </div>
+                </div>
+                </asp:Panel>
 
-            <hr />
-
-            <%-- saved id panel--%>
-            <asp:panel runat="server" id="rentersearch">
-                <div id="saveSearch">
+                <%--renter favorites--%>
+                <asp:Panel ID="panelfavorites" runat="server" Visible="False">
+                    <div id="saveSearch">
                     <asp:Label ID="save" runat="server" Text="Saved Searches" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     <br />
-                    <asp:Button ID="renterEditSearch" runat="server" BackColor="White" BorderStyle="None" ForeColor="#666666" Text="Edit" />
                     <div id="Property1Space" runat="server" class="col-lg-12">
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">
@@ -500,29 +418,32 @@
                             </div>
                         </div>
                 <!-- ends: .col-lg-12 -->
-                
-            </asp:panel>
+                </asp:Panel>
 
-            <%--message panel--%>
-            <asp:panel runat="server" id="rentermymessage" visible="False">
-                <div id="message">
-                    <asp:Label ID="mymessage" runat="server" Text="My Message" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                <%--renter connections--%>
+                 <asp:Panel ID="panelconnections" runat="server" Visible="False">
+                    <div class="profile-content atbd_content_module">
+                    <div class="atbd_content_module__tittle_area about-titles">
+                        <div class="atbd_area_title">
+                            <h4 style="font-size:2em; color:black;"><span class="la la-users" style="font-size:1em; color:black"> Connections</span ></h4>
+                        </div>
+                    </div>
                 </div>
-            </asp:panel>
+                </asp:Panel>
 
-            <%--connection panel--%>
-            <asp:panel runat="server" id="renterconnection" visible="False">
-                <div>
-                    <asp:Label runat="server" Text="Connection" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                 <%--renter message--%>
+                 <asp:Panel ID="panelmessage" runat="server" Visible="False">
+                    <div class="profile-content atbd_content_module">
+                    <div class="atbd_content_module__tittle_area about-titles">
+                        <div class="atbd_area_title">
+                            <h4 style="font-size:2em; color:black;"><span class="la la-comments" style="font-size:1em; color:black"> Messages</span ></h4>
+                        </div>
+                    </div>
                 </div>
-            </asp:panel>
+                </asp:Panel>
+            </div>
 
-            <%--preference panel--%>
-            <asp:panel runat="server" id="renterpreferences" visible="False">
-                <div>
-                    <asp:Label runat="server" Text="Preference" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
-                </div>
-            </asp:panel>
-        </div>
+
+    </div>
     </div>
 </asp:Content>
