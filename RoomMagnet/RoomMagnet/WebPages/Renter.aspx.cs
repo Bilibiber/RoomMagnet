@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -8,7 +9,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
 {
 
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
-
+    ArrayList RatingsPID = new ArrayList();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -135,6 +136,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             cn.Open();
             SqlCommand search = new SqlCommand(sql, cn);
             SqlDataReader reader = search.ExecuteReader();
+        int resultCount = 0;
             if (reader.HasRows)
             {
 
