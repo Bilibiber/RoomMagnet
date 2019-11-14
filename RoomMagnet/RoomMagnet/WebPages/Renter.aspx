@@ -210,12 +210,6 @@
                             <br />
                             <br />
                         </div>
-                        <div>
-                            <h5 style="display: inline">Age</h5>
-                            <asp:Label ID="userAge" runat="server" Text="" style="display: inline"></asp:Label>
-                            <br />
-                            <br />
-                        </div>
                         <div class="about-des">
                             <h5 style="display: inline">Gender</h5>
                             <asp:Label ID="userGender" runat="server" Text="" style="display: inline"></asp:Label>
@@ -235,7 +229,6 @@
                     <div id="saveSearch">
                     <asp:Label ID="save" runat="server" Text="Saved Searches" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     <br />
-                    <asp:Button ID="renterEditSearch" runat="server" BackColor="White" BorderStyle="None" ForeColor="#666666" Text="Edit" />
                     <div id="Property1Space" runat="server" class="col-lg-12">
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">

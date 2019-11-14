@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Web.UI;
 
 public partial class WebPages_Renter : System.Web.UI.Page
 {
@@ -12,6 +13,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
     ArrayList RatingsPID = new ArrayList();
     protected void Page_Load(object sender, EventArgs e)
     {
+        Property1Space.Visible = false;
+        Property2Space.Visible = false;
+        Property3Space.Visible = false;
         if (!IsPostBack)
         {
             cn.Open();
@@ -318,4 +322,100 @@ public partial class WebPages_Renter : System.Web.UI.Page
     {
         Response.Redirect("Setting.aspx");
     }
+
+    protected void Property1Image_Click(object sender, ImageClickEventArgs e)
+    {
+        cn.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, cn);
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[1];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property1Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+
+                }
+            }
+        }
+        cn.Close();
+        Response.Redirect("ManageSearchProperties.aspx");
+    }
+    protected void Property2Image_Click(object sender, ImageClickEventArgs e)
+    {
+        cn.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, cn);
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[1];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property2Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+
+                }
+            }
+        }
+        cn.Close();
+        Response.Redirect("ManageSearchProperties.aspx");
+    }
+
+    protected void Property3Image_Click(object sender, ImageClickEventArgs e)
+    {
+        cn.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, cn);
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[1];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property3Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+
+                }
+            }
+        }
+        cn.Close();
+        Response.Redirect("ManageSearchProperties.aspx");
+    }
+
 }
