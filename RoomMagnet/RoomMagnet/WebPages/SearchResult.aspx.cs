@@ -17,8 +17,12 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     private int RowCount = 0;
     private int RowNum;
 
+    
+    
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        
         SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
         Property1Space.Visible = false;
         Property2Space.Visible = false;
@@ -45,7 +49,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         }
         
     }
-
+    
     protected void ApplyButton_Click(object sender, EventArgs e)
     {
         SearchResultButton_Click(sender, e);
@@ -53,11 +57,10 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
     [System.Web.Services.WebMethod]
     [System.Web.Script.Services.ScriptMethod()]
-    public static string QueryToJsonForZip()
+    public static string QueryToJsonForZip(string num)
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
         connection.Open();
-        string num = "23060";
         string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode from Property where ZipCode=@ZipCode";
         SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
         GoogleFinder.Parameters.AddWithValue("@ZipCode", num);
@@ -77,6 +80,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             AddressArray.Add(values);
         }
         addressReader.Close();
+        connection.Close();
         // serialize to JSON
         JavaScriptSerializer jss = new JavaScriptSerializer();
         String jsonResult = jss.Serialize(AddressArray);
@@ -87,11 +91,13 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
     [System.Web.Services.WebMethod]
     [System.Web.Script.Services.ScriptMethod()]
-    public string QueryToJsonForCityState()
+    public static string QueryToJsonForCityState(string something)
     {
+        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+        connection.Open();
         string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode from Property where City=@City and HomeState=@HomeState";
-        string City = address.Text.Substring(0, address.Text.IndexOf(','));
-        string State = address.Text.Substring(address.Text.IndexOf(',') + 1);
+        string City = something.Substring(0, something.IndexOf(','));
+        string State = something.Substring(something.IndexOf(',') + 1);
         SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
         GoogleFinder.Parameters.AddWithValue("@City", City);
         GoogleFinder.Parameters.AddWithValue("@HomeState", State);
@@ -110,6 +116,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             addressReader.GetValues(values);
             AddressArray.Add(values);
         }
+        connection.Close();
         addressReader.Close();
         // serialize to JSON
         JavaScriptSerializer jss = new JavaScriptSerializer();

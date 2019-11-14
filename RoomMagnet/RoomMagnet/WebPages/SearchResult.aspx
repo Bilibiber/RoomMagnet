@@ -12,6 +12,8 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu9-V7rNAJ0LWxj2senGo9wVHwgLXQr-0&language=en">
     </script>
+     <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
+
     <script src="GoogleMap.js"></script>
     <section class="all-listing-wrapper section-bg results-pad">
 
