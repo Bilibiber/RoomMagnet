@@ -6,6 +6,7 @@ using System.Globalization;
 
 public partial class WebPages_Renter : System.Web.UI.Page
 {
+
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
 
     protected void Page_Load(object sender, EventArgs e)
@@ -23,7 +24,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             {
                 if (getimg[0].ToString() != "Null")
                 {
-                    
+
 
                     if (!Convert.IsDBNull(getimg[0]))
                     {
@@ -115,100 +116,62 @@ public partial class WebPages_Renter : System.Web.UI.Page
         return objcountries;
     }
 
-    protected void renterSavedSearch_Click(object sender, EventArgs e)
+    protected void renterProfile_Click(object sender, EventArgs e)
     {
-        renterinfor.Visible = true;
-        rentersearch.Visible = true;
-        rentermymessage.Visible = false;
-        renterconnection.Visible = false;
-        renterpreferences.Visible = false;
-        renterSavedSearch.ForeColor = System.Drawing.Color.Red;
-        renterMessage.ForeColor = System.Drawing.Color.White;
-        renterConnections.ForeColor = System.Drawing.Color.White;
-        renterPreference.ForeColor = System.Drawing.Color.White;
-        rentertohost.ForeColor = System.Drawing.Color.White;
-        renterSetting.ForeColor = System.Drawing.Color.White;
+        panelprofile.Visible = true;
+        panelfavorites.Visible = false;
+        panelconnections.Visible = false;
+        panelmessage.Visible = false;
+        renterprofile.BackColor = System.Drawing.Color.FromArgb(198,214,226);
+        renterFavorites.BackColor = System.Drawing.Color.White;
+        renterConnections.BackColor = System.Drawing.Color.White;
+        renterMessage.BackColor = System.Drawing.Color.White;
     }
 
-    protected void renterMessage_Click(object sender, EventArgs e)
+    protected void renterFavorites_Click(object sender, EventArgs e)
     {
-        renterinfor.Visible = true;
-        rentermymessage.Visible = true;
-        rentersearch.Visible = false;
-        renterconnection.Visible = false;
-        renterpreferences.Visible = false;
-        renterSavedSearch.ForeColor = System.Drawing.Color.White;
-        renterMessage.ForeColor = System.Drawing.Color.Red;
-        renterConnections.ForeColor = System.Drawing.Color.White;
-        renterPreference.ForeColor = System.Drawing.Color.White;
-        rentertohost.ForeColor = System.Drawing.Color.White;
-        renterSetting.ForeColor = System.Drawing.Color.White;
+        panelprofile.Visible = false;
+        panelfavorites.Visible = true;
+        panelconnections.Visible = false;
+        panelmessage.Visible = false;
+        renterprofile.BackColor = System.Drawing.Color.White;
+        renterFavorites.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
+        renterConnections.BackColor = System.Drawing.Color.White;
+        renterMessage.BackColor = System.Drawing.Color.White;
     }
 
     protected void renterConnections_Click(object sender, EventArgs e)
     {
-        renterinfor.Visible = true;
-        rentersearch.Visible = false;
-        rentermymessage.Visible = false;
-        renterconnection.Visible = true;
-        renterpreferences.Visible = false;
-        renterSavedSearch.ForeColor = System.Drawing.Color.White;
-        renterMessage.ForeColor = System.Drawing.Color.White;
-        renterConnections.ForeColor = System.Drawing.Color.Red;
-        renterPreference.ForeColor = System.Drawing.Color.White;
-        rentertohost.ForeColor = System.Drawing.Color.White;
-        renterSetting.ForeColor = System.Drawing.Color.White;
+        panelprofile.Visible = false;
+        panelfavorites.Visible = false;
+        panelconnections.Visible = true;
+        panelmessage.Visible = false;
+        renterprofile.BackColor = System.Drawing.Color.White;
+        renterFavorites.BackColor = System.Drawing.Color.White;
+        renterConnections.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
+        renterMessage.BackColor = System.Drawing.Color.White;
     }
 
-    protected void renterPreference_Click(object sender, EventArgs e)
+    protected void renterMessage_Click(object sender, EventArgs e)
     {
-        renterinfor.Visible = true;
-        rentersearch.Visible = false;
-        rentermymessage.Visible = false;
-        renterconnection.Visible = false;
-        renterpreferences.Visible = true;
-        renterSavedSearch.ForeColor = System.Drawing.Color.White;
-        renterMessage.ForeColor = System.Drawing.Color.White;
-        renterConnections.ForeColor = System.Drawing.Color.White;
-        renterPreference.ForeColor = System.Drawing.Color.Red;
-        rentertohost.ForeColor = System.Drawing.Color.White;
-        renterSetting.ForeColor = System.Drawing.Color.White;
+        panelprofile.Visible = false;
+        panelfavorites.Visible = false;
+        panelconnections.Visible = false;
+        panelmessage.Visible = true;
+        renterprofile.BackColor = System.Drawing.Color.White;
+        renterFavorites.BackColor = System.Drawing.Color.White;
+        renterConnections.BackColor = System.Drawing.Color.White;
+        renterMessage.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
     }
 
     protected void rentertohost_Click(object sender, EventArgs e)
     {
         Response.Redirect("AddProperty.aspx");
-        renterinfor.Visible = false;
-        rentersearch.Visible = false;
-        rentermymessage.Visible = false;
-        renterconnection.Visible = false;
-        renterpreferences.Visible = false;
-        renterSavedSearch.ForeColor = System.Drawing.Color.White;
-        renterMessage.ForeColor = System.Drawing.Color.White;
-        renterConnections.ForeColor = System.Drawing.Color.White;
-        renterPreference.ForeColor = System.Drawing.Color.White;
-        rentertohost.ForeColor = System.Drawing.Color.Red;
-        renterSetting.ForeColor = System.Drawing.Color.White;
     }
 
-    protected void renterSetting_Click(object sender, EventArgs e)
+
+    protected void editprofile_Click(object sender, EventArgs e)
     {
         Response.Redirect("Setting.aspx");
-        renterinfor.Visible = false;
-        rentersearch.Visible = false;
-        rentermymessage.Visible = false;
-        renterconnection.Visible = false;
-        renterpreferences.Visible = false;
-        renterSavedSearch.ForeColor = System.Drawing.Color.White;
-        renterMessage.ForeColor = System.Drawing.Color.White;
-        renterConnections.ForeColor = System.Drawing.Color.White;
-        renterPreference.ForeColor = System.Drawing.Color.White;
-        rentertohost.ForeColor = System.Drawing.Color.White;
-        renterSetting.ForeColor = System.Drawing.Color.Red;
-    }
-
-    protected void cancel_Click(object sender, EventArgs e)
-    {
-        renterSavedSearch_Click(sender, e);
     }
 }
