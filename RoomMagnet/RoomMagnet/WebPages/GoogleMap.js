@@ -18,31 +18,16 @@ function initMap() {
     else {
         var inputvalue = document.getElementById('address').value;
         if (isNaN(inputvalue)) {
-            PageMethods.QueryToJsonForZip(addressmap)
+            PageMethods.QueryToJsonForCityState(addressmap)
         }
         else {
-            PageMethods.QueryToJsonForCityState(addressmap)
+            PageMethods.QueryToJsonForZip(addressmap)
         }
     }
 }
 
 function geocodeAddress() {
     click = true;
-    //var address = document.getElementById('address').value;
-    //geocoder.geocode({ 'address': address }, function (results, status) {
-    //    if (status === 'OK') {
-    //        map = new google.maps.Map(document.getElementById('map'), {
-    //            zoom: 10,
-    //            center: results[0].geometry.location,
-    //        });
-    //        var marker = new google.maps.Marker({
-    //            map: map,
-    //            position: results[0].geometry.location
-    //        });
-    //    } else {
-    //        alert('Geocode was not successful for the following reason: ' + status);
-    //    }
-    //});
 }
 function addressmap(response) {
     dataTable1 = eval(response);

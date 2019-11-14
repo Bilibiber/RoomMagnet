@@ -53,11 +53,14 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
     [System.Web.Services.WebMethod]
     [System.Web.Script.Services.ScriptMethod()]
-    public string QueryToJsonForZip()
+    public static string QueryToJsonForZip()
     {
+        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+        connection.Open();
+        string num = "23060";
         string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode from Property where ZipCode=@ZipCode";
         SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
-        GoogleFinder.Parameters.AddWithValue("@ZipCode", address.Text);
+        GoogleFinder.Parameters.AddWithValue("@ZipCode", num);
         SqlDataReader addressReader = GoogleFinder.ExecuteReader();
         ArrayList AddressArray = new ArrayList();
         object[] fieldnames = new object[addressReader.FieldCount];
