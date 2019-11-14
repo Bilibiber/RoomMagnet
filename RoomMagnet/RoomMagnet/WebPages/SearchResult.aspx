@@ -142,7 +142,7 @@
                                                                     <asp:Label ID="Property1StartDate" runat="server" Text="Label"></asp:Label>
 
                                                                     <asp:Label ID="Property1EndDate" runat="server" Text="Label"></asp:Label>
-                                                                    <asp:LinkButton ID="Property1Save" OnClick="" runat="server">LinkButton</asp:LinkButton>
+                                                                    
 
                                                                     </div>
                                                                 </div>
@@ -232,6 +232,7 @@
                                 <!-- atbd_single_listing_wrapper -->
                             </div>
                         </div>
+                 <!-- ends: .col-lg-12 -->
                      <div id="Property3Space" runat="server" class="col-lg-12">
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">
@@ -292,6 +293,7 @@
                                 <!-- atbd_single_listing_wrapper -->
                             </div>
                         </div>
+                <!-- ends: .col-lg-12 -->
                     <div id= "Property4Space" runat="server" class="col-lg-12">
                             <div class="atbd_single_listing atbd_listing_list">
                                 <article class="atbd_single_listing_wrapper">

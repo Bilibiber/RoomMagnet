@@ -12,6 +12,7 @@ using System.Configuration;
 using System.Windows.Controls;
 
 
+
 public partial class WebPages_SearchResult : System.Web.UI.Page
 
 {
@@ -347,6 +348,22 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             if (RowNum > 5)
             {
                 ResultPg2.Visible = true;
+            }
+            if (RowNum > 10)
+            {
+                ResultPg3.Visible = true;
+            }
+            if (RowNum >15)
+            {
+                ResultPg4.Visible = true;
+            }
+            if (RowNum > 20)
+            {
+                ResultPg5.Visible = true;
+            }
+            if (RowNum > 25)
+            {
+                ResultPg6.Visible = true;
             }
 
             for (int i = 0; i < RatingsPID.Count; i++)
