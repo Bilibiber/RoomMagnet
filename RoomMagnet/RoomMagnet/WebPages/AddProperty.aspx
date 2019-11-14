@@ -6,65 +6,7 @@
 
     <title>Add Property</title>
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
-    <%--    <!-- inject:css-->
-    <link rel="stylesheet" href="vendor_assets/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="vendor_assets/css/brands.css">
-    <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="vendor_assets/css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" href="vendor_assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="vendor_assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/select2.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/slick.css">
-    <link rel="stylesheet" href="style.css">
-    <!-- endinject -->
-    <link rel="icon" type="image/png" sizes="32x32" href="img/fevicon.png">--%>
 
-    <%--   <script>
-        $(document).ready(function () {
-            document.getElementById('pro-image').addEventListener('change', readImage, false);
-
-            $(".preview-images-zone").sortable();
-
-            $(document).on('click', '.image-cancel', function () {
-                let no = $(this).data('no');
-                $(".preview-image.preview-show-" + no).remove();
-            });
-        });
-
-        var num = 4;
-        function readImage() {
-            if (window.File && window.FileList && window.FileReader) {
-                var files = event.target.files; //FileList object
-                var output = $(".preview-images-zone");
-
-                for (let i = 0; i < files.length; i++) {
-                    var file = files[i];
-                    if (!file.type.match('image')) continue;
-
-                    var picReader = new FileReader();
-
-                    picReader.addEventListener('load', function (event) {
-                        var picFile = event.target;
-                        var html = '<div class="preview-image preview-show-' + num + '">' +
-                            '<div class="image-cancel" data-no="' + num + '">x</div>' +
-                            '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
-                            '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">edit</a></div>' +
-                            '</div>';
-
-                        output.append(html);
-                        num = num + 1;
-                    });
-
-                    picReader.readAsDataURL(file);
-                }
-                $("#pro-image").val('');
-            } else {
-                console.log('Browser not support');
-            }
-        }
-    </script>--%>
     <script src="../jquery/jquery-3.2.1.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -76,7 +18,7 @@
                     var file = $(this);
                     var reader = new FileReader();
                     reader.onload = function (e) {
-                        var img = $("<img />");
+                        var img = $("<image />");
                         img.attr("style", "height:150px;width: 150px;");
                         img.attr("src", e.target.result);
                         previewimages.append(img);
@@ -121,36 +63,36 @@
                         <div class="atbdb_content_module_contents">
                             <form action="/">
                                 <div class="form-group">
-                                    <asp:label runat="server" for="title" class="form-label">Title</asp:label>
-                                    <asp:textbox runat="server" id="addtitle" class="form-control" placeholder="Enter Title" maxlength="50"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireTitle" runat="server" errormessage="Required" forecolor="Red" validationgroup="addproperty" controltovalidate="addtitle" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" for="title" class="form-label">Title</asp:Label>
+                                    <asp:TextBox runat="server" ID="addtitle" class="form-control" placeholder="Enter Title" MaxLength="50"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireTitle" runat="server" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" ControlToValidate="addtitle" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group ">
-                                    <asp:label runat="server" text="Street Address" class="form-label"></asp:label>
-                                    <asp:textbox runat="server" id="addStreet" placeholder="Street Address" class="form-control" maxlength="50"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireStreet" runat="server" controltovalidate="addStreet" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" Text="Street Address" class="form-label"></asp:Label>
+                                    <asp:TextBox runat="server" ID="addStreet" placeholder="Street Address" class="form-control" MaxLength="50"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireStreet" runat="server" ControlToValidate="addStreet" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group ">
-                                    <asp:label runat="server" text="City" class="form-label"></asp:label>
-                                    <asp:textbox runat="server" id="addCity" placeholder="City" class="form-control" maxlength="30"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireCity" runat="server" controltovalidate="addCity" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" Text="City" class="form-label"></asp:Label>
+                                    <asp:TextBox runat="server" ID="addCity" placeholder="City" class="form-control" MaxLength="30"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireCity" runat="server" ControlToValidate="addCity" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group">
 
-                                    <asp:label runat="server" text="Country" class="form-label"></asp:label>
+                                    <asp:Label runat="server" Text="Country" class="form-label"></asp:Label>
                                     <div class="input-group">
 
-                                        <asp:dropdownlist id="addCountry" runat="server" appenddatabounditems="True" autopostback="True" class="custom-select">
+                                        <asp:DropDownList ID="addCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="custom-select">
                                             <asp:ListItem Value=""></asp:ListItem>
-                                        </asp:dropdownlist>
+                                        </asp:DropDownList>
                                         <br />
-                                        <asp:requiredfieldvalidator id="requireCountry" runat="server" controltovalidate="addCountry" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                        <asp:RequiredFieldValidator ID="requireCountry" runat="server" ControlToValidate="addCountry" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <asp:label runat="server" text="State" class="form-label"></asp:label>
-                                    <asp:dropdownlist runat="server" id="replacestate" class="custom-select" enable="false"></asp:dropdownlist>
-                                    <asp:dropdownlist runat="server" id="addState" class="custom-select" visible="False">
+                                    <asp:Label runat="server" Text="State" class="form-label"></asp:Label>
+                                    <asp:DropDownList runat="server" ID="replacestate" class="custom-select" enable="false"></asp:DropDownList>
+                                    <asp:DropDownList runat="server" ID="addState" class="custom-select" Visible="False">
                                         <asp:ListItem Value=""></asp:ListItem>
                                         <asp:ListItem Value="AL">AL</asp:ListItem>
                                         <asp:ListItem Value="AK">AK</asp:ListItem>
@@ -203,56 +145,56 @@
                                         <asp:ListItem Value="WV">WV</asp:ListItem>
                                         <asp:ListItem Value="WI">WI</asp:ListItem>
                                         <asp:ListItem Value="WY">WY</asp:ListItem>
-                                    </asp:dropdownlist>
+                                    </asp:DropDownList>
                                 </div>
 
                                 <div class="form-group ">
-                                    <asp:label runat="server" class="form-label " text="Zip"></asp:label>
-                                    <asp:textbox id="addZip" runat="server" placeholder="Zip Code" class="form-control" maxlength="10"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireZip" runat="server" controltovalidate="addZip" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
-                                    <asp:comparevalidator id="CompareZip" runat="server" errormessage="Invalid" text="Invalid" controltovalidate="addZip" display="Dynamic" forecolor="Red" operator="DataTypeCheck" type="Integer"></asp:comparevalidator>
+                                    <asp:Label runat="server" class="form-label " Text="Zip"></asp:Label>
+                                    <asp:TextBox ID="addZip" runat="server" placeholder="Zip Code" class="form-control" MaxLength="10"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireZip" runat="server" ControlToValidate="addZip" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:label runat="server" text="Square Footage of House" class="form-label"></asp:label>
+                                    <asp:Label runat="server" Text="Square Footage of House" class="form-label"></asp:Label>
 
-                                    <asp:textbox id="addSquare" runat="server" class="form-control"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireSquare" runat="server" controltovalidate="addSquare" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:TextBox ID="addSquare" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireSquare" runat="server" ControlToValidate="addSquare" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
 
-                                    <asp:comparevalidator id="Comparesquare" runat="server" controltovalidate="addSquare" display="Dynamic" errormessage="Invalid" forecolor="Red" operator="DataTypeCheck" text="Invalid" type="Integer"></asp:comparevalidator>
+                                    <asp:CompareValidator ID="Comparesquare" runat="server" ControlToValidate="addSquare" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:label runat="server" text="Rent Price/Month" class="form-label"></asp:label>
+                                    <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
                                     <div class="pricing-option-inputs">
 
-                                        <asp:textbox id="addPrice" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:textbox>
-                                        <asp:requiredfieldvalidator id="requirePrice" runat="server" controltovalidate="addPrice" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
-                                        <asp:comparevalidator id="Compareprice" runat="server" controltovalidate="addPrice" display="Dynamic" errormessage="Invalid" forecolor="Red" operator="DataTypeCheck" text="Invalid" type="Integer"></asp:comparevalidator>
+                                        <asp:TextBox ID="addPrice" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="requirePrice" runat="server" ControlToValidate="addPrice" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                        <asp:CompareValidator ID="Compareprice" runat="server" ControlToValidate="addPrice" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <asp:label runat="server" text="Avaliable Bedrooms" class="form-label"></asp:label>
-                                    <asp:dropdownlist id="addBedrooms" runat="server" class="custom-select">
+                                    <asp:Label runat="server" Text="Avaliable Bedrooms" class="form-label"></asp:Label>
+                                    <asp:DropDownList ID="addBedrooms" runat="server" class="custom-select">
                                         <asp:ListItem Value=""></asp:ListItem>
                                         <asp:ListItem Value="1">1</asp:ListItem>
                                         <asp:ListItem Value="2">2</asp:ListItem>
                                         <asp:ListItem Value="3">3</asp:ListItem>
                                         <asp:ListItem Value="4">4</asp:ListItem>
                                         <asp:ListItem Value="5">5</asp:ListItem>
-                                    </asp:dropdownlist>
-                                    <asp:requiredfieldvalidator id="requireBedroom" runat="server" controltovalidate="addBedrooms" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="requireBedroom" runat="server" ControlToValidate="addBedrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group">
-                                    <asp:label runat="server" text="Available Date" class="form-label"></asp:label>
-                                    <asp:textbox id="addstartdate" runat="server" textmode="Date" class="form-control"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requirestart" runat="server" controltovalidate="addstartdate" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
+                                    <asp:TextBox ID="addstartdate" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requirestart" runat="server" ControlToValidate="addstartdate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="form-group">
-                                    <asp:label runat="server" text="End Date" class="form-label"></asp:label>
-                                    <asp:textbox id="addenddate" runat="server" textmode="Date" class="form-control"></asp:textbox>
-                                    <asp:requiredfieldvalidator id="requireend" runat="server" controltovalidate="addenddate" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator>
+                                    <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
+                                    <asp:TextBox ID="addenddate" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="requireend" runat="server" ControlToValidate="addenddate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                         </div>
                         <!-- ends: .form-group -->
@@ -331,42 +273,19 @@
                                     <h4><span class="la la-calendar-check-o"></span>Images</h4>
                                 </div>
                                 <br />
-                                <asp:image id="imgpreview1" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
-                                <asp:image id="imgpreview2" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
-                                <asp:image id="imgpreview3" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
-                                <asp:image id="imgpreview4" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
-                                <asp:image id="imgpreview5" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
-                                <asp:image id="imgpreview6" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
-                                <asp:image id="imgpreview7" runat="server" height="100" width="100" imageurl="" style="border-width: 0px;" visible="False" />
+                                    <br />
+                                    <br />
+                                    <div id="showimage">
+                                        <asp:Image ID="imgpreview" runat="server" Height="150" Width="150" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px;" />
+                                    </div>
+                                <asp:FileUpload ID="FileUpload1" multiple="multiple" runat="server" AllowMultiple="true"/>
+                                   <%-- <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />--%>
                                 <br />
                                 <br />
-                                <asp:button id="Upload" runat="server" text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" onclick="Upload_Click" />
+                                
                             </div>
 
-                            <%--    <input type="file" multiple="multiple" name="File1" id="File1" accept="image/*" />
-    <br /><br />
-    <div id="showimage">
-    </div>
-    <hr />
-    <asp:Button ID="Button2" runat="server" Text="Upload and Save"  OnClick="uploadImages_Click" />
-
-    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>--%>
-                            <%--                            <div class="atbdb_content_module_contents">
-                                <div id="_listing_gallery">
-                                    <div class="add_listing_form_wrapper" id="gallery_upload">
-
-                                        <div class="form-group text-center">
-                                            <!-- image container, which can be manipulated with js -->
-                                            <input type="file" multiple="multiple" name="File1" id ="File1" accept="image/*" />
-                                            <br /><br />
-                                            <div id="showimage"></div>
-                                            <!--  add & remove image links -->
-                                            <asp:Button ID="uploadImages" runat="server" Text="Upload Images" class="btn btn-xs btn-primary m-right-10" OnClick="uploadImages_Click" />
-                                        </div>
-                                    </div>
-                                    <!--ends add_listing_form_wrapper-->
-                                </div>
-                            </div>--%>
+                            
                             <!-- ends: .atbdb_content_module_contents -->
                         </div>
                         <!-- ends: .atbd_content_module -->
@@ -379,95 +298,11 @@
                 <div class="row">
                     <div class="col-lg-12 text-center ">
                         <asp:Button runat="server" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" Text="Post" ValidationGroup="addproperty" ID="post" OnClick="post_Click"></asp:Button>
-                        <asp:button runat="server" text="Cancel" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" id="cancel" onclick="cancel_Click"></asp:button>
-                        <%--<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>--%>
+                        <asp:Button runat="server" Text="Cancel" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" ID="cancel" OnClick="cancel_Click"></asp:Button>
                     </div>
                 </div>
             </div>
 
-          <%--  <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="login_modal_label"><i class="la la-lock"></i>Sign In</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="/" id="login-form">
-                                <input type="text" class="form-control" placeholder="Username or Email" required>
-                                <input type="password" class="form-control" placeholder="Password" required>
-                                <div class="keep_signed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
-                                    <input type="checkbox" class="custom-control-input" name="keep_signed_in" value="1" id="keep_signed_in">
-                                    <label for="keep_signed_in" class="not_empty custom-control-label">Keep me signed in</label>
-                                </div>
-                                <button type="submit" class="btn btn-block btn-lg btn-gradient btn-gradient-two">Sign In</button>
-                            </form>
-                            <div class="form-excerpts">
-                                <ul class="list-unstyled">
-                                    <li>Not a member? <a href="">Sign up</a></li>
-                                    <li><a href="">Recover Password</a></li>
-                                </ul>
-                                <div class="social-login">
-                                    <span>Or connect with</span>
-                                    <p><a href="" class="btn btn-outline-secondary"><i class="fab fa-facebook-f"></i>Facebook</a><a href="" class="btn btn-outline-danger"><i class="fab fa-google-plus-g"></i> Google</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="signup_modal" tabindex="-1" role="dialog" aria-labelledby="signup_modal_label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="signup_modal_label"><i class="la la-lock"></i>Sign Up</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="/" id="signup-form">
-                                <input type="email" class="form-control" placeholder="Email" required>
-                                <input type="password" class="form-control" placeholder="Password" required>
-                                <button type="submit" class="btn btn-block btn-lg btn-gradient btn-gradient-two">Sign Up</button>
-                            </form>
-                            <div class="form-excerpts">
-                                <ul class="list-unstyled">
-                                    <li>Already a member? <a href="">Sign In</a></li>
-                                    <li><a href="">Recover Password</a></li>
-                                </ul>
-                                <div class="social-login">
-                                    <span>Or Signup with</span>
-                                    <p><a href="" class="btn btn-outline-secondary"><i class="fab fa-facebook-f"></i>Facebook</a><a href="" class="btn btn-outline-danger"><i class="fab fa-google-plus-g"></i> Google</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
-            <!-- inject:js-->
-            <script src="vendor_assets/js/jquery/jquery-1.12.3.js"></script>
-            <script src="vendor_assets/js/bootstrap/popper.js"></script>
-            <script src="vendor_assets/js/bootstrap/bootstrap.min.js"></script>
-            <script src="vendor_assets/js/jquery-ui.min.js"></script>
-            <script src="vendor_assets/js/jquery.barrating.min.js"></script>
-            <script src="vendor_assets/js/jquery.counterup.min.js"></script>
-            <script src="vendor_assets/js/jquery.magnific-popup.min.js"></script>
-            <script src="vendor_assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-            <script src="vendor_assets/js/jquery.waypoints.min.js"></script>
-            <script src="vendor_assets/js/masonry.pkgd.min.js"></script>
-            <script src="vendor_assets/js/owl.carousel.min.js"></script>
-            <script src="vendor_assets/js/select2.full.min.js"></script>
-            <script src="vendor_assets/js/slick.min.js"></script>
-            <script src="theme_assets/js/locator.js"></script>
-            <script src="theme_assets/js/main.js"></script>
-            <script src="theme_assets/js/map.js"></script>
-            <!-- endinject-->--%>
-
-                <br />
-                
+            <br />
     </section>
 </asp:Content>
