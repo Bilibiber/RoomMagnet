@@ -130,18 +130,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterConnections.BackColor = System.Drawing.Color.White;
         renterMessage.BackColor = System.Drawing.Color.White;
 
-            int resultCount = 0;
-            renterinfor.Visible = true;
-            rentersearch.Visible = true;
-            rentermymessage.Visible = false;
-            renterconnection.Visible = false;
-            renterpreferences.Visible = false;
-            renterSavedSearch.ForeColor = System.Drawing.Color.Red;
-            renterMessage.ForeColor = System.Drawing.Color.White;
-            renterConnections.ForeColor = System.Drawing.Color.White;
-            renterPreference.ForeColor = System.Drawing.Color.White;
-            rentertohost.ForeColor = System.Drawing.Color.White;
-            renterSetting.ForeColor = System.Drawing.Color.White;
             string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, [Favorites].PropertyID from[Property] INNER JOIN[ImagePath]" +
                 " on[Property].PropertyID = [ImagePath].PropertyID INNER JOIN [Favorites] on[Property].PropertyID = [Favorites].PropertyID WHERE UserID = " + Session["UserID"];
             cn.Open();
