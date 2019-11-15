@@ -82,7 +82,7 @@
                                     <asp:Label runat="server" Text="Country" class="form-label"></asp:Label>
                                     <div class="input-group">
 
-                                        <asp:DropDownList ID="addCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="custom-select">
+                                        <asp:DropDownList ID="addCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="form-control">
                                             <asp:ListItem Value=""></asp:ListItem>
                                         </asp:DropDownList>
                                         <br />
@@ -91,8 +91,8 @@
                                 </div>
                                 <div class="form-group">
                                     <asp:Label runat="server" Text="State" class="form-label"></asp:Label>
-                                    <asp:DropDownList runat="server" ID="replacestate" class="custom-select" enable="false"></asp:DropDownList>
-                                    <asp:DropDownList runat="server" ID="addState" class="custom-select" Visible="False">
+                                    <asp:DropDownList runat="server" ID="replacestate" class="form-control" enable="false"></asp:DropDownList>
+                                    <asp:DropDownList runat="server" ID="addState" class="form-control" Visible="False">
                                         <asp:ListItem Value=""></asp:ListItem>
                                         <asp:ListItem Value="AL">AL</asp:ListItem>
                                         <asp:ListItem Value="AK">AK</asp:ListItem>
@@ -175,7 +175,7 @@
                                 </div>
                                 <div class="form-group">
                                     <asp:Label runat="server" Text="Avaliable Bedrooms" class="form-label"></asp:Label>
-                                    <asp:DropDownList ID="addBedrooms" runat="server" class="custom-select">
+                                    <asp:DropDownList ID="addBedrooms" runat="server" class="form-control">
                                         <asp:ListItem Value=""></asp:ListItem>
                                         <asp:ListItem Value="1">1</asp:ListItem>
                                         <asp:ListItem Value="2">2</asp:ListItem>
