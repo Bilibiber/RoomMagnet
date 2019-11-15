@@ -12,6 +12,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
     ArrayList RatingsPID = new ArrayList();
     protected void Page_Load(object sender, EventArgs e)
     {
+        Property1Space.Visible = false; Property2Space.Visible = false; Property3Space.Visible = false;
         if (!IsPostBack)
         {
             cn.Open();
@@ -67,7 +68,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
             selectuser.Connection = db;
             int userid = Convert.ToInt32(Session["UserID"]);
-            selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description], [DateOfBirth] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getinfor = selectuser.ExecuteReader();
             while (getinfor.Read())
@@ -85,19 +86,20 @@ public partial class WebPages_Renter : System.Web.UI.Page
                 {
                     userDes.Text = getinfor.GetString(3);
                 }
-                if (!getinfor.IsDBNull(4))
-                {
-                    DateTime birth = getinfor.GetDateTime(4);
-                    DateTime now = DateTime.Now;
-                    int age = now.Year - birth.Year;
-                    if (now.Month < birth.Month || (now.Month == birth.Month && now.Day < birth.Day))
-                        age--;
-                    userAge.Text = age.ToString();
-                }
+                //if (!getinfor.IsDBNull(4))
+                //{
+                //    DateTime birth = getinfor.GetDateTime(4);
+                //    DateTime now = DateTime.Now;
+                //    int age = now.Year - birth.Year;
+                //    if (now.Month < birth.Month || (now.Month == birth.Month && now.Day < birth.Day))
+                //        age--;
+                //    userAge.Text = age.ToString();
+                //}
             }
             getinfor.Close();
             db.Close();
         }
+        renterSavedSearch_Click(sender, e);
     }
 
     public static List<string> objcountries()

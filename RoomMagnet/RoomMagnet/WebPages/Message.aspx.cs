@@ -23,7 +23,7 @@ public partial class WebPages_Message : System.Web.UI.Page
     {
         if (Session["SingInEmail"] == null)
         {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
         }
         else
         {
