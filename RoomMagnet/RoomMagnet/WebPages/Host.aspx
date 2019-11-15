@@ -49,7 +49,7 @@
                     <div class="profile-content atbd_content_module">
                         <div class="atbd_content_module__tittle_area about-titles">
                             <div class="atbd_area_title">
-                                <h4 style="font-size: 2em;"><span class="la la-user" style="font-size: 1em; color: black;"></span>My Profile </h4>
+                                <h4 style="font-size: 2em;"><span class="la la-user" style="font-size: 1em; color: black;"></span> My Profile </h4>
                                 <asp:LinkButton ID="editprofile" runat="server" OnClick="editprofile_Click">Edit</asp:LinkButton>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                     <div class="profile-content atbd_content_module">
                         <div class="atbd_content_module__tittle_area about-titles">
                             <div class="atbd_area_title">
-                                <h4 style="font-size: 2em; color: black;"><span class="la la-home" style="font-size: 1em; color: black;">Manage Property</span></h4>
+                                <h4 style="font-size: 2em; color: black;"><span class="la la-home" style="font-size: 1em; color: black;"> Manage Property</span></h4>
                                 <%--<a href="add-listing.html" class="btn btn-primary"><span class="la la-plus"></span> Add</a>--%>
                                 <asp:Button ID="addproperty" runat="server" Text="+Add" class="btn btn-primary" OnClick="addproperty_Click" />
                             </div>
@@ -99,7 +99,7 @@
                     <div class="profile-content atbd_content_module">
                         <div class="atbd_content_module__tittle_area about-titles">
                             <div class="atbd_area_title">
-                                <h4 style="font-size: 2em; color: black;"><span class="la la-users" style="font-size: 1em; color: black">Connections</span></h4>
+                                <h4 style="font-size: 2em; color: black;"><span class="la la-users" style="font-size: 1em; color: black"> Connections</span></h4>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                     <div class="profile-content atbd_content_module">
                         <div class="atbd_content_module__tittle_area about-titles">
                             <div class="atbd_area_title">
-                                <h4 style="font-size: 2em; color: black;"><span class="la la-comments" style="font-size: 1em; color: black">Messages</span></h4>
+                                <h4 style="font-size: 2em; color: black;"><span class="la la-comments" style="font-size: 1em; color: black"> Messages</span></h4>
                             </div>
                         </div>
                     </div>
