@@ -326,6 +326,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         if (Session["Roles"].ToString() == "Renter")
         {
             Response.Redirect("Renter.aspx");
+        }else if(Session["Roles"].ToString() == "Host")
+        {
+            Response.Redirect("Host.aspx");
         }
     }
 
