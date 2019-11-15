@@ -77,13 +77,13 @@
                     </div>
                     <div class="row">
                     </div>
-                    <div id="Property1Space" runat="server" class="col-lg-12">
-                        <div class="atbd_single_listing atbd_listing_list">
-                            <article class="atbd_single_listing_wrapper">
+                    <div id="Property1Space" runat="server">
+                        <div class="atbd_single_listing atbd_listing_list">                    
                                 <figure class="atbd_listing_thumbnail_area">
                                     <div class="atbd_listing_image fill">
 
                                         <asp:ImageButton ID="Property1Image" OnClick="Property1Image_Click" runat="server" CssClass="imgfill" />
+
                                     </div>
                                     <!-- ends: .atbd_listing_image -->
                                 </figure>
@@ -138,7 +138,7 @@
                                 <!-- end .atbd_listing_bottom_content -->
                         </div>
                         <!-- ends: .atbd_listing_info -->
-                        </article>
+                       
                                 <!-- atbd_single_listing_wrapper -->
                     </div>
                 </div>
