@@ -323,10 +323,22 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         MasterUserName.Visible = true;
         MasterUserName.Text = Session["FullName"].ToString();
         MasterPageUserProfileImage.Visible = true;
-        if (Session["Roles"].ToString() == "Renter")
+        string sql = "Select UserRole from Users where UserID=@UserID";
+        string role="";
+        cn.Open();
+        SqlCommand sqlCommand = new SqlCommand(sql, cn);
+        sqlCommand.Parameters.AddWithValue("@UserID", Session["UserID"].ToString());
+        SqlDataReader reader = sqlCommand.ExecuteReader();    
+        if (reader.Read())
+        {
+            role=reader.GetString(0);
+        }
+        reader.Close();
+        if (role== "Renter")
         {
             Response.Redirect("Renter.aspx");
-        }else if(Session["Roles"].ToString() == "Host")
+        }
+        else if(role == "Host")
         {
             Response.Redirect("Host.aspx");
         }
