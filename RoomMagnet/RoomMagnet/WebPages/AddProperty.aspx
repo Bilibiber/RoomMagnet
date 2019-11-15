@@ -184,6 +184,16 @@
                                         <asp:ListItem Value="5">5</asp:ListItem>
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="requireBedroom" runat="server" ControlToValidate="addBedrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                    <asp:Label runat="server" Text="Avaliable Bathrooms" class="form-label"></asp:Label>
+                                    <asp:DropDownList ID="addBathrooms" runat="server" class="custom-select">
+                                        <asp:ListItem Value=""></asp:ListItem>
+                                        <asp:ListItem Value="1">1</asp:ListItem>
+                                        <asp:ListItem Value="2">2</asp:ListItem>
+                                        <asp:ListItem Value="3">3</asp:ListItem>
+                                        <asp:ListItem Value="4">4</asp:ListItem>
+                                        <asp:ListItem Value="5">5</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="requireBathroom" runat="server" ControlToValidate="addBathrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group">
                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
