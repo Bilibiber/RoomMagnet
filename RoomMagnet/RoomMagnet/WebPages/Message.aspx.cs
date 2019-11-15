@@ -10,9 +10,10 @@ using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
-
+using System.Collections;
 public partial class WebPages_Message : System.Web.UI.Page
 {
+    ArrayList[,] Conversations = new ArrayList[int];
     SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     int ReceiverID;
     string SenderID;
@@ -35,19 +36,34 @@ public partial class WebPages_Message : System.Web.UI.Page
         txtmsg.Text = msg;
         Session["ResultPropertyID"] = 1003;
         string PID = Session["ResultPropertyID"].ToString();
-        string sql = "SELECT        Users.FirstName, Users.LastName,Property.HostID FROM Users INNER JOIN Property ON Users.UserID = Property.HostID where Property.PropertyID ="+PID;
-        SqlCommand sqlCommand = new SqlCommand(sql,cn);
-        SqlDataReader dataReader = sqlCommand.ExecuteReader();
-        if (dataReader.Read())
+        if (Session["Roles"].ToString() == "Renter")
         {
-            string fn = dataReader.GetString(0);
-            string ln = dataReader.GetString(1);
-            ReceiverName = fn + " " + ln;
-            ReceiverID = dataReader.GetInt32(2);
+            string sql = "SELECT  Users.FirstName, Users.LastName,Property.HostID FROM Users INNER JOIN Property ON Users.UserID = Property.HostID where Property.PropertyID =" + PID;
+            SqlCommand sqlCommand = new SqlCommand(sql, cn);
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            if (dataReader.Read())
+            {
+                string fn = dataReader.GetString(0);
+                string ln = dataReader.GetString(1);
+                ReceiverName = fn + " " + ln;
+                ReceiverID = dataReader.GetInt32(2);
+            }
+            dataReader.Close();
         }
+        else
+        {
+
+            string sql = "Select [Conversations].ConversationID, max(MessageID) as LatestMessage from Conversations Inner Join [Message] on [Conversations].ConversationID = [Message].ConversationID WHERE senderID= 1000 group by [Conversations].ConversationID";
+            SqlCommand sqlCommand = new SqlCommand(sql, cn);
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            if (dataReader.Read())
+            {
+
+            }
+        
         
         SenderID = Session["UserID"].ToString();
-        dataReader.Close();
+       
 
         
         string sql2 = "Select ConversationID FROM Conversations where SenderID=" + SenderID + "And ReceiverID=" + ReceiverID;
