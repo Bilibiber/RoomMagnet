@@ -32,6 +32,16 @@ public partial class WebPages_RecoverPassword : System.Web.UI.Page
             //generate a 5-diget random number 
             //show up aonther set of div
             string EnteredEmail = RecoverPasswordEnteredEmail.Text;
+            string randomnumber = Randomnumber();
+            ViewState["Number"] = randomnumber;
+            EmailSender emailSender = new EmailSender();
+            string emailbody = "Your Code is :" + randomnumber;
+            emailSender.SendCode(EnteredEmail,emailbody);
+            RecoverPasswordverification.Visible = true;
+            RecoverPasswordverifiTxt.Visible = true;
+            RecoverPasswordverifiButton.Visible = true;
+
+
         }
 
     }
@@ -63,6 +73,27 @@ public partial class WebPages_RecoverPassword : System.Web.UI.Page
         {
             args.IsValid = false;
             RecoverPasswordEnteredEmailCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
+        }
+    }
+    public string Randomnumber ()
+    {
+        Random random = new Random();
+
+        string number = random.Next(1, 9).ToString("D5");
+        return number;
+    }
+
+    protected void RecoverPasswordverifiButton_Click(object sender, EventArgs e)
+    {
+        string Rnumber = RecoverPasswordverifiTxt.Text;
+        if (Rnumber == ViewState["Number"].ToString())
+        {
+            // change password section up
+        }
+        else
+        {
+            ErrorLbl.Visible = true;
+            ErrorLbl.Text = "Code Don't Match";
         }
     }
 }

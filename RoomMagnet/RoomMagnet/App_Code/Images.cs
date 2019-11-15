@@ -4,24 +4,27 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for Image
+/// Summary description for Images
 /// </summary>
 public class Images
 {
     public static Images[] images = new Images[8];
     public static int imageCount = 0;
-    private Byte [] ByteCode;
+    private Byte[] ByteCode;
+
     public Images()
     {
-
         imageCount++;
     }
-    public void setByteCode(Byte [] imageByte)
+
+    public void setByteCode(Byte[] imageByte)
     {
         this.ByteCode = imageByte;
     }
-    public Byte [] getByte()
+
+    public Byte[] getByte()
     {
         return this.ByteCode;
     }
+
 }

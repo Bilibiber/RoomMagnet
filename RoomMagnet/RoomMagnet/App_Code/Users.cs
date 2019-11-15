@@ -13,14 +13,14 @@ public class Users
     private string email;
     private string passWord;
     private string roles;
-    private DateTime birthday;
+    private string AgeRange;
     private string backgroundURL;
     private DateTime lastUpdated;
     private string lastUpdatedBy;
     public static int UserCount = 0;
     public static Users[] UserArray = new Users[1000];
 
-    public Users(string firstName, string LastName, string email, string passWord, string DateofBirth)
+    public Users(string firstName, string LastName, string email, string passWord, string AgeRange)
     {
         string name = firstName + " " + LastName;
         setFirstName(firstName);
@@ -31,8 +31,7 @@ public class Users
         setLastupdated(DateTime.Now);
         setLastUpdatedBy(name);
         UserCount++;
-        DateTime DOB = Convert.ToDateTime(DateofBirth);
-        setBirthday(DOB);
+        setAgeRange(AgeRange);
     }
 
     public void setFirstName(string firstName)
@@ -85,14 +84,14 @@ public class Users
         return this.passWord;
     }
 
-    public void setBirthday(DateTime birthday)
+    public void setAgeRange(string AgeRange)
     {
-        this.birthday = birthday;
+        this.AgeRange = AgeRange;
     }
 
-    public DateTime getBirthday()
+    public string getAgeRange()
     {
-        return this.birthday;
+        return this.AgeRange;
     }
 
     public void setURL(string URL)

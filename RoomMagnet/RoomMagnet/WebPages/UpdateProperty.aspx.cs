@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Text;
-using System.Threading;
 using System.Web;
 using System.Windows.Forms;
+using System.Linq;
+using System.Threading;
+using System.Web.UI.WebControls;
 
 public partial class WebPages_AddProperty : System.Web.UI.Page
 {
@@ -30,6 +30,25 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         {
             addCountry.DataSource = objcountries();
             addCountry.DataBind();
+
+            //select property from database
+            int userid = Convert.ToInt32(Session["UserID"]);
+            cn.Open();
+            selectProperty.Items.Clear();
+            selectid.Items.Clear();
+            System.Data.SqlClient.SqlCommand selectpid = new System.Data.SqlClient.SqlCommand();
+            selectpid.Connection = cn;
+            selectpid.CommandText = "SELECT [PropertyID],[StreetAddress],[City],[HomeState],[Country] FROM [dbo].[Property] where [HostID]=@hostid";
+            selectpid.Parameters.Add(new SqlParameter("@hostid", userid));
+
+            SqlDataReader getpid = selectpid.ExecuteReader();
+            while (getpid.Read())
+            {
+                selectProperty.Items.Add(new ListItem(getpid[0].ToString() + getpid[1].ToString()+" "+ getpid[2].ToString() +" "+ getpid[3].ToString()+" "+ getpid[4].ToString()));
+                selectid.Items.Add(new ListItem(getpid[0].ToString()));
+            }
+            getpid.Close();
+            cn.Close();
         }
 
         if (checkOther.Checked)
@@ -39,14 +58,12 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
         if (addCountry.Text == "United States")
         {
-            addState.Visible = true;
-            replacestate.Visible = false;
+            addState.Enabled = true;
         }
         else
         {
             addState.SelectedIndex = 0;
-            addState.Visible = false;
-            replacestate.Visible = true;
+            addState.Enabled = false;
         }
     }
 
@@ -76,8 +93,8 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     {
         cn.Open();
         int userid = Convert.ToInt32(Session["UserID"]);
-        string FullName = Session["FullName"].ToString();
-
+        //string FullName = Session["FullName"].ToString();
+        string FullName = "";
         string insert = "INSERT INTO [dbo].[Property]([Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage],[RentPrice],[AvailableBedrooms]," +
             "[StartDate],[EndDate],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country,@ZipCode, @SquareFootage, @RentPrice," +
             " @AvailableBedrooms, @StartDate, @EndDate,@LastUpdated, @LastUpdatedBy,@HostID)";
@@ -129,66 +146,102 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         insertTo.Parameters.AddWithValue("@WiFi", checkspeentrance.Checked ? 'Y' : 'N');
         insertTo.Parameters.AddWithValue("@TV", checkTV.Checked ? 'Y' : 'N');
         insertTo.Parameters.AddWithValue("@SeparateBathroom", checkspebath.Checked ? 'Y' : 'N');
-        insertTo.Parameters.AddWithValue("@Other", checkOther.Checked ? othertextbox.Text : "");
+        insertTo.Parameters.AddWithValue("@Other", checkspeentrance.Checked ? othertextbox.Text : "");
         insertTo.ExecuteNonQuery();
 
-        //upload images
-        foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
-        {
-            string filename = Path.GetFileName(postedFile.FileName);
-            string contentType = postedFile.ContentType;
-            using (Stream fs = postedFile.InputStream)
-            {
-                using (BinaryReader br = new BinaryReader(fs))
-                {
-                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                    imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytes);
-                    System.Data.SqlClient.SqlCommand picInsert = new System.Data.SqlClient.SqlCommand();
-                    picInsert.Connection = cn;
-                    picInsert.CommandText = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
-                    picInsert.Parameters.AddWithValue("@PropertyID", pid);
-                    picInsert.Parameters.AddWithValue("@ImagePath", bytes);
-                    picInsert.ExecuteNonQuery();
-
-                }
-            }
-        }
-        Response.Redirect(Request.Url.AbsoluteUri);
+        //string picInsert = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
+        //for (int i = 0; i < Image.images.Length; i++)
+        //{
+        //    if (Image.images[i] != null)
+        //    {
+        //        SqlCommand picInsertTo = new SqlCommand(picInsert, cn);
+        //        picInsertTo.Parameters.AddWithValue("@PropertyID", pid);
+        //        picInsertTo.Parameters.AddWithValue("@ImagePath", Image.images[i].getByte());
+        //        picInsertTo.ExecuteNonQuery();
+        //        Image.images[i] = null;
+        //    }
+        //}
         cn.Close();
+
+
     }
 
-   
-   
+    protected void testimage_Click(object sender, EventArgs e)
+    {
+    }
 
 
-    //protected void Upload_Click(object sender, EventArgs e)
+    //protected void Button1_Click(object sender, EventArgs e)
     //{
-    //    foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
+    //    string filepath = Server.MapPath("\\Upload");
+    //    HttpFileCollection uploadedFiles = Request.Files;
+    //    string fileNames = String.Empty;
+    //    string filePaths = String.Empty;
+
+    //    for (int i = 0; i < uploadedFiles.Count; i++)
     //    {
-    //        string filename = Path.GetFileName(postedFile.FileName);
-    //        string contentType = postedFile.ContentType;
-    //        using (Stream fs = postedFile.InputStream)
+    //        HttpPostedFile userPostedFile = uploadedFiles[i];
+    //        try
     //        {
-    //            using (BinaryReader br = new BinaryReader(fs))
+    //            if (userPostedFile.ContentLength > 0)
     //            {
-    //                byte[] bytes = br.ReadBytes((Int32)fs.Length);
-
-    //                cn.Open();
-    //                System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
-    //                updateuser.Connection = cn;
-    //                updateuser.CommandText = "INSERT INTO [dbo].[testpath] ([path]) VALUES (@image)";
-
-    //                updateuser.Parameters.Add(new SqlParameter("@image", bytes));
-    //                updateuser.ExecuteNonQuery();
-
-    //                cn.Close();
-    //                Label1.Text = bytes.ToString();
+    //                userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
+    //                fileNames += userPostedFile.FileName + " ";
+    //                filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
     //            }
     //        }
+    //        catch (Exception)
+    //        {
+    //            Label4.Text = "An unexpected error has occurred";
+    //        }
     //    }
-    //    Response.Redirect(Request.Url.AbsoluteUri);
-
     //}
+    //string imgLocation = "";
 
-    
+    protected void UploadButton_Click(object sender, EventArgs e)
+    {
+        //Thread t = new Thread((ThreadStart)(() =>
+        //{
+        //    OpenFileDialog opendlg = new OpenFileDialog();
+        //    //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
+        //    if (opendlg.ShowDialog() == DialogResult.OK)
+        //    {
+        //        imgLocation = opendlg.FileName.ToString();
+        //    }
+        //    byte[] images = null;
+        //    FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
+        //    BinaryReader brs = new BinaryReader(stream);
+        //    images = brs.ReadBytes((int)stream.Length);
+        //    Image newImage = new Image();
+        //    newImage.setByteCode(images);
+
+        //    Image.images[Image.imageCount - 1] = newImage;
+
+        //}));
+        //t.SetApartmentState(ApartmentState.STA);
+        //t.Start();
+        //t.Join();
+    }
+
+
+    protected void selectProperty_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        int index = selectProperty.SelectedIndex;
+        selectid.SelectedIndex = index;
+        int pid = Int32.Parse(selectid.Text);
+        cn.Open();
+        string select = "SELECT [Title],[StreetAddress],[City],[HomeState],[Country],[ZipCode],[SquareFootage]," +
+            "[AvailableBedrooms],[RentPrice],[StartDate],[EndDate],[HostID],[LastUpdated],[LastUpdatedBy] FROM " +
+            "[dbo].[Property] where propertyid = @pid";
+        SqlCommand selectproperty = new SqlCommand(select, cn);
+        selectproperty.Parameters.AddWithValue("@PropertyID", pid);
+        SqlDataReader getpid = selectproperty.ExecuteReader();
+
+        while (getpid.Read())
+        {
+            addtitle.Text = getpid.GetString(0);
+        }
+        getpid.Close();
+        cn.Close();
+    }
 }
