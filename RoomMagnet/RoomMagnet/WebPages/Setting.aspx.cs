@@ -39,11 +39,11 @@ public partial class WebPages_Setting : System.Web.UI.Page
                         imgpreview.ImageUrl = "http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg";
                     }
 
-                    
+
                 }
                 else
                 {
-                    
+
                 }
             }
             getimg.Close();
@@ -229,14 +229,18 @@ public partial class WebPages_Setting : System.Web.UI.Page
         {
             db.Open();
             byte[] sessionimg = (byte[])Session["image"];
-            System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
-            updateuser.Connection = db;
-            int userid = Convert.ToInt32(Session["UserID"]);
-            updateuser.CommandText = "UPDATE [dbo].[Users] SET [ImagePath] = @image  WHERE [UserID] = @UserID";
+            if (sessionimg != null)
+            {
+                System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
+                updateuser.Connection = db;
+                int userid = Convert.ToInt32(Session["UserID"]);
+                updateuser.CommandText = "UPDATE [dbo].[Users] SET [ImagePath] = @image  WHERE [UserID] = @UserID";
 
-            updateuser.Parameters.Add(new SqlParameter("@image", sessionimg));
-            updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
-            updateuser.ExecuteNonQuery();
+                updateuser.Parameters.Add(new SqlParameter("@image", sessionimg));
+                updateuser.Parameters.Add(new SqlParameter("@UserID", userid));
+                updateuser.ExecuteNonQuery();
+            }
+            
 
             db.Close();
         }

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Web;
 using System.Windows.Forms;
@@ -130,138 +132,63 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         insertTo.Parameters.AddWithValue("@Other", checkOther.Checked ? othertextbox.Text : "");
         insertTo.ExecuteNonQuery();
 
-        //string picInsert = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
-        //for (int i = 0; i < Images.images.Length; i++)
-        //{
-        //    if (Images.images[i] != null)
-        //    {
-        //        SqlCommand picInsertTo = new SqlCommand(picInsert, cn);
-        //        picInsertTo.Parameters.AddWithValue("@PropertyID", pid);
-        //        picInsertTo.Parameters.AddWithValue("@ImagePath", Images.images[i].getByte());
-        //        picInsertTo.ExecuteNonQuery();
-        //        Images.images[i] = null;
-        //    }
-        //}
+        //upload images
+        foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
+        {
+            string filename = Path.GetFileName(postedFile.FileName);
+            string contentType = postedFile.ContentType;
+            using (Stream fs = postedFile.InputStream)
+            {
+                using (BinaryReader br = new BinaryReader(fs))
+                {
+                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                    imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytes);
+                    System.Data.SqlClient.SqlCommand picInsert = new System.Data.SqlClient.SqlCommand();
+                    picInsert.Connection = cn;
+                    picInsert.CommandText = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
+                    picInsert.Parameters.AddWithValue("@PropertyID", pid);
+                    picInsert.Parameters.AddWithValue("@ImagePath", bytes);
+                    picInsert.ExecuteNonQuery();
+
+                }
+            }
+        }
+        Response.Redirect(Request.Url.AbsoluteUri);
         cn.Close();
     }
 
-    //protected void Button1_Click(object sender, EventArgs e)
-    //{
-    //    string filepath = Server.MapPath("\\Upload");
-    //    HttpFileCollection uploadedFiles = Request.Files;
-    //    string fileNames = String.Empty;
-    //    string filePaths = String.Empty;
+   
+   
 
-    //    for (int i = 0; i < uploadedFiles.Count; i++)
+
+    //protected void Upload_Click(object sender, EventArgs e)
+    //{
+    //    foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
     //    {
-    //        HttpPostedFile userPostedFile = uploadedFiles[i];
-    //        try
+    //        string filename = Path.GetFileName(postedFile.FileName);
+    //        string contentType = postedFile.ContentType;
+    //        using (Stream fs = postedFile.InputStream)
     //        {
-    //            if (userPostedFile.ContentLength > 0)
+    //            using (BinaryReader br = new BinaryReader(fs))
     //            {
-    //                userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
-    //                fileNames += userPostedFile.FileName + " ";
-    //                filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
+    //                byte[] bytes = br.ReadBytes((Int32)fs.Length);
+
+    //                cn.Open();
+    //                System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
+    //                updateuser.Connection = cn;
+    //                updateuser.CommandText = "INSERT INTO [dbo].[testpath] ([path]) VALUES (@image)";
+
+    //                updateuser.Parameters.Add(new SqlParameter("@image", bytes));
+    //                updateuser.ExecuteNonQuery();
+
+    //                cn.Close();
+    //                Label1.Text = bytes.ToString();
     //            }
     //        }
-    //        catch (Exception)
-    //        {
-    //        }
     //    }
+    //    Response.Redirect(Request.Url.AbsoluteUri);
+
     //}
 
-    //private string imgLocation = "";
-
-    protected void Upload_Click(object sender, EventArgs e)
-    {
-        string imgLocation = "";
-
-        Thread t = new Thread((ThreadStart)(() =>
-        {
-            OpenFileDialog opendlg = new OpenFileDialog();
-            opendlg.Multiselect = true;
-            //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
-            if (opendlg.ShowDialog() == DialogResult.OK)
-            {
-                imgLocation = opendlg.FileName.ToString();
-            }
-            byte[] images = null;
-            if (imgLocation != "")
-            {
-                FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader brs = new BinaryReader(stream);
-                images = brs.ReadBytes((int)stream.Length);
-                Session["image"] = images;
-
-                imgpreview1.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
-                imgpreview1.Visible = true;
-            }
-        }));
-
-        // Run your code from a thread that joins the STA Thread
-        t.SetApartmentState(ApartmentState.STA);
-        t.Start();
-        t.Join();
-    }
-
-    protected void uploadImages_Click(object sender, EventArgs e)
-    {
-        //Thread t = new Thread((ThreadStart)(() =>
-        //{
-        //    OpenFileDialog opendlg = new OpenFileDialog();
-        //    opendlg.Multiselect = true;
-        //    //opendlg.Filter = "png files(*.png)|*.png|jpg files(*.jpg)|*.jpg|All files(*.*)";
-        //    if (opendlg.ShowDialog() == DialogResult.OK)
-        //    {
-        //        imgLocation = opendlg.FileName.ToString();
-        //    }
-        //    byte[] images = null;
-        //    FileStream stream = new FileStream(imgLocation, FileMode.Open, FileAccess.Read);
-        //    BinaryReader brs = new BinaryReader(stream);
-        //    images = brs.ReadBytes((int)stream.Length);
-        //    Images newImage = new Images();
-        //    newImage.setByteCode(images);
-
-        //    Images.images[Images.imageCount - 1] = newImage;
-        //}));
-        //t.SetApartmentState(ApartmentState.STA);
-        //t.Start();
-        //t.Join();
-
-        //string filepath = Server.MapPath("\\Upload");
-        //HttpFileCollection uploadedFiles = Request.Files;
-        //string fileNames = String.Empty;
-        //string filePaths = String.Empty;
-
-        //for (int i = 0; i < uploadedFiles.Count; i++)
-        //{
-        //    HttpPostedFile userPostedFile = uploadedFiles[i];
-        //    try
-        //    {
-        //        if (userPostedFile.ContentLength > 0)
-        //        {
-        //            userPostedFile.SaveAs(filepath + "\\" + Path.GetFileName(userPostedFile.FileName));
-        //            fileNames += userPostedFile.FileName + " ";
-        //            filePaths += filepath + "\\" + Path.GetFileName(userPostedFile.FileName) + " ";
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
-
-        //for (int i = 0; i < Request.Files.Count; i++)
-        //{
-        //    HttpPostedFile file = Request.Files[i];
-        //    if (file.ContentLength > 0)
-        //    {
-        //        string fname = Path.GetFileName(file.FileName);
-        //        file.SaveAs(Server.MapPath(Path.Combine("~/SavedImages/", fname)));
-
-        //    }
-        //}
-        //Label1.Text = Request.Files.Count + " Images Has Been Saved Successfully   " + Request.Files.Count;
-
-    }
-
+    
 }

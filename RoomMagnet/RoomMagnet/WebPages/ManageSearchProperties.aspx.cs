@@ -136,19 +136,15 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
                     lastUpdatedBy = reader.GetString(25);
                     rating = reader.GetInt32(26);
 
-
                 }
 
-                //Titletxt.text = Title;
-
-
-                //do this for all amenities and make panel to display in aspx
-                //if (airConditioning == "Y")
-                //{
-                //    airConditioningLbl.Text = "Air Conditioning";
-                //    airConditioningLbl.Visible = true;
-
-                //}
+                string StartDate = startDateLbl.Text;
+                string EndDate = endDateLbl.Text;
+                string AvailableBathrooms = availableBathroomsLbl.Text;
+                string Descriptions = descriptionsLbl.Text;
+                string NumStars = numStarsLbl.Text;
+                string LastUpdated = lastUpdatedLbl.Text;
+                string Rating = ratingLbl.Text;
 
 
 
