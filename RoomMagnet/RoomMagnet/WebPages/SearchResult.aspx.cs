@@ -11,7 +11,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 {
     private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
 
-    private int resultCount;
+    private int resultCount = 0;
 
     private string OrderBy = String.Empty;
     private ArrayList RatingsPID = new ArrayList();
