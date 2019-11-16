@@ -6,6 +6,10 @@ var chart1;
 
 var click = false;
 
+var housetitle;
+
+var count=0;
+
 function initMap() {
     if (click === false) {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -45,13 +49,15 @@ function addressmap(response) {
     var Jsonaddress = dataTable1.getDistinctValues(0);
     var cities = dataTable1.getValue(0, 1);
     var stateProvince = dataTable1.getValue(0, 2);
+    var country = dataTable1.getValue(0, 3);
     var JsonZipCode = dataTable1.getValue(0, 4);
-
     var geocoder = new google.maps.Geocoder();
+   
     for (var i = 0; i < Jsonaddress.length; i++) {
         var newaddress = Jsonaddress[i] + "," + cities + "," + stateProvince + "," + JsonZipCode;
         geocoder.geocode({ 'address': newaddress }, onGeocodeResponse);
     }
+    
 }
 function onGeocodeResponse(response, status) {
     // the Geocode service has sent its response. We can now use it for the map
@@ -60,9 +66,10 @@ function onGeocodeResponse(response, status) {
         map.setCenter(response[0].geometry.location);
 
         // set up the store names for the city to display in marker tool tip
-        var storesInCity = "\n";
-        for (var i = 0; i < dataTable1.getNumberOfRows(); i++) {
-            var Title = dataTable1.getValue[i]
+        count++;
+        while (count < dataTable1.getNumberOfRows()) {
+            housetitle = dataTable1.getValue(count, 5);
+            break;
         }
 
         var image = {
@@ -78,8 +85,7 @@ function onGeocodeResponse(response, status) {
             position: response[0].geometry.location,
             animation: google.maps.Animation.DROP,
             icon: image,
-            title: 'Property is near this neighborhood'
-            
+            title: housetitle + "\n" + "Property is near this "
         });
         marker.addListener('click', toggleBounce);
     }
