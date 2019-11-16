@@ -13,7 +13,7 @@ using System.Configuration;
 using System.Collections;
 public partial class WebPages_Message : System.Web.UI.Page
 {
-    ArrayList[,] Conversations = new ArrayList[int];
+    
     SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     int ReceiverID;
     string SenderID;
@@ -52,6 +52,13 @@ public partial class WebPages_Message : System.Web.UI.Page
         }
         else
         {
+            for (int i = 0; i < Conversation.ConversationCount; i++)
+            {
+                if(Convert.ToInt32(Session["UserID"].ToString()) == Conversation.conversations[i].getRecieverID())
+                {
+                    string sql = "Select SenderID, max(MessageID), messageContent "
+                }
+            }
 
             string sql = "Select [Conversations].ConversationID, max(MessageID) as LatestMessage from Conversations Inner Join [Message] on [Conversations].ConversationID = [Message].ConversationID WHERE senderID= 1000 group by [Conversations].ConversationID";
             SqlCommand sqlCommand = new SqlCommand(sql, cn);
@@ -60,99 +67,108 @@ public partial class WebPages_Message : System.Web.UI.Page
             {
 
             }
-        
-        
-        SenderID = Session["UserID"].ToString();
-       
 
-        
-        string sql2 = "Select ConversationID FROM Conversations where SenderID=" + SenderID + "And ReceiverID=" + ReceiverID;
-        SqlCommand sqlCommand2 = new SqlCommand(sql2,cn);
-        SqlDataReader reader = sqlCommand2.ExecuteReader();
-        if (reader.Read())
-        {
-            OldConversationID = reader.GetInt32(0);
-        }
-        else
-        {
-            reader.Close();
-            string sql3 = "Insert into Conversations values (@SenderId,@ReceiverID)";
-            SqlCommand sqlCommand3 = new SqlCommand(sql3,cn);
-            sqlCommand3.Parameters.AddWithValue("@SenderId", SenderID);
-            sqlCommand3.Parameters.AddWithValue("@ReceiverID", ReceiverID);
-            sqlCommand3.ExecuteNonQuery();
-            //after instering finds the new conversation ID 
 
-            string sql4 = "Select ConversationID FROM Conversations where SenderID = " + SenderID + " AND ReceiverID = " + ReceiverID;
-            SqlCommand sqlCommand4 = new SqlCommand(sql4, cn);
-            SqlDataReader reader2 = sqlCommand4.ExecuteReader();
-            if (reader2.Read())
+            SenderID = Session["UserID"].ToString();
+
+
+
+            string sql2 = "Select ConversationID FROM Conversations where SenderID=" + SenderID + "And ReceiverID=" + ReceiverID;
+            SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
+            SqlDataReader reader = sqlCommand2.ExecuteReader();
+            if (reader.Read())
             {
-                NewConversationID = reader2.GetInt32(0);
-            }
-            reader2.Close();
-
-        }
-        reader.Close();
-        if (OldConversationID != 0)
-        {
-            string sql5 = "Select MessageContent from Message where ConversationID=" + OldConversationID;
-            SqlCommand sqlCommand5 = new SqlCommand(sql5, cn);
-            SqlDataReader reader3 = sqlCommand5.ExecuteReader();
-            if (reader3.HasRows)
-            {
-                while (reader3.Read())
-                {
-                    txtmsg.Text = Application["message"]+reader3.GetString(0)+ Environment.NewLine;
-                }
-                reader3.NextResult();
-            }
-            reader3.Close();
-        }
-        cn.Close();
-    }
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-       
-        string Sendername = Session["FullName"].ToString();
-        string message = txtsend.Text;
-        string my = Sendername + ":" +message;
-
-        
-        txtsend.Text = "";
-        
-
-     
-            cn.Open();
-            if (NewConversationID == 0)
-            {
-                string sql = "Insert into Message(ConversationID,MessageContent,LastUpdated,LastUpdatedBy) values (@ConversationID,@MessageContent,@LastUpdated,@LastUpdatedBy)";
-                SqlCommand command = new SqlCommand(sql, cn);
-                command.Parameters.AddWithValue("@ConversationID", OldConversationID);
-                command.Parameters.AddWithValue("@MessageContent", my);
-                command.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
-                command.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
-            command.ExecuteNonQuery();
-
-
+                OldConversationID = reader.GetInt32(0);
             }
             else
             {
-                string sql2 = "Insert into Message(ConversationID,MessageContent,LastUpdated,LastUpdatedBy) values (@ConversationID,@MessageContent,@LastUpdated,@LastUpdatedBy)";
-                SqlCommand command2 = new SqlCommand(sql2, cn);
-                command2.Parameters.AddWithValue("@ConversationID", NewConversationID);
-                command2.Parameters.AddWithValue("@MessageContent", my);
-                command2.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
-                command2.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
-                NewConversationID = 0;
-            command2.ExecuteNonQuery();
-            }
-        cn.Close();
-    
+                reader.Close();
+                string sql3 = "Insert into Conversations values (@SenderId,@ReceiverID)";
+                SqlCommand sqlCommand3 = new SqlCommand(sql3, cn);
+                sqlCommand3.Parameters.AddWithValue("@SenderId", SenderID);
+                sqlCommand3.Parameters.AddWithValue("@ReceiverID", ReceiverID);
+                sqlCommand3.ExecuteNonQuery();
+                //after instering finds the new conversation ID 
+                Conversation newConvo = new Conversation( Int32.Parse(SenderID), ReceiverID);
+                Conversation.conversations[Conversation.ConversationCount-1] = newConvo;
+                
 
-       
-        Response.Redirect("Message.aspx");
+                string sql4 = "Select ConversationID FROM Conversations where SenderID = " + SenderID + " AND ReceiverID = " + ReceiverID;
+                SqlCommand sqlCommand4 = new SqlCommand(sql4, cn);
+                SqlDataReader reader2 = sqlCommand4.ExecuteReader();
+                if (reader2.Read())
+                {
+                    NewConversationID = reader2.GetInt32(0);
+                    newConvo.setConversationID(NewConversationID);
+                }
+                reader2.Close();
+
+            }
+            reader.Close();
+            if (OldConversationID != 0)
+            {
+                string sql5 = "Select MessageContent from Message where ConversationID=" + OldConversationID;
+                SqlCommand sqlCommand5 = new SqlCommand(sql5, cn);
+                SqlDataReader reader3 = sqlCommand5.ExecuteReader();
+                if (reader3.HasRows)
+                {
+                    while (reader3.Read())
+                    {
+                        txtmsg.Text = Application["message"] + reader3.GetString(0) + Environment.NewLine;
+                    }
+                    reader3.NextResult();
+                }
+                reader3.Close();
+            }
+            cn.Close();
+        }
     }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+        string Sendername = Session["FullName"].ToString();
+        string message = txtsend.Text;
+        string my = Sendername + ":" + message;
+        string sql4 = "";
+
+        txtsend.Text = "";
+
+
+
+        cn.Open();
+        if (NewConversationID == 0)
+        {
+            string sql = "Insert into Message(ConversationID,MessageContent,LastUpdated,LastUpdatedBy) values (@ConversationID,@MessageContent,@LastUpdated,@LastUpdatedBy)";
+            SqlCommand command = new SqlCommand(sql, cn);
+            command.Parameters.AddWithValue("@ConversationID", OldConversationID);
+            command.Parameters.AddWithValue("@MessageContent", my);
+            command.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
+            command.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
+            command.ExecuteNonQuery();
+            sql4 = "Select MessageID from Message WHERE ConversationID= " + OldConversationID + "AND MessageContent= " + my + " AND LastUpdatedBy= " + Sendername;
+
+        }
+        else
+        {
+            string sql2 = "Insert into Message(ConversationID,MessageContent,LastUpdated,LastUpdatedBy) values (@ConversationID,@MessageContent,@LastUpdated,@LastUpdatedBy)";
+            SqlCommand command2 = new SqlCommand(sql2, cn);
+            command2.Parameters.AddWithValue("@ConversationID", NewConversationID);
+            command2.Parameters.AddWithValue("@MessageContent", my);
+            command2.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
+            command2.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
+            NewConversationID = 0;
+            command2.ExecuteNonQuery();
+            sql4 = "Select MessageID from Message WHERE ConversationID= " + NewConversationID + " AND MessageContent= " + my + " AND LastUpdatedBy= " + Sendername;
+        }
+        
+        
+            cn.Close();
+
+
+
+            Response.Redirect("Message.aspx");
+        }
+    
     protected void Clear_Click(object sender, EventArgs e)
     {
         Application["message"] = "";
