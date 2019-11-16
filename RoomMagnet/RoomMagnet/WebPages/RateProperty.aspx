@@ -19,5 +19,6 @@
                 <asp:Button ID="RatingSubmit" runat="server" Text="Submit" CssClass="btn btn-primary"/>
             </div>
         <hr>
+
     </div>
 </asp:Content>
