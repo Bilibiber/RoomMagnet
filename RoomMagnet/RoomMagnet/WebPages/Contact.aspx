@@ -1,27 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="WebPages_Contact" %>
 
- 
-
-<asp:Content ID="Content1" ContentPlaceHolderID="Title" Runat="Server">
-
-    Contact Us
-
- 
-
- 
-
-</asp:Content>
-
+<asp:Content ID="Content1" ContentPlaceHolderID="Title" Runat="Server"> Contact Us </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
 
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
+    
+    <!DOCTYPE html>
+<html>
 
+
+</html>
+    
+   
     <!DOCTYPE html>
 
 <html lang="en">
-
+    
+ 
+ 
  
 
 <head>
@@ -108,7 +106,7 @@
 
         </div><!-- ends: .breadcrumb-wrapper -->
 
- 
+  
 
  
 
@@ -119,6 +117,12 @@
         <div class="container">
 
             <div class="row">
+                  <iframe
+  width="450"
+  height="250"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/search?key=AIzaSyADjKK8z95sGvpp0LSMuI8nAUNbK5FCJYo&q=Richmond" allowfullscreen>
+</iframe>
 
                 <div class="col-lg-8">
 
@@ -383,5 +387,4 @@
  
 
 </html>
-
 </asp:Content>

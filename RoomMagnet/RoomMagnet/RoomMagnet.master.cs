@@ -47,9 +47,9 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         //EmailSender email = new EmailSender();
         //email.SendWelcomeMail(MasterPageEmail.Text);
         //Not working in showker Lab
-        if (SignUpEmailCustomValidator.IsValid)
+        if (SignUpEmailCustomValidator.IsValid && CustomValidator1.IsValid)
         {
-            Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageBirthday.Text);
+            Users users = new Users(MasterPageFirstName.Text, MasterPageLastName.Text, MasterPageEmail.Text, MasterPagePassword.Text, MasterPageAgeRangeDropDownList.SelectedValue);
 
             string Welcomemailstring = "Welcome to RoomMagnet!";
 
@@ -65,10 +65,11 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 {
                     cn.Open();
                 }
-                string Sql = "insert into Users (FirstName,LastName,Email,Password,DateOfBirth,UserRole,Verified,SignUpDate,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@DateOfBirth,@UserRole,@Verified,@SignUpDate,@LastUpdated,@LastUpdatedBy)";
+                string Sql = "insert into Users (FirstName,LastName,Email,Password,AgeRange,UserRole,Verified,SignUpDate,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@AgeRange,@UserRole,@Verified,@SignUpDate,@LastUpdated,@LastUpdatedBy)";
                 SqlCommand sqlCommand = new SqlCommand(Sql, cn);
                 string role = "Renter";
                 string verified = "Unverified";
+                
                 sqlCommand.Parameters.AddRange(
                     new SqlParameter[]
                     {
@@ -76,7 +77,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     new SqlParameter("@LastName",users.getLastName()),
                     new SqlParameter("@Email",users.getEmail()),
                     new SqlParameter("@Password",HashedPassword),
-                    new SqlParameter("@DateOfBirth",users.getBirthday()),
+                    new SqlParameter("@AgeRange",users.getAgeRange()),
                     new SqlParameter("@LastUpdated",users.getLastUpdated()),
                     new SqlParameter("@LastUpdatedBy",users.getLastUpdatedBy()),
                     new SqlParameter("@SignUpDate",DateTime.Now),
@@ -86,7 +87,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 sqlCommand.ExecuteNonQuery();
                 cn.Close();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openNotificationModal();", true);
-                MasterPageBirthday.Text = string.Empty;
+                MasterPageAgeRangeDropDownList.SelectedIndex = 0;
                 MasterPageComfirmPassword.Text = string.Empty;
                 MasterPageEmail.Text = string.Empty;
                 MasterPageFirstName.Text = string.Empty;
@@ -173,8 +174,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 if (dataReader.Read())
                 {
                     Session["UserID"] = dataReader.GetInt32(0);
-                    Session["FullName"] = dataReader.GetString(1) + " " + dataReader.GetString(2);
-                    //Session["ImagePath"] = dataReader.GetString(3);
+                    Session["FullName"] = dataReader.GetString(1) + " " + dataReader.GetString(2); 
                     Session["Roles"] = dataReader.GetString(4);
                     Session["Verified"] = dataReader.GetString(5);
                 }
@@ -194,6 +194,41 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     {
         MasterUserName.Visible = true;
         MasterUserName.Text = Session["FullName"].ToString();
+        cn.Open();
+        string SqlGetUserInfos = "SELECT ImagePath FROM Users where Users.Email =@Email";
+        SqlCommand Finder = new SqlCommand(SqlGetUserInfos, cn);
+        Finder.Parameters.AddWithValue("@Email", Session["SignInEmail"]);
+        SqlDataReader dataReader = Finder.ExecuteReader();
+        if (dataReader.HasRows)
+        {
+            if (dataReader.Read())
+            {
+                if (dataReader[0].ToString() != "NULL")
+                {
+
+                    if (!Convert.IsDBNull(dataReader[0]))
+                    {
+                        byte[] img = (byte[])dataReader[0];
+                        Session["ImagePath"] = dataReader[0].ToString();
+                        MasterPageUserProfileImage.ImageUrl = "data:image;base64," + Convert.ToBase64String(img);
+                    }
+                    else
+                    {
+                        MasterPageUserProfileImage.ImageUrl = "~/img/40x40.png";
+                    }
+
+
+
+                }
+                else
+                {
+                    MasterPageUserProfileImage.ImageUrl = "~/img/mason-user.png";
+                }
+
+            }
+        }
+        dataReader.Close();
+        cn.Close();
         MasterPageUserProfileImage.Visible = true;
         MasterPageSignUp.Visible = false;
         MasterPageLogIn.Visible = false;
@@ -241,7 +276,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         MasterPageFirstName.Text = userinfo.given_name;
         MasterPageLastName.Text = userinfo.family_name;
         MasterPageEmail.Text = userinfo.email;
-        MasterPageBirthday.Text = userinfo.birthday;
+        
         //a
     }
 
@@ -288,7 +323,25 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         MasterUserName.Visible = true;
         MasterUserName.Text = Session["FullName"].ToString();
         MasterPageUserProfileImage.Visible = true;
-        Response.Redirect("Renter.aspx");
+        string sql = "Select UserRole from Users where UserID=@UserID";
+        string role="";
+        cn.Open();
+        SqlCommand sqlCommand = new SqlCommand(sql, cn);
+        sqlCommand.Parameters.AddWithValue("@UserID", Session["UserID"].ToString());
+        SqlDataReader reader = sqlCommand.ExecuteReader();    
+        if (reader.Read())
+        {
+            role=reader.GetString(0);
+        }
+        reader.Close();
+        if (role== "Renter")
+        {
+            Response.Redirect("Renter.aspx");
+        }
+        else if(role == "Host")
+        {
+            Response.Redirect("Host.aspx");
+        }
     }
 
     protected void GotoSetting_Click(object sender, EventArgs e)
@@ -306,5 +359,17 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("Home.aspx");
+    }
+
+    protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+    {
+        if (MasterPageAgeRangeDropDownList.SelectedIndex == 0)
+        {
+            args.IsValid = false;
+        }
+        else
+        {
+            args.IsValid = true;
+        }
     }
 }
