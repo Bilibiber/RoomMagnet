@@ -34,8 +34,10 @@ function addressmap(response) {
     map = new google.maps.Map(document.getElementById('map'), {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         zoom: 11,
+        streetViewControl: false,
+        disableDefaultUI: true
     });
-    var opt = { minZoom: 5, maxZoom: 15 };
+    var opt = { minZoom: 5, maxZoom: 14 };
     map.setOptions(opt);
     var latlng = new google.maps.LatLng(38.4495688, -78.8689156);
     map.setCenter(latlng);
@@ -43,7 +45,7 @@ function addressmap(response) {
     var Jsonaddress = dataTable1.getDistinctValues(0);
     var cities = dataTable1.getValue(0, 1);
     var stateProvince = dataTable1.getValue(0, 2);
-    var JsonZipCode = dataTable1.getValue(0, 3);
+    var JsonZipCode = dataTable1.getValue(0, 4);
 
     var geocoder = new google.maps.Geocoder();
     for (var i = 0; i < Jsonaddress.length; i++) {
@@ -60,8 +62,7 @@ function onGeocodeResponse(response, status) {
         // set up the store names for the city to display in marker tool tip
         var storesInCity = "\n";
         for (var i = 0; i < dataTable1.getNumberOfRows(); i++) {
-            if (response[0].address_components[0].long_name == dataTable1.getValue(i, 1))
-                storesInCity += "\n" + dataTable1.getValue(i, 0);
+            var Title = dataTable1.getValue[i]
         }
 
         var image = {
@@ -78,7 +79,7 @@ function onGeocodeResponse(response, status) {
             animation: google.maps.Animation.DROP,
             icon: image,
             title: 'Property is near this neighborhood'
-            //title: response[0].address_components[0].long_name + storesInCity
+            
         });
         marker.addListener('click', toggleBounce);
     }
