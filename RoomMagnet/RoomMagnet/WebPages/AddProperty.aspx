@@ -186,6 +186,17 @@
                                     <asp:RequiredFieldValidator ID="requireBedroom" runat="server" ControlToValidate="addBedrooms" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
                                 <div class="form-group">
+                                    <asp:Label runat="server" Text="Total Bathroom" class="form-label"></asp:Label>
+                                    <asp:DropDownList ID="addbath" runat="server" class="form-control">
+                                        <asp:ListItem Value=""></asp:ListItem>
+                                        <asp:ListItem Value="1">1</asp:ListItem>
+                                        <asp:ListItem Value="2">2</asp:ListItem>
+                                        <asp:ListItem Value="3">3</asp:ListItem>
+                                        <asp:ListItem Value="4">4</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="requireBath" runat="server" ControlToValidate="addbath" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                </div>
+                                <div class="form-group">
                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
                                     <asp:TextBox ID="addstartdate" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="requirestart" runat="server" ControlToValidate="addstartdate" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>

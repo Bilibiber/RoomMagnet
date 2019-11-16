@@ -78,9 +78,9 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         int userid = Convert.ToInt32(Session["UserID"]);
         string FullName = Session["FullName"].ToString();
 
-        string insert = "INSERT INTO [dbo].[Property]([Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage],[RentPrice],[AvailableBedrooms]," +
-            "[StartDate],[EndDate],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country,@ZipCode, @SquareFootage, @RentPrice," +
-            " @AvailableBedrooms, @StartDate, @EndDate,@LastUpdated, @LastUpdatedBy,@HostID)";
+        string insert = "INSERT INTO [dbo].[Property]([Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage],[RentPrice],[AvailableBedrooms], [AvailableBathrooms]," +
+            "[StartDate],[EndDate],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country,@ZipCode, @SquareFootage, @RentPrice,@AvailableBedrooms," +
+            "@AvailableBathrooms, @StartDate, @EndDate,@LastUpdated, @LastUpdatedBy,@HostID)";
         SqlCommand inserted = new SqlCommand(insert, cn);
         inserted.Parameters.AddWithValue("@Title", addtitle.Text);
         inserted.Parameters.AddWithValue("@StreetAddress", addStreet.Text);
@@ -91,6 +91,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         inserted.Parameters.AddWithValue("@SquareFootage", addSquare.Text);
         inserted.Parameters.AddWithValue("@RentPrice", addPrice.Text);
         inserted.Parameters.AddWithValue("@AvailableBedrooms", addBedrooms.Text);
+        inserted.Parameters.AddWithValue("@AvailableBathrooms", addbath.SelectedValue);
         inserted.Parameters.AddWithValue("@StartDate", Convert.ToDateTime(addstartdate.Text));
         inserted.Parameters.AddWithValue("@EndDate", Convert.ToDateTime(addenddate.Text));
         inserted.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
@@ -158,37 +159,6 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
     }
 
    
-   
-
-
-    //protected void Upload_Click(object sender, EventArgs e)
-    //{
-    //    foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
-    //    {
-    //        string filename = Path.GetFileName(postedFile.FileName);
-    //        string contentType = postedFile.ContentType;
-    //        using (Stream fs = postedFile.InputStream)
-    //        {
-    //            using (BinaryReader br = new BinaryReader(fs))
-    //            {
-    //                byte[] bytes = br.ReadBytes((Int32)fs.Length);
-
-    //                cn.Open();
-    //                System.Data.SqlClient.SqlCommand updateuser = new System.Data.SqlClient.SqlCommand();
-    //                updateuser.Connection = cn;
-    //                updateuser.CommandText = "INSERT INTO [dbo].[testpath] ([path]) VALUES (@image)";
-
-    //                updateuser.Parameters.Add(new SqlParameter("@image", bytes));
-    //                updateuser.ExecuteNonQuery();
-
-    //                cn.Close();
-    //                Label1.Text = bytes.ToString();
-    //            }
-    //        }
-    //    }
-    //    Response.Redirect(Request.Url.AbsoluteUri);
-
-    //}
 
     
 }
