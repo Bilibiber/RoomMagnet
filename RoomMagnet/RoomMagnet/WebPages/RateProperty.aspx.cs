@@ -5,10 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class WebPages_Rate_Property : System.Web.UI.Page
+//https://github.com/dreyescat/bootstrap-rating
+
+public partial class WebPages_RateProperty : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
+
+
 }
