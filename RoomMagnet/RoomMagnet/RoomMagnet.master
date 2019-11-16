@@ -145,10 +145,6 @@
                         </div>
                             <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:Label ID="PasswordErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
-                        <%--                        <div class="keep_signed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
-                            <input type="checkbox" class="custom-control-input" name="keep_signed_in" value="1" id="keep_signed_in">
-                            <label for="keep_signed_in" class="not_empty custom-control-label">Keep me signed in</label>
-                        </div>--%>
                         <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" UseSubmitBehavior="false" OnClick="MasterPageSignIn_Click" />
                         <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
@@ -177,10 +173,10 @@
 
                         <asp:TextBox ID="MasterPageFirstName" runat="server" PlaceHolder="First Name" CssClass="form-control" MaxLength="25"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorFirstName" runat="server" ErrorMessage="First Name Required" ControlToValidate="MasterPageFirstName" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorFirstName" runat="server" ErrorMessage="Special characters are not allowed. For example:% & , ; = $" ValidationExpression="[^%&,;>= $x22]+" ControlToValidate="MasterPageFirstName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorFirstName" runat="server" ErrorMessage="Special characters are not allowed. For example:% & , ; = $" ValidationExpression="[^%&,;>=$]+" ControlToValidate="MasterPageFirstName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorFirstNameLetters" runat="server" ErrorMessage="Numeric values are not allowed" ValidationExpression="^([^0-9]*)$" ControlToValidate="MasterPageFirstName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
                         <asp:TextBox ID="MasterPageLastName" runat="server" PlaceHolder="Last Name" CssClass="form-control"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorLastName" runat="server" ErrorMessage="Special characters are not allowed. For example:^%&’,;= $" ValidationExpression="[^%&,;= $x22]+" ControlToValidate="MasterPageLastName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorLastName" runat="server" ErrorMessage="Special characters are not allowed. For example: % & ’ , ; = $" ValidationExpression="[^%&,;>=$]+" ControlToValidate="MasterPageLastName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorLastNameLetters" runat="server" ErrorMessage="Numeric values are not allowed" ValidationExpression="^([^0-9]*)$" ControlToValidate="MasterPageLastName" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorLastName" runat="server" ErrorMessage="Last Name Required" ControlToValidate="MasterPageLastName" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="MasterPageEmail" runat="server" PlaceHolder="Email" CssClass="form-control"></asp:TextBox>
@@ -189,16 +185,19 @@
                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="MasterPageEmail" Display="Dynamic" ValidationGroup="SignUp" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         <asp:TextBox type="Password" ID="MasterPagePassword" runat="server" PlaceHolder="Password" CssClass="form-control"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordLowerCase" runat="server" ErrorMessage="Password must be at least 8 characters long and contains at least one: Lower Case, Upper Case, Special Character" ValidationExpression="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&£*\-_+=[\]{}|\\:',?/`~();!]|\.(?!@)){8,16}$" ControlToValidate="MasterPagePassword" Display="Dynamic" ValidationGroup="SignUp"></asp:RegularExpressionValidator>
-                        <%--<asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordUpperCase" runat="server" ErrorMessage="Password must contain at least one upper case character" ValidationExpression="(?=.*[A-Z])" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
-                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordNumber" runat="server" ErrorMessage="Password must contain at least one numeric value" ValidationExpression="(?=.*\d)" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>
-                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordSpecialCharacters" runat="server" ErrorMessage="Password must contain at least one special character. For example:% & , ; = $" ValidationExpression="[@#$%^&£*\-_+=[\]{}|\\:',?`~();!]" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp"></asp:RegularExpressionValidator>
-                         <asp:RegularExpressionValidator ID="RegularExpressionValidatorPasswordLength" runat="server" ErrorMessage="Password must be at least 8 characters long" ValidationExpression="^\d{8,16}$" ControlToValidate="MasterPagePassword" Display="Dynamic"  ValidationGroup="SignUp" ForeColor="Red"></asp:RegularExpressionValidator>--%>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ErrorMessage="Password Required" ControlToValidate="MasterPagePassword" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:TextBox type="Password" ID="MasterPageComfirmPassword" runat="server" PlaceHolder="Confirm Password" CssClass="form-control" ValidationGroup="SignUp"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Confirmation Password Required" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Does Not Match" ControlToCompare="MasterPagePassword" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:CompareValidator>
-                        <asp:TextBox ID="MasterPageBirthday" runat="server" PlaceHolder="Date of Birth" onfocus="(this.type='date')" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorBirthday" runat="server" ErrorMessage="Date of Birth Required" ControlToValidate="MasterPageBirthday" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:DropDownList ID="MasterPageAgeRangeDropDownList" runat="server" CssClass="form-control">
+                            <asp:ListItem Value="">Please Select Your age Range</asp:ListItem>
+                            <asp:ListItem Value="18-24"> 18 - 24 </asp:ListItem>
+                            <asp:ListItem Value="25-35"> 25 - 35 </asp:ListItem>
+                            <asp:ListItem Value="36-50"> 36 - 50 </asp:ListItem>
+                            <asp:ListItem Value=">50"> 50 and Older</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Age Range Required" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
+                        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please select an age range" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                         <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
 
                         <div class="form-excerpts">
