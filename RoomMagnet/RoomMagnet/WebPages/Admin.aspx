@@ -182,15 +182,15 @@
 
             <div class="userimage">
             </div>
-            <%--Employees panel--%>
+            <%--Employee Update panel--%>
             <br />
             
             <br />
             <asp:Button ID="adminDashboard" runat="server" Text="Dashboard" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminDashboard_Click"></asp:Button>              
             <br />
-            <asp:Button ID="adminStatistics" runat="server" Text="Statistics" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminStatistics_Click"></asp:Button>
+            <asp:Button ID="adminAddEmployee" runat="server" Text="Add Employee" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminAddEmployee_Click"></asp:Button>
             <br />
-            <asp:Button ID="adminEmployee" runat="server" Text="Employee" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminEmployee_Click"></asp:Button>
+            <asp:Button ID="adminEmployee" runat="server" Text="Update Employee" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminEmployee_Click"></asp:Button>
             <br />
             <asp:Button ID="adminVerification" runat="server" Text="Verification" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminVerification_Click"></asp:Button>
             <br />
@@ -212,59 +212,92 @@
                 <div id="adminDashboard1">
                     <asp:Label ID="Dashboard" runat="server" Text="Dashboard" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     <br />
-                    <div class='tableauPlaceholder' id='viz1573326382746' style='position: relative'>
-                <noscript><a href='#'>
-                    <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ta&#47;TabeleauforRoomMagnet&#47;Sheet1&#47;1_rss.png'  style='border: none' />
-                          </a>
-                </noscript>
-
-                <object class='tableauViz' style='display:none;'>
-                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                    <param name='embed_code_version' value='3' /> 
-                    <param name='site_root' value='' />
-                    <param name='name' value='TabeleauforRoomMagnet&#47;Sheet1' />
-                    <param name='tabs' value='no' />
-                    <param name='toolbar' value='yes' />
-                    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ta&#47;TabeleauforRoomMagnet&#47;Sheet1&#47;1.png' /> 
-                    <param name='animate_transition' value='yes' />
-                    <param name='display_static_image' value='yes' />
-                    <param name='display_spinner' value='yes' />
-                    <param name='display_overlay' value='yes' />
-                    <param name='display_count' value='yes' />
-                    <param name='filter' value='publish=yes' />
-                </object>
-
-                </div>                
-            <script 
-                type='text/javascript'> 
-                var divElement = document.getElementById('viz1573326382746');
-                var vizElement = divElement.getElementsByTagName('object')[0];
-                vizElement.style.width = '100%';
-                vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
-                var scriptElement = document.createElement('script');
-                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-                vizElement.parentNode.insertBefore(scriptElement, vizElement);               
-            </script>
+                    <script type='text/javascript' src='https://prod-useast-a.online.tableau.com/javascripts/api/viz_v1.js'></script>
+                    <div class='tableauPlaceholder' style='width: 1000px; height: 827px;'>
+                        <object class='tableauViz' width='1000' height='827' style='display:none;'>
+                            <param name='host_url' value='https%3A%2F%2Fprod-useast-a.online.tableau.com%2F' /> 
+                            <param name='embed_code_version' value='3' /> 
+                            <param name='site_root' value='&#47;t&#47;ottisbishoptableaudashboard' />
+                            <param name='name' value='CIS484TableauDashboard&#47;Dashboard1' />
+                            <param name='tabs' value='no' />
+                            <param name='toolbar' value='yes' />
+                            <param name='showAppBanner' value='false' />
+                        </object>
+                    </div>
                 </div>
             </asp:Panel>
 
+            <%--Add Employee Panel--%>
 
-            <%--Statistics panel--%>
-            <asp:Panel runat="server" ID="adminStatisticsPanel" Visible="False">
-                <div id="Statistics">
-                    <asp:Label ID="statisticsPanel" runat="server" Text="Statistics" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
-                    
+            <asp:Panel runat="server" ID="adminAddEmployeePanel" Visible="False">
+                <div>
+                    <asp:Label ID="addEmployeePanel" runat="server" Text="Add Employee to System" ForeColor="#CC3300" Font-Size="3em" Font-Bold="true"></asp:Label>
+                    <br />
+                    <br />
+                    <table>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="firstNameLabel" runat="server" Text="First Name" Font-Bold="True"></asp:Label>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="firstNameText" runat="server" Text=""></asp:TextBox>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lastNameLabel" runat="server" Text="Last Name" Font-Bold="True"></asp:Label>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="lastNameText" runat="server" Text=""></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="streetAddressLbl" runat="server" Text="Age" Font-Bold="True"></asp:Label>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <p>
+                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                            </p>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label1" runat="server" Text="Last Name" Font-Bold="True"></asp:Label>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="TextBox1" runat="server" Text=""></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label3" runat="server" Text="Gender" Font-Bold="True"></asp:Label>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <p>
+                                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style13">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label4" runat="server" Text="Occupation" Font-Bold="True"></asp:Label>
+                        </td>
+                        <td class="auto-style13"></td>
+                        <td class="auto-style13">
+                            <p>
+                                <asp:TextBox ID="TextBox4" runat="server" ViewStateMode="Disabled"></asp:TextBox>
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
                 </div>
             </asp:Panel>
-
-            <%--Employees panel--%>
+            
+            <%--Employee Update panel--%>
             <asp:Panel runat="server" ID="adminEmployeesPanel" Visible="False">
                 <div>
-                    <asp:Label ID ="employeePanel" runat="server" Text="Employees" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                    <asp:Label ID ="updateEmployeePanel" runat="server" Text="Update Employee Info" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
                     <br />
                     <br />
                     <asp:DropDownList ID="emailDropDown" runat="server" AppendDataBoundItems="true" DataTextField="Email" OnTextChanged="adminEmployee_Click" OnSelectedIndexChanged="adminEmployee_Click"></asp:DropDownList>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <table>
                     <tr>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeName" runat="server" Text="Name" Font-Bold="True"></asp:Label>

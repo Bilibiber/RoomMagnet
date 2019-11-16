@@ -15,7 +15,6 @@ public partial class WebPages_Admin : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         adminDashboard.ForeColor = System.Drawing.Color.Red;
-        adminStatistics.ForeColor = System.Drawing.Color.White;
         adminVerification.ForeColor = System.Drawing.Color.White;
         adminEmployee.ForeColor = System.Drawing.Color.White;
 
@@ -23,7 +22,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
         {
             SqlCommand selectEmployees = new SqlCommand();
             selectEmployees.Connection = cn;
-            String com = "SELECT [Email] FROM [dbo].[Users] WHERE [UserRole] = 'a';";
+            String com = "SELECT [Email] FROM [dbo].[Users] WHERE [UserRole] = 'Admin';";
             SqlDataAdapter selectEmployeesDA = new SqlDataAdapter(com, cn);
             DataTable dt = new DataTable();
             selectEmployeesDA.Fill(dt);
@@ -82,31 +81,12 @@ public partial class WebPages_Admin : System.Web.UI.Page
     protected void adminDashboard_Click(object sender, EventArgs e)
     {
         adminDashboardPanel.Visible = true;
-        adminStatisticsPanel.Visible = false;
         adminEmployeesPanel.Visible = false;
         adminVerificationPanel.Visible = false;
         adminDashboard.ForeColor = System.Drawing.Color.Red;
-        adminStatistics.ForeColor = System.Drawing.Color.White;
         adminEmployee.ForeColor = System.Drawing.Color.White;
         adminVerification.ForeColor = System.Drawing.Color.White;
         adminDashboardPanel.ForeColor = System.Drawing.Color.Red;
-        adminStatisticsPanel.ForeColor = System.Drawing.Color.White;
-        adminEmployeesPanel.ForeColor = System.Drawing.Color.White;
-        adminVerificationPanel.ForeColor = System.Drawing.Color.White;
-    }
-
-    protected void adminStatistics_Click(object sender, EventArgs e)
-    {
-        adminDashboardPanel.Visible = false;
-        adminStatisticsPanel.Visible = true;
-        adminEmployeesPanel.Visible = false;
-        adminVerificationPanel.Visible = false;
-        adminDashboard.ForeColor = System.Drawing.Color.White;
-        adminStatistics.ForeColor = System.Drawing.Color.Red;
-        adminEmployee.ForeColor = System.Drawing.Color.White;
-        adminVerification.ForeColor = System.Drawing.Color.White;
-        adminDashboardPanel.ForeColor = System.Drawing.Color.White;
-        adminStatisticsPanel.ForeColor = System.Drawing.Color.Red;
         adminEmployeesPanel.ForeColor = System.Drawing.Color.White;
         adminVerificationPanel.ForeColor = System.Drawing.Color.White;
     }
@@ -114,15 +94,12 @@ public partial class WebPages_Admin : System.Web.UI.Page
     protected void adminEmployee_Click(object sender, EventArgs e)
     {
         adminDashboardPanel.Visible = false;
-        adminStatisticsPanel.Visible = false;
         adminEmployeesPanel.Visible = true;
         adminVerificationPanel.Visible = false;
         adminDashboard.ForeColor = System.Drawing.Color.White;
-        adminStatistics.ForeColor = System.Drawing.Color.White;
         adminEmployee.ForeColor = System.Drawing.Color.Red;
         adminVerification.ForeColor = System.Drawing.Color.White;
         adminDashboardPanel.ForeColor = System.Drawing.Color.White;
-        adminStatisticsPanel.ForeColor = System.Drawing.Color.White;
         adminEmployeesPanel.ForeColor = System.Drawing.Color.Red;
         adminVerificationPanel.ForeColor = System.Drawing.Color.White;
 
@@ -139,20 +116,14 @@ public partial class WebPages_Admin : System.Web.UI.Page
     protected void adminVerification_Click(object sender, EventArgs e)
     {
         adminDashboardPanel.Visible = false;
-        adminStatisticsPanel.Visible = false;
         adminEmployeesPanel.Visible = false;
         adminVerificationPanel.Visible = true;
         adminDashboard.ForeColor = System.Drawing.Color.White;
-        adminStatistics.ForeColor = System.Drawing.Color.White;
         adminEmployee.ForeColor = System.Drawing.Color.White;
         adminVerification.ForeColor = System.Drawing.Color.Red;
         adminDashboardPanel.ForeColor = System.Drawing.Color.White;
-        adminStatisticsPanel.ForeColor = System.Drawing.Color.White;
         adminEmployeesPanel.ForeColor = System.Drawing.Color.White;
         adminVerificationPanel.ForeColor = System.Drawing.Color.Red;
-
-        
-
     }
 
     protected void adminNameChange(object sender, EventArgs e)
@@ -245,5 +216,10 @@ public partial class WebPages_Admin : System.Web.UI.Page
         cn.Close();
 
         UnverifiedDropDown.Items.Remove(UnverifiedDropDown.Items.FindByValue(UnverifiedDropDown.SelectedValue));
+    }
+
+    protected void adminAddEmployee_Click(object sender, EventArgs e)
+    {
+
     }
 }
