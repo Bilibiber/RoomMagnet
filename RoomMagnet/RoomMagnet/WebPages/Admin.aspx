@@ -121,6 +121,9 @@
         .auto-style13 {
             height: 24px;
         }
+        .auto-style14 {
+            width: 12px;
+        }
     </style>
 
     <script>
@@ -250,43 +253,119 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="streetAddressLbl" runat="server" Text="Age" Font-Bold="True"></asp:Label>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="streetAddressLbl" runat="server" Text="StreetAddress" Font-Bold="True"></asp:Label>
                         </td>
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
                             <p>
-                                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="streetAddressText" runat="server"></asp:TextBox>
                             </p>
                         </td>
                         <td class="auto-style1"></td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label1" runat="server" Text="Last Name" Font-Bold="True"></asp:Label>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="cityLbl" runat="server" Text="City" Font-Bold="True"></asp:Label></td>
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
-                            <asp:TextBox ID="TextBox1" runat="server" Text=""></asp:TextBox>
+                            <asp:TextBox ID="cityText" runat="server" Text=""></asp:TextBox>
+                        </td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="stateLbl" runat="server" Text="State" Font-Bold="true"></asp:Label></td>
+                        <td class="auto-style1>"></td>
+                        <td class="auto-style2">
+                             <asp:DropDownList ID="stateDropDown" runat="server">
+                                <asp:ListItem Value=""></asp:ListItem>
+	                            <asp:ListItem Value="AL">Alabama</asp:ListItem>
+	                            <asp:ListItem Value="AK">Alaska</asp:ListItem>
+	                            <asp:ListItem Value="AZ">Arizona</asp:ListItem>
+	                            <asp:ListItem Value="AR">Arkansas</asp:ListItem>
+	                            <asp:ListItem Value="CA">California</asp:ListItem>
+	                            <asp:ListItem Value="CO">Colorado</asp:ListItem>
+	                            <asp:ListItem Value="CT">Connecticut</asp:ListItem>
+	                            <asp:ListItem Value="DC">District of Columbia</asp:ListItem>
+	                            <asp:ListItem Value="DE">Delaware</asp:ListItem>
+	                            <asp:ListItem Value="FL">Florida</asp:ListItem>
+	                            <asp:ListItem Value="GA">Georgia</asp:ListItem>
+	                            <asp:ListItem Value="HI">Hawaii</asp:ListItem>
+	                            <asp:ListItem Value="ID">Idaho</asp:ListItem>
+	                            <asp:ListItem Value="IL">Illinois</asp:ListItem>
+	                            <asp:ListItem Value="IN">Indiana</asp:ListItem>
+	                            <asp:ListItem Value="IA">Iowa</asp:ListItem>
+	                            <asp:ListItem Value="KS">Kansas</asp:ListItem>
+	                            <asp:ListItem Value="KY">Kentucky</asp:ListItem>
+	                            <asp:ListItem Value="LA">Louisiana</asp:ListItem>
+	                            <asp:ListItem Value="ME">Maine</asp:ListItem>
+	                            <asp:ListItem Value="MD">Maryland</asp:ListItem>
+	                            <asp:ListItem Value="MA">Massachusetts</asp:ListItem>
+	                            <asp:ListItem Value="MI">Michigan</asp:ListItem>
+	                            <asp:ListItem Value="MN">Minnesota</asp:ListItem>
+	                            <asp:ListItem Value="MS">Mississippi</asp:ListItem>
+	                            <asp:ListItem Value="MO">Missouri</asp:ListItem>
+	                            <asp:ListItem Value="MT">Montana</asp:ListItem>
+	                            <asp:ListItem Value="NE">Nebraska</asp:ListItem>
+	                            <asp:ListItem Value="NV">Nevada</asp:ListItem>
+	                            <asp:ListItem Value="NH">New Hampshire</asp:ListItem>
+	                            <asp:ListItem Value="NJ">New Jersey</asp:ListItem>
+	                            <asp:ListItem Value="NM">New Mexico</asp:ListItem>
+	                            <asp:ListItem Value="NY">New York</asp:ListItem>
+	                            <asp:ListItem Value="NC">North Carolina</asp:ListItem>
+	                            <asp:ListItem Value="ND">North Dakota</asp:ListItem>
+	                            <asp:ListItem Value="OH">Ohio</asp:ListItem>
+	                            <asp:ListItem Value="OK">Oklahoma</asp:ListItem>
+	                            <asp:ListItem Value="OR">Oregon</asp:ListItem>
+	                            <asp:ListItem Value="PA">Pennsylvania</asp:ListItem>
+	                            <asp:ListItem Value="RI">Rhode Island</asp:ListItem>
+	                            <asp:ListItem Value="SC">South Carolina</asp:ListItem>
+	                            <asp:ListItem Value="SD">South Dakota</asp:ListItem>
+	                            <asp:ListItem Value="TN">Tennessee</asp:ListItem>
+	                            <asp:ListItem Value="TX">Texas</asp:ListItem>
+	                            <asp:ListItem Value="UT">Utah</asp:ListItem>
+	                            <asp:ListItem Value="VT">Vermont</asp:ListItem>
+	                            <asp:ListItem Value="VA">Virginia</asp:ListItem>
+	                            <asp:ListItem Value="WA">Washington</asp:ListItem>
+	                            <asp:ListItem Value="WV">West Virginia</asp:ListItem>
+	                            <asp:ListItem Value="WI">Wisconsin</asp:ListItem>
+	                            <asp:ListItem Value="WY">Wyoming</asp:ListItem>
+                             </asp:DropDownList>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="countryLbl" runat="server" Text="Country" Font-Bold="True"></asp:Label></td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="countryText" runat="server" Text=""></asp:TextBox>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="zipCodeLbl" runat="server" Text="Zip Code" Font-Bold="True"></asp:Label></td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="zipCodeText" runat="server" Text=""></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label3" runat="server" Text="Gender" Font-Bold="True"></asp:Label>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="emailAddressLbl" runat="server" Text="Email Address" Font-Bold="True"></asp:Label>
                         </td>
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
                             <p>
-                                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="emailAddressText" runat="server"></asp:TextBox>
                             </p>
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style13">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="Label4" runat="server" Text="Occupation" Font-Bold="True"></asp:Label>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style13">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="positionLbl" runat="server" Text="Position" Font-Bold="True"></asp:Label>
                         </td>
                         <td class="auto-style13"></td>
                         <td class="auto-style13">
                             <p>
-                                <asp:TextBox ID="TextBox4" runat="server" ViewStateMode="Disabled"></asp:TextBox>
+                                <asp:TextBox ID="positionText" runat="server" ViewStateMode="Disabled"></asp:TextBox>
                             </p>
                         </td>
                     </tr>
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="insertBtn" runat="server" OnClick="insertBtn_Click" Text="Create New Employee"></asp:Button></td>
+                        <td class="auto-style2">
+                            &nbsp;</td>
+                    </tr>
 
-                </table>
+                    </table>
                 </div>
             </asp:Panel>
             
@@ -300,45 +379,129 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <table>
                     <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeName" runat="server" Text="Name" Font-Bold="True"></asp:Label>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="updateFirstNameLbl" runat="server" Text="First Name" Font-Bold="True"></asp:Label>
                         </td>
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
-                            <asp:TextBox ID="employeeName1" runat="server" Text=""></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="adminAge" runat="server" Text="Age" Font-Bold="True"></asp:Label>
+                            <asp:TextBox ID="updateFirstNameText" runat="server" Text=""></asp:TextBox>
                         </td>
                         <td class="auto-style1"></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="updateLastNameLbl" runat="server" Text="Last Name" Font-Bold="True"></asp:Label>
+                        <td class="auto-style1"></td>
                         <td class="auto-style2">
-                            <p>
-                                <asp:TextBox ID="employeeAge" runat="server"></asp:TextBox>
-                            </p>
+                            <asp:TextBox ID="updateLastNameText" runat="server" Text=""></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeGenderLbl" runat="server" Text="Gender" Font-Bold="True"></asp:Label>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="updateStreetAddressLbl" runat="server" Text="Street Address" Font-Bold="True"></asp:Label>
                         </td>
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
                             <p>
-                                <asp:TextBox ID="employeeGender" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="updateStreetAddressText" runat="server"></asp:TextBox>
                             </p>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="updateCityLbl" runat="server" Text="City" Font-Bold="True"></asp:Label></td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="updateCityText" runat="server" Text=""></asp:TextBox>
+                        </td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="updateStateLbl" runat="server" Text="State" Font-Bold="true"></asp:Label></td>
+                        <td class="auto-style1>"></td>
+                        <td class="auto-style2">
+                             <asp:DropDownList ID="updateStateDropDownList" runat="server">
+                                <asp:ListItem Value=""></asp:ListItem>
+	                            <asp:ListItem Value="AL">Alabama</asp:ListItem>
+	                            <asp:ListItem Value="AK">Alaska</asp:ListItem>
+	                            <asp:ListItem Value="AZ">Arizona</asp:ListItem>
+	                            <asp:ListItem Value="AR">Arkansas</asp:ListItem>
+	                            <asp:ListItem Value="CA">California</asp:ListItem>
+	                            <asp:ListItem Value="CO">Colorado</asp:ListItem>
+	                            <asp:ListItem Value="CT">Connecticut</asp:ListItem>
+	                            <asp:ListItem Value="DC">District of Columbia</asp:ListItem>
+	                            <asp:ListItem Value="DE">Delaware</asp:ListItem>
+	                            <asp:ListItem Value="FL">Florida</asp:ListItem>
+	                            <asp:ListItem Value="GA">Georgia</asp:ListItem>
+	                            <asp:ListItem Value="HI">Hawaii</asp:ListItem>
+	                            <asp:ListItem Value="ID">Idaho</asp:ListItem>
+	                            <asp:ListItem Value="IL">Illinois</asp:ListItem>
+	                            <asp:ListItem Value="IN">Indiana</asp:ListItem>
+	                            <asp:ListItem Value="IA">Iowa</asp:ListItem>
+	                            <asp:ListItem Value="KS">Kansas</asp:ListItem>
+	                            <asp:ListItem Value="KY">Kentucky</asp:ListItem>
+	                            <asp:ListItem Value="LA">Louisiana</asp:ListItem>
+	                            <asp:ListItem Value="ME">Maine</asp:ListItem>
+	                            <asp:ListItem Value="MD">Maryland</asp:ListItem>
+	                            <asp:ListItem Value="MA">Massachusetts</asp:ListItem>
+	                            <asp:ListItem Value="MI">Michigan</asp:ListItem>
+	                            <asp:ListItem Value="MN">Minnesota</asp:ListItem>
+	                            <asp:ListItem Value="MS">Mississippi</asp:ListItem>
+	                            <asp:ListItem Value="MO">Missouri</asp:ListItem>
+	                            <asp:ListItem Value="MT">Montana</asp:ListItem>
+	                            <asp:ListItem Value="NE">Nebraska</asp:ListItem>
+	                            <asp:ListItem Value="NV">Nevada</asp:ListItem>
+	                            <asp:ListItem Value="NH">New Hampshire</asp:ListItem>
+	                            <asp:ListItem Value="NJ">New Jersey</asp:ListItem>
+	                            <asp:ListItem Value="NM">New Mexico</asp:ListItem>
+	                            <asp:ListItem Value="NY">New York</asp:ListItem>
+	                            <asp:ListItem Value="NC">North Carolina</asp:ListItem>
+	                            <asp:ListItem Value="ND">North Dakota</asp:ListItem>
+	                            <asp:ListItem Value="OH">Ohio</asp:ListItem>
+	                            <asp:ListItem Value="OK">Oklahoma</asp:ListItem>
+	                            <asp:ListItem Value="OR">Oregon</asp:ListItem>
+	                            <asp:ListItem Value="PA">Pennsylvania</asp:ListItem>
+	                            <asp:ListItem Value="RI">Rhode Island</asp:ListItem>
+	                            <asp:ListItem Value="SC">South Carolina</asp:ListItem>
+	                            <asp:ListItem Value="SD">South Dakota</asp:ListItem>
+	                            <asp:ListItem Value="TN">Tennessee</asp:ListItem>
+	                            <asp:ListItem Value="TX">Texas</asp:ListItem>
+	                            <asp:ListItem Value="UT">Utah</asp:ListItem>
+	                            <asp:ListItem Value="VT">Vermont</asp:ListItem>
+	                            <asp:ListItem Value="VA">Virginia</asp:ListItem>
+	                            <asp:ListItem Value="WA">Washington</asp:ListItem>
+	                            <asp:ListItem Value="WV">West Virginia</asp:ListItem>
+	                            <asp:ListItem Value="WI">Wisconsin</asp:ListItem>
+	                            <asp:ListItem Value="WY">Wyoming</asp:ListItem>
+                             </asp:DropDownList>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="updateCountryLbl" runat="server" Text="Country" Font-Bold="True"></asp:Label></td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="updateCountryText" runat="server" Text=""></asp:TextBox>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="updateZipCodeLbl" runat="server" Text="Zip Code" Font-Bold="True"></asp:Label></td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <asp:TextBox ID="updateZipCodeText" runat="server" Text=""></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style13">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="employeeOccupation" runat="server" Text="Occupation" Font-Bold="True"></asp:Label>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="updateEmailLbl" runat="server" Text="Email Address" Font-Bold="True"></asp:Label>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style2">
+                            <p>
+                                <asp:TextBox ID="updateEmailText" runat="server"></asp:TextBox>
+                            </p>
+                        </td>
+                        <td class="auto-style1"></td>
+                        <td class="auto-style13">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="updatePositionLbl" runat="server" Text="Position" Font-Bold="True"></asp:Label>
                         </td>
                         <td class="auto-style13"></td>
                         <td class="auto-style13">
                             <p>
-                                <asp:TextBox ID="employeeOccu" runat="server" ViewStateMode="Disabled"></asp:TextBox>
+                                <asp:TextBox ID="updatePositionText" runat="server" ViewStateMode="Disabled"></asp:TextBox>
                             </p>
                         </td>
                     </tr>
+                    
 
-                </table>
+                    </table>
                     <br />
                     <asp:Button ID="ViewBtn" runat="server" OnClick="view_Btn" Text="View Data" />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

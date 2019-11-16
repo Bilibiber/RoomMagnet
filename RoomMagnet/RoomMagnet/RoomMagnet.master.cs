@@ -164,7 +164,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             {
                 cn.Open();
             }
-            string SqlGetUserInfos = "SELECT UserID,FirstName,LastName,ImagePath,UserRole,Verified FROM Users where Users.Email =@Email";
+            string SqlGetUserInfos = "SELECT UserID,FirstName,LastName,ImagePath,UserRole,Verified FROM Users where Users.Email = @Email";
             SqlCommand Finder = new SqlCommand(SqlGetUserInfos, cn);
             Finder.Parameters.AddWithValue("@Email", Session["SignInEmail"]);
             SqlDataReader dataReader = Finder.ExecuteReader();
