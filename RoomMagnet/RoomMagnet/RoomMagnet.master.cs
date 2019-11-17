@@ -331,7 +331,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         SqlDataReader reader = sqlCommand.ExecuteReader();    
         if (reader.Read())
         {
-            role=reader.GetString(0);
+            role = reader.GetString(0);
         }
         reader.Close();
         if (role== "Renter")
@@ -341,6 +341,10 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         else if(role == "Host")
         {
             Response.Redirect("Host.aspx");
+        }
+        else if (role == "Admin")
+        {
+            Response.Redirect("Admin.aspx");
         }
     }
 

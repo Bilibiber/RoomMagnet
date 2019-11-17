@@ -229,9 +229,10 @@ public partial class WebPages_Admin : System.Web.UI.Page
 
     protected void insertBtn_Click(object sender, EventArgs e)
     {
+        string HashedPassword = PasswordHash.HashPassword("original");
         cn.Open();
         SqlCommand createEmployee = new SqlCommand("INSERT INTO [dbo].[Users]([FirstName],[LastName],[Password],[Email],[UserRole],[Verified],[Occupation],[StreetAddress],[City],[HomeState],[Country]," +
-            "[ZipCode],[SignUpDate],[LastUpdated],[LastUpdatedBy]) VALUES (@FirstName, @LastName, " + "'original'" + ", @Email," + "'Admin', 'Admin', " + "@Position, @StreetAddress, @City, @HomeState, @Country, @ZipCode," +
+            "[ZipCode],[SignUpDate],[LastUpdated],[LastUpdatedBy]) VALUES (@FirstName, @LastName, @Password, @Email, 'Admin', 'Admin', @Position, @StreetAddress, @City, @HomeState, @Country, @ZipCode," +
             " @SignUpDate, @LastUpdated, @LastUpdatedBy)");
         createEmployee.Connection = cn;
         createEmployee.Parameters.AddWithValue("@FirstName", firstNameText.Text);     //1
@@ -243,6 +244,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
         createEmployee.Parameters.AddWithValue("@HomeState", stateDropDown.SelectedValue);     //8
         createEmployee.Parameters.AddWithValue("@Country", countryText.Text);     //9
         createEmployee.Parameters.AddWithValue("@ZipCode", zipCodeText.Text);     //10
+        createEmployee.Parameters.AddWithValue("@Password", HashedPassword);
         createEmployee.Parameters.AddWithValue("@SignUpDate", DateTime.Now);     //11
         createEmployee.Parameters.AddWithValue("@LastUpdated", DateTime.Now);     //12
         createEmployee.Parameters.AddWithValue("@LastUpdatedBy", "Ottis Bishop");     //13
