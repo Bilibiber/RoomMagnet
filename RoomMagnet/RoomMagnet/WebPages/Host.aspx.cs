@@ -157,7 +157,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                     Property1RentPrice.Visible = true;
                     Property1CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
                     Property1CityState.Visible = true;
-                    Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                    Property1Bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
                     Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property1StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property1EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
@@ -172,6 +172,9 @@ public partial class WebPages_Host : System.Web.UI.Page
                     {
                         byte[] images1 = (byte[])getinfor[0];
                         Property1Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images1);
+                        Property1Image.Width = new System.Web.UI.WebControls.Unit("200px");
+                        Property1Image.Height = new System.Web.UI.WebControls.Unit("200px");
+
                         Property1Image.Visible = true;
                     }
                     getinfor.Close();
@@ -189,7 +192,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                     Property2RentPrice.Visible = true;
                     Property2CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
                     Property2CityState.Visible = true;
-                    Property2Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                    Property2Bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
                     Property2Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property2StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property2EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
@@ -204,10 +207,12 @@ public partial class WebPages_Host : System.Web.UI.Page
                     {
                         byte[] images2 = (byte[])getinfor[0];
                         Property2Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images2);
+                        Property2Image.Width = new System.Web.UI.WebControls.Unit("200px");
+                        Property2Image.Height = new System.Web.UI.WebControls.Unit("200px");
                         Property2Image.Visible = true;
                     }
                     getinfor.Close();
-                    Property1Space.Visible = true;
+                    Property2Space.Visible = true;
                 }
                 if (resultCount == 3)
                 {
@@ -220,7 +225,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                     Property3RentPrice.Visible = true;
                     Property3CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
                     Property3CityState.Visible = true;
-                    Property3Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                    Property3Bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
                     Property3Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property3StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property3EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
@@ -235,10 +240,12 @@ public partial class WebPages_Host : System.Web.UI.Page
                     {
                         byte[] images3 = (byte[])getinfor[0];
                         Property3Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images3);
+                        Property3Image.Width = new System.Web.UI.WebControls.Unit("200px");
+                        Property3Image.Height = new System.Web.UI.WebControls.Unit("200px");
                         Property3Image.Visible = true;
                     }
                     getinfor.Close();
-                    Property1Space.Visible = true;
+                    Property3Space.Visible = true;
                 }
             }
         }

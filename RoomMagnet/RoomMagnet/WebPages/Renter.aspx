@@ -196,7 +196,7 @@
                         <div class="atbd_content_module__tittle_area about-titles">
                             <div class="atbd_area_title">
                                 <h4 style="font-size: 2em;"><span class="la la-user" style="font-size: 1em; color: black;"></span>My Profile </h4>
-                                <asp:LinkButton ID="editprofile" runat="server" OnClick="editprofile_Click">Edit</asp:LinkButton>
+                                <asp:Button ID="editprofile" runat="server" Text="Edit" class="btn btn-primary" OnClick="editprofile_Click" />
                             </div>
                         </div>
                         <div class="profile-des">
