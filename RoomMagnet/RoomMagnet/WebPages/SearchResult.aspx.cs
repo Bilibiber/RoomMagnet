@@ -10,17 +10,11 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
 {
     private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
-
     private int resultCount = 0;
-
     private string OrderBy = String.Empty;
     private ArrayList RatingsPID = new ArrayList();
     private int RowCount = 0;
     private int RowNum;
-
-    
-    
-
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -62,7 +56,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
         connection.Open();
-        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode from Property where ZipCode=@ZipCode";
+        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode,Title from Property where ZipCode=@ZipCode";
         SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
         GoogleFinder.Parameters.AddWithValue("@ZipCode", num);
         SqlDataReader addressReader = GoogleFinder.ExecuteReader();
@@ -96,7 +90,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
         connection.Open();
-        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode from Property where City=@City and HomeState=@HomeState";
+        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode,Title from Property where City=@City and HomeState=@HomeState";
         string City = something.Substring(0, something.IndexOf(','));
         string State = something.Substring(something.IndexOf(',') + 1);
         SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
@@ -248,8 +242,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property1CityState.Visible = true;
                         Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property1StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                        Property1EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                        //Property1StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();                     
 
                         byte[] images = (byte[])reader[8];
                         if (images == null)
@@ -278,8 +271,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property2CityState.Visible = true;
                         Property2Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property2Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property2StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                        Property2EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                        Property2StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -305,8 +297,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property3CityState.Visible = true;
                         Property3Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property3Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property3StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                        Property3EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                        Property3StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -333,8 +324,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property4CityState.Visible = true;
                         Property4Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property4Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property4StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                        Property4EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                        Property4StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {
@@ -360,8 +350,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property5CityState.Visible = true;
                         Property5Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property5Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property5StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                        Property5EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                        Property5StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
                         byte[] images = (byte[])reader[8];
                         if (images == null)
                         {

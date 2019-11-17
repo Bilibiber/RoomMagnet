@@ -7681,7 +7681,7 @@ a{
   padding-left: 35px;
 }
 .searchtxt-padding {
-    padding-left: 28px !important;
+    padding-left: 20px !important;
 }
 
 .results-pad {
@@ -7712,6 +7712,8 @@ a{
     flex-shrink:0;
     min-width:100%;
     min-height:100%;
+    max-height:100%;
+    max-width:100%;
 }
 .hostimage{
     height:34px;
@@ -7721,6 +7723,9 @@ a{
 .icon-padding{
     padding-right:10px;
 
+}
+.daterange {
+   padding-left:14px !important;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
