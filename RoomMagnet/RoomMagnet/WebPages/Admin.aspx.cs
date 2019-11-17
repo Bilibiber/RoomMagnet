@@ -14,7 +14,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Hello.Text = "Hello, " + Session["FullName"];
+        Hello.Text = "Hello, " + Session["FullName"];
         if (IsPostBack.Equals(false))
         {
             adminDashboard.ForeColor = System.Drawing.Color.Red;
