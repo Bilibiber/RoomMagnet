@@ -16,7 +16,7 @@
                         <h1 class="page-title">FAQs</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">FAQ</li>
                             </ol>
                         </nav>
@@ -59,21 +59,32 @@
                                             <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
                                                 data-parent="#accordionEx">
                                                 <div class="card-body">
-                                                 RoomMagnet provides an easy to use platform where pre-screened Tenants and Hosts come together, and in exchange for a
-                                        modest cost and/or in exchange for light domestic duties, enjoy reduced rent. It’s a win-win! Hosts monetize their extra living space and if they wish get a
-                                        little help around the house. Tenants enjoy affordable housing.
+                                                RoomMagnet provides an easy to use platform where pre-screened Tenants and Hosts come together, and in exchange for a
+                                                modest cost and/or in exchange for light domestic duties, enjoy reduced rent. It’s a win-win! Hosts monetize their extra living space and if they wish get a
+                                                little help around the house. Tenants enjoy affordable housing.
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="accordion-single">
-                                        <h3 class="faq-title"><a href="#">Who can use RoomMagnet?</a></h3>
-                                        <p class="ac-body" style="display: none;">
-                                            Roommagnet users must be at least 18 years of age and are seeking a minimum of 30 days stay in Host lodging.
+                                                                                <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingOne2">
+                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne2" aria-expanded="true"
+                                                    aria-controls="collapseOne1">
+                                                    <h5 class="mb-0">Who can use RoomMagnet?<i class="fas fa-angle-down rotate-icon" style="float:right;"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseOne2" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                                data-parent="#accordionEx">
+                                                <div class="card-body">
+                                                Roommagnet users must be at least 18 years of age and are seeking a minimum of 30 days stay in Host lodging.
                                             While Roommagnet is open to all who meet their minimum requirements we specialize in connecting Hosts with professional and semi-professionals such as,
                                             graduate students, international students, doctoral and nursing interns as well as college students seeking affordable off campus housing.
-                                        </p>
-                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>      
                                     <div class="accordion-single">
                                         <h3 class="faq-title"><a href="#">Who are host families?</a></h3>
                                         <p class="ac-body" style="display: none;">
