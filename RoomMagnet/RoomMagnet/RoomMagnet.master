@@ -37,7 +37,7 @@
             $('#sign_up_notification').modal({ show: true });
         }
     </script>
-    <script>
+    <script type="text/javascript">
         window.onbeforeunload = closeMessage;
 
         function closeMessage() {
