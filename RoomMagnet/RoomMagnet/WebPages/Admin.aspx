@@ -121,8 +121,8 @@
         .auto-style13 {
             height: 24px;
         }
-        .auto-style14 {
-            width: 12px;
+        .auto-style15 {
+            height: 32px;
         }
     </style>
 
@@ -185,7 +185,7 @@
 
             <div class="userimage">
             </div>
-            <%--Employee Update panel--%>
+            <%--Tableau Dashboard--%>
             <br />
             
             <br />
@@ -210,7 +210,7 @@
             </asp:Panel>
             <hr />
 
-            <%--Verification panel--%>
+            <%--Add Employee Panel--%>
             <asp:Panel runat="server" ID="adminDashboardPanel">
                 <div id="adminDashboard1">
                     <asp:Label ID="Dashboard" runat="server" Text="Dashboard" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
@@ -230,7 +230,7 @@
                 </div>
             </asp:Panel>
 
-            <%--Add Employee Panel--%>
+            <%--                            <asp:RequiredFieldValidator ID="stateValidator" runat="server" ControlToValidate="stateDropDown" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>--%>
 
             <asp:Panel runat="server" ID="adminAddEmployeePanel" Visible="False">
                 <div>
@@ -239,17 +239,19 @@
                     <br />
                     <table>
                     <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="firstNameLabel" runat="server" Text="First Name" Font-Bold="True"></asp:Label>
+                        <td class="auto-style15">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="firstNameLabel" runat="server" Text="First Name" Font-Bold="True"></asp:Label>
                         </td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
+                        <td class="auto-style15"></td>
+                        <td class="auto-style15">
                             <asp:TextBox ID="firstNameText" runat="server" Text=""></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="firstNameValidator" runat="server" ControlToValidate="firstNameText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
                         </td>
-                        <td class="auto-style1"></td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lastNameLabel" runat="server" Text="Last Name" Font-Bold="True"></asp:Label>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
+                        <td class="auto-style15"></td>
+                        <td class="auto-style15">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lastNameLabel" runat="server" Text="Last Name" Font-Bold="True"></asp:Label>
+                        <td class="auto-style15"></td>
+                        <td class="auto-style15">
                             <asp:TextBox ID="lastNameText" runat="server" Text=""></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="lastNameValidator" runat="server" ControlToValidate="lastNameText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -259,6 +261,7 @@
                         <td class="auto-style2">
                             <p>
                                 <asp:TextBox ID="streetAddressText" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="streetAddressValidator" runat="server" ControlToValidate="streetAddressText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
                             </p>
                         </td>
                         <td class="auto-style1"></td>
@@ -266,6 +269,7 @@
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
                             <asp:TextBox ID="cityText" runat="server" Text=""></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="cityValidator" runat="server" ControlToValidate="cityText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
                         </td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="stateLbl" runat="server" Text="State" Font-Bold="true"></asp:Label></td>
                         <td class="auto-style1>"></td>
@@ -324,6 +328,7 @@
 	                            <asp:ListItem Value="WI">Wisconsin</asp:ListItem>
 	                            <asp:ListItem Value="WY">Wyoming</asp:ListItem>
                              </asp:DropDownList>
+<%--                            <asp:RequiredFieldValidator ID="stateValidator" runat="server" ControlToValidate="stateDropDown" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>--%>
                         </td>
                     </tr>
 
@@ -332,12 +337,14 @@
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
                             <asp:TextBox ID="countryText" runat="server" Text=""></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="countryValidator" runat="server" ControlToValidate="countryText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
                         </td>
                         <td class="auto-style1"></td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="zipCodeLbl" runat="server" Text="Zip Code" Font-Bold="True"></asp:Label></td>
                         <td class="auto-style1"></td>
                         <td class="auto-style2">
                             <asp:TextBox ID="zipCodeText" runat="server" Text=""></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="zipCodeValidator" runat="server" ControlToValidate="zipCodeText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -347,20 +354,25 @@
                         <td class="auto-style2">
                             <p>
                                 <asp:TextBox ID="emailAddressText" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="emailValidator" runat="server" ControlToValidate="emailAddressText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="AdminEmployeeCustomValidator" runat="server" ErrorMessage="Email already exists" ControlToValidate="emailAddressText" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic" OnServerValidate="SignUpEmailCustomValidator_ServerValidate"></asp:CustomValidator>
                             </p>
                         </td>
-                        <td class="auto-style1"></td>
+                        <td class="auto-style1">
+                            <asp:Label ID="ErrorMessage" runat="server"></asp:Label>
+                        </td>
                         <td class="auto-style13">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="positionLbl" runat="server" Text="Position" Font-Bold="True"></asp:Label>
                         </td>
                         <td class="auto-style13"></td>
                         <td class="auto-style13">
                             <p>
-                                <asp:TextBox ID="positionText" runat="server" ViewStateMode="Disabled"></asp:TextBox>
+                                <asp:TextBox ID="positionText" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="positionValidator" runat="server" ControlToValidate="positionText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
                             </p>
                         </td>
                     </tr>
                     <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="insertBtn" runat="server" OnClick="insertBtn_Click" Text="Create New Employee"></asp:Button></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="insertBtn" runat="server" OnClick="insertBtn_Click" Text="Create New Employee" ValidationGroup="addEmployee"></asp:Button></td>
                         <td class="auto-style2">
                             &nbsp;</td>
                     </tr>
@@ -369,7 +381,7 @@
                 </div>
             </asp:Panel>
             
-            <%--Employee Update panel--%>
+            <%--Verification panel--%>
             <asp:Panel runat="server" ID="adminEmployeesPanel" Visible="False">
                 <div>
                     <asp:Label ID ="updateEmployeePanel" runat="server" Text="Update Employee Info" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>

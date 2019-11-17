@@ -227,37 +227,79 @@ public partial class WebPages_Admin : System.Web.UI.Page
         adminAddEmployee.ForeColor = System.Drawing.Color.Red;
     }
 
+    protected void SignUpEmailCustomValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+    {
+        try
+        {
+            if (cn.State == System.Data.ConnectionState.Closed)
+            {
+                cn.Open();
+            }
+            string sql = "Select Email from Users";
+            SqlCommand sqlCommand = new SqlCommand(sql, cn);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    string EmailInDataBase = reader.GetString(0).ToString();
+                    if (EmailInDataBase == emailAddressText.Text)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+                        args.IsValid = false;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+            reader.Close();
+            cn.Close();
+        }
+        catch (Exception)
+        {
+            args.IsValid = false;
+            AdminEmployeeCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
+        }
+    }
+
     protected void insertBtn_Click(object sender, EventArgs e)
     {
-        string HashedPassword = PasswordHash.HashPassword("original");
-        cn.Open();
-        SqlCommand createEmployee = new SqlCommand("INSERT INTO [dbo].[Users]([FirstName],[LastName],[Password],[Email],[UserRole],[Verified],[Occupation],[StreetAddress],[City],[HomeState],[Country]," +
-            "[ZipCode],[SignUpDate],[LastUpdated],[LastUpdatedBy]) VALUES (@FirstName, @LastName, @Password, @Email, 'Admin', 'Admin', @Position, @StreetAddress, @City, @HomeState, @Country, @ZipCode," +
-            " @SignUpDate, @LastUpdated, @LastUpdatedBy)");
-        createEmployee.Connection = cn;
-        createEmployee.Parameters.AddWithValue("@FirstName", firstNameText.Text);     //1
-        createEmployee.Parameters.AddWithValue("@LastName", lastNameText.Text);     //2
-        createEmployee.Parameters.AddWithValue("@Email", emailAddressText.Text);     //3
-        createEmployee.Parameters.AddWithValue("@Position", positionText.Text);     //5
-        createEmployee.Parameters.AddWithValue("@StreetAddress", streetAddressText.Text);     //6
-        createEmployee.Parameters.AddWithValue("@City", cityText.Text);     //7
-        createEmployee.Parameters.AddWithValue("@HomeState", stateDropDown.SelectedValue);     //8
-        createEmployee.Parameters.AddWithValue("@Country", countryText.Text);     //9
-        createEmployee.Parameters.AddWithValue("@ZipCode", zipCodeText.Text);     //10
-        createEmployee.Parameters.AddWithValue("@Password", HashedPassword);
-        createEmployee.Parameters.AddWithValue("@SignUpDate", DateTime.Now);     //11
-        createEmployee.Parameters.AddWithValue("@LastUpdated", DateTime.Now);     //12
-        createEmployee.Parameters.AddWithValue("@LastUpdatedBy", "Ottis Bishop");     //13
-        createEmployee.ExecuteNonQuery();
-        cn.Close();
-        firstNameText.Text = string.Empty;
-        lastNameText.Text = string.Empty;
-        streetAddressText.Text = string.Empty;
-        cityText.Text = string.Empty;
-        stateDropDown.SelectedValue = "";
-        countryText.Text = string.Empty;
-        zipCodeText.Text = string.Empty;
-        emailAddressText.Text = string.Empty;
-        positionText.Text = string.Empty;
+        if (AdminEmployeeCustomValidator.IsValid)
+        {
+            string HashedPassword = PasswordHash.HashPassword("original");
+            cn.Open();
+            SqlCommand createEmployee = new SqlCommand("INSERT INTO [dbo].[Users]([FirstName],[LastName],[Password],[Email],[UserRole],[Verified],[Occupation],[StreetAddress],[City],[HomeState],[Country]," +
+                "[ZipCode],[SignUpDate],[LastUpdated],[LastUpdatedBy]) VALUES (@FirstName, @LastName, @Password, @Email, 'Admin', 'Admin', @Position, @StreetAddress, @City, @HomeState, @Country, @ZipCode," +
+                " @SignUpDate, @LastUpdated, @LastUpdatedBy)");
+            createEmployee.Connection = cn;
+            createEmployee.Parameters.AddWithValue("@FirstName", firstNameText.Text);     //1
+            createEmployee.Parameters.AddWithValue("@LastName", lastNameText.Text);     //2
+            createEmployee.Parameters.AddWithValue("@Email", emailAddressText.Text);     //3
+            createEmployee.Parameters.AddWithValue("@Position", positionText.Text);     //5
+            createEmployee.Parameters.AddWithValue("@StreetAddress", streetAddressText.Text);     //6
+            createEmployee.Parameters.AddWithValue("@City", cityText.Text);     //7
+            createEmployee.Parameters.AddWithValue("@HomeState", stateDropDown.SelectedValue);     //8
+            createEmployee.Parameters.AddWithValue("@Country", countryText.Text);     //9
+            createEmployee.Parameters.AddWithValue("@ZipCode", zipCodeText.Text);     //10
+            createEmployee.Parameters.AddWithValue("@Password", HashedPassword);
+            createEmployee.Parameters.AddWithValue("@SignUpDate", DateTime.Now);     //11
+            createEmployee.Parameters.AddWithValue("@LastUpdated", DateTime.Now);     //12
+            createEmployee.Parameters.AddWithValue("@LastUpdatedBy", "Ottis Bishop");     //13
+            createEmployee.ExecuteNonQuery();
+            cn.Close();
+            firstNameText.Text = string.Empty;
+            lastNameText.Text = string.Empty;
+            streetAddressText.Text = string.Empty;
+            cityText.Text = string.Empty;
+            stateDropDown.SelectedValue = "";
+            countryText.Text = string.Empty;
+            zipCodeText.Text = string.Empty;
+            emailAddressText.Text = string.Empty;
+            positionText.Text = string.Empty;
+        }
+        
     }
 }

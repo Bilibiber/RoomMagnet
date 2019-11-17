@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="Rate Property.aspx.cs" Inherits="WebPages_Rate_Property" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="RateProperty.aspx.cs" Inherits="WebPages_Rate_Property" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" Runat="Server">
 </asp:Content>
