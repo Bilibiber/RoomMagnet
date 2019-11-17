@@ -615,8 +615,8 @@
   padding-left: 145px;
 }
 
-.p-left-150 {
-  padding-left: 150px;
+.p-left-1500 {
+  padding-left: 1500px;
 }
 
 .p-right-0 {
@@ -7726,6 +7726,10 @@ a{
 }
 .daterange {
    padding-left:14px !important;
+}
+.p-left-1000 {
+    padding-left:1000px !important;
+
 }
 
 /*# sourceMappingURL=maps/style.css.map */
