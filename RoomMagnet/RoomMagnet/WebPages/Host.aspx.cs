@@ -415,4 +415,66 @@ public partial class WebPages_Host : System.Web.UI.Page
         //cn.Close();
         //Response.Redirect("ManageSearchProperties.aspx");
     }
+
+
+
+    protected void updateproperty1_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string sql = "SELECT [PropertyID] FROM [RoomMagnet].[dbo].[Property] where title =@title and city +','+ [HomeState] =@citystate";
+        SqlCommand search = new SqlCommand(sql, cn);
+        search.Parameters.Add(new SqlParameter("@title", Property1Title.Text));
+        search.Parameters.Add(new SqlParameter("@citystate", Property1CityState.Text));
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                Session["updatepropertyID"] = reader.GetInt32(0);
+            }
+        }
+        cn.Close();
+        Response.Redirect("UpdateProperty.aspx");
+    }
+
+    protected void updateproperty2_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string sql = "SELECT [PropertyID] FROM [RoomMagnet].[dbo].[Property] where title =@title and city +','+ [HomeState] =@citystate";
+        SqlCommand search = new SqlCommand(sql, cn);
+        search.Parameters.Add(new SqlParameter("@title", Property2Title.Text));
+        search.Parameters.Add(new SqlParameter("@citystate", Property2CityState.Text));
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                Session["updatepropertyID"] = reader.GetInt32(0);
+            }
+        }
+        cn.Close();
+        Response.Redirect("UpdateProperty.aspx");
+    }
+
+    protected void updateproperty3_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string sql = "SELECT [PropertyID] FROM [RoomMagnet].[dbo].[Property] where title =@title and city +','+ [HomeState] =@citystate";
+        SqlCommand search = new SqlCommand(sql, cn);
+        search.Parameters.Add(new SqlParameter("@title", Property3Title.Text));
+        search.Parameters.Add(new SqlParameter("@citystate", Property3CityState.Text));
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                Session["updatepropertyID"] = reader.GetInt32(0);
+            }
+        }
+        cn.Close();
+        Response.Redirect("UpdateProperty.aspx");
+    }
 }

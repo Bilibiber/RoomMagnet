@@ -144,7 +144,7 @@
                                         <ul class="atbd_content_right">
                                             <li></li>
                                         </ul>
-                                        <asp:Button ID="Button1" runat="server" Text="Edit" class="btn btn-primary" style="float:right"/>
+                                        <asp:Button ID="Button1" runat="server" Text="Edit" class="btn btn-primary" style="float:right" OnClick="updateproperty1_Click"/>
                                     </div>
                                     <!-- end .atbd_listing_bottom_content -->
                             </div>
@@ -208,7 +208,7 @@
                                         <ul class="atbd_content_right">
                                             <li></li>
                                         </ul>
-                                        <asp:Button ID="edit1" runat="server" Text="Edit" class="btn btn-primary" style="float:right"/>
+                                        <asp:Button ID="edit1" runat="server" Text="Edit" class="btn btn-primary" style="float:right" OnClick="updateproperty2_Click"/>
                                     </div>
                                     <!-- end .atbd_listing_bottom_content -->
                             </div>
@@ -274,7 +274,7 @@
                                         <ul class="atbd_content_right">
                                             <li></li>
                                         </ul>
-                                        <asp:Button ID="Button2" runat="server" Text="Edit" class="btn btn-primary" style="float:right"/>
+                                        <asp:Button ID="Button2" runat="server" Text="Edit" class="btn btn-primary" style="float:right" OnClick="updateproperty3_Click"/>
                                     </div>
                                     <!-- end .atbd_listing_bottom_content -->
                             </div>

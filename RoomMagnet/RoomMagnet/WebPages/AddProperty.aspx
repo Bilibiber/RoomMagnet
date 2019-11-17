@@ -31,7 +31,7 @@
     </script>
     </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <%--renter Amenities panel--%>
+
     <section class="add-listing-wrapper border-bottom section-bg ">
 
         <div class="container">
@@ -228,10 +228,11 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        
                                     </table>
+                                    <hr />
                                 </asp:panel>
                                 <asp:panel runat="server" id="room2" Visible="False">
-                                    <br />
                                     <asp:Label runat="server" Text="Room 2 information" class="form-label"></asp:Label>
                                     <table>
                                         <tr>
@@ -271,9 +272,9 @@
                                             </td>
                                         </tr>
                                     </table>
+                                    <hr />
                                 </asp:panel>
                                 <asp:panel runat="server" id="room3" Visible="False">
-                                    <br />
                                     <asp:Label runat="server" Text="Room 3 information" class="form-label"></asp:Label>
                                     <table>
                                         <tr>
@@ -313,9 +314,9 @@
                                             </td>
                                         </tr>
                                     </table>
+                                    <hr />
                                 </asp:panel>
                                 <asp:panel runat="server" id="room4" Visible="False">
-                                    <br />
                                     <asp:Label runat="server" Text="Room 4 information" class="form-label"></asp:Label>
                                     <table>
                                         <tr>
@@ -355,6 +356,7 @@
                                             </td>
                                         </tr>
                                     </table>
+                                    <hr />
                                 </asp:panel>
                         </div>
                         <!-- ends: .form-group -->

@@ -70,7 +70,14 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
     protected void cancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Renter.aspx");
+        if(Session["Roles"].ToString() == "Renter")
+        {
+            Response.Redirect("Renter.aspx");
+        }else if (Session["Roles"].ToString() == "Host")
+        {
+            Response.Redirect("Host.aspx");
+        }
+        
     }
 
     protected void post_Click(object sender, EventArgs e)
