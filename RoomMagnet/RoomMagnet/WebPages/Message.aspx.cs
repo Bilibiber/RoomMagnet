@@ -13,13 +13,13 @@ using System.Configuration;
 using System.Collections;
 public partial class WebPages_Message : System.Web.UI.Page
 {
-    
+    ArrayList ReceiverIDs = new ArrayList();
     SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     int ReceiverID;
     string SenderID;
     string ReceiverName = "";
-    int OldConversationID=0;
-    int NewConversationID=0;
+    int OldConversationID = 0;
+    int NewConversationID = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["SingInEmail"] == null)
@@ -52,75 +52,89 @@ public partial class WebPages_Message : System.Web.UI.Page
         }
         else
         {
+            int SenderID = 0;
             for (int i = 0; i < Conversation.ConversationCount; i++)
             {
-                if(Convert.ToInt32(Session["UserID"].ToString()) == Conversation.conversations[i].getRecieverID())
+                if (Convert.ToInt32(Session["UserID"].ToString()) == Conversation.conversations[i].getRecieverID())
                 {
-                    string sql = "Select SenderID, max(MessageID), messageContent "
-                }
-            }
-
-            string sql = "Select [Conversations].ConversationID, max(MessageID) as LatestMessage from Conversations Inner Join [Message] on [Conversations].ConversationID = [Message].ConversationID WHERE senderID= 1000 group by [Conversations].ConversationID";
-            SqlCommand sqlCommand = new SqlCommand(sql, cn);
-            SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            if (dataReader.Read())
-            {
-
-            }
-
-
-            SenderID = Session["UserID"].ToString();
-
-
-
-            string sql2 = "Select ConversationID FROM Conversations where SenderID=" + SenderID + "And ReceiverID=" + ReceiverID;
-            SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
-            SqlDataReader reader = sqlCommand2.ExecuteReader();
-            if (reader.Read())
-            {
-                OldConversationID = reader.GetInt32(0);
-            }
-            else
-            {
-                reader.Close();
-                string sql3 = "Insert into Conversations values (@SenderId,@ReceiverID)";
-                SqlCommand sqlCommand3 = new SqlCommand(sql3, cn);
-                sqlCommand3.Parameters.AddWithValue("@SenderId", SenderID);
-                sqlCommand3.Parameters.AddWithValue("@ReceiverID", ReceiverID);
-                sqlCommand3.ExecuteNonQuery();
-                //after instering finds the new conversation ID 
-                Conversation newConvo = new Conversation( Int32.Parse(SenderID), ReceiverID);
-                Conversation.conversations[Conversation.ConversationCount-1] = newConvo;
-                
-
-                string sql4 = "Select ConversationID FROM Conversations where SenderID = " + SenderID + " AND ReceiverID = " + ReceiverID;
-                SqlCommand sqlCommand4 = new SqlCommand(sql4, cn);
-                SqlDataReader reader2 = sqlCommand4.ExecuteReader();
-                if (reader2.Read())
-                {
-                    NewConversationID = reader2.GetInt32(0);
-                    newConvo.setConversationID(NewConversationID);
-                }
-                reader2.Close();
-
-            }
-            reader.Close();
-            if (OldConversationID != 0)
-            {
-                string sql5 = "Select MessageContent from Message where ConversationID=" + OldConversationID;
-                SqlCommand sqlCommand5 = new SqlCommand(sql5, cn);
-                SqlDataReader reader3 = sqlCommand5.ExecuteReader();
-                if (reader3.HasRows)
-                {
-                    while (reader3.Read())
+                    string sql9 = "Select SenderID, max(MessageID) as latestMessage, messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+                         " group by SenderID, MessageContent order by latestMessage desc ";
+                    SqlCommand sqlCommand9 = new SqlCommand(sql9, cn);
+                    SqlDataReader dataReader9 = sqlCommand9.ExecuteReader();
+                    if (dataReader9.Read())
                     {
-                        txtmsg.Text = Application["message"] + reader3.GetString(0) + Environment.NewLine;
+                        int tempSenderID = dataReader9.GetInt32(0);
+                        if (tempSenderID != SenderID)
+                        {
+                            if (ReceiverIDs.Contains(tempSenderID) == false)
+                            {
+                                ReceiverIDs.Add(dataReader9.GetInt32(0));
+                                Messages.Text += dataReader9.GetString(2) + Environment.NewLine;
+                                SenderID = dataReader9.GetInt32(0);
+                            }
+                        }
                     }
-                    reader3.NextResult();
+                    break;
                 }
-                reader3.Close();
+                FillDropDown(ReceiverIDs); 
+
+
+
+
+
+
+
+                string SenderID2 = Session["UserID"].ToString();
+
+                string sql2 = "Select ConversationID FROM Conversations where SenderID=" + SenderID2 + "And ReceiverID=" + ReceiverID;
+                SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
+                SqlDataReader reader = sqlCommand2.ExecuteReader();
+                if (reader.Read())
+                {
+                    OldConversationID = reader.GetInt32(0);
+                }
+                else
+                {
+                    reader.Close();
+                    string sql3 = "Insert into Conversations values (@SenderId,@ReceiverID)";
+                    SqlCommand sqlCommand3 = new SqlCommand(sql3, cn);
+                    sqlCommand3.Parameters.AddWithValue("@SenderId", SenderID2);
+                    sqlCommand3.Parameters.AddWithValue("@ReceiverID", ReceiverID);
+                    sqlCommand3.ExecuteNonQuery();
+                    //after instering finds the new conversation ID 
+                    Conversation newConvo = new Conversation(Int32.Parse(SenderID2), ReceiverID);
+                    Conversation.conversations[Conversation.ConversationCount - 1] = newConvo;
+
+
+                    string sql4 = "Select ConversationID FROM Conversations where SenderID = " + SenderID2 + " AND ReceiverID = " + ReceiverID;
+                    SqlCommand sqlCommand4 = new SqlCommand(sql4, cn);
+                    SqlDataReader reader2 = sqlCommand4.ExecuteReader();
+                    if (reader2.Read())
+                    {
+                        NewConversationID = reader2.GetInt32(0);
+                        newConvo.setConversationID(NewConversationID);
+                    }
+                    reader2.Close();
+
+                }
+                reader.Close();
+                //if (OldConversationID != 0)
+                //{
+                //    string sql5 = "Select MessageContent from Message where ConversationID=" + OldConversationID;
+                //    SqlCommand sqlCommand5 = new SqlCommand(sql5, cn);
+                //    SqlDataReader reader3 = sqlCommand5.ExecuteReader();
+                //    if (reader3.HasRows)
+                //    {
+                //        while (reader3.Read())
+                //        {
+                //            txtmsg.Text = Application["message"] + reader3.GetString(0) + Environment.NewLine;
+                //        }
+                //        reader3.NextResult();
+                //    }
+                //    reader3.Close();
+                //}
+                cn.Close();
             }
-            cn.Close();
         }
     }
     protected void Button1_Click(object sender, EventArgs e)
@@ -160,19 +174,39 @@ public partial class WebPages_Message : System.Web.UI.Page
             command2.ExecuteNonQuery();
             sql4 = "Select MessageID from Message WHERE ConversationID= " + NewConversationID + " AND MessageContent= " + my + " AND LastUpdatedBy= " + Sendername;
         }
-        
-        
-            cn.Close();
+
+
+        cn.Close();
 
 
 
-            Response.Redirect("Message.aspx");
-        }
-    
+        Response.Redirect("Message.aspx");
+    }
+
     protected void Clear_Click(object sender, EventArgs e)
     {
         Application["message"] = "";
         Response.Redirect("Message.aspx");
+    }
+    public void FillDropDown(ArrayList ReceiverIDs)
+    {
+        cn.Open();
+        for (int i = 0; i < ReceiverIDs.Count; i++)
+        {
+            string sql = "Select FirstName, LastName WHERE UserID=" + ReceiverIDs[i].ToString();
+            SqlCommand sqlCommand = new SqlCommand(sql, cn);
+            SqlDataReader reader3 = sqlCommand.ExecuteReader();
+            if (reader3.HasRows)
+            {
+                while (reader3.Read())
+                {
+                    RenterNames.Items.Add(new ListItem ((reader3.GetString(0) + " " + reader3.GetString(1)),ReceiverIDs[i].ToString()));
+                    
+                }
+            }
+        }
+        
+        cn.Close();
     }
 }
 
