@@ -76,7 +76,7 @@
                                                 </li>
 
                                                 <li>
-                                                    <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
+                                                    <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
                                                 </li>
                                                 <li>
                                                     <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+        <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -152,7 +152,7 @@
                         </div>
                         <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:Label ID="PasswordErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
-                        <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" UseSubmitBehavior="false" OnClick="MasterPageSignIn_Click" />
+                        <asp:Button ID="SignInLogIn" runat="server" type="button" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" UseSubmitBehavior="false" OnClick="MasterPageSignIn_Click" />
                         <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <div class="form-excerpts">
