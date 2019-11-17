@@ -37,6 +37,13 @@
             $('#sign_up_notification').modal({ show: true });
         }
     </script>
+    <script>
+        window.onbeforeunload = closeMessage;
+
+        function closeMessage() {
+          sessionStorage.clear();
+        }
+    </script>
     <title>
         <asp:ContentPlaceHolder ID="Title" runat="server">
         </asp:ContentPlaceHolder>
@@ -138,12 +145,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                        <asp:TextBox ID="SignInEmail" PlaceHolder="Email" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:Label ID="EmailErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
-                        <asp:RequiredFieldValidator ID="SignInEmailRequiredFieldValidator" runat="server" ErrorMessage="Required" ControlToValidate="SignInEmail" ValidationGroup="SignIn" Display="Dynamic"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="SignInEmailRegularExpressionValidator" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="SignInEmail" Display="Dynamic" ValidationGroup="SignIn" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                            <asp:TextBox ID="SignInEmail" PlaceHolder="Email" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:Label ID="EmailErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
+                            <asp:RequiredFieldValidator ID="SignInEmailRequiredFieldValidator" runat="server" ErrorMessage="Required" ControlToValidate="SignInEmail" ValidationGroup="SignIn" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="SignInEmailRegularExpressionValidator" runat="server" ErrorMessage="Invalid Email Address" ControlToValidate="SignInEmail" Display="Dynamic" ValidationGroup="SignIn" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                         </div>
-                            <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
+                        <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:Label ID="PasswordErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" UseSubmitBehavior="false" OnClick="MasterPageSignIn_Click" />
                         <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>

@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Web.Script.Serialization;
+using System.Web.Services;
 using System.Web.UI;
 
 public partial class RoomMagnet : System.Web.UI.MasterPage
@@ -348,7 +349,6 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
     {
         Response.Redirect("Setting.aspx");
     }
-
     protected void MasterPageSignOut_Click(object sender, EventArgs e)
     {
         Session.Abandon();
