@@ -275,13 +275,13 @@
                                     <asp:label id="wifiLbl" runat="server" text="WiFi " visible="false"></asp:label>
                                 </li>
                                 <li>
-                                    <span class="la la-wifi icon-space"></span>
+                                    <span class="la la-wifi icon-space" ></span>
                                     <asp:label id="tvLbl" runat="server" text="TV " visible="false"></asp:label>
                                 </li>
 
                                 <li>
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="seperateBathroomLbl" runat="server" text="Seperate Bathroom " visible="false"></asp:label>
+                                    <asp:label id="seperateBathroomLbl" runat="server" text="Seperate Bathroom " ></asp:label>
                                 </li>
                             </ul>
                         </div>
