@@ -13,8 +13,10 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     private int resultCount = 0;
     private string OrderBy = String.Empty;
     private ArrayList RatingsPID = new ArrayList();
+    private ArrayList PID = new ArrayList();
     private int RowCount = 0;
     private int RowNum;
+    private int RowMinus = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -221,148 +223,157 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SqlDataReader reader = search.ExecuteReader();
             if (reader.HasRows)
             {
+               
                 while (reader.Read())
                 {
-                    resultCount++;
-                    decimal x;
-                    string y;
-                    if (resultCount == 1)
+                    int tempPID = reader.GetInt32(10);
+                    if (PID.Contains(tempPID) == false)
                     {
-                        RatingsPID.Add(reader.GetInt32(10));
-                        x = reader.GetDecimal(5);
-                        y = String.Format("{0:0.##}", x);
-                        Property1Title.Text = reader.GetString(0);
-                        Property1Title.Visible = true;
+                        PID.Add(tempPID);
+                        resultCount++;
+                        decimal x;
+                        string y;
+                        if (resultCount == 1)
+                        {
+                            RatingsPID.Add(reader.GetInt32(10));
+                            x = reader.GetDecimal(5);
+                            y = String.Format("{0:0.##}", x);
+                            Property1Title.Text = reader.GetString(0);
+                            Property1Title.Visible = true;
 
-                        Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                            Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
 
-                        Property1RentPrice.Text = "$" + y + "/Month";
-                        Property1RentPrice.Visible = true;
-                        Property1CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
-                        Property1CityState.Visible = true;
-                        Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
-                        Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property1StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();                     
+                            Property1RentPrice.Text = "$" + y + "/Month";
+                            Property1RentPrice.Visible = true;
+                            Property1CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
+                            Property1CityState.Visible = true;
+                            Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                            Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                            Property1StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();                     
 
-                        byte[] images = (byte[])reader[8];
-                        if (images == null)
-                        {
-                            return;
+                            byte[] images = (byte[])reader[8];
+                            if (images == null)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                Property1Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                                Property1Image.Visible = true;
+                            }
+                            Property1Space.Visible = true;
                         }
-                        else
-                        {
-                            Property1Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
-                            Property1Image.Visible = true;
-                        }
-                        Property1Space.Visible = true;
-                    }
 
-                    if (resultCount == 2)
-                    {
-                        RatingsPID.Add(reader.GetInt32(10));
-                        x = reader.GetDecimal(5);
-                        y = String.Format("{0:0.##}", x);
-                        Property2Title.Text = reader.GetString(0);
-                        Property2Title.Visible = true;
+                        if (resultCount == 2)
+                        {
+                            RatingsPID.Add(reader.GetInt32(10));
+                            x = reader.GetDecimal(5);
+                            y = String.Format("{0:0.##}", x);
+                            Property2Title.Text = reader.GetString(0);
+                            Property2Title.Visible = true;
 
-                        Property2RentPrice.Text = "$" + y + "/Month";
-                        Property2RentPrice.Visible = true;
-                        Property2CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
-                        Property2CityState.Visible = true;
-                        Property2Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
-                        Property2Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property2StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
-                        byte[] images = (byte[])reader[8];
-                        if (images == null)
-                        {
-                            return;
+                            Property2RentPrice.Text = "$" + y + "/Month";
+                            Property2RentPrice.Visible = true;
+                            Property2CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
+                            Property2CityState.Visible = true;
+                            Property2Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                            Property2Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                            Property2StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
+                            byte[] images = (byte[])reader[8];
+                            if (images == null)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                Property2Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                                Property2Image.Visible = true;
+                            }
+                            Property2Space.Visible = true;
                         }
-                        else
+                        if (resultCount == 3)
                         {
-                            Property2Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
-                            Property2Image.Visible = true;
+                            RatingsPID.Add(reader.GetInt32(10));
+                            x = reader.GetDecimal(5);
+                            y = String.Format("{0:0.##}", x);
+                            Property3Title.Text = reader.GetString(0);
+                            Property3Title.Visible = true;
+                            Property3RentPrice.Text = "$" + y + "/Month";
+                            Property3RentPrice.Visible = true;
+                            Property3CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
+                            Property3CityState.Visible = true;
+                            Property3Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                            Property3Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                            Property3StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
+                            byte[] images = (byte[])reader[8];
+                            if (images == null)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                Property3Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                                Property3Image.Visible = true;
+                            }
+                            Property3Space.Visible = true;
                         }
-                        Property2Space.Visible = true;
-                    }
-                    if (resultCount == 3)
-                    {
-                        RatingsPID.Add(reader.GetInt32(10));
-                        x = reader.GetDecimal(5);
-                        y = String.Format("{0:0.##}", x);
-                        Property3Title.Text = reader.GetString(0);
-                        Property3Title.Visible = true;
-                        Property3RentPrice.Text = "$" + y + "/Month";
-                        Property3RentPrice.Visible = true;
-                        Property3CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
-                        Property3CityState.Visible = true;
-                        Property3Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
-                        Property3Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property3StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
-                        byte[] images = (byte[])reader[8];
-                        if (images == null)
+                        if (resultCount == 4)
                         {
-                            return;
-                        }
-                        else
-                        {
-                            Property3Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
-                            Property3Image.Visible = true;
-                        }
-                        Property3Space.Visible = true;
-                    }
-                    if (resultCount == 4)
-                    {
-                        RatingsPID.Add(reader.GetInt32(10));
-                        x = reader.GetDecimal(5);
-                        y = String.Format("{0:0.##}", x);
-                        Property4Title.Text = reader.GetString(0);
-                        Property4Title.Visible = true;
+                            RatingsPID.Add(reader.GetInt32(10));
+                            x = reader.GetDecimal(5);
+                            y = String.Format("{0:0.##}", x);
+                            Property4Title.Text = reader.GetString(0);
+                            Property4Title.Visible = true;
 
-                        Property4RentPrice.Text = "$" + y + "/Month";
-                        Property4RentPrice.Visible = true;
-                        Property4CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
-                        Property4CityState.Visible = true;
-                        Property4Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
-                        Property4Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property4StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
-                        byte[] images = (byte[])reader[8];
-                        if (images == null)
-                        {
-                            return;
+                            Property4RentPrice.Text = "$" + y + "/Month";
+                            Property4RentPrice.Visible = true;
+                            Property4CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
+                            Property4CityState.Visible = true;
+                            Property4Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                            Property4Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                            Property4StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
+                            byte[] images = (byte[])reader[8];
+                            if (images == null)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                Property4Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                                Property4Image.Visible = true;
+                            }
+                            Property4Space.Visible = true;
                         }
-                        else
+                        if (resultCount == 5)
                         {
-                            Property4Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
-                            Property4Image.Visible = true;
+                            RatingsPID.Add(reader.GetInt32(10));
+                            x = reader.GetDecimal(5);
+                            y = String.Format("{0:0.##}", x);
+                            Property5Title.Text = reader.GetString(0);
+                            Property5Title.Visible = true;
+                            Property5RentPrice.Text = "$" + y + "/Month";
+                            Property5RentPrice.Visible = true;
+                            Property5CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
+                            Property5CityState.Visible = true;
+                            Property5Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                            Property5Bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                            Property5StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
+                            byte[] images = (byte[])reader[8];
+                            if (images == null)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                Property5Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                                Property5Image.Visible = true;
+                            }
+                            Property5Space.Visible = true;
                         }
-                        Property4Space.Visible = true;
-                    }
-                    if (resultCount == 5)
-                    {
-                        RatingsPID.Add(reader.GetInt32(10));
-                        x = reader.GetDecimal(5);
-                        y = String.Format("{0:0.##}", x);
-                        Property5Title.Text = reader.GetString(0);
-                        Property5Title.Visible = true;
-                        Property5RentPrice.Text = "$" + y + "/Month";
-                        Property5RentPrice.Visible = true;
-                        Property5CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
-                        Property5CityState.Visible = true;
-                        Property5Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
-                        Property5Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        Property5StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
-                        byte[] images = (byte[])reader[8];
-                        if (images == null)
-                        {
-                            return;
-                        }
-                        else
-                        {
-                            Property5Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
-                            Property5Image.Visible = true;
-                        }
-                        Property5Space.Visible = true;
-                    }
+                }
+                else
+                {
+                    RowMinus--;
                 }
                 reader.NextResult();
             }
@@ -384,7 +395,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                 }
             }
             Resultreader.Close();
-            SearchResultCount.Text = "Total Properties Found: " + RowNum.ToString();
+                RowMinus = RowMinus + RowNum;
+            SearchResultCount.Text = "Total Properties Found: " + RowMinus.ToString();
             if (RowNum > 5)
             {
                 ResultPg2.Visible = true;
