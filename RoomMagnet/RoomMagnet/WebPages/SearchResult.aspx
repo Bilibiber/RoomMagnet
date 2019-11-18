@@ -15,6 +15,11 @@
     <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
 
     <script src="GoogleMap.js"></script>
+    <script type="text/javascript">
+        function openResultModal() {
+            $('#no_result_notification').modal({ show: true });
+        }
+    </script>
     <section class="all-listing-wrapper section-bg results-pad">
         <div class="row">
             <div class="col-lg-12">
@@ -369,7 +374,6 @@
             </div>
         </div>
         <!-- ends: .col-lg-8 -->
-        </div>
 
         <!-- ends: .listing-items -->
     </section>
@@ -422,6 +426,35 @@
                         <ul class="list-unstyled">
                             <li>
                                 <asp:Button ID="FiltersButton" runat="server" Text="Apply" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="ApplyButton_Click" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="no_result_notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <asp:Image ID="Image2" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <asp:Image ID="Image3" runat="server" ImageUrl="~/img/icons8-broken-robot-96.png" />
+                    <h3>Sorry no result found in this area</h3>
+                    <p>Reapply filters or try a different location</p>
+                </div>
+                <div class="modal-footer mx-auto">
+                    <div class="form-excerpts">
+                        <span>-OR-</span>
+                        <ul class="list-unstyled">
+                            <li>
+                                <asp:Button ID="Button2" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" Text="Become First Host!" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" />
                             </li>
                         </ul>
                     </div>
