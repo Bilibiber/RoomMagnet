@@ -309,6 +309,10 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
         cmd.ExecuteNonQuery();
 
     }
+    protected void GoToMessage(object sender, EventArgs a)
+    {
+        Response.Redirect("Messages.aspx");
+    }
 
 
     //JS code
