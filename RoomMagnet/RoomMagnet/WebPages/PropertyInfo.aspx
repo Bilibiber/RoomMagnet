@@ -117,7 +117,10 @@
                             </div>
                         </div>
                         <div class="atbdb_content_module_contents">
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa kequi officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium dolorem que laudantium, totam rem aperiam the eaque ipsa quae abillo was inventore veritatis keret quasi aperiam architecto beatae vitae dicta sunt explicabo. Nemo ucxqui officia voluptatem accu santium doloremque laudantium, totam rem ape dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
+                            <p>
+                                <asp:Label ID="PropertyDescription" runat="server" Text="PropertyDescription"></asp:Label>
+
+                            </p>
                         </div>
                     </div>
                     <!-- ends: .atbd_content_module -->
@@ -202,154 +205,6 @@
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <div class="widget atbd_widget widget-card">
                         <div class="atbd_widget_title">
-                            <h4><span class="la la-user"></span>Host Info</h4>
-                        </div>
-                        <!-- ends: .atbd_widget_title -->
-                        <div class="widget-body atbd_author_info_widget">
-                            <div class="atbd_avatar_wrapper">
-                                <div class="atbd_review_avatar">
-                                    <img src="img/avatar-60x60.jpg" alt="Avatar Image">
-                                </div>
-                                <div class="atbd_name_time">
-                                    <h4>Name<span class="verified" data-toggle="tooltip" data-placement="top" title="Verified"></span></h4>
-                                    <span class="review_time">Posted 6 days ago</span>
-                                </div>
-                            </div>
-                            <!-- ends: .atbd_avatar_wrapper -->
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="message_OnClick" />
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
-                        </div>
-                        <!-- ends: .widget-body -->
-                    </div>
-                    <!-- ends: .widget -->
-
-                    <div class="widget atbd_widget widget-card">
-                        <div class="atbd_widget_title">
-                            <h4><span class="la la-bookmark"></span>Amenities</h4>                          
-                        </div>
-                        <!-- ends: /.atbd_widget_title -->
-                        <div class="widget-body atbdp-widget-categories">
-                            <ul class="atbdp_parent_category">
-                                <li runat="server" id="AirConditioningIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="airConditioningLbl" runat="server" Text="Air Conditioning"></asp:Label>
-                                </li>
-                                <li runat="server" id="HeatingIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="heatingLbl" runat="server" Text="Heating"></asp:Label>
-                                </li>
-
-                                <li runat="server" id="onSiteLaundryIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="onSiteLaundryLbl" runat="server" Text="On Site Laundry"></asp:Label>
-                                </li>
-                                <li runat="server" id="parkingIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="parkingLbl" runat="server" Text="Parking "></asp:Label>
-                                </li>
-                                <li runat="server" id="furnishedIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="furnishedLbl" runat="server" Text="Furnished "></asp:Label>
-                                </li>
-
-                                <li runat="server" id="petFriendlyIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="petFriendlyLbl" runat="server" Text="Pet Friendly " ></asp:Label>
-                                </li>
-                                <li runat="server" id="carbonMonoxideDetectorIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="carbonMonoxideDetectorLbl" runat="server" Text="Carbon Monoxide Detector" ></asp:Label>
-                                </li>
-                                <li runat="server" id="smokeDetectorIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="smokeDetectorLbl" runat="server" Text="Smoke Detector "></asp:Label>
-                                </li>
-
-                                <li runat="server" id="seperateEntranceIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="seperateEntranceLbl" runat="server" Text="Seperate Entrance "></asp:Label>
-                                </li>
-                                <li runat="server" id="wifiIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="wifiLbl" runat="server" Text="WiFi "></asp:Label>
-                                </li>
-                                <li runat="server" id="tvIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="tvLbl" runat="server" Text="TV "></asp:Label>
-                                </li>
-
-                                <li runat="server" id="seperateBathroomIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="seperateBathroomLbl" runat="server" Text="Seperate Bathroom "></asp:Label>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- ends: .atbdp -->
-                    </div>
-                    <!-- ends: .widget -->
-
-                    <div class="modal" id="amenities_modal" tabindex="-1" role="dialog" aria-labelledby="amenities_modal_label" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title" id="amenities_modal_h1">Amenities</h1>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <h4>Basic</h4>
-                                    <ul class="list-unstyled amenities-list">
-                                        <li>Wifi
-                                        </li>
-                                        <li>Washer
-                                        </li>
-                                        <li>Dryer
-                                        </li>
-                                        <li>TV
-                                        </li>
-                                        <li>Air Conditioning
-                                        </li>
-                                        <li>Heating
-                                        </li>
-                                    </ul>
-                                    <h4>Bed and Bath</h4>
-                                    <ul class="list-unstyled amenities-list">
-                                        <li>Private Full Bath
-                                        </li>
-                                        <li>Bed
-                                        </li>
-                                        <li>Closet
-                                        </li>
-                                        <li>Dresser
-                                        </li>
-                                    </ul>
-                                    <h4>Safety Measures</h4>
-                                    <ul class="list-unstyled amenities-list">
-                                        <li>Smoke Detector
-                                        </li>
-                                        <li>Carbon Monoxide Detector
-                                        </li>
-                                        <li>Fire Extinguisher
-                                        </li>
-                                        <li>First Aid Kit
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="widget atbd_widget widget-card">
-                        <div class="atbd_widget_title">
-                            <h4><span class="la la-map-marker"></span>Location</h4>
-                        </div>
-                        <!-- ends: .atbd_widget_title -->
-                        <div class="widget-body atbdb_content_module_contents">
-                            <div class="map" id="map-two"></div>
-                        </div>
-
-                        <div class="atbd_widget_title">
                             <h4><span class="la la-bookmark"></span>Property Room Details: </h4>
                         </div>
                         <!-- ends: /.atbd_widget_title -->
@@ -402,6 +257,103 @@
                         </div>
                         <!-- ends: .atbdb_content_module_contents -->
                     </div>
+                    <div class="widget atbd_widget widget-card">
+                        <div class="atbd_widget_title">
+                            <h4><span class="la la-user"></span>Host Info</h4>
+                        </div>
+                        <!-- ends: .atbd_widget_title -->
+                        <div class="widget-body atbd_author_info_widget">
+                            <div class="atbd_avatar_wrapper">
+                                <div class="atbd_review_avatar">
+                                    <img src="img/avatar-60x60.jpg" alt="Avatar Image">
+                                </div>
+                                <div class="atbd_name_time">
+                                    <h4>Name<span class="verified" data-toggle="tooltip" data-placement="top" title="Verified"></span></h4>
+                                    <span class="review_time">Posted 6 days ago</span>
+                                </div>
+                            </div>
+                            <!-- ends: .atbd_avatar_wrapper -->
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="Unnamed_Click"/>
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
+                        </div>
+                        <!-- ends: .widget-body -->
+                    </div>
+                    <!-- ends: .widget -->
+
+                    <div class="widget atbd_widget widget-card">
+                        <div class="atbd_widget_title">
+                            <h4><span class="la la-bookmark"></span>Amenities</h4>
+                        </div>
+                        <!-- ends: /.atbd_widget_title -->
+                        <div class="widget-body atbdp-widget-categories">
+                            <ul class="atbdp_parent_category">
+                                <li runat="server" id="AirConditioningIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="airConditioningLbl" runat="server" Text="Air Conditioning"></asp:Label>
+                                </li>
+                                <li runat="server" id="HeatingIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="heatingLbl" runat="server" Text="Heating"></asp:Label>
+                                </li>
+
+                                <li runat="server" id="onSiteLaundryIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="onSiteLaundryLbl" runat="server" Text="On Site Laundry"></asp:Label>
+                                </li>
+                                <li runat="server" id="parkingIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="parkingLbl" runat="server" Text="Parking "></asp:Label>
+                                </li>
+                                <li runat="server" id="furnishedIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="furnishedLbl" runat="server" Text="Furnished "></asp:Label>
+                                </li>
+
+                                <li runat="server" id="petFriendlyIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="petFriendlyLbl" runat="server" Text="Pet Friendly "></asp:Label>
+                                </li>
+                                <li runat="server" id="carbonMonoxideDetectorIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="carbonMonoxideDetectorLbl" runat="server" Text="Carbon Monoxide Detector"></asp:Label>
+                                </li>
+                                <li runat="server" id="smokeDetectorIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="smokeDetectorLbl" runat="server" Text="Smoke Detector "></asp:Label>
+                                </li>
+
+                                <li runat="server" id="seperateEntranceIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="seperateEntranceLbl" runat="server" Text="Seperate Entrance "></asp:Label>
+                                </li>
+                                <li runat="server" id="wifiIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="wifiLbl" runat="server" Text="WiFi "></asp:Label>
+                                </li>
+                                <li runat="server" id="tvIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="tvLbl" runat="server" Text="TV "></asp:Label>
+                                </li>
+
+                                <li runat="server" id="seperateBathroomIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="seperateBathroomLbl" runat="server" Text="Seperate Bathroom "></asp:Label>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- ends: .atbdp -->
+                    </div>
+                    <!-- ends: .widget -->
+                    <div class="widget atbd_widget widget-card">
+                        <div class="atbd_widget_title">
+                            <h4><span class="la la-map-marker"></span>Location</h4>
+                        </div>
+                        <!-- ends: .atbd_widget_title -->
+                        <div class="widget-body atbdb_content_module_contents">
+                            <div class="map" id="map-two"></div>
+                        </div>
+                    </div>
+
                     <!-- ends: widget -->
                 </div>
             </div>

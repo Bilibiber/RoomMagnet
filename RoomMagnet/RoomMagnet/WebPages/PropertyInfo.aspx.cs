@@ -280,9 +280,8 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
         cmd.ExecuteNonQuery();
     }
-
-    protected void message_OnClick(object sender, EventArgs ex)
+    protected void Unnamed_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Message.aspx");
+        Response.Redirect("Home.aspx");
     }
 }
