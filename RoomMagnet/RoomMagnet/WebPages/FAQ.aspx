@@ -51,7 +51,7 @@
                                             <div class="card-header" role="tab" id="headingOne1">
                                                 <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
                                                     aria-controls="collapseOne1">
-                                                    <h5 class="mb-0">What makes RoomMagnet different?<i class="fas fa-angle-down rotate-icon" style="float:right;"></i>
+                                                    <h5 class="mb-0">What makes RoomMagnet different?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
                                                     </h5>
                                                 </a>
                                             </div>
@@ -59,18 +59,18 @@
                                             <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
                                                 data-parent="#accordionEx">
                                                 <div class="card-body">
-                                                RoomMagnet provides an easy to use platform where pre-screened Tenants and Hosts come together, and in exchange for a
+                                                    RoomMagnet provides an easy to use platform where pre-screened Tenants and Hosts come together, and in exchange for a
                                                 modest cost and/or in exchange for light domestic duties, enjoy reduced rent. It’s a win-win! Hosts monetize their extra living space and if they wish get a
                                                 little help around the house. Tenants enjoy affordable housing.
                                                 </div>
                                             </div>
                                         </div>
-                                                                                <div class="card">
+                                        <div class="card">
                                             <!-- Card header -->
                                             <div class="card-header" role="tab" id="headingOne2">
                                                 <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne2" aria-expanded="true"
                                                     aria-controls="collapseOne1">
-                                                    <h5 class="mb-0">Who can use RoomMagnet?<i class="fas fa-angle-down rotate-icon" style="float:right;"></i>
+                                                    <h5 class="mb-0">Who can use RoomMagnet?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
                                                     </h5>
                                                 </a>
                                             </div>
@@ -78,21 +78,33 @@
                                             <div id="collapseOne2" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
                                                 data-parent="#accordionEx">
                                                 <div class="card-body">
-                                                Roommagnet users must be at least 18 years of age and are seeking a minimum of 30 days stay in Host lodging.
+                                                    Roommagnet users must be at least 18 years of age and are seeking a minimum of 30 days stay in Host lodging.
                                             While Roommagnet is open to all who meet their minimum requirements we specialize in connecting Hosts with professional and semi-professionals such as,
                                             graduate students, international students, doctoral and nursing interns as well as college students seeking affordable off campus housing.
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>      
-                                    <div class="accordion-single">
-                                        <h3 class="faq-title"><a href="#">Who are host families?</a></h3>
-                                        <p class="ac-body" style="display: none;">
-                                            Host families are those who have room in their home, empty-nesters and people of advanced age who wish to age in place,
+                                         <div class="card">
+                                            <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingOne3">
+                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne3" aria-expanded="true"
+                                                    aria-controls="collapseOne1">
+                                                    <h5 class="mb-0">Who are host families?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseOne3" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                                data-parent="#accordionEx">
+                                                <div class="card-body">
+                                                 Host families are those who have room in their home, empty-nesters and people of advanced age who wish to age in place,
                                             and wish to monetize their empty space. In cases where hosts are interested in getting a little help around the house and tenants are willing  provide assistance
                                             with things such as light domestic or outdoor work, running errands, as well as companionship a further rent discount will be offered by the host and negotiated between host and tenant.
-                                        </p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
                                     <div class="accordion-single">
                                         <h3 class="faq-title"><a href="#">What is the advantage of a host family?</a></h3>
                                         <p class="ac-body" style="display: none;">
