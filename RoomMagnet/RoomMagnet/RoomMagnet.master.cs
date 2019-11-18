@@ -166,7 +166,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             {
                 cn.Open();
             }
-            string SqlGetUserInfos = "SELECT UserID,FirstName,LastName,ImagePath,UserRole,Verified FROM Users where Users.Email =@Email";
+            string SqlGetUserInfos = "SELECT UserID,FirstName,LastName,ImagePath,UserRole,Verified FROM Users where Users.Email = @Email";
             SqlCommand Finder = new SqlCommand(SqlGetUserInfos, cn);
             Finder.Parameters.AddWithValue("@Email", Session["SignInEmail"]);
             SqlDataReader dataReader = Finder.ExecuteReader();
@@ -332,7 +332,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         SqlDataReader reader = sqlCommand.ExecuteReader();    
         if (reader.Read())
         {
-            role=reader.GetString(0);
+            role = reader.GetString(0);
         }
         reader.Close();
         if (role== "Renter")
@@ -342,6 +342,10 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
         else if(role == "Host")
         {
             Response.Redirect("Host.aspx");
+        }
+        else if (role == "Admin")
+        {
+            Response.Redirect("Admin.aspx");
         }
     }
 

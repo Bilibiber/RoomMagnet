@@ -20,12 +20,12 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     private int RowNum;
     private int RowMinus = 0;
 
-    
-    
+
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
         SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
         Property1Space.Visible = false;
         Property2Space.Visible = false;
@@ -50,9 +50,9 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SearchResultButton_Click(sender, e);
             Session["HomePageSearchContent"] = null;
         }
-        
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Popss", "openResultModal();", true);
     }
-    
+
     protected void ApplyButton_Click(object sender, EventArgs e)
     {
         SearchResultButton_Click(sender, e);
@@ -64,7 +64,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
         connection.Open();
-        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode from Property where ZipCode=@ZipCode";
+        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode, Title from Property where ZipCode=@ZipCode";
         SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
         GoogleFinder.Parameters.AddWithValue("@ZipCode", num);
         SqlDataReader addressReader = GoogleFinder.ExecuteReader();
@@ -98,7 +98,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
         connection.Open();
-        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode from Property where City=@City and HomeState=@HomeState";
+        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode, Title from Property where City=@City and HomeState=@HomeState";
         string City = something.Substring(0, something.IndexOf(','));
         string State = something.Substring(something.IndexOf(',') + 1);
         SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
@@ -177,7 +177,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         string sql;
         string sql2;
         string tempsql;
-        
+
         if (SearchResultBedsAvailable.Text == String.Empty)
         {
             BedsCmpr = "> 0";
@@ -202,7 +202,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
             sql += " Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, PropertyID, row_num from cte_Property where row_num >" + RowCount;
             sql2 = tempsql + " Select Max(row_num) from cte_Property";
-            
+
         }
         else
         {
@@ -219,7 +219,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             sql += " Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, PropertyID  from cte_Property where row_num >" + RowCount;
             sql2 = tempsql + " Select Max(row_num) from cte_Property";
 
-          
+
         }
 
         OrderBy = String.Empty;
@@ -254,8 +254,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property1CityState.Visible = true;
                             Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                             Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                            Property1StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                            Property1EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                            Property1StartDate.Text = "Dates Avaliable: " + reader.GetDateTime(6).ToShortDateString() +" - " + reader.GetDateTime(7).ToShortDateString();
 
                             byte[] images = (byte[])reader[8];
                             if (images == null)
@@ -284,8 +283,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property2CityState.Visible = true;
                             Property2Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                             Property2Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                            Property2StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                            Property2EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                            Property2StartDate.Text = "Dates Avaliable: " + reader.GetDateTime(6).ToShortDateString() +" - " + reader.GetDateTime(7).ToShortDateString();
+
                             byte[] images = (byte[])reader[8];
                             if (images == null)
                             {
@@ -311,8 +310,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property3CityState.Visible = true;
                             Property3Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                             Property3Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                            Property3StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                            Property3EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                            Property3StartDate.Text = "Dates Avaliable: " + reader.GetDateTime(6).ToShortDateString() +" - " + reader.GetDateTime(7).ToShortDateString();
+
                             byte[] images = (byte[])reader[8];
                             if (images == null)
                             {
@@ -339,8 +338,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property4CityState.Visible = true;
                             Property4Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                             Property4Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                            Property4StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                            Property4EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                            Property4StartDate.Text = "Dates Avaliable: " + reader.GetDateTime(6).ToShortDateString() +" - " + reader.GetDateTime(7).ToShortDateString();
+             
                             byte[] images = (byte[])reader[8];
                             if (images == null)
                             {
@@ -366,8 +365,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property5CityState.Visible = true;
                             Property5Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                             Property5Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                            Property5StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
-                            Property5EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+                            Property5StartDate.Text = "Dates Avaliable: " + reader.GetDateTime(6).ToShortDateString() +" - " + reader.GetDateTime(7).ToShortDateString();
+
                             byte[] images = (byte[])reader[8];
                             if (images == null)
                             {
@@ -402,29 +401,30 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                     else
                     {
                         RowNum = 0;
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Popss", "openResultModal();", true);
                     }
                 }
             }
             Resultreader.Close();
             RowMinus = RowMinus + RowNum;
             SearchResultCount.Text = "Total Properties Found: " + RowMinus.ToString();
-            if (RowNum > 5)
+            if (RowMinus > 5)
             {
                 ResultPg2.Visible = true;
             }
-            if (RowNum > 10)
+            if (RowMinus > 10)
             {
                 ResultPg3.Visible = true;
             }
-            if (RowNum >15)
+            if (RowMinus > 15)
             {
                 ResultPg4.Visible = true;
             }
-            if (RowNum > 20)
+            if (RowMinus > 20)
             {
                 ResultPg5.Visible = true;
             }
-            if (RowNum > 25)
+            if (RowMinus > 25)
             {
                 ResultPg6.Visible = true;
             }

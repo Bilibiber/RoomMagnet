@@ -24,13 +24,13 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
         propertyImage2.Visible = false;
         propertyImage3.Visible = false;
         propertyImage4.Visible = false;
-
+        string test = Session["ResultPropertyID"].ToString();
         String sql = "Select Title, [Property].City, [Property].HomeState, [Property].ZipCode, AvailableBedrooms, [Property].RentPrice, [Property].StartDate, [Property].EndDate, " +
       "[ImagePath].ImagePath, AvailableBathrooms, AirConditioning, Heating, OnSiteLaundry,Parking,Furnished,PetFriendly,CarbonMonoxideDetector, SmokeDetector,SeperateEntrance," +
     "Wifi, TV, SeparateBathroom, [Rating].Descriptions, NumStars, [Rating].LastUpdated, [Rating].LastUpdatedBy from [Property] inner join [ImagePath]" +
     "on [Property].PropertyID = [ImagePath].PropertyID INNER JOIN [PropertyRoom] ON [Property].PropertyID = [PropertyRoom].PropertyID" +
     " INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID INNER JOIN [Rating] ON [Property].PropertyID= " +
-    "[Rating].PropertyID WHERE ([Property].PropertyID = " + Session["ResultPropertyID"] + ")";
+    "[Rating].PropertyID WHERE [Property].PropertyID = " + Session["ResultPropertyID"];
 
 
 
@@ -255,7 +255,7 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
             numStarsLbl.Text = numStars.ToString();
             lastUpdatedLbl.Text = lastUpdated.ToString();
 
-            
+
             counter++;
 
 
