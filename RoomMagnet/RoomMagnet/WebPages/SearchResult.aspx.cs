@@ -516,7 +516,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             }
         }
         connection.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
+        Response.Redirect("PropertyInfo.aspx");
     }
 
     protected void Property2Image_Click(object sender, ImageClickEventArgs e)
