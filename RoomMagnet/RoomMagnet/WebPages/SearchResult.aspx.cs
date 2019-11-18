@@ -242,7 +242,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                         Property1CityState.Visible = true;
                         Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                         Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                        //Property1StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();                     
+                        Property1StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();                     
 
                         byte[] images = (byte[])reader[8];
                         if (images == null)
