@@ -12,14 +12,14 @@
                     <div class="atbd_content_module  title-padding action ">
 
                         <h1>
-                            <asp:label id="titleLbl" runat="server" text="PropertyTitle"></asp:label>
+                            <asp:Label ID="titleLbl" runat="server" Text="PropertyTitle"></asp:Label>
                         </h1>
 
                         <a class="action-space" data-toggle="modal" data-target="#atbdp-report-abuse-modal"><span class="la la-flag-o"></span>Report</a>
                         <p class="subtitle">
-                            <asp:label id="cityLbl" runat="server" text="PropertyCity"></asp:label>
-                            <asp:label id="homeStateLbl" runat="server" text="PropertyState"></asp:label>
-                            <asp:label id="zipCodeLbl" runat="server" text="ZipCode" />
+                            <asp:Label ID="cityLbl" runat="server" Text="PropertyCity"></asp:Label>
+                            <asp:Label ID="homeStateLbl" runat="server" Text="PropertyState"></asp:Label>
+                            <asp:Label ID="zipCodeLbl" runat="server" Text="ZipCode" />
                         </p>
                     </div>
                 </div>
@@ -64,16 +64,16 @@
                             <div class="gallery-wrapper">
                                 <div class="gallery-images">
                                     <div class="single-image fill">
-                                        <asp:image id="propertyImage1" runat="server" imageurl="~/img/rm/apartment-carpet-comfort-2485222.jpg" cssclass="imgfill" />
+                                        <asp:Image ID="propertyImage1" runat="server" ImageUrl="~/img/rm/apartment-carpet-comfort-2485222.jpg" CssClass="imgfill" />
                                     </div>
                                     <div class="single-image fill">
-                                        <asp:image id="propertyImage2" runat="server" imageurl="~/img/rm/apartment-clean-condominium-279719.jpg" cssclass="imgfill" />
+                                        <asp:Image ID="propertyImage2" runat="server" ImageUrl="~/img/rm/apartment-clean-condominium-279719.jpg" CssClass="imgfill" />
                                     </div>
                                     <div class="single-image">
-                                        <asp:image id="propertyImage3" runat="server" />
+                                        <asp:Image ID="propertyImage3" runat="server" />
                                     </div>
                                     <div class="single-image">
-                                        <asp:image id="propertyImage4" runat="server" />
+                                        <asp:Image ID="propertyImage4" runat="server" />
                                     </div>
                                     <%-- <div class="single-image">
                                         <asp:Image ID="Image5" runat="server" />
@@ -85,7 +85,7 @@
                                 <!-- ends: .gallery-images what is this? -->
                                 <div class="gallery-thumbs">
                                     <div class="single-thumb  fill">
-                                        <asp:image id="Image7" runat="server" imageurl="~/img/rm/apartment-carpet-comfort-2485222.jpg" cssclass="imgfill" />
+                                        <asp:Image ID="Image7" runat="server" ImageUrl="~/img/rm/apartment-carpet-comfort-2485222.jpg" CssClass="imgfill" />
                                     </div>
                                     <div class="single-thumb">
                                         <img src="img/gt2.jpg" alt="">
@@ -126,7 +126,7 @@
                         <div class="atbd_content_module__tittle_area">
                             <div class="atbd_area_title">
                                 <h4><span class="la la-star-o"></span>
-                                    <asp:label id="PropertyReviewCount" runat="server" text="PropertyReviewCount"></asp:label>
+                                    <asp:Label ID="PropertyReviewCount" runat="server" Text="PropertyReviewCount"></asp:Label>
                                 </h4>
                                 <label for="review_content" class="btn btn-secondary btn-icon-left btn-sm not_empty" data-toggle="modal" data-target="#review_modal"><span class="la la-star-o"></span>Add a review</label>
                             </div>
@@ -140,10 +140,10 @@
                                                 <img alt="" src="img/review-author-thumb.jpg" class="avatar avatar-32 photo"></div>--%>
                                             <div class="atbd_name_time">
                                                 <p>
-                                                    <asp:label id="PropertyReviewPoster" runat="server" text="PropertyReviewPoster"></asp:label>
+                                                    <asp:Label ID="PropertyReviewPoster" runat="server" Text="PropertyReviewPoster"></asp:Label>
                                                 </p>
                                                 <span class="review_time">
-                                                    <asp:label id="PropertyReviewPostTime" runat="server" text="PropertyReviewPostTime"></asp:label>
+                                                    <asp:Label ID="PropertyReviewPostTime" runat="server" Text="PropertyReviewPostTime"></asp:Label>
                                                 </span>
                                             </div>
                                         </div>
@@ -160,7 +160,7 @@
                                     </div>
                                     <div class="review_content">
                                         <p>
-                                            <asp:label id="PropertyReviewContent" runat="server" text="PropertyReviewContent"></asp:label>
+                                            <asp:Label ID="PropertyReviewContent" runat="server" Text="PropertyReviewContent"></asp:Label>
                                         </p>
                                     </div>
                                 </div>
@@ -216,8 +216,8 @@
                                 </div>
                             </div>
                             <!-- ends: .atbd_avatar_wrapper -->
-                            <asp:button cssclass="btn btn-primary btn-block" runat="server" text="Message" onclick="message_OnClick" />
-                            <asp:button cssclass="btn btn-primary btn-block" runat="server" text="Save to Favorites" onclick="SavetoFav_OnClick" />
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="message_OnClick" />
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
                         </div>
                         <!-- ends: .widget-body -->
                     </div>
@@ -225,63 +225,62 @@
 
                     <div class="widget atbd_widget widget-card">
                         <div class="atbd_widget_title">
-                            <h4><span class="la la-bookmark"></span>Amenities</h4>
-                            <a href="#" data-toggle="modal" data-target="#amenities_modal">View All</a>
+                            <h4><span class="la la-bookmark"></span>Amenities</h4>                          
                         </div>
                         <!-- ends: /.atbd_widget_title -->
                         <div class="widget-body atbdp-widget-categories">
                             <ul class="atbdp_parent_category">
                                 <li runat="server" id="AirConditioningIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="airConditioningLbl" runat="server" text="Air Conditioning" ></asp:label>
+                                    <asp:Label ID="airConditioningLbl" runat="server" Text="Air Conditioning"></asp:Label>
                                 </li>
                                 <li runat="server" id="HeatingIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="heatingLbl" runat="server" text="Heating"></asp:label>
+                                    <asp:Label ID="heatingLbl" runat="server" Text="Heating"></asp:Label>
                                 </li>
 
                                 <li runat="server" id="onSiteLaundryIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="onSiteLaundryLbl" runat="server" text="On Site Laundry " visible="false"></asp:label>
+                                    <asp:Label ID="onSiteLaundryLbl" runat="server" Text="On Site Laundry"></asp:Label>
                                 </li>
-                                 <li runat="server" id="parkingIcon" visible="false">
+                                <li runat="server" id="parkingIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="parkingLbl" runat="server" text="Parking " visible="false"></asp:label>
+                                    <asp:Label ID="parkingLbl" runat="server" Text="Parking "></asp:Label>
                                 </li>
-                                <li runat="server" id="furnishedIcon" visible="false">>
+                                <li runat="server" id="furnishedIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="furnishedLbl" runat="server" text="Furnished " visible="false"></asp:label>
+                                    <asp:Label ID="furnishedLbl" runat="server" Text="Furnished "></asp:Label>
                                 </li>
 
-                                <li runat="server" id="petFriendlyIcon" visible="false">>
+                                <li runat="server" id="petFriendlyIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="petFriendlyLbl" runat="server" text="Pet Friendly " visible="false"></asp:label>
+                                    <asp:Label ID="petFriendlyLbl" runat="server" Text="Pet Friendly " ></asp:Label>
                                 </li>
-                                 <li runat="server" id="carbonMonoxideDetectorIcon" visible="false">>
+                                <li runat="server" id="carbonMonoxideDetectorIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="carbonMonoxideDetectorLbl" runat="server" text="Carbon Monoxide Detector " visible="false"></asp:label>
+                                    <asp:Label ID="carbonMonoxideDetectorLbl" runat="server" Text="Carbon Monoxide Detector" ></asp:Label>
                                 </li>
-                                <li runat="server" id="smokeDetectorIcon" visible="false">>
+                                <li runat="server" id="smokeDetectorIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="smokeDetectorLbl" runat="server" text="Smoke Detector " visible="false"></asp:label>
-                                </li>
-
-                                <li runat="server" id="seperateEntranceIcon" visible="false">>
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="seperateEntranceLbl" runat="server" text="Seperate Entrance " visible="false"></asp:label>
-                                </li>
-                                 <li runat="server" id="wifiIcon" visible="false">>
-                                    <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="wifiLbl" runat="server" text="WiFi " visible="false"></asp:label>
-                                </li>
-                                <li runat="server" id="tvIcon" visible="false">>
-                                    <span class="la la-wifi icon-space" ></span>
-                                    <asp:label id="tvLbl" runat="server" text="TV " visible="false"></asp:label>
+                                    <asp:Label ID="smokeDetectorLbl" runat="server" Text="Smoke Detector "></asp:Label>
                                 </li>
 
-                                <li runat="server" id="seperateBathroomIcon" visible="false">>
+                                <li runat="server" id="seperateEntranceIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="seperateBathroomLbl" runat="server" text="Seperate Bathroom " ></asp:label>
+                                    <asp:Label ID="seperateEntranceLbl" runat="server" Text="Seperate Entrance "></asp:Label>
+                                </li>
+                                <li runat="server" id="wifiIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="wifiLbl" runat="server" Text="WiFi "></asp:Label>
+                                </li>
+                                <li runat="server" id="tvIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="tvLbl" runat="server" Text="TV "></asp:Label>
+                                </li>
+
+                                <li runat="server" id="seperateBathroomIcon" visible="false">
+                                    <span class="la la-wifi icon-space"></span>
+                                    <asp:Label ID="seperateBathroomLbl" runat="server" Text="Seperate Bathroom "></asp:Label>
                                 </li>
                             </ul>
                         </div>
@@ -350,7 +349,7 @@
                             <div class="map" id="map-two"></div>
                         </div>
 
-                         <div class="atbd_widget_title">
+                        <div class="atbd_widget_title">
                             <h4><span class="la la-bookmark"></span>Property Room Details: </h4>
                         </div>
                         <!-- ends: /.atbd_widget_title -->
@@ -398,7 +397,6 @@
                                         <asp:Label runat="server" Text="Last Updated: "></asp:Label>
                                         <asp:Label ID="lastUpdatedLbl" runat="server"></asp:Label>
                                     </div>
-
                                 </li>
                             </ul>
                         </div>
