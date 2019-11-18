@@ -16,6 +16,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
         Property1Space.Visible = false;
         Property2Space.Visible = false;
         Property3Space.Visible = false;
+        history1.Visible = false;
+        Div2.Visible = false;
+        Div3.Visible = false;
         if (!IsPostBack)
         {
             cn.Open();
@@ -115,10 +118,12 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelfavorites.Visible = false;
         panelconnections.Visible = false;
         panelmessage.Visible = false;
+        panelhistory.Visible = false;
         renterprofile.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
         renterFavorites.BackColor = System.Drawing.Color.White;
         renterConnections.BackColor = System.Drawing.Color.White;
         renterMessage.BackColor = System.Drawing.Color.White;
+        renterHistory.BackColor = System.Drawing.Color.White;
     }
 
     protected void renterFavorites_Click(object sender, EventArgs e)
@@ -127,10 +132,12 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelfavorites.Visible = true;
         panelconnections.Visible = false;
         panelmessage.Visible = false;
+        panelhistory.Visible = false;
         renterprofile.BackColor = System.Drawing.Color.White;
         renterFavorites.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
         renterConnections.BackColor = System.Drawing.Color.White;
         renterMessage.BackColor = System.Drawing.Color.White;
+        renterHistory.BackColor = System.Drawing.Color.White;
 
         string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, [Favorites].PropertyID from[Property] INNER JOIN[ImagePath]" +
             " on[Property].PropertyID = [ImagePath].PropertyID INNER JOIN [Favorites] on[Property].PropertyID = [Favorites].PropertyID WHERE UserID = " + Session["UserID"];
@@ -257,15 +264,15 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                Property1Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount),1).ToString();
             }
             if (RatingCount == 1)
             {
-                Property2Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             if (RatingCount == 2)
             {
-                Property3Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             RatingCount++;
             readers.Close();
@@ -280,10 +287,12 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelfavorites.Visible = false;
         panelconnections.Visible = true;
         panelmessage.Visible = false;
+        panelhistory.Visible = false;
         renterprofile.BackColor = System.Drawing.Color.White;
         renterFavorites.BackColor = System.Drawing.Color.White;
         renterConnections.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
         renterMessage.BackColor = System.Drawing.Color.White;
+        renterHistory.BackColor = System.Drawing.Color.White;
     }
 
     protected void renterMessage_Click(object sender, EventArgs e)
@@ -292,10 +301,114 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelfavorites.Visible = false;
         panelconnections.Visible = false;
         panelmessage.Visible = true;
+        panelhistory.Visible = false;
         renterprofile.BackColor = System.Drawing.Color.White;
         renterFavorites.BackColor = System.Drawing.Color.White;
         renterConnections.BackColor = System.Drawing.Color.White;
         renterMessage.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
+        renterHistory.BackColor = System.Drawing.Color.White;
+    }
+
+    protected void renterHistory_Click(object sender, EventArgs e)
+    {
+        panelprofile.Visible = false;
+        panelfavorites.Visible = false;
+        panelconnections.Visible = false;
+        panelmessage.Visible = false;
+        panelhistory.Visible = true;
+        renterprofile.BackColor = System.Drawing.Color.White;
+        renterFavorites.BackColor = System.Drawing.Color.White;
+        renterConnections.BackColor = System.Drawing.Color.White;
+        renterMessage.BackColor = System.Drawing.Color.White;
+        renterHistory.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
+
+        string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, AvailableBathrooms,PropertyID,PropertyID from[Property] WHERE propertyid = 1003";
+        cn.Open();
+        SqlCommand search = new SqlCommand(sql, cn);
+        SqlDataReader reader = search.ExecuteReader();
+        int resultCount = 0;
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                resultCount++;
+                decimal x;
+                string y;
+                if (resultCount == 1)
+                {
+                    RatingsPID.Add(reader.GetInt32(10));
+                    x = reader.GetDecimal(5);
+                    y = String.Format("{0:0.##}", x);
+                    history1title.Text = reader.GetString(0);
+                    history1title.Visible = true;
+                    history1price.Text = "$" + y + "/Month";
+                    history1price.Visible = true;
+                    history1city.Text = reader.GetString(1) + "," + reader.GetString(2);
+                    history1city.Visible = true;
+                    history1bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
+                    history1bed.Text = reader.GetInt32(4).ToString() + " Bed";
+                    history1start.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
+                    history1end.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
+
+                    int pid = reader.GetInt32(10);
+                    System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
+                    selectimg.Connection = cn;
+                    selectimg.CommandText = "Select ImagePath from [ImagePath] WHERE PropertyID = 1003";
+                    selectimg.Parameters.Add(new SqlParameter("@pid", pid));
+                    SqlDataReader getinfor = selectimg.ExecuteReader();
+                    while (getinfor.Read())
+                    {
+                        byte[] images1 = (byte[])getinfor[0];
+                        history1img.ImageUrl = "data:image;base64," + Convert.ToBase64String(images1);
+                        history1img.Width = new System.Web.UI.WebControls.Unit("200px");
+                        history1img.Height = new System.Web.UI.WebControls.Unit("200px");
+
+                        history1img.Visible = true;
+                    }
+                    getinfor.Close();
+                    history1.Visible = true;
+                }
+               
+            }
+        }
+        reader.Close();
+        for (int i = 0; i < RatingsPID.Count; i++)
+        {
+            string RatingSQL = "Select NumStars from [Rating] where PropertyID =" + RatingsPID[i];
+            SqlCommand Ratingsearch = new SqlCommand(RatingSQL, cn);
+            SqlDataReader readers = Ratingsearch.ExecuteReader();
+            decimal RatingSum = 0;
+            int RatingCount = 0;
+            int RatingRecordCount = 0;
+            if (readers.HasRows)
+            {
+                while (readers.Read())
+                {
+                    RatingSum += readers.GetDecimal(0);
+                    RatingRecordCount++;
+                }
+            }
+            if (RatingRecordCount == 0)
+            {
+                return;
+            }
+            if (RatingCount == 0)
+            {
+                history1rating.Text = (RatingSum / RatingRecordCount).ToString();
+            }
+            if (RatingCount == 1)
+            {
+                Property2Rating.Text = (RatingSum / RatingRecordCount).ToString();
+            }
+            if (RatingCount == 2)
+            {
+                Property3Rating.Text = (RatingSum / RatingRecordCount).ToString();
+            }
+            RatingCount++;
+            readers.Close();
+        }
+        RatingsPID.Clear();
+        cn.Close();
     }
 
     protected void rentertohost_Click(object sender, EventArgs e)
@@ -399,5 +512,29 @@ public partial class WebPages_Renter : System.Web.UI.Page
         }
         cn.Close();
         Response.Redirect("ManageSearchProperties.aspx");
+    }
+
+
+
+    protected void review_Click(object sender, EventArgs e)
+    {
+        ClientScript.RegisterStartupScript(this.GetType(), "p", "ShowPopup();", true);
+    }
+
+    protected void submitReview_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        System.Data.SqlClient.SqlCommand review = new System.Data.SqlClient.SqlCommand();
+        review.Connection = cn;
+        review.CommandText = "INSERT INTO [dbo].[Rating]([Descriptions],[NumStars],[LastUpdated],[LastUpdatedBy],[RenterID],[PropertyID]) VALUES" +
+            "(@Descriptions,@NumStars,@LastUpdated,@LastUpdatedBy,@RenterID,@PropertyID)";
+        review.Parameters.Add(new SqlParameter("@Descriptions", reviewdes.Text));
+        review.Parameters.Add(new SqlParameter("@NumStars", Convert.ToDecimal( reviewStar.Text)));
+        review.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
+        review.Parameters.Add(new SqlParameter("@LastUpdatedBy", Session["FullName"].ToString()));
+        review.Parameters.Add(new SqlParameter("@RenterID", Int32.Parse(Session["UserID"].ToString())));
+        review.Parameters.Add(new SqlParameter("@PropertyID", 1003));
+        review.ExecuteNonQuery();
+        cn.Close();
     }
 }
