@@ -231,13 +231,13 @@
                         <!-- ends: /.atbd_widget_title -->
                         <div class="widget-body atbdp-widget-categories">
                             <ul class="atbdp_parent_category">
-                                <li>
+                                <li runat="server" id="AirConditioningIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="airConditioningLbl" runat="server" text="Air Conditioning " visible="false"></asp:label>
+                                    <asp:label id="airConditioningLbl" runat="server" text="Air Conditioning" ></asp:label>
                                 </li>
-                                <li>
+                                <li runat="server" id="HeatingIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:label id="heatingLbl" runat="server" text="Heating " visible="false"></asp:label>
+                                    <asp:label id="heatingLbl" runat="server" text="Heating"></asp:label>
                                 </li>
 
                                 <li>

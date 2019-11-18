@@ -145,14 +145,14 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
             if (airConditioning == "Y")
             {
-                airConditioningLbl.Text = "Air Conditioning";
-                airConditioningLbl.Visible = true;
+                airConditioningLbl.Text = "Air Conditioning";               
+                AirConditioningIcon.Visible = true;
             }
 
             if (heating == "Y")
             {
                 heatingLbl.Text = "Heating";
-                heatingLbl.Visible = true;
+                HeatingIcon.Visible = true;
             }
 
             if (onSiteLaundry == "Y")
