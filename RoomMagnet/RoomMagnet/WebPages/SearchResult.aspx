@@ -446,12 +446,10 @@
                 </div>
                 <div class="modal-body text-center">
                     <asp:Image ID="Image3" runat="server" ImageUrl="~/img/icons8-broken-robot-96.png" />
-                    <h3>Sorry no result found in this area</h3>
-                    <p>Reapply filters or try a different location</p>
+                    <h3>No Result Found</h3>
                 </div>
                 <div class="modal-footer mx-auto">
-                    <div class="form-excerpts">
-                        <span>-OR-</span>
+                    <div class="form-excerpts">                      
                         <ul class="list-unstyled">
                             <li>
                                 <asp:Button ID="Button2" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" Text="Become First Host!" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" />
