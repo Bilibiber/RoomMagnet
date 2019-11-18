@@ -46,7 +46,7 @@
                 </td>
             </tr>
         </table>
-    <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" Height="134px" Width="538px" OnTextChanged="Messages_TextChanged"></asp:TextBox>
+    <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" Height="134px" Width="538px"></asp:TextBox>
     <asp:DropDownList ID="RenterNames" runat="server">
         <asp:ListItem Value="1">James Bond</asp:ListItem>
                 </asp:DropDownList>
