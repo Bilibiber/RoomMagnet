@@ -450,9 +450,9 @@
                                 <br />
                                 <br />
                                 <br />
-                                <div id="showimage">
+                                <%--<div id="showimage">
                                     <asp:image id="imgpreview" runat="server" height="150" width="150" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px;" />
-                                </div>
+                                </div>--%>
                                 <asp:fileupload id="FileUpload1" multiple="multiple" runat="server" allowmultiple="true" />
                                 <%-- <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />--%>
                                 <br />

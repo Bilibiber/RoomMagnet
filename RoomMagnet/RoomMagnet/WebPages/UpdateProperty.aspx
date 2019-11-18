@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="UpdateProperty.aspx.cs" Inherits="WebPages_AddProperty" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="UpdateProperty.aspx.cs" Inherits="WebPages_UpdateProperty" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
@@ -149,7 +149,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center settings-title">
-                    <h1>Add Property</h1>
+                    <h1>Update Property</h1>
                 </div>
             </div>
         </div>
@@ -160,8 +160,7 @@
                     <div class="atbd_content_module">
                         <div class="atbd_content_module__tittle_area">
                             <div class="atbd_area_title">
-                                <h4><span class="la la-home"></span>Property Information&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <asp:Label ID="updatepropertyid" runat="server" Text="Label"></asp:Label>
+                                <h4><span class="la la-home"></span>Property Information
                                 </h4>
                             </div>
                         </div>
@@ -562,9 +561,9 @@
                                 <br />
                                 <br />
                                 <br />
-                                <div id="showimage">
+                                <%--<div id="showimage">
                                     <asp:Image ID="imgpreview" runat="server" Height="150" Width="150" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px;" />
-                                </div>
+                                </div>--%>
                                 <asp:FileUpload ID="FileUpload1" multiple="multiple" runat="server" AllowMultiple="true" />
                                 <%-- <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />--%>
                                 <br />
