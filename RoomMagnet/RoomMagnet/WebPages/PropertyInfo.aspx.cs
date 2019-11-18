@@ -159,60 +159,70 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             {
                 onSiteLaundryLbl.Text = "On Site Laundry";
                 onSiteLaundryLbl.Visible = true;
+                onSiteLaundryIcon.Visible = true;
             }
 
             if (parking == "Y")
             {
                 parkingLbl.Text = "Parking";
                 parkingLbl.Visible = true;
+                parkingIcon.Visible = true;
             }
 
             if (furnished == "Y")
             {
                 furnishedLbl.Text = "Furnished";
                 furnishedLbl.Visible = true;
+                furnishedIcon.Visible = true;
             }
 
             if (petFriendly == "Y")
             {
                 petFriendlyLbl.Text = "Pet Friendly";
                 petFriendlyLbl.Visible = true;
+                petFriendlyIcon.Visible = true;
             }
 
             if (carbonMonoxideDetector == "Y")
             {
                 carbonMonoxideDetectorLbl.Text = "Carbon Monoxide Detector";
                 carbonMonoxideDetectorLbl.Visible = true;
+                carbonMonoxideDetectorIcon.Visible = true;
             }
 
             if (smokeDetector == "Y")
             {
                 smokeDetectorLbl.Text = "Smoke Detector";
                 smokeDetectorLbl.Visible = true;
+                smokeDetectorIcon.Visible = true;
             }
 
             if (separateEntrance == "Y")
             {
                 seperateEntranceLbl.Text = "Seperate Entrance";
                 seperateEntranceLbl.Visible = true;
+                seperateEntranceIcon.Visible = true;
             }
 
             if (wifi == "Y")
             {
                 wifiLbl.Text = "Wifi";
                 wifiLbl.Visible = true;
+               wifiIcon.Visible = true;
             }
 
             if (tv == "Y")
             {
                 tvLbl.Text = "TV";
                 tvLbl.Visible = true;
+                tvIcon.Visible = true;
             }
 
             if (seperateBathroom == "Y")
             {
                 seperateBathroomLbl.Text = "Seperate Bathroom";
                 seperateBathroomLbl.Visible = true;
+                seperateBathroomIcon.Visible = true;
             }
 
             startDateLbl.Text = startDate.ToString();

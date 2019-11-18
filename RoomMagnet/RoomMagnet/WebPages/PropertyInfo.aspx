@@ -240,46 +240,46 @@
                                     <asp:label id="heatingLbl" runat="server" text="Heating"></asp:label>
                                 </li>
 
-                                <li>
+                                <li runat="server" id="onSiteLaundryIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
                                     <asp:label id="onSiteLaundryLbl" runat="server" text="On Site Laundry " visible="false"></asp:label>
                                 </li>
-                                 <li>
+                                 <li runat="server" id="parkingIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
                                     <asp:label id="parkingLbl" runat="server" text="Parking " visible="false"></asp:label>
                                 </li>
-                                <li>
+                                <li runat="server" id="furnishedIcon" visible="false">>
                                     <span class="la la-wifi icon-space"></span>
                                     <asp:label id="furnishedLbl" runat="server" text="Furnished " visible="false"></asp:label>
                                 </li>
 
-                                <li>
+                                <li runat="server" id="petFriendlyIcon" visible="false">>
                                     <span class="la la-wifi icon-space"></span>
                                     <asp:label id="petFriendlyLbl" runat="server" text="Pet Friendly " visible="false"></asp:label>
                                 </li>
-                                 <li>
+                                 <li runat="server" id="carbonMonoxideDetectorIcon" visible="false">>
                                     <span class="la la-wifi icon-space"></span>
                                     <asp:label id="carbonMonoxideDetectorLbl" runat="server" text="Carbon Monoxide Detector " visible="false"></asp:label>
                                 </li>
-                                <li>
+                                <li runat="server" id="smokeDetectorIcon" visible="false">>
                                     <span class="la la-wifi icon-space"></span>
                                     <asp:label id="smokeDetectorLbl" runat="server" text="Smoke Detector " visible="false"></asp:label>
                                 </li>
 
-                                <li>
+                                <li runat="server" id="seperateEntranceIcon" visible="false">>
                                     <span class="la la-wifi icon-space"></span>
                                     <asp:label id="seperateEntranceLbl" runat="server" text="Seperate Entrance " visible="false"></asp:label>
                                 </li>
-                                 <li>
+                                 <li runat="server" id="wifiIcon" visible="false">>
                                     <span class="la la-wifi icon-space"></span>
                                     <asp:label id="wifiLbl" runat="server" text="WiFi " visible="false"></asp:label>
                                 </li>
-                                <li>
+                                <li runat="server" id="tvIcon" visible="false">>
                                     <span class="la la-wifi icon-space" ></span>
                                     <asp:label id="tvLbl" runat="server" text="TV " visible="false"></asp:label>
                                 </li>
 
-                                <li>
+                                <li runat="server" id="seperateBathroomIcon" visible="false">>
                                     <span class="la la-wifi icon-space"></span>
                                     <asp:label id="seperateBathroomLbl" runat="server" text="Seperate Bathroom " ></asp:label>
                                 </li>
