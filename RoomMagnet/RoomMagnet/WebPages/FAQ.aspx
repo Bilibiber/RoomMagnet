@@ -105,30 +105,81 @@
                                         </div>
                                     </div>
 
-                                    <div class="accordion-single">
-                                        <h3 class="faq-title"><a href="#">What is the advantage of a host family?</a></h3>
-                                        <p class="ac-body" style="display: none;">
-                                            Roommagnet connects host families who wish to share empty space in their home with responsible inter-generational adults who seek
+                                     <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingOne4">
+                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne4" aria-expanded="true"
+                                                    aria-controls="collapseOne1">
+                                                    <h5 class="mb-0">What is the advantage of a host family?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseOne4" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                                data-parent="#accordionEx">
+                                                <div class="card-body">
+                                                    Roommagnet connects host families who wish to share empty space in their home with responsible inter-generational adults who seek
                                             affordable housing in order to continue their careers. These may be advanced college students, doctoral and nursing interns, international students or professionals. Host
                                             families have the assurance that Tenants are carefully screened.  Hosts who need assistance with light domestic duties (i.e. shopping, household odd jobs, daily maintenance
                                             or just companionship) will offer further discount for assistance.
-                                        </p>
-                                    </div>
-                                    <div class="accordion-single">
-                                        <h3 class="faq-title"><a href="#">Why is there a need for RoomMagnet?</a></h3>
-                                        <p class="ac-body" style="display: none;">
-                                            As the cost of housing increases and become more scare in highly populated areas, it becomes harder for responsible students, as well as
+                                                </div>
+                                            </div>
+
+                                   <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingOne5">
+                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne5" aria-expanded="true"
+                                                    aria-controls="collapseOne1">
+                                                    <h5 class="mb-0">Why is there a need for RoomMagnet?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseOne5" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                                data-parent="#accordionEx">
+                                                <div class="card-body">
+                                                     As the cost of housing increases and become more scare in highly populated areas, it becomes harder for responsible students, as well as
                                             professional and semi-professionals (ie: doctoral interns, and interning nurses) to find suitable and affordable housing. Likewise, International students not only have the added
                                             expense of international living, but also must adjust to the cultural landscape of the U.S., which living with a host family can greatly reduce.
-                                        </p>
-                                    </div>
-                                    <div class="accordion-single">
-                                        <h3 class="faq-title"><a href="#">What is RoomMagnet’s HomeshareSmarter® Living option?</a></h3>
-                                        <p class="ac-body" style="display: none;">
-                                            Tenants who are open to assisting host families with some basic chores like running errands, doing yard work or just providing companionship or
+                                                </div>
+                                            </div>
+
+                                     <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingOne6">
+                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne6" aria-expanded="true"
+                                                    aria-controls="collapseOne1">
+                                                    <h5 class="mb-0">What is RoomMagnet’s HomeshareSmarter® Living option?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseOne6" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                                data-parent="#accordionEx">
+                                                <div class="card-body">
+                                                     Tenants who are open to assisting host families with some basic chores like running errands, doing yard work or just providing companionship or
                                             personal assistance will receive a discount on their housing. We call this HomeShareSmarter® Living.
-                                        </p>
-                                    </div>
+                                                </div>
+                                            </div>
+
+                                    <!-- Card header -->
+                                            <div class="card-header" role="tab" id="headingOne7">
+                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne7" aria-expanded="true"
+                                                    aria-controls="collapseOne1">
+                                                    <h5 class="mb-0">What is RoomMagnet’s HomeshareSmarter® Living option?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                                    </h5>
+                                                </a>
+                                            </div>
+                                            <!-- Card body -->
+                                            <div id="collapseOne7" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                                data-parent="#accordionEx">
+                                                <div class="card-body">
+                                                     Tenants who are open to assisting host families with some basic chores like running errands, doing yard work or just providing companionship or
+                                            personal assistance will receive a discount on their housing. We call this HomeShareSmarter® Living.
+                                                </div>
+                                            </div>
+
+
+
+
+
                                     <div class="accordion-single">
                                         <h3 class="faq-title"><a href="#">Who are RoomMagnet's advisors?</a></h3>
                                         <p class="ac-body" style="display: none;">
