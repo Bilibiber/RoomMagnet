@@ -206,7 +206,21 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Age Range Required" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please select an age range" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                         <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
-
+                        <script>
+                            var input = document.getElementById("myInput");
+                            // Execute a function when the user releases a key on the keyboard
+                            input.addEventListener("keyup", function (event) {
+                                // Number 13 is the "Enter" key on the keyboard
+                                if (event.keyCode === 13) {
+                                    // Cancel the default action, if needed
+                                    event.preventDefault();
+                                    // Trigger the button element with a click
+                                    GetUserInfo();
+                                    AfterLogin();
+                                }
+                            });
+                        </script>
+                            
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
                                 <li>Already a member?<asp:LinkButton ID="SignInLinkButton" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false">Sign In</asp:LinkButton>
