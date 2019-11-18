@@ -1,24 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Windows.Forms;
-using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
 using System.Collections;
-
+using System.Configuration;
+using System.Data.SqlClient;
 
 public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
 {
-    SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+    private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     private string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString();
 
-    ArrayList tempImages = new ArrayList();
+    private ArrayList tempImages = new ArrayList();
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["SignInEmail"] == null)
+        {
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        }
+        else
+        {
+            var master = Master as RoomMagnet;
+            master.AfterLogin();
+        }
         //set all amentities labels to visible = false;
         propertyImage1.Visible = false;
         propertyImage2.Visible = false;
@@ -31,8 +33,6 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
     "on [Property].PropertyID = [ImagePath].PropertyID INNER JOIN [PropertyRoom] ON [Property].PropertyID = [PropertyRoom].PropertyID" +
     " INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID INNER JOIN [Rating] ON [Property].PropertyID= " +
     "[Rating].PropertyID WHERE [Property].PropertyID = " + Session["ResultPropertyID"];
-
-
 
         connection.Open();
         string title = "";
@@ -61,10 +61,8 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
         DateTime lastUpdated = DateTime.Now;
         string lastUpdatedBy = "";
 
-
         SqlCommand search = new SqlCommand(sql, connection);
         SqlDataReader reader = search.ExecuteReader();
-
 
         int counter = 0;
         if (reader.HasRows)
@@ -81,30 +79,22 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
                 {
                     if (tempImages.Contains(propertyImage1.ImageUrl) == false)
                     {
-
-
                         propertyImage1.ImageUrl = propertyImageURL;
                         propertyImage1.Visible = true;
                     }
                 }
-
                 else if (counter == 1)
                 {
                     if (tempImages.Contains(propertyImage2.ImageUrl) == false)
                     {
-
-
                         propertyImage2.ImageUrl = propertyImageURL;
                         propertyImage2.Visible = true;
                     }
                 }
-
                 else if (counter == 2)
                 {
                     if (tempImages.Contains(propertyImage3.ImageUrl) == false)
                     {
-
-
                         propertyImage3.ImageUrl = propertyImageURL;
                         propertyImage3.Visible = true;
                     }
@@ -113,8 +103,6 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
                 {
                     if (tempImages.Contains(propertyImage4.ImageUrl) == false)
                     {
-
-
                         propertyImage4.ImageUrl = propertyImageURL;
                         propertyImage4.Visible = true;
                     }
@@ -157,11 +145,7 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
                 numStars = reader.GetDecimal(23);
                 lastUpdated = reader.GetDateTime(24);
                 lastUpdatedBy = reader.GetString(25);
-
             }
-
-
-
 
             amenitiesLbl.Visible = true;
 
@@ -169,7 +153,6 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
             {
                 airConditioningLbl.Text = "Air Conditioning";
                 airConditioningLbl.Visible = true;
-
             }
 
             if (heating == "Y")
@@ -182,70 +165,60 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
             {
                 onSiteLaundryLbl.Text = "On Site Laundry";
                 onSiteLaundryLbl.Visible = true;
-
             }
 
             if (parking == "Y")
             {
                 parkingLbl.Text = "Parking";
                 parkingLbl.Visible = true;
-
             }
 
             if (furnished == "Y")
             {
                 furnishedLbl.Text = "Furnished";
                 furnishedLbl.Visible = true;
-
             }
 
             if (petFriendly == "Y")
             {
                 petFriendlyLbl.Text = "Pet Friendly";
                 petFriendlyLbl.Visible = true;
-
             }
 
             if (carbonMonoxideDetector == "Y")
             {
                 carbonMonoxideDetectorLbl.Text = "Carbon Monoxide Detector";
                 carbonMonoxideDetectorLbl.Visible = true;
-
             }
 
             if (smokeDetector == "Y")
             {
                 smokeDetectorLbl.Text = "Smoke Detector";
                 smokeDetectorLbl.Visible = true;
-
             }
 
             if (separateEntrance == "Y")
             {
                 separateEntranceLbl.Text = "Seperate Entrance";
                 separateEntranceLbl.Visible = true;
-
             }
 
             if (wifi == "Y")
             {
                 wifiLbl.Text = "Wifi";
                 wifiLbl.Visible = true;
-
             }
 
             if (tv == "Y")
             {
                 tvLbl.Text = "TV";
                 tvLbl.Visible = true;
-
             }
 
             if (seperateBathroom == "Y")
             {
                 seperateBathroomLbl.Text = "Seperate Bathroom";
                 seperateBathroomLbl.Visible = true;
-
             }
 
             startDateLbl.Text = startDate.ToString();
@@ -255,15 +228,12 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
             numStarsLbl.Text = numStars.ToString();
             lastUpdatedLbl.Text = lastUpdated.ToString();
 
-
             counter++;
-
 
             connection.Close();
             tempImages.Clear();
         }
     }
-
 
     protected void SavetoFav_OnClick(object sender, EventArgs a)
     {
@@ -272,7 +242,6 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
         int propertyId = (int)Session["ResultPropertyID"];
         addPropertytoUserFav(userId, propertyId);
     }
-
 
     private int pullUserID(string email)
     {
@@ -293,7 +262,6 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
         }
 
         return userId;
-
     }
 
     protected void addPropertytoUserFav(int userId, int propertyId)
@@ -307,12 +275,8 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@propertyId", propertyId);
 
         cmd.ExecuteNonQuery();
+    }
 
-    }
-    protected void GoToMessage(object sender, EventArgs a)
-    {
-        Response.Redirect("Messages.aspx");
-    }
 
 
     //JS code
@@ -322,6 +286,8 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
     //let url = "/ManageSearchProperties.aspx?" + params.toString();
     //window.location = url;
 
-
-
+    protected void MessageBtn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Message.aspx");
+    }
 }
