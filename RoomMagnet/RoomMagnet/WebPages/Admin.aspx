@@ -328,7 +328,6 @@
 	                            <asp:ListItem Value="WI">Wisconsin</asp:ListItem>
 	                            <asp:ListItem Value="WY">Wyoming</asp:ListItem>
                              </asp:DropDownList>
-<%--                            <asp:RequiredFieldValidator ID="stateValidator" runat="server" ControlToValidate="stateDropDown" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>--%>
                         </td>
                     </tr>
 

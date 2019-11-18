@@ -28,6 +28,9 @@ function initMap() {
         }
     }
 }
+function openResultModal() {
+    $('#no_result_notification').modal({ show: true });
+}
 
 function geocodeAddress() {
     click = true;
@@ -73,7 +76,7 @@ function onGeocodeResponse(response, status) {
         }
 
         var image = {
-            url: 'https://cis366fanguo.s3.amazonaws.com/icon.png',
+            url: 'https://cis366fanguo.s3.amazonaws.com/circle-24.png',
             size: new google.maps.Size(71, 71),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(17, 34),
@@ -85,7 +88,7 @@ function onGeocodeResponse(response, status) {
             position: response[0].geometry.location,
             animation: google.maps.Animation.DROP,
             icon: image,
-            title: housetitle + "\n" + "Property is near this "
+            title: housetitle + "\n" + "Property is around this area"
         });
         marker.addListener('click', toggleBounce);
     }
