@@ -6,22 +6,27 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
 
-    <section class="about-wrapper bg-gradient-ps">
+       <section class="header-breadcrumb bgimage overlay overlay--dark fill">
 
-        <div class="about-intro content_above">
+        <div class="Faq-image imgfill">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/img/home-1-small.png" />
+        </div>
+        <div class="breadcrumb-wrapper content_above">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 col-md-6">
-                        <h1>Join the Room Magnet Team: Become a host today! </h1>
-                        <asp:Button ID="AboutPageSignUp" runat="server" Text="Become Host" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" />
-                    </div>
-                    <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-0 col-sm-8 offset-sm-2">
-                        <img src="img/about-illustration.png" alt="">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="page-title">About</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
+                                <li class="breadcrumb-item active">About</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- ends: .about-intro -->
+        <!-- ends: .breadcrumb-wrapper -->
     </section>
     <!-- ends: .intro-wrapper -->
     <section class="about-contents section-padding">
