@@ -8050,5 +8050,11 @@ a {
 .p-left-1000 {
     padding-left: 1000px !important;
 }
-
-/*# sourceMappingURL=maps/style.css.map */
+.Faq-image {
+    position: absolute;
+    height: 100% !important;
+    width: 100% !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat;
+}

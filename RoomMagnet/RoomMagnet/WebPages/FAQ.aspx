@@ -5,9 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <section class="header-breadcrumb bgimage overlay overlay--dark">
-        <div class="bg_image_holder">
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/img/rm/home-1.jpg" />
+     <section class="header-breadcrumb bgimage overlay overlay--dark fill">
+        <div class="Faq-image imgfill">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/img/home-1-small.png" />
         </div>
         <div class="breadcrumb-wrapper content_above">
             <div class="container">
@@ -17,15 +17,15 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">FAQ</li>
+                                <li class="breadcrumb-item active">FAQ</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- ends: .breadcrumb-wrapper -->
     </section>
+    <!-- ends: .breadcrumb-wrapper -->
     <section class="faq-wrapper section-padding border-bottom">
         <div class="container">
             <div class="row">
@@ -84,12 +84,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                         <div class="card">
+                                        <div class="card">
                                             <!-- Card header -->
                                             <div class="card-header" role="tab" id="headingOne3">
                                                 <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne3" aria-expanded="true"
                                                     aria-controls="collapseOne1">
-                                                    <h5 class="mb-0">Who are host families?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                                    <h5 class="mb-0">Who Are Host Families?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
                                                     </h5>
                                                 </a>
                                             </div>
@@ -97,7 +97,7 @@
                                             <div id="collapseOne3" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
                                                 data-parent="#accordionEx">
                                                 <div class="card-body">
-                                                 Host families are those who have room in their home, empty-nesters and people of advanced age who wish to age in place,
+                                                    Host families are those who have room in their home, empty-nesters and people of advanced age who wish to age in place,
                                             and wish to monetize their empty space. In cases where hosts are interested in getting a little help around the house and tenants are willing  provide assistance
                                             with things such as light domestic or outdoor work, running errands, as well as companionship a further rent discount will be offered by the host and negotiated between host and tenant.
                                                 </div>
@@ -105,80 +105,76 @@
                                         </div>
                                     </div>
 
-                                     <!-- Card header -->
-                                            <div class="card-header" role="tab" id="headingOne4">
-                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne4" aria-expanded="true"
-                                                    aria-controls="collapseOne1">
-                                                    <h5 class="mb-0">What is the advantage of a host family?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
-                                                    </h5>
-                                                </a>
-                                            </div>
-                                            <!-- Card body -->
-                                            <div id="collapseOne4" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
-                                                data-parent="#accordionEx">
-                                                <div class="card-body">
-                                                    Roommagnet connects host families who wish to share empty space in their home with responsible inter-generational adults who seek
+                                    <!-- Card header -->
+                                    <div class="card-header" role="tab" id="headingOne4">
+                                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne4" aria-expanded="true"
+                                            aria-controls="collapseOne1">
+                                            <h5 class="mb-0">What is the advantage of a host family?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                            </h5>
+                                        </a>
+                                    </div>
+                                    <!-- Card body -->
+                                    <div id="collapseOne4" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                        data-parent="#accordionEx">
+                                        <div class="card-body">
+                                            Roommagnet connects host families who wish to share empty space in their home with responsible inter-generational adults who seek
                                             affordable housing in order to continue their careers. These may be advanced college students, doctoral and nursing interns, international students or professionals. Host
                                             families have the assurance that Tenants are carefully screened.  Hosts who need assistance with light domestic duties (i.e. shopping, household odd jobs, daily maintenance
                                             or just companionship) will offer further discount for assistance.
-                                                </div>
-                                            </div>
-
-                                   <!-- Card header -->
-                                            <div class="card-header" role="tab" id="headingOne5">
-                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne5" aria-expanded="true"
-                                                    aria-controls="collapseOne1">
-                                                    <h5 class="mb-0">Why is there a need for RoomMagnet?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
-                                                    </h5>
-                                                </a>
-                                            </div>
-                                            <!-- Card body -->
-                                            <div id="collapseOne5" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
-                                                data-parent="#accordionEx">
-                                                <div class="card-body">
-                                                     As the cost of housing increases and become more scare in highly populated areas, it becomes harder for responsible students, as well as
-                                            professional and semi-professionals (ie: doctoral interns, and interning nurses) to find suitable and affordable housing. Likewise, International students not only have the added
-                                            expense of international living, but also must adjust to the cultural landscape of the U.S., which living with a host family can greatly reduce.
-                                                </div>
-                                            </div>
-
-                                     <!-- Card header -->
-                                            <div class="card-header" role="tab" id="headingOne6">
-                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne6" aria-expanded="true"
-                                                    aria-controls="collapseOne1">
-                                                    <h5 class="mb-0">What is RoomMagnet’s HomeshareSmarter® Living option?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
-                                                    </h5>
-                                                </a>
-                                            </div>
-                                            <!-- Card body -->
-                                            <div id="collapseOne6" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
-                                                data-parent="#accordionEx">
-                                                <div class="card-body">
-                                                     Tenants who are open to assisting host families with some basic chores like running errands, doing yard work or just providing companionship or
-                                            personal assistance will receive a discount on their housing. We call this HomeShareSmarter® Living.
-                                                </div>
-                                            </div>
+                                        </div>
+                                    </div>
 
                                     <!-- Card header -->
-                                            <div class="card-header" role="tab" id="headingOne7">
-                                                <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne7" aria-expanded="true"
-                                                    aria-controls="collapseOne1">
-                                                    <h5 class="mb-0">What is RoomMagnet’s HomeshareSmarter® Living option?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
-                                                    </h5>
-                                                </a>
-                                            </div>
-                                            <!-- Card body -->
-                                            <div id="collapseOne7" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
-                                                data-parent="#accordionEx">
-                                                <div class="card-body">
-                                                     Tenants who are open to assisting host families with some basic chores like running errands, doing yard work or just providing companionship or
+                                    <div class="card-header" role="tab" id="headingOne5">
+                                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne5" aria-expanded="true"
+                                            aria-controls="collapseOne1">
+                                            <h5 class="mb-0">Why is there a need for RoomMagnet?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                            </h5>
+                                        </a>
+                                    </div>
+                                    <!-- Card body -->
+                                    <div id="collapseOne5" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                        data-parent="#accordionEx">
+                                        <div class="card-body">
+                                            As the cost of housing increases and become more scare in highly populated areas, it becomes harder for responsible students, as well as
+                                            professional and semi-professionals (ie: doctoral interns, and interning nurses) to find suitable and affordable housing. Likewise, International students not only have the added
+                                            expense of international living, but also must adjust to the cultural landscape of the U.S., which living with a host family can greatly reduce.
+                                        </div>
+                                    </div>
+
+                                    <!-- Card header -->
+                                    <div class="card-header" role="tab" id="headingOne6">
+                                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne6" aria-expanded="true"
+                                            aria-controls="collapseOne1">
+                                            <h5 class="mb-0">What is RoomMagnet’s HomeshareSmarter® Living option?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                            </h5>
+                                        </a>
+                                    </div>
+                                    <!-- Card body -->
+                                    <div id="collapseOne6" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                        data-parent="#accordionEx">
+                                        <div class="card-body">
+                                            Tenants who are open to assisting host families with some basic chores like running errands, doing yard work or just providing companionship or
                                             personal assistance will receive a discount on their housing. We call this HomeShareSmarter® Living.
-                                                </div>
-                                            </div>
+                                        </div>
+                                    </div>
 
-
-
-
+                                    <!-- Card header -->
+                                    <div class="card-header" role="tab" id="headingOne7">
+                                        <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne7" aria-expanded="true"
+                                            aria-controls="collapseOne1">
+                                            <h5 class="mb-0">What is RoomMagnet’s HomeshareSmarter® Living option?<i class="fas fa-angle-down rotate-icon" style="float: right;"></i>
+                                            </h5>
+                                        </a>
+                                    </div>
+                                    <!-- Card body -->
+                                    <div id="collapseOne7" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                        data-parent="#accordionEx">
+                                        <div class="card-body">
+                                            Tenants who are open to assisting host families with some basic chores like running errands, doing yard work or just providing companionship or
+                                            personal assistance will receive a discount on their housing. We call this HomeShareSmarter® Living.
+                                        </div>
+                                    </div>
 
                                     <div class="accordion-single">
                                         <h3 class="faq-title"><a href="#">Who are RoomMagnet's advisors?</a></h3>
