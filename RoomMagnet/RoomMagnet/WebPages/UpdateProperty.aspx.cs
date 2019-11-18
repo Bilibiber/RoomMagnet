@@ -16,7 +16,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        updatepropertyid.Text = Session["updatepropertyID"].ToString();
+        updatepropertyid.Text = Session["updatepropertyID"].ToString()+ "   "+ Session["UserID"].ToString();
         room1.Visible = false;
         room2.Visible = false;
         room3.Visible = false;
@@ -220,6 +220,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         cn.Open();
         int userid = Convert.ToInt32(Session["UserID"]);
         string FullName = Session["FullName"].ToString();
+        int pid = Convert.ToInt32(Session["updatepropertyID"]);
 
         string update = "UPDATE [dbo].[Property] SET [Title] = @title,[StreetAddress] = @street,[City] = @city,[HomeState] = @state,[Country] = @country,[ZipCode] = @zip," +
             "[SquareFootage] = @square,[AvailableBedrooms] = @bedrooms,[AvailableBathrooms] = @bathrooms,[RentPrice] = @price,[StartDate] = @start,[EndDate] = @end,[HostID] = @hostid," +
@@ -241,7 +242,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         updated.Parameters.AddWithValue("@hostid", userid);
         updated.Parameters.AddWithValue("@lastUpdated", DateTime.Now);
         updated.Parameters.AddWithValue("@lastUpdatedBy", FullName);
-        updated.Parameters.AddWithValue("@pid", Int32.Parse(Session["updatepropertyID"].ToString()));
+        updated.Parameters.AddWithValue("@pid", pid);
         updated.ExecuteNonQuery();
         cn.Close();
 
