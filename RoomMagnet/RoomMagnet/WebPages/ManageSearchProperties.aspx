@@ -29,80 +29,7 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <section class="header-breadcrumb bgimage overlay overlay--dark">
-        <div class="mainmenu-wrapper">
-            <div class="menu-area menu1 ">
-                <div class="top-menu-area">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="menu-fullwidth">
-                                    <div class="logo-wrapper order-lg-0 order-sm-1">
-                                        <div class="logo logo-top">
-                                            <a href="index.html">
-                                                <%--<img src="img/rm/logo-2.png" alt="logo image" class="img-fluid">--%></a>
-                                        </div>
-                                    </div>
-                                    <!-- ends: .logo-wrapper -->
-                                    <div class="author-area">
-                                        <div class="author__access_area">
-                                            <ul class="d-flex list-unstyled align-items-center">
-                                                <%--<li class="signup-padding">
-                                                    <a href="" class="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#signup_modal">Sign Up</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal">Login</a>
-                                                </li>--%>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end .author-area -->
-
-                                    <div class="menu-container order-lg-1 order-sm-0">
-                                        <div class="d_menu">
-                                            <nav class="navbar navbar-expand-lg mainmenu__menu">
-                                                <div class="offcanvas-menu  collapse navbar-collpase">
-
-                                                    <ul class="nav navbar-nav">
-
-                                                        <li class="nav-item dropdown ml-auto">
-                                                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                <%--                                                                <img src="img/author-avatar.png" alt="" class="rounded-circle img-fluid">--%>
-                                                            </a>
-                                                            <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
-                                                                <a class="dropdown-item" href="#">Dashboard</a>
-                                                                <a class="dropdown-item" href="#">Settings</a>
-                                                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="#">Logout</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <!-- ends: .author-info -->
-                                                <!-- /.navbar-collapse -->
-                                            </nav>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- end .author-area -->
-
-                                </div>
-                                <!-- ends: .author-info -->
-
-                                <!-- end .author-area -->
-
-                            </div>
-                            <!-- ends: .offcanvas-menu -->
-                        </div>
-                        <!-- ends: .menu-right -->
-                    </div>
-                </div>
-            </div>
-            <!-- end /.row -->
-        </div>
-        <!-- end /.container -->
-    </section>
+    
 
     <div class="section-bg property-title">
         <div class="container">
@@ -168,6 +95,8 @@
                                         <asp:Image ID="propertyImage3" runat="server" Width="325px" />
                                         <asp:Image ID="propertyImage4" runat="server" Height="369px" Width="321px" />
                                     </div>
+
+
                                 </div>
                                 <!-- ends: .gallery-images -->
                                 <div class="gallery-thumbs">
