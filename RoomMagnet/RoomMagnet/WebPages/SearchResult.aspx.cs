@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 
-
 public partial class WebPages_SearchResult : System.Web.UI.Page
 
 {
@@ -17,9 +16,9 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     private int RowCount = 0;
     private int RowNum;
     private int RowMinus = 0;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        
         SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
         Property1Space.Visible = false;
         Property2Space.Visible = false;
@@ -27,7 +26,6 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         Property4Space.Visible = false;
         Property5Space.Visible = false;
         ResultPg2.Visible = false; ResultPg3.Visible = false; ResultPg4.Visible = false; ResultPg5.Visible = false; ResultPg6.Visible = false;
-
 
         if (Session["SignInEmail"] == null)
         {
@@ -44,9 +42,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SearchResultButton_Click(sender, e);
             Session["HomePageSearchContent"] = null;
         }
-        
     }
-    
+
     protected void ApplyButton_Click(object sender, EventArgs e)
     {
         SearchResultButton_Click(sender, e);
@@ -171,7 +168,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         string sql;
         string sql2;
         string tempsql;
-        
+
         if (SearchResultBedsAvailable.Text == String.Empty)
         {
             BedsCmpr = "> 0";
@@ -196,7 +193,6 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
             sql += " Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, PropertyID, row_num from cte_Property where row_num >" + RowCount;
             sql2 = tempsql + " Select Max(row_num) from cte_Property";
-            
         }
         else
         {
@@ -212,8 +208,6 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
             sql += " Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, PropertyID  from cte_Property where row_num >" + RowCount;
             sql2 = tempsql + " Select Max(row_num) from cte_Property";
-
-          
         }
 
         OrderBy = String.Empty;
@@ -223,7 +217,6 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SqlDataReader reader = search.ExecuteReader();
             if (reader.HasRows)
             {
-               
                 while (reader.Read())
                 {
                     int tempPID = reader.GetInt32(10);
@@ -249,7 +242,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             Property1CityState.Visible = true;
                             Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
                             Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
-                            Property1StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();                     
+                            Property1StartDate.Text = "Avaliable Date Range: " + reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
 
                             byte[] images = (byte[])reader[8];
                             if (images == null)
@@ -370,306 +363,308 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                             }
                             Property5Space.Visible = true;
                         }
-                }
-                else
-                {
-                    RowMinus--;
-                }
-                reader.NextResult();
-            }
-            reader.Close();
-            SqlCommand Resultsearch = new SqlCommand(sql2, connection);
-            SqlDataReader Resultreader = Resultsearch.ExecuteReader();
-            if (Resultreader.HasRows)
-            {
-                while (Resultreader.Read())
-                {
-                    if (Resultreader.IsDBNull(0) == false)
-                    {
-                        RowNum = (int)Resultreader.GetInt64(0);
                     }
                     else
                     {
-                        RowNum = 0;
+                        RowMinus--;
+                    }
+                    reader.NextResult();
+                }
+                reader.Close();
+                PID.Clear();
+                SqlCommand Resultsearch = new SqlCommand(sql2, connection);
+                SqlDataReader Resultreader = Resultsearch.ExecuteReader();
+                if (Resultreader.HasRows)
+                {
+                    while (Resultreader.Read())
+                    {
+                        if (Resultreader.IsDBNull(0) == false)
+                        {
+                            RowNum = (int)Resultreader.GetInt64(0);
+                        }
+                        else
+                        {
+                            RowNum = 0;
+                        }
                     }
                 }
-            }
-            Resultreader.Close();
+                Resultreader.Close();
                 RowMinus = RowMinus + RowNum;
-            SearchResultCount.Text = "Total Properties Found: " + RowMinus.ToString();
-            if (RowNum > 5)
-            {
-                ResultPg2.Visible = true;
-            }
-            if (RowNum > 10)
-            {
-                ResultPg3.Visible = true;
-            }
-            if (RowNum >15)
-            {
-                ResultPg4.Visible = true;
-            }
-            if (RowNum > 20)
-            {
-                ResultPg5.Visible = true;
-            }
-            if (RowNum > 25)
-            {
-                ResultPg6.Visible = true;
-            }
-
-            for (int i = 0; i < RatingsPID.Count; i++)
-            {
-                string RatingSQL = "Select NumStars from [Rating] where PropertyID =" + RatingsPID[i];
-                SqlCommand Ratingsearch = new SqlCommand(RatingSQL, connection);
-                SqlDataReader readers = Ratingsearch.ExecuteReader();
-                decimal RatingSum = 0;
-                int RatingCount = 0;
-                int RatingRecordCount = 0;
-                if (readers.HasRows)
+                SearchResultCount.Text = "Total Properties Found: " + RowMinus.ToString();
+                if (RowMinus > 5)
                 {
-                    while (readers.Read())
+                    ResultPg2.Visible = true;
+                }
+                if (RowMinus > 10)
+                {
+                    ResultPg3.Visible = true;
+                }
+                if (RowMinus > 15)
+                {
+                    ResultPg4.Visible = true;
+                }
+                if (RowMinus > 20)
+                {
+                    ResultPg5.Visible = true;
+                }
+                if (RowMinus > 25)
+                {
+                    ResultPg6.Visible = true;
+                }
+
+                for (int i = 0; i < RatingsPID.Count; i++)
+                {
+                    string RatingSQL = "Select NumStars from [Rating] where PropertyID =" + RatingsPID[i];
+                    SqlCommand Ratingsearch = new SqlCommand(RatingSQL, connection);
+                    SqlDataReader readers = Ratingsearch.ExecuteReader();
+                    decimal RatingSum = 0;
+                    int RatingCount = 0;
+                    int RatingRecordCount = 0;
+                    if (readers.HasRows)
                     {
-                        RatingSum += readers.GetDecimal(0);
-                        RatingRecordCount++;
+                        while (readers.Read())
+                        {
+                            RatingSum += readers.GetDecimal(0);
+                            RatingRecordCount++;
+                        }
                     }
-                }
-                if (RatingRecordCount == 0)
-                {
-                    return;
-                }
-                if (RatingCount == 0)
-                {
-                    Property1Rating.Text = (RatingSum / RatingRecordCount).ToString();
-                }
-                if (RatingCount == 1)
-                {
-                    Property2Rating.Text = (RatingSum / RatingRecordCount).ToString();
-                }
-                if (RatingCount == 2)
-                {
-                    Property3Rating.Text = (RatingSum / RatingRecordCount).ToString();
-                }
-                if (RatingCount == 3)
-                {
-                    Property4Rating.Text = (RatingSum / RatingRecordCount).ToString();
-                }
-                if (RatingCount == 4)
-                {
-                    Property5Rating.Text = (RatingSum / RatingRecordCount).ToString();
-                }
-
-                RatingCount++;
-                readers.Close();
-            }
-            RatingsPID.Clear();
-        }
-        else
-        {
-            //SearchLabel.Text = "Please enter something in the text bar.";
-        }
-    }
-
-    protected void HighToLow_Click(object sender, EventArgs e)
-    {
-        OrderBy = " desc";
-        SearchResultButton_Click(sender, e);
-    }
-
-    protected void LowToHigh_Click(object sender, EventArgs e)
-    {
-        OrderBy = " asc";
-        SearchResultButton_Click(sender, e);
-    }
-
-    protected void Property1Image_Click(object sender, ImageClickEventArgs e)
-    {
-        connection.Open();
-        string sql = "Select PropertyID,ImagePath from [ImagePath]";
-        SqlCommand search = new SqlCommand(sql, connection);
-        SqlDataReader reader = search.ExecuteReader();
-
-        if (reader.HasRows)
-        {
-            while (reader.Read())
-            {
-                byte[] images = (byte[])reader[1];
-                int PropertyID = reader.GetInt32(0);
-                if (images == null)
-                {
-                    return;
-                }
-                else
-                {
-                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
-                    if (CmprImageURL == Property1Image.ImageUrl)
+                    if (RatingRecordCount == 0)
                     {
-                        Session["ResultPropertyID"] = PropertyID;
+                        return;
                     }
+                    if (RatingCount == 0)
+                    {
+                        Property1Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                    }
+                    if (RatingCount == 1)
+                    {
+                        Property2Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                    }
+                    if (RatingCount == 2)
+                    {
+                        Property3Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                    }
+                    if (RatingCount == 3)
+                    {
+                        Property4Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                    }
+                    if (RatingCount == 4)
+                    {
+                        Property5Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                    }
+
+                    RatingCount++;
+                    readers.Close();
                 }
+                RatingsPID.Clear();
+            }
+            else
+            {
+                //SearchLabel.Text = "Please enter something in the text bar.";
             }
         }
-        connection.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
     }
 
-    protected void Property2Image_Click(object sender, ImageClickEventArgs e)
-    {
-        connection.Open();
-        string sql = "Select PropertyID,ImagePath from [ImagePath]";
-        SqlCommand search = new SqlCommand(sql, connection);
-        SqlDataReader reader = search.ExecuteReader();
-
-        if (reader.HasRows)
+        protected void HighToLow_Click(object sender, EventArgs e)
         {
-            while (reader.Read())
+            OrderBy = " desc";
+            SearchResultButton_Click(sender, e);
+        }
+
+        protected void LowToHigh_Click(object sender, EventArgs e)
+        {
+            OrderBy = " asc";
+            SearchResultButton_Click(sender, e);
+        }
+
+        protected void Property1Image_Click(object sender, ImageClickEventArgs e)
+        {
+            connection.Open();
+            string sql = "Select PropertyID,ImagePath from [ImagePath]";
+            SqlCommand search = new SqlCommand(sql, connection);
+            SqlDataReader reader = search.ExecuteReader();
+
+            if (reader.HasRows)
             {
-                byte[] images = (byte[])reader[1];
-                int PropertyID = reader.GetInt32(0);
-                if (images == null)
+                while (reader.Read())
                 {
-                    return;
-                }
-                else
-                {
-                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
-                    if (CmprImageURL == Property2Image.ImageUrl)
+                    byte[] images = (byte[])reader[1];
+                    int PropertyID = reader.GetInt32(0);
+                    if (images == null)
                     {
-                        Session["ResultPropertyID"] = PropertyID;
+                        return;
+                    }
+                    else
+                    {
+                        string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                        if (CmprImageURL == Property1Image.ImageUrl)
+                        {
+                            Session["ResultPropertyID"] = PropertyID;
+                        }
                     }
                 }
             }
+            connection.Close();
+            Response.Redirect("ManageSearchProperties.aspx");
         }
-        connection.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
-    }
 
-    protected void Property3Image_Click(object sender, ImageClickEventArgs e)
-    {
-        connection.Open();
-        string sql = "Select PropertyID,ImagePath from [ImagePath]";
-        SqlCommand search = new SqlCommand(sql, connection);
-        SqlDataReader reader = search.ExecuteReader();
-
-        if (reader.HasRows)
+        protected void Property2Image_Click(object sender, ImageClickEventArgs e)
         {
-            while (reader.Read())
+            connection.Open();
+            string sql = "Select PropertyID,ImagePath from [ImagePath]";
+            SqlCommand search = new SqlCommand(sql, connection);
+            SqlDataReader reader = search.ExecuteReader();
+
+            if (reader.HasRows)
             {
-                byte[] images = (byte[])reader[1];
-                int PropertyID = reader.GetInt32(0);
-                if (images == null)
+                while (reader.Read())
                 {
-                    return;
-                }
-                else
-                {
-                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
-                    if (CmprImageURL == Property3Image.ImageUrl)
+                    byte[] images = (byte[])reader[1];
+                    int PropertyID = reader.GetInt32(0);
+                    if (images == null)
                     {
-                        Session["ResultPropertyID"] = PropertyID;
+                        return;
+                    }
+                    else
+                    {
+                        string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                        if (CmprImageURL == Property2Image.ImageUrl)
+                        {
+                            Session["ResultPropertyID"] = PropertyID;
+                        }
                     }
                 }
             }
+            connection.Close();
+            Response.Redirect("ManageSearchProperties.aspx");
         }
-        connection.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
-    }
 
-    protected void Property4Image_Click(object sender, ImageClickEventArgs e)
-    {
-        connection.Open();
-        string sql = "Select PropertyID,ImagePath from [ImagePath]";
-        SqlCommand search = new SqlCommand(sql, connection);
-        SqlDataReader reader = search.ExecuteReader();
-
-        if (reader.HasRows)
+        protected void Property3Image_Click(object sender, ImageClickEventArgs e)
         {
-            while (reader.Read())
+            connection.Open();
+            string sql = "Select PropertyID,ImagePath from [ImagePath]";
+            SqlCommand search = new SqlCommand(sql, connection);
+            SqlDataReader reader = search.ExecuteReader();
+
+            if (reader.HasRows)
             {
-                byte[] images = (byte[])reader[1];
-                int PropertyID = reader.GetInt32(0);
-                if (images == null)
+                while (reader.Read())
                 {
-                    return;
-                }
-                else
-                {
-                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
-                    if (CmprImageURL == Property4Image.ImageUrl)
+                    byte[] images = (byte[])reader[1];
+                    int PropertyID = reader.GetInt32(0);
+                    if (images == null)
                     {
-                        Session["ResultPropertyID"] = PropertyID;
+                        return;
+                    }
+                    else
+                    {
+                        string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                        if (CmprImageURL == Property3Image.ImageUrl)
+                        {
+                            Session["ResultPropertyID"] = PropertyID;
+                        }
                     }
                 }
             }
+            connection.Close();
+            Response.Redirect("ManageSearchProperties.aspx");
         }
-        connection.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
-    }
 
-    protected void Property5Image_Click(object sender, ImageClickEventArgs e)
-    {
-        connection.Open();
-        string sql = "Select PropertyID,ImagePath from [ImagePath]";
-        SqlCommand search = new SqlCommand(sql, connection);
-        SqlDataReader reader = search.ExecuteReader();
-
-        if (reader.HasRows)
+        protected void Property4Image_Click(object sender, ImageClickEventArgs e)
         {
-            while (reader.Read())
+            connection.Open();
+            string sql = "Select PropertyID,ImagePath from [ImagePath]";
+            SqlCommand search = new SqlCommand(sql, connection);
+            SqlDataReader reader = search.ExecuteReader();
+
+            if (reader.HasRows)
             {
-                byte[] images = (byte[])reader[1];
-                int PropertyID = reader.GetInt32(0);
-                if (images == null)
+                while (reader.Read())
                 {
-                    return;
-                }
-                else
-                {
-                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
-                    if (CmprImageURL == Property5Image.ImageUrl)
+                    byte[] images = (byte[])reader[1];
+                    int PropertyID = reader.GetInt32(0);
+                    if (images == null)
                     {
-                        Session["ResultPropertyID"] = PropertyID;
+                        return;
+                    }
+                    else
+                    {
+                        string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                        if (CmprImageURL == Property4Image.ImageUrl)
+                        {
+                            Session["ResultPropertyID"] = PropertyID;
+                        }
                     }
                 }
             }
+            connection.Close();
+            Response.Redirect("ManageSearchProperties.aspx");
         }
-        connection.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
-    }
 
-    protected void ResultPg1_Click(object sender, EventArgs e)
-    {
-        RowCount = 0;
-        SearchResultButton_Click(sender, e);
-    }
+        protected void Property5Image_Click(object sender, ImageClickEventArgs e)
+        {
+            connection.Open();
+            string sql = "Select PropertyID,ImagePath from [ImagePath]";
+            SqlCommand search = new SqlCommand(sql, connection);
+            SqlDataReader reader = search.ExecuteReader();
 
-    protected void ResultPg2_Click(object sender, EventArgs e)
-    {
-        RowCount = 5;
-        SearchResultButton_Click(sender, e);
-    }
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    byte[] images = (byte[])reader[1];
+                    int PropertyID = reader.GetInt32(0);
+                    if (images == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                        if (CmprImageURL == Property5Image.ImageUrl)
+                        {
+                            Session["ResultPropertyID"] = PropertyID;
+                        }
+                    }
+                }
+            }
+            connection.Close();
+            Response.Redirect("ManageSearchProperties.aspx");
+        }
 
-    protected void ResultPg3_Click(object sender, EventArgs e)
-    {
-        RowCount = 10;
-        SearchResultButton_Click(sender, e);
-    }
+        protected void ResultPg1_Click(object sender, EventArgs e)
+        {
+            RowCount = 0;
+            SearchResultButton_Click(sender, e);
+        }
 
-    protected void ResultPg4_Click(object sender, EventArgs e)
-    {
-        RowCount = 15;
-        SearchResultButton_Click(sender, e);
-    }
+        protected void ResultPg2_Click(object sender, EventArgs e)
+        {
+            RowCount = 5;
+            SearchResultButton_Click(sender, e);
+        }
 
-    protected void ResultPg5_Click(object sender, EventArgs e)
-    {
-        RowCount = 20;
-        SearchResultButton_Click(sender, e);
-    }
+        protected void ResultPg3_Click(object sender, EventArgs e)
+        {
+            RowCount = 10;
+            SearchResultButton_Click(sender, e);
+        }
 
-    protected void ResultPg6_Click(object sender, EventArgs e)
-    {
-        RowCount = 25;
-        SearchResultButton_Click(sender, e);
+        protected void ResultPg4_Click(object sender, EventArgs e)
+        {
+            RowCount = 15;
+            SearchResultButton_Click(sender, e);
+        }
+
+        protected void ResultPg5_Click(object sender, EventArgs e)
+        {
+            RowCount = 20;
+            SearchResultButton_Click(sender, e);
+        }
+
+        protected void ResultPg6_Click(object sender, EventArgs e)
+        {
+            RowCount = 25;
+            SearchResultButton_Click(sender, e);
+        }
     }
-}
