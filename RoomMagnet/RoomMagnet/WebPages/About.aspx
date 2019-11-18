@@ -13,7 +13,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5 col-md-6">
                         <h1>Join the Room Magnet Team: Become a host today! </h1>
-                        <a href="" class="btn btn-gradient btn-gradient-two">Become a Host</a>
+                        <asp:Button ID="AboutPageSignUp" runat="server" Text="Become Host" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" />
                     </div>
                     <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-0 col-sm-8 offset-sm-2">
                         <img src="img/about-illustration.png" alt="">
@@ -32,7 +32,7 @@
                         <div class="offset-lg-1 mt-5 mt-md-0">
                             <h1>Why did we create RoomMagnet?</h1>
                             <p>
-                                RoomMagnet brings together a solution to two social problems that are of major concern to society and continue to escalate internationally.
+                                  RoomMagnet brings together a solution to two social problems that are of major concern to society and continue to escalate internationally.
                                    The first is the cost of affordable housing. Costs for college students, interns and young professionals  continues to escalate at an alarming pace, making it more difficult to get a start on their careers.
                                    Secondly, older adults and empty-nesters, as they get older, wish to age in place, and often need additional income and at times assistance with light domestic duties such as shopping, household duties, daily maintenance or just companionship.
                                    Our goal is to bring professional and semi-professionals such as, graduate students, international students, doctoral and nursing interns as well as college students seeking affordable housing together with hosts who have extra room to share.
@@ -53,7 +53,7 @@
                     <!-- ends: .contents -->
                     <div class="contents">
                         <div class="row align-items-center">
-                            <div class="col-lg-5 col-sm-6">
+                            <div class="col-lg-7 col-sm-6">
                                 <h1>Why List on <span>RoomMagnet</span>?</h1>
                                 <ul class="list-unstyled list-features p-top-15">
                                     <li>
@@ -90,6 +90,4 @@
             </div>
         </div>
     </section>
-    <!-- ends: .about-contents -->
-    <!-- endinject-->
 </asp:Content>
