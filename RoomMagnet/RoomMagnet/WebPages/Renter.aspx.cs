@@ -520,4 +520,21 @@ public partial class WebPages_Renter : System.Web.UI.Page
     {
         ClientScript.RegisterStartupScript(this.GetType(), "p", "ShowPopup();", true);
     }
+
+    protected void submitReview_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        System.Data.SqlClient.SqlCommand review = new System.Data.SqlClient.SqlCommand();
+        review.Connection = cn;
+        review.CommandText = "INSERT INTO [dbo].[Rating]([Descriptions],[NumStars],[LastUpdated],[LastUpdatedBy],[RenterID],[PropertyID]) VALUES" +
+            "(@Descriptions,@NumStars,@LastUpdated,@LastUpdatedBy,@RenterID,@PropertyID)";
+        review.Parameters.Add(new SqlParameter("@Descriptions", reviewdes.Text));
+        review.Parameters.Add(new SqlParameter("@NumStars", Convert.ToDecimal( reviewStar.Text)));
+        review.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
+        review.Parameters.Add(new SqlParameter("@LastUpdatedBy", Session["FullName"].ToString()));
+        review.Parameters.Add(new SqlParameter("@RenterID", Int32.Parse(Session["UserID"].ToString())));
+        review.Parameters.Add(new SqlParameter("@PropertyID", 1003));
+        review.ExecuteNonQuery();
+        cn.Close();
+    }
 }

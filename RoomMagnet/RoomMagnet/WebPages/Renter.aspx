@@ -680,7 +680,7 @@
                                           <span>Rating: </span>
                                           <div class="atbd_rating_stars">
                                               <div class="br-wrapper br-theme-fontawesome-stars m-left-15">
-                                                  <asp:dropdownlist runat="server" class="give_rating">
+                                                  <asp:dropdownlist runat="server" class="give_rating" id="reviewStar">
                                                       <asp:ListItem Value="1">1</asp:ListItem>
                                                       <asp:ListItem Value="2">2</asp:ListItem>
                                                       <asp:ListItem Value="3">3</asp:ListItem>
@@ -692,10 +692,10 @@
                                       </div><!-- ends: .atbd_review_update_rating -->
                                   </div><!-- ends: .atbd_review_rating_area -->
                                   <div class="form-group">
-                                      <textarea name="content" id="review_content" class="form-control" placeholder="Message" required></textarea>
+                                      <br />
+                                      <asp:textbox runat="server" class="form-control" textmode="multiline" Height="100px" id="reviewdes"></asp:textbox>
                                   </div>
-
-                                  <button class="btn btn-primary" type="submit" id="atbdp_review_form_submit">Submit Review</button> <!-- submit button -->
+                                  <asp:button runat="server" text="Submit Review" class="btn btn-primary" id="submitReview" onclick="submitReview_Click" />
                               </form>
                         </div>
                     </div>
