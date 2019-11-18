@@ -44,6 +44,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SearchResultButton_Click(sender, e);
             Session["HomePageSearchContent"] = null;
         }
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pooooopsssss", "openResultModal()", true);
     }
 
     protected void ApplyButton_Click(object sender, EventArgs e)
@@ -379,7 +380,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pooooopsssss", "openResultModal();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pooooopsssss", "openResultModal()", true);
             }
             reader.Close();
             SqlCommand Resultsearch = new SqlCommand(sql2, connection);

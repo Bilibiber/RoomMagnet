@@ -28,6 +28,9 @@ function initMap() {
         }
     }
 }
+function openResultModal() {
+    $('#no_result_notification').modal({ show: true });
+}
 
 function geocodeAddress() {
     click = true;

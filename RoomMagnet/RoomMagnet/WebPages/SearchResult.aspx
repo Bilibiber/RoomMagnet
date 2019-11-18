@@ -6,6 +6,11 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
+<%--        <script type="text/javascript">
+        function openResultModal() {
+            $('#no_result_notification').modal({ show: true });
+        }
+    </script>--%>
     <asp:ScriptManager ID="ScriptManager1"
         EnablePageMethods="true"
         EnablePartialRendering="true" runat="server" />
@@ -15,11 +20,6 @@
     <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
 
     <script src="GoogleMap.js"></script>
-    <script type="text/javascript">
-        function openResultModal() {
-            $('#no_result_notification').modal({ show: true });
-        }
-    </script>
     <section class="all-listing-wrapper section-bg results-pad">
         <div class="row">
             <div class="col-lg-12">
