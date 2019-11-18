@@ -5,32 +5,14 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <%--<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Property Page</title>
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,600,700" rel="stylesheet">
-    <!-- inject:css-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="vendor_assets/css/brands.css">
-    <link rel="stylesheet" href="vendor_assets/css/fontawesome.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="vendor_assets/css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" href="vendor_assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="vendor_assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/select2.min.css">
-    <link rel="stylesheet" href="vendor_assets/css/slick.css">
-    <link rel="stylesheet" href="style.css">
-    <!-- endinject -->
-    <link rel="icon" type="image/png" sizes="32x32" href="img/fevicon.png">
-    <script src="https://kit.fontawesome.com/0731522562.js" crossorigin="anonymous"></script>--%>
+
 </asp:Content>
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <section class="header-breadcrumb bgimage overlay overlay--dark">
         <div class="mainmenu-wrapper">
+            
             <div class="menu-area menu1 ">
                 <div class="top-menu-area">
                     <div class="container-fluid">
@@ -41,6 +23,7 @@
                                         <div class="logo logo-top">
                                             <a href="index.html">
                                                 <img src="img/rm/logo-2.png" alt="logo image" class="img-fluid"></a>
+                                            
                                         </div>
                                     </div>
                                     <!-- ends: .logo-wrapper -->
@@ -105,7 +88,7 @@
         <!-- end /.container -->
     </section>
 
-
+ 
 
     <div class="section-bg property-title">
         <div class="container">
@@ -129,7 +112,7 @@
     <div class="modal fade" id="atbdp-report-abuse-modal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="atbdp-report-abuse-modal-label">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form action="/" id="atbdp-report-abuse-form" class="form-vertical">
+        
                     <div class="modal-header">
                         <h3 class="modal-title" id="atbdp-report-abuse-modal-label">Report Abuse</h3>
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
@@ -143,7 +126,7 @@
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-secondary btn-sm">Submit</button>
                     </div>
-                </form>
+
             </div>
         </div>
     </div>
@@ -312,7 +295,7 @@
                                         You need to <a href="">Login</a> or <a href="">Register</a> to submit a review
                                     </div>
                                     <!-- ends: .atbd_notice -->
-                                    <form action="/" id="atbdp_review_form" method="post">
+                                  
                                         <div class="atbd_review_rating_area">
                                             <!--It should be displayed on the left side -->
                                             <div class="atbd_review_update_rating">
@@ -339,7 +322,7 @@
 
                                         <button class="btn btn-primary" type="submit" id="atbdp_review_form_submit">Submit Review</button>
                                         <!-- submit button -->
-                                    </form>
+                           
                                 </div>
                                 <!-- ends: .atbd_give_review_area -->
 
@@ -367,7 +350,7 @@
                                 </div>
                             </div>
                             <!-- ends: .atbd_avatar_wrapper -->
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" />
+                            <asp:Button id="MessageBtn" CssClass="btn btn-primary btn-block" runat="server" onClick="GoToMessage" Text="Message" />
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Book Now" />
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
 
@@ -579,7 +562,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/" id="login-form">
+                  
                         <input type="text" class="form-control" placeholder="Username or Email" required>
                         <input type="password" class="form-control" placeholder="Password" required>
                         <div class="keep_signed custom-control custom-checkbox checkbox-outline checkbox-outline-primary">
@@ -587,7 +570,7 @@
                             <label for="keep_signed_in" class="not_empty custom-control-label">Keep me signed in</label>
                         </div>
                         <button type="submit" class="btn btn-block btn-lg btn-gradient btn-gradient-two">Sign In</button>
-                    </form>
+             
                     <div class="form-excerpts">
                         <ul class="list-unstyled">
                             <li>Not a member? <a href="">Sign up</a></li>
@@ -612,11 +595,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/" id="signup-form">
+                
                         <input type="email" class="form-control" placeholder="Email" required>
                         <input type="password" class="form-control" placeholder="Password" required>
                         <button type="submit" class="btn btn-block btn-lg btn-gradient btn-gradient-two">Sign Up</button>
-                    </form>
+          
                     <div class="form-excerpts">
                         <ul class="list-unstyled">
                             <li>Already a member? <a href="">Sign In</a></li>
