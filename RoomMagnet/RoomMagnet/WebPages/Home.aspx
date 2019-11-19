@@ -17,6 +17,40 @@
         <!--Slides-->
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
+                <!--Mask color-->
+                <div class="view">
+                    <asp:Image ID="Image7" runat="server" CssClass="d-block w-100" ImageUrl="~/img/rm/street.jpg" alt="Third slide" />
+                    <div class="mask rgba-black-slight"></div>
+                </div>
+                <div class="container">
+                    <div class="carousel-caption text-center">
+                        <h1>FIND YOUR NEW HOME.</h1>
+                        <p>We provide for the listing, discovery , and rental of flexible, affordable co-living situations.</p>
+                        <div class="directory_content_area">
+
+                            <div class="col-lg-10 offset-lg-1">
+
+                                <div class="search_title_area">
+
+                                    <div class="atbd_seach_fields_wrapper no-padding">
+                                        <div class="single_search_field search_query">
+                                            <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields border rounded-pill-left border-right-0" type="text" placeholder="Enter a city or zip code"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorHomePageSearchText" runat="server" ErrorMessage="Special characters are not allowed. For example:% & ; = $" ValidationExpression="[^%&;>=$]+" ControlToValidate="HomePageSearchText" Display="Dynamic" ValidationGroup="HomePageSearch"></asp:RegularExpressionValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic"></asp:RequiredFieldValidator>
+                                            <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="City and State should separate by a comma. For example Harrisonburg,VA" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
+                                        </div>
+
+                                        <div class="atbd_submit_btn">
+                                            <asp:Button ID="HomePageSearchButton" runat="server" Text="Search" CssClass="btn btn-primary btn_search border rounded-pill-right border-left-0" OnClick="HomePageSearchButton_Click" ValidationGroup="HomePageSearch" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
                 <div class="view">
                     <asp:Image ID="Image5" runat="server" ImageUrl="~/img/rm/home-2.png" CssClass="d-block w-100" alt="First slide" />
                     <div class="mask rgba-black-light"></div>
@@ -45,38 +79,6 @@
                             graduate students and individuals looking for affordable housing.
                         </p>
                         <p class="call-action-btn"><a class="btn btn-primary" data-toggle="modal" data-target="#signup_modal" role="button">GET STARTED</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <!--Mask color-->
-                <div class="view">
-                    <asp:Image ID="Image7" runat="server" CssClass="d-block w-100" ImageUrl="~/img/rm/street.jpg" alt="Third slide" />
-                    <div class="mask rgba-black-slight"></div>
-                </div>
-                <div class="container">
-                    <div class="carousel-caption text-center">
-                        <h1>FIND YOUR NEW HOME.</h1>
-                        <p>We provide for the listing, discovery , and rental of flexible, affordable co-living situations.</p>
-                        <div class="directory_content_area">
-
-                            <div class="col-lg-10 offset-lg-1">
-
-                                <div class="search_title_area">
-
-                                    <div class="atbd_seach_fields_wrapper no-padding">
-                                        <div class="single_search_field search_query">
-                                            <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields border rounded-pill-left border-right-0" type="text" placeholder="Enter a city or zip code"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic"></asp:RequiredFieldValidator>
-                                        </div>
-
-                                        <div class="atbd_submit_btn">
-                                            <asp:Button ID="HomePageSearchButton" runat="server" Text="Search" CssClass="btn btn-primary btn_search border rounded-pill-right border-left-0" OnClick="HomePageSearchButton_Click" ValidationGroup="HomePageSearch" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

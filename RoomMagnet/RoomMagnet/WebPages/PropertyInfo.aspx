@@ -58,19 +58,19 @@
                         <div class="atbdb_content_module_contents">
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active no-overlay">
+                                    <div class="carousel-item active no-overlay" id="Image1" runat="server" visible="false">
                                         <asp:Image ID="propertyImage1" runat="server" CssClass="d-block w-100 no-overlay" />
                                     </div>
-                                    <div class="carousel-item no-overlay">
+                                    <div class="carousel-item no-overlay" id="Image2" runat="server" visible="false">
                                         <asp:Image ID="propertyImage2" runat="server" CssClass="d-block w-100 no-overlay" />
                                     </div>
-                                    <div class="carousel-item no-overlay">
+                                    <div class="carousel-item no-overlay" id="Image3" runat="server" visible="false">
                                         <asp:Image ID="propertyImage3" runat="server" CssClass="d-block w-100 no-overlay" />
                                     </div>
-                                    <div class="carousel-item no-overlay">
+                                    <div class="carousel-item no-overlay" id="Image4" runat="server" visible="false">
                                         <asp:Image ID="propertyImage4" runat="server" CssClass="d-block w-100 no-overlay" />
                                     </div>
-                                    <div class="carousel-item no-overlay">
+                                    <div class="carousel-item no-overlay" id="Image5" runat="server" visible="false">
                                         <asp:Image ID="propertyImage5" runat="server" CssClass="d-block w-100 no-overlay" />
                                     </div>
                                 </div>

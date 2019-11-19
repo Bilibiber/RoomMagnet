@@ -84,45 +84,59 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                     {
                         if (tempImages.Contains(propertyImage1.ImageUrl) == false)
                         {
+                            Image1.Visible = true;
                             propertyImage1.ImageUrl = propertyImageURL;
                             propertyImage1.Visible = true;
+                            
                         }
                     }
                     else if (counter == 1)
                     {
                         if (tempImages.Contains(propertyImage2.ImageUrl) == false)
                         {
+                            Image2.Visible = true;
                             propertyImage2.ImageUrl = propertyImageURL;
                             propertyImage2.Visible = true;
+
                         }
                     }
                     else if (counter == 2)
                     {
                         if (tempImages.Contains(propertyImage3.ImageUrl) == false)
                         {
+                            Image3.Visible = true;
                             propertyImage3.ImageUrl = propertyImageURL;
                             propertyImage3.Visible = true;
+
                         }
                     }
                     else if (counter == 3)
                     {
                         if (tempImages.Contains(propertyImage4.ImageUrl) == false)
                         {
+                            Image4.Visible = true;
                             propertyImage4.ImageUrl = propertyImageURL;
                             propertyImage4.Visible = true;
+                        }
+                    }
+                    else if (counter == 4)
+                    {
+                        if (tempImages.Contains(propertyImage5.ImageUrl) == false)
+                        {
+                            Image5.Visible = true;
+                            propertyImage5.ImageUrl = propertyImageURL;
+                            propertyImage5.Visible = true;
                         }
                     }
 
                     if (counter == 0)
                     {
                         titleLbl.Text = reader.GetString(0);
-
                         cityLbl.Text = reader.GetString(1);
                         homeStateLbl.Text = reader.GetString(2);
                         zipCodeLbl.Text = reader.GetString(3);
                         availableBedrooms = reader.GetInt32(4);
                         decimal x = reader.GetDecimal(5);
-
                         rentPrice = String.Format("{0:0.##}", x);
                         rentPriceLbl.Text = "$" + rentPrice + "/Month";
 
