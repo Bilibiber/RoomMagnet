@@ -20,7 +20,7 @@
             <tr>
                 <td style="width: 100px; height: 260px"></td>
                 <td style="width: 94px; height: 260px">
-                    <asp:textbox id="txtmsg" runat="server" height="250px" textmode="MultiLine" width="472px" ReadOnly="true"></asp:textbox>
+    <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" Height="239px" Width="538px"></asp:TextBox>
                 </td>
                 
             </tr>
@@ -46,8 +46,7 @@
                 </td>
             </tr>
         </table>
-    <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" Height="134px" Width="538px"></asp:TextBox>
     <asp:DropDownList ID="RenterNames" runat="server" AutoPostBack="true" OnTextChanged="RenterNames_TextChanged" Visible="false">
-        <asp:ListItem ></asp:ListItem>
+        <asp:ListItem Value="No One" >Select Contacts</asp:ListItem>
                 </asp:DropDownList>
 </asp:Content>

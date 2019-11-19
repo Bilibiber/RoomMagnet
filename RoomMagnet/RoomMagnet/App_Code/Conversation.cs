@@ -24,7 +24,7 @@ public class Conversation
     }
     public Conversation()
     {
-
+        ConversationCount++;
     }
     public void setConversationID(int ConversationID)
     {
