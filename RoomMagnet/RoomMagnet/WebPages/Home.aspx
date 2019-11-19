@@ -19,8 +19,6 @@
             <div class="carousel-item active">
                 <div class="view">
                     <asp:Image ID="Image5" runat="server" ImageUrl="~/img/rm/home-2.png" CssClass="d-block w-100" alt="First slide" />
-                    <%--                            <img class="d-block w-100" src="img/rm/home-2.png"
-                              alt="First slide">--%>
                     <div class="mask rgba-black-light"></div>
                 </div>
                 <div class="container">
@@ -37,8 +35,6 @@
                 <!--Mask color-->
                 <div class="view">
                     <asp:Image ID="Image6" runat="server" ImageUrl="~/img/rm/friends.jpg" CssClass="d-block w-100" alt="Second slide" />
-                    <%--                            <img class="d-block w-100" src="img/rm/friends.jpg"
-                              alt="Second slide">--%>
                     <div class="mask rgba-"></div>
                 </div>
                 <div class="container">
@@ -97,32 +93,6 @@
         </a>
         <!--/.Controls-->
     </div>
-    <!-- ends: .intro-wrapper -->
-    <%-- <section class="categories-cards section-padding-two">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="section-title text-left">
-                        <h2>THE SECURE AND RELIABLE WAY TO RENT YOUR UNUSED ROOM.</h2>
-                        <p>Earn income renting to qualified adults.</p>
-                    </div>
-                    <div class="section-title text-left">
-                        <asp:Button ID="HomePageBecome" runat="server" Text="Become a Host" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link " data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" />
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="image">
-                        <asp:Image ID="OldAndYoung" runat="server" CssClass="img-fluid" ImageUrl="~/img/rm/young-old.jpg" alt="young man and old man" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-sm-6">
-                </div>
-                <!-- ends: .col -->
-            </div>
-        </div>
-    </section>--%>
     <section class="listing-cards section-bg section-padding-two" id="learnmore">
         <div class="container">
             <div class="row">
