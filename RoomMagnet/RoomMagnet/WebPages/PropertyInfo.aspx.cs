@@ -11,21 +11,27 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["SignInEmail"] == null)
+        {
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        }
+        else
+        {
+            var master = Master as RoomMagnet;
+            master.AfterLogin();
+        }
         //set all amentities labels to visible = false;
         propertyImage1.Visible = false;
         propertyImage2.Visible = false;
         propertyImage3.Visible = false;
         propertyImage4.Visible = false;
-        //string test = Session["ResultPropertyID"].ToString();
-
-        string test = "1003";
-
+        string test = Session["ResultPropertyID"].ToString();
         String sql = "Select Title, [Property].City, [Property].HomeState, [Property].ZipCode, AvailableBedrooms, [Property].RentPrice, [Property].StartDate, [Property].EndDate, " +
       "[ImagePath].ImagePath, AvailableBathrooms, AirConditioning, Heating, OnSiteLaundry,Parking,Furnished,PetFriendly,CarbonMonoxideDetector, SmokeDetector,SeperateEntrance," +
-    "Wifi, TV, SeparateBathroom, [Rating].Descriptions, NumStars, [Rating].LastUpdated, [Rating].LastUpdatedBy from [Property] inner join [ImagePath]" +
+    "Wifi, TV, SeparateBathroom, [Property].Descriptions,Users.FirstName, Users.LastName, Users.ImagePath from [Property] inner join [ImagePath]" +
     "on [Property].PropertyID = [ImagePath].PropertyID INNER JOIN [PropertyRoom] ON [Property].PropertyID = [PropertyRoom].PropertyID" +
     " INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID INNER JOIN [Rating] ON [Property].PropertyID= " +
-    "[Rating].PropertyID WHERE [Property].PropertyID = " + test;
+    "[Rating].PropertyID INNER JOIN Users ON Property.HostID = Users.UserID WHERE [Property].PropertyID = " + test;
 
         connection.Open();
         string title = "";
@@ -34,8 +40,8 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         string zipCode = "";
         int availableBedrooms = -1;
         string rentPrice = "";
-        DateTime startDate = DateTime.Now;
-        DateTime endDate = DateTime.Now;
+        string startDate = "";
+
         int availableBathrooms = -1;
         string airConditioning = "";
         string heating = "";
@@ -58,89 +64,89 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         SqlDataReader reader = search.ExecuteReader();
 
         int counter = 0;
+
         if (reader.HasRows)
         {
-            reader.Read();
-            byte[] propertyImage = (byte[])reader[8];
-
-            string propertyImageURL = "data:image;base64," + Convert.ToBase64String(propertyImage);
-            if (tempImages.Contains(propertyImageURL) == false)
+            while (reader.Read())
             {
-                tempImages.Add(propertyImageURL);
+                byte[] propertyImage = (byte[])reader[8];
+                byte[] OwnerImage = (byte[])reader[25];
+                string OWNERImageURL = "data:image;base64," + Convert.ToBase64String(OwnerImage);
+                PropertyOwnerImage.ImageUrl = OWNERImageURL;
+                PropertyOwnerName.Text = reader.GetString(23) + " " + reader.GetString(24);
+                PropertyDescription.Text = reader.GetString(22);
+                string propertyImageURL = "data:image;base64," + Convert.ToBase64String(propertyImage);
+                if (tempImages.Contains(propertyImageURL) == false)
+                {
+                    tempImages.Add(propertyImageURL);
 
-                if (counter == 0)
-                {
-                    if (tempImages.Contains(propertyImage1.ImageUrl) == false)
+                    if (counter == 0)
                     {
-                        propertyImage1.ImageUrl = propertyImageURL;
-                        propertyImage1.Visible = true;
+                        if (tempImages.Contains(propertyImage1.ImageUrl) == false)
+                        {
+                            propertyImage1.ImageUrl = propertyImageURL;
+                            propertyImage1.Visible = true;
+                        }
                     }
-                }
-                else if (counter == 1)
-                {
-                    if (tempImages.Contains(propertyImage2.ImageUrl) == false)
+                    else if (counter == 1)
                     {
-                        propertyImage2.ImageUrl = propertyImageURL;
-                        propertyImage2.Visible = true;
+                        if (tempImages.Contains(propertyImage2.ImageUrl) == false)
+                        {
+                            propertyImage2.ImageUrl = propertyImageURL;
+                            propertyImage2.Visible = true;
+                        }
                     }
-                }
-                else if (counter == 2)
-                {
-                    if (tempImages.Contains(propertyImage3.ImageUrl) == false)
+                    else if (counter == 2)
                     {
-                        propertyImage3.ImageUrl = propertyImageURL;
-                        propertyImage3.Visible = true;
+                        if (tempImages.Contains(propertyImage3.ImageUrl) == false)
+                        {
+                            propertyImage3.ImageUrl = propertyImageURL;
+                            propertyImage3.Visible = true;
+                        }
                     }
-                }
-                else if (counter == 3)
-                {
-                    if (tempImages.Contains(propertyImage4.ImageUrl) == false)
+                    else if (counter == 3)
                     {
-                        propertyImage4.ImageUrl = propertyImageURL;
-                        propertyImage4.Visible = true;
+                        if (tempImages.Contains(propertyImage4.ImageUrl) == false)
+                        {
+                            propertyImage4.ImageUrl = propertyImageURL;
+                            propertyImage4.Visible = true;
+                        }
                     }
+
+                    if (counter == 0)
+                    {
+                        titleLbl.Text = reader.GetString(0);
+
+                        cityLbl.Text = reader.GetString(1);
+                        homeStateLbl.Text = reader.GetString(2);
+                        zipCodeLbl.Text = reader.GetString(3);
+                        availableBedrooms = reader.GetInt32(4);
+                        decimal x = reader.GetDecimal(5);
+
+                        rentPrice = String.Format("{0:0.##}", x);
+                        rentPriceLbl.Text = "$" + rentPrice + "/Month";
+
+                        startDate = reader.GetDateTime(6).ToShortDateString() + " - " + reader.GetDateTime(7).ToShortDateString();
+
+                        availableBathrooms = reader.GetInt32(9);
+                        airConditioning = reader.GetString(10);
+                        heating = reader.GetString(11);
+                        onSiteLaundry = reader.GetString(12);
+                        parking = reader.GetString(13);
+                        furnished = reader.GetString(14);
+                        petFriendly = reader.GetString(15);
+                        carbonMonoxideDetector = reader.GetString(16);
+                        smokeDetector = reader.GetString(17);
+                        separateEntrance = reader.GetString(18);
+                        wifi = reader.GetString(19);
+                        tv = reader.GetString(20);
+                        seperateBathroom = reader.GetString(21);
+                         descriptions = reader.GetString(22);
+
+                    }
+                    counter++;
                 }
             }
-
-            if (counter == 0)
-            {
-                titleLbl.Text = reader.GetString(0);
-
-                cityLbl.Text = reader.GetString(1);
-                homeStateLbl.Text = reader.GetString(2);
-                zipCodeLbl.Text = reader.GetString(3);
-                availableBedrooms = reader.GetInt32(4);
-                decimal x = reader.GetDecimal(5);
-
-                rentPrice = String.Format("{0:0.##}", x);
-                rentPriceLbl.Text = "$" + rentPrice + "/Month";
-
-                startDate = reader.GetDateTime(6);
-                endDate = reader.GetDateTime(7);
-
-                availableBathrooms = reader.GetInt32(9);
-                airConditioning = reader.GetString(10);
-                heating = reader.GetString(11);
-                onSiteLaundry = reader.GetString(12);
-                parking = reader.GetString(13);
-                furnished = reader.GetString(14);
-                petFriendly = reader.GetString(15);
-                carbonMonoxideDetector = reader.GetString(16);
-                smokeDetector = reader.GetString(17);
-                separateEntrance = reader.GetString(18);
-                wifi = reader.GetString(19);
-                tv = reader.GetString(20);
-                seperateBathroom = reader.GetString(21);
-                //if (reader.IsDBNull(22) == false)
-                //{
-                //    descriptions = reader.GetString(22);
-                //}
-                numStars = reader.GetDecimal(23);
-                lastUpdated = reader.GetDateTime(24);
-                lastUpdatedBy = reader.GetString(25);
-            }
-            counter++;
-
             //amenitiesLbl.Visible = true;
 
             if (airConditioning == "Y")
@@ -225,18 +231,95 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                 seperateBathroomIcon.Visible = true;
             }
 
-            startDateLbl.Text = startDate.ToString();
-            endDateLbl.Text = endDate.ToString();
+            startDateLbl.Text = "Date Avaliable: " + startDate.ToString();
             availableBathroomsLbl.Text = availableBathrooms.ToString();
-            descriptionsLbl.Text = descriptions.ToString();
-            numStarsLbl.Text = numStars.ToString();
-            lastUpdatedLbl.Text = lastUpdated.ToString();
+            lastUpdatedLbl.Text = lastUpdated.ToShortDateString();
 
             counter++;
 
-            connection.Close();
             tempImages.Clear();
         }
+        reader.Close();
+        int RatingCount = 0;
+        decimal RatingSum = 0;
+        string tempReviewer = "";
+        string tempDescription = "";
+        string tempLastUpdated = "";
+        string tempStars = "";
+        string sql2 = "Select NumStars, LastUpdatedBy, Descriptions, LastUpdated from [Rating] where PropertyID=" + test;
+        SqlCommand sqlCommand = new SqlCommand(sql2, connection);
+        SqlDataReader reader2 = sqlCommand.ExecuteReader();
+        if (reader2.HasRows)
+        {
+            while (reader2.Read())
+            {
+     
+                if (RatingCount == 0)
+                {
+                    RatingSum += reader2.GetDecimal(0);
+                    tempReviewer = reader2.GetString(1);
+                    tempDescription = reader2.GetString(2);
+                    tempLastUpdated = reader2.GetDateTime(3).ToShortDateString();
+                    tempStars = reader2.GetDecimal(0).ToString();
+                    PropertyReviewPoster.Text = tempReviewer;
+                    PropertyReviewContent.Text = tempDescription;
+                    PropertyReviewPostTime.Text = tempLastUpdated;
+                    PropertyReviewPosterStar.Text = tempStars;
+                    RatingCount++;
+                    continue;
+                }
+
+                if (RatingCount == 1)
+                {
+                    RatingSum += reader2.GetDecimal(0);
+                    Review2.Visible = true;
+                    PropertyReviewPoster2.Text = reader2.GetString(1);
+                    PropertyReviewContent2.Text = reader2.GetString(2);
+                    PropertyReviewPostTime2.Text = reader2.GetDateTime(3).ToShortDateString();
+                    PropertyReviewPosterStar2.Text = reader2.GetDecimal(0).ToString();
+                    RatingCount++;
+                    continue;
+                }
+                if (RatingCount == 2)
+                {
+                    RatingSum += reader2.GetDecimal(0);
+                    Review3.Visible = true;
+                    PropertyReviewPoster3.Text = reader2.GetString(1);
+                    PropertyReviewContent3.Text = reader2.GetString(2);
+                    PropertyReviewPostTime3.Text = reader2.GetDateTime(3).ToShortDateString();
+                    PropertyReviewPosterStar3.Text = reader2.GetDecimal(0).ToString();
+                    RatingCount++;
+                    continue;
+                }
+                if (RatingCount == 3)
+                {
+                    RatingSum += reader2.GetDecimal(0);
+                    Review4.Visible = true;
+                    PropertyReviewPoster4.Text = reader2.GetString(1);
+                    PropertyReviewContent4.Text = reader2.GetString(2);
+                    PropertyReviewPostTime4.Text = reader2.GetDateTime(3).ToShortDateString();
+                    PropertyReviewPosterStar4.Text = reader2.GetDecimal(0).ToString();
+                    RatingCount++;
+                    continue;
+                }
+                if (RatingCount == 4)
+                {
+                    RatingSum += reader2.GetDecimal(0);
+                    Review5.Visible = true;
+                    PropertyReviewPoster5.Text = reader2.GetString(1);
+                    PropertyReviewContent5.Text = reader2.GetString(2);
+                    PropertyReviewPostTime5.Text = reader2.GetDateTime(3).ToShortDateString();
+                    PropertyReviewPosterStar5.Text = reader2.GetDecimal(0).ToString();
+                    RatingCount++;
+                    continue;
+                }
+                
+            }
+        }
+        PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
+        numStarsLbl.Text = (RatingSum / RatingCount).ToString();
+        reader2.Close();
+        connection.Close();
     }
 
     protected void SavetoFav_OnClick(object sender, EventArgs a)
@@ -280,8 +363,9 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
         cmd.ExecuteNonQuery();
     }
+
     protected void Unnamed_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Home.aspx");
+        Response.Redirect("Message.aspx");
     }
 }

@@ -24,7 +24,7 @@ public partial class WebPages_Message : System.Web.UI.Page
     int NewConversationID = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["SingInEmail"] == null)
+        if (Session["SignInEmail"] == null)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
         }
@@ -36,7 +36,7 @@ public partial class WebPages_Message : System.Web.UI.Page
         cn.Open();
         string msg = (string)Application["message"];
         txtmsg.Text = msg;
-        Session["ResultPropertyID"] = 1003;
+       
         string PID = Session["ResultPropertyID"].ToString();
         if (Session["Roles"].ToString() == "Renter")
         {
@@ -54,65 +54,47 @@ public partial class WebPages_Message : System.Web.UI.Page
         }
         else
         {
+            bool testConvo = true;
             int SenderID = 0;
             for (int i = 0; i < Conversation.ConversationCount; i++)
             {
-                if (Convert.ToInt32(Session["UserID"].ToString()) == Conversation.conversations[i].getRecieverID())
+                if (testConvo)
                 {
-                    string sql9 = "Select SenderID, max(MessageID) as latestMessage, messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
-                         " group by SenderID, MessageContent order by latestMessage desc ";
-                    SqlCommand sqlCommand9 = new SqlCommand(sql9, cn);
-                    SqlDataReader dataReader9 = sqlCommand9.ExecuteReader();
-                    if (dataReader9.Read())
+                    if (Convert.ToInt32(Session["UserID"].ToString()) == Conversation.conversations[i].getRecieverID())
                     {
-                        int tempSenderID = dataReader9.GetInt32(0);
-                        if (tempSenderID != SenderID)
+                        string sql9 = "Select SenderID, max(MessageID) as latestMessage, messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+                             " group by SenderID, MessageContent order by latestMessage desc ";
+                        SqlCommand sqlCommand9 = new SqlCommand(sql9, cn);
+                        SqlDataReader dataReader9 = sqlCommand9.ExecuteReader();
+                        if (dataReader9.Read())
                         {
-                            if (ReceiverIDs.Contains(tempSenderID) == false)
+                            int tempSenderID = dataReader9.GetInt32(0);
+                            if (tempSenderID != SenderID)
                             {
-                                ReceiverIDs.Add(dataReader9.GetInt32(0));
-                                Messages.Text += dataReader9.GetString(2) + Environment.NewLine;
-                                SenderID = dataReader9.GetInt32(0);
+                                if (ReceiverIDs.Contains(tempSenderID) == false)
+                                {
+                                    ReceiverIDs.Add(dataReader9.GetInt32(0));
+                                    Messages.Text += dataReader9.GetString(2) + Environment.NewLine;
+                                    SenderID = dataReader9.GetInt32(0);
+                                }
                             }
                         }
+                        testConvo = false;
                     }
-                    break;
                 }
-                FillDropDown(ReceiverIDs);
-                RenterNames.Visible = true;
-
-
-
-
-
-
-
-                
-                //if (OldConversationID != 0)
-                //{
-                //    string sql5 = "Select MessageContent from Message where ConversationID=" + OldConversationID;
-                //    SqlCommand sqlCommand5 = new SqlCommand(sql5, cn);
-                //    SqlDataReader reader3 = sqlCommand5.ExecuteReader();
-                //    if (reader3.HasRows)
-                //    {
-                //        while (reader3.Read())
-                //        {
-                //            txtmsg.Text = Application["message"] + reader3.GetString(0) + Environment.NewLine;
-                //        }
-                //        reader3.NextResult();
-                //    }
-                //    reader3.Close();
-                //}
-                
             }
+            cn.Close();
+                FillDropDown(ReceiverIDs);
+                RenterNames.Visible = true;           
+            
         }
         cn.Close();
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-
+        cn.Open();
         string SenderID2 = Session["UserID"].ToString();
-        if (Session["UserRoles"].ToString() == "Renter")
+        if (Session["Roles"].ToString() == "Renter")
         {
 
 
@@ -157,7 +139,7 @@ public partial class WebPages_Message : System.Web.UI.Page
 
 
 
-            cn.Open();
+      
             if (NewConversationID == 0)
             {
                 string sql = "Insert into Message(ConversationID,MessageContent,LastUpdated,LastUpdatedBy) values (@ConversationID,@MessageContent,@LastUpdated,@LastUpdatedBy)";
