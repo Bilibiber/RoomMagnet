@@ -170,7 +170,7 @@
                         <br />
                         <asp:Label ID="userstatus" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="X-Large" ForeColor="White" Style="text-align: center; width: 150px;"></asp:Label>
                         <div class="">
-                            <asp:Label ID="hellow" runat="server" Text="Hello, world" Font-Size="2em" Font-Bold="True"></asp:Label>
+                            <asp:Label ID="hellow" runat="server" Text="Hello, world" Font-Size="2em" Font-Bold="True" ForeColor="White"></asp:Label>
                             <p class="">Renter<span title="Verified"><i class="la la-check icon-space"></i></span></p>
                         </div>
 
@@ -203,8 +203,8 @@
 
                 <%--renter profile--%>
                 <asp:Panel ID="panelprofile" runat="server">
-                    <h1 class="update-title">My Profile</h1>
-                    <asp:Button ID="editprofile" runat="server" Text="Edit" class="btn btn-primary" OnClick="editprofile_Click" />
+                    <h1 class="update-title">My Profile
+                        <asp:Button ID="editprofile" runat="server" Text="Edit" class="btn btn-primary" OnClick="editprofile_Click" Style="float: right;" /></h1>
 
                     <div class="atbd_author_module">
                         <div class="atbd_content_module">
@@ -239,10 +239,10 @@
                 </asp:Panel>
 
                 <%--renter favorites--%>
+
                 <asp:Panel ID="panelfavorites" runat="server" Visible="False">
                     <div class="col-md-9 mx-auto ">
-                        <h1 class="update-title">Manage Property</h1>
-
+                        <h1 class="update-title">My Favorite</h1>
                         <div id="Property1Space" runat="server" class="col-lg-12">
                             <div class="atbd_author_module">
                                 <div class="atbd_content_module">
@@ -264,49 +264,48 @@
 
                                                         <div class="atbd_listing_info">
                                                             <div class="atbd_content_upper">
+                                                                <span class="atbd_listing_meta" style="float: right;">
+                                                                    <span class="atbd_meta atbd_listing_rating">
+                                                                        <asp:Label ID="Property1Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                                </span>
                                                                 <h4 class="atbd_listing_title">
                                                                     <asp:Label ID="Property1Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                 </h4>
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="Property1CityState" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta">
-                                                                    <span class="atbd_meta atbd_listing_rating">
 
-                                                                        <asp:Label ID="Property1Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
-                                                                </div>
                                                                 <!-- End atbd listing meta -->
                                                                 <div class="atbd_listing_data_list">
-
                                                                     <div class="mt-0 form-label">
-                                                                        <asp:Label ID="Property1RentPrice" runat="server" Text="Label"></asp:Label>
-                                                                        <div class="row">
-                                                                            <asp:Label ID="Property1StartDate" runat="server" Text="Label"></asp:Label>
-
-                                                                            <asp:Label ID="Property1EndDate" runat="server" Text="Label"></asp:Label>
+                                                                        <asp:Label ID="Property1RentPrice" runat="server" Text="Label"></asp:Label><br />
+                                                                        <asp:Label ID="Property1StartDate" runat="server" Text="Label"></asp:Label><br />
+                                                                        <asp:Label ID="Property1EndDate" runat="server" Text="Label"></asp:Label>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- End atbd listing meta -->
+                                                            </div>
+                                                            <!-- end .atbd_content_upper -->
+                                                            <div class="atbd_listing_bottom_content">
+                                                                <div class="atbd_content_left">
+                                                                    <div class="atbd_listing_category">
+                                                                        <span class="fas fa-bed icon-padding"></span>
+                                                                        <div class="numberCircle">
+                                                                            <asp:Label runat="server" ID="Property1Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
+                                                                        </div>
+                                                                        <span class="fas fa-bath icon-padding"></span>
+                                                                        <div class="numberCircle">
+                                                                            <asp:Label runat="server" ID="Property1Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <ul class="atbd_content_right">
+                                                                    <li></li>
+                                                                </ul>
                                                             </div>
-                                                            <!-- End atbd listing meta -->
+                                                            <!-- end .atbd_listing_bottom_content -->
                                                         </div>
                                                         <!-- ends: .atbd_listing_info -->
-                                                        <div class="atbd_listing_bottom_content">
-                                                            <div class="atbd_content_left">
-                                                                <div class="atbd_listing_category">
-                                                                    <span class="fas fa-bed icon-padding"></span>
-                                                                    <div class="numberCircle">
-                                                                        <asp:Label runat="server" ID="Property1Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
-                                                                    </div>
-                                                                    <span class="fas fa-bath icon-padding"></span>
-                                                                    <div class="numberCircle">
-                                                                        <asp:Label runat="server" ID="Property1Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="atbd_content_right">
-                                                            </ul>
-                                                        </div>
                                                     </article>
                                                     <!-- atbd_single_listing_wrapper -->
                                                 </div>
@@ -316,7 +315,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="Property2Space" runat="server" class="col-lg-12">
                             <div class="atbd_author_module">
                                 <div class="atbd_content_module">
@@ -338,49 +336,48 @@
 
                                                         <div class="atbd_listing_info">
                                                             <div class="atbd_content_upper">
+                                                                <span class="atbd_listing_meta" style="float: right;">
+                                                                    <span class="atbd_meta atbd_listing_rating">
+                                                                        <asp:Label ID="Property2Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                                </span>
                                                                 <h4 class="atbd_listing_title">
                                                                     <asp:Label ID="Property2Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                 </h4>
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="Property2CityState" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta">
-                                                                    <span class="atbd_meta atbd_listing_rating">
 
-                                                                        <asp:Label ID="Property2Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
-                                                                </div>
                                                                 <!-- End atbd listing meta -->
                                                                 <div class="atbd_listing_data_list">
-
                                                                     <div class="mt-0 form-label">
-                                                                        <asp:Label ID="Property2RentPrice" runat="server" Text="Label"></asp:Label>
-                                                                        <div class="row">
-                                                                            <asp:Label ID="Property2StartDate" runat="server" Text="Label"></asp:Label>
-
-                                                                            <asp:Label ID="Property2EndDate" runat="server" Text="Label"></asp:Label>
+                                                                        <asp:Label ID="Property2RentPrice" runat="server" Text="Label"></asp:Label><br />
+                                                                        <asp:Label ID="Property2StartDate" runat="server" Text="Label"></asp:Label><br />
+                                                                        <asp:Label ID="Property2EndDate" runat="server" Text="Label"></asp:Label>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- End atbd listing meta -->
+                                                            </div>
+                                                            <!-- end .atbd_content_upper -->
+                                                            <div class="atbd_listing_bottom_content">
+                                                                <div class="atbd_content_left">
+                                                                    <div class="atbd_listing_category">
+                                                                        <span class="fas fa-bed icon-padding"></span>
+                                                                        <div class="numberCircle">
+                                                                            <asp:Label runat="server" ID="Property2Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
+                                                                        </div>
+                                                                        <span class="fas fa-bath icon-padding"></span>
+                                                                        <div class="numberCircle">
+                                                                            <asp:Label runat="server" ID="Property2Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <ul class="atbd_content_right">
+                                                                    <li></li>
+                                                                </ul>
                                                             </div>
-                                                            <!-- End atbd listing meta -->
+                                                            <!-- end .atbd_listing_bottom_content -->
                                                         </div>
                                                         <!-- ends: .atbd_listing_info -->
-                                                        <div class="atbd_listing_bottom_content">
-                                                            <div class="atbd_content_left">
-                                                                <div class="atbd_listing_category">
-                                                                    <span class="fas fa-bed icon-padding"></span>
-                                                                    <div class="numberCircle">
-                                                                        <asp:Label runat="server" ID="Property2Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
-                                                                    </div>
-                                                                    <span class="fas fa-bath icon-padding"></span>
-                                                                    <div class="numberCircle">
-                                                                        <asp:Label runat="server" ID="Property2Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="atbd_content_right">
-                                                            </ul>
-                                                        </div>
                                                     </article>
                                                     <!-- atbd_single_listing_wrapper -->
                                                 </div>
@@ -390,7 +387,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="Property3Space" runat="server" class="col-lg-12">
                             <div class="atbd_author_module">
                                 <div class="atbd_content_module">
@@ -412,49 +408,48 @@
 
                                                         <div class="atbd_listing_info">
                                                             <div class="atbd_content_upper">
+                                                                <span class="atbd_listing_meta" style="float: right;">
+                                                                    <span class="atbd_meta atbd_listing_rating">
+                                                                        <asp:Label ID="Property3Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                                </span>
                                                                 <h4 class="atbd_listing_title">
                                                                     <asp:Label ID="Property3Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                 </h4>
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="Property3CityState" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta">
-                                                                    <span class="atbd_meta atbd_listing_rating">
 
-                                                                        <asp:Label ID="Property3Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
-                                                                </div>
                                                                 <!-- End atbd listing meta -->
                                                                 <div class="atbd_listing_data_list">
-
                                                                     <div class="mt-0 form-label">
-                                                                        <asp:Label ID="Property3RentPrice" runat="server" Text="Label"></asp:Label>
-                                                                        <div class="row">
-                                                                            <asp:Label ID="Property3StartDate" runat="server" Text="Label"></asp:Label>
-
-                                                                            <asp:Label ID="Property3EndDate" runat="server" Text="Label"></asp:Label>
+                                                                        <asp:Label ID="Property3RentPrice" runat="server" Text="Label"></asp:Label><br />
+                                                                        <asp:Label ID="Property3StartDate" runat="server" Text="Label"></asp:Label><br />
+                                                                        <asp:Label ID="Property3EndDate" runat="server" Text="Label"></asp:Label>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- End atbd listing meta -->
+                                                            </div>
+                                                            <!-- end .atbd_content_upper -->
+                                                            <div class="atbd_listing_bottom_content">
+                                                                <div class="atbd_content_left">
+                                                                    <div class="atbd_listing_category">
+                                                                        <span class="fas fa-bed icon-padding"></span>
+                                                                        <div class="numberCircle">
+                                                                            <asp:Label runat="server" ID="Property3Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
+                                                                        </div>
+                                                                        <span class="fas fa-bath icon-padding"></span>
+                                                                        <div class="numberCircle">
+                                                                            <asp:Label runat="server" ID="Property3Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <ul class="atbd_content_right">
+                                                                    <li></li>
+                                                                </ul>
                                                             </div>
-                                                            <!-- End atbd listing meta -->
+                                                            <!-- end .atbd_listing_bottom_content -->
                                                         </div>
                                                         <!-- ends: .atbd_listing_info -->
-                                                        <div class="atbd_listing_bottom_content">
-                                                            <div class="atbd_content_left">
-                                                                <div class="atbd_listing_category">
-                                                                    <span class="fas fa-bed icon-padding"></span>
-                                                                    <div class="numberCircle">
-                                                                        <asp:Label runat="server" ID="Property3Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
-                                                                    </div>
-                                                                    <span class="fas fa-bath icon-padding"></span>
-                                                                    <div class="numberCircle">
-                                                                        <asp:Label runat="server" ID="Property3Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="atbd_content_right">
-                                                            </ul>
-                                                        </div>
                                                     </article>
                                                     <!-- atbd_single_listing_wrapper -->
                                                 </div>
