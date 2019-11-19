@@ -117,10 +117,10 @@ public partial class WebPages_Host : System.Web.UI.Page
         panelfavorites.Visible = false;
         panelconnections.Visible = false;
         panelmessage.Visible = false;
-        hostprofile.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        hostproperty.BackColor = System.Drawing.Color.White;
-        hostConnections.BackColor = System.Drawing.Color.White;
-        hostMessage.BackColor = System.Drawing.Color.White;
+        hostprofile.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        hostproperty.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
     }
 
     protected void hostproperty_Click(object sender, EventArgs e)
@@ -129,10 +129,10 @@ public partial class WebPages_Host : System.Web.UI.Page
         panelfavorites.Visible = true;
         panelconnections.Visible = false;
         panelmessage.Visible = false;
-        hostprofile.BackColor = System.Drawing.Color.White;
-        hostproperty.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        hostConnections.BackColor = System.Drawing.Color.White;
-        hostMessage.BackColor = System.Drawing.Color.White;
+        hostprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostproperty.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        hostConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
 
         string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, AvailableBathrooms,PropertyID,PropertyID from[Property] WHERE hostid = " + Session["UserID"];
         cn.Open();
@@ -295,10 +295,11 @@ public partial class WebPages_Host : System.Web.UI.Page
         panelfavorites.Visible = false;
         panelconnections.Visible = true;
         panelmessage.Visible = false;
-        hostprofile.BackColor = System.Drawing.Color.White;
-        hostproperty.BackColor = System.Drawing.Color.White;
-        hostConnections.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        hostMessage.BackColor = System.Drawing.Color.White;
+        hostprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostproperty.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostConnections.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        hostMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+
     }
 
     protected void hostMessage_Click(object sender, EventArgs e)
@@ -307,10 +308,10 @@ public partial class WebPages_Host : System.Web.UI.Page
         panelfavorites.Visible = false;
         panelconnections.Visible = false;
         panelmessage.Visible = true;
-        hostprofile.BackColor = System.Drawing.Color.White;
-        hostproperty.BackColor = System.Drawing.Color.White;
-        hostConnections.BackColor = System.Drawing.Color.White;
-        hostMessage.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
+        hostprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostproperty.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostMessage.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
     }
 
     protected void editprofile_Click(object sender, EventArgs e)

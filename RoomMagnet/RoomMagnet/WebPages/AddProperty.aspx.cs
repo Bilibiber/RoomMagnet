@@ -250,7 +250,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
                 using (BinaryReader br = new BinaryReader(fs))
                 {
                     byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                    imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytes);
+                    //imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytes);
                     System.Data.SqlClient.SqlCommand picInsert = new System.Data.SqlClient.SqlCommand();
                     picInsert.Connection = cn;
                     picInsert.CommandText = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
