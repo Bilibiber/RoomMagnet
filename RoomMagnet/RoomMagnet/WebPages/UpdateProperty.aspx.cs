@@ -221,26 +221,28 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         int userid = Convert.ToInt32(Session["UserID"]);
         string FullName = Session["FullName"].ToString();
 
-        string insert = "UPDATE [dbo].[Property] SET [Title] =@Title,[StreetAddress] =@StreetAddress,[City] = @City,[HomeState] = @HomeState,[Country] = @Country,[ZipCode] =@ZipCode," +
-            "[SquareFootage] =@SquareFootage ,[AvailableBedrooms] =@AvailableBedrooms ,[AvailableBathrooms] =@AvailableBathrooms ,[RentPrice] = @RentPrice,[StartDate] =@StartDate ," +
-            "[EndDate] =@EndDate ,[LastUpdated] =@LastUpdated ,[LastUpdatedBy] = @LastUpdatedBy WHERE propertyid = @pid";
-        SqlCommand inserted = new SqlCommand(insert, cn);
-        inserted.Parameters.AddWithValue("@Title", addtitle.Text);
-        inserted.Parameters.AddWithValue("@StreetAddress", addStreet.Text);
-        inserted.Parameters.AddWithValue("@City", addCity.Text);
-        inserted.Parameters.AddWithValue("@HomeState", addState.SelectedValue);
-        inserted.Parameters.AddWithValue("@Country", addCountry.SelectedValue);
-        inserted.Parameters.AddWithValue("@ZipCode", addZip.Text);
-        inserted.Parameters.AddWithValue("@SquareFootage", addSquare.Text);
-        inserted.Parameters.AddWithValue("@RentPrice", addPrice.Text);
-        inserted.Parameters.AddWithValue("@AvailableBedrooms", addBedrooms.Text);
-        inserted.Parameters.AddWithValue("@AvailableBathrooms", addbath.SelectedValue);
-        inserted.Parameters.AddWithValue("@StartDate", Convert.ToDateTime(addstartdate1.Text));
-        inserted.Parameters.AddWithValue("@EndDate", Convert.ToDateTime(addenddate1.Text));
-        inserted.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
-        inserted.Parameters.AddWithValue("@LastUpdatedBy", FullName);
-        inserted.Parameters.AddWithValue("@pid", Int32.Parse(Session["updatepropertyID"].ToString()));
-        inserted.ExecuteNonQuery();
+        string update = "UPDATE [dbo].[Property] SET [Title] = @title,[StreetAddress] = @street,[City] = @city,[HomeState] = @state,[Country] = @country,[ZipCode] = @zip," +
+            "[SquareFootage] = @square,[AvailableBedrooms] = @bedrooms,[AvailableBathrooms] = @bathrooms,[RentPrice] = @price,[StartDate] = @start,[EndDate] = @end,[HostID] = @hostid," +
+            "[LastUpdated] = @lastUpdated,[LastUpdatedBy] = @lastUpdatedBy WHERE propertyid = @pid";
+
+        SqlCommand updated = new SqlCommand(update, cn);
+        updated.Parameters.AddWithValue("@title", addtitle.Text);
+        updated.Parameters.AddWithValue("@street", addStreet.Text);
+        updated.Parameters.AddWithValue("@city", addCity.Text);
+        updated.Parameters.AddWithValue("@state", addState.SelectedValue);
+        updated.Parameters.AddWithValue("@country", addCountry.SelectedValue);
+        updated.Parameters.AddWithValue("@zip", addZip.Text);
+        updated.Parameters.AddWithValue("@square", addSquare.Text);
+        updated.Parameters.AddWithValue("@price", addPrice.Text);
+        updated.Parameters.AddWithValue("@bedrooms", addBedrooms.Text);
+        updated.Parameters.AddWithValue("@bathrooms", addbath.SelectedValue);
+        updated.Parameters.AddWithValue("@start", Convert.ToDateTime(addstartdate1.Text));
+        updated.Parameters.AddWithValue("@end", Convert.ToDateTime(addenddate1.Text));
+        updated.Parameters.AddWithValue("@hostid", userid);
+        updated.Parameters.AddWithValue("@lastUpdated", DateTime.Now);
+        updated.Parameters.AddWithValue("@lastUpdatedBy", FullName);
+        updated.Parameters.AddWithValue("@pid", Int32.Parse(Session["updatepropertyID"].ToString()));
+        updated.ExecuteNonQuery();
         cn.Close();
 
         //cn.Open();

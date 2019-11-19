@@ -20,6 +20,7 @@ public partial class WebPages_Contact : System.Web.UI.Page
             var master = Master as RoomMagnet;
             master.AfterLogin();
         }
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "map", " initMap();", true);
     }
 
 
