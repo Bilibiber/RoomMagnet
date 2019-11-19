@@ -6,54 +6,64 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
 
-    <section class="about-wrapper bg-gradient-ps">
+    <section class="header-breadcrumb bgimage overlay overlay--dark fill">
 
-        <div class="about-intro content_above">
+        <div class="Faq-image imgfill">
+            <asp:image id="Image1" runat="server" imageurl="~/img/home-1-small.png" />
+        </div>
+        <div class="breadcrumb-wrapper content_above">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 col-md-6">
-                        <h1>Join the Room Magnet Team: Become a host today! </h1>
-                        <a href="" class="btn btn-gradient btn-gradient-two">Become a Host</a>
-                    </div>
-                    <div class="col-lg-6 offset-lg-1 col-md-6 offset-md-0 col-sm-8 offset-sm-2">
-                        <img src="img/about-illustration.png" alt="">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="page-title">About</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
+                                <li class="breadcrumb-item active">About</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- ends: .about-intro -->
+        <!-- ends: .breadcrumb-wrapper -->
     </section>
     <!-- ends: .intro-wrapper -->
     <section class="about-contents section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 contents-wrapper">
+                <div class="col-lg-14 contents-wrapper">
                     <div class="contents">
                         <div class="offset-lg-1 mt-5 mt-md-0">
                             <h1>Why did we create RoomMagnet?</h1>
+
+                            <h4>RoomMagnet brings together a solution to two social problems that are of major concern to society and continue to escalate internationally.</h4>
+
                             <p>
-                                RoomMagnet brings together a solution to two social problems that are of major concern to society and continue to escalate internationally.
-                                   The first is the cost of affordable housing. Costs for college students, interns and young professionals  continues to escalate at an alarming pace, making it more difficult to get a start on their careers.
+                                The first is the cost of affordable housing. Costs for college students, interns and young professionals  continues to escalate at an alarming pace, making it more difficult to get a start on their careers.
                                    Secondly, older adults and empty-nesters, as they get older, wish to age in place, and often need additional income and at times assistance with light domestic duties such as shopping, household duties, daily maintenance or just companionship.
                                    Our goal is to bring professional and semi-professionals such as, graduate students, international students, doctoral and nursing interns as well as college students seeking affordable housing together with hosts who have extra room to share.
                                    Students can do light housekeeping and chores in exchange for reduced rent, while hosts enjoy having help available and earning income from their extra living space.
+                            </p>
 
-                                   A common sense solution
-                                   RoomMagnet connects tenants that have limited financial capital with hosts who wish to monetize their extra living space by having someone live in and assist either financially or in exchange for some light domestic duties.
+                            <h5>Common sense solution</h5>
+                            <p>
+                                RoomMagnet connects tenants that have limited financial capital with hosts who wish to monetize their extra living space by having someone live in and assist either financially or in exchange for some light domestic duties.
                                    How does RoomMagnet bring together two vastly different groups of people? We accomplish this by providing a beautifully designed, fully functional digital platform that matches tenants with hosts, enabling them to form a mutually beneficial relationship.
-                                   Tenants
-                                   Everyone has a right to affordable living.
-                                   Hosts
-                                   We share the world and we share our space.
-                                   Hosts develop lasting friendships, helping each other through the sharing economy
-                                   It's a win-win
+                            </p>
+                            <h5>Tenants</h5>
+                            <p>Everyone has a right to affordable living.</p>
+                            <h5>Hosts</h5>
+                            <p>
+                                We share the world and we share our space.
+                                   Hosts develop lasting friendships, helping each other through the sharing economy It's a win-win!
                             </p>
                         </div>
                     </div>
                     <!-- ends: .contents -->
                     <div class="contents">
                         <div class="row align-items-center">
-                            <div class="col-lg-5 col-sm-6">
+                            <div class="col-lg-7 col-sm-6">
                                 <h1>Why List on <span>RoomMagnet</span>?</h1>
                                 <ul class="list-unstyled list-features p-top-15">
                                     <li>
@@ -90,6 +100,4 @@
             </div>
         </div>
     </section>
-    <!-- ends: .about-contents -->
-    <!-- endinject-->
 </asp:Content>

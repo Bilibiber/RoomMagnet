@@ -112,7 +112,7 @@
                                             <div class="form-group">
                                                 <asp:Label runat="server" Text="Gender" class="not_empty" Font-Bold="true"></asp:Label>
 
-                                                <asp:DropDownList ID="setgender" runat="server" class="custom-select">
+                                                <asp:DropDownList ID="setgender" runat="server" class="form-control">
                                                     <asp:ListItem Value=""></asp:ListItem>
                                                     <asp:ListItem Value="male">Male</asp:ListItem>
                                                     <asp:ListItem Value="female">Female</asp:ListItem>
@@ -157,7 +157,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <asp:Label runat="server" Text="Country" class="not_empty" Font-Bold="true"></asp:Label>
-                                                <asp:DropDownList ID="setCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="custom-select">
+                                                <asp:DropDownList ID="setCountry" runat="server" AppendDataBoundItems="True" AutoPostBack="True" class="form-control">
                                                     <asp:ListItem Value=""></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
@@ -165,7 +165,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <asp:Label runat="server" Text="State" class="not_empty" Font-Bold="true"></asp:Label>
-                                                <asp:DropDownList runat="server" ID="setState" class="custom-select">
+                                                <asp:DropDownList runat="server" ID="setState" class="form-control">
                                                     <asp:ListItem Value=""></asp:ListItem>
                                                     <asp:ListItem Value="AL">AL</asp:ListItem>
                                                     <asp:ListItem Value="AK">AK</asp:ListItem>

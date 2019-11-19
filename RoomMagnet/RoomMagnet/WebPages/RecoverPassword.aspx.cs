@@ -31,17 +31,18 @@ public partial class WebPages_RecoverPassword : System.Web.UI.Page
             //Send out a email
             //generate a 5-diget random number 
             //show up aonther set of div
+            ViewState["Email"] = RecoverPasswordEnteredEmail.Text;
             string EnteredEmail = RecoverPasswordEnteredEmail.Text;
             string randomnumber = Randomnumber();
             ViewState["Number"] = randomnumber;
             EmailSender emailSender = new EmailSender();
             string emailbody = "Your Code is :" + randomnumber;
-            emailSender.SendCode(EnteredEmail,emailbody);
+            //emailSender.SendCode(EnteredEmail,emailbody);
             RecoverPasswordverification.Visible = true;
             RecoverPasswordverifiTxt.Visible = true;
             RecoverPasswordverifiButton.Visible = true;
-
-
+            Part2.Visible = true;
+            Part1.Visible = false;
         }
 
     }
@@ -78,8 +79,7 @@ public partial class WebPages_RecoverPassword : System.Web.UI.Page
     public string Randomnumber ()
     {
         Random random = new Random();
-
-        string number = random.Next(1, 9).ToString("D5");
+        string number = random.Next(0,11111).ToString("D5");
         return number;
     }
 
@@ -88,12 +88,35 @@ public partial class WebPages_RecoverPassword : System.Web.UI.Page
         string Rnumber = RecoverPasswordverifiTxt.Text;
         if (Rnumber == ViewState["Number"].ToString())
         {
-            // change password section up
+            Part2.Visible = false;
+            Part3.Visible = true;
+
         }
         else
         {
-            ErrorLbl.Visible = true;
             ErrorLbl.Text = "Code Don't Match";
+        }
+    }
+
+    protected void ChangePasswordButton_Click(object sender, EventArgs e)
+    {
+        string HashedPassword = PasswordHash.HashPassword(NewPassword.Text);
+        try
+        {
+            if (cn.State == System.Data.ConnectionState.Closed)
+            {
+                cn.Open();
+            }
+            string sql = "Update Users Set Password=@Password Where Email=@Email";
+            SqlCommand command = new SqlCommand(sql, cn);
+            command.Parameters.AddWithValue("@Password",HashedPassword);
+            command.Parameters.AddWithValue("@Email", ViewState["Email"].ToString());
+            command.ExecuteNonQuery();
+
+        }
+        catch
+        {
+            ErrorLb2.Text = "DataBase Error Please try again later";
         }
     }
 }

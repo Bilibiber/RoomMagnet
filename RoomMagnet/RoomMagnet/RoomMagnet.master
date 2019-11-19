@@ -37,7 +37,7 @@
             $('#sign_up_notification').modal({ show: true });
         }
     </script>
-    <script>
+    <script type="text/javascript">
         window.onbeforeunload = closeMessage;
 
         function closeMessage() {
@@ -76,7 +76,7 @@
                                                 </li>
 
                                                 <li>
-                                                    <asp:Button ID="MasterPageLogIn" runat="server" Text="Log in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
+                                                    <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
                                                 </li>
                                                 <li>
                                                     <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+        <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -152,7 +152,7 @@
                         </div>
                         <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:Label ID="PasswordErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
-                        <asp:Button ID="SignInLogIn" runat="server" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" UseSubmitBehavior="false" OnClick="MasterPageSignIn_Click" />
+                        <asp:Button ID="SignInLogIn" runat="server" type="button" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" UseSubmitBehavior="false" OnClick="MasterPageSignIn_Click" />
                         <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <div class="form-excerpts">
@@ -206,7 +206,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Age Range Required" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please select an age range" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                         <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
-                        <script>
+                       <%-- <script>
                             var input = document.getElementById("myInput");
                             // Execute a function when the user releases a key on the keyboard
                             input.addEventListener("keyup", function (event) {
@@ -219,7 +219,7 @@
                                     AfterLogin();
                                 }
                             });
-                        </script>
+                        </script>--%>
                             
                         <div class="form-excerpts">
                             <ul class="list-unstyled">

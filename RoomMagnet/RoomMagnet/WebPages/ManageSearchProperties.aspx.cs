@@ -19,18 +19,21 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
     ArrayList tempImages = new ArrayList();
     protected void Page_Load(object sender, EventArgs e)
     {
+        
+        
+        
         //set all amentities labels to visible = false;
         propertyImage1.Visible = false;
         propertyImage2.Visible = false;
         propertyImage3.Visible = false;
         propertyImage4.Visible = false;
-
+        string test = Session["ResultPropertyID"].ToString();
         String sql = "Select Title, [Property].City, [Property].HomeState, [Property].ZipCode, AvailableBedrooms, [Property].RentPrice, [Property].StartDate, [Property].EndDate, " +
       "[ImagePath].ImagePath, AvailableBathrooms, AirConditioning, Heating, OnSiteLaundry,Parking,Furnished,PetFriendly,CarbonMonoxideDetector, SmokeDetector,SeperateEntrance," +
     "Wifi, TV, SeparateBathroom, [Rating].Descriptions, NumStars, [Rating].LastUpdated, [Rating].LastUpdatedBy from [Property] inner join [ImagePath]" +
     "on [Property].PropertyID = [ImagePath].PropertyID INNER JOIN [PropertyRoom] ON [Property].PropertyID = [PropertyRoom].PropertyID" +
     " INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID INNER JOIN [Rating] ON [Property].PropertyID= " +
-    "[Rating].PropertyID WHERE ([Property].PropertyID = " + Session["ResultPropertyID"] + ")";
+    "[Rating].PropertyID WHERE [Property].PropertyID = " + Session["ResultPropertyID"];
 
 
 
@@ -60,7 +63,6 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
         decimal numStars = 0;
         DateTime lastUpdated = DateTime.Now;
         string lastUpdatedBy = "";
-
 
         SqlCommand search = new SqlCommand(sql, connection);
         SqlDataReader reader = search.ExecuteReader();
@@ -120,23 +122,24 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
                     }
                 }
             }
-
+            
             if (counter == 0)
             {
-                Title = reader.GetString(0);
-                city = reader.GetString(1);
-                homeState = reader.GetString(2);
-                zipCode = reader.GetString(3);
+                titleLbl.Text = reader.GetString(0);
+               
+                cityLbl.Text = reader.GetString(1);
+                homeStateLbl.Text = reader.GetString(2);
+                zipCodeLbl.Text = reader.GetString(3);
                 availableBedrooms = reader.GetInt32(4);
                 decimal x = reader.GetDecimal(5);
+  
                 rentPrice = String.Format("{0:0.##}", x);
                 rentPriceLbl.Text = "$" + rentPrice + "/Month";
 
                 startDate = reader.GetDateTime(6);
                 endDate = reader.GetDateTime(7);
-
-                //string title1 = (string)reader["Title"];
-
+                
+                
                 availableBathrooms = reader.GetInt32(9);
                 airConditioning = reader.GetString(10);
                 heating = reader.GetString(11);
@@ -150,20 +153,21 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
                 wifi = reader.GetString(19);
                 tv = reader.GetString(20);
                 seperateBathroom = reader.GetString(21);
-                if (reader.IsDBNull(22) == false)
-                {
-                    descriptions = reader.GetString(22);
-                }
+                //if (reader.IsDBNull(22) == false)
+                //{
+                //    descriptions = reader.GetString(22);
+                //}
                 numStars = reader.GetDecimal(23);
                 lastUpdated = reader.GetDateTime(24);
                 lastUpdatedBy = reader.GetString(25);
 
             }
+            counter++;
 
 
 
 
-            amenitiesLbl.Visible = true;
+            //amenitiesLbl.Visible = true;
 
             if (airConditioning == "Y")
             {
@@ -222,8 +226,8 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
 
             if (separateEntrance == "Y")
             {
-                separateEntranceLbl.Text = "Seperate Entrance";
-                separateEntranceLbl.Visible = true;
+                seperateEntranceLbl.Text = "Seperate Entrance";
+                seperateEntranceLbl.Visible = true;
 
             }
 
@@ -255,7 +259,7 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
             numStarsLbl.Text = numStars.ToString();
             lastUpdatedLbl.Text = lastUpdated.ToString();
 
-            
+
             counter++;
 
 
@@ -310,7 +314,12 @@ public partial class WebPages_ManageSearchProperties : System.Web.UI.Page
 
     }
 
+    protected void message_OnClick(object sender, EventArgs ex)
+    {
+        Response.Redirect("Message.aspx");
+    }
 
+    
     //JS code
     //let params = new URLSearchParameters({
     //PropertyID: 1000
