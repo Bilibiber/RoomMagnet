@@ -51,6 +51,7 @@ public partial class WebPages_Message : System.Web.UI.Page
                 HostReceiverID = dataReader.GetInt32(2);
             }
             dataReader.Close();
+            ReceiverLbl.Text = "You are sending message to : " + ReceiverName;
         }
         else
         {
@@ -63,19 +64,22 @@ public partial class WebPages_Message : System.Web.UI.Page
                     if (Convert.ToInt32(Session["UserID"].ToString()) == Conversation.conversations[i].getRecieverID())
                     {
                         string sql9 = "Select SenderID, max(MessageID) as latestMessage, messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
-                             " group by SenderID, MessageContent order by latestMessage desc ";
+                             " where ReceiverID= " + Session["UserID"].ToString() + " group by SenderID, MessageContent order by latestMessage asc ";
                         SqlCommand sqlCommand9 = new SqlCommand(sql9, cn);
                         SqlDataReader dataReader9 = sqlCommand9.ExecuteReader();
-                        if (dataReader9.Read())
+                        if (dataReader9.HasRows)
                         {
-                            int tempSenderID = dataReader9.GetInt32(0);
-                            if (tempSenderID != SenderID)
+                            while (dataReader9.Read())
                             {
-                                if (ReceiverIDs.Contains(tempSenderID) == false)
+                                int tempSenderID = dataReader9.GetInt32(0);
+                                if (tempSenderID != SenderID)
                                 {
-                                    ReceiverIDs.Add(dataReader9.GetInt32(0));
-                                    Messages.Text += dataReader9.GetString(2) + Environment.NewLine;
-                                    SenderID = dataReader9.GetInt32(0);
+                                    if (ReceiverIDs.Contains(tempSenderID) == false)
+                                    {
+                                        ReceiverIDs.Add(dataReader9.GetInt32(0));
+                                        Messages.Text += dataReader9.GetString(2) + Environment.NewLine;
+                                        SenderID = dataReader9.GetInt32(0);
+                                    }
                                 }
                             }
                         }
@@ -85,8 +89,10 @@ public partial class WebPages_Message : System.Web.UI.Page
             }
             cn.Close();
                 FillDropDown(ReceiverIDs);
-                RenterNames.Visible = true;           
-            
+                RenterNames.Visible = true;
+            ReceiverLbl.Text = "You are sending message to : " + RenterNames.Text;
+
+
         }
         cn.Close();
     }
@@ -172,7 +178,7 @@ public partial class WebPages_Message : System.Web.UI.Page
         {
             int ConversationID = -1;
             RenterReceiverID = Int32.Parse(RenterNames.SelectedValue);
-            string sql2 = "Select ConversationID FROM Conversations where SenderID=" + SenderID2 + "And ReceiverID=" + RenterReceiverID;
+            string sql2 = "Select ConversationID FROM Conversations where SenderID=" + RenterReceiverID + "And ReceiverID=" + SenderID2;
             SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
             SqlDataReader reader = sqlCommand2.ExecuteReader();
             if (reader.Read())
@@ -214,7 +220,7 @@ public partial class WebPages_Message : System.Web.UI.Page
         cn.Open();
         for (int i = 0; i < ReceiverIDs.Count; i++)
         {
-            string sql = "Select FirstName, LastName WHERE UserID=" + ReceiverIDs[i].ToString();
+            string sql = "Select FirstName, LastName from Users WHERE UserID=" + ReceiverIDs[i].ToString();
             SqlCommand sqlCommand = new SqlCommand(sql, cn);
             SqlDataReader reader3 = sqlCommand.ExecuteReader();
             if (reader3.HasRows)
@@ -228,6 +234,12 @@ public partial class WebPages_Message : System.Web.UI.Page
         }
         
         cn.Close();
+    }
+
+    protected void RenterNames_TextChanged(object sender, EventArgs e)
+    {
+        ReceiverLbl.Text = "You are sending message to: " + RenterNames.Text;
+        
     }
 }
 
