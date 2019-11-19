@@ -6,11 +6,11 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-<%--        <script type="text/javascript">
+        <script type="text/javascript">
         function openResultModal() {
             $('#no_result_notification').modal({ show: true });
         }
-    </script>--%>
+    </script>
     <asp:ScriptManager ID="ScriptManager1"
         EnablePageMethods="true"
         EnablePartialRendering="true" runat="server" />
