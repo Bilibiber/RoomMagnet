@@ -530,7 +530,7 @@
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="history1city" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta">
+                                                                <div class="atbd_listing_meta" style="float:right;">
                                                                     <span class="atbd_meta atbd_listing_rating">
                                                                         <asp:Label ID="history1rating" runat="server" Text="4.5" style="float:right;"></asp:Label><i class="la la-star"></i></span>
                                                                 </div>
