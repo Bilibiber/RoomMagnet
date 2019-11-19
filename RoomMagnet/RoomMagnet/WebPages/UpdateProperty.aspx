@@ -142,6 +142,12 @@
             }
         }
     </script>--%>
+    <style type="text/css">
+        .auto-style1 {
+            left: 0px;
+            top: 1px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <section class="add-listing-wrapper border-bottom section-bg ">
@@ -331,13 +337,15 @@
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addstartdate1" runat="server" class="form-control" onfocus="(this.type='date')"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requirestart1" runat="server" ControlToValidate="addstartdate1" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Comparestart1" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate1" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addenddate1" runat="server" onfocus="(this.type='date')" class="form-control" ></asp:TextBox>
+                                                    <asp:TextBox ID="addenddate1" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requireend1" runat="server" ControlToValidate="addenddate1" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Compareend1" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addenddate1" ValidateEmptyText="True" ValidationGroup="addproperty" Text="End date should be greater than start day!" ForeColor="Red" ControlToCompare="addstartdate1"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                         </tr>
@@ -373,6 +381,7 @@
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addstartdate2" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requirestart2" runat="server" ControlToValidate="addstartdate2" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Comparestart2" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate2" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -380,6 +389,7 @@
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addenddate2" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requireend2" runat="server" ControlToValidate="addenddate2" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Compareend2" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addenddate2" ValidateEmptyText="True" ValidationGroup="addproperty" Text="End date should be greater than start day!" ForeColor="Red" ControlToCompare="addstartdate2"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                         </tr>
@@ -415,6 +425,7 @@
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addstartdate3" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator3" runat="server" ControlToValidate="addstartdate3" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Comparestart3" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate3" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -422,6 +433,7 @@
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addenddate3" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator4" runat="server" ControlToValidate="addenddate3" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Compareend3" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addenddate3" ValidateEmptyText="True" ValidationGroup="addproperty" Text="End date should be greater than start day!" ForeColor="Red" ControlToCompare="addstartdate3"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                         </tr>
@@ -457,6 +469,7 @@
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addstartdate4" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator7" runat="server" ControlToValidate="addstartdate4" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Comparestart4" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate4" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -464,6 +477,7 @@
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addenddate4" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator8" runat="server" ControlToValidate="addenddate4" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Compareend4" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addenddate4" ValidateEmptyText="True" ValidationGroup="addproperty" Text="End date should be greater than start day!" ForeColor="Red" ControlToCompare="addstartdate4"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                         </tr>
@@ -483,7 +497,7 @@
                                         <div class="form-group">
                                             <div class="col-lg-10 amenities-checks">
                                                 <div class="form-check">
-                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" />
+                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" CssClass="auto-style1" />
                                                     <br />
                                                 </div>
                                                 <div class="form-check">
