@@ -125,16 +125,8 @@
                     </div>
                     <div class="modal-body text-center">
                         <asp:Image ID="Image4" runat="server" ImageUrl="~/img/icons8-broken-robot-96.png" />
-                        <h3>No Result Found</h3>
-                    </div>
-                    <div class="modal-footer mx-auto">
-                        <div class="form-excerpts">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <asp:Button ID="Button1" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" Text="Become First Host!" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" />
-                                </li>
-                            </ul>
-                        </div>
+                        <h3>No Results Found</h3>
+                        <p>Reapply filters or try a different location</p>
                     </div>
                 </div>
             </div>

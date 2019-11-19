@@ -15,7 +15,7 @@
     <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
 
     <script src="GoogleMap.js"></script>
-    <section class="all-listing-wrapper section-bg results-pad">
+    <section class="all-listing-wrapper section-bg results-pad" id="hideall" runat="server" visible="true">
         <div class="row">
             <div class="col-lg-12">
                 <div class="atbd_generic_header">
@@ -376,11 +376,7 @@
                 </div>
             </div>
         </div>
-        <!-- ends: .col-lg-8 -->
-
-        <!-- ends: .listing-items -->
     </section>
-
     <div class="modal fade" id="Filters" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
