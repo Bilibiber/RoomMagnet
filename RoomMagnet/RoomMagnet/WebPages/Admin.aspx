@@ -188,10 +188,7 @@
               </div>
             </div> <!-- /#sidebar-wrapper -->
          </div>
-    </div>                
-            <%--Tableau Dashboard--%>
-
-    <div class="col-md-8 mx-auto ">
+        <div class="col-md-8 mx-auto ">
         <h1 class="update-title">Dashboard</h1>
         <div class="atbd_author_module">
             <div class="atbd_content_module">
@@ -218,26 +215,6 @@
                     </div>
                 </div>
             </div>
-            
-
-            
-            
-        <div class="col-md-8">
-            <!-- Your second column here -->
-            <br />
-            <hr />
-            <asp:Panel runat="server" ID="renterinfor">
-                <asp:Label ID="Hello" runat="server" Text="" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
-                <br />
-                <br />
-            </asp:Panel>
-            <hr />
-
-            <%--Add Employee Panel--%>
-            
-
-            <%--                            <asp:RequiredFieldValidator ID="stateValidator" runat="server" ControlToValidate="stateDropDown" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>--%>
-
             <asp:Panel runat="server" ID="adminAddEmployeePanel" Visible="False">
                 <section>
                 <div class="col-md-9 mx-auto ">
@@ -316,6 +293,31 @@
                     </div>
                 </section>
             </asp:Panel>
+    </div>                
+            <%--Tableau Dashboard--%>
+
+    
+            
+
+            
+            
+        <div class="col-md-8">
+            <!-- Your second column here -->
+            <br />
+            <hr />
+            <asp:Panel runat="server" ID="renterinfor">
+                <asp:Label ID="Hello" runat="server" Text="" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
+                <br />
+                <br />
+            </asp:Panel>
+            <hr />
+
+            <%--Add Employee Panel--%>
+            
+
+            <%--                            <asp:RequiredFieldValidator ID="stateValidator" runat="server" ControlToValidate="stateDropDown" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>--%>
+
+            
             
             <%--Verification panel--%>
             <asp:Panel runat="server" ID="adminEmployeesPanel" Visible="False">
