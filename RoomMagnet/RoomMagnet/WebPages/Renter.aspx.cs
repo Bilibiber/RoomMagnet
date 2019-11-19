@@ -52,7 +52,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             cn.Close();
         }
 
-        string status = Session["Verified"].ToString().ToUpper();
+        /*string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
         if (Session["SignInEmail"] == null)
         {
@@ -62,7 +62,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         {
             var master = Master as RoomMagnet;
             master.AfterLogin();
-        }
+        }*/
 
         if (!IsPostBack)
         {
