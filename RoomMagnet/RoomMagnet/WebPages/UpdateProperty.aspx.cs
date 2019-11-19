@@ -399,10 +399,13 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
             }
         }
         Response.Redirect(Request.Url.AbsoluteUri);
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openNotificationModal();", true);
         cn.Close();
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
     }
-
+    protected void goDashboard_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Host.aspx");
+    }
     protected void addBedrooms_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (addBedrooms.SelectedIndex == 1)

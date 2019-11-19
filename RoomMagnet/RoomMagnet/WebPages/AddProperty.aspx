@@ -29,6 +29,12 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        function openModal() {
+            $('#notification').modal({ show: true });
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
 
@@ -485,5 +491,33 @@
             </div>
 
             <br />
+
+            <div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <asp:Image ID="Image2" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <h3>Property Added!</h3>
+                            <p></p>
+                        </div>
+                        <div class="modal-footer mx-auto">
+                            <div class="form-excerpts">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <asp:Button runat="server" Text="Dashboard" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="goDashboard_Click" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </section>
 </asp:Content>

@@ -246,14 +246,11 @@ public partial class WebPages_Setting : System.Web.UI.Page
             db.Close();
         }
 
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "p", "ShowPopup();", true);
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
 
     }
 
-    protected void goDashboard_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Renter.aspx");
-    }
+
 
     protected void Upload_Click(object sender, EventArgs e)
     {

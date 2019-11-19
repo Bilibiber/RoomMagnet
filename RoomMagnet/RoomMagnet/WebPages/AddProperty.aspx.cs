@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Web;
-using System.Web.UI.WebControls;
+using System.Web.UI;
 
 public partial class WebPages_AddProperty : System.Web.UI.Page
 {
@@ -75,14 +75,14 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
     protected void cancel_Click(object sender, EventArgs e)
     {
-        if(Session["Roles"].ToString() == "Renter")
+        if (Session["Roles"].ToString() == "Renter")
         {
             Response.Redirect("Renter.aspx");
-        }else if (Session["Roles"].ToString() == "Host")
+        }
+        else if (Session["Roles"].ToString() == "Host")
         {
             Response.Redirect("Host.aspx");
         }
-        
     }
 
     protected void post_Click(object sender, EventArgs e)
@@ -248,28 +248,32 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         //upload images
         foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
         {
-
-                string filename = Path.GetFileName(postedFile.FileName);
-                string contentType = postedFile.ContentType;
-                using (Stream fs = postedFile.InputStream)
+            string filename = Path.GetFileName(postedFile.FileName);
+            string contentType = postedFile.ContentType;
+            using (Stream fs = postedFile.InputStream)
+            {
+                using (BinaryReader br = new BinaryReader(fs))
                 {
-                    using (BinaryReader br = new BinaryReader(fs))
-                    {
-                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                        //imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytes);
-                        System.Data.SqlClient.SqlCommand picInsert = new System.Data.SqlClient.SqlCommand();
-                        picInsert.Connection = cn;
-                        picInsert.CommandText = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
-                        picInsert.Parameters.AddWithValue("@PropertyID", pid);
-                        picInsert.Parameters.AddWithValue("@ImagePath", bytes);
-                        picInsert.ExecuteNonQuery();
-                    }
+                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                    //imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytes);
+                    System.Data.SqlClient.SqlCommand picInsert = new System.Data.SqlClient.SqlCommand();
+                    picInsert.Connection = cn;
+                    picInsert.CommandText = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
+                    picInsert.Parameters.AddWithValue("@PropertyID", pid);
+                    picInsert.Parameters.AddWithValue("@ImagePath", bytes);
+                    picInsert.ExecuteNonQuery();
                 }
-            
-            
+            }
         }
         Response.Redirect(Request.Url.AbsoluteUri);
         cn.Close();
+
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+    }
+
+    protected void goDashboard_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Host.aspx");
     }
 
     protected void addBedrooms_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,5 +301,4 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room4.Visible = true;
         }
     }
-
 }
