@@ -24,25 +24,36 @@ public partial class WebPages_Admin : System.Web.UI.Page
         }
         if (IsPostBack.Equals(false))
         {
-            SqlCommand selectEmployees = new SqlCommand();
-            selectEmployees.Connection = cn;
+            cn.Open();
             String com = "SELECT [Email] FROM [dbo].[Users] WHERE [UserRole] = 'Admin';";
-            SqlDataAdapter selectEmployeesDA = new SqlDataAdapter(com, cn);
-            DataTable dt = new DataTable();
-            selectEmployeesDA.Fill(dt);
-            emailDropDown.DataSource = dt;
-            emailDropDown.DataBind();
+            SqlCommand sqlCommand = new SqlCommand(com, cn);
+            SqlDataReader selectEmployeesDA = sqlCommand.ExecuteReader();
+            if (selectEmployeesDA.HasRows)
+            {
+                while (selectEmployeesDA.Read())
+                {
+                    emailDropDown.Items.Add(new ListItem((selectEmployeesDA.GetString(0))));
+
+                }
+            }
+            cn.Close();
         }
         if (IsPostBack.Equals(false))
         {
-            SqlCommand selectUnverifiedUsers = new SqlCommand();
-            selectUnverifiedUsers.Connection = cn;
+            
+            cn.Open();
             String com = "SELECT [Email] FROM [dbo].[Users] WHERE [UserRole] = 'Renter' AND [Verified] = 'Unverified' OR [UserRole] = 'Host' AND [Verified] = 'Unverified';";
-            SqlDataAdapter selectUsersDA = new SqlDataAdapter(com, cn);
-            DataTable dt = new DataTable();
-            selectUsersDA.Fill(dt);
-            UnverifiedDropDown.DataSource = dt;
-            UnverifiedDropDown.DataBind();
+            SqlCommand sqlCommand = new SqlCommand(com, cn);
+            SqlDataReader selectEmployeesDA = sqlCommand.ExecuteReader();
+            if (selectEmployeesDA.HasRows)
+            {
+                while (selectEmployeesDA.Read())
+                {
+                    UnverifiedDropDown.Items.Add(new ListItem((selectEmployeesDA.GetString(0))));
+
+                }
+            }
+            cn.Close();
         }
             
 
@@ -158,7 +169,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
             updateStreetAddressText.Text = dr.GetString(4);
             updateCityText.Text = dr.GetString(5);
             updateStateDropDownList.SelectedValue = dr.GetString(6);
-            updateCountryText.Text = dr.GetString(7);
+            updateCountryDropDown.SelectedValue = dr.GetString(7);
             updateZipCodeText.Text = dr.GetString(8);
         }
         cn.Close();
@@ -190,7 +201,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
         updateVerify.Parameters.AddWithValue("@StreetAddress", updateStreetAddressText.Text);
         updateVerify.Parameters.AddWithValue("@City", updateCityText.Text);
         updateVerify.Parameters.AddWithValue("@State", updateStateDropDownList.SelectedValue);
-        updateVerify.Parameters.AddWithValue("@Country", updateCountryText.Text);
+        updateVerify.Parameters.AddWithValue("@Country", updateCountryDropDown.SelectedValue);
         updateVerify.Parameters.AddWithValue("@ZipCode", updateZipCodeText.Text);
         updateVerify.Parameters.AddWithValue("@Position", updatePositionText.Text);
         updateVerify.Parameters.AddWithValue("@Email", updateEmailText.Text);
@@ -269,6 +280,11 @@ public partial class WebPages_Admin : System.Web.UI.Page
     {
         //if (AdminEmployeeCustomValidator.IsValid)
         //{
+        if (countryDropDown.SelectedValue == "")
+        {
+            stateDropDown.SelectedValue = "";
+            stateDropDown.Enabled = false;
+        }
             string HashedPassword = PasswordHash.HashPassword("original");
             cn.Open();
             SqlCommand createEmployee = new SqlCommand("INSERT INTO [dbo].[Users]([FirstName],[LastName],[Password],[Email],[UserRole],[Verified],[Occupation],[StreetAddress],[City],[HomeState],[Country]," +
@@ -302,5 +318,16 @@ public partial class WebPages_Admin : System.Web.UI.Page
             positionText.Text = string.Empty;
         //}
         
+    }
+    protected void countryValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
+    {
+        if (countryDropDown.SelectedIndex == 0)
+        {
+            args.IsValid = false;
+        }
+        else
+        {
+            args.IsValid = true;
+        }
     }
 }
