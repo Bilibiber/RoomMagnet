@@ -3,16 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <%--renter update image--%>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-
-
+ 
     <style type="text/css">
         
         .auto-style12 {
@@ -177,27 +168,59 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <div class="modal-body row">
-        <div class="auto-style12" style="border-style: none; background-color: gray; text-align: center; background-repeat: repeat;">
-            <!-- Your first column here -->
+        <div class="col-md-2 no-padding" >
+            <div id="sidebar-wrapper" style="background-color:slategray">
 
-
-            <br />
-
-            <div class="userimage">
-            </div>
+              <div class="profile-userpic admin-pic text-center">
+                  <img class="mx-auto d-block admin-img" src="../img/rm/two-people.jpg" alt="" >
+                  <div>
+                    <h4 class="admin-space">
+                        <asp:Label ID="WelcomeMessage" runat="server" Text="" ForeColor="White" Font-Size="Small" Font-Bold="True"></asp:Label>
+                    </h4>
+                    <p>Admin</p>
+                  </div>
+              <ul class="sidebar-nav list-unstyled">
+                <li class="active nav-item"> <a href="#"><i class="la la-home"></i><asp:Button ID="adminDashboard" runat="server" Text="Dashboard" Font-Size="Medium" BackColor="#8a8c8f" BorderStyle="None" OnClick="adminDashboard_Click"></asp:Button> </a></li>
+                <li class="nav-item"><a href="#"><i class="la la-plus"></i><asp:Button ID="adminAddEmployee" runat="server" Text="Add Employee" Font-Size="Medium" BackColor="Gray" BorderStyle="None" OnClick="adminAddEmployee_Click"></asp:Button></a></li>
+                <li class=" nav-item"><a href="#"><i class="la la-edit"></i><asp:Button ID="adminEmployee" runat="server" Text="Update Employee" Font-Size="Medium" BackColor="Gray" BorderStyle="None" OnClick="adminEmployee_Click"></asp:Button></a></li>
+                <li class=" nav-item"><a href="#"><i class="la la-check-circle"></i><asp:Button ID="adminVerification" runat="server" Text="Verification" Font-Size="Medium" BackColor="Gray" BorderStyle="None" OnClick="adminVerification_Click"></asp:Button></a></li>    
+              </ul>
+              </div>
+            </div> <!-- /#sidebar-wrapper -->
+         </div>
+    </div>                
             <%--Tableau Dashboard--%>
-            <br />
+
+    <div class="col-md-8 mx-auto ">
+        <h1 class="update-title">Dashboard</h1>
+        <div class="atbd_author_module">
+            <div class="atbd_content_module">
+                <div class="atbdb_content_module_contents">
+                    <div class="user_info_wrap">
+                        <div class="row">
+                            <asp:Panel runat="server" ID="adminDashboardPanel">
+                                <div id="adminDashboard1">
+                                    <script type='text/javascript' src='https://prod-useast-a.online.tableau.com/javascripts/api/viz_v1.js'></script>
+                                    <div class='tableauPlaceholder' style='width: 1000px; height: 827px;'>
+                                        <object class='tableauViz' width='1000' height='827' style='display:none;'>
+                                            <param name='host_url' value='https%3A%2F%2Fprod-useast-a.online.tableau.com%2F' /> 
+                                            <param name='embed_code_version' value='3' /> 
+                                            <param name='site_root' value='&#47;t&#47;ottisbishoptableaudashboard' />
+                                            <param name='name' value='CIS484TableauDashboard&#47;Dashboard1' />
+                                            <param name='tabs' value='no' />
+                                            <param name='toolbar' value='yes' />
+                                            <param name='showAppBanner' value='false' />
+                                        </object>
+                                    </div>
+                                </div>
+                            </asp:Panel>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <br />
-            <asp:Button ID="adminDashboard" runat="server" Text="Dashboard" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminDashboard_Click"></asp:Button>              
-            <br />
-            <asp:Button ID="adminAddEmployee" runat="server" Text="Add Employee" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminAddEmployee_Click"></asp:Button>
-            <br />
-            <asp:Button ID="adminEmployee" runat="server" Text="Update Employee" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminEmployee_Click"></asp:Button>
-            <br />
-            <asp:Button ID="adminVerification" runat="server" Text="Verification" Font-Size="XX-Large" BackColor="Gray" BorderStyle="None" OnClick="adminVerification_Click"></asp:Button>
-            <br />
-        </div>
+
+            
             
         <div class="col-md-8">
             <!-- Your second column here -->
@@ -211,174 +234,87 @@
             <hr />
 
             <%--Add Employee Panel--%>
-            <asp:Panel runat="server" ID="adminDashboardPanel">
-                <div id="adminDashboard1">
-                    <asp:Label ID="Dashboard" runat="server" Text="Dashboard" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
-                    <br />
-                    <script type='text/javascript' src='https://prod-useast-a.online.tableau.com/javascripts/api/viz_v1.js'></script>
-                    <div class='tableauPlaceholder' style='width: 1000px; height: 827px;'>
-                        <object class='tableauViz' width='1000' height='827' style='display:none;'>
-                            <param name='host_url' value='https%3A%2F%2Fprod-useast-a.online.tableau.com%2F' /> 
-                            <param name='embed_code_version' value='3' /> 
-                            <param name='site_root' value='&#47;t&#47;ottisbishoptableaudashboard' />
-                            <param name='name' value='CIS484TableauDashboard&#47;Dashboard1' />
-                            <param name='tabs' value='no' />
-                            <param name='toolbar' value='yes' />
-                            <param name='showAppBanner' value='false' />
-                        </object>
-                    </div>
-                </div>
-            </asp:Panel>
+            
 
             <%--                            <asp:RequiredFieldValidator ID="stateValidator" runat="server" ControlToValidate="stateDropDown" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>--%>
 
             <asp:Panel runat="server" ID="adminAddEmployeePanel" Visible="False">
-                <div>
-                    <asp:Label ID="addEmployeePanel" runat="server" Text="Add Employee to System" ForeColor="#CC3300" Font-Size="3em" Font-Bold="true"></asp:Label>
-                    <br />
-                    <br />
-                    <table>
-                    <tr>
-                        <td class="auto-style15">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="firstNameLabel" runat="server" Text="First Name" Font-Bold="True"></asp:Label>
-                        </td>
-                        <td class="auto-style15"></td>
-                        <td class="auto-style15">
-                            <asp:TextBox ID="firstNameText" runat="server" Text=""></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="firstNameValidator" runat="server" ControlToValidate="firstNameText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                        </td>
-                        <td class="auto-style15"></td>
-                        <td class="auto-style15">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lastNameLabel" runat="server" Text="Last Name" Font-Bold="True"></asp:Label>
-                        <td class="auto-style15"></td>
-                        <td class="auto-style15">
-                            <asp:TextBox ID="lastNameText" runat="server" Text=""></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="lastNameValidator" runat="server" ControlToValidate="lastNameText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="streetAddressLbl" runat="server" Text="StreetAddress" Font-Bold="True"></asp:Label>
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
-                            <p>
-                                <asp:TextBox ID="streetAddressText" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="streetAddressValidator" runat="server" ControlToValidate="streetAddressText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                            </p>
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="cityLbl" runat="server" Text="City" Font-Bold="True"></asp:Label></td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
-                            <asp:TextBox ID="cityText" runat="server" Text=""></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="cityValidator" runat="server" ControlToValidate="cityText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                        </td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="stateLbl" runat="server" Text="State" Font-Bold="true"></asp:Label></td>
-                        <td class="auto-style1>"></td>
-                        <td class="auto-style2">
-                             <asp:DropDownList ID="stateDropDown" runat="server">
-                                <asp:ListItem Value=""></asp:ListItem>
-	                            <asp:ListItem Value="AL">Alabama</asp:ListItem>
-	                            <asp:ListItem Value="AK">Alaska</asp:ListItem>
-	                            <asp:ListItem Value="AZ">Arizona</asp:ListItem>
-	                            <asp:ListItem Value="AR">Arkansas</asp:ListItem>
-	                            <asp:ListItem Value="CA">California</asp:ListItem>
-	                            <asp:ListItem Value="CO">Colorado</asp:ListItem>
-	                            <asp:ListItem Value="CT">Connecticut</asp:ListItem>
-	                            <asp:ListItem Value="DC">District of Columbia</asp:ListItem>
-	                            <asp:ListItem Value="DE">Delaware</asp:ListItem>
-	                            <asp:ListItem Value="FL">Florida</asp:ListItem>
-	                            <asp:ListItem Value="GA">Georgia</asp:ListItem>
-	                            <asp:ListItem Value="HI">Hawaii</asp:ListItem>
-	                            <asp:ListItem Value="ID">Idaho</asp:ListItem>
-	                            <asp:ListItem Value="IL">Illinois</asp:ListItem>
-	                            <asp:ListItem Value="IN">Indiana</asp:ListItem>
-	                            <asp:ListItem Value="IA">Iowa</asp:ListItem>
-	                            <asp:ListItem Value="KS">Kansas</asp:ListItem>
-	                            <asp:ListItem Value="KY">Kentucky</asp:ListItem>
-	                            <asp:ListItem Value="LA">Louisiana</asp:ListItem>
-	                            <asp:ListItem Value="ME">Maine</asp:ListItem>
-	                            <asp:ListItem Value="MD">Maryland</asp:ListItem>
-	                            <asp:ListItem Value="MA">Massachusetts</asp:ListItem>
-	                            <asp:ListItem Value="MI">Michigan</asp:ListItem>
-	                            <asp:ListItem Value="MN">Minnesota</asp:ListItem>
-	                            <asp:ListItem Value="MS">Mississippi</asp:ListItem>
-	                            <asp:ListItem Value="MO">Missouri</asp:ListItem>
-	                            <asp:ListItem Value="MT">Montana</asp:ListItem>
-	                            <asp:ListItem Value="NE">Nebraska</asp:ListItem>
-	                            <asp:ListItem Value="NV">Nevada</asp:ListItem>
-	                            <asp:ListItem Value="NH">New Hampshire</asp:ListItem>
-	                            <asp:ListItem Value="NJ">New Jersey</asp:ListItem>
-	                            <asp:ListItem Value="NM">New Mexico</asp:ListItem>
-	                            <asp:ListItem Value="NY">New York</asp:ListItem>
-	                            <asp:ListItem Value="NC">North Carolina</asp:ListItem>
-	                            <asp:ListItem Value="ND">North Dakota</asp:ListItem>
-	                            <asp:ListItem Value="OH">Ohio</asp:ListItem>
-	                            <asp:ListItem Value="OK">Oklahoma</asp:ListItem>
-	                            <asp:ListItem Value="OR">Oregon</asp:ListItem>
-	                            <asp:ListItem Value="PA">Pennsylvania</asp:ListItem>
-	                            <asp:ListItem Value="RI">Rhode Island</asp:ListItem>
-	                            <asp:ListItem Value="SC">South Carolina</asp:ListItem>
-	                            <asp:ListItem Value="SD">South Dakota</asp:ListItem>
-	                            <asp:ListItem Value="TN">Tennessee</asp:ListItem>
-	                            <asp:ListItem Value="TX">Texas</asp:ListItem>
-	                            <asp:ListItem Value="UT">Utah</asp:ListItem>
-	                            <asp:ListItem Value="VT">Vermont</asp:ListItem>
-	                            <asp:ListItem Value="VA">Virginia</asp:ListItem>
-	                            <asp:ListItem Value="WA">Washington</asp:ListItem>
-	                            <asp:ListItem Value="WV">West Virginia</asp:ListItem>
-	                            <asp:ListItem Value="WI">Wisconsin</asp:ListItem>
-	                            <asp:ListItem Value="WY">Wyoming</asp:ListItem>
-                             </asp:DropDownList>
-<%--                            <asp:RequiredFieldValidator ID="stateValidator" runat="server" ControlToValidate="stateDropDown" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>--%>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="countryLbl" runat="server" Text="Country" Font-Bold="True"></asp:Label></td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
-                            <asp:TextBox ID="countryText" runat="server" Text=""></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="countryValidator" runat="server" ControlToValidate="countryText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="zipCodeLbl" runat="server" Text="Zip Code" Font-Bold="True"></asp:Label></td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
-                            <asp:TextBox ID="zipCodeText" runat="server" Text=""></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="zipCodeValidator" runat="server" ControlToValidate="zipCodeText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="emailAddressLbl" runat="server" Text="Email Address" Font-Bold="True"></asp:Label>
-                        </td>
-                        <td class="auto-style1"></td>
-                        <td class="auto-style2">
-                            <p>
-                                <asp:TextBox ID="emailAddressText" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="emailValidator" runat="server" ControlToValidate="emailAddressText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                                <asp:CustomValidator ID="AdminEmployeeCustomValidator" runat="server" ErrorMessage="Email already exists" ControlToValidate="emailAddressText" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic" OnServerValidate="SignUpEmailCustomValidator_ServerValidate"></asp:CustomValidator>
-                            </p>
-                        </td>
-                        <td class="auto-style1">
-                            <asp:Label ID="ErrorMessage" runat="server"></asp:Label>
-                        </td>
-                        <td class="auto-style13">&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="positionLbl" runat="server" Text="Position" Font-Bold="True"></asp:Label>
-                        </td>
-                        <td class="auto-style13"></td>
-                        <td class="auto-style13">
-                            <p>
-                                <asp:TextBox ID="positionText" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="positionValidator" runat="server" ControlToValidate="positionText" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addEmployee" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="insertBtn" runat="server" OnClick="insertBtn_Click" Text="Create New Employee" ValidationGroup="addEmployee"></asp:Button></td>
-                        <td class="auto-style2">
-                            &nbsp;</td>
-                    </tr>
-
-                    </table>
-                </div>
+                <section>
+                <div class="col-md-9 mx-auto ">
+                    <h1 class="update-title">Add Employee</h1>
+                    <div class="atbd_author_module">
+                        <div class="atbd_content_module">
+                            <div class="atbdb_content_module_contents">
+                                <div class="user_info_wrap">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="firstNameLbl" class="not_empty">First Name</label>
+                                                <asp:TextBox runat="server" CssClass="form-control" id="firstNameText" type="text" placeholder="First Name" ></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="last_name" class="not_empty">Last Name</label>
+                                                <asp:TextBox runat="server" CssClass="form-control" id="lastNameText" type="text" placeholder="Last Name" ></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="street" class="not_empty">Street Address</label>
+                                                <asp:TextBox runat="server" CssClass="form-control" id="streetAddressText" type="text" placeholder="Street Address" ></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="city" class="not_empty">City</label>
+                                                <asp:TextBox runat="server" CssClass="form-control" id="cityText" type="text" placeholder="City" ></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group ">
+                                                <label for="zip" class="form-label ">Zip Code</label>
+                                                <asp:TextBox runat="server" CssClass="form-control" id="zipCodeText" type="text" placeholder="Zip Code" ></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="state" class="form-label">State</label>
+                                                <div class="input-group">
+                                                    <asp:DropDownList CssClass="custom-select" ID="stateDropDown" runat="server"></asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="country" class="form-label">Country</label>
+                                                <div class="input-group">
+                                                    <asp:DropDownList CssClass="custom-select" ID="countryDropDown" runat="server"></asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email" class="not_empty">Email Address</label>
+                                                <asp:TextBox runat="server" CssClass="form-control" id="emailAddressText" type="text" placeholder="Email Address"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="position" class="not_empty">Position</label>
+                                                <asp:TextBox runat="server" CssClass="form-control" id="positionText" type="text" placeholder="Position" ></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 inline">
+                                            <label class="btn btn-sm btn-secondary form-control-file">Create</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </asp:Panel>
             
             <%--Verification panel--%>
@@ -523,6 +459,7 @@
             </asp:Panel>
 
             <%--Verification panel--%>
+        <div>
             <asp:Panel runat="server" ID="adminVerificationPanel" Visible="False">
                 <div>
                     <asp:Label ID="verificationPanel" runat="server" Text="Verification" ForeColor="#CC3300" Font-Size="3em" Font-Bold="True"></asp:Label>
@@ -537,6 +474,15 @@
 
 
         </div>
+    </div>
+    <section class="section-bg p-bottom-70">
+<div class="row">
+    
+
+      </div>
+    </div>
+</section>
+    </div>
     </div>
 </asp:Content>
 

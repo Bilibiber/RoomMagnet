@@ -171,16 +171,16 @@
                         </div>
                         <ul class="list-unstyled">
                             <li class="nav-item">
-                                <asp:LinkButton ID="renterprofile" runat="server" Style="font-size: 1.5em;" OnClick="renterProfile_Click" BackColor="#C6D6E2"> <i class="la la-user" style="font-size:1em;"></i>My Profile</asp:LinkButton>
+                                <asp:LinkButton ID="renterprofile" runat="server" Style="font-size: 1.5em;" OnClick="renterProfile_Click" BackColor="#C6D6E2"> <i class="la la-user"></i>My Profile</asp:LinkButton>
                             </li>
                             <li class="nav-item">
-                                <asp:LinkButton ID="renterFavorites" runat="server" Style="font-size: 1.5em;" OnClick="renterFavorites_Click"><i class="la la-home" style="font-size:1em;"></i>My Favorites</asp:LinkButton>
+                                <asp:LinkButton ID="renterFavorites" runat="server" Style="font-size: 1.5em;" OnClick="renterFavorites_Click"><i class="la la-home"></i>My Favorites</asp:LinkButton>
                             </li>
                             <li class="nav-item" style="margin-top: 0px">
-                                <asp:LinkButton ID="renterConnections" runat="server" Style="font-size: 1.5em;" OnClick="renterConnections_Click"><i class="la la-users" style="font-size:1em;"></i>Connections</asp:LinkButton>
+                                <asp:LinkButton ID="renterConnections" runat="server" Style="font-size: 1.5em;" OnClick="renterConnections_Click"><i class="la la-users"></i>Connections</asp:LinkButton>
                             </li>
                             <li class="nav-item">
-                                <asp:LinkButton ID="renterMessage" runat="server" Style="font-size: 1.5em;" OnClick="renterMessage_Click"><i class="la la-comments" style="font-size:1em;"></i>Messages</asp:LinkButton>
+                                <asp:LinkButton ID="renterMessage" runat="server" Style="font-size: 1.5em;" OnClick="renterMessage_Click"><i class="la la-comments"></i>Messages</asp:LinkButton>
                             </li>
                         </ul>
                         <asp:Button ID="rentertohost" runat="server" class="btn btn-primary" Text="Become a Host" BorderStyle="None" OnClick="rentertohost_Click" Style="font-size: 1.5em;"></asp:Button>

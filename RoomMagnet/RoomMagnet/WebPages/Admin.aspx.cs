@@ -14,7 +14,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
-        Hello.Text = "Hello, " + Session["FullName"];
+        WelcomeMessage.Text = "Hello, " + Session["FullName"];
         if (IsPostBack.Equals(false))
         {
             adminDashboard.ForeColor = System.Drawing.Color.Red;
@@ -261,14 +261,14 @@ public partial class WebPages_Admin : System.Web.UI.Page
         catch (Exception)
         {
             args.IsValid = false;
-            AdminEmployeeCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
+            //AdminEmployeeCustomValidator.ErrorMessage = "Connection Error,Please try again Later";
         }
     }
 
     protected void insertBtn_Click(object sender, EventArgs e)
     {
-        if (AdminEmployeeCustomValidator.IsValid)
-        {
+        //if (AdminEmployeeCustomValidator.IsValid)
+        //{
             string HashedPassword = PasswordHash.HashPassword("original");
             cn.Open();
             SqlCommand createEmployee = new SqlCommand("INSERT INTO [dbo].[Users]([FirstName],[LastName],[Password],[Email],[UserRole],[Verified],[Occupation],[StreetAddress],[City],[HomeState],[Country]," +
@@ -282,7 +282,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
             createEmployee.Parameters.AddWithValue("@StreetAddress", streetAddressText.Text);     //6
             createEmployee.Parameters.AddWithValue("@City", cityText.Text);     //7
             createEmployee.Parameters.AddWithValue("@HomeState", stateDropDown.SelectedValue);     //8
-            createEmployee.Parameters.AddWithValue("@Country", countryText.Text);     //9
+            createEmployee.Parameters.AddWithValue("@Country", countryDropDown.SelectedValue);     //9
             createEmployee.Parameters.AddWithValue("@ZipCode", zipCodeText.Text);     //10
             createEmployee.Parameters.AddWithValue("@Password", HashedPassword);
             createEmployee.Parameters.AddWithValue("@SignUpDate", DateTime.Now);     //11
@@ -290,16 +290,17 @@ public partial class WebPages_Admin : System.Web.UI.Page
             createEmployee.Parameters.AddWithValue("@LastUpdatedBy", "Ottis Bishop");     //13
             createEmployee.ExecuteNonQuery();
             cn.Close();
+
             firstNameText.Text = string.Empty;
             lastNameText.Text = string.Empty;
             streetAddressText.Text = string.Empty;
             cityText.Text = string.Empty;
             stateDropDown.SelectedValue = "";
-            countryText.Text = string.Empty;
+            countryDropDown.SelectedValue = string.Empty;
             zipCodeText.Text = string.Empty;
             emailAddressText.Text = string.Empty;
             positionText.Text = string.Empty;
-        }
+        //}
         
     }
 }

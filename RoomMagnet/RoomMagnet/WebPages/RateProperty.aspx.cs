@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 //https://github.com/dreyescat/bootstrap-rating
 
-public partial class WebPages_RateProperty : System.Web.UI.Page
+public partial class WebPages_Rate_Property : System.Web.UI.Page
 {
 
     protected void Page_Load(object sender, EventArgs e)
