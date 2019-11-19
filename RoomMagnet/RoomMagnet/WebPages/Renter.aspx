@@ -192,7 +192,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="renter-host ">
+                    <div class="renter-host " style="text-align: center;">
                         <asp:Button ID="rentertohost" runat="server" class="btn btn-primary" Text="Become a Host" BorderStyle="None" OnClick="rentertohost_Click" Style="font-size: 1.5em;"></asp:Button>
                     </div>
                 </div>
@@ -499,41 +499,41 @@
                     </div>
                 </asp:Panel>
 
+
+                <%--history--%>
                 <asp:Panel ID="panelhistory" runat="server" Visible="False">
                     <div class="col-md-9 mx-auto ">
-                        <h1 class="update-title">Rent History</h1>
-                        <div id="history1" runat="server" class="col-lg-12">
-                            <div class="atbd_author_module">
-                                <div class="atbd_content_module">
+                        <h1 class="update-title">My favorite
+                        </h1>
 
-                                    <div class="atbdb_content_module_contents">
-                                        <div class="user_info_wrap">
-                                            <div class="row">
-                                                <div class="atbd_single_listing atbd_listing_list about-des">
+                        <div class="atbd_author_module">
+                            <div class="atbd_content_module">
+
+                                <div class="atbdb_content_module_contents">
+                                    <div class="user_info_wrap">
+                                        <div class="row">
+                                            <div id="history1" runat="server" class="col-lg-12">
+                                                <div class="atbd_single_listing atbd_listing_list">
                                                     <article class="atbd_single_listing_wrapper">
                                                         <figure class="atbd_listing_thumbnail_area">
-                                                            <div class="atbd_listing_image">
+                                                            <div class="atbd_listing_image fill">
                                                                 <asp:ImageButton ID="history1img" OnClick="Property1Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="350" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
-
-                                                                &nbsp;&nbsp;
                                                             </div>
                                                             <!-- ends: .atbd_listing_image -->
                                                         </figure>
                                                         <!-- ends: .atbd_listing_thumbnail_area -->
-
                                                         <div class="atbd_listing_info">
                                                             <div class="atbd_content_upper">
-                                                                <span class="atbd_listing_meta" style="float: right;">
-                                                                    <span class="atbd_meta atbd_listing_rating">
-                                                                        <asp:Label ID="history1rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
-                                                                </span>
                                                                 <h4 class="atbd_listing_title">
                                                                     <asp:Label ID="history1title" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                 </h4>
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="history1city" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-
+                                                                <div class="atbd_listing_meta">
+                                                                    <span class="atbd_meta atbd_listing_rating">
+                                                                        <asp:Label ID="history1rating" runat="server" Text="4.5" style="float:right;"></asp:Label><i class="la la-star"></i></span>
+                                                                </div>
                                                                 <!-- End atbd listing meta -->
                                                                 <div class="atbd_listing_data_list">
                                                                     <div class="mt-0 form-label">
@@ -542,8 +542,9 @@
                                                                         <asp:Label ID="history1end" runat="server" Text="Label"></asp:Label>
                                                                     </div>
                                                                 </div>
-                                                                <!-- End atbd listing meta -->
                                                             </div>
+                                                            <!-- End atbd listing meta -->
+
                                                             <!-- end .atbd_content_upper -->
                                                             <div class="atbd_listing_bottom_content">
                                                                 <div class="atbd_content_left">
@@ -558,162 +559,113 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <ul class="atbd_content_right">
-                                                                    <li></li>
-                                                                </ul>
-                                                                <asp:Button ID="review" runat="server" Text="Review" class="btn btn-primary" Style="float: right" OnClick="review_Click" data-toggle="modal" data-target="#myModal" OnClientClick="return false" />
                                                             </div>
-                                                            <!-- end .atbd_listing_bottom_content -->
                                                         </div>
-                                                        <!-- ends: .atbd_listing_info -->
                                                     </article>
-                                                    <!-- atbd_single_listing_wrapper -->
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="Div2" runat="server" class="col-lg-12">
-                            <div class="atbd_author_module">
-                                <div class="atbd_content_module">
-
-                                    <div class="atbdb_content_module_contents">
-                                        <div class="user_info_wrap">
-                                            <div class="row">
-                                                <div class="atbd_single_listing atbd_listing_list about-des">
+                                            <div id="Div2" runat="server" class="col-lg-12">
+                                                <div class="atbd_single_listing atbd_listing_list">
                                                     <article class="atbd_single_listing_wrapper">
                                                         <figure class="atbd_listing_thumbnail_area">
-                                                            <div class="atbd_listing_image">
+                                                            <div class="atbd_listing_image fill">
                                                                 <asp:ImageButton ID="ImageButton1" OnClick="Property1Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="350" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
-
-                                                                &nbsp;&nbsp;
                                                             </div>
                                                             <!-- ends: .atbd_listing_image -->
                                                         </figure>
                                                         <!-- ends: .atbd_listing_thumbnail_area -->
-
                                                         <div class="atbd_listing_info">
                                                             <div class="atbd_content_upper">
-                                                                <span class="atbd_listing_meta" style="float: right;">
-                                                                    <span class="atbd_meta atbd_listing_rating">
-                                                                        <asp:Label ID="Label1" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
-                                                                </span>
                                                                 <h4 class="atbd_listing_title">
-                                                                    <asp:Label ID="Label2" Visible="false" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="Label1" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                 </h4>
                                                                 <div class="mt-0 form-label">
-                                                                    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-
+                                                                <div class="atbd_listing_meta">
+                                                                    <span class="atbd_meta atbd_listing_rating">
+                                                                        <asp:Label ID="Label3" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                                </div>
                                                                 <!-- End atbd listing meta -->
                                                                 <div class="atbd_listing_data_list">
                                                                     <div class="mt-0 form-label">
+                                                                        <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label><br />
                                                                         <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label><br />
-                                                                        <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label><br />
-                                                                        <asp:Label ID="Label7" runat="server" Text="Label"></asp:Label>
+                                                                        <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
                                                                     </div>
                                                                 </div>
-                                                                <!-- End atbd listing meta -->
                                                             </div>
+                                                            <!-- End atbd listing meta -->
+
                                                             <!-- end .atbd_content_upper -->
                                                             <div class="atbd_listing_bottom_content">
                                                                 <div class="atbd_content_left">
                                                                     <div class="atbd_listing_category">
                                                                         <span class="fas fa-bed icon-padding"></span>
                                                                         <div class="numberCircle">
-                                                                            <asp:Label runat="server" ID="Label8" Text="1 Bed" CssClass="icon-padding"></asp:Label>
+                                                                            <asp:Label runat="server" ID="Label7" Text="1 Bed" CssClass="icon-padding"></asp:Label>
                                                                         </div>
                                                                         <span class="fas fa-bath icon-padding"></span>
                                                                         <div class="numberCircle">
-                                                                            <asp:Label runat="server" ID="Label9" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
+                                                                            <asp:Label runat="server" ID="Label8" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <ul class="atbd_content_right">
-                                                                    <li></li>
-                                                                </ul>
-                                                                <asp:Button ID="Button1" runat="server" Text="Review" class="btn btn-primary" Style="float: right" OnClick="review_Click" data-toggle="modal" data-target="#myModal" OnClientClick="return false" />
                                                             </div>
-                                                            <!-- end .atbd_listing_bottom_content -->
                                                         </div>
-                                                        <!-- ends: .atbd_listing_info -->
                                                     </article>
-                                                    <!-- atbd_single_listing_wrapper -->
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="Div3" runat="server" class="col-lg-12">
-                            <div class="atbd_author_module">
-                                <div class="atbd_content_module">
-
-                                    <div class="atbdb_content_module_contents">
-                                        <div class="user_info_wrap">
-                                            <div class="row">
-                                                <div class="atbd_single_listing atbd_listing_list about-des">
+                                            <div id="Div3" runat="server" class="col-lg-12">
+                                                <div class="atbd_single_listing atbd_listing_list">
                                                     <article class="atbd_single_listing_wrapper">
                                                         <figure class="atbd_listing_thumbnail_area">
-                                                            <div class="atbd_listing_image">
+                                                            <div class="atbd_listing_image fill">
                                                                 <asp:ImageButton ID="ImageButton2" OnClick="Property1Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="350" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
-
-                                                                &nbsp;&nbsp;
                                                             </div>
                                                             <!-- ends: .atbd_listing_image -->
                                                         </figure>
                                                         <!-- ends: .atbd_listing_thumbnail_area -->
-
                                                         <div class="atbd_listing_info">
                                                             <div class="atbd_content_upper">
-                                                                <span class="atbd_listing_meta" style="float: right;">
-                                                                    <span class="atbd_meta atbd_listing_rating">
-                                                                        <asp:Label ID="Label10" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
-                                                                </span>
                                                                 <h4 class="atbd_listing_title">
-                                                                    <asp:Label ID="Label12" Visible="false" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="Label9" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                 </h4>
                                                                 <div class="mt-0 form-label">
-                                                                    <asp:Label ID="Label13" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="Label10" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-
+                                                                <div class="atbd_listing_meta">
+                                                                    <span class="atbd_meta atbd_listing_rating">
+                                                                        <asp:Label ID="Label11" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                                </div>
                                                                 <!-- End atbd listing meta -->
                                                                 <div class="atbd_listing_data_list">
                                                                     <div class="mt-0 form-label">
-                                                                        <asp:Label ID="Label14" runat="server" Text="Label"></asp:Label><br />
-                                                                        <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label><br />
-                                                                        <asp:Label ID="Label16" runat="server" Text="Label"></asp:Label>
+                                                                        <asp:Label ID="Label12" runat="server" Text="Label"></asp:Label><br />
+                                                                        <asp:Label ID="Label13" runat="server" Text="Label"></asp:Label><br />
+                                                                        <asp:Label ID="Label14" runat="server" Text="Label"></asp:Label>
                                                                     </div>
                                                                 </div>
-                                                                <!-- End atbd listing meta -->
                                                             </div>
+                                                            <!-- End atbd listing meta -->
+
                                                             <!-- end .atbd_content_upper -->
                                                             <div class="atbd_listing_bottom_content">
                                                                 <div class="atbd_content_left">
                                                                     <div class="atbd_listing_category">
                                                                         <span class="fas fa-bed icon-padding"></span>
                                                                         <div class="numberCircle">
-                                                                            <asp:Label runat="server" ID="Label17" Text="1 Bed" CssClass="icon-padding"></asp:Label>
+                                                                            <asp:Label runat="server" ID="Label15" Text="1 Bed" CssClass="icon-padding"></asp:Label>
                                                                         </div>
                                                                         <span class="fas fa-bath icon-padding"></span>
                                                                         <div class="numberCircle">
-                                                                            <asp:Label runat="server" ID="Label18" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
+                                                                            <asp:Label runat="server" ID="Label16" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <ul class="atbd_content_right">
-                                                                    <li></li>
-                                                                </ul>
-                                                                <asp:Button ID="Button2" runat="server" Text="Review" class="btn btn-primary" Style="float: right" OnClick="review_Click" data-toggle="modal" data-target="#myModal" OnClientClick="return false" />
                                                             </div>
-                                                            <!-- end .atbd_listing_bottom_content -->
                                                         </div>
-                                                        <!-- ends: .atbd_listing_info -->
                                                     </article>
-                                                    <!-- atbd_single_listing_wrapper -->
                                                 </div>
                                             </div>
                                         </div>
