@@ -11,15 +11,15 @@ var housetitle;
 var count = 0;
 
 function initMap() {
-    if (click === false) {
+    var inputvalue = document.getElementById('address').value;
+    if (inputvalue===null) {
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 11,
             center: { lat: 38.4495688, lng: -78.8689156 },
             disableDefaultUI: true
         });
     }
-    else {
-        var inputvalue = document.getElementById('address').value;
+    else {     
         if (isNaN(inputvalue)) {
             PageMethods.QueryToJsonForCityState(inputvalue, addressmap)
         }
@@ -29,9 +29,6 @@ function initMap() {
     }
 }
 
-function geocodeAddress() {
-    click = true;
-}
 
 function addressmap(response) {
     dataTable1 = eval(response);

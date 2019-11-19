@@ -8,12 +8,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <asp:scriptmanager id="ScriptManager1"
         enablepagemethods="true"
-        enablepartialrendering="true" runat="server" />
-     <script type="text/javascript">
-        function openResultModal() {
-            $('#no_result_notification').modal({ show: true });
-        }
-    </script>
+        enablepartialrendering="true" runat="server" />   
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu9-V7rNAJ0LWxj2senGo9wVHwgLXQr-0&language=en">
     </script>
@@ -434,33 +429,6 @@
                         <ul class="list-unstyled">
                             <li>
                                 <asp:button id="FiltersButton" runat="server" text="Apply" cssclass="btn btn-xs btn-gradient btn-gradient-two access-link" onclick="ApplyButton_Click" />
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="no_result_notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <asp:image id="Image2" runat="server" imageurl="~/img/roommagnet-text.png" cssclass="mx-auto image-padding" />
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <asp:image id="Image3" runat="server" imageurl="~/img/icons8-broken-robot-96.png" />
-                    <h3>No Result Found</h3>
-                </div>
-                <div class="modal-footer mx-auto">
-                    <div class="form-excerpts">
-                        <ul class="list-unstyled">
-                            <li>
-                                <asp:button id="Button2" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" onclientclick="return false" text="Become First Host!" cssclass="btn btn-xs btn-gradient btn-gradient-two access-link" />
                             </li>
                         </ul>
                     </div>

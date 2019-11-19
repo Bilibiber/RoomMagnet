@@ -44,6 +44,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SearchResultButton_Click(sender, e);
             Session["HomePageSearchContent"] = null;
         }
+        ScriptManager.RegisterStartupScript(this, GetType(), "HAHA", "openResultModal();", true);
     }
 
     protected void ApplyButton_Click(object sender, EventArgs e)
@@ -55,7 +56,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
         if (CustomValidator1.IsValid)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "ReLoadTheMap", "geocodeAddress()", true);
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "ReLoadTheMap", "geocodeAddress()", true);
 
             Property1Space.Visible = false;
             Property2Space.Visible = false;

@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" Runat="Server">
+    
       <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_8atXfTcBVA0b0Y50HniGdHw0000kgvHhmz"

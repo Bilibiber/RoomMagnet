@@ -38,10 +38,15 @@
         }
     </script>
     <script type="text/javascript">
+        function openResultModal() {
+            $('#no_result_notification').modal({ show: true });
+        }
+    </script>
+    <script type="text/javascript">
         window.onbeforeunload = closeMessage;
 
         function closeMessage() {
-          sessionStorage.clear();
+            sessionStorage.clear();
         }
     </script>
     <title>
@@ -107,6 +112,33 @@
         </div>
         <!-- ends: .mainmenu-wrapper -->
         <!-- ends: .intro-wrapper -->
+        <div class="modal fade" id="no_result_notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <asp:Image ID="Image3" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <asp:Image ID="Image4" runat="server" ImageUrl="~/img/icons8-broken-robot-96.png" />
+                        <h3>No Result Found</h3>
+                    </div>
+                    <div class="modal-footer mx-auto">
+                        <div class="form-excerpts">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <asp:Button ID="Button1" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" Text="Become First Host!" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal fade" id="sign_up_notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -206,7 +238,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Age Range Required" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please select an age range" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                         <asp:Button ID="MasterPageModalSignUp" runat="server" Text="Sign Up" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignUp" OnClick="MasterPageSignUp_Click" UseSubmitBehavior="False" />
-                       <%-- <script>
+                        <%-- <script>
                             var input = document.getElementById("myInput");
                             // Execute a function when the user releases a key on the keyboard
                             input.addEventListener("keyup", function (event) {
@@ -220,7 +252,7 @@
                                 }
                             });
                         </script>--%>
-                            
+
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
                                 <li>Already a member?<asp:LinkButton ID="SignInLinkButton" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false">Sign In</asp:LinkButton>
