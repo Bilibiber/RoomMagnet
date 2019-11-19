@@ -119,11 +119,11 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelconnections.Visible = false;
         panelmessage.Visible = false;
         panelhistory.Visible = false;
-        renterprofile.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        renterFavorites.BackColor = System.Drawing.Color.White;
-        renterConnections.BackColor = System.Drawing.Color.White;
-        renterMessage.BackColor = System.Drawing.Color.White;
-        renterHistory.BackColor = System.Drawing.Color.White;
+        renterprofile.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        renterFavorites.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
     }
 
     protected void renterFavorites_Click(object sender, EventArgs e)
@@ -133,11 +133,11 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelconnections.Visible = false;
         panelmessage.Visible = false;
         panelhistory.Visible = false;
-        renterprofile.BackColor = System.Drawing.Color.White;
-        renterFavorites.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        renterConnections.BackColor = System.Drawing.Color.White;
-        renterMessage.BackColor = System.Drawing.Color.White;
-        renterHistory.BackColor = System.Drawing.Color.White;
+        renterprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterFavorites.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        renterConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
 
         string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, [Favorites].PropertyID from[Property] INNER JOIN[ImagePath]" +
             " on[Property].PropertyID = [ImagePath].PropertyID INNER JOIN [Favorites] on[Property].PropertyID = [Favorites].PropertyID WHERE UserID = " + Session["UserID"];
@@ -264,15 +264,15 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount),1).ToString();
+                Property1Rating.Text = (RatingSum / RatingRecordCount).ToString();
             }
             if (RatingCount == 1)
             {
-                Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                Property2Rating.Text = (RatingSum / RatingRecordCount).ToString();
             }
             if (RatingCount == 2)
             {
-                Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                Property3Rating.Text = (RatingSum / RatingRecordCount).ToString();
             }
             RatingCount++;
             readers.Close();
@@ -288,11 +288,11 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelconnections.Visible = true;
         panelmessage.Visible = false;
         panelhistory.Visible = false;
-        renterprofile.BackColor = System.Drawing.Color.White;
-        renterFavorites.BackColor = System.Drawing.Color.White;
-        renterConnections.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        renterMessage.BackColor = System.Drawing.Color.White;
-        renterHistory.BackColor = System.Drawing.Color.White;
+        renterprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterFavorites.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterConnections.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
     }
 
     protected void renterMessage_Click(object sender, EventArgs e)
@@ -302,11 +302,11 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelconnections.Visible = false;
         panelmessage.Visible = true;
         panelhistory.Visible = false;
-        renterprofile.BackColor = System.Drawing.Color.White;
-        renterFavorites.BackColor = System.Drawing.Color.White;
-        renterConnections.BackColor = System.Drawing.Color.White;
-        renterMessage.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        renterHistory.BackColor = System.Drawing.Color.White;
+        renterprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterFavorites.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterMessage.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
     }
 
     protected void renterHistory_Click(object sender, EventArgs e)
@@ -316,11 +316,11 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelconnections.Visible = false;
         panelmessage.Visible = false;
         panelhistory.Visible = true;
-        renterprofile.BackColor = System.Drawing.Color.White;
-        renterFavorites.BackColor = System.Drawing.Color.White;
-        renterConnections.BackColor = System.Drawing.Color.White;
-        renterMessage.BackColor = System.Drawing.Color.White;
-        renterHistory.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
+        renterprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterFavorites.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        renterHistory.BackColor = System.Drawing.Color.FromArgb(84 , 84, 84);
 
         string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, AvailableBathrooms,PropertyID,PropertyID from[Property] WHERE propertyid = 1003";
         cn.Open();
