@@ -44,83 +44,11 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SearchResultButton_Click(sender, e);
             Session["HomePageSearchContent"] = null;
         }
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pooooopsssss", "openResultModal()", true);
     }
 
     protected void ApplyButton_Click(object sender, EventArgs e)
     {
         SearchResultButton_Click(sender, e);
-    }
-
-    [System.Web.Services.WebMethod]
-    [System.Web.Script.Services.ScriptMethod()]
-    public static string QueryToJsonForZip(string num)
-    {
-        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
-        connection.Open();
-        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode, Title from Property where ZipCode=@ZipCode";
-        SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
-        GoogleFinder.Parameters.AddWithValue("@ZipCode", num);
-        SqlDataReader addressReader = GoogleFinder.ExecuteReader();
-        ArrayList AddressArray = new ArrayList();
-        object[] fieldnames = new object[addressReader.FieldCount];
-        for (int i = 0; i < addressReader.FieldCount; i++)
-        {
-            fieldnames[i] = addressReader.GetName(i);
-        }
-        AddressArray.Add(fieldnames);
-        while (addressReader.Read())
-        {
-            // create array from a row of data
-            object[] values = new object[addressReader.FieldCount];
-            addressReader.GetValues(values);
-            AddressArray.Add(values);
-        }
-        addressReader.Close();
-        connection.Close();
-        // serialize to JSON
-        JavaScriptSerializer jss = new JavaScriptSerializer();
-        String jsonResult = jss.Serialize(AddressArray);
-
-        // return the json string
-        return jsonResult;
-    }
-
-    [System.Web.Services.WebMethod]
-    [System.Web.Script.Services.ScriptMethod()]
-    public static string QueryToJsonForCityState(string something)
-    {
-        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
-        connection.Open();
-        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode, Title from Property where City=@City and HomeState=@HomeState";
-        string City = something.Substring(0, something.IndexOf(','));
-        string State = something.Substring(something.IndexOf(',') + 1);
-        SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
-        GoogleFinder.Parameters.AddWithValue("@City", City);
-        GoogleFinder.Parameters.AddWithValue("@HomeState", State);
-        SqlDataReader addressReader = GoogleFinder.ExecuteReader();
-        ArrayList AddressArray = new ArrayList();
-        object[] fieldnames = new object[addressReader.FieldCount];
-        for (int i = 0; i < addressReader.FieldCount; i++)
-        {
-            fieldnames[i] = addressReader.GetName(i);
-        }
-        AddressArray.Add(fieldnames);
-        while (addressReader.Read())
-        {
-            // create array from a row of data
-            object[] values = new object[addressReader.FieldCount];
-            addressReader.GetValues(values);
-            AddressArray.Add(values);
-        }
-        connection.Close();
-        addressReader.Close();
-        // serialize to JSON
-        JavaScriptSerializer jss = new JavaScriptSerializer();
-        String jsonResult = jss.Serialize(AddressArray);
-
-        // return the json string
-        return jsonResult;
     }
 
     protected void SearchResultButton_Click(object sender, EventArgs e)
@@ -677,5 +605,75 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
     {
         RowCount = 25;
         SearchResultButton_Click(sender, e);
+    }
+    [System.Web.Services.WebMethod]
+    [System.Web.Script.Services.ScriptMethod()]
+    public static string QueryToJsonForZip(string num)
+    {
+        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+        connection.Open();
+        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode, Title from Property where ZipCode=@ZipCode";
+        SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
+        GoogleFinder.Parameters.AddWithValue("@ZipCode", num);
+        SqlDataReader addressReader = GoogleFinder.ExecuteReader();
+        ArrayList AddressArray = new ArrayList();
+        object[] fieldnames = new object[addressReader.FieldCount];
+        for (int i = 0; i < addressReader.FieldCount; i++)
+        {
+            fieldnames[i] = addressReader.GetName(i);
+        }
+        AddressArray.Add(fieldnames);
+        while (addressReader.Read())
+        {
+            // create array from a row of data
+            object[] values = new object[addressReader.FieldCount];
+            addressReader.GetValues(values);
+            AddressArray.Add(values);
+        }
+        addressReader.Close();
+        connection.Close();
+        // serialize to JSON
+        JavaScriptSerializer jss = new JavaScriptSerializer();
+        String jsonResult = jss.Serialize(AddressArray);
+
+        // return the json string
+        return jsonResult;
+    }
+
+    [System.Web.Services.WebMethod]
+    [System.Web.Script.Services.ScriptMethod()]
+    public static string QueryToJsonForCityState(string something)
+    {
+        SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+        connection.Open();
+        string Findsaddress = "Select StreetAddress as Address,City,HomeState as State,Country,ZipCode, Title from Property where City=@City and HomeState=@HomeState";
+        string City = something.Substring(0, something.IndexOf(','));
+        string State = something.Substring(something.IndexOf(',') + 1);
+        SqlCommand GoogleFinder = new SqlCommand(Findsaddress, connection);
+        GoogleFinder.Parameters.AddWithValue("@City", City);
+        GoogleFinder.Parameters.AddWithValue("@HomeState", State);
+        SqlDataReader addressReader = GoogleFinder.ExecuteReader();
+        ArrayList AddressArray = new ArrayList();
+        object[] fieldnames = new object[addressReader.FieldCount];
+        for (int i = 0; i < addressReader.FieldCount; i++)
+        {
+            fieldnames[i] = addressReader.GetName(i);
+        }
+        AddressArray.Add(fieldnames);
+        while (addressReader.Read())
+        {
+            // create array from a row of data
+            object[] values = new object[addressReader.FieldCount];
+            addressReader.GetValues(values);
+            AddressArray.Add(values);
+        }
+        connection.Close();
+        addressReader.Close();
+        // serialize to JSON
+        JavaScriptSerializer jss = new JavaScriptSerializer();
+        String jsonResult = jss.Serialize(AddressArray);
+
+        // return the json string
+        return jsonResult;
     }
 }

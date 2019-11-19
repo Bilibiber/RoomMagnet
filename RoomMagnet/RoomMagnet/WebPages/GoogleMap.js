@@ -8,7 +8,7 @@ var click = false;
 
 var housetitle;
 
-var count=0;
+var count = 0;
 
 function initMap() {
     if (click === false) {
@@ -28,13 +28,11 @@ function initMap() {
         }
     }
 }
-function openResultModal() {
-    $('#no_result_notification').modal({ show: true });
-}
 
 function geocodeAddress() {
     click = true;
 }
+
 function addressmap(response) {
     dataTable1 = eval(response);
     dataTable1 = google.visualization.arrayToDataTable(dataTable1);
@@ -55,13 +53,13 @@ function addressmap(response) {
     var country = dataTable1.getValue(0, 3);
     var JsonZipCode = dataTable1.getValue(0, 4);
     var geocoder = new google.maps.Geocoder();
-   
+
     for (var i = 0; i < Jsonaddress.length; i++) {
         var newaddress = Jsonaddress[i] + "," + cities + "," + stateProvince + "," + JsonZipCode;
         geocoder.geocode({ 'address': newaddress }, onGeocodeResponse);
     }
-    
 }
+
 function onGeocodeResponse(response, status) {
     // the Geocode service has sent its response. We can now use it for the map
     if (status == google.maps.GeocoderStatus.OK) {

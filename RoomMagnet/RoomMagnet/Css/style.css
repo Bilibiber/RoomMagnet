@@ -8211,6 +8211,6 @@ hr.style-six {
     display: block;
     padding: 0;
 }
-.bottom_border_home {
-border-bottom:1px;
+.no-overlay:after {
+background:rgba(0,0,0,0) !important;
 }
