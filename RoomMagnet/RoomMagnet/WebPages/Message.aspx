@@ -15,7 +15,7 @@
                 <td style="width: 100px; text-align: right"></td>
                 
                 <td style="width: 94px; text-align: center">
-                <asp:label id="Label1" runat="server" text="You are sending message to : UserName"></asp:label>
+                <asp:label id="ReceiverLbl" runat="server" text="You are sending message to : UserName"></asp:label>
             </tr>
             <tr>
                 <td style="width: 100px; height: 260px"></td>
@@ -47,7 +47,7 @@
             </tr>
         </table>
     <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" Height="134px" Width="538px"></asp:TextBox>
-    <asp:DropDownList ID="RenterNames" runat="server" Visible="false">
-        <asp:ListItem Value="1">James Bond</asp:ListItem>
+    <asp:DropDownList ID="RenterNames" runat="server" AutoPostBack="true" OnTextChanged="RenterNames_TextChanged" Visible="false">
+        <asp:ListItem ></asp:ListItem>
                 </asp:DropDownList>
 </asp:Content>
