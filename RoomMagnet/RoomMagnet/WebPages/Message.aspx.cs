@@ -52,10 +52,24 @@ public partial class WebPages_Message : System.Web.UI.Page
             }
             dataReader.Close();
             ReceiverLbl.Text = "You are sending message to : " + ReceiverName;
+            string sql2 = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+            " where (SenderID = " + Session["UserID"].ToString() + ") and (ReceiverID = " + HostReceiverID + ")";
+            
+            SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
+            SqlDataReader reader = sqlCommand2.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Messages.Text += reader.GetString(0) + Environment.NewLine;
+                }
+            }
+
         }
         else
         {
             bool testConvo = true;
+            ReceiverIDs.Clear();
             int SenderID = 0;
             for (int i = 0; i < Conversation.ConversationCount; i++)
             {
@@ -172,6 +186,7 @@ public partial class WebPages_Message : System.Web.UI.Page
 
                 
             }
+            txtmsg.Text = "You: " + message;
 
         }
         else
@@ -233,12 +248,27 @@ public partial class WebPages_Message : System.Web.UI.Page
             }
         }
         
+        
         cn.Close();
     }
 
     protected void RenterNames_TextChanged(object sender, EventArgs e)
     {
+        Messages.Text = String.Empty;
         ReceiverLbl.Text = "You are sending message to: " + RenterNames.Text;
+        string sql = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+            " where (SenderID = " + RenterNames.SelectedValue + ") and (ReceiverID = " + Session["UserID"].ToString() + ")";
+        cn.Open();
+        SqlCommand sqlCommand = new SqlCommand(sql, cn);
+        SqlDataReader reader = sqlCommand.ExecuteReader();
+        if (reader.HasRows)
+        {
+            while(reader.Read())
+            {
+                Messages.Text += reader.GetString(0) + Environment.NewLine;
+            }
+        }
+        cn.Close();
         
     }
 }
