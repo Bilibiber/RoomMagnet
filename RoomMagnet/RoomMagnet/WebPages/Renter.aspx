@@ -176,18 +176,18 @@
 
                         <ul class="sidebar-nav list-unstyled">
                             <li class="nav-item">
-                                <asp:LinkButton ID="renterprofile" runat="server" Style="font-size: 1.5em;" OnClick="renterProfile_Click" > <i class="la la-user icon-space" style="font-size:1em;"></i>My Profile</asp:LinkButton>
+                                <asp:LinkButton ID="renterprofile" runat="server" Style="font-size: 1.5em;" OnClick="renterProfile_Click"> <i class="la la-user icon-space" style="font-size:1em;"></i>My Profile</asp:LinkButton>
                             </li>
                             <li class="nav-item">
                                 <asp:LinkButton ID="renterFavorites" runat="server" Style="font-size: 1.5em;" OnClick="renterFavorites_Click"><i class="la la-home icon-space" style="font-size:1em;"></i>My Favorites</asp:LinkButton>
                             </li>
-                            <li class="nav-item" >
+                            <li class="nav-item">
                                 <asp:LinkButton ID="renterConnections" runat="server" Style="font-size: 1.5em;" OnClick="renterConnections_Click"><i class="la la-users icon-space" style="font-size:1em;"></i>Connections</asp:LinkButton>
                             </li>
                             <li class="nav-item">
                                 <asp:LinkButton ID="renterMessage" runat="server" Style="font-size: 1.5em;" OnClick="renterMessage_Click"><i class="la la-comments icon-space" style="font-size:1em;"></i>Messages</asp:LinkButton>
                             </li>
-                            <li class="nav-item" >
+                            <li class="nav-item">
                                 <asp:LinkButton ID="renterHistory" runat="server" Style="font-size: 1.5em;" OnClick="renterHistory_Click"><i class="la la-home icon-space" style="font-size:1em;"></i>History</asp:LinkButton>
                             </li>
                         </ul>
@@ -216,7 +216,7 @@
                                         <div class="profile-des">
                                             <div class="">
                                                 <h5>About</h5>
-                                                <asp:Label ID="userDes" runat="server" Text="" > </asp:Label>
+                                                <asp:Label ID="userDes" runat="server" Text=""> </asp:Label>
                                                 <br />
                                                 <br />
                                             </div>
@@ -321,7 +321,7 @@
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="Property2CityState" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta" style="float:right;">
+                                                                <div class="atbd_listing_meta" style="float: right;">
                                                                     <span class="atbd_meta atbd_listing_rating">
                                                                         <asp:Label ID="Property2Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
                                                                 </div>
@@ -373,7 +373,7 @@
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="Property3CityState" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta" style="float:right;">
+                                                                <div class="atbd_listing_meta" style="float: right;">
                                                                     <span class="atbd_meta atbd_listing_rating">
                                                                         <asp:Label ID="Property3Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
                                                                 </div>

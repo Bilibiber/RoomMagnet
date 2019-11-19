@@ -320,7 +320,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterFavorites.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
-        renterHistory.BackColor = System.Drawing.Color.FromArgb(84 , 84, 84);
+        renterHistory.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
 
         string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, AvailableBathrooms,PropertyID,PropertyID from[Property] WHERE propertyid = 1003";
         cn.Open();
@@ -368,7 +368,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     getinfor.Close();
                     history1.Visible = true;
                 }
-               
             }
         }
         reader.Close();
@@ -514,8 +513,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
         Response.Redirect("ManageSearchProperties.aspx");
     }
 
-
-
     protected void review_Click(object sender, EventArgs e)
     {
         ClientScript.RegisterStartupScript(this.GetType(), "p", "ShowPopup();", true);
@@ -529,7 +526,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         review.CommandText = "INSERT INTO [dbo].[Rating]([Descriptions],[NumStars],[LastUpdated],[LastUpdatedBy],[RenterID],[PropertyID]) VALUES" +
             "(@Descriptions,@NumStars,@LastUpdated,@LastUpdatedBy,@RenterID,@PropertyID)";
         review.Parameters.Add(new SqlParameter("@Descriptions", reviewdes.Text));
-        review.Parameters.Add(new SqlParameter("@NumStars", Convert.ToDecimal( reviewStar.Text)));
+        review.Parameters.Add(new SqlParameter("@NumStars", Convert.ToDecimal(reviewStar.Text)));
         review.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
         review.Parameters.Add(new SqlParameter("@LastUpdatedBy", Session["FullName"].ToString()));
         review.Parameters.Add(new SqlParameter("@RenterID", Int32.Parse(Session["UserID"].ToString())));
