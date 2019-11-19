@@ -20,10 +20,8 @@ public partial class Home : System.Web.UI.Page
             master.AfterLogin();
         }
     }
-
     protected void HomePageSearchButton_Click(object sender, EventArgs e)
     {
-        Session["HomePageSearchContent"] = HomePageSearchText.Text;
-        Response.Redirect("SearchResult.aspx");
+        Session["HomePageSearchContent"] = HomePageSearchText.Text;        Response.Redirect("SearchResult.aspx");
     }
 }

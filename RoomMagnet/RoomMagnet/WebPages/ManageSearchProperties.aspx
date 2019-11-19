@@ -5,7 +5,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <meta charset="UTF-8">
+    <%--<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Property Page</title>
@@ -24,88 +24,12 @@
     <link rel="stylesheet" href="style.css">
     <!-- endinject -->
     <link rel="icon" type="image/png" sizes="32x32" href="img/fevicon.png">
-    <script src="https://kit.fontawesome.com/0731522562.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0731522562.js" crossorigin="anonymous"></script>--%>
 </asp:Content>
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <section class="header-breadcrumb bgimage overlay overlay--dark">
-        <div class="mainmenu-wrapper">
-            <div class="menu-area menu1 ">
-                <div class="top-menu-area">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="menu-fullwidth">
-                                    <div class="logo-wrapper order-lg-0 order-sm-1">
-                                        <div class="logo logo-top">
-                                            <a href="index.html">
-                                                <img src="img/rm/logo-2.png" alt="logo image" class="img-fluid"></a>
-                                        </div>
-                                    </div>
-                                    <!-- ends: .logo-wrapper -->
-                                    <div class="author-area">
-                                        <div class="author__access_area">
-                                            <ul class="d-flex list-unstyled align-items-center">
-                                                <li class="signup-padding">
-                                                    <a href="" class="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#signup_modal">Sign Up</a>
-                                                </li>
-                                                <li>
-                                                    <a href="" class="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal">Login</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end .author-area -->
-
-                                    <div class="menu-container order-lg-1 order-sm-0">
-                                        <div class="d_menu">
-                                            <nav class="navbar navbar-expand-lg mainmenu__menu">
-                                                <div class="offcanvas-menu  collapse navbar-collpase">
-
-                                                    <ul class="nav navbar-nav">
-
-                                                        <li class="nav-item dropdown ml-auto">
-                                                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                <img src="img/author-avatar.png" alt="" class="rounded-circle img-fluid">
-                                                            </a>
-                                                            <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
-                                                                <a class="dropdown-item" href="#">Dashboard</a>
-                                                                <a class="dropdown-item" href="#">Settings</a>
-                                                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="#">Logout</a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <!-- ends: .author-info -->
-                                                <!-- /.navbar-collapse -->
-                                            </nav>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- end .author-area -->
-
-                                </div>
-                                <!-- ends: .author-info -->
-
-                                <!-- end .author-area -->
-
-                            </div>
-                            <!-- ends: .offcanvas-menu -->
-                        </div>
-                        <!-- ends: .menu-right -->
-                    </div>
-                </div>
-            </div>
-            <!-- end /.row -->
-        </div>
-        <!-- end /.container -->
-    </section>
-
-
+    
 
     <div class="section-bg property-title">
         <div class="container">
@@ -113,12 +37,16 @@
                 <div class="col-lg-12 property-action">
                     <div class="atbd_content_module  title-padding action ">
 
-                        <h1>One Bedroom Available Near Metro</h1>
-                        <a href="" class="atbdp-favourites text-right action-space"><span class="la la-heart-o"></span>Save</a>
+                        <asp:Label ID="titleLbl" runat="server" Text="Title: " />
+                        <%--                        <a href="" class="atbdp-favourites text-right action-space"><span class="la la-heart-o"></span>Save</a>--%>
 
-                        <a href="" class="action-space" data-toggle="modal" data-target="#atbdp-report-abuse-modal"><span class="la la-flag-o"></span>Report</a>
-                        <p class="subtitle">City, State</p>
+                        <asp:Label ID="cityLbl" runat="server" Text="" />
+                        <asp:Label ID="homeStateLbl" runat="server" Text="Home State" />
+                        <asp:Label ID="zipCodeLbl" runat="server" Text="ZipCode" />
 
+
+
+                        <%--                        <a href="" class="action-space" data-toggle="modal" data-target="#atbdp-report-abuse-modal"><span class="la la-flag-o"></span>Report</a>--%>
                     </div>
 
                 </div>
@@ -161,24 +89,14 @@
                         <div class="atbdb_content_module_contents">
                             <div class="gallery-wrapper">
                                 <div class="gallery-images">
-                                    <div class="single-image">
-                                        <img src="img/g1.jpg" alt="">
+                                    <div class="container">
+                                        <asp:Image ID="propertyImage1" runat="server" Height="371px" Width="381px" />
+                                        <asp:Image ID="propertyImage2" runat="server" Height="373px" Width="250px" />
+                                        <asp:Image ID="propertyImage3" runat="server" Width="325px" />
+                                        <asp:Image ID="propertyImage4" runat="server" Height="369px" Width="321px" />
                                     </div>
-                                    <div class="single-image">
-                                        <img src="img/g1.jpg" alt="">
-                                    </div>
-                                    <div class="single-image">
-                                        <img src="img/g1.jpg" alt="">
-                                    </div>
-                                    <div class="single-image">
-                                        <img src="img/g1.jpg" alt="">
-                                    </div>
-                                    <div class="single-image">
-                                        <img src="img/g1.jpg" alt="">
-                                    </div>
-                                    <div class="single-image">
-                                        <img src="img/g1.jpg" alt="">
-                                    </div>
+
+
                                 </div>
                                 <!-- ends: .gallery-images -->
                                 <div class="gallery-thumbs">
@@ -228,7 +146,7 @@
                         <div class="atbd_content_module__tittle_area">
                             <div class="atbd_area_title">
                                 <h4><span class="la la-star-o"></span>2 Reviews</h4>
-                                <label for="review_content" class="btn btn-secondary btn-icon-left btn-sm not_empty" data-toggle="modal" data-target="#review_modal"><span class="la la-star-o"></span>Add a review</label>
+                                <%--                                <label for="review_content" class="btn btn-secondary btn-icon-left btn-sm not_empty" data-toggle="modal" data-target="#review_modal"><span class="la la-star-o"></span>Add a review</label>--%>
                             </div>
                         </div>
                         <div class="atbdb_content_module_contents">
@@ -237,7 +155,8 @@
                                     <div class="atbd_review_top">
                                         <div class="atbd_avatar_wrapper">
                                             <div class="atbd_review_avatar">
-                                                <img alt="" src="img/review-author-thumb.jpg" class="avatar avatar-32 photo"></div>
+                                                <img alt="" src="img/review-author-thumb.jpg" class="avatar avatar-32 photo">
+                                            </div>
                                             <div class="atbd_name_time">
                                                 <p>Mark Rose</p>
                                                 <span class="review_time">6 hours ago</span>
@@ -264,7 +183,8 @@
                                     <div class="atbd_review_top">
                                         <div class="atbd_avatar_wrapper">
                                             <div class="atbd_review_avatar">
-                                                <img alt="" src="img/review-author-thumb3.jpg" class="avatar avatar-32 photo"></div>
+                                                <img alt="" src="img/review-author-thumb3.jpg" class="avatar avatar-32 photo">
+                                            </div>
                                             <div class="atbd_name_time">
                                                 <p>Conrad Jane</p>
                                                 <span class="review_time">6 hours ago</span>
@@ -359,7 +279,7 @@
                         <div class="widget-body atbd_author_info_widget">
                             <div class="atbd_avatar_wrapper">
                                 <div class="atbd_review_avatar">
-                                    <img src="img/avatar-60x60.jpg" alt="Avatar Image">
+<%--                                    <img src="img/avatar-60x60.jpg" alt="Avatar Image">--%>
                                 </div>
                                 <div class="atbd_name_time">
                                     <h4>Name<span class="verified" data-toggle="tooltip" data-placement="top" title="Verified"></span></h4>
@@ -367,8 +287,7 @@
                                 </div>
                             </div>
                             <!-- ends: .atbd_avatar_wrapper -->
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" />
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Book Now" />
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="message_OnClick" />
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
 
                         </div>
@@ -378,10 +297,71 @@
 
 
 
+                   
+
+                    <div class="modal" id="amenities_modal" tabindex="-1" role="dialog" aria-labelledby="amenities_modal_label" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+<%--                                    <h1 class="modal-title" id="amenities_modal">Amenities</h1>--%>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <%--<h4>Basic</h4>
+                                    <ul class="list-unstyled amenities-list">
+                                    </ul>--%>
+                                    <%--<h4>Safety Measures</h4>
+                                    <ul class="list-unstyled amenities-list">
+                                        <li>Smoke Detector
+                                        </li>
+                                        <li>Carbon Monoxide Detector
+                                        </li>
+                                        <li>Fire Extinguisher
+                                        </li>
+                                        <li>First Aid Kit
+                                        </li>
+                                    </ul>--%>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="widget atbd_widget widget-card">
                         <div class="atbd_widget_title">
-                            <h4><span class="la la-bookmark"></span>Amenities</h4>
-                            <a href="#" data-toggle="modal" data-target="#amenities_modal">View All</a>
+                            <h4><span class="la la-map-marker"></span>Amenities Available: </h4>
+                        </div>
+                        <!-- ends: .atbd_widget_title -->
+                        <div class="widget-body atbdb_content_module_contents">
+                            <div class="map" id="map-two"></div>
+
+<%--                            <div class="item-container">--%>
+<%--                                <div id="amenitiesLbl" runat="server" text="Amenities: " visible="false">--%>
+                                    <br />
+<%--                                    <h3>Ameneties: </h3>--%>
+                                    <asp:Label ID="airConditioningLbl" runat="server" Text="Air Conditioning " Visible="false"></asp:Label> </br>
+                                    <asp:Label ID="heatingLbl" runat="server" Text="Heating " Visible="false"></asp:Label></br>
+                                    <asp:Label ID="onSiteLaundryLbl" runat="server" Text="On Site Laundry " Visible="false"></asp:Label></br>
+                                    <asp:Label ID="parkingLbl" runat="server" Text="Parking " Visible="false"></asp:Label></br>
+                                    <asp:Label ID="furnishedLbl" runat="server" Text="Furnished " Visible=" false"></asp:Label></br>
+                                    <asp:Label ID="petFriendlyLbl" runat="server" Text="Pet Friendly " Visible="false"></asp:Label></br>
+                                    <asp:Label ID="carbonMonoxideDetectorLbl" runat="server" Text="Carbon Monoxide Detector " Visible="false"></asp:Label></br>
+                                    <asp:Label ID="smokeDetectorLbl" runat="server" Text="Smoke Detector " Visible="false"></asp:Label></br>
+                                    <asp:Label ID="seperateEntranceLbl" runat="server" Text="Seperate Entrance " Visible="false"></asp:Label></br>
+                                    <asp:Label ID="wifiLbl" runat="server" Text="WiFi " Visible="false"></asp:Label></br>
+                                    <asp:Label ID="tvLbl" runat="server" Text="TV " Visible="false"></asp:Label></br>
+                                    <asp:Label ID="seperateBathroomLbl" runat="server" Text="Seperate Bathroom " Visible="false"></asp:Label></br>
+<%--                                </div>--%>
+                                <br />
+<%--                            </div>--%>
+                            <!-- ends: .atbdb_content_module_contents -->
+                        </div>
+
+                         <div class="widget atbd_widget widget-card">
+                        <div class="atbd_widget_title">
+                            <h4><span class="la la-bookmark"></span>Property Room Details: </h4>
                         </div>
                         <!-- ends: /.atbd_widget_title -->
                         <div class="widget-body atbdp-widget-categories">
@@ -412,7 +392,6 @@
                                 </li>
                                 <li>
                                     <div class="item-section">
-                                        <asp:Label runat="server" Text="Descriptions: "></asp:Label>
                                         <asp:Label ID="descriptionsLbl" runat="server"></asp:Label>
                                     </div>
                                 </li>
@@ -423,7 +402,6 @@
                                     </div>
                                 </li>
                             </ul>
-                            <h4>Bed and Bath</h4>
                             <ul class="list-unstyled amenities-list">
                                 <li>
                                     <div class="item-section">
@@ -437,54 +415,12 @@
                         <!-- ends: .atbdp -->
                     </div>
                     <!-- ends: .widget -->
+                        <!-- ends: widget -->
 
-                    <div class="modal" id="amenities_modal" tabindex="-1" role="dialog" aria-labelledby="amenities_modal_label" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title" id="amenities_modal">Amenities</h1>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <h4>Basic</h4>
-                                    <ul class="list-unstyled amenities-list">
-                                    </ul>
-                                    <h4>Safety Measures</h4>
-                                    <ul class="list-unstyled amenities-list">
-                                        <li>Smoke Detector
-                                        </li>
-                                        <li>Carbon Monoxide Detector
-                                        </li>
-                                        <li>Fire Extinguisher
-                                        </li>
-                                        <li>First Aid Kit
-                                        </li>
-                                    </ul>
 
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
-
-                    <div class="widget atbd_widget widget-card">
-                        <div class="atbd_widget_title">
-                            <h4><span class="la la-map-marker"></span>Location</h4>
-                        </div>
-                        <!-- ends: .atbd_widget_title -->
-                        <div class="widget-body atbdb_content_module_contents">
-                            <div class="map" id="map-two"></div>
-                        </div>
-                        <!-- ends: .atbdb_content_module_contents -->
-                    </div>
-                    <!-- ends: widget -->
-
-
                 </div>
             </div>
-        </div>
     </section>
     <!-- ends: .directory_listiing_detail_area -->
 
@@ -631,55 +567,29 @@
             </div>
         </div>
 
-        <div class="item-container">
-            <div id="amenitiesLbl" runat="server" text="Amenities: " visible="false">
-                <br />
-                <h3>Ameneties: </h3>
-                <asp:Label ID="airConditioningLbl" runat="server" Text="Air Conditioning " Visible="false"></asp:Label>
-                <asp:Label ID="heatingLbl" runat="server" Text="Heating " Visible="false"></asp:Label>
-                <asp:Label ID="onSiteLaundryLbl" runat="server" Text="On Site Laundry " Visible="false"></asp:Label>
-                <asp:Label ID="parkingLbl" runat="server" Text="Parking " Visible="false"></asp:Label>
-                <asp:Label ID="furnishedLbl" runat="server" Text="Furnished " Visible=" false"></asp:Label>
-                <asp:Label ID="petFriendlyLbl" runat="server" Text="Pet Friendly " Visible="false"></asp:Label>
-                <asp:Label ID="carbonMonoxideDetectorLbl" runat="server" Text="Carbon Monoxide Detector " Visible="false"></asp:Label>
-                <asp:Label ID="smokeDetectorLbl" runat="server" Text="Smoke Detector " Visible="false"></asp:Label>
-                <asp:Label ID="separateEntranceLbl" runat="server" Text="Seperate Entrance " Visible="false"></asp:Label>
-                <asp:Label ID="wifiLbl" runat="server" Text="WiFi " Visible="false"></asp:Label>
-                <asp:Label ID="tvLbl" runat="server" Text="TV " Visible="false"></asp:Label>
-                <asp:Label ID="seperateBathroomLbl" runat="server" Text="Seperate Bathroom " Visible="false"></asp:Label>
-            </div>
-            <br />
-            <div class="container">
-                <asp:Image ID="propertyImage1" runat="server" Height="371px" Width="381px" />
-                <asp:Image ID="propertyImage2" runat="server" Height="373px" Width="250px" />
-                <asp:Image ID="propertyImage3" runat="server" Width="325px" />
-                <asp:Image ID="propertyImage4" runat="server" Height="369px" Width="321px" />
-            </div>
-
-        </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
-    <!-- inject:js-->
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="popover"]').popover();
-        });
-    </script>
-    <script src="vendor_assets/js/jquery/jquery-1.12.3.js"></script>
-    <script src="vendor_assets/js/bootstrap/popper.js"></script>
-    <script src="vendor_assets/js/bootstrap/bootstrap.min.js"></script>
-    <script src="vendor_assets/js/jquery-ui.min.js"></script>
-    <script src="vendor_assets/js/jquery.barrating.min.js"></script>
-    <script src="vendor_assets/js/jquery.counterup.min.js"></script>
-    <script src="vendor_assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="vendor_assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="vendor_assets/js/jquery.waypoints.min.js"></script>
-    <script src="vendor_assets/js/masonry.pkgd.min.js"></script>
-    <script src="vendor_assets/js/owl.carousel.min.js"></script>
-    <script src="vendor_assets/js/select2.full.min.js"></script>
-    <script src="vendor_assets/js/slick.min.js"></script>
-    <script src="theme_assets/js/locator.js"></script>
-    <script src="theme_assets/js/main.js"></script>
-    <script src="theme_assets/js/map.js"></script>
-    <!-- endinject-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
+        <!-- inject:js-->
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="popover"]').popover();
+            });
+        </script>
+        <script src="vendor_assets/js/jquery/jquery-1.12.3.js"></script>
+        <script src="vendor_assets/js/bootstrap/popper.js"></script>
+        <script src="vendor_assets/js/bootstrap/bootstrap.min.js"></script>
+        <script src="vendor_assets/js/jquery-ui.min.js"></script>
+        <script src="vendor_assets/js/jquery.barrating.min.js"></script>
+        <script src="vendor_assets/js/jquery.counterup.min.js"></script>
+        <script src="vendor_assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="vendor_assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="vendor_assets/js/jquery.waypoints.min.js"></script>
+        <script src="vendor_assets/js/masonry.pkgd.min.js"></script>
+        <script src="vendor_assets/js/owl.carousel.min.js"></script>
+        <script src="vendor_assets/js/select2.full.min.js"></script>
+        <script src="vendor_assets/js/slick.min.js"></script>
+        <script src="theme_assets/js/locator.js"></script>
+        <script src="theme_assets/js/main.js"></script>
+        <script src="theme_assets/js/map.js"></script>
+        <!-- endinject-->
 </asp:Content>
 

@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="search_title_area">
-                            <h2 class="title">START INTERGENERATIONAL HOMESHARING WITH CONFIDENCE TODAY</h2>
+                            <h2 class="title">START INTERGENERATIONAL HOMESHARING WITH CONFIDENCE TODAY </h2>
                         </div>
                         <div class="atbd_seach_fields_wrapper input-group">
                             <div class="single_search_field search_query">
