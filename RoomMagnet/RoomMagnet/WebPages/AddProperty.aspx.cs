@@ -280,6 +280,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         Response.Redirect(Request.Url.AbsoluteUri);
         cn.Close();
 
+        Session["Roles"] = "Host";
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
     }
 

@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
@@ -67,13 +68,14 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 {
                     cn.Open();
                 }
-                string Sql = "insert into Users (FirstName,LastName,Email,Password,AgeRange,UserRole,Verified,SignUpDate,LastUpdated,LastUpdatedBy) values(@FirstName,@LastName,@Email,@Password,@AgeRange,@UserRole,@Verified,@SignUpDate,@LastUpdated,@LastUpdatedBy)";
+                string Sql = "insert into Users (FirstName,LastName,Email,Password,AgeRange,UserRole,Verified,SignUpDate,LastUpdated,LastUpdatedBy,[ImagePath]) values(@FirstName,@LastName,@Email,@Password,@AgeRange,@UserRole,@Verified,@SignUpDate,@LastUpdated,@LastUpdatedBy,@ImagePath)";
                 SqlCommand sqlCommand = new SqlCommand(Sql, cn);
                 string role = "Renter";
                 string verified = "Unverified";
-                
+                byte[] imgdata = System.IO.File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/img/40x40.png"));
+
                 sqlCommand.Parameters.AddRange(
-                    new SqlParameter[]
+                    new SqlParameter[] 
                     {
                     new SqlParameter("@FirstName",users.getFirstName()),
                     new SqlParameter("@LastName",users.getLastName()),
@@ -84,6 +86,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                     new SqlParameter("@LastUpdatedBy",users.getLastUpdatedBy()),
                     new SqlParameter("@SignUpDate",DateTime.Now),
                     new SqlParameter("@UserRole",role),
+                    new SqlParameter("@ImagePath",imgdata),
                     new SqlParameter("@Verified",verified),
                     });
                 sqlCommand.ExecuteNonQuery();

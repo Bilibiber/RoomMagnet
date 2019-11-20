@@ -364,10 +364,12 @@ public partial class WebPages_Host : System.Web.UI.Page
         hostConnections.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
         hostMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
 
+
     }
 
     protected void hostMessage_Click(object sender, EventArgs e)
     {
+        string request = "";
         panelprofile.Visible = false;
         panelfavorites.Visible = false;
         panelconnections.Visible = false;
@@ -376,6 +378,13 @@ public partial class WebPages_Host : System.Web.UI.Page
         hostproperty.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         hostConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         hostMessage.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+
+        //if host accepts
+    
+
+
+
+        //if host declines
     }
 
     protected void editprofile_Click(object sender, EventArgs e)
