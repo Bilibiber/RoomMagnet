@@ -451,7 +451,7 @@
                 <%--history--%>
                 <asp:Panel ID="panelhistory" runat="server" Visible="False">
                     <div class="col-md-9 mx-auto ">
-                        <h1 class="update-title">My favorite
+                        <h1 class="update-title">Rent History
                         </h1>
 
                         <div class="atbd_author_module">
@@ -659,9 +659,10 @@
                         <!-- ends: .atbd_review_rating_area -->
                         <div class="form-group">
                             <br />
-                            <asp:TextBox runat="server" class="form-control" TextMode="multiline" Height="100px" ID="reviewdes"></asp:TextBox>
+                            <asp:TextBox runat="server" class="form-control" TextMode="multiline" Height="100px" ID="reviewdes" ControlToValidate="reviewdes"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="Requiredreview" runat="server" ErrorMessage="Required" ControlToValidate="reviewdes" ForeColor="Red" ValidationGroup="reivew" Display="Dynamic">Required</asp:RequiredFieldValidator>
                         </div>
-                        <asp:Button runat="server" Text="Submit Review" class="btn btn-primary" ID="submitReview" OnClick="submitReview_Click" />
+                        <asp:Button runat="server" Text="Submit Review" class="btn btn-primary" ID="submitReview" OnClick="submitReview_Click" ValidationGroup="reivew" />
                     </form>
                 </div>
             </div>

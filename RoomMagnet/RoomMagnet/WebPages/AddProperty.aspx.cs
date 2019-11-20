@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Web;
+using System.Web.UI;
 
 public partial class WebPages_AddProperty : System.Web.UI.Page
 {
@@ -12,6 +13,10 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Comparestart1.ValueToCompare = DateTime.Now.ToShortDateString();
+        Comparestart2.ValueToCompare = DateTime.Now.ToShortDateString();
+        Comparestart3.ValueToCompare = DateTime.Now.ToShortDateString();
+        Comparestart4.ValueToCompare = DateTime.Now.ToShortDateString();
         room1.Visible = false;
         room2.Visible = false;
         room3.Visible = false;
@@ -70,14 +75,14 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
     protected void cancel_Click(object sender, EventArgs e)
     {
-        if(Session["Roles"].ToString() == "Renter")
+        if (Session["Roles"].ToString() == "Renter")
         {
             Response.Redirect("Renter.aspx");
-        }else if (Session["Roles"].ToString() == "Host")
+        }
+        else if (Session["Roles"].ToString() == "Host")
         {
             Response.Redirect("Host.aspx");
         }
-        
     }
 
     protected void post_Click(object sender, EventArgs e)
@@ -272,6 +277,13 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         }
         Response.Redirect(Request.Url.AbsoluteUri);
         cn.Close();
+
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+    }
+
+    protected void goDashboard_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Host.aspx");
     }
 
     protected void addBedrooms_SelectedIndexChanged(object sender, EventArgs e)
