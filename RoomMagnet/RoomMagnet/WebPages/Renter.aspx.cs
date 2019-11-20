@@ -302,7 +302,37 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterConnections.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
         renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
-        string sql = "Select PropertyHostID, PropertyID, PropertyRoomID,RoomRenterID, Request from [Requests] where RoomRenterID=" + Session["UserID"].ToString();
+        string sql = "Select Top 5 PropertyHostID, PropertyID, PropertyRoomID,RoomRenterID, Request from [Requests] where RoomRenterID=" + Session["UserID"].ToString();
+        SqlCommand sqlCommand = new SqlCommand(sql, cn);
+        int RequestCount = 0;
+        SqlDataReader reader = sqlCommand.ExecuteReader();
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                if(RequestCount==0)
+                {
+
+                }
+                if (RequestCount==1)
+                {
+
+                }
+                if(RequestCount==2)
+                {
+
+                }
+                if(RequestCount==3)
+                {
+
+                }
+                if(RequestCount==4)
+                {
+
+                }
+                RequestCount++;
+            }
+        }
         cn.Open();
        
     }
