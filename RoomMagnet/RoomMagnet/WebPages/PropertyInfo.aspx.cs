@@ -19,7 +19,12 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         HostValidate.Visible = false;
         favorvalidate.Visible = false;
 
-        if (Session["Roles"].ToString() == "Renter")
+        
+        if(Session["Roles"] == null)
+        {
+            saveto.Visible = true;
+        }
+        else if (Session["Roles"].ToString() == "Host")
         {
             saveto.Visible = false;
         }
