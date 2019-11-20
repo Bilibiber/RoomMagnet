@@ -189,11 +189,14 @@
                                 </div>
                                 <hr />
                                 <asp:panel runat="server" id="room1">
-                                    <asp:Label runat="server" Text="Please enter room information" class="form-label"></asp:Label><br />
+                                    
+                                    <asp:textbox id="Room1Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:textbox> 
+                                                    <asp:requiredfieldvalidator id="Room1Requiredfieldvalidator" runat="server" controltovalidate="Room1Name" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator><br />
                                     <asp:Label runat="server" Text="Room 1 information" class="form-label"></asp:Label>
                                     <table>
                                         <tr>
                                             <td>
+                                                
                                                 <asp:label runat="server" text="Rent Price/Month" class="form-label"></asp:label>
                                                 <div class="pricing-option-inputs">
                                                     <asp:textbox id="roomprice1" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:textbox>
@@ -233,6 +236,8 @@
                                     <hr />
                                 </asp:panel>
                                 <asp:panel runat="server" id="room2" Visible="False">
+                                    <asp:textbox id="Room2Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:textbox> 
+                                                    <asp:requiredfieldvalidator id="Room2Requiredfieldvalidator" runat="server" controltovalidate="Room2Name" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator><br />
                                     <asp:Label runat="server" Text="Room 2 information" class="form-label"></asp:Label>
                                     <table>
                                         <tr>
@@ -275,6 +280,8 @@
                                     <hr />
                                 </asp:panel>
                                 <asp:panel runat="server" id="room3" Visible="False">
+                                    <asp:textbox id="Room3Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:textbox> 
+                                                    <asp:requiredfieldvalidator id="Room3Requiredfieldvalidator" runat="server" controltovalidate="Room3Name" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator><br />
                                     <asp:Label runat="server" Text="Room 3 information" class="form-label"></asp:Label>
                                     <table>
                                         <tr>
@@ -317,6 +324,8 @@
                                     <hr />
                                 </asp:panel>
                                 <asp:panel runat="server" id="room4" Visible="False">
+                                    <asp:textbox id="Room4Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:textbox> 
+                                                    <asp:requiredfieldvalidator id="Room4Requiredfieldvalidator" runat="server" controltovalidate="Room1Name" errormessage="Required" forecolor="Red" validationgroup="addproperty" display="Dynamic">Required</asp:requiredfieldvalidator><br />
                                     <asp:Label runat="server" Text="Room 4 information" class="form-label"></asp:Label>
                                     <table>
                                         <tr>

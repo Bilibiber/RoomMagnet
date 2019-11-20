@@ -103,11 +103,7 @@
             padding-top: 50px;
         }
 
-        .auto-style1 {
-            float: right;
-            margin-top: 0;
-        }
-    </style>
+        </style>
 
     <script type="text/javascript">
         function ShowPopup() {
@@ -242,7 +238,7 @@
 
                 <asp:Panel ID="panelfavorites" runat="server" Visible="False">
                     <div class="col-md-9 mx-auto ">
-                        <h1 class="update-title">My favorite
+                        <h1 class="update-title">My Favorites
                         </h1>
 
                         <div class="atbd_author_module">

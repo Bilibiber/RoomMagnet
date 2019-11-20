@@ -312,13 +312,16 @@
                             <!-- ends: .atbd_avatar_wrapper -->
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="Unnamed_Click" />
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve"  />
                         </div>
                         <!-- ends: .widget-body -->
                     </div>
                     <!-- ends: .widget -->
                     <div class="widget atbd_widget widget-card">
                         <div class="atbd_widget_title">
-                            <h4><span class="la la-bookmark"></span>Amenities</h4>
+                            <h4><span class="la la-bookmark"></span>Amenities<asp:DropDownList ID="Rooms" runat="server">
+                                </asp:DropDownList>
+                            </h4>
                         </div>
                         <!-- ends: /.atbd_widget_title -->
                         <div class="widget-body atbdp-widget-categories">
