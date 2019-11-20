@@ -267,13 +267,14 @@
                         <div class="container">
                             <div class="col-md-12">
                                 <div class=" p-bottom-25">
-                                    <div class="card border">
+                                    <div class="card border" id="request1" runat="server" visible="false">
                                         <div class="card-header">
-                                            John Smith
+                                            <asp:Label ID="request1name" runat="server" Text="Label"></asp:Label>
                                         </div>
                                         <div class="card-body">
                                             <div class="col-md-9 left_col-1">
-                                                <p class="card-text">Hi, I am a student and I am interested in renting the available room you posted.</p>
+                                                <p class="card-text">
+                                                    <asp:Label ID="request1des" runat="server" Text="Label"></asp:Label></p>
                                             </div>
                                             <div class="col-md-3 right_col-1">
                                                 <a href="#" class="btn btn-secondary requests-btn inline">Accept</a>
@@ -285,7 +286,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class=" p-bottom-25">
-                                    <div class="card border">
+                                    <div class="card border" id="request2" runat="server" visible="false">
                                         <div class="card-header">
                                             John Smith
                                         </div>

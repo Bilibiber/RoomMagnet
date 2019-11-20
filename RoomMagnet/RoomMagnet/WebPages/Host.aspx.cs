@@ -27,6 +27,21 @@ public partial class WebPages_Host : System.Web.UI.Page
         Property1Space.Visible = false;
         Property2Space.Visible = false;
         Property3Space.Visible = false;
+
+        //cn.Open();
+        //System.Data.SqlClient.SqlCommand selectrequest = new System.Data.SqlClient.SqlCommand();
+        //selectrequest.Connection = cn;
+        //int userid = Convert.ToInt32(Session["UserID"]);
+        //selectrequest.CommandText = "select [ImagePath] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+        //selectrequest.Parameters.Add(new SqlParameter("@UserID", userid));
+        //SqlDataReader getimg = selectrequest.ExecuteReader();
+        //while (getimg.Read())
+        //{
+
+        //}
+        //getimg.Close();
+        //cn.Close();
+
         if (!IsPostBack)
         {
             cn.Open();
