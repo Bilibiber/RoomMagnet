@@ -256,7 +256,8 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             }
 
             startDateLbl.Text = "Date Avaliable: " + startDate.ToString();
-            availableBathroomsLbl.Text = availableBathrooms.ToString();
+            availableBathroomsLbl.Text = availableBathrooms.ToString() + " Bathroom";
+            availableBedroomsLbl.Text = availableBedrooms.ToString() + " Bedroom";
             lastUpdatedLbl.Text = lastUpdated.ToShortDateString();
 
             counter++;
@@ -467,8 +468,9 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         }
         else
         {
+            string status = "Pending";
             string Request = Session["FullName"].ToString() + ",  is interested in renting a room in " + titleLbl.Text +   ", Would you like to accept their request?";
-            string sql = "INSERT INTO Requests (PropertyHostID, PropertyID, PropertyRoomID, RoomRenterID, Request) VALUES (@PropertyHostID, @PropertyID, @PropertyRoomID, @RoomRenterID, @Request)";
+            string sql = "INSERT INTO Requests (PropertyHostID, PropertyID, PropertyRoomID, RoomRenterID, Request, RequestStatus) VALUES (@PropertyHostID, @PropertyID, @PropertyRoomID, @RoomRenterID, @Request,@RequestStatus)";
             connection.Open();
 
             SqlCommand cmd = new SqlCommand(sql, connection);
@@ -477,6 +479,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@PropertyRoomID", Rooms.SelectedValue);
             cmd.Parameters.AddWithValue("@RoomRenterID", Session["UserID"].ToString());
             cmd.Parameters.AddWithValue("@Request", Request);
+            cmd.Parameters.AddWithValue("@RequestStatus", status);
             cmd.ExecuteNonQuery();
             connection.Close();
         }
