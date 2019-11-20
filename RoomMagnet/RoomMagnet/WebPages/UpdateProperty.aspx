@@ -150,7 +150,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-   <%-- <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign In" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#Updatenotification" data-dismiss="modal" OnClientClick="return false" />--%>
+    <%-- <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign In" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#Updatenotification" data-dismiss="modal" OnClientClick="return false" />--%>
     <section class="add-listing-wrapper border-bottom section-bg ">
         <div class="container">
             <div class="row">
@@ -263,6 +263,17 @@
                                     <asp:TextBox ID="addZip" runat="server" placeholder="Zip Code" class="form-control" MaxLength="10"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="requireZip" runat="server" ControlToValidate="addZip" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                     <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
+                                </div>
+
+                                <div class="form-group ">
+                                    <asp:Label runat="server" class="form-label " Text="Home Type"></asp:Label>
+                                    <asp:DropDownList runat="server" ID="addType" class="form-control">
+                                        <asp:ListItem Value=""></asp:ListItem>
+                                        <asp:ListItem Value="Appartment">Appartment</asp:ListItem>
+                                        <asp:ListItem Value="TownHouse">Town house</asp:ListItem>
+                                        <asp:ListItem Value="Home">Home</asp:ListItem>
+                                        </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="addType" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
 
                                 <div class="form-group">
@@ -495,7 +506,7 @@
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addstartdate4" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="addstartdate4" runat="server" onfocus="(this.type='date')" class="form-control" Width="284px"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator7" runat="server" ControlToValidate="addstartdate4" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                     <asp:CompareValidator ID="Comparestart4" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate4" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
@@ -522,11 +533,11 @@
                                                 <h4><span class="la la-thumbs-up"></span>Amenities (Check all that apply)</h4>
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group">
                                             <div class="col-lg-10 amenities-checks">
                                                 <div class="form-check">
-                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" CssClass="auto-style1" />
-                                                    <br />
+                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" style="padding-right:100px" />
                                                 </div>
                                                 <div class="form-check">
                                                     <asp:CheckBox ID="checkheating" runat="server" class="form-check-input" Text="  Heating" />
@@ -590,6 +601,23 @@
                 <!-- ends: .atbd_content_module -->
             </div>
             <!-- ends: .col-lg-10 -->
+            <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 offset-lg-1" style="left: 0px; top: 0px">
+                                    <div class="atbd_content_module">
+                                        <div class="atbd_content_module__tittle_area">
+                                            <div class="atbd_area_title">
+                                                <h4>Property Descriptions</h4>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:TextBox runat="server" ID="propertydes" placeholder="Description" class="form-control" TextMode="MultiLine" Height="200px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="requireddes" runat="server" ErrorMessage="RequiredFieldValidator" Text="Required" ControlToValidate="propertydes" ForeColor="Red"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
             <div class="container">
                 <div class="row">
@@ -607,7 +635,11 @@
                                     <asp:Image ID="imgpreview" runat="server" Height="150" Width="150" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px;" />
                                 </div>--%>
                                 <asp:FileUpload ID="FileUpload1" multiple="multiple" runat="server" AllowMultiple="true" />
+                                <asp:RequiredFieldValidator ID="requireimg" runat="server" ErrorMessage="RequiredFieldValidator" Text="Required" ValidationGroup="img" ControlToValidate="FileUpload1" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <%-- <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />--%>
+                                <br />
+                                <br />
+                                <asp:Button ID="updateimg" class="btn btn-primary" runat="server" Text="Insert more images" ValidationGroup="img" OnClick="updateimg_Click"/>
                                 <br />
                                 <br />
                             </div>

@@ -151,6 +151,17 @@
                                     <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
                                 </div>
 
+                                <div class="form-group ">
+                                    <asp:Label runat="server" class="form-label " Text="Home Type"></asp:Label>
+                                    <asp:DropDownList runat="server" ID="addType" class="form-control">
+                                        <asp:ListItem Value=""></asp:ListItem>
+                                        <asp:ListItem Value="Appartment">Appartment</asp:ListItem>
+                                        <asp:ListItem Value="TownHouse">Town House</asp:ListItem>
+                                        <asp:ListItem Value="Home">Home</asp:ListItem>
+                                        </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="addType" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                </div>
+
                                 <div class="form-group">
                                     <asp:Label runat="server" Text="Square Footage of House" class="form-label"></asp:Label>
 
@@ -222,6 +233,7 @@
                                                         <asp:ListItem Value="N">No</asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:RequiredFieldValidator ID="Requiredroombath1" runat="server" ControlToValidate="roombath1" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -400,76 +412,6 @@
                                 </asp:Panel>
                         </div>
                         <!-- ends: .form-group -->
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-10 offset-lg-1" style="left: 0px; top: 0px">
-                                    <div class="atbd_content_module">
-                                        <div class="atbd_content_module__tittle_area">
-                                            <div class="atbd_area_title">
-                                                <h4><span class="la la-thumbs-up"></span>Amenities (Check all that apply)</h4>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-lg-10 amenities-checks">
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkheating" runat="server" class="form-check-input" Text="  Heating" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkLaundry" runat="server" class="form-check-input" Text="  On-Site Laundry" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkParking" runat="server" class="form-check-input" Text=" Parking" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkFurnished" runat="server" class="form-check-input" Text=" Furnished" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkpet" runat="server" class="form-check-input" Text=" Pet-Friendly" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkcarbondetector" runat="server" class="form-check-input" Text=" Carbon Monoxide Detector" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checksomkedetector" runat="server" class="form-check-input" Text=" Smoke Detector" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkspeentrance" runat="server" class="form-check-input" Text=" Separate Entrance" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkWifi" runat="server" class="form-check-input" Text=" Wi-Fi" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkTV" runat="server" class="form-check-input" Text=" TV" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkspebath" runat="server" class="form-check-input" Text="Separate Bathroom" />
-                                                    <br />
-                                                </div>
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="checkOther" class="form-check-input" runat="server" Text="Other(s)" AutoPostBack="True" />
-                                                    <br />
-                                                    <asp:TextBox runat="server" class="form-control" Enabled="False" ID="othertextbox"></asp:TextBox>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         </form>
                     </div>
                     <!-- ends: .atbdb_content_module_contents -->
@@ -480,72 +422,200 @@
 
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-10 offset-lg-1" style="left: 0px; top: 0px">
+                        <div class="atbd_content_module">
+                            <div class="atbd_content_module__tittle_area">
+                                <div class="atbd_area_title">
+                                    <h4><span class="la la-thumbs-up"></span>Amenities (Check all that apply)</h4>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 amenities-checks">
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkheating" runat="server" class="form-check-input" Text="  Heating" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkLaundry" runat="server" class="form-check-input" Text="  On-Site Laundry" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkParking" runat="server" class="form-check-input" Text=" Parking" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkFurnished" runat="server" class="form-check-input" Text=" Furnished" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkpet" runat="server" class="form-check-input" Text=" Pet-Friendly" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkcarbondetector" runat="server" class="form-check-input" Text=" Carbon Monoxide Detector" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checksomkedetector" runat="server" class="form-check-input" Text=" Smoke Detector" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkspeentrance" runat="server" class="form-check-input" Text=" Separate Entrance" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkWifi" runat="server" class="form-check-input" Text=" Wi-Fi" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkTV" runat="server" class="form-check-input" Text=" TV" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkspebath" runat="server" class="form-check-input" Text="Separate Bathroom" />
+                                        <br />
+                                    </div>
+                                    <div class="form-check">
+                                        <asp:CheckBox ID="checkOther" class="form-check-input" runat="server" Text="Other(s)" AutoPostBack="True" />
+                                        <br />
+                                        <asp:TextBox runat="server" class="form-control" Enabled="False" ID="othertextbox"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <%--<div class="container">
+                <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="atbd_content_module">
                             <div class="atbd_content_module__tittle_area">
                                 <div class="atbd_area_title">
-                                    <h4><span class="la la-calendar-check-o"></span>Images</h4>
+                                    <h4><span class="la la-thumbs-up"></span>Amenities (Check all that apply)</h4>
                                 </div>
-                                <br />
-                                <br />
-                                <br />
-                                <%--<div id="showimage">
-                                    <asp:image id="imgpreview" runat="server" height="150" width="150" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px;" />
-                                </div>--%>
-                                <asp:FileUpload ID="FileUpload1" multiple="multiple" runat="server" AllowMultiple="true" />
-                                <br />
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="RequiredFieldValidator" Text="Please upload images for your property!" ControlToValidate="FileUpload1" ValidationGroup="addproperty" ForeColor="Red"></asp:RequiredFieldValidator>
-                                <%-- <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />--%>
-                                <br />
-                                <br />
                             </div>
-
-                            <!-- ends: .atbdb_content_module_contents -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-lg-5" id="left_col-1">
+                                            <div class="form-check">
+                                                <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" />
+                                                <br />
+                                            </div>
+                                            <div class="form-check">
+                                                <asp:CheckBox ID="checkheating" runat="server" class="form-check-input" Text="  Heating" /><br />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5" id="right_col-1">
+                                            <div class="form-check">
+                                               <asp:CheckBox ID="checkLaundry" runat="server" class="form-check-input" Text="  On-Site Laundry" />
+                                                <br />
+                                            </div>
+                                            <div class="form-check">
+                                                <asp:CheckBox ID="checkParking" runat="server" class="form-check-input" Text=" Parking" /><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <!-- ends: .atbd_content_module -->
                     </div>
-                    <!-- ends: .col-lg-10 -->
                 </div>
-            </div>
+            </div>--%>
 
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center ">
-                        <asp:Button runat="server" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" Text="Post" ValidationGroup="addproperty" ID="post" OnClick="post_Click"></asp:Button>
-                        <asp:Button runat="server" Text="Cancel" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" ID="cancel" OnClick="cancel_Click"></asp:Button>
-                    </div>
-                </div>
-            </div>
-
-            <br />
-
-            <div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-
-                            <asp:Image ID="Image2" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
-
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <h3>Property Added!</h3>
-                            <p></p>
-                        </div>
-                        <div class="modal-footer mx-auto">
-                            <div class="form-excerpts">
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <asp:Button runat="server" Text="Dashboard" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="goDashboard_Click" />
-                                    </li>
-                                </ul>
+                    <div class="col-lg-10 offset-lg-1" style="left: 0px; top: 0px">
+                        <div class="atbd_content_module">
+                            <div class="atbd_content_module__tittle_area">
+                                <div class="atbd_area_title">
+                                    <h4>Property Descriptions</h4>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox runat="server" ID="propertydes" placeholder="Description" class="form-control" TextMode="MultiLine" Height="200px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="requireddes" runat="server" ErrorMessage="RequiredFieldValidator" Text="Required" ControlToValidate="propertydes" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="atbd_content_module">
+                        <div class="atbd_content_module__tittle_area">
+                            <div class="atbd_area_title">
+                                <h4><span class="la la-calendar-check-o"></span>Images</h4>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <%--<div id="showimage">
+                                    <asp:image id="imgpreview" runat="server" height="150" width="150" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px;" />
+                                </div>--%>
+                            <asp:FileUpload ID="FileUpload1" multiple="multiple" runat="server" AllowMultiple="true" />
+                            <br />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="RequiredFieldValidator" Text="Please upload images for your property!" ControlToValidate="FileUpload1" ValidationGroup="addproperty" ForeColor="Red"></asp:RequiredFieldValidator>
+                            <%-- <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />--%>
+                            <br />
+                            <br />
+                        </div>
+
+                        <!-- ends: .atbdb_content_module_contents -->
+                    </div>
+                    <!-- ends: .atbd_content_module -->
+                </div>
+                <!-- ends: .col-lg-10 -->
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center ">
+                    <asp:Button runat="server" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" Text="Post" ValidationGroup="addproperty" ID="post" OnClick="post_Click"></asp:Button>
+                    <asp:Button runat="server" Text="Cancel" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" ID="cancel" OnClick="cancel_Click"></asp:Button>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <asp:Image ID="Image2" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h3>Property Added!</h3>
+                        <p></p>
+                    </div>
+                    <div class="modal-footer mx-auto">
+                        <div class="form-excerpts">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <asp:Button runat="server" Text="Dashboard" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="goDashboard_Click" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </asp:Content>
