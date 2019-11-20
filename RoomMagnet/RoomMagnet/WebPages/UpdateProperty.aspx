@@ -150,7 +150,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-   <%-- <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign In" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#Updatenotification" data-dismiss="modal" OnClientClick="return false" />--%>
+    <%-- <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign In" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#Updatenotification" data-dismiss="modal" OnClientClick="return false" />--%>
     <section class="add-listing-wrapper border-bottom section-bg ">
         <div class="container">
             <div class="row">
