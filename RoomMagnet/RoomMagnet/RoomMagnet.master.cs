@@ -75,7 +75,7 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 byte[] imgdata = System.IO.File.ReadAllBytes(HttpContext.Current.Server.MapPath("~/img/40x40.png"));
 
                 sqlCommand.Parameters.AddRange(
-                    new SqlParameter[]
+                    new SqlParameter[] 
                     {
                     new SqlParameter("@FirstName",users.getFirstName()),
                     new SqlParameter("@LastName",users.getLastName()),
