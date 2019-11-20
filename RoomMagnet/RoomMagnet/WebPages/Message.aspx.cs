@@ -201,6 +201,7 @@ public partial class WebPages_Message : System.Web.UI.Page
 
                 
             }
+            Messages.Text += my + Environment.NewLine;
            
 
         }

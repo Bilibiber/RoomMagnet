@@ -27,10 +27,8 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             master.AfterLogin();
         }
         //set all amentities labels to visible = false;
-        propertyImage1.Visible = false;
-        propertyImage2.Visible = false;
-        propertyImage3.Visible = false;
-        propertyImage4.Visible = false;
+
+
         string test = Session["ResultPropertyID"].ToString();
         String sql = "Select Title, [Property].City, [Property].HomeState, [Property].ZipCode, AvailableBedrooms, [Property].RentPrice, [Property].StartDate, [Property].EndDate, " +
       "[ImagePath].ImagePath, AvailableBathrooms, AirConditioning, Heating, OnSiteLaundry,Parking,Furnished,PetFriendly,CarbonMonoxideDetector, SmokeDetector,SeperateEntrance," +
@@ -40,10 +38,6 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
     "[Rating].PropertyID INNER JOIN Users ON Property.HostID = Users.UserID WHERE [Property].PropertyID = " + test;
 
         connection.Open();
-        string title = "";
-        string city = "";
-        string homeState = "";
-        string zipCode = "";
         int availableBedrooms = -1;
         string rentPrice = "";
         string startDate = "";
@@ -62,9 +56,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         string tv = "";
         string seperateBathroom = "";
         string descriptions = "";
-        decimal numStars = 0;
         DateTime lastUpdated = DateTime.Now;
-        string lastUpdatedBy = "";
 
         SqlCommand search = new SqlCommand(sql, connection);
         SqlDataReader reader = search.ExecuteReader();
@@ -93,8 +85,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                         {
                             Image1.Visible = true;
                             propertyImage1.ImageUrl = propertyImageURL;
-                            propertyImage1.Visible = true;
-                            
+
                         }
                     }
                     else if (counter == 1)
@@ -103,7 +94,6 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                         {
                             Image2.Visible = true;
                             propertyImage2.ImageUrl = propertyImageURL;
-                            propertyImage2.Visible = true;
 
                         }
                     }
@@ -113,7 +103,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                         {
                             Image3.Visible = true;
                             propertyImage3.ImageUrl = propertyImageURL;
-                            propertyImage3.Visible = true;
+
 
                         }
                     }
@@ -123,7 +113,6 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                         {
                             Image4.Visible = true;
                             propertyImage4.ImageUrl = propertyImageURL;
-                            propertyImage4.Visible = true;
                         }
                     }
                     else if (counter == 4)
@@ -132,7 +121,6 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                         {
                             Image5.Visible = true;
                             propertyImage5.ImageUrl = propertyImageURL;
-                            propertyImage5.Visible = true;
                         }
                     }
 
