@@ -293,6 +293,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterConnections.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
         renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        string sql = "Select PropertyHostID, PropertyID, PropertyRoomID,RoomRenterID, Request from [Requests] where RoomRenterID=" + Session["UserID"].ToString();
+        cn.Open();
+       
     }
 
     protected void renterMessage_Click(object sender, EventArgs e)
