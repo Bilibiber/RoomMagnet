@@ -43,6 +43,11 @@
         }
     </script>
     <script type="text/javascript">
+        function openUpdatedModal() {
+            $('#Updatenotification').modal({ show: true });
+        }
+    </script>
+    <script type="text/javascript">
         window.onbeforeunload = closeMessage;
 
         function closeMessage() {
@@ -113,6 +118,30 @@
         </div>
         <!-- ends: .mainmenu-wrapper -->
         <!-- ends: .intro-wrapper -->
+        <div class="modal fade" id="Updatenotification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <asp:Image ID="Image5" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h3>Changes Saved</h3>                     
+                    </div>
+                    <div class="modal-footer mx-auto">
+                        <div class="form-excerpts">
+                            <ul class="list-unstyled">
+                                <li>
+                                   <%-- <asp:Button runat="server" Text="Dashboard" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="goDashboard_Click" />--%>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="modal fade" id="no_result_notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">

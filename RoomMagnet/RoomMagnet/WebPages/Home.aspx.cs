@@ -18,7 +18,7 @@ public partial class Home : System.Web.UI.Page
         {
             var master = Master as RoomMagnet;
             master.AfterLogin();
-        }
+        }        
     }
     protected void HomePageSearchButton_Click(object sender, EventArgs e)
     {

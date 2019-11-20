@@ -27,7 +27,7 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
             room2.Visible = false;
             room3.Visible = false;
             room4.Visible = false;
-
+          
             //select property date from database
             cn.Open();
             string select = "SELECT [Title],[StreetAddress],[City],[HomeState],[Country],[ZipCode],[SquareFootage],[AvailableBedrooms]," +
@@ -412,9 +412,8 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
                 }
             }
         }
-        Response.Redirect(Request.Url.AbsoluteUri);
+        //Response.Redirect(Request.Url.AbsoluteUri);
         cn.Close();
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
     }
     protected void goDashboard_Click(object sender, EventArgs e)
     {

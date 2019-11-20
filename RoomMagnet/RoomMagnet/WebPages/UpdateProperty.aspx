@@ -148,16 +148,10 @@
             top: 1px;
         }
     </style>
-
-    <script type="text/javascript">
-        function openModal() {
-            $('#notification').modal({ show: true });
-        }
-    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
+   <%-- <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign In" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#Updatenotification" data-dismiss="modal" OnClientClick="return false" />--%>
     <section class="add-listing-wrapper border-bottom section-bg ">
-
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center settings-title">
@@ -637,33 +631,4 @@
 
             <br />
     </section>
-
-    <div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-
-                                                    <asp:Image ID="Image2" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
-
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body text-center">
-                                                    <h3>Changes Saved</h3>
-                                                    <p></p>
-                                                </div>
-                                                <div class="modal-footer mx-auto">
-                                                    <div class="form-excerpts">
-                                                        <ul class="list-unstyled">
-                                                            <li>
-                                                                <asp:Button runat="server" Text="Dashboard" class="btn btn-xs btn-gradient btn-gradient-two access-link" onClick="goDashboard_Click" />
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
 </asp:Content>
