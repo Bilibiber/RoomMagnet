@@ -501,7 +501,7 @@
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addstartdate4" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="addstartdate4" runat="server" onfocus="(this.type='date')" class="form-control" Width="284px"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator7" runat="server" ControlToValidate="addstartdate4" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                     <asp:CompareValidator ID="Comparestart4" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate4" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
@@ -528,11 +528,11 @@
                                                 <h4><span class="la la-thumbs-up"></span>Amenities (Check all that apply)</h4>
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group">
                                             <div class="col-lg-10 amenities-checks">
                                                 <div class="form-check">
-                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" CssClass="auto-style1" />
-                                                    <br />
+                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" style="padding-right:100px" />
                                                 </div>
                                                 <div class="form-check">
                                                     <asp:CheckBox ID="checkheating" runat="server" class="form-check-input" Text="  Heating" />
@@ -613,7 +613,11 @@
                                     <asp:Image ID="imgpreview" runat="server" Height="150" Width="150" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px;" />
                                 </div>--%>
                                 <asp:FileUpload ID="FileUpload1" multiple="multiple" runat="server" AllowMultiple="true" />
+                                <asp:RequiredFieldValidator ID="requireimg" runat="server" ErrorMessage="RequiredFieldValidator" Text="Required" ValidationGroup="img" ControlToValidate="FileUpload1" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <%-- <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />--%>
+                                <br />
+                                <br />
+                                <asp:Button ID="updateimg" class="btn btn-primary" runat="server" Text="Insert more images" ValidationGroup="img" OnClick="updateimg_Click"/>
                                 <br />
                                 <br />
                             </div>
