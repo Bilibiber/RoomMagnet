@@ -311,9 +311,10 @@
                             </div>
                             <!-- ends: .atbd_avatar_wrapper -->
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="Unnamed_Click" />
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" id="saveto"/>
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve" data-toggle="modal" data-target="#Reserve" data-dismiss="modal" OnClientClick="return false" />
                             <asp:Label ID="HostValidate" runat="server" Visible="false" Text="Label"></asp:Label>
+                            <asp:Label ID="favorvalidate" runat="server" Text="Label" Visible="false"></asp:Label>
                         </div>
                         <!-- ends: .widget-body -->
                     </div>

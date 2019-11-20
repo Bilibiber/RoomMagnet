@@ -202,7 +202,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property2StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property2EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
 
-                    int pid = reader.GetInt32(10);
+                    int pid = reader.GetInt32(9);
                     System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
                     selectimg.Connection = cn;
                     selectimg.CommandText = "Select ImagePath from [ImagePath] WHERE PropertyID = @pid";
