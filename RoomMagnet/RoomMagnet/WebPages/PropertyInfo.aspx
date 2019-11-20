@@ -19,6 +19,18 @@
                             <asp:Label ID="homeStateLbl" runat="server" Text="PropertyState"></asp:Label>
                             <asp:Label ID="zipCodeLbl" runat="server" Text="ZipCode" />
                         </p>
+                        <div class="atbd_listing_category">
+                                                    <span class="fas fa-bed icon-padding">
+                                                    <asp:Label ID="ErrorMessage" runat="server" Text="Label" ></asp:Label>
+                                                    </span>
+                                                    <div class="numberCircle">
+                                                        <asp:Label runat="server" ID="Property1Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
+                                                        <asp:Label runat="server" ID="availableBathroomsLbl" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
+                                                    </div>
+                                                    <span class="fas fa-bath icon-padding"></span>
+                                                    <div class="numberCircle">
+                                                    </div>
+                                                </div>
                     </div>
                 </div>
             </div>
@@ -279,12 +291,6 @@
                                 </li>
                                 <li>
                                     <div class="item-section">
-                                        <asp:Label runat="server" Text="Available Bathrooms: "></asp:Label>
-                                        <asp:Label ID="availableBathroomsLbl" runat="server"></asp:Label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-section">
                                         <asp:Label runat="server" Text="Last Updated: "></asp:Label>
                                         <asp:Label ID="lastUpdatedLbl" runat="server"></asp:Label>
                                     </div>
@@ -312,7 +318,7 @@
                             <!-- ends: .atbd_avatar_wrapper -->
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="Unnamed_Click" />
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve" data-toggle="modal" data-target="#Reserve" data-dismiss="modal" OnClientClick="return false" />
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve a Room" data-toggle="modal" data-target="#Reserve" data-dismiss="modal" OnClientClick="return false" />
                             <asp:Label ID="HostValidate" runat="server" Visible="false" Text="Label"></asp:Label>
                         </div>
                         <!-- ends: .widget-body -->
@@ -412,9 +418,11 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
+                    <h3>Property Rooms</h3>
                     <asp:DropDownList ID="Rooms" AutoPostBack="true" OnSelectedIndexChanged="Rooms_SelectedIndexChanged" runat="server">
                     </asp:DropDownList>
                     <asp:Label ID="RoomRentPrice" runat="server" Text="Label"></asp:Label>
+                    <asp:Button ID="Request" runat="server" Text="Request" OnClick="Reserve_Click" />
                 </div>
                 <div class="modal-footer mx-auto">
                     <div class="form-excerpts">

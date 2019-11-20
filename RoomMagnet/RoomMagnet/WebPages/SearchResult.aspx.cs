@@ -138,7 +138,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             {
                 //Needs validator to make sure User enters a city, state
                 string City = address.Text.Substring(0, address.Text.IndexOf(','));
-                string State = address.Text.Substring(address.Text.IndexOf(',') + 1);
+                string State = address.Text.Substring(address.Text.IndexOf(',') + 1).ToUpper();
 
                 sql = "With cte_Property AS(Select ROW_NUMBER() over(" +
                "Order BY [Property].RentPrice " + OrderBy + ") row_num, Title, [Property].City, [Property].HomeState, [Property].ZipCode, AvailableBedrooms, [Property].RentPrice, [Property].StartDate, [Property].EndDate, [ImagePath].ImagePath," +
