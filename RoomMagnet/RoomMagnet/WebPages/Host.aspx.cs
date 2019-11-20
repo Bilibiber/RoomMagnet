@@ -45,70 +45,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         Property2Space.Visible = false;
         Property3Space.Visible = false;
 
-        cn.Open();
-        int requestcount = 0;
-        string requestsql = "SELECT        Requests.RequestStatus, Requests.Request, Requests.RequestID, Users.Email FROM Users " +
-            "INNER JOIN Requests ON Users.UserID = Requests.RoomRenterID" +
-            " Where Requests.PropertyHostID = @HostID";
-        SqlCommand requestsqlcommand = new SqlCommand(requestsql,cn);
-        requestsqlcommand.Parameters.AddWithValue("@HostID", userid);
-        SqlDataReader requestReader = requestsqlcommand.ExecuteReader();
-
-        if (requestReader.HasRows)
-        {
-            while (requestReader.Read())
-            {
-                if (requestReader.GetString(0) == "Pending")
-                {                 
-                    if (requestcount == 0)
-                    {
-                        request1.Visible = true;
-                        request1des.Text = requestReader.GetString(1);
-                        RequestIDs.Add(requestReader.GetInt32(2));
-                        RenterEmails.Add(requestReader.GetString(3));
-                    }
-                    if (requestcount == 1)
-                    {
-                        request2.Visible = true;
-                        request2des.Text = requestReader.GetString(1);
-                        RequestIDs.Add(requestReader.GetInt32(2));
-                        RenterEmails.Add(requestReader.GetString(3));
-                    }
-                    if (requestcount == 2)
-                    {
-                        request3.Visible = true;
-                        request3des.Text = requestReader.GetString(1);
-                        RequestIDs.Add(requestReader.GetInt32(2));
-                        RenterEmails.Add(requestReader.GetString(3));
-                    }
-                    if (requestcount == 3)
-                    {
-                        request4.Visible = true;
-                        request4des.Text = requestReader.GetString(1);
-                        RequestIDs.Add(requestReader.GetInt32(2));
-                        RenterEmails.Add(requestReader.GetString(3));
-                    }
-                    if (requestcount == 4)
-                    {
-                        request5.Visible = true;
-                        request5des.Text = requestReader.GetString(1);
-                        RequestIDs.Add(requestReader.GetInt32(2));
-                        RenterEmails.Add(requestReader.GetString(3));
-                    }
-                }
-                else
-                {                    
-                    RequestHeader.Text = "No Pending Request";
-                }
-                requestcount++;
-            }
-        }
-        else
-        {           
-            RequestHeader.Text = "No Pending Request";
-        }
-        requestReader.Close();
-        cn.Close();
+        
 
         if (!IsPostBack)
         {
@@ -440,7 +377,72 @@ public partial class WebPages_Host : System.Web.UI.Page
         hostConnections.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
         hostMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
 
+        int userid = Convert.ToInt32(Session["UserID"]);
+        cn.Open();
+        int requestcount = 0;
+        string requestsql = "SELECT        Requests.RequestStatus, Requests.Request, Requests.RequestID, Users.Email FROM Users " +
+            "INNER JOIN Requests ON Users.UserID = Requests.RoomRenterID" +
+            " Where Requests.PropertyHostID = @HostID";
+        SqlCommand requestsqlcommand = new SqlCommand(requestsql, cn);
+        requestsqlcommand.Parameters.AddWithValue("@HostID", userid);
+        SqlDataReader requestReader = requestsqlcommand.ExecuteReader();
 
+        if (requestReader.HasRows)
+        {
+            while (requestReader.Read())
+            {
+                if (requestReader.GetString(0) == "Pending")
+                {
+                    if (requestcount == 0)
+                    {
+                        request1.Visible = true;
+                        request1des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 1)
+                    {
+                        request2.Visible = true;
+                        request2des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 2)
+                    {
+                        request3.Visible = true;
+                        request3des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 3)
+                    {
+                        request4.Visible = true;
+                        request4des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 4)
+                    {
+                        request5.Visible = true;
+                        request5des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                }
+                else
+                {
+                    RequestHeader.Text = "No Pending Request";
+                }
+                requestcount++;
+            }
+        }
+        else
+        {
+            RequestHeader.Text = "No Pending Request";
+        }
+        ViewState["RequestIDarray"] = RequestIDs;
+        requestReader.Close();
+        cn.Close();
     }
 
     protected void hostMessage_Click(object sender, EventArgs e)
@@ -714,6 +716,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void AcceptButton1_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Accepted";
         string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
@@ -723,9 +726,9 @@ public partial class WebPages_Host : System.Web.UI.Page
         sqlCommand.ExecuteNonQuery();
         cn.Close();
 
-        string EmailAddress = RenterEmails[0].ToString();
-        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
-        EmailSender emailSender = new EmailSender();
+        //string EmailAddress = RenterEmails[0].ToString();
+        //string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        //EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
 
@@ -735,6 +738,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void DeclineButton1_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Declined";
         string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
@@ -755,6 +759,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void AcceptButton2_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Accepted";
         string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
@@ -775,6 +780,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void DeclineButton2_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Declined";
         string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
@@ -795,6 +801,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void AcceptButton3_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Accepted";
         string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
@@ -815,6 +822,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void DeclineButton3_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Declined";
         string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
@@ -835,6 +843,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void AcceptButton4_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Accepted";
         string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
@@ -855,6 +864,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void DeclineButton4_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Declined";
         string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
@@ -875,6 +885,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void AcceptButton5_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Accepted";
         string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
@@ -895,6 +906,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void DeclineButton5_Click(object sender, EventArgs e)
     {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
         cn.Open();
         string status = "Declined";
         string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";

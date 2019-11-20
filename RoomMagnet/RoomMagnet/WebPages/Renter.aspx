@@ -412,15 +412,41 @@
 
                 <%--renter connections--%>
                 <asp:Panel ID="panelconnections" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
-                        <h1 class="update-title">Connections</h1>
-
-                        <div class="atbd_author_module">
-                            <div class="atbd_content_module">
-
-                                <div class="atbdb_content_module_contents">
-                                    <div class="user_info_wrap">
-                                        <div class="row">
+                    <div class="col-md-12 mx-auto">
+                        <h1 class="update-title">
+                            <asp:Label ID="RequestHeader" runat="server" Text="Renter Requests"></asp:Label>
+                        </h1>
+                        <div class="container">
+                            <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request1" runat="server">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request1des" runat="server" Text="Label"></asp:Label>
+                                                    <asp:Label ID="RequestedRoomPrice" runat="server" Text="Label"></asp:Label>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <div id="StriptPay1" runat="server">
+                                                    <script
+                                                        src="https://checkout.stripe.com/checkout.js" 
+                                                        class="stripe-button"
+                                                        data-key="pk_test_8atXfTcBVA0b0Y50HniGdHw0000kgvHhmz"
+                                                        data-amount="50000.00"
+                                                        data-name="RoomMagnet"
+                                                        data-description="Rent"
+                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                        data-locale="auto"
+                                                        data-zip-code="true"
+                                                        data-currency="usd">
+                                                    </script>
+                                                     <asp:Button ID="DeleteButton1" runat="server" Text="Delete" CssClass="btn btn-secondary inline"/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -432,11 +458,12 @@
                 <%--renter message--%>
                 <asp:Panel ID="panelmessage" runat="server" Visible="False">
                     <div class="col-md-12 mx-auto ">
-                        <h1 class="update-title">Messages <asp:Label ID="errorLabel" runat="server" Text="Label" Visible="false"></asp:Label></h1>
+                        <h1 class="update-title">Messages
+                            <asp:Label ID="errorLabel" runat="server" Text="Label" Visible="false"></asp:Label></h1>
                         <div class="row">
                             <div class="col-md-12 no-padding">
                                 <div class="form-group">
-                                    <asp:DropDownList ID="HostNames" runat="server" AutoPostBack="true" OnTextChanged="HostNames_TextChanged"  CssClass="form-control">
+                                    <asp:DropDownList ID="HostNames" runat="server" AutoPostBack="true" OnTextChanged="HostNames_TextChanged" CssClass="form-control">
                                         <asp:ListItem Value="No One">Select Contacts</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
