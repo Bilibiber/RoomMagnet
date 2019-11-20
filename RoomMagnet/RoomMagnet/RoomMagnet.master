@@ -185,7 +185,7 @@
                                 <li>Not a member?
                                     <asp:LinkButton ID="SignUpLinkButton" runat="server" data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" data-dismiss="modal">Sign Up</asp:LinkButton></li>
                                 <li>
-                                    <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/WebPages/RecoverPassword.aspx">Recover Passowrd</asp:LinkButton></li>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/WebPages/RecoverPassword.aspx">Recover Password</asp:LinkButton></li>
                             </ul>
                         </div>
                     </div>

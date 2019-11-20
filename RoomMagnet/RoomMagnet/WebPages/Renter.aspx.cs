@@ -52,17 +52,17 @@ public partial class WebPages_Renter : System.Web.UI.Page
             cn.Close();
         }
 
-        /*string status = Session["Verified"].ToString().ToUpper();
+        string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
         if (Session["SignInEmail"] == null)
         {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
         }
         else
         {
             var master = Master as RoomMagnet;
             master.AfterLogin();
-        }*/
+        }
 
         if (!IsPostBack)
         {
@@ -264,15 +264,15 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                Property1Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             if (RatingCount == 1)
             {
-                Property2Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             if (RatingCount == 2)
             {
-                Property3Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             RatingCount++;
             readers.Close();
@@ -393,15 +393,15 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                history1rating.Text = (RatingSum / RatingRecordCount).ToString();
+                history1rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             if (RatingCount == 1)
             {
-                Property2Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             if (RatingCount == 2)
             {
-                Property3Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             RatingCount++;
             readers.Close();
@@ -533,5 +533,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         review.Parameters.Add(new SqlParameter("@PropertyID", 1003));
         review.ExecuteNonQuery();
         cn.Close();
+
+        renterHistory_Click(sender, e);
     }
 }

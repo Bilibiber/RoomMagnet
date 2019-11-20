@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Web;
+using System.Web.UI;
 
 public partial class WebPages_AddProperty : System.Web.UI.Page
 {
@@ -12,6 +13,10 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Comparestart1.ValueToCompare = DateTime.Now.ToShortDateString();
+        Comparestart2.ValueToCompare = DateTime.Now.ToShortDateString();
+        Comparestart3.ValueToCompare = DateTime.Now.ToShortDateString();
+        Comparestart4.ValueToCompare = DateTime.Now.ToShortDateString();
         room1.Visible = false;
         room2.Visible = false;
         room3.Visible = false;
@@ -70,14 +75,14 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
     protected void cancel_Click(object sender, EventArgs e)
     {
-        if(Session["Roles"].ToString() == "Renter")
+        if (Session["Roles"].ToString() == "Renter")
         {
             Response.Redirect("Renter.aspx");
-        }else if (Session["Roles"].ToString() == "Host")
+        }
+        else if (Session["Roles"].ToString() == "Host")
         {
             Response.Redirect("Host.aspx");
         }
-        
     }
 
     protected void post_Click(object sender, EventArgs e)
@@ -143,100 +148,110 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
         if (Int32.Parse(addBedrooms.SelectedValue) == 1)
         {
-            string insertroom = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room1 = new SqlCommand(insertroom, cn);
             room1.Parameters.AddWithValue("@PropertyID", pid);
             room1.Parameters.AddWithValue("@StartDate", addstartdate1.Text);
             room1.Parameters.AddWithValue("@EndDate", addenddate1.Text);
             room1.Parameters.AddWithValue("@RentPrice", roomprice1.Text);
             room1.Parameters.AddWithValue("@Bathroom", roombath1.SelectedValue);
+            room1.Parameters.AddWithValue("@roomname", Room1Name.Text);
             room1.ExecuteNonQuery();
         }
         else if (Int32.Parse(addBedrooms.SelectedValue) == 2)
         {
-            string insertroom1 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom1 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room1 = new SqlCommand(insertroom1, cn);
             room1.Parameters.AddWithValue("@PropertyID", pid);
             room1.Parameters.AddWithValue("@StartDate", addstartdate1.Text);
             room1.Parameters.AddWithValue("@EndDate", addenddate1.Text);
             room1.Parameters.AddWithValue("@RentPrice", roomprice1.Text);
             room1.Parameters.AddWithValue("@Bathroom", roombath1.SelectedValue);
+            room1.Parameters.AddWithValue("@roomname", Room1Name.Text);
             room1.ExecuteNonQuery();
 
-            string insertroom2 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom2 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room2 = new SqlCommand(insertroom2, cn);
             room2.Parameters.AddWithValue("@PropertyID", pid);
             room2.Parameters.AddWithValue("@StartDate", addstartdate2.Text);
             room2.Parameters.AddWithValue("@EndDate", addenddate2.Text);
             room2.Parameters.AddWithValue("@RentPrice", roomprice2.Text);
             room2.Parameters.AddWithValue("@Bathroom", roombath2.SelectedValue);
+            room2.Parameters.AddWithValue("@roomname", Room2Name.Text);
             room2.ExecuteNonQuery();
         }
         else if (Int32.Parse(addBedrooms.SelectedValue) == 3)
         {
-            string insertroom1 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom1 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room1 = new SqlCommand(insertroom1, cn);
             room1.Parameters.AddWithValue("@PropertyID", pid);
             room1.Parameters.AddWithValue("@StartDate", addstartdate1.Text);
             room1.Parameters.AddWithValue("@EndDate", addenddate1.Text);
             room1.Parameters.AddWithValue("@RentPrice", roomprice1.Text);
             room1.Parameters.AddWithValue("@Bathroom", roombath1.SelectedValue);
+            room1.Parameters.AddWithValue("@roomname", Room1Name.Text);
             room1.ExecuteNonQuery();
 
-            string insertroom2 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom2 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room2 = new SqlCommand(insertroom2, cn);
             room2.Parameters.AddWithValue("@PropertyID", pid);
             room2.Parameters.AddWithValue("@StartDate", addstartdate2.Text);
             room2.Parameters.AddWithValue("@EndDate", addenddate2.Text);
             room2.Parameters.AddWithValue("@RentPrice", roomprice2.Text);
             room2.Parameters.AddWithValue("@Bathroom", roombath2.SelectedValue);
+            room2.Parameters.AddWithValue("@roomname", Room2Name.Text);
             room2.ExecuteNonQuery();
 
-            string insertroom3 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom3 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room3 = new SqlCommand(insertroom3, cn);
             room3.Parameters.AddWithValue("@PropertyID", pid);
             room3.Parameters.AddWithValue("@StartDate", addstartdate3.Text);
             room3.Parameters.AddWithValue("@EndDate", addenddate3.Text);
             room3.Parameters.AddWithValue("@RentPrice", roomprice3.Text);
             room3.Parameters.AddWithValue("@Bathroom", roombath3.SelectedValue);
+            room3.Parameters.AddWithValue("@roomname", Room3Name.Text);
             room3.ExecuteNonQuery();
         }
         else if (Int32.Parse(addBedrooms.SelectedValue) == 4)
         {
-            string insertroom1 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom1 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room1 = new SqlCommand(insertroom1, cn);
             room1.Parameters.AddWithValue("@PropertyID", pid);
             room1.Parameters.AddWithValue("@StartDate", addstartdate1.Text);
             room1.Parameters.AddWithValue("@EndDate", addenddate1.Text);
             room1.Parameters.AddWithValue("@RentPrice", roomprice1.Text);
             room1.Parameters.AddWithValue("@Bathroom", roombath1.SelectedValue);
+            room1.Parameters.AddWithValue("@roomname", Room1Name.Text);
             room1.ExecuteNonQuery();
 
-            string insertroom2 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom2 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room2 = new SqlCommand(insertroom2, cn);
             room2.Parameters.AddWithValue("@PropertyID", pid);
             room2.Parameters.AddWithValue("@StartDate", addstartdate2.Text);
             room2.Parameters.AddWithValue("@EndDate", addenddate2.Text);
             room2.Parameters.AddWithValue("@RentPrice", roomprice2.Text);
             room2.Parameters.AddWithValue("@Bathroom", roombath2.SelectedValue);
+            room2.Parameters.AddWithValue("@roomname", Room2Name.Text);
             room2.ExecuteNonQuery();
 
-            string insertroom3 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom3 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room3 = new SqlCommand(insertroom3, cn);
             room3.Parameters.AddWithValue("@PropertyID", pid);
             room3.Parameters.AddWithValue("@StartDate", addstartdate3.Text);
             room3.Parameters.AddWithValue("@EndDate", addenddate3.Text);
             room3.Parameters.AddWithValue("@RentPrice", roomprice3.Text);
             room3.Parameters.AddWithValue("@Bathroom", roombath3.SelectedValue);
+            room3.Parameters.AddWithValue("@roomname", Room3Name.Text);
             room3.ExecuteNonQuery();
 
-            string insertroom4 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID)";
+            string insertroom4 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room4 = new SqlCommand(insertroom4, cn);
             room4.Parameters.AddWithValue("@PropertyID", pid);
             room4.Parameters.AddWithValue("@StartDate", addstartdate4.Text);
             room4.Parameters.AddWithValue("@EndDate", addenddate4.Text);
             room4.Parameters.AddWithValue("@RentPrice", roomprice4.Text);
             room4.Parameters.AddWithValue("@Bathroom", roombath4.SelectedValue);
+            room4.Parameters.AddWithValue("@roomname", Room4Name.Text);
             room4.ExecuteNonQuery();
         }
 
@@ -262,6 +277,13 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         }
         Response.Redirect(Request.Url.AbsoluteUri);
         cn.Close();
+
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+    }
+
+    protected void goDashboard_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Host.aspx");
     }
 
     protected void addBedrooms_SelectedIndexChanged(object sender, EventArgs e)
