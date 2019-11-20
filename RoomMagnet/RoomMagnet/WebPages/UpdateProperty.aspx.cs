@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
+using System.Web;
+using System.Windows.Forms;
+using System.Linq;
+using System.Threading;
+using System.Web.UI.WebControls;
 using System.Web.UI;
 
 public partial class WebPages_UpdateProperty : System.Web.UI.Page
@@ -11,6 +17,10 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Comparestart1.ValueToCompare = DateTime.Now.ToShortDateString();
+        Comparestart2.ValueToCompare = DateTime.Now.ToShortDateString();
+        Comparestart3.ValueToCompare = DateTime.Now.ToShortDateString();
+        Comparestart4.ValueToCompare = DateTime.Now.ToShortDateString();
         if (!IsPostBack)
         {
             room1.Visible = false;
@@ -56,8 +66,8 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
                     decimal price = Convert.ToDecimal(string.Format("{0:F2}", readroom.GetDecimal(2).ToString()));
                     roomprice1.Text = price.ToString("0.00");
                     roombath1.SelectedValue = readroom.GetString(3);
-                    addstartdate1.Text = readroom.GetDateTime(0).ToShortDateString();
-                    addenddate1.Text = readroom.GetDateTime(1).ToShortDateString();
+                    addstartdate1.Text = readroom.GetDateTime(0).ToString("MM/dd/yyyy");
+                    addenddate1.Text = readroom.GetDateTime(1).ToString("MM/dd/yyyy");
                     Room1Name.Text = readroom.GetString(4);
                 }
                 if (numbers == 2)
@@ -158,6 +168,7 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
             readamen.Close();
             cn.Close();
         }
+       
 
         if (Session["SignInEmail"] == null)
         {
@@ -381,31 +392,34 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
             room4.ExecuteNonQuery();
         }
 
-        ////upload images
-        //foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
-        //{
-        //    string filename = Path.GetFileName(postedFile.FileName);
-        //    string contentType = postedFile.ContentType;
-        //    using (Stream fs = postedFile.InputStream)
-        //    {
-        //        using (BinaryReader br = new BinaryReader(fs))
-        //        {
-        //            byte[] bytes = br.ReadBytes((Int32)fs.Length);
-        //            //imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytes);
-        //            System.Data.SqlClient.SqlCommand picInsert = new System.Data.SqlClient.SqlCommand();
-        //            picInsert.Connection = cn;
-        //            picInsert.CommandText = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
-        //            picInsert.Parameters.AddWithValue("@PropertyID", pid);
-        //            picInsert.Parameters.AddWithValue("@ImagePath", bytes);
-        //            picInsert.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
+        //upload images
+        foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
+        {
+            string filename = Path.GetFileName(postedFile.FileName);
+            string contentType = postedFile.ContentType;
+            using (Stream fs = postedFile.InputStream)
+            {
+                using (BinaryReader br = new BinaryReader(fs))
+                {
+                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                    //imgpreview.ImageUrl = "data:image;base64," + Convert.ToBase64String(bytes);
+                    System.Data.SqlClient.SqlCommand picInsert = new System.Data.SqlClient.SqlCommand();
+                    picInsert.Connection = cn;
+                    picInsert.CommandText = "INSERT INTO[dbo].[ImagePath] (PropertyID, ImagePath) VALUES(@PropertyID, @ImagePath)";
+                    picInsert.Parameters.AddWithValue("@PropertyID", pid);
+                    picInsert.Parameters.AddWithValue("@ImagePath", bytes);
+                    picInsert.ExecuteNonQuery();
+                }
+            }
+        }
         Response.Redirect(Request.Url.AbsoluteUri);
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openNotificationModal();", true);
         cn.Close();
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
     }
-
+    protected void goDashboard_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Host.aspx");
+    }
     protected void addBedrooms_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (addBedrooms.SelectedIndex == 1)
