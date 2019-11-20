@@ -33,6 +33,7 @@ public partial class WebPages_Message : System.Web.UI.Page
         //txtmsg.Text = msg;
 
         string PID = Session["ResultPropertyID"].ToString();
+
         if (Session["Roles"].ToString() == "Renter")
         {
             string sql = "SELECT  Users.FirstName, Users.LastName,Property.HostID FROM Users INNER JOIN Property ON Users.UserID = Property.HostID where Property.PropertyID =" + PID;
