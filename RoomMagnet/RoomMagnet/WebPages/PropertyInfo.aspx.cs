@@ -10,12 +10,13 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
     private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     private string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString();
     private ArrayList tempImages = new ArrayList();
-    private ArrayList PropertyRoomID = new ArrayList();
+    private ArrayList RoomRentPrices = new ArrayList();
     int PropertyHostID;
     bool RoomsBool = false;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        HostValidate.Visible = false;
         if (Session["SignInEmail"] == null)
         {
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -138,8 +139,8 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                     if (counter == 0)
                     {
                         titleLbl.Text = reader.GetString(0);
-                        cityLbl.Text = reader.GetString(1);
-                        homeStateLbl.Text = reader.GetString(2);
+                        cityLbl.Text = reader.GetString(1) + ", ";
+                        homeStateLbl.Text = reader.GetString(2) + ", ";
                         zipCodeLbl.Text = reader.GetString(3);
                         availableBedrooms = reader.GetInt32(4);
                         decimal x = reader.GetDecimal(5);
@@ -336,19 +337,30 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                 
             }
         }
-        PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
-        numStarsLbl.Text = (RatingSum / RatingCount).ToString();
+        if (RatingCount != 0)
+        {
+            PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
+            numStarsLbl.Text = (RatingSum / RatingCount).ToString();
+            numStarsLbl.Visible = true;
+        }
+        else
+        {
+            PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
+            numStarsLbl.Visible = false;
+        }
         reader2.Close();
-        string Roomsql = "Select PropertyRoomName, RoomID from PropertyRoom where PropertyID=" + Session["ResultPropertyID"].ToString();
+        string Roomsql = "Select PropertyRoomName, RoomID, RentPrice from PropertyRoom where PropertyID=" + Session["ResultPropertyID"].ToString();
         if (RoomsBool == false)
         {
             SqlCommand sqlCommand6 = new SqlCommand(Roomsql, connection);
-            SqlDataReader reader6 = sqlCommand.ExecuteReader();
+            SqlDataReader reader6 = sqlCommand6.ExecuteReader();
             if (reader6.HasRows)
             {
                 while (reader6.Read())
                 {
                     Rooms.Items.Add(new ListItem(reader6.GetString(0), reader6.GetInt32(1).ToString()));
+                    RoomRentPrices.Add(Convert.ToDecimal(string.Format("{0:F2}", reader6.GetDecimal(2).ToString("0.00"))));
+                    RoomRentPrice.Text = string.Format("{0:F2}", reader6.GetDecimal(2).ToString("0.00"));
                 }
             }
             RoomsBool = true;
@@ -358,10 +370,23 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
     protected void SavetoFav_OnClick(object sender, EventArgs a)
     {
-        string userSignInEmail = (string)Session["SignInEmail"];
-        int userId = pullUserID(userSignInEmail);
-        int propertyId = (int)Session["ResultPropertyID"];
-        addPropertytoUserFav(userId, propertyId);
+        if (Session["SignInEmail"] == null)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        }
+        else if (PropertyHostID.ToString() == Session["UserID"].ToString())
+        {
+            HostValidate.Text = "A Host can not reserve their own property";
+            HostValidate.Visible = true;
+            return;
+        }
+        else
+        {
+            string userSignInEmail = (string)Session["SignInEmail"];
+            int userId = pullUserID(userSignInEmail);
+            int propertyId = (int)Session["ResultPropertyID"];
+            addPropertytoUserFav(userId, propertyId);
+        }
     }
 
     private int pullUserID(string email)
@@ -404,6 +429,12 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
         }
+        else if (PropertyHostID.ToString() == Session["UserID"].ToString())
+        {
+            HostValidate.Text = "A Host can not reserve their own property";
+            HostValidate.Visible = true;
+            return;
+        }
         else
         {
             Response.Redirect("Message.aspx");
@@ -417,11 +448,13 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         }
         else if (PropertyHostID.ToString() == Session["UserID"].ToString())
         {
-
+            HostValidate.Text = "A Host can not reserve their own property";
+            HostValidate.Visible = true;
+            return;
         }
         else
         {
-            string Request = "";
+            string Request = Session["FullName"].ToString() + " is interested in renting a room in " + titleLbl.Text +   ", Would you like to accept their request?";
             string sql = "INSERT INTO Request (PropertyHostID, PropertyID, PropertyRoomID, RoomRenterID, Request) VALUES (@PropertyHostID, @PropertyID, @PropertyRoomID, @RoomRenterID, @Request)";
             connection.Open();
 
@@ -431,6 +464,14 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@PropertyRoomID", Rooms.SelectedValue);
             cmd.Parameters.AddWithValue("@RoomRenterID", Session["UserID"].ToString());
             cmd.Parameters.AddWithValue("@Request", Request);
+           
+            connection.Close();
         }
+    }
+
+    protected void Rooms_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        int i = Rooms.SelectedIndex;
+        RoomRentPrice.Text = "$" + RoomRentPrices[i];
     }
 }
