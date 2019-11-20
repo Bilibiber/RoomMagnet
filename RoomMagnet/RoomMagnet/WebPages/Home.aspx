@@ -236,7 +236,6 @@
                             </div>
                         </div>
                         <!-- ends: .col-lg-3 -->
-
                         <div class="col-lg-12 text-center m-top-20">
                             <asp:Button ID="HomePageLearnMore" runat="server" Text="About Us" CssClass="btn btn-gradient btn-gradient-two" PostBackUrl="~/WebPages/About.aspx" />
                         </div>
