@@ -21,6 +21,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
     private int OldConversationID = 0;
     private int NewConversationID = 0;
 
+    private ArrayList RequestIDs = new ArrayList();
+    private ArrayList HostEmails = new ArrayList();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         Property1Space.Visible = false;
