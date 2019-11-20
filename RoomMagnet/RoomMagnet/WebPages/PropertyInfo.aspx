@@ -313,14 +313,15 @@
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="Unnamed_Click" />
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve"  />
+                            <asp:Label ID="HostValidate" runat="server" Visible="false" Text="Label"></asp:Label>
                         </div>
                         <!-- ends: .widget-body -->
                     </div>
                     <!-- ends: .widget -->
                     <div class="widget atbd_widget widget-card">
                         <div class="atbd_widget_title">
-                            <h4><span class="la la-bookmark"></span>Amenities<asp:DropDownList ID="Rooms" runat="server">
-                                </asp:DropDownList>
+                            <h4><span class="la la-bookmark"></span>Amenities<asp:DropDownList ID="Rooms" AutoPostBack="true" OnSelectedIndexChanged="Rooms_SelectedIndexChanged" runat="server">
+                                </asp:DropDownList><asp:Label ID="RoomRentPrice" runat="server" Text="Label"></asp:Label>
                             </h4>
                         </div>
                         <!-- ends: /.atbd_widget_title -->
@@ -363,7 +364,7 @@
 
                                 <li runat="server" id="seperateEntranceIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="seperateEntranceLbl" runat="server" Text="Seperate Entrance "></asp:Label>
+                                    <asp:Label ID="seperateEntranceLbl" runat="server" Text="Separate Entrance "></asp:Label>
                                 </li>
                                 <li runat="server" id="wifiIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>

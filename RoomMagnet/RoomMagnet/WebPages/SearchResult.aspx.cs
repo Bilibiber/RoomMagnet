@@ -362,21 +362,25 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                 {
                     ResultPg6.Visible = true;
                 }
-
+                int RatingCount = 0;
                 for (int i = 0; i < RatingsPID.Count; i++)
                 {
                     string RatingSQL = "Select NumStars from [Rating] where PropertyID =" + RatingsPID[i];
                     SqlCommand Ratingsearch = new SqlCommand(RatingSQL, connection);
                     SqlDataReader readers = Ratingsearch.ExecuteReader();
                     decimal RatingSum = 0;
-                    int RatingCount = 0;
+                    
                     int RatingRecordCount = 0;
                     if (readers.HasRows)
                     {
+                        
                         while (readers.Read())
                         {
-                            RatingSum += readers.GetDecimal(0);
-                            RatingRecordCount++;
+                            if (RatingRecordCount < 5)
+                            {
+                                RatingSum += readers.GetDecimal(0);
+                                RatingRecordCount++;
+                            }
                         }
                     }
                     if (RatingRecordCount == 0)
@@ -403,8 +407,9 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                     {
                         Property5Rating.Text = (RatingSum / RatingRecordCount).ToString();
                     }
-
-                    RatingCount++;
+                  
+                        RatingCount++;
+                    
                     readers.Close();
                 }
                 RatingsPID.Clear();
