@@ -352,7 +352,7 @@ public partial class WebPages_Host : System.Web.UI.Page
             }
         }
         cn.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
+        Response.Redirect("PropertyInfo.aspx");
     }
 
     protected void Property2Image_Click(object sender, ImageClickEventArgs e)
@@ -383,7 +383,7 @@ public partial class WebPages_Host : System.Web.UI.Page
             }
         }
         cn.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
+        Response.Redirect("PropertyInfo.aspx");
     }
 
     protected void Property3Image_Click(object sender, ImageClickEventArgs e)
@@ -414,7 +414,7 @@ public partial class WebPages_Host : System.Web.UI.Page
             }
         }
         cn.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
+        Response.Redirect("PropertyInfo .aspx");
     }
 
 

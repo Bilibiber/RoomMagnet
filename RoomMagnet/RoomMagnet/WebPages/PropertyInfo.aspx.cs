@@ -240,6 +240,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             tempImages.Clear();
         }
         reader.Close();
+
         int RatingCount = 0;
         decimal RatingSum = 0;
         string tempReviewer = "";
@@ -316,8 +317,17 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
                 
             }
         }
-        PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
-        numStarsLbl.Text = (RatingSum / RatingCount).ToString();
+        if (RatingCount != 0)
+        {
+            PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
+            numStarsLbl.Text = (RatingSum / RatingCount).ToString();
+            numStarsLbl.Visible = true;
+        }
+        else
+        {
+            numStarsLbl.Visible = false;
+        }
+        
         reader2.Close();
         connection.Close();
     }
