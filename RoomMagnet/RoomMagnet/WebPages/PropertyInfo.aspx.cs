@@ -468,7 +468,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         else
         {
             string Request = Session["FullName"].ToString() + ",  is interested in renting a room in " + titleLbl.Text +   ", Would you like to accept their request?";
-            string sql = "INSERT INTO Request (PropertyHostID, PropertyID, PropertyRoomID, RoomRenterID, Request) VALUES (@PropertyHostID, @PropertyID, @PropertyRoomID, @RoomRenterID, @Request)";
+            string sql = "INSERT INTO Requests (PropertyHostID, PropertyID, PropertyRoomID, RoomRenterID, Request) VALUES (@PropertyHostID, @PropertyID, @PropertyRoomID, @RoomRenterID, @Request)";
             connection.Open();
 
             SqlCommand cmd = new SqlCommand(sql, connection);
@@ -477,7 +477,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@PropertyRoomID", Rooms.SelectedValue);
             cmd.Parameters.AddWithValue("@RoomRenterID", Session["UserID"].ToString());
             cmd.Parameters.AddWithValue("@Request", Request);
-           
+            cmd.ExecuteNonQuery();
             connection.Close();
         }
     }
