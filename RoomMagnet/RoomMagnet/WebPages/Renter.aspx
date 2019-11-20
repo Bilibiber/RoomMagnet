@@ -469,7 +469,7 @@
                                                     <article class="atbd_single_listing_wrapper">
                                                         <figure class="atbd_listing_thumbnail_area">
                                                             <div class="atbd_listing_image fill">
-                                                                <asp:ImageButton ID="history1img" OnClick="Property1Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="350" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
+                                                                <asp:ImageButton ID="history1img" OnClick="historyproperty1_Click" runat="server" CssClass="imgfill" Height="220px" Width="350" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
                                                             </div>
                                                             <!-- ends: .atbd_listing_image -->
                                                         </figure>
