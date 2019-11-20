@@ -23,6 +23,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
         Property1Space.Visible = false;
         Property2Space.Visible = false;
         Property3Space.Visible = false;
@@ -104,21 +105,22 @@ public partial class WebPages_Renter : System.Web.UI.Page
             db.Close();
         }
         //SQL statement to fill receiver dropdown list
-        //cn.Open();
-        //string sql2 = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
-        //" where (SenderID = " + Session["UserID"].ToString() + ") and (ReceiverID = " + HostReceiverID + ")";
+        cn.Open();
+        string sql = "Select ReceiverID, FirstName, LastName from Conversations inner join  where SenderID= " + Session["UserID"].ToString();
+        string sql2 = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+        " where (SenderID = " + Session["UserID"].ToString() + ") and (ReceiverID = " + HostReceiverID + ")";
 
-        //SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
-        //SqlDataReader reader = sqlCommand2.ExecuteReader();
-        //if (reader.HasRows)
-        //{
-        //    while (reader.Read())
-        //    {
-        //        Messages.Text += reader.GetString(0) + Environment.NewLine;
-        //    }
-        //}
-        //reader.Close();
-        //cn.Close();
+        SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
+        SqlDataReader reader = sqlCommand2.ExecuteReader();
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                Messages.Text += reader.GetString(0) + Environment.NewLine;
+            }
+        }
+        reader.Close();
+        cn.Close();
     }
 
     public static List<string> objcountries()
