@@ -44,19 +44,26 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SearchResultButton_Click(sender, e);
             Session["HomePageSearchContent"] = null;
         }
+        
     }
 
     protected void ApplyButton_Click(object sender, EventArgs e)
     {
-        SearchResultButton_Click(sender, e);
+        if (address.Text == string.Empty)
+        {
+            FilterLbl.Visible = true;
+            FilterLbl.Text = "Please enter a location first";
+        }
+        else
+        {
+            SearchResultButton_Click(sender, e);
+        }
     }
 
     protected void SearchResultButton_Click(object sender, EventArgs e)
     {
         if (CustomValidator1.IsValid)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "ReLoadTheMap", "geocodeAddress()", true);
-
+        {         
             Property1Space.Visible = false;
             Property2Space.Visible = false;
             Property3Space.Visible = false;
@@ -311,7 +318,9 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "Pooooopssssss", "openResultModal();", true);
+                    
                 }
+               
                 reader.Close();
                 SqlCommand Resultsearch = new SqlCommand(sql2, connection);
                 SqlDataReader Resultreader = Resultsearch.ExecuteReader();

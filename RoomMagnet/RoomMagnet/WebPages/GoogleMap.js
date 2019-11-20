@@ -11,15 +11,15 @@ var housetitle;
 var count = 0;
 
 function initMap() {
-    if (click === false) {
+    var inputvalue = document.getElementById('address').value;
+    if (inputvalue===null) {
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 11,
             center: { lat: 38.4495688, lng: -78.8689156 },
             disableDefaultUI: true
         });
     }
-    else {
-        var inputvalue = document.getElementById('address').value;
+    else {     
         if (isNaN(inputvalue)) {
             PageMethods.QueryToJsonForCityState(inputvalue, addressmap)
         }
@@ -29,9 +29,6 @@ function initMap() {
     }
 }
 
-function geocodeAddress() {
-    click = true;
-}
 
 function addressmap(response) {
     dataTable1 = eval(response);
@@ -42,7 +39,7 @@ function addressmap(response) {
         streetViewControl: false,
         disableDefaultUI: true
     });
-    var opt = { minZoom: 5, maxZoom: 14 };
+    var opt = { minZoom: 5, maxZoom: 15 };
     map.setOptions(opt);
     var latlng = new google.maps.LatLng(38.4495688, -78.8689156);
     map.setCenter(latlng);
@@ -74,7 +71,7 @@ function onGeocodeResponse(response, status) {
         }
 
         var image = {
-            url: 'https://cis366fanguo.s3.amazonaws.com/circle-24.png',
+            url: 'https://cis366fanguo.s3.amazonaws.com/red.png',
             size: new google.maps.Size(71, 71),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(17, 34),
@@ -88,6 +85,13 @@ function onGeocodeResponse(response, status) {
             icon: image,
             title: housetitle + "\n" + "Property is around this area"
         });
+        var zoom = map.getZoom();
+        document.getElementById("zoom").innerHTML = zoom;
+        if (zoom > 10) {
+            size = new google.maps.Size(44, 34);
+        } else {
+            size = new google.maps.Size(22, 17);
+        }
         marker.addListener('click', toggleBounce);
     }
     else {
