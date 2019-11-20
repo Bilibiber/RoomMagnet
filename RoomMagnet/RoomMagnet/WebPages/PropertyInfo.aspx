@@ -403,6 +403,11 @@
             </div>
         </div>
     </section>
+     <script type="text/javascript">
+        function openReserveModal() {
+            $('#Reserve').modal({ show: true });
+        }
+    </script>
     <div class="modal fade" id="Reserve" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -413,7 +418,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <asp:DropDownList ID="Rooms" AutoPostBack="true" OnSelectedIndexChanged="Rooms_SelectedIndexChanged" runat="server">
+                   <h3>Property Rooms</h3> <asp:DropDownList ID="Rooms" AutoPostBack="true" OnSelectedIndexChanged="Rooms_SelectedIndexChanged" runat="server">
                     </asp:DropDownList>
                     <asp:Label ID="RoomRentPrice" runat="server" Text="Label"></asp:Label>
                 </div>
