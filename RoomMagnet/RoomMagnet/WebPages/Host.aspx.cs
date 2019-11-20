@@ -22,32 +22,100 @@ public partial class WebPages_Host : System.Web.UI.Page
     private int OldConversationID = 0;
     private int NewConversationID = 0;
 
+    private ArrayList RequestIDs = new ArrayList();
+    private ArrayList RenterEmails = new ArrayList();
+
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["SignInEmail"] == null)
+        {
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            //ScriptManager.RegisterStartupScript(Master, Master.GetType(), "Pop", "openLoginModal();",true);
+        }
+        else
+        {
+            var master = Master as RoomMagnet;
+            master.AfterLogin();
+        }
+
+        int userid = Convert.ToInt32(Session["UserID"]);
         Property1Space.Visible = false;
         Property2Space.Visible = false;
         Property3Space.Visible = false;
 
-        //cn.Open();
-        //System.Data.SqlClient.SqlCommand selectrequest = new System.Data.SqlClient.SqlCommand();
-        //selectrequest.Connection = cn;
-        //int userid = Convert.ToInt32(Session["UserID"]);
-        //selectrequest.CommandText = "select [ImagePath] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
-        //selectrequest.Parameters.Add(new SqlParameter("@UserID", userid));
-        //SqlDataReader getimg = selectrequest.ExecuteReader();
-        //while (getimg.Read())
-        //{
+        cn.Open();
+        int requestcount = 0;
+        string requestsql = "SELECT        Requests.RequestStatus, Requests.Request, Requests.RequestID, Users.Email FROM Users " +
+            "INNER JOIN Requests ON Users.UserID = Requests.RoomRenterID" +
+            " Where Requests.PropertyHostID = @HostID";
+        SqlCommand requestsqlcommand = new SqlCommand(requestsql,cn);
+        requestsqlcommand.Parameters.AddWithValue("@HostID", userid);
+        SqlDataReader requestReader = requestsqlcommand.ExecuteReader();
 
-        //}
-        //getimg.Close();
-        //cn.Close();
+        if (requestReader.HasRows)
+        {
+            while (requestReader.Read())
+            {
+                if (requestReader.GetString(0) == "Pending")
+                {                 
+                    if (requestcount == 0)
+                    {
+                        request1.Visible = true;
+                        request1des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 1)
+                    {
+                        request2.Visible = true;
+                        request2des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 2)
+                    {
+                        request3.Visible = true;
+                        request3des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 3)
+                    {
+                        request4.Visible = true;
+                        request4des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 4)
+                    {
+                        request5.Visible = true;
+                        request5des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                }
+                else
+                {                    
+                    RequestHeader.Text = "No Pending Request";
+                }
+                requestcount++;
+            }
+        }
+        else
+        {           
+            RequestHeader.Text = "No Pending Request";
+        }
+        requestReader.Close();
+        cn.Close();
 
         if (!IsPostBack)
         {
             cn.Open();
             System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
             selectimg.Connection = cn;
-            int userid = Convert.ToInt32(Session["UserID"]);
+           
             selectimg.CommandText = "select [ImagePath] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectimg.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getimg = selectimg.ExecuteReader();
@@ -76,25 +144,18 @@ public partial class WebPages_Host : System.Web.UI.Page
         }
 
 
+        
+      
+       
         string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
-        if (Session["SignInEmail"] == null)
-        {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
-        }
-        else
-        {
-            var master = Master as RoomMagnet;
-            master.AfterLogin();
-        }
 
         if (!IsPostBack)
         {
             SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
             db.Open();
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
-            selectuser.Connection = db;
-            int userid = Convert.ToInt32(Session["UserID"]);
+            selectuser.Connection = db;         
             selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getinfor = selectuser.ExecuteReader();
@@ -649,5 +710,206 @@ public partial class WebPages_Host : System.Web.UI.Page
             }
             cn.Close();
         }
+    }
+
+    protected void AcceptButton1_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID",RequestIDs[0].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept",status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[0].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+        
+    }
+
+    protected void DeclineButton1_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[0].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[0].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void AcceptButton2_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[1].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[1].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void DeclineButton2_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[1].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[1].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void AcceptButton3_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[2].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[2].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void DeclineButton3_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[2].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[2].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void AcceptButton4_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[3].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[3].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void DeclineButton4_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[3].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[3].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void AcceptButton5_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[4].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[4].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void DeclineButton5_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[4].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[4].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
     }
 }

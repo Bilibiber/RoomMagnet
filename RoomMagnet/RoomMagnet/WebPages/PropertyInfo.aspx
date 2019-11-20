@@ -17,8 +17,22 @@
                         <p class="subtitle">
                             <asp:Label ID="cityLbl" runat="server" Text="PropertyCity"></asp:Label>
                             <asp:Label ID="homeStateLbl" runat="server" Text="PropertyState"></asp:Label>
-                            <asp:Label ID="zipCodeLbl" runat="server" Text="ZipCode" />
+                            <asp:Label ID="zipCodeLbl" runat="server" Text="ZipCode"></asp:Label>
                         </p>
+                        <div class="atbd_listing_bottom_content">
+                            <div class="atbd_content_left">
+                                <div class="atbd_listing_category">
+                                    <span class="fas fa-bed icon-padding"></span>
+                                    <div class="numberCircle">
+                                        <asp:Label runat="server" ID="availableBedroomsLbl" Text="1 Bed" CssClass="icon-padding"></asp:Label>
+                                    </div>
+                                    <span class="fas fa-bath icon-padding"></span>
+                                    <div class="numberCircle">
+                                        <asp:Label ID="availableBathroomsLbl" runat="server" CssClass="icon-padding"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -264,7 +278,7 @@
                         </div>
                         <!-- ends: /.atbd_widget_title -->
                         <div class="widget-body atbdp-widget-categories">
-                            <ul class="atbdp_parent_category">
+                            <ul class="atbdp_parent_category p-bottom-20">
                                 <li>
                                     <div class="item-section">
                                         <asp:Label runat="server" Text="Rent Price: "></asp:Label>
@@ -279,8 +293,6 @@
                                 </li>
                                 <li>
                                     <div class="item-section">
-                                        <asp:Label runat="server" Text="Available Bathrooms: "></asp:Label>
-                                        <asp:Label ID="availableBathroomsLbl" runat="server"></asp:Label>
                                     </div>
                                 </li>
                                 <li>
@@ -290,6 +302,10 @@
                                     </div>
                                 </li>
                             </ul>
+                            <asp:Button CssClass="btn btn-primary btn-block m-top-20" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" ID="saveto" />
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve" data-toggle="modal" data-target="#Reserve" data-dismiss="modal" OnClientClick="return false" />
+                            <asp:Label ID="HostValidate" runat="server" Visible="false" Text="Label"></asp:Label>
+                            <asp:Label ID="favorvalidate" runat="server" Text="Label" Visible="false"></asp:Label>
                         </div>
                         <!-- ends: .atbdb_content_module_contents -->
                     </div>
@@ -310,11 +326,7 @@
                                 </div>
                             </div>
                             <!-- ends: .atbd_avatar_wrapper -->
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="Unnamed_Click" />
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" ID="saveto" />
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve" data-toggle="modal" data-target="#Reserve" data-dismiss="modal" OnClientClick="return false" />
-                            <asp:Label ID="HostValidate" runat="server" Visible="false" Text="Label"></asp:Label>
-                            <asp:Label ID="favorvalidate" runat="server" Text="Label" Visible="false"></asp:Label>
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="Unnamed_Click" />             
                         </div>
                         <!-- ends: .widget-body -->
                     </div>
@@ -426,8 +438,7 @@
                     <div class="form-excerpts">
                         <ul class="list-unstyled">
                             <li>
-                                 <asp:Button runat="server" Text="Request" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="Reserve_Click" />
-
+                                <asp:Button runat="server" Text="Request" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="Reserve_Click" />
                             </li>
                         </ul>
                     </div>

@@ -263,13 +263,15 @@
                 <%--host connections--%>
                 <asp:Panel ID="panelconnections" runat="server" Visible="False">
                     <div class="col-md-12 mx-auto">
-                        <h1 class="update-title">Renter Request</h1>
+                        <h1 class="update-title">                          
+                            <asp:Label ID="RequestHeader" runat="server" Text="Renter Requests"></asp:Label>
+                        </h1>
                         <div class="container">
                             <div class="col-md-12">
                                 <div class=" p-bottom-25">
                                     <div class="card border" id="request1" runat="server" visible="false">
                                         <div class="card-header">
-                                            <asp:Label ID="request1name" runat="server" Text="Label"></asp:Label>
+                                            Request Application
                                         </div>
                                         <div class="card-body">
                                             <div class="col-md-9 left_col-1">
@@ -277,8 +279,8 @@
                                                     <asp:Label ID="request1des" runat="server" Text="Label"></asp:Label></p>
                                             </div>
                                             <div class="col-md-3 right_col-1">
-                                                <a href="#" class="btn btn-secondary requests-btn inline">Accept</a>
-                                                <a href="#" class="btn btn-secondary inline">Decline</a>
+                                                <asp:Button ID="AcceptButton1" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton1_Click" />
+                                                <asp:Button ID="DeclineButton1" runat="server" Text="Decline" CssClass="btn btn-secondary inline"  OnClick="DeclineButton1_Click"/>                                               
                                             </div>
                                         </div>
                                     </div>
@@ -288,15 +290,73 @@
                                 <div class=" p-bottom-25">
                                     <div class="card border" id="request2" runat="server" visible="false">
                                         <div class="card-header">
-                                            John Smith
+                                            Request Application
                                         </div>
                                         <div class="card-body">
                                             <div class="col-md-9 left_col-1 ">
-                                                <p class="card-text">Hi, I am a student and I am interested in renting the available room you posted.</p>
+                                                <p class="card-text"> <asp:Label ID="request2des" runat="server" Text="Label"></asp:Label>
+                                                </p>
                                             </div>
                                             <div class="col-md-3  right_col-1">
-                                                <a href="#" class="btn btn-secondary requests-btn inline">Accept</a>
-                                                <a href="#" class="btn btn-secondary inline">Decline</a>
+                                               <asp:Button ID="AcceptButton2" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton2_Click" />
+                                               <asp:Button ID="DeclineButton2" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton2_Click" />  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request3" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request3des" runat="server" Text="Label"></asp:Label></p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <asp:Button ID="AcceptButton3" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton3_Click" />
+                                                <asp:Button ID="DeclineButton3" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton3_Click" />                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request4" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request4des" runat="server" Text="Label"></asp:Label></p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <asp:Button ID="AcceptButton4" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton4_Click" />
+                                                <asp:Button ID="DeclineButton4" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton4_Click" />                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request5" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request5des" runat="server" Text="Label"></asp:Label></p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <asp:Button ID="AcceptButton5" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton5_Click" />
+                                                <asp:Button ID="DeclineButton5" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton5_Click" />                                               
                                             </div>
                                         </div>
                                     </div>
