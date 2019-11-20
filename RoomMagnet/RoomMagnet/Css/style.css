@@ -8214,3 +8214,14 @@ hr.style-six {
 .no-overlay:after {
 background:rgba(0,0,0,0) !important;
 }
+.message-size {
+width:100% !important;
+height:250px !important;
+
+}
+.no-margin {
+margin:0 !important;
+}
+.dashboard-padding {
+padding-bottom:40px;
+}

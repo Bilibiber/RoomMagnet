@@ -17,6 +17,16 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         HostValidate.Visible = false;
+        favorvalidate.Visible = false;
+
+        if (Session["Roles"].ToString() == "Renter")
+        {
+            saveto.Visible = false;
+        }
+        else
+        {
+            saveto.Visible = true;
+        }
         if (Session["SignInEmail"] == null)
         {
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -400,15 +410,25 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
     protected void addPropertytoUserFav(int userId, int propertyId)
     {
-        SqlConnection con = new SqlConnection(connectionString);
-        string insertQuery = "INSERT INTO Favorites (UserID, PropertyID) VALUES (@userId, @propertyId);";
-        con.Open();
+        try
+        {
+            SqlConnection con = new SqlConnection(connectionString);
+            string insertQuery = "INSERT INTO Favorites (UserID, PropertyID) VALUES (@userId, @propertyId);";
+            con.Open();
 
-        SqlCommand cmd = new SqlCommand(insertQuery, con);
-        cmd.Parameters.AddWithValue("@userId", userId);
-        cmd.Parameters.AddWithValue("@propertyId", propertyId);
+            SqlCommand cmd = new SqlCommand(insertQuery, con);
+            cmd.Parameters.AddWithValue("@userId", userId);
+            cmd.Parameters.AddWithValue("@propertyId", propertyId);
 
-        cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        catch (Exception)
+        {
+            favorvalidate.Text = "Already added!";
+            favorvalidate.Visible = true;
+        }
+        
     }
 
     protected void Unnamed_Click(object sender, EventArgs e)

@@ -432,6 +432,7 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
 
     protected void updateimg_Click(object sender, EventArgs e)
     {
+        cn.Open();
         int pid = Convert.ToInt32(Session["updatepropertyID"]);
         //upload images
         foreach (HttpPostedFile postedFile in FileUpload1.PostedFiles)
@@ -453,6 +454,7 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
                 }
             }
         }
+        cn.Close();
         Response.Redirect(Request.Url.AbsoluteUri);
     }
 }

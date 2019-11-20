@@ -539,8 +539,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <asp:TextBox runat="server" ID="propertydes" placeholder="Description" class="form-control" TextMode="MultiLine" Height="200px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="requireddes" runat="server" ErrorMessage="RequiredFieldValidator" Text="Required" ControlToValidate="propertydes" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:TextBox runat="server" ID="propertydes" placeholder="Description" class="form-control" TextMode="MultiLine" Height="200px" ValidationGroup="addimg"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="requireddes" runat="server" ErrorMessage="RequiredFieldValidator" Text="Required" ControlToValidate="propertydes" ValidationGroup="addimg" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
