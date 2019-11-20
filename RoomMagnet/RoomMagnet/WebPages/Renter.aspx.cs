@@ -23,8 +23,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
-       
         Property1Space.Visible = false;
         Property2Space.Visible = false;
         Property3Space.Visible = false;
@@ -78,8 +76,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
         }
 
-        
-
         string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
 
@@ -131,10 +127,8 @@ public partial class WebPages_Renter : System.Web.UI.Page
                 {
                     ReceiverIDs.Add(tempReceiverID);
                 }
-
             }
         }
-        
 
         cn.Close();
     }
@@ -346,33 +340,55 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterConnections.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
         renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
-        string sql = "Select Top 5 PropertyHostID, PropertyID, PropertyRoomID,RoomRenterID, Request from [Requests] where RoomRenterID=" + Session["UserID"].ToString();
-        SqlCommand sqlCommand = new SqlCommand(sql, cn);
-        int RequestCount = 0;
-        SqlDataReader reader = sqlCommand.ExecuteReader();
+        cn.Open();
+        string InsideLbl = "";
+        int userid = Convert.ToInt32(Session["UserID"]);
+        int requestcount = 0;
+        string Rentersql = "SELECT        Requests.RequestID, PropertyRoom.RentPrice, Property.Title, Property.City, Property.HomeState, Property.Country, Property.ZipCode,Users.Email,Requests.RequestStatus, PropertyRoom.PropertyRoomName" +
+            " FROM Requests INNER JOIN" +
+            " PropertyRoom ON Requests.PropertyRoomID = PropertyRoom.RoomID INNER JOIN" +
+            " Property ON PropertyRoom.PropertyID = Property.PropertyID Inner JOIN Users ON Property.HostID = Users.UserID" +
+            " Where Requests.RoomRenterID = @RenterID";
+        SqlCommand command = new SqlCommand(Rentersql, cn);
+        command.Parameters.AddWithValue("@RenterID", userid);
+        SqlDataReader reader = command.ExecuteReader();
         if (reader.HasRows)
         {
             while (reader.Read())
             {
-                if (RequestCount == 0)
+                if (reader.GetString(8) == "Accepted")
                 {
+                    if (requestcount == 0)
+                    {
+                        request1.Visible = true;
+                        StriptPay1.Visible = true;
+                        request1des.Text = "Your Request for" + reader.GetString(9) + " in " + reader.GetString(2) + reader.GetString(3) + reader.GetString(4) + reader.GetString(6) + reader.GetString(5) + "has been approved";
+                        RequestedRoomPrice.Text = reader.GetDecimal(1).ToString();
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
+                    }
                 }
-                if (RequestCount == 1)
+                else if (reader.GetString(8) == "Pending")
                 {
+                    request1.Visible = true;
+                    StriptPay1.Visible = false;
+                    request1des.Text = "Your Request for" + reader.GetString(9) + " in " + reader.GetString(2) + reader.GetString(3) + reader.GetString(4) + reader.GetString(6) + reader.GetString(5) + "is pending";
+                    int temRquestID = reader.GetInt32(0);
+                    if (RequestIDs.Contains(temRquestID) == false)
+                    {
+                        RequestIDs.Add(reader.GetInt32(0));
+                        HostEmails.Add(reader.GetString(7));
+                    }
                 }
-                if (RequestCount == 2)
-                {
-                }
-                if (RequestCount == 3)
-                {
-                }
-                if (RequestCount == 4)
-                {
-                }
-                RequestCount++;
+                requestcount++;
             }
         }
-        cn.Open();
+        reader.Close();
+        cn.Close();
     }
 
     protected void renterMessage_Click(object sender, EventArgs e)
@@ -382,13 +398,13 @@ public partial class WebPages_Renter : System.Web.UI.Page
         panelconnections.Visible = false;
         panelmessage.Visible = true;
         panelhistory.Visible = false;
-        
+
         renterprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterFavorites.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterMessage.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
         renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
-     
+
         FillDropDown(ReceiverIDs);
         if (HostNames.SelectedValue != "No One")
         {
@@ -407,8 +423,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
                 }
             }
         }
-
-
     }
 
     protected void renterHistory_Click(object sender, EventArgs e)
@@ -661,7 +675,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        if (HostNames.Visible== true)
+        if (HostNames.Visible == true)
         {
             cn.Open();
             string SenderID2 = Session["UserID"].ToString();
@@ -732,9 +746,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
         }
         txtsend.Text = String.Empty;
     }
+
     public void FillDropDown(ArrayList ReceiverIDs)
     {
-        
         // change the name of dropdown list to hostname
         if (HostNames.Items.Count != ReceiverIDs.Count + 1)
         {
@@ -751,16 +765,16 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     errorLabel.Visible = false;
                     while (reader3.Read())
                     {
-                        HostNames.Items.Add(new ListItem(reader3.GetString(0) +" " + reader3.GetString(1).ToString(), ReceiverIDs[i].ToString()));
+                        HostNames.Items.Add(new ListItem(reader3.GetString(0) + " " + reader3.GetString(1).ToString(), ReceiverIDs[i].ToString()));
                     }
-                    
                 }
                 reader3.Close();
             }
-            
+
             cn.Close();
-        } 
+        }
     }
+
     protected void HostNames_TextChanged(object sender, EventArgs e)
     {
         // change the name
@@ -768,7 +782,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         {
             Messages.Text = String.Empty;
             string sql = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
-                " where (SenderID = " + Session["UserID"].ToString()  + ") and (ReceiverID = " + HostNames.SelectedValue + ")";
+                " where (SenderID = " + Session["UserID"].ToString() + ") and (ReceiverID = " + HostNames.SelectedValue + ")";
             cn.Open();
             SqlCommand sqlCommand = new SqlCommand(sql, cn);
             SqlDataReader reader = sqlCommand.ExecuteReader();
