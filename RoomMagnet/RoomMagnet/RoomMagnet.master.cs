@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
@@ -376,4 +377,18 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
             args.IsValid = true;
         }
     }
+//    private System.Threading.Timer timer = new System.Threading.Timer(_TimerTick(state), null, 1000 * 30 * 60, Timeout.Infinite);
+//    private void _OnUserActivity(object sender, EventArgs e)
+//    {
+//        if (timer != null)
+//        {
+//            // postpone auto-logout by 30 minutes
+//            timer.Change(1000 * 30 * 60, Timeout.Infinite);
+//        }
+//    }
+
+//    private void _TimerTick(object state)
+//    {
+//        // the user has been inactive for 30 minutes; log him out
+//    }
 }

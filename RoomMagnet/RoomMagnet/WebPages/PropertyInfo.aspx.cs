@@ -343,7 +343,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         if (RoomsBool == false)
         {
             SqlCommand sqlCommand6 = new SqlCommand(Roomsql, connection);
-            SqlDataReader reader6 = sqlCommand.ExecuteReader();
+            SqlDataReader reader6 = sqlCommand6.ExecuteReader();
             if (reader6.HasRows)
             {
                 while (reader6.Read())
