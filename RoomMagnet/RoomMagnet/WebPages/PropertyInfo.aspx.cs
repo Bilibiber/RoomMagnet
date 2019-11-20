@@ -2,12 +2,17 @@
 using System.Collections;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 public partial class WebPages_PropertyInfo : System.Web.UI.Page
 {
     private SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     private string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString();
     private ArrayList tempImages = new ArrayList();
+    private ArrayList PropertyRoomID = new ArrayList();
+    int PropertyHostID;
+    bool RoomsBool = false;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -28,7 +33,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         string test = Session["ResultPropertyID"].ToString();
         String sql = "Select Title, [Property].City, [Property].HomeState, [Property].ZipCode, AvailableBedrooms, [Property].RentPrice, [Property].StartDate, [Property].EndDate, " +
       "[ImagePath].ImagePath, AvailableBathrooms, AirConditioning, Heating, OnSiteLaundry,Parking,Furnished,PetFriendly,CarbonMonoxideDetector, SmokeDetector,SeperateEntrance," +
-    "Wifi, TV, SeparateBathroom, [Property].Descriptions,Users.FirstName, Users.LastName, Users.ImagePath from [Property] inner join [ImagePath]" +
+    "Wifi, TV, SeparateBathroom, [Property].Descriptions,Users.FirstName, Users.LastName, Users.ImagePath, Users.UserID from [Property] inner join [ImagePath]" +
     "on [Property].PropertyID = [ImagePath].PropertyID INNER JOIN [PropertyRoom] ON [Property].PropertyID = [PropertyRoom].PropertyID" +
     " INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID INNER JOIN [Rating] ON [Property].PropertyID= " +
     "[Rating].PropertyID INNER JOIN Users ON Property.HostID = Users.UserID WHERE [Property].PropertyID = " + test;
@@ -71,6 +76,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             {
                 byte[] propertyImage = (byte[])reader[8];
                 byte[] OwnerImage = (byte[])reader[25];
+                PropertyHostID = reader.GetInt32(26);
                 string OWNERImageURL = "data:image;base64," + Convert.ToBase64String(OwnerImage);
                 PropertyOwnerImage.ImageUrl = OWNERImageURL;
                 PropertyOwnerName.Text = reader.GetString(23) + " " + reader.GetString(24);
@@ -333,6 +339,20 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
         numStarsLbl.Text = (RatingSum / RatingCount).ToString();
         reader2.Close();
+        string Roomsql = "Select PropertyRoomName, RoomID from PropertyRoom where PropertyID=" + Session["ResultPropertyID"].ToString();
+        if (RoomsBool == false)
+        {
+            SqlCommand sqlCommand6 = new SqlCommand(Roomsql, connection);
+            SqlDataReader reader6 = sqlCommand.ExecuteReader();
+            if (reader6.HasRows)
+            {
+                while (reader6.Read())
+                {
+                    Rooms.Items.Add(new ListItem(reader6.GetString(0), reader6.GetInt32(1).ToString()));
+                }
+            }
+            RoomsBool = true;
+        }
         connection.Close();
     }
 
@@ -380,6 +400,37 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
     protected void Unnamed_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Message.aspx");
+        if (Session["SignInEmail"] == null)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        }
+        else
+        {
+            Response.Redirect("Message.aspx");
+        }
+    }
+    protected void Reserve_Click(object sender, EventArgs e)
+    {
+        if (Session["SignInEmail"] == null)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+        }
+        else if (PropertyHostID.ToString() == Session["UserID"].ToString())
+        {
+
+        }
+        else
+        {
+            string Request = "";
+            string sql = "INSERT INTO Request (PropertyHostID, PropertyID, PropertyRoomID, RoomRenterID, Request) VALUES (@PropertyHostID, @PropertyID, @PropertyRoomID, @RoomRenterID, @Request)";
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@PropertyHostID", PropertyHostID);
+            cmd.Parameters.AddWithValue("@PropertyID", Session["ResultPropertyID"].ToString());
+            cmd.Parameters.AddWithValue("@PropertyRoomID", Rooms.SelectedValue);
+            cmd.Parameters.AddWithValue("@RoomRenterID", Session["UserID"].ToString());
+            cmd.Parameters.AddWithValue("@Request", Request);
+        }
     }
 }
