@@ -24,6 +24,15 @@ public partial class WebPages_Renter : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+       
+        Property1Space.Visible = false;
+        Property2Space.Visible = false;
+        Property3Space.Visible = false;
+        history1.Visible = false;
+        Div2.Visible = false;
+        Div3.Visible = false;
+        HostNames.Visible = false;
+        errorLabel.Visible = false;
         if (Session["SignInEmail"] == null)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -33,14 +42,6 @@ public partial class WebPages_Renter : System.Web.UI.Page
             var master = Master as RoomMagnet;
             master.AfterLogin();
         }
-        Property1Space.Visible = false;
-        Property2Space.Visible = false;
-        Property3Space.Visible = false;
-        history1.Visible = false;
-        Div2.Visible = false;
-        Div3.Visible = false;
-        HostNames.Visible = false;
-        errorLabel.Visible = false;
         if (!IsPostBack)
         {
             cn.Open();
@@ -706,10 +707,11 @@ public partial class WebPages_Renter : System.Web.UI.Page
     }
     public void FillDropDown(ArrayList ReceiverIDs)
     {
+      
         // change the name of dropdown list to hostname
         if (HostNames.Items.Count != ReceiverIDs.Count + 1)
         {
-            cn.Open();
+           
             for (int i = 0; i < ReceiverIDs.Count; i++)
             {
                 string sql = "Select FirstName, LastName from Users WHERE UserID=" + ReceiverIDs[i].ToString();
@@ -717,6 +719,8 @@ public partial class WebPages_Renter : System.Web.UI.Page
                 SqlDataReader reader3 = sqlCommand.ExecuteReader();
                 if (reader3.HasRows)
                 {
+                    HostNames.Visible = true;
+                    errorLabel.Visible = false;
                     while (reader3.Read())
                     {
                         HostNames.Items.Add(new ListItem(reader3.GetString(0) +" " + reader3.GetInt32(1).ToString(), ReceiverIDs[i].ToString()));
