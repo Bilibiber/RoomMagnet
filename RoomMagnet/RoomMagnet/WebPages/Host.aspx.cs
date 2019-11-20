@@ -677,6 +677,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                 Messages.Text += reader4.GetString(0) + Environment.NewLine;
             }
         }
+        txtsend.Text = String.Empty;
     }
     public void FillDropDown(ArrayList ReceiverIDs)
     {

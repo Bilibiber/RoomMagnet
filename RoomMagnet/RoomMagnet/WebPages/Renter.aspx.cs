@@ -730,6 +730,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             errorLabel.Text = "No conversations have been initiated with a Host ";
             errorLabel.Visible = true;
         }
+        txtsend.Text = String.Empty;
     }
     public void FillDropDown(ArrayList ReceiverIDs)
     {
