@@ -31,7 +31,7 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
             //select property date from database
             cn.Open();
             string select = "SELECT [Title],[StreetAddress],[City],[HomeState],[Country],[ZipCode],[SquareFootage],[AvailableBedrooms]," +
-                "[AvailableBathrooms],[RentPrice] FROM [RoomMagnet].[dbo].[Property] where propertyid = @pid";
+                "[AvailableBathrooms],[RentPrice],[Descriptions],[HomeType] FROM [RoomMagnet].[dbo].[Property] where propertyid = @pid";
             SqlCommand property = new SqlCommand(select, cn);
             property.Parameters.AddWithValue("@pid", Int32.Parse(Session["updatepropertyID"].ToString()));
             SqlDataReader reader = property.ExecuteReader();
@@ -48,6 +48,8 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
                 addPrice.Text = price.ToString("0.00");
                 addbath.Text = reader.GetInt32(7).ToString();
                 addBedrooms.Text = reader.GetInt32(8).ToString();
+                propertydes.Text = reader.GetString(10);
+                addType.SelectedValue = reader.GetString(11);
             }
             reader.Close();
 
@@ -238,7 +240,7 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
         update.Connection = cn;
         update.CommandText = "UPDATE [dbo].[Property] SET [Title] = @title,[StreetAddress] = @street,[City] = @city,[HomeState] = @state,[Country] = @country,[ZipCode] = @zip," +
             "[SquareFootage] = @square,[AvailableBedrooms] =@bedrooms ,[AvailableBathrooms] = @bathrooms,[RentPrice] = @price,[StartDate] = @start,[EndDate] = @end,[HostID] = @hostid," +
-            "[LastUpdated] = @lastUpdated,[LastUpdatedBy] = @lastUpdatedBy WHERE propertyid =@pid";
+            "[LastUpdated] = @lastUpdated,[LastUpdatedBy] = @lastUpdatedBy,[Descriptions] = @Descriptions, [HomeType] = @HomeType WHERE propertyid =@pid";
         update.Parameters.AddWithValue("@title", addtitle.Text);
         update.Parameters.AddWithValue("@street", addStreet.Text);
         update.Parameters.AddWithValue("@city", addCity.Text);
@@ -254,6 +256,8 @@ public partial class WebPages_UpdateProperty : System.Web.UI.Page
         update.Parameters.AddWithValue("@hostid", userid);
         update.Parameters.AddWithValue("@lastUpdated", DateTime.Now.ToString("d"));
         update.Parameters.AddWithValue("@lastUpdatedBy", FullName);
+        update.Parameters.AddWithValue("@Descriptions", propertydes.Text);
+        update.Parameters.AddWithValue("@HomeType", addType.SelectedValue);
         update.Parameters.AddWithValue("@pid", pid);
         update.ExecuteNonQuery();
         cn.Close();

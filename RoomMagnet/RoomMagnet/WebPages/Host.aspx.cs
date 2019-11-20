@@ -414,7 +414,7 @@ public partial class WebPages_Host : System.Web.UI.Page
             }
         }
         cn.Close();
-        Response.Redirect("PropertyInfo .aspx");
+        Response.Redirect("PropertyInfo.aspx");
     }
 
 

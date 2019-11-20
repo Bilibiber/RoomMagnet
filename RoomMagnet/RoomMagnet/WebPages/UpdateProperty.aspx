@@ -271,6 +271,17 @@
                                     <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
                                 </div>
 
+                                <div class="form-group ">
+                                    <asp:Label runat="server" class="form-label " Text="Home Type"></asp:Label>
+                                    <asp:DropDownList runat="server" ID="addType" class="form-control">
+                                        <asp:ListItem Value=""></asp:ListItem>
+                                        <asp:ListItem Value="Appartment">Appartment</asp:ListItem>
+                                        <asp:ListItem Value="TownHouse">Town house</asp:ListItem>
+                                        <asp:ListItem Value="Home">Home</asp:ListItem>
+                                        </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="addType" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                </div>
+
                                 <div class="form-group">
                                     <asp:Label runat="server" Text="Square Footage of House" class="form-label"></asp:Label>
 
@@ -596,6 +607,23 @@
                 <!-- ends: .atbd_content_module -->
             </div>
             <!-- ends: .col-lg-10 -->
+            <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 offset-lg-1" style="left: 0px; top: 0px">
+                                    <div class="atbd_content_module">
+                                        <div class="atbd_content_module__tittle_area">
+                                            <div class="atbd_area_title">
+                                                <h4>Property Descriptions</h4>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:TextBox runat="server" ID="propertydes" placeholder="Description" class="form-control" TextMode="MultiLine" Height="200px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="requireddes" runat="server" ErrorMessage="RequiredFieldValidator" Text="Required" ControlToValidate="propertydes" ForeColor="Red"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
             <div class="container">
                 <div class="row">
