@@ -139,8 +139,8 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
 
-        string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, [Favorites].PropertyID from[Property] INNER JOIN[ImagePath]" +
-            " on[Property].PropertyID = [ImagePath].PropertyID INNER JOIN [Favorites] on[Property].PropertyID = [Favorites].PropertyID WHERE UserID = " + Session["UserID"];
+        string sql = "SELECT Property.Title, Property.City, Property.HomeState, Property.ZipCode, Property.AvailableBedrooms, Property.RentPrice, Property.StartDate," +
+            " Property.EndDate, Property.AvailableBathrooms, Property.PropertyID FROM Favorites LEFT OUTER JOIN Property ON Favorites.PropertyID = Property.PropertyID where userid = " + Session["UserID"];
         cn.Open();
         SqlCommand search = new SqlCommand(sql, cn);
         SqlDataReader reader = search.ExecuteReader();
@@ -154,14 +154,12 @@ public partial class WebPages_Renter : System.Web.UI.Page
                 string y;
                 if (resultCount == 1)
                 {
-                    RatingsPID.Add(reader.GetInt32(10));
+                    RatingsPID.Add(reader.GetInt32(9));
                     x = reader.GetDecimal(5);
                     y = String.Format("{0:0.##}", x);
                     Property1Title.Text = reader.GetString(0);
                     Property1Title.Visible = true;
-
                     Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
-
                     Property1RentPrice.Text = "$" + y + "/Month";
                     Property1RentPrice.Visible = true;
                     Property1CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
@@ -171,22 +169,25 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property1StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property1EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
 
-                    byte[] images = (byte[])reader[8];
-                    if (images == null)
+                    int pid = reader.GetInt32(9);
+                    System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
+                    selectimg.Connection = cn;
+                    selectimg.CommandText = "Select ImagePath from [ImagePath] WHERE PropertyID = @pid";
+                    selectimg.Parameters.Add(new SqlParameter("@pid", pid));
+                    SqlDataReader getinfor = selectimg.ExecuteReader();
+                    while (getinfor.Read())
                     {
-                        return;
-                    }
-                    else
-                    {
-                        Property1Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                        byte[] images1 = (byte[])getinfor[0];
+                        Property1Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images1);
                         Property1Image.Visible = true;
                     }
+                    getinfor.Close();
                     Property1Space.Visible = true;
                 }
 
                 if (resultCount == 2)
                 {
-                    RatingsPID.Add(reader.GetInt32(10));
+                    RatingsPID.Add(reader.GetInt32(9));
                     x = reader.GetDecimal(5);
                     y = String.Format("{0:0.##}", x);
                     Property2Title.Text = reader.GetString(0);
@@ -200,21 +201,25 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property2Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property2StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property2EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
-                    byte[] images = (byte[])reader[8];
-                    if (images == null)
+
+                    int pid = reader.GetInt32(10);
+                    System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
+                    selectimg.Connection = cn;
+                    selectimg.CommandText = "Select ImagePath from [ImagePath] WHERE PropertyID = @pid";
+                    selectimg.Parameters.Add(new SqlParameter("@pid", pid));
+                    SqlDataReader getinfor = selectimg.ExecuteReader();
+                    while (getinfor.Read())
                     {
-                        return;
-                    }
-                    else
-                    {
-                        Property2Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                        byte[] images2 = (byte[])getinfor[0];
+                        Property2Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images2);
                         Property2Image.Visible = true;
                     }
+                    getinfor.Close();
                     Property2Space.Visible = true;
                 }
                 if (resultCount == 3)
                 {
-                    RatingsPID.Add(reader.GetInt32(10));
+                    RatingsPID.Add(reader.GetInt32(9));
                     x = reader.GetDecimal(5);
                     y = String.Format("{0:0.##}", x);
                     Property3Title.Text = reader.GetString(0);
@@ -227,16 +232,20 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property3Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property3StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property3EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
-                    byte[] images = (byte[])reader[8];
-                    if (images == null)
+
+                    int pid = reader.GetInt32(10);
+                    System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
+                    selectimg.Connection = cn;
+                    selectimg.CommandText = "Select ImagePath from [ImagePath] WHERE PropertyID = @pid";
+                    selectimg.Parameters.Add(new SqlParameter("@pid", pid));
+                    SqlDataReader getinfor = selectimg.ExecuteReader();
+                    while (getinfor.Read())
                     {
-                        return;
-                    }
-                    else
-                    {
-                        Property3Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images);
+                        byte[] images3 = (byte[])getinfor[0];
+                        Property3Image.ImageUrl = "data:image;base64," + Convert.ToBase64String(images3);
                         Property3Image.Visible = true;
                     }
+                    getinfor.Close();
                     Property3Space.Visible = true;
                 }
             }
@@ -293,6 +302,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterConnections.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
         renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterHistory.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        string sql = "Select PropertyHostID, PropertyID, PropertyRoomID,RoomRenterID, Request from [Requests] where RoomRenterID=" + Session["UserID"].ToString();
+        cn.Open();
+       
     }
 
     protected void renterMessage_Click(object sender, EventArgs e)
@@ -448,7 +460,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
         }
         cn.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
+        Response.Redirect("PropertyInfo.aspx");
     }
 
     protected void Property2Image_Click(object sender, ImageClickEventArgs e)
@@ -479,7 +491,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
         }
         cn.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
+        Response.Redirect("PropertyInfo.aspx");
     }
 
     protected void Property3Image_Click(object sender, ImageClickEventArgs e)
@@ -510,7 +522,27 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
         }
         cn.Close();
-        Response.Redirect("ManageSearchProperties.aspx");
+        Response.Redirect("PropertyInfo.aspx");
+    }
+
+    protected void historyproperty1_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string sql = "SELECT [PropertyID] FROM [RoomMagnet].[dbo].[Property] where title =@title and city +','+ [HomeState] =@citystate";
+        SqlCommand search = new SqlCommand(sql, cn);
+        search.Parameters.Add(new SqlParameter("@title", history1title.Text));
+        search.Parameters.Add(new SqlParameter("@citystate", history1city.Text));
+        SqlDataReader reader = search.ExecuteReader();
+
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                Session["ResultPropertyID"] = reader.GetInt32(0);
+            }
+        }
+        cn.Close();
+        Response.Redirect("PropertyInfo.aspx");
     }
 
     protected void review_Click(object sender, EventArgs e)

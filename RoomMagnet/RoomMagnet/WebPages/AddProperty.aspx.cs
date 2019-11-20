@@ -92,8 +92,8 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         string FullName = Session["FullName"].ToString();
 
         string insert = "INSERT INTO [dbo].[Property]([Title],[StreetAddress] ,[City],[HomeState] ,[Country],[ZipCode],[SquareFootage],[RentPrice],[AvailableBedrooms], [AvailableBathrooms]," +
-            "[StartDate],[EndDate],[LastUpdated],[LastUpdatedBy],[HostID]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country,@ZipCode, @SquareFootage, @RentPrice,@AvailableBedrooms," +
-            "@AvailableBathrooms, @StartDate, @EndDate,@LastUpdated, @LastUpdatedBy,@HostID)";
+            "[StartDate],[EndDate],[LastUpdated],[LastUpdatedBy],[HostID],[Descriptions],[HomeType]) VALUES (@Title, @StreetAddress, @City, @HomeState, @Country,@ZipCode, @SquareFootage, @RentPrice,@AvailableBedrooms," +
+            "@AvailableBathrooms, @StartDate, @EndDate,@LastUpdated, @LastUpdatedBy,@HostID, @Descriptions,@HomeType)";
         SqlCommand inserted = new SqlCommand(insert, cn);
         inserted.Parameters.AddWithValue("@Title", addtitle.Text);
         inserted.Parameters.AddWithValue("@StreetAddress", addStreet.Text);
@@ -110,6 +110,8 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
         inserted.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
         inserted.Parameters.AddWithValue("@LastUpdatedBy", FullName);
         inserted.Parameters.AddWithValue("@HostID", userid);
+        inserted.Parameters.AddWithValue("@Descriptions", propertydes.Text);
+        inserted.Parameters.AddWithValue("@HomeType", addType.SelectedValue);
         inserted.ExecuteNonQuery();
         cn.Close();
 
