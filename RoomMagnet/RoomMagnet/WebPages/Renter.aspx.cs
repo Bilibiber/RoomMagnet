@@ -54,6 +54,11 @@ public partial class WebPages_Renter : System.Web.UI.Page
 
         string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
+        if (userstatus.Text == "VERIFIED")
+        {
+            userstatus.BackColor = System.Drawing.Color.Green ;
+        }
+
         if (Session["SignInEmail"] == null)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
