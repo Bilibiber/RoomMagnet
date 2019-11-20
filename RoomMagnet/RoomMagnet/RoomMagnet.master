@@ -82,7 +82,7 @@
                                                 </li>
 
                                                 <li>
-                                                    <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign in" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
+                                                    <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign In" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" />
                                                 </li>
                                                 <li>
                                                     <asp:Label ID="MasterUserName" runat="server" Text="Label" Visible="false"></asp:Label>
