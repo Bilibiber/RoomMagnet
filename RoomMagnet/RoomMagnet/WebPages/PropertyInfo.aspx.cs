@@ -17,7 +17,6 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         HostValidate.Visible = false;
-        ErrorMessage.Visible = false;
         if (Session["SignInEmail"] == null)
         {
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -33,7 +32,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         string test = Session["ResultPropertyID"].ToString();
         String sql = "Select Title, [Property].City, [Property].HomeState, [Property].ZipCode, AvailableBedrooms, [Property].RentPrice, [Property].StartDate, [Property].EndDate, " +
       "[ImagePath].ImagePath, AvailableBathrooms, AirConditioning, Heating, OnSiteLaundry,Parking,Furnished,PetFriendly,CarbonMonoxideDetector, SmokeDetector,SeperateEntrance," +
-    "Wifi, TV, SeparateBathroom, [Property].Descriptions,Users.FirstName, Users.LastName, Users.ImagePath, Users.UserID, AvailableBedrooms from [Property] inner join [ImagePath]" +
+    "Wifi, TV, SeparateBathroom, [Property].Descriptions,Users.FirstName, Users.LastName, Users.ImagePath, Users.UserID from [Property] inner join [ImagePath]" +
     "on [Property].PropertyID = [ImagePath].PropertyID INNER JOIN [PropertyRoom] ON [Property].PropertyID = [PropertyRoom].PropertyID" +
     " INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID INNER JOIN [Rating] ON [Property].PropertyID= " +
     "[Rating].PropertyID INNER JOIN Users ON Property.HostID = Users.UserID WHERE [Property].PropertyID = " + test;
@@ -70,7 +69,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             {
                 byte[] propertyImage = (byte[])reader[8];
                 byte[] OwnerImage = (byte[])reader[25];
-                
+                PropertyHostID = reader.GetInt32(26);
                 string OWNERImageURL = "data:image;base64," + Convert.ToBase64String(OwnerImage);
                 PropertyOwnerImage.ImageUrl = OWNERImageURL;
                 PropertyOwnerName.Text = reader.GetString(23) + " " + reader.GetString(24);
@@ -127,8 +126,6 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
                     if (counter == 0)
                     {
-                        PropertyHostID = reader.GetInt32(26);
-                        Property1Bed.Text = reader.GetInt32(27).ToString();
                         titleLbl.Text = reader.GetString(0);
                         cityLbl.Text = reader.GetString(1) + ", ";
                         homeStateLbl.Text = reader.GetString(2) + ", ";
@@ -403,22 +400,15 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
     protected void addPropertytoUserFav(int userId, int propertyId)
     {
-        try {
-            SqlConnection con = new SqlConnection(connectionString);
-            string insertQuery = "INSERT INTO Favorites (UserID, PropertyID) VALUES (@userId, @propertyId);";
-            con.Open();
+        SqlConnection con = new SqlConnection(connectionString);
+        string insertQuery = "INSERT INTO Favorites (UserID, PropertyID) VALUES (@userId, @propertyId);";
+        con.Open();
 
-            SqlCommand cmd = new SqlCommand(insertQuery, con);
-            cmd.Parameters.AddWithValue("@userId", userId);
-            cmd.Parameters.AddWithValue("@propertyId", propertyId);
+        SqlCommand cmd = new SqlCommand(insertQuery, con);
+        cmd.Parameters.AddWithValue("@userId", userId);
+        cmd.Parameters.AddWithValue("@propertyId", propertyId);
 
-            cmd.ExecuteNonQuery();
-        }
-        catch (Exception)
-        {
-            ErrorMessage.Text = "Property has already been inserted into Favorites";
-            ErrorMessage.Visible = true;
-        }
+        cmd.ExecuteNonQuery();
     }
 
     protected void Unnamed_Click(object sender, EventArgs e)
