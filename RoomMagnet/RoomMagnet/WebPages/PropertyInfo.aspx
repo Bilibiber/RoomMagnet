@@ -421,7 +421,8 @@
                     <div class="form-excerpts">
                         <ul class="list-unstyled">
                             <li>
-                                <%-- <asp:Button runat="server" Text="Dashboard" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="goDashboard_Click" />--%>
+                                 <asp:Button runat="server" Text="Request" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="Reserve_Click" />
+
                             </li>
                         </ul>
                     </div>
