@@ -452,6 +452,7 @@ public partial class WebPages_Host : System.Web.UI.Page
             RequestHeader.Text = "No Pending Request";
         }
         ViewState["RequestIDarray"] = RequestIDs;
+        ViewState["RenterEmails"] = RenterEmails;
         requestReader.Close();
         cn.Close();
     }
@@ -727,6 +728,7 @@ public partial class WebPages_Host : System.Web.UI.Page
     protected void AcceptButton1_Click(object sender, EventArgs e)
     {
         RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        RenterEmails = (ArrayList)ViewState["RenterEmails"];
         cn.Open();
         string status = "Accepted";
         string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
@@ -736,9 +738,9 @@ public partial class WebPages_Host : System.Web.UI.Page
         sqlCommand.ExecuteNonQuery();
         cn.Close();
 
-        //string EmailAddress = RenterEmails[0].ToString();
-        //string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
-        //EmailSender emailSender = new EmailSender();
+        string EmailAddress = RenterEmails[0].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
 
@@ -749,6 +751,7 @@ public partial class WebPages_Host : System.Web.UI.Page
     protected void DeclineButton1_Click(object sender, EventArgs e)
     {
         RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        RenterEmails = (ArrayList)ViewState["RenterEmails"];
         cn.Open();
         string status = "Declined";
         string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
