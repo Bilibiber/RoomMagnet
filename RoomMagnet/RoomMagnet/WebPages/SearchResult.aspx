@@ -6,9 +6,9 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <asp:scriptmanager id="ScriptManager1"
-        enablepagemethods="true"
-        enablepartialrendering="true" runat="server" />   
+    <asp:ScriptManager ID="ScriptManager1"
+        EnablePageMethods="true"
+        EnablePartialRendering="true" runat="server" />
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu9-V7rNAJ0LWxj2senGo9wVHwgLXQr-0&language=en">
     </script>
@@ -22,14 +22,14 @@
                     <div class="atbd_generic_header_title">
                         <div class="atbd_seach_fields_wrapper input-group">
                             <div class="single_search_field search_query">
-                                <asp:textbox id="address" runat="server" cssclass="form-control search_fields Searchtxt-width inputgroup-height" type="textbox" clientidmode="Static" placeholder="Enter a city or zip code"></asp:textbox>
-                                <asp:regularexpressionvalidator id="RegularExpressionValidatorHomePageSearchText" runat="server" errormessage="Special characters are not allowed. For example:% & ; = $" validationexpression="[^%&;>=$]+" controltovalidate="address" display="Dynamic" validationgroup="ResultPageSearch"></asp:regularexpressionvalidator>
-                                <asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" errormessage="Required" validationgroup="ResultPageSearch" controltovalidate="address" display="Dynamic"></asp:requiredfieldvalidator>
-                                <asp:customvalidator id="CustomValidator1" runat="server" errormessage="City and State should separate by a comma. For example Harrisonburg,VA" validationgroup="ResultPageSearch" controltovalidate="address" display="Dynamic" onservervalidate="CustomValidator1_ServerValidate"></asp:customvalidator>
+                                <asp:TextBox ID="address" runat="server" CssClass="form-control search_fields Searchtxt-width inputgroup-height" type="textbox" ClientIDMode="Static" placeholder="Enter a city or zip code"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorHomePageSearchText" runat="server" ErrorMessage="Special characters are not allowed. For example:% & ; = $" ValidationExpression="[^%&;>=$]+" ControlToValidate="address" Display="Dynamic" ValidationGroup="ResultPageSearch"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ValidationGroup="ResultPageSearch" ControlToValidate="address" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="City and State should separate by a comma. For example Harrisonburg,VA" ValidationGroup="ResultPageSearch" ControlToValidate="address" Display="Dynamic" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                             </div>
 
                             <div class="atbd_submit_btn input-group-append searchtxt-padding">
-                                <asp:button id="search" runat="server" text="Search" clientidmode="Static" cssclass="btn btn-primary inputgroup-height textcenter" onclick="SearchResultButton_Click" validationgroup="ResultPageSearch"/>
+                                <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" CssClass="btn btn-primary inputgroup-height textcenter" OnClick="SearchResultButton_Click" ValidationGroup="ResultPageSearch" />
                             </div>
                         </div>
                     </div>
@@ -42,8 +42,8 @@
                                 <a class="action-btn dropdown-toggle" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort by <span class="caret"></span></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
                                 <%-- Change to link button --%>
-                                <asp:linkbutton id="LowToHigh" onclick="LowToHigh_Click" runat="server" cssclass="dropdown-item">Price ( low to high )</asp:linkbutton>
-                                <asp:linkbutton id="HighToLow" onclick="HighToLow_Click" runat="server" cssclass="dropdown-item">Price ( high to low )</asp:linkbutton>
+                                <asp:LinkButton ID="LowToHigh" OnClick="LowToHigh_Click" runat="server" CssClass="dropdown-item">Price ( low to high )</asp:LinkButton>
+                                <asp:LinkButton ID="HighToLow" OnClick="HighToLow_Click" runat="server" CssClass="dropdown-item">Price ( high to low )</asp:LinkButton>
                             </div>
                         </div>
                     </div>
@@ -67,11 +67,11 @@
                 <!-- ends: .col-lg-4 -->
                 <div class="col-lg-6 order-0 order-lg-1">
                     <div class="row searchtxt-padding">
-                        <h4>Search Result</h4>
+                        <h4>Search Results</h4>
                     </div>
                     <div class="row searchtxt-padding">
                         <p>
-                            <asp:label id="SearchResultCount" runat="server" text=""></asp:label>
+                            <asp:Label ID="SearchResultCount" runat="server" Text=""></asp:Label>
                         </p>
                     </div>
                     <div class="row">
@@ -80,7 +80,7 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image fill">
-                                            <asp:imagebutton id="Property1Image" onclick="Property1Image_Click" runat="server" cssclass="imgfill" alt="Click to see more details" />
+                                            <asp:ImageButton ID="Property1Image" OnClick="Property1Image_Click" runat="server" CssClass="imgfill" alt="Click to see more details" />
                                         </div>
                                         <!-- ends: .atbd_listing_image -->
                                     </figure>
@@ -88,23 +88,23 @@
                                     <div class="atbd_listing_info">
                                         <div class="atbd_content_upper">
                                             <h4 class="atbd_listing_title">
-                                                <asp:label id="Property1Title" visible="false" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property1Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                             </h4>
                                             <div class="mt-0 form-label">
-                                                <asp:label id="Property1CityState" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property1CityState" runat="server" Text="Label"></asp:Label>
                                             </div>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">
-                                                    <asp:label id="Property1Rating" runat="server" text="4.5"></asp:label>
+                                                    <asp:Label ID="Property1Rating" runat="server" Text="4.5"></asp:Label>
                                                     <i class="la la-star"></i></span>
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
                                                 <div class="mt-0 form-label">
-                                                    <asp:label id="Property1RentPrice" runat="server" text="Label"></asp:label>
+                                                    <asp:Label ID="Property1RentPrice" runat="server" Text="Label"></asp:Label>
                                                 </div>
                                                 <div class="row mt-0 form-label daterange">
-                                                    <asp:label id="Property1StartDate" runat="server" text="Label"></asp:label>
+                                                    <asp:Label ID="Property1StartDate" runat="server" Text="Label"></asp:Label>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,11 +116,11 @@
                                                 <div class="atbd_listing_category">
                                                     <span class="fas fa-bed icon-padding"></span>
                                                     <div class="numberCircle">
-                                                        <asp:label runat="server" id="Property1Bed" text="1 Bed" cssclass="icon-padding"></asp:label>
+                                                        <asp:Label runat="server" ID="Property1Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
                                                     </div>
                                                     <span class="fas fa-bath icon-padding"></span>
                                                     <div class="numberCircle">
-                                                        <asp:label runat="server" id="Property1Bath" text="1 Bathroom" cssclass="icon-padding"></asp:label>
+                                                        <asp:Label runat="server" ID="Property1Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -134,7 +134,7 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image fill">
-                                            <asp:imagebutton id="Property2Image" onclick="Property2Image_Click" runat="server" cssclass="imgfill" />
+                                            <asp:ImageButton ID="Property2Image" OnClick="Property2Image_Click" runat="server" CssClass="imgfill" />
                                         </div>
                                         <!-- ends: .atbd_listing_image -->
                                     </figure>
@@ -142,23 +142,23 @@
                                     <div class="atbd_listing_info">
                                         <div class="atbd_content_upper">
                                             <h4 class="atbd_listing_title">
-                                                <asp:label id="Property2Title" visible="false" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property2Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                             </h4>
                                             <div class="mt-0 form-label">
-                                                <asp:label id="Property2CityState" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property2CityState" runat="server" Text="Label"></asp:Label>
                                             </div>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">
-                                                    <asp:label id="Property2Rating" runat="server" text="4.5"></asp:label>
+                                                    <asp:Label ID="Property2Rating" runat="server" Text="4.5"></asp:Label>
                                                     <i class="la la-star"></i></span>
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
                                                 <div class="mt-0 form-label">
-                                                    <asp:label id="Property2RentPrice" runat="server" text="Label"></asp:label>
+                                                    <asp:Label ID="Property2RentPrice" runat="server" Text="Label"></asp:Label>
                                                 </div>
                                                 <div class="row mt-0 form-label daterange">
-                                                    <asp:label id="Property2StartDate" runat="server" text="Label"></asp:label>
+                                                    <asp:Label ID="Property2StartDate" runat="server" Text="Label"></asp:Label>
                                                 </div>
                                             </div>
                                             <!-- End atbd listing meta -->
@@ -169,11 +169,11 @@
                                                 <div class="atbd_listing_category">
                                                     <span class="fas fa-bed icon-padding"></span>
                                                     <div class="numberCircle">
-                                                        <asp:label runat="server" id="Property2Bed" text="1 Bed" cssclass="icon-padding"></asp:label>
+                                                        <asp:Label runat="server" ID="Property2Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
                                                     </div>
                                                     <span class="fas fa-bath icon-padding"></span>
                                                     <div class="numberCircle">
-                                                        <asp:label runat="server" id="Property2Bath" text="1 Bathroom" cssclass="icon-padding"></asp:label>
+                                                        <asp:Label runat="server" ID="Property2Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,7 +193,7 @@
                                 <article class="atbd_single_listing_wrapper">
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image fill">
-                                            <asp:imagebutton id="Property3Image" onclick="Property3Image_Click" runat="server" cssclass="imgfill" />
+                                            <asp:ImageButton ID="Property3Image" OnClick="Property3Image_Click" runat="server" CssClass="imgfill" />
                                         </div>
                                         <!-- ends: .atbd_listing_image -->
                                     </figure>
@@ -201,24 +201,24 @@
                                     <div class="atbd_listing_info">
                                         <div class="atbd_content_upper">
                                             <h4 class="atbd_listing_title">
-                                                <asp:label id="Property3Title" visible="false" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property3Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                             </h4>
                                             <div class="mt-0 form-label">
-                                                <asp:label id="Property3CityState" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property3CityState" runat="server" Text="Label"></asp:Label>
                                             </div>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">
-                                                    <asp:label id="Property3Rating" runat="server" text="4.5"></asp:label>
+                                                    <asp:Label ID="Property3Rating" runat="server" Text="4.5"></asp:Label>
                                                     <i class="la la-star"></i></span>
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
 
                                                 <div class="mt-0 form-label">
-                                                    <asp:label id="Property3RentPrice" runat="server" text="Label"></asp:label>
+                                                    <asp:Label ID="Property3RentPrice" runat="server" Text="Label"></asp:Label>
                                                 </div>
                                                 <div class="row mt-0 form-label daterange">
-                                                    <asp:label id="Property3StartDate" runat="server" text="Label"></asp:label>
+                                                    <asp:Label ID="Property3StartDate" runat="server" Text="Label"></asp:Label>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,11 +229,11 @@
                                                 <div class="atbd_listing_category">
                                                     <span class="fas fa-bed icon-padding"></span>
                                                     <div class="numberCircle">
-                                                        <asp:label runat="server" id="Property3Bed" text="1 Bed" cssclass="icon-padding"></asp:label>
+                                                        <asp:Label runat="server" ID="Property3Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
                                                     </div>
                                                     <span class="fas fa-bath icon-padding"></span>
                                                     <div class="numberCircle">
-                                                        <asp:label runat="server" id="Property3Bath" text="1 Bathroom" cssclass="icon-padding"></asp:label>
+                                                        <asp:Label runat="server" ID="Property3Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -249,7 +249,7 @@
                             <article class="atbd_single_listing_wrapper">
                                 <figure class="atbd_listing_thumbnail_area">
                                     <div class="atbd_listing_image fill">
-                                        <asp:imagebutton id="Property4Image" onclick="Property4Image_Click" runat="server" cssclass="imgfill" />
+                                        <asp:ImageButton ID="Property4Image" OnClick="Property4Image_Click" runat="server" CssClass="imgfill" />
                                     </div>
                                     <!-- ends: .atbd_listing_image -->
                                 </figure>
@@ -257,23 +257,23 @@
                                 <div class="atbd_listing_info">
                                     <div class="atbd_content_upper">
                                         <h4 class="atbd_listing_title">
-                                            <asp:label id="Property4Title" visible="false" runat="server" text="Label"></asp:label>
+                                            <asp:Label ID="Property4Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                         </h4>
                                         <div class="mt-0 form-label">
-                                            <asp:label id="Property4CityState" runat="server" text="Label"></asp:label>
+                                            <asp:Label ID="Property4CityState" runat="server" Text="Label"></asp:Label>
                                         </div>
                                         <div class="atbd_listing_meta">
                                             <span class="atbd_meta atbd_listing_rating">
-                                                <asp:label id="Property4Rating" runat="server" text="4.5"></asp:label>
+                                                <asp:Label ID="Property4Rating" runat="server" Text="4.5"></asp:Label>
                                                 <i class="la la-star"></i></span>
                                         </div>
                                         <!-- End atbd listing meta -->
                                         <div class="atbd_listing_data_list">
                                             <div class="mt-0 form-label">
-                                                <asp:label id="Property4RentPrice" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property4RentPrice" runat="server" Text="Label"></asp:Label>
                                             </div>
                                             <div class="row mt-0 form-label daterange">
-                                                <asp:label id="Property4StartDate" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property4StartDate" runat="server" Text="Label"></asp:Label>
                                             </div>
                                         </div>
                                         <!-- End atbd listing meta -->
@@ -284,11 +284,11 @@
                                             <div class="atbd_listing_category">
                                                 <span class="fas fa-bed icon-padding"></span>
                                                 <div class="numberCircle">
-                                                    <asp:label runat="server" id="Property4Bed" text="1 Bed" cssclass="icon-padding"></asp:label>
+                                                    <asp:Label runat="server" ID="Property4Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
                                                 </div>
                                                 <span class="fas fa-bath icon-padding"></span>
                                                 <div class="numberCircle">
-                                                    <asp:label runat="server" id="Property4Bath" text="1 Bathroom" cssclass="icon-padding"></asp:label>
+                                                    <asp:Label runat="server" ID="Property4Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                 </div>
                                             </div>
                                         </div>
@@ -306,7 +306,7 @@
                                 <figure class="atbd_listing_thumbnail_area">
                                     <div class="atbd_listing_image fill">
 
-                                        <asp:imagebutton id="Property5Image" onclick="Property5Image_Click" runat="server" cssclass="imgfill" />
+                                        <asp:ImageButton ID="Property5Image" OnClick="Property5Image_Click" runat="server" CssClass="imgfill" />
                                     </div>
                                     <!-- ends: .atbd_listing_image -->
                                 </figure>
@@ -315,24 +315,24 @@
                                 <div class="atbd_listing_info">
                                     <div class="atbd_content_upper">
                                         <h4 class="atbd_listing_title">
-                                            <asp:label id="Property5Title" visible="false" runat="server" text="Label"></asp:label>
+                                            <asp:Label ID="Property5Title" Visible="false" runat="server" Text="Label"></asp:Label>
                                         </h4>
                                         <div class="mt-0 form-label">
-                                            <asp:label id="Property5CityState" runat="server" text="Label"></asp:label>
+                                            <asp:Label ID="Property5CityState" runat="server" Text="Label"></asp:Label>
                                         </div>
                                         <div class="atbd_listing_meta">
                                             <span class="atbd_meta atbd_listing_rating">
-                                                <asp:label id="Property5Rating" runat="server" text="4.5"></asp:label>
+                                                <asp:Label ID="Property5Rating" runat="server" Text="4.5"></asp:Label>
                                                 <i class="la la-star"></i></span>
                                         </div>
                                         <!-- End atbd listing meta -->
                                         <div class="atbd_listing_data_list">
 
                                             <div class="mt-0 form-label">
-                                                <asp:label id="Property5RentPrice" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property5RentPrice" runat="server" Text="Label"></asp:Label>
                                             </div>
                                             <div class="row mt-0 form-label daterange">
-                                                <asp:label id="Property5StartDate" runat="server" text="Label"></asp:label>
+                                                <asp:Label ID="Property5StartDate" runat="server" Text="Label"></asp:Label>
                                             </div>
                                         </div>
                                         <!-- End atbd listing meta -->
@@ -343,11 +343,11 @@
                                             <div class="atbd_listing_category">
                                                 <span class="fas fa-bed icon-padding"></span>
                                                 <div class="numberCircle">
-                                                    <asp:label runat="server" id="Property5Bed" text="1 Bed" cssclass="icon-padding"></asp:label>
+                                                    <asp:Label runat="server" ID="Property5Bed" Text="1 Bed" CssClass="icon-padding"></asp:Label>
                                                 </div>
                                                 <span class="fas fa-bath icon-padding"></span>
                                                 <div class="numberCircle">
-                                                    <asp:label runat="server" id="Property5Bath" text="1 Bathroom" cssclass="icon-padding"></asp:label>
+                                                    <asp:Label runat="server" ID="Property5Bath" Text="1 Bathroom" CssClass="icon-padding"></asp:Label>
                                                 </div>
                                             </div>
                                         </div>
@@ -363,12 +363,12 @@
                         <div class="col-lg-12">
                             <nav class="navigation pagination d-flex justify-content-end" role="navigation">
                                 <div class="nav-links">
-                                    <asp:linkbutton id="ResultPg1" runat="server" text="1" onclick="ResultPg1_Click" cssclass="page-numbers"> </asp:linkbutton>
-                                    <asp:linkbutton id="ResultPg2" runat="server" text="2" onclick="ResultPg2_Click" cssclass="page-numbers"> </asp:linkbutton>
-                                    <asp:linkbutton id="ResultPg3" runat="server" text="3" onclick="ResultPg3_Click" cssclass="page-numbers"> </asp:linkbutton>
-                                    <asp:linkbutton id="ResultPg4" runat="server" text="4" onclick="ResultPg4_Click" cssclass="page-numbers"> </asp:linkbutton>
-                                    <asp:linkbutton id="ResultPg5" runat="server" text="5" onclick="ResultPg5_Click" cssclass="page-numbers"> </asp:linkbutton>
-                                    <asp:linkbutton id="ResultPg6" runat="server" text="6" onclick="ResultPg6_Click" cssclass="page-numbers"> </asp:linkbutton>
+                                    <asp:LinkButton ID="ResultPg1" runat="server" Text="1" OnClick="ResultPg1_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                    <asp:LinkButton ID="ResultPg2" runat="server" Text="2" OnClick="ResultPg2_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                    <asp:LinkButton ID="ResultPg3" runat="server" Text="3" OnClick="ResultPg3_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                    <asp:LinkButton ID="ResultPg4" runat="server" Text="4" OnClick="ResultPg4_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                    <asp:LinkButton ID="ResultPg5" runat="server" Text="5" OnClick="ResultPg5_Click" CssClass="page-numbers"> </asp:LinkButton>
+                                    <asp:LinkButton ID="ResultPg6" runat="server" Text="6" OnClick="ResultPg6_Click" CssClass="page-numbers"> </asp:LinkButton>
                                 </div>
                             </nav>
                         </div>
@@ -381,50 +381,54 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <asp:image id="Image1" runat="server" imageurl="~/img/roommagnet-text.png" cssclass="mx-auto image-padding" />
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <asp:textbox id="SearchResultMinPrice" runat="server" cssclass="form-control" placeholder="Min Price"></asp:textbox>
-                        <asp:comparevalidator id="SearchResultsMinPriceValidator" controltovalidate="SearchResultMinPrice" operator="DataTypeCheck" type="Currency" runat="server" text="Invalid Price" display="Dynamic"></asp:comparevalidator>
+                        <asp:TextBox ID="SearchResultMinPrice" runat="server" CssClass="form-control" placeholder="Min Price"></asp:TextBox>
+                        <asp:CompareValidator ID="SearchResultsMinPriceValidator" ControlToValidate="SearchResultMinPrice" Operator="DataTypeCheck" Type="Currency" runat="server" Text="Invalid Price" Display="Dynamic"></asp:CompareValidator>
                     </div>
                     <div class="form-group">
-                        <asp:textbox id="SearchResultMaxPrice" runat="server" cssclass="form-control" placeholder="Max Price"></asp:textbox>
-                        <asp:comparevalidator id="SearchResultsMaxPriceValidator" controltovalidate="SearchResultMaxPrice" runat="server" operator="DataTypeCheck" type="Currency" text="Invalid Price" display="Dynamic"></asp:comparevalidator>
+                        <asp:TextBox ID="SearchResultMaxPrice" runat="server" CssClass="form-control" placeholder="Max Price"></asp:TextBox>
+                        <asp:CompareValidator ID="SearchResultsMaxPriceValidator" ControlToValidate="SearchResultMaxPrice" runat="server" Operator="DataTypeCheck" Type="Currency" Text="Invalid Price" Display="Dynamic"></asp:CompareValidator>
                     </div>
                     <div class="form-group">
-                        <asp:textbox id="SearchResultStartDate" runat="server" cssclass="form-control" placeholder="Start Date" onfocus="(this.type='date')"></asp:textbox>
+                        <asp:TextBox ID="SearchResultStartDate" runat="server" CssClass="form-control" placeholder="Start Date" onfocus="(this.type='date')"></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <asp:textbox id="SearchResultEndDate" runat="server" cssclass="form-control" placeholder="End Date" onfocus="(this.type='date')"></asp:textbox>
+                        <asp:TextBox ID="SearchResultEndDate" runat="server" CssClass="form-control" placeholder="End Date" onfocus="(this.type='date')"></asp:TextBox>
                     </div>
 
                     <div class="form-group">
-                        <asp:dropdownlist id="SearchResultBedsAvailable" runat="server" cssclass="form-control">
+                        <asp:DropDownList ID="SearchResultBedsAvailable" runat="server" CssClass="form-control">
                             <asp:ListItem Value="">Beds Available</asp:ListItem>
                             <asp:ListItem Value="1">1</asp:ListItem>
                             <asp:ListItem Value="2">2</asp:ListItem>
                             <asp:ListItem Value="3">3</asp:ListItem>
                             <asp:ListItem Value="4">4+</asp:ListItem>
-                        </asp:dropdownlist>
+                        </asp:DropDownList>
                     </div>
                     <div class="form-group">
-                        <asp:dropdownlist id="SearchResultHomeType" runat="server" cssclass="form-control">
+                        <asp:DropDownList ID="SearchResultHomeType" runat="server" CssClass="form-control">
                             <asp:ListItem>Home Type</asp:ListItem>
                             <asp:ListItem>Apartment</asp:ListItem>
                             <asp:ListItem>Townhome</asp:ListItem>
                             <asp:ListItem>House</asp:ListItem>
-                        </asp:dropdownlist>
+                        </asp:DropDownList>
                     </div>
+                    <small>*Please enter a location before you apply filters</small>
                 </div>
                 <div class="modal-footer mx-auto">
                     <div class="form-excerpts">
                         <ul class="list-unstyled">
                             <li>
-                                <asp:button id="FiltersButton" runat="server" text="Apply" cssclass="btn btn-xs btn-gradient btn-gradient-two access-link" onclick="ApplyButton_Click" />
+                                <asp:Button ID="FiltersButton" runat="server" Text="Apply" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="ApplyButton_Click" />
+                                <div class="row text-center">
+                                    <asp:Label ID="FilterLbl" runat="server" Text="Label" Visible="false" ForeColor="Red"></asp:Label>
+                                </div>
                             </li>
                         </ul>
                     </div>

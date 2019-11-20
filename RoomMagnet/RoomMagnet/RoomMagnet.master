@@ -47,6 +47,7 @@
 
         function closeMessage() {
             sessionStorage.clear();
+            localStorage.clear();
         }
     </script>
     <title>

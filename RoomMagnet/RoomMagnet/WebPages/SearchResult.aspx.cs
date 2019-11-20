@@ -49,7 +49,15 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
     protected void ApplyButton_Click(object sender, EventArgs e)
     {
-        SearchResultButton_Click(sender, e);
+        if (address.Text == string.Empty)
+        {
+            FilterLbl.Visible = true;
+            FilterLbl.Text = "Please enter a location first";
+        }
+        else
+        {
+            SearchResultButton_Click(sender, e);
+        }
     }
 
     protected void SearchResultButton_Click(object sender, EventArgs e)
