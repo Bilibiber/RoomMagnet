@@ -312,7 +312,7 @@
                             <!-- ends: .atbd_avatar_wrapper -->
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Message" OnClick="Unnamed_Click" />
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" />
-                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve"  />
+                            <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve" data-toggle="modal" data-target="#Reserve" data-dismiss="modal" OnClientClick="return false" />
                             <asp:Label ID="HostValidate" runat="server" Visible="false" Text="Label"></asp:Label>
                         </div>
                         <!-- ends: .widget-body -->
@@ -321,18 +321,10 @@
                     <div class="widget atbd_widget widget-card">
                         <div class="atbd_widget_title">
                             <h4><span class="la la-bookmark"></span>Amenities
-                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                    <ContentTemplate>
-                                <asp:DropDownList ID="Rooms" AutoPostBack="true" OnSelectedIndexChanged="Rooms_SelectedIndexChanged" runat="server">
+
+                                <%--                                <asp:DropDownList ID="Rooms" AutoPostBack="true" OnSelectedIndexChanged="Rooms_SelectedIndexChanged" runat="server">
                                 </asp:DropDownList>
-                                </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="Rooms" />
-                                    </Triggers>
-                                     </asp:UpdatePanel>
-                                <asp:Label ID="RoomRentPrice" runat="server" Text="Label"></asp:Label>
-                               
+                                <asp:Label ID="RoomRentPrice" runat="server" Text="Label"></asp:Label>--%>
                             </h4>
                         </div>
                         <!-- ends: /.atbd_widget_title -->
@@ -410,4 +402,30 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="Reserve" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <asp:Image ID="Image6" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <asp:DropDownList ID="Rooms" AutoPostBack="true" OnSelectedIndexChanged="Rooms_SelectedIndexChanged" runat="server">
+                    </asp:DropDownList>
+                    <asp:Label ID="RoomRentPrice" runat="server" Text="Label"></asp:Label>
+                </div>
+                <div class="modal-footer mx-auto">
+                    <div class="form-excerpts">
+                        <ul class="list-unstyled">
+                            <li>
+                                <%-- <asp:Button runat="server" Text="Dashboard" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="goDashboard_Click" />--%>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
