@@ -8,8 +8,7 @@
         <table>
             <tr>
                 <td colspan="2">
-                    <asp:image id="Image1" runat="server" imageurl="~/img/roommagnet-text.png" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td style="width: 100px; text-align: right"></td>

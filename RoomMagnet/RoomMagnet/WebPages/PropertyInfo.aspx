@@ -320,8 +320,19 @@
                     <!-- ends: .widget -->
                     <div class="widget atbd_widget widget-card">
                         <div class="atbd_widget_title">
-                            <h4><span class="la la-bookmark"></span>Amenities<asp:DropDownList ID="Rooms" AutoPostBack="true" OnSelectedIndexChanged="Rooms_SelectedIndexChanged" runat="server">
-                                </asp:DropDownList><asp:Label ID="RoomRentPrice" runat="server" Text="Label"></asp:Label>
+                            <h4><span class="la la-bookmark"></span>Amenities
+                                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <ContentTemplate>
+                                <asp:DropDownList ID="Rooms" AutoPostBack="true" OnSelectedIndexChanged="Rooms_SelectedIndexChanged" runat="server">
+                                </asp:DropDownList>
+                                </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="Rooms" />
+                                    </Triggers>
+                                     </asp:UpdatePanel>
+                                <asp:Label ID="RoomRentPrice" runat="server" Text="Label"></asp:Label>
+                               
                             </h4>
                         </div>
                         <!-- ends: /.atbd_widget_title -->
@@ -377,7 +388,7 @@
 
                                 <li runat="server" id="seperateBathroomIcon" visible="false">
                                     <span class="la la-wifi icon-space"></span>
-                                    <asp:Label ID="seperateBathroomLbl" runat="server" Text="Seperate Bathroom "></asp:Label>
+                                    <asp:Label ID="seperateBathroomLbl" runat="server" Text="Separate Bathroom "></asp:Label>
                                 </li>
                             </ul>
                         </div>
