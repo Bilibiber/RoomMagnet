@@ -39,13 +39,13 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         //set all amentities labels to visible = false;
 
 
-        string test = Session["ResultPropertyID"].ToString();
+         
         String sql = "Select Title, [Property].City, [Property].HomeState, [Property].ZipCode, AvailableBedrooms, [Property].RentPrice, [Property].StartDate, [Property].EndDate, " +
       "[ImagePath].ImagePath, AvailableBathrooms, AirConditioning, Heating, OnSiteLaundry,Parking,Furnished,PetFriendly,CarbonMonoxideDetector, SmokeDetector,SeperateEntrance," +
     "Wifi, TV, SeparateBathroom, [Property].Descriptions,Users.FirstName, Users.LastName, Users.ImagePath, Users.UserID from [Property] inner join [ImagePath]" +
     "on [Property].PropertyID = [ImagePath].PropertyID INNER JOIN [PropertyRoom] ON [Property].PropertyID = [PropertyRoom].PropertyID" +
-    " INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID INNER JOIN [Rating] ON [Property].PropertyID= " +
-    "[Rating].PropertyID INNER JOIN Users ON Property.HostID = Users.UserID WHERE [Property].PropertyID = " + test;
+    " INNER JOIN Amenities ON [Amenities].PropertyID = [Property].PropertyID" +
+    "  INNER JOIN Users ON Property.HostID = Users.UserID WHERE [Property].PropertyID = " + Session["ResultPropertyID"].ToString();
 
         connection.Open();
         int availableBedrooms = -1;
@@ -265,7 +265,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         string tempDescription = "";
         string tempLastUpdated = "";
         string tempStars = "";
-        string sql2 = "Select NumStars, LastUpdatedBy, Descriptions, LastUpdated from [Rating] where PropertyID=" + test;
+        string sql2 = "Select NumStars, LastUpdatedBy, Descriptions, LastUpdated from [Rating] where PropertyID=" + Session["ResultPropertyID"].ToString();
         SqlCommand sqlCommand = new SqlCommand(sql2, connection);
         SqlDataReader reader2 = sqlCommand.ExecuteReader();
         if (reader2.HasRows)
