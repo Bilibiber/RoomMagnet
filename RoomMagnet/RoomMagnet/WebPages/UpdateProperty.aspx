@@ -302,16 +302,24 @@
                                 </div>
                                 <hr />
                                 <asp:Panel runat="server" ID="room1">
-                                    <asp:Label runat="server" Text="Please enter room information" class="form-label"></asp:Label><br />
+
                                     <asp:Label runat="server" Text="Room 1 information" class="form-label"></asp:Label>
                                     <table>
                                         <tr>
                                             <td>
+                                                <asp:Label runat="server" Text="Room Name" class="form-label"></asp:Label>
+                                                <asp:TextBox ID="Room1Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="Room1Requiredfieldvalidator" runat="server" ControlToValidate="Room1Name" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator><br />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
                                                 <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
                                                 <div class="pricing-option-inputs">
                                                     <asp:TextBox ID="roomprice1" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredroomprice1" runat="server" ControlToValidate="roomprice1" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                                                    <asp:CompareValidator ID="Comparevalidator1" runat="server" ControlToValidate="roomprice1" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Double"></asp:CompareValidator>
+                                                    <asp:CompareValidator ID="Comparevalidator1" runat="server" ControlToValidate="roomprice1" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -329,31 +337,38 @@
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addstartdate1" runat="server" class="form-control" onfocus="(this.type='date')"></asp:TextBox>
+                                                    <asp:TextBox ID="addstartdate1" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requirestart1" runat="server" ControlToValidate="addstartdate1" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addenddate1" runat="server" onfocus="(this.type='date')" class="form-control" ></asp:TextBox>
+                                                    <asp:TextBox ID="addenddate1" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requireend1" runat="server" ControlToValidate="addenddate1" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
                                         </tr>
                                     </table>
+                                    <hr />
                                 </asp:Panel>
                                 <asp:Panel runat="server" ID="room2" Visible="False">
-                                    <br />
                                     <asp:Label runat="server" Text="Room 2 information" class="form-label"></asp:Label>
                                     <table>
+                                        <tr>
+                                            <td>
+                                                <asp:Label runat="server" Text="Room Name" class="form-label"></asp:Label>
+                                                <asp:TextBox ID="Room2Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="Room2Name" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator><br />
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>
                                                 <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
                                                 <div class="pricing-option-inputs">
                                                     <asp:TextBox ID="roomprice2" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredroomprice2" runat="server" ControlToValidate="roomprice2" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                                                    <asp:CompareValidator ID="Comparevalidator2" runat="server" ControlToValidate="roomprice2" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Double"></asp:CompareValidator>
+                                                    <asp:CompareValidator ID="Comparevalidator2" runat="server" ControlToValidate="roomprice2" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -371,31 +386,38 @@
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addstartdate2" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="addstartdate2" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requirestart2" runat="server" ControlToValidate="addstartdate2" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addenddate2" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="addenddate2" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requireend2" runat="server" ControlToValidate="addenddate2" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
                                         </tr>
                                     </table>
+                                    <hr />
                                 </asp:Panel>
                                 <asp:Panel runat="server" ID="room3" Visible="False">
-                                    <br />
                                     <asp:Label runat="server" Text="Room 3 information" class="form-label"></asp:Label>
                                     <table>
+                                        <tr>
+                                            <td>
+                                                <asp:Label runat="server" Text="Room Name" class="form-label"></asp:Label>
+                                                <asp:TextBox ID="Room3Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="Room3Requiredfieldvalidator" runat="server" ControlToValidate="Room3Name" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator><br />
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>
                                                 <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
                                                 <div class="pricing-option-inputs">
                                                     <asp:TextBox ID="roomprice3" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator1" runat="server" ControlToValidate="roomprice3" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                                                    <asp:CompareValidator ID="Comparevalidator3" runat="server" ControlToValidate="roomprice3" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Double"></asp:CompareValidator>
+                                                    <asp:CompareValidator ID="Comparevalidator3" runat="server" ControlToValidate="roomprice3" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -413,31 +435,38 @@
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addstartdate3" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="addstartdate3" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator3" runat="server" ControlToValidate="addstartdate3" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addenddate3" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="addenddate3" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator4" runat="server" ControlToValidate="addenddate3" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
                                         </tr>
                                     </table>
+                                    <hr />
                                 </asp:Panel>
                                 <asp:Panel runat="server" ID="room4" Visible="False">
-                                    <br />
                                     <asp:Label runat="server" Text="Room 4 information" class="form-label"></asp:Label>
                                     <table>
+                                        <tr>
+                                            <td>
+                                                <asp:Label runat="server" Text="Room Name" class="form-label"></asp:Label>
+                                                <asp:TextBox ID="Room4Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="Room4Requiredfieldvalidator" runat="server" ControlToValidate="Room4Name" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator><br />
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>
                                                 <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
                                                 <div class="pricing-option-inputs">
                                                     <asp:TextBox ID="roomprice4" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator5" runat="server" ControlToValidate="roomprice4" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
-                                                    <asp:CompareValidator ID="Comparevalidator4" runat="server" ControlToValidate="roomprice4" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Double"></asp:CompareValidator>
+                                                    <asp:CompareValidator ID="Comparevalidator4" runat="server" ControlToValidate="roomprice4" Display="Dynamic" ErrorMessage="Invalid" ForeColor="Red" Operator="DataTypeCheck" Text="Invalid" Type="Integer"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -455,19 +484,20 @@
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addstartdate4" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="addstartdate4" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator7" runat="server" ControlToValidate="addstartdate4" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addenddate4" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="addenddate4" runat="server" TextMode="Date" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator8" runat="server" ControlToValidate="addenddate4" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                                 </div>
                                             </td>
                                         </tr>
                                     </table>
+                                    <hr />
                                 </asp:Panel>
                         </div>
                         <!-- ends: .form-group -->
