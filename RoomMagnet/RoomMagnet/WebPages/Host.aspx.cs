@@ -29,6 +29,7 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        errorLabel.Visible = false;
         if (Session["SignInEmail"] == null)
         {
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -166,9 +167,19 @@ public partial class WebPages_Host : System.Web.UI.Page
             }
         }
         cn.Close();
-        FillDropDown(ReceiverIDs);
-        RenterNames.Visible = true;
-        ReceiverLbl.Text = "You are sending a message to : " + RenterNames.Text;
+        if (ReceiverIDs.Count > 0)
+        {
+            FillDropDown(ReceiverIDs);
+            RenterNames.Visible = true;
+
+        }
+        else
+        {
+            errorLabel.Text = "No messages from Renters";
+            errorLabel.Visible = true;
+        }
+        
+       
     }
 
     public static List<string> objcountries()
@@ -668,7 +679,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                 Messages.Text += reader4.GetString(0) + Environment.NewLine;
             }
         }
-        ReceiverLbl.Text = "You are sending a message to: " + tempName;
+        txtsend.Text = String.Empty;
     }
     public void FillDropDown(ArrayList ReceiverIDs)
     {
@@ -697,7 +708,6 @@ public partial class WebPages_Host : System.Web.UI.Page
         if (RenterNames.SelectedValue != "No One")
         {
             Messages.Text = String.Empty;
-            ReceiverLbl.Text = "You are sending a message to: " + RenterNames.SelectedItem;
             string sql = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
                 " where (SenderID = " + RenterNames.SelectedValue + ") and (ReceiverID = " + Session["UserID"].ToString() + ")";
             cn.Open();
