@@ -102,8 +102,7 @@
         .container {
             padding-top: 50px;
         }
-
-        </style>
+    </style>
 
     <script type="text/javascript">
         function ShowPopup() {
@@ -188,7 +187,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="renter-host " style="text-align: center;">
+                    <div class="renter-host p-bottom-30 text-center" style="text-align: center;">
                         <asp:Button ID="rentertohost" runat="server" class="btn btn-primary" Text="Become a Host" BorderStyle="None" OnClick="rentertohost_Click" Style="font-size: 1.5em;"></asp:Button>
                     </div>
                 </div>
@@ -432,14 +431,31 @@
 
                 <%--renter message--%>
                 <asp:Panel ID="panelmessage" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
+                    <div class="col-md-12 mx-auto ">
                         <h1 class="update-title">Messages</h1>
-                        <div class="atbd_author_module">
-                            <div class="atbd_content_module">
-
-                                <div class="atbdb_content_module_contents">
-                                    <div class="user_info_wrap">
-                                        <div class="row">
+                        <div class="row">
+                            <div class="col-md-12 no-padding">
+                                <div class="form-group">
+                                    <asp:DropDownList ID="RenterNames" runat="server" AutoPostBack="true" OnTextChanged="RenterNames_TextChanged" Visible="false" CssClass="form-control">
+                                        <asp:ListItem Value="No One">Select Contacts</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:Label ID="ReceiverLbl" runat="server" Text="You are sending message to : UserName"></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="p-bottom-30">
+                                <div class="col-md-12">
+                                    <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" CssClass="form-control" ReadOnly="true" Width="1070px" Height="250px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="type_msg">
+                                <div class="input_msg_write">
+                                    <div class="input-group">
+                                        <asp:TextBox ID="txtsend" runat="server" CssClass="form-control" placeholder="Type a message" Width="500px"></asp:TextBox>
+                                        <div class="atbd_submit_btn input-group-append searchtxt-padding">
+                                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Send" Font-Bold="True" CssClass="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>

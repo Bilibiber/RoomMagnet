@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <section class="section-bg p-bottom-70">
+    <section class="section-bg">
         <div class="row">
             <div class="col-md-2 no-padding">
                 <div id="sidebar-wrapper">
@@ -43,7 +43,7 @@
                 <!-- /#sidebar-wrapper -->
             </div>
 
-            <div class="col-md-9 mx-auto ">
+            <div class="col-md-9 mx-auto dashboard-padding">
 
                 <%--renter profile--%>
                 <asp:Panel ID="panelprofile" runat="server">
@@ -84,14 +84,12 @@
 
                 <%--host property--%>
                 <asp:Panel ID="panelfavorites" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
+                    <div class="col-md-12 mx-auto ">
                         <h1 class="update-title">Manage property
                             <asp:Button ID="addproperty" runat="server" Text="+Add" class="btn btn-primary" OnClick="addproperty_Click" Style="float: right;" />
                         </h1>
-
                         <div class="atbd_author_module">
                             <div class="atbd_content_module">
-
                                 <div class="atbdb_content_module_contents">
                                     <div class="user_info_wrap">
                                         <div class="row">
@@ -264,15 +262,41 @@
 
                 <%--host connections--%>
                 <asp:Panel ID="panelconnections" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
-                        <h1 class="update-title">Connections</h1>
-
-                        <div class="atbd_author_module">
-                            <div class="atbd_content_module">
-
-                                <div class="atbdb_content_module_contents">
-                                    <div class="user_info_wrap">
-                                        <div class="row">
+                    <div class="col-md-12 mx-auto">
+                        <h1 class="update-title">Renter Request</h1>
+                        <div class="container">
+                            <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border">
+                                        <div class="card-header">
+                                            John Smith
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">Hi, I am a student and I am interested in renting the available room you posted.</p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <a href="#" class="btn btn-secondary requests-btn inline">Accept</a>
+                                                <a href="#" class="btn btn-secondary inline">Decline</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border">
+                                        <div class="card-header">
+                                            John Smith
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1 ">
+                                                <p class="card-text">Hi, I am a student and I am interested in renting the available room you posted.</p>
+                                            </div>
+                                            <div class="col-md-3  right_col-1">
+                                                <a href="#" class="btn btn-secondary requests-btn inline">Accept</a>
+                                                <a href="#" class="btn btn-secondary inline">Decline</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -283,14 +307,31 @@
 
                 <%--renter message--%>
                 <asp:Panel ID="panelmessage" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
+                    <div class="col-md-12 mx-auto">
                         <h1 class="update-title">Messages</h1>
-                        <div class="atbd_author_module">
-                            <div class="atbd_content_module">
-
-                                <div class="atbdb_content_module_contents">
-                                    <div class="user_info_wrap">
-                                        <div class="row">
+                        <div class="row">
+                            <div class="col-md-9 no-padding">
+                                <div class="form-group">
+                                    <asp:DropDownList ID="RenterNames" runat="server" AutoPostBack="true" OnTextChanged="RenterNames_TextChanged" Visible="false" CssClass="form-control">
+                                        <asp:ListItem Value="No One">Select Contacts</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:Label ID="ReceiverLbl" runat="server" Text="You are sending message to : UserName"></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="p-bottom-30">
+                                <div class="col-md-12">
+                                    <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" CssClass="form-control" ReadOnly="true" Width="1050px" Height="250px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="type_msg">
+                                <div class="input_msg_write">
+                                    <div class="input-group">
+                                        <asp:TextBox ID="txtsend" runat="server" CssClass="form-control" placeholder="Type a message" Width="500px"></asp:TextBox>
+                                        <div class="atbd_submit_btn input-group-append searchtxt-padding">
+                                            <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Send" Font-Bold="True" CssClass="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>
@@ -298,5 +339,7 @@
                         </div>
                     </div>
                 </asp:Panel>
+            </div>
+        </div>
     </section>
 </asp:Content>
