@@ -17,7 +17,7 @@
 
                         <div class="">
                             <asp:Label ID="hellow" runat="server" Text="Hello, world" Font-Size="2em" Font-Bold="True" ForeColor="White"></asp:Label>
-                            <p class="">Host<span title="Verified"><i class="la la-check icon-space"></i></span></p>
+                            <p class="">Host<span><i class="icon-space"></i></span></p>
                         </div>
 
                         <ul class="sidebar-nav list-unstyled">

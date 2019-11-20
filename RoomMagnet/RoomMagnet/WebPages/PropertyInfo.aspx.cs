@@ -25,8 +25,8 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             var master = Master as RoomMagnet;
             master.AfterLogin();
         }
-        //set all amentities labels to visible = false;
-        propertyImage1.Visible = false;
+            //set all amentities labels to visible = false;
+            propertyImage1.Visible = false;
         propertyImage2.Visible = false;
         propertyImage3.Visible = false;
         propertyImage4.Visible = false;
@@ -402,7 +402,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
     {
         if (Session["SignInEmail"] == null)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);        
         }
         else
         {

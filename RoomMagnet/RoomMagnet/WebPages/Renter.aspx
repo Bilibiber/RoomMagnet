@@ -167,7 +167,7 @@
                         <asp:Label ID="userstatus" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="X-Large" ForeColor="White" Style="text-align: center; width: 150px;"></asp:Label>
                         <div class="">
                             <asp:Label ID="hellow" runat="server" Text="Hello, world" Font-Size="2em" Font-Bold="True" ForeColor="White"></asp:Label>
-                            <p class="">Renter<span title="Verified"><i class="la la-check icon-space"></i></span></p>
+                            <p class="">Renter<span><i class="icon-space"></i></span></p>
                         </div>
 
                         <ul class="sidebar-nav list-unstyled">

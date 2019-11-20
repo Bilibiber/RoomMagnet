@@ -414,6 +414,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                 //SearchLabel.Text = "Please enter something in the text bar.";
             }
         }
+        SearchResultMinPrice.Text = string.Empty;
+        SearchResultMaxPrice.Text = string.Empty;
     }
 
     protected void HighToLow_Click(object sender, EventArgs e)
