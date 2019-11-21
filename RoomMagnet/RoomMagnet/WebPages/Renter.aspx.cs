@@ -25,7 +25,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
     private ArrayList HostEmails = new ArrayList();
 
     protected void Page_Load(object sender, EventArgs e)
-    {
+    { 
         Property1Space.Visible = false;
         Property2Space.Visible = false;
         Property3Space.Visible = false;
