@@ -170,30 +170,40 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <div class="modal-body row">
         <div class="col-md-2 no-padding" >
-            <div id="sidebar-wrapper" style="background-color:slategray">
+            <div id="sidebar-wrapper">
 
               <div class="profile-userpic admin-pic text-center">
                   <img class="mx-auto d-block admin-img" src="../img/mason-user.png" alt="" >
                   <div>
                     <h4 class="admin-space">
-                        <asp:Label ID="WelcomeMessage" runat="server" Text="" ForeColor="White" Font-Size="Small" Font-Bold="True"></asp:Label>
+                        <asp:label id="WelcomeMessage" runat="server" text="Hello, world" font-size="2em" font-bold="True" forecolor="White"></asp:label>
+
                     </h4>
                     <p>Admin</p>
                   </div>
               <ul class="sidebar-nav list-unstyled">
-                <li class="nav-item"> <a href="#"><i class="la la-home"></i><asp:Button ID="adminDashboard" runat="server" Text="Dashboard" Font-Size="Medium" BackColor="SlateGray" BorderStyle="None" OnClick="adminDashboard_Click"></asp:Button> </a></li>
-                <li class="nav-item"><a href="#"><i class="la la-plus"></i><asp:Button ID="adminAddEmployee" runat="server" Text="Add Employee" Font-Size="Medium" BackColor="SlateGray" BorderStyle="None" OnClick="adminAddEmployee_Click"></asp:Button></a></li>
-                <li class=" nav-item"><a href="#"><i class="la la-edit"></i><asp:Button ID="adminEmployee" runat="server" Text="Update Employee" Font-Size="Medium" BackColor="SlateGray" BorderStyle="None" OnClick="adminEmployee_Click"></asp:Button></a></li>
-                <li class=" nav-item"><a href="#"><i class="la la-check-circle"></i><asp:Button ID="adminVerification" runat="server" Text="Verification" Font-Size="Medium" BackColor="SlateGray" BorderStyle="None" OnClick="adminVerification_Click"></asp:Button></a></li>    
+                <li class="nav-item">
+                    <asp:linkbutton id="adminDashboard" runat="server" style="font-size: 1.5em;" onclick="adminDashboard_Click"> <i class="la la-home icon-space" style="font-size:1em;"></i>Dashboard</asp:linkbutton>
+                </li>
+                <li class="nav-item">
+                    <asp:linkbutton id="adminAddEmployee" runat="server" style="font-size: 1.5em;" onclick="adminAddEmployee_Click"> <i class="la la-plus icon-space" style="font-size:1em;"></i>Add Employee</asp:linkbutton>
+                </li>
+                <li class=" nav-item">
+                    <asp:linkbutton id="adminEmployee" runat="server" style="font-size: 1.5em;" onclick="adminEmployee_Click"> <i class="la la-edit icon-space" style="font-size:1em;"></i>Update Employee</asp:linkbutton>
+                </li>
+                <li class=" nav-item">
+                    <asp:linkbutton id="adminVerification" runat="server" style="font-size: 1.5em;" onclick="adminVerification_Click"> <i class="la la-check-circle icon-space" style="font-size:1em;"></i>Verification</asp:linkbutton>
+                </li>    
               </ul>
               </div>
             </div> <!-- /#sidebar-wrapper -->
          </div>
-        <div class="col-md-10 mx-auto ">
+
+        <div class="col-md-10 mx-auto no-padding">
             <div class="atbd_author_module">            
                 <div class="user_info_wrap">
                     <div class="row">
-                        <asp:Panel runat="server" ID="adminDashboardPanel">
+                        <asp:Panel runat="server" ID="adminDashboardPanel" style="padding-left:15px;">
                             <div id="adminDashboard1">
                                 <script type='text/javascript' src='https://prod-useast-a.online.tableau.com/javascripts/api/viz_v1.js'></script>
                                 <div class='tableauPlaceholder' style='width: 1000px; height: 827px;'>
@@ -211,9 +221,14 @@
                         </asp:Panel>
                     </div>                
                 </div>
+            </div>                
+            <%--Tableau Dashboard--%>
+
+    
+            
             <asp:Panel runat="server" ID="adminAddEmployeePanel" Visible="False">
-                <section class="section-bg p-bottom-70">
-                <div class="col-md-16 mx-auto">
+                <section class="section-bg">
+                <div class="col-md-16 mx-auto" style="padding-left:15px;">
                     <h1 class="update-title">Add Employee</h1>
                     <div class="atbd_author_module">
                         <div class="atbd_content_module">
@@ -368,12 +383,6 @@
                 </div>
                 </section>
             </asp:Panel>
-            </div>                
-            <%--Tableau Dashboard--%>
-
-    
-            
-
             
             
         
@@ -387,8 +396,8 @@
             
             <%--Verification panel--%>
             <asp:Panel runat="server" ID="adminEmployeesPanel" Visible="False">
-                <section class="section-bg p-bottom-70">
-                <div class="col-md-16 mx-auto">
+                <section class="section-bg">
+                <div class="col-md-16 mx-auto" style="padding-left:15px;">
                     <h1 class="update-title">Add Employee</h1>
                     <div class="atbd_author_module">
                         <div class="atbd_content_module">
@@ -559,8 +568,8 @@
 
         <div>
             <asp:Panel ID="adminVerificationPanel" runat="server" Visible="false">
-                <section class="section-bg p-bottom-70">                               
-                        <div class="col-md-9 mx-auto ">
+                <section class="section-bg">                               
+                        <div class="col-md-9 mx-auto no-margin">
                             <h1 class="update-title">Verification</h1>
                             <div class="atbd_author_module">
                                 <div class="atbd_content_module">
