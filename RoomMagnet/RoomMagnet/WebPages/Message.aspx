@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="Message.aspx.cs" Inherits="WebPages_Message" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
+    Message
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>

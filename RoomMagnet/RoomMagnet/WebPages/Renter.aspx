@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="Renter.aspx.cs" Inherits="WebPages_Renter" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
+    Renter
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     <%--renter update image--%>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="RecoverPassword.aspx.cs" Inherits="WebPages_RecoverPassword" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
+    Recover Password
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
