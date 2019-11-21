@@ -402,6 +402,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         {
             while (requestReader.Read())
             {
+                //add if == accepted
                 if (requestReader.GetString(0) == "Pending")
                 {
                     if (requestcount == 0)
