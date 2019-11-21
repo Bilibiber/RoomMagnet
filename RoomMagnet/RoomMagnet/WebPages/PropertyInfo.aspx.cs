@@ -281,6 +281,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
      
                 if (RatingCount == 0)
                 {
+                    Review1.Visible = true;
                     RatingSum += reader2.GetDecimal(0);
                     tempReviewer = reader2.GetString(1);
                     tempDescription = reader2.GetString(2);
@@ -346,11 +347,13 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
             numStarsLbl.Text = (RatingSum / RatingCount).ToString();
             numStarsLbl.Visible = true;
+            star.Visible = true;
         }
         else
         {
             PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
             numStarsLbl.Visible = false;
+            star.Visible = false;
         }
         reader2.Close();
         

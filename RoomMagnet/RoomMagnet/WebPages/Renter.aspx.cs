@@ -81,6 +81,14 @@ public partial class WebPages_Renter : System.Web.UI.Page
 
         string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
+        if (status.ToString() == "VERIFIED")
+        {
+            userstatus.BackColor = System.Drawing.Color.Green;
+        }
+        else
+        {
+            userstatus.BackColor = System.Drawing.Color.Red;
+        }
 
         if (!IsPostBack)
         {
@@ -472,7 +480,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     int pid = reader.GetInt32(10);
                     System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
                     selectimg.Connection = cn;
-                    selectimg.CommandText = "Select ImagePath from [ImagePath] WHERE PropertyID = 1003";
+                    selectimg.CommandText = "Select ImagePath from [ImagePath] WHERE PropertyID = 1049";
                     selectimg.Parameters.Add(new SqlParameter("@pid", pid));
                     SqlDataReader getinfor = selectimg.ExecuteReader();
                     while (getinfor.Read())
