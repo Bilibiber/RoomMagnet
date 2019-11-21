@@ -246,6 +246,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                 if (resultCount == 1)
                 {
                     RatingsPID.Add(reader.GetInt32(10));
+                    Session["pid1"] = reader.GetInt32(10);
                     x = reader.GetDecimal(5);
                     y = String.Format("{0:0.##}", x);
                     Property1Title.Text = reader.GetString(0);
@@ -281,6 +282,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                 if (resultCount == 2)
                 {
                     RatingsPID.Add(reader.GetInt32(10));
+                    Session["pid2"] = reader.GetInt32(10);
                     x = reader.GetDecimal(5);
                     y = String.Format("{0:0.##}", x);
                     Property2Title.Text = reader.GetString(0);
@@ -314,6 +316,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                 if (resultCount == 3)
                 {
                     RatingsPID.Add(reader.GetInt32(10));
+                    Session["pid3"] = reader.GetInt32(10);
                     x = reader.GetDecimal(5);
                     y = String.Format("{0:0.##}", x);
                     Property3Title.Text = reader.GetString(0);
@@ -500,7 +503,7 @@ public partial class WebPages_Host : System.Web.UI.Page
     protected void Property1Image_Click(object sender, ImageClickEventArgs e)
     {
         cn.Open();
-        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        string sql = "Select PropertyID,ImagePath from [ImagePath] where PropertyID = " + Int32.Parse(Session["pid1"].ToString());
         SqlCommand search = new SqlCommand(sql, cn);
         SqlDataReader reader = search.ExecuteReader();
 
@@ -531,7 +534,7 @@ public partial class WebPages_Host : System.Web.UI.Page
     protected void Property2Image_Click(object sender, ImageClickEventArgs e)
     {
         cn.Open();
-        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        string sql = "Select PropertyID,ImagePath from [ImagePath] where PropertyID = " + Int32.Parse(Session["pid2"].ToString());
         SqlCommand search = new SqlCommand(sql, cn);
         SqlDataReader reader = search.ExecuteReader();
 
@@ -553,7 +556,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                         Session["ResultPropertyID"] = PropertyID;
                     }
                 }
-            }
+            } 
         }
         cn.Close();
         Response.Redirect("PropertyInfo.aspx");
@@ -562,7 +565,7 @@ public partial class WebPages_Host : System.Web.UI.Page
     protected void Property3Image_Click(object sender, ImageClickEventArgs e)
     {
         cn.Open();
-        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        string sql = "Select PropertyID,ImagePath from [ImagePath] where PropertyID = "  + Int32.Parse(Session["pid3"].ToString());
         SqlCommand search = new SqlCommand(sql, cn);
         SqlDataReader reader = search.ExecuteReader();
 
