@@ -18,7 +18,6 @@
                             <asp:Label ID="cityLbl" runat="server" Text="PropertyCity"></asp:Label>
                             <asp:Label ID="homeStateLbl" runat="server" Text="PropertyState"></asp:Label>
                             <asp:Label ID="zipCodeLbl" runat="server" Text="ZipCode"></asp:Label>
-                            <asp:Label ID="notifLbl" runat="server" Text="Label"></asp:Label>
                         </p>
                         <div class="atbd_listing_bottom_content">
                             <div class="atbd_content_left">
@@ -305,8 +304,9 @@
                             </ul>
                             <asp:Button CssClass="btn btn-primary btn-block m-top-20" runat="server" Text="Save to Favorites" OnClick="SavetoFav_OnClick" ID="saveto" />
                             <asp:Button CssClass="btn btn-primary btn-block" runat="server" Text="Reserve" data-toggle="modal" data-target="#Reserve" data-dismiss="modal" OnClientClick="return false" />
-                            <asp:Label ID="HostValidate" runat="server" Visible="false" Text="Label"></asp:Label>
-                            <asp:Label ID="favorvalidate" runat="server" Text="Label" Visible="false"></asp:Label>
+                            <asp:Label ID="HostValidate" runat="server" Visible="False" Text="Label" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="favorvalidate" runat="server" Text="Label" Visible="false" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="notifLbl" runat="server" Text="Label" Visible="false" ForeColor="Red"></asp:Label>
                         </div>
                         <!-- ends: .atbdb_content_module_contents -->
                     </div>
