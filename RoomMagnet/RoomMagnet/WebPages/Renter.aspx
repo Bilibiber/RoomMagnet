@@ -419,7 +419,7 @@
                         <div class="container">
                             <div class="col-md-12">
                                 <div class=" p-bottom-25">
-                                    <div class="card border" id="request1" runat="server">
+                                    <div class="card border" id="request1" runat="server" visible="false">
                                         <div class="card-header">
                                             Request Application
                                         </div>
@@ -427,7 +427,7 @@
                                             <div class="col-md-9 left_col-1">
                                                 <p class="card-text">
                                                     <asp:Label ID="request1des" runat="server" Text="Label"></asp:Label>
-                                                    <asp:Label ID="RequestedRoomPrice" runat="server" Text="Label"></asp:Label>
+                                                    <asp:Label ID="RequestedRoomPrice1" runat="server" Text="Label"></asp:Label>
                                                 </p>
                                             </div>
                                             <div class="col-md-3 right_col-1">
@@ -444,7 +444,143 @@
                                                         data-zip-code="true"
                                                         data-currency="usd">
                                                     </script>
-                                                     <asp:Button ID="DeleteButton1" runat="server" Text="Delete" CssClass="btn btn-secondary inline"/>
+                                                     <asp:Button ID="DeleteButton1" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton1_Click"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request2" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request2des" runat="server" Text="Label"></asp:Label>
+                                                    <asp:Label ID="RequestedRoomPrice2" runat="server" Text="Label"></asp:Label>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <div id="StriptPay2" runat="server">
+                                                    <script
+                                                        src="https://checkout.stripe.com/checkout.js" 
+                                                        class="stripe-button"
+                                                        data-key="pk_test_8atXfTcBVA0b0Y50HniGdHw0000kgvHhmz"
+                                                        data-amount="50000.00"
+                                                        data-name="RoomMagnet"
+                                                        data-description="Rent"
+                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                        data-locale="auto"
+                                                        data-zip-code="true"
+                                                        data-currency="usd">
+                                                    </script>
+                                                     <asp:Button ID="DeleteButton2" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton2_Click"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request3" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request3des" runat="server" Text="Label"></asp:Label>
+                                                    <asp:Label ID="RequestedRoomPrice3" runat="server" Text="Label"></asp:Label>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <div id="StriptPay3" runat="server">
+                                                    <script
+                                                        src="https://checkout.stripe.com/checkout.js" 
+                                                        class="stripe-button"
+                                                        data-key="pk_test_8atXfTcBVA0b0Y50HniGdHw0000kgvHhmz"
+                                                        data-amount="50000.00"
+                                                        data-name="RoomMagnet"
+                                                        data-description="Rent"
+                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                        data-locale="auto"
+                                                        data-zip-code="true"
+                                                        data-currency="usd">
+                                                    </script>
+                                                     <asp:Button ID="DeleteButton3" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton3_Click"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request4" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request4des" runat="server" Text="Label"></asp:Label>
+                                                    <asp:Label ID="RequestedRoomPrice4" runat="server" Text="Label"></asp:Label>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <div id="StriptPay4" runat="server">
+                                                    <script
+                                                        src="https://checkout.stripe.com/checkout.js" 
+                                                        class="stripe-button"
+                                                        data-key="pk_test_8atXfTcBVA0b0Y50HniGdHw0000kgvHhmz"
+                                                        data-amount="50000.00"
+                                                        data-name="RoomMagnet"
+                                                        data-description="Rent"
+                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                        data-locale="auto"
+                                                        data-zip-code="true"
+                                                        data-currency="usd">
+                                                    </script>
+                                                     <asp:Button ID="DeleteButton4" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton4_Click"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request5" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request5des" runat="server" Text="Label"></asp:Label>
+                                                    <asp:Label ID="RequestedRoomPrice5" runat="server" Text="Label"></asp:Label>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <div id="StriptPay5" runat="server">
+                                                    <script
+                                                        src="https://checkout.stripe.com/checkout.js" 
+                                                        class="stripe-button"
+                                                        data-key="pk_test_8atXfTcBVA0b0Y50HniGdHw0000kgvHhmz"
+                                                        data-amount="50000.00"
+                                                        data-name="RoomMagnet"
+                                                        data-description="Rent"
+                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                        data-locale="auto"
+                                                        data-zip-code="true"
+                                                        data-currency="usd">
+                                                    </script>
+                                                     <asp:Button ID="DeleteButton5" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton5_Click"/>
                                                 </div>
                                             </div>
                                         </div>
