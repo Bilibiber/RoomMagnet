@@ -351,7 +351,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             " FROM Requests INNER JOIN" +
             " PropertyRoom ON Requests.PropertyRoomID = PropertyRoom.RoomID INNER JOIN" +
             " Property ON PropertyRoom.PropertyID = Property.PropertyID Inner JOIN Users ON Property.HostID = Users.UserID" +
-            " Where Requests.RoomRenterID = @RenterID";
+            " Where Requests.RoomRenterID = @RenterID and RequestStatus= \'Declined\'";
         SqlCommand command = new SqlCommand(Rentersql, cn);
         command.Parameters.AddWithValue("@RenterID", userid);
         SqlDataReader reader = command.ExecuteReader();
