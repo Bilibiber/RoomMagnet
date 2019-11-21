@@ -21,6 +21,15 @@ public partial class WebPages_Renter : System.Web.UI.Page
         Div3.Visible = false;
         if (!IsPostBack)
         {
+            if (Session["SignInEmail"] == null)
+            {
+                Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                var master = Master as RoomMagnet;
+                master.AfterLogin();
+            }
             cn.Open();
             System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
             selectimg.Connection = cn;

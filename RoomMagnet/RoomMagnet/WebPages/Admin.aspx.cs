@@ -55,25 +55,25 @@ public partial class WebPages_Admin : System.Web.UI.Page
             }
             cn.Close();
         }
-            
+
 
         if (Session["SignInEmail"] == null)
         {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
         }
         else
         {
             var master = Master as RoomMagnet;
             master.AfterLogin();
-        }       
-            //SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
-            //db.Open();
-            //SqlCommand selectuser = new SqlCommand();
-            //selectuser.Connection = db;
-            //int userid = Convert.ToInt32(Session["UserID"]);
-            //selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description], [DateOfBirth] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
-            //selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
-            //SqlDataReader getinfor = selectuser.ExecuteReader();    
+        }
+        //SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+        //db.Open();
+        //SqlCommand selectuser = new SqlCommand();
+        //selectuser.Connection = db;
+        //int userid = Convert.ToInt32(Session["UserID"]);
+        //selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description], [DateOfBirth] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+        //selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
+        //SqlDataReader getinfor = selectuser.ExecuteReader();    
     }
 
     public static List<string> objcountries()
