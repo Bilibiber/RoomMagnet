@@ -26,6 +26,12 @@
         });
     </script>
 
+    <script type="text/javascript">
+        function openModal() {
+            $('#notification').modal({ show: true });
+        }
+    </script>
+
     <script src="vendor_assets/js/jquery/jquery-1.12.3.js"></script>
     <script src="vendor_assets/js/bootstrap/popper.js"></script>
     <script src="vendor_assets/js/bootstrap/bootstrap.min.js"></script>
@@ -45,11 +51,11 @@
 
     <!-- endinject-->
 
-    <script type="text/javascript">
+    <%--    <script type="text/javascript">
         function ShowPopup() {
             $("#btnShowPopup").click();
         }
-    </script>
+    </script>--%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <section class="dashboard-wrapper section-bg p-bottom-70">
@@ -233,7 +239,7 @@
                                     <asp:Button ID="updateusersetting" runat="server" class="btn btn-primary" data-toggle="modal" data-target="#myModal" Text="Update" OnClick="updateusersetting_Click" ValidationGroup="settings" />
 
                                     <%--modal--%>
-                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+                                    <%--<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -251,17 +257,42 @@
                                             <!-- /.modal-content -->
                                         </div>
                                         <!-- /.modal-dialog -->
-                                    </div>
+                                    </div>--%>
                                     <!-- /.modal -->
 
-                                    <!-- ends: .tab-pane -->
+                                    <div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <asp:Image ID="Image2" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
+
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <h3>Changes Saved</h3>
+                                                    <p></p>
+                                                </div>
+                                                <div class="modal-footer mx-auto">
+                                                    <div class="form-excerpts">
+                                                        <ul class="list-unstyled">
+                                                            <li></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- ends: .atbd_author_module -->
                 </div>
+                <!-- ends: .atbd_author_module -->
             </div>
+        </div>
         </div>
     </section>
 </asp:Content>

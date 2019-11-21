@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading;
-using System.Web;
+using System.Collections;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Configuration;
-using System.Collections;
+
 public partial class WebPages_Message : System.Web.UI.Page
 {
-    ArrayList ReceiverIDs = new ArrayList();
-    SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
-    int ReceiverID;
-    int HostReceiverID;
-    int RenterReceiverID;
-    string SenderID;
-    string ReceiverName = "";
-    int OldConversationID = 0;
-    int NewConversationID = 0;
+    private ArrayList ReceiverIDs = new ArrayList();
+    private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
+    private int ReceiverID;
+    private int HostReceiverID;
+    private int RenterReceiverID;
+    private string SenderID;
+    private string ReceiverName = "";
+    private int OldConversationID = 0;
+    private int NewConversationID = 0;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["SignInEmail"] == null)
@@ -34,10 +29,11 @@ public partial class WebPages_Message : System.Web.UI.Page
             master.AfterLogin();
         }
         cn.Open();
-        string msg = (string)Application["message"];
-        txtmsg.Text = msg;
-       
+        //string msg = (string)Application["message"];
+        //txtmsg.Text = msg;
+
         string PID = Session["ResultPropertyID"].ToString();
+
         if (Session["Roles"].ToString() == "Renter")
         {
             string sql = "SELECT  Users.FirstName, Users.LastName,Property.HostID FROM Users INNER JOIN Property ON Users.UserID = Property.HostID where Property.PropertyID =" + PID;
@@ -52,11 +48,40 @@ public partial class WebPages_Message : System.Web.UI.Page
             }
             dataReader.Close();
             ReceiverLbl.Text = "You are sending message to : " + ReceiverName;
+            string sql2 = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+            " where (SenderID = " + Session["UserID"].ToString() + ") and (ReceiverID = " + HostReceiverID + ")";
+
+            SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
+            SqlDataReader reader = sqlCommand2.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Messages.Text += reader.GetString(0) + Environment.NewLine;
+                }
+            }
         }
         else
         {
+            string sql = "Select SenderID, ReceiverID, ConversationID from Conversations";
+            SqlCommand sqlCommand5 = new SqlCommand(sql, cn);
+            SqlDataReader dataReader2 = sqlCommand5.ExecuteReader();
+            if (dataReader2.HasRows)
+            {
+                while (dataReader2.Read())
+                {
+                    Conversation newConvo = new Conversation();
+                    newConvo.setSenderID(dataReader2.GetInt32(0));
+                    newConvo.setRecieverID(dataReader2.GetInt32(1));
+                    newConvo.setConversationID(dataReader2.GetInt32(2));
+                    Conversation.conversations[Conversation.ConversationCount - 1] = newConvo;
+                }
+            }
+            dataReader2.Close();
             bool testConvo = true;
+            ReceiverIDs.Clear();
             int SenderID = 0;
+            Messages.Text = String.Empty;
             for (int i = 0; i < Conversation.ConversationCount; i++)
             {
                 if (testConvo)
@@ -77,7 +102,6 @@ public partial class WebPages_Message : System.Web.UI.Page
                                     if (ReceiverIDs.Contains(tempSenderID) == false)
                                     {
                                         ReceiverIDs.Add(dataReader9.GetInt32(0));
-                                        Messages.Text += dataReader9.GetString(2) + Environment.NewLine;
                                         SenderID = dataReader9.GetInt32(0);
                                     }
                                 }
@@ -88,22 +112,19 @@ public partial class WebPages_Message : System.Web.UI.Page
                 }
             }
             cn.Close();
-                FillDropDown(ReceiverIDs);
-                RenterNames.Visible = true;
-            ReceiverLbl.Text = "You are sending message to : " + RenterNames.Text;
-
-
+            FillDropDown(ReceiverIDs);
+            RenterNames.Visible = true;
+            ReceiverLbl.Text = "You are sending a message to : " + RenterNames.Text;
         }
         cn.Close();
     }
+
     protected void Button1_Click(object sender, EventArgs e)
     {
         cn.Open();
         string SenderID2 = Session["UserID"].ToString();
         if (Session["Roles"].ToString() == "Renter")
         {
-
-
             string sql2 = "Select ConversationID FROM Conversations where SenderID=" + SenderID2 + "And ReceiverID=" + HostReceiverID;
             SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
             SqlDataReader reader = sqlCommand2.ExecuteReader();
@@ -119,10 +140,9 @@ public partial class WebPages_Message : System.Web.UI.Page
                 sqlCommand3.Parameters.AddWithValue("@SenderId", SenderID2);
                 sqlCommand3.Parameters.AddWithValue("@ReceiverID", HostReceiverID);
                 sqlCommand3.ExecuteNonQuery();
-                //after instering finds the new conversation ID 
+                //after instering finds the new conversation ID
                 Conversation newConvo = new Conversation(Int32.Parse(SenderID2), HostReceiverID);
                 Conversation.conversations[Conversation.ConversationCount - 1] = newConvo;
-
 
                 string sqlConvo = "Select ConversationID FROM Conversations where SenderID = " + SenderID2 + " AND ReceiverID = " + HostReceiverID;
                 SqlCommand sqlCommand4 = new SqlCommand(sqlConvo, cn);
@@ -133,19 +153,14 @@ public partial class WebPages_Message : System.Web.UI.Page
                     newConvo.setConversationID(NewConversationID);
                 }
                 reader2.Close();
-
             }
             reader.Close();
             string Sendername = Session["FullName"].ToString();
             string message = txtsend.Text;
             string my = Sendername + ":" + message;
 
-
             txtsend.Text = "";
 
-
-
-      
             if (NewConversationID == 0)
             {
                 string sql = "Insert into Message(ConversationID,MessageContent,LastUpdated,LastUpdatedBy) values (@ConversationID,@MessageContent,@LastUpdated,@LastUpdatedBy)";
@@ -155,8 +170,6 @@ public partial class WebPages_Message : System.Web.UI.Page
                 command.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
                 command.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
                 command.ExecuteNonQuery();
-
-
             }
             else
             {
@@ -168,15 +181,13 @@ public partial class WebPages_Message : System.Web.UI.Page
                 command2.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
                 NewConversationID = 0;
                 command2.ExecuteNonQuery();
-
-
-                
             }
-
+            Messages.Text += my + Environment.NewLine;
         }
         else
         {
             int ConversationID = -1;
+            string tempName = RenterNames.SelectedItem.ToString();
             RenterReceiverID = Int32.Parse(RenterNames.SelectedValue);
             string sql2 = "Select ConversationID FROM Conversations where SenderID=" + RenterReceiverID + "And ReceiverID=" + SenderID2;
             SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
@@ -196,50 +207,68 @@ public partial class WebPages_Message : System.Web.UI.Page
             command.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
             command.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
             command.ExecuteNonQuery();
-             
 
-
+            string sql4 = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+           " where (SenderID = " + RenterNames.SelectedValue + ") and (ReceiverID = " + Session["UserID"].ToString() + ")";
+            SqlCommand sqlCommand = new SqlCommand(sql4, cn);
+            SqlDataReader reader4 = sqlCommand.ExecuteReader();
+            Messages.Text = String.Empty;
+            if (reader4.HasRows)
+            {
+                while (reader4.Read())
+                {
+                    Messages.Text += reader4.GetString(0) + Environment.NewLine;
+                }
+            }
+            ReceiverLbl.Text = "You are sending a message to: " + tempName;
         }
-            cn.Close();
 
+        cn.Close();
 
-
-            Response.Redirect("Message.aspx");
-        }
-    
-
-    protected void Clear_Click(object sender, EventArgs e)
-    {
-        Application["message"] = "";
-        Response.Redirect("Message.aspx");
+        //Response.Redirect("Message.aspx");
     }
-
 
     public void FillDropDown(ArrayList ReceiverIDs)
     {
-        cn.Open();
-        for (int i = 0; i < ReceiverIDs.Count; i++)
+        if (RenterNames.Items.Count != ReceiverIDs.Count + 1)
         {
-            string sql = "Select FirstName, LastName from Users WHERE UserID=" + ReceiverIDs[i].ToString();
-            SqlCommand sqlCommand = new SqlCommand(sql, cn);
-            SqlDataReader reader3 = sqlCommand.ExecuteReader();
-            if (reader3.HasRows)
+            cn.Open();
+            for (int i = 0; i < ReceiverIDs.Count; i++)
             {
-                while (reader3.Read())
+                string sql = "Select FirstName, LastName from Users WHERE UserID=" + ReceiverIDs[i].ToString();
+                SqlCommand sqlCommand = new SqlCommand(sql, cn);
+                SqlDataReader reader3 = sqlCommand.ExecuteReader();
+                if (reader3.HasRows)
                 {
-                    RenterNames.Items.Add(new ListItem ((reader3.GetString(0) + " " + reader3.GetString(1)),ReceiverIDs[i].ToString()));
-                    
+                    while (reader3.Read())
+                    {
+                        RenterNames.Items.Add(new ListItem((reader3.GetString(0) + " " + reader3.GetString(1)), ReceiverIDs[i].ToString()));
+                    }
                 }
             }
+            cn.Close();
         }
-        
-        cn.Close();
     }
 
     protected void RenterNames_TextChanged(object sender, EventArgs e)
     {
-        ReceiverLbl.Text = "You are sending message to: " + RenterNames.Text;
-        
+        if (RenterNames.SelectedValue != "No One")
+        {
+            Messages.Text = String.Empty;
+            ReceiverLbl.Text = "You are sending a message to: " + RenterNames.SelectedItem;
+            string sql = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+                " where (SenderID = " + RenterNames.SelectedValue + ") and (ReceiverID = " + Session["UserID"].ToString() + ")";
+            cn.Open();
+            SqlCommand sqlCommand = new SqlCommand(sql, cn);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Messages.Text += reader.GetString(0) + Environment.NewLine;
+                }
+            }
+            cn.Close();
+        }
     }
 }
-

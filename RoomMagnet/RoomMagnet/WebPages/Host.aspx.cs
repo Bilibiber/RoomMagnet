@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 public partial class WebPages_Host : System.Web.UI.Page
 {
@@ -12,17 +13,47 @@ public partial class WebPages_Host : System.Web.UI.Page
     private ArrayList RatingsPID = new ArrayList();
     private ArrayList tempimages = new ArrayList();
 
+    private ArrayList ReceiverIDs = new ArrayList();
+    private int ReceiverID;
+    private int HostReceiverID;
+    private int RenterReceiverID;
+    private string SenderID;
+    private string ReceiverName = "";
+    private int OldConversationID = 0;
+    private int NewConversationID = 0;
+
+    private ArrayList RequestIDs = new ArrayList();
+    private ArrayList RenterEmails = new ArrayList();
+
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        errorLabel.Visible = false;
+        if (Session["SignInEmail"] == null)
+        {
+            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            //ScriptManager.RegisterStartupScript(Master, Master.GetType(), "Pop", "openLoginModal();",true);
+        }
+        else
+        {
+            var master = Master as RoomMagnet;
+            master.AfterLogin();
+        }
+
+        int userid = Convert.ToInt32(Session["UserID"]);
         Property1Space.Visible = false;
         Property2Space.Visible = false;
         Property3Space.Visible = false;
+
+        
+
         if (!IsPostBack)
         {
             cn.Open();
             System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
             selectimg.Connection = cn;
-            int userid = Convert.ToInt32(Session["UserID"]);
+           
             selectimg.CommandText = "select [ImagePath] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectimg.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getimg = selectimg.ExecuteReader();
@@ -51,25 +82,18 @@ public partial class WebPages_Host : System.Web.UI.Page
         }
 
 
+        
+      
+       
         string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
-        if (Session["SignInEmail"] == null)
-        {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
-        }
-        else
-        {
-            var master = Master as RoomMagnet;
-            master.AfterLogin();
-        }
 
         if (!IsPostBack)
         {
             SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
             db.Open();
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
-            selectuser.Connection = db;
-            int userid = Convert.ToInt32(Session["UserID"]);
+            selectuser.Connection = db;         
             selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getinfor = selectuser.ExecuteReader();
@@ -92,6 +116,70 @@ public partial class WebPages_Host : System.Web.UI.Page
             getinfor.Close();
             db.Close();
         }
+        cn.Open();
+        string sql = "Select SenderID, ReceiverID, ConversationID from Conversations";
+        SqlCommand sqlCommand5 = new SqlCommand(sql, cn);
+        SqlDataReader dataReader2 = sqlCommand5.ExecuteReader();
+        if (dataReader2.HasRows)
+        {
+            while (dataReader2.Read())
+            {
+                Conversation newConvo = new Conversation();
+                newConvo.setSenderID(dataReader2.GetInt32(0));
+                newConvo.setRecieverID(dataReader2.GetInt32(1));
+                newConvo.setConversationID(dataReader2.GetInt32(2));
+                Conversation.conversations[Conversation.ConversationCount - 1] = newConvo;
+            }
+        }
+        dataReader2.Close();
+        bool testConvo = true;
+        ReceiverIDs.Clear();
+        int SenderID = 0;
+        Messages.Text = String.Empty;
+        for (int i = 0; i < Conversation.ConversationCount; i++)
+        {
+            if (testConvo)
+            {
+                if (Convert.ToInt32(Session["UserID"].ToString()) == Conversation.conversations[i].getRecieverID())
+                {
+                    string sql9 = "Select SenderID, max(MessageID) as latestMessage, messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+                         " where ReceiverID= " + Session["UserID"].ToString() + " group by SenderID, MessageContent order by latestMessage asc ";
+                    SqlCommand sqlCommand9 = new SqlCommand(sql9, cn);
+                    SqlDataReader dataReader9 = sqlCommand9.ExecuteReader();
+                    if (dataReader9.HasRows)
+                    {
+                        while (dataReader9.Read())
+                        {
+                            int tempSenderID = dataReader9.GetInt32(0);
+                            if (tempSenderID != SenderID)
+                            {
+                                if (ReceiverIDs.Contains(tempSenderID) == false)
+                                {
+                                    ReceiverIDs.Add(dataReader9.GetInt32(0));
+                                    SenderID = dataReader9.GetInt32(0);
+                                }
+                            }
+                        }
+                    }
+                    dataReader9.Close();
+                    testConvo = false;
+                }
+            }
+        }
+        cn.Close();
+        if (ReceiverIDs.Count > 0)
+        {
+            FillDropDown(ReceiverIDs);
+            RenterNames.Visible = true;
+
+        }
+        else
+        {
+            errorLabel.Text = "No messages from Renters";
+            errorLabel.Visible = true;
+        }
+        
+       
     }
 
     public static List<string> objcountries()
@@ -117,10 +205,10 @@ public partial class WebPages_Host : System.Web.UI.Page
         panelfavorites.Visible = false;
         panelconnections.Visible = false;
         panelmessage.Visible = false;
-        hostprofile.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        hostproperty.BackColor = System.Drawing.Color.White;
-        hostConnections.BackColor = System.Drawing.Color.White;
-        hostMessage.BackColor = System.Drawing.Color.White;
+        hostprofile.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        hostproperty.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
     }
 
     protected void hostproperty_Click(object sender, EventArgs e)
@@ -129,10 +217,10 @@ public partial class WebPages_Host : System.Web.UI.Page
         panelfavorites.Visible = true;
         panelconnections.Visible = false;
         panelmessage.Visible = false;
-        hostprofile.BackColor = System.Drawing.Color.White;
-        hostproperty.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        hostConnections.BackColor = System.Drawing.Color.White;
-        hostMessage.BackColor = System.Drawing.Color.White;
+        hostprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostproperty.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        hostConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
 
         string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, AvailableBathrooms,PropertyID,PropertyID from[Property] WHERE hostid = " + Session["UserID"];
         cn.Open();
@@ -272,15 +360,15 @@ public partial class WebPages_Host : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                Property1Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             if (RatingCount == 1)
             {
-                Property2Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             if (RatingCount == 2)
             {
-                Property3Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
             }
             RatingCount++;
             readers.Close();
@@ -295,22 +383,99 @@ public partial class WebPages_Host : System.Web.UI.Page
         panelfavorites.Visible = false;
         panelconnections.Visible = true;
         panelmessage.Visible = false;
-        hostprofile.BackColor = System.Drawing.Color.White;
-        hostproperty.BackColor = System.Drawing.Color.White;
-        hostConnections.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
-        hostMessage.BackColor = System.Drawing.Color.White;
+        hostprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostproperty.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostConnections.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+        hostMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+
+        int userid = Convert.ToInt32(Session["UserID"]);
+        cn.Open();
+        int requestcount = 0;
+        string requestsql = "SELECT        Requests.RequestStatus, Requests.Request, Requests.RequestID, Users.Email FROM Users " +
+            "INNER JOIN Requests ON Users.UserID = Requests.RoomRenterID" +
+            " Where Requests.PropertyHostID = @HostID";
+        SqlCommand requestsqlcommand = new SqlCommand(requestsql, cn);
+        requestsqlcommand.Parameters.AddWithValue("@HostID", userid);
+        SqlDataReader requestReader = requestsqlcommand.ExecuteReader();
+
+        if (requestReader.HasRows)
+        {
+            while (requestReader.Read())
+            {
+                //add if == accepted
+                if (requestReader.GetString(0) == "Pending")
+                {
+                    if (requestcount == 0)
+                    {
+                        request1.Visible = true;
+                        request1des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 1)
+                    {
+                        request2.Visible = true;
+                        request2des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 2)
+                    {
+                        request3.Visible = true;
+                        request3des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 3)
+                    {
+                        request4.Visible = true;
+                        request4des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                    if (requestcount == 4)
+                    {
+                        request5.Visible = true;
+                        request5des.Text = requestReader.GetString(1);
+                        RequestIDs.Add(requestReader.GetInt32(2));
+                        RenterEmails.Add(requestReader.GetString(3));
+                    }
+                }
+                else
+                {
+                    RequestHeader.Text = "No Pending Request";
+                }
+                requestcount++;
+            }
+        }
+        else
+        {
+            RequestHeader.Text = "No Pending Request";
+        }
+        ViewState["RequestIDarray"] = RequestIDs;
+        ViewState["RenterEmails"] = RenterEmails;
+        requestReader.Close();
+        cn.Close();
     }
 
     protected void hostMessage_Click(object sender, EventArgs e)
     {
+        string request = "";
         panelprofile.Visible = false;
         panelfavorites.Visible = false;
         panelconnections.Visible = false;
         panelmessage.Visible = true;
-        hostprofile.BackColor = System.Drawing.Color.White;
-        hostproperty.BackColor = System.Drawing.Color.White;
-        hostConnections.BackColor = System.Drawing.Color.White;
-        hostMessage.BackColor = System.Drawing.Color.FromArgb(198, 214, 226);
+        hostprofile.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostproperty.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
+        hostMessage.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
+
+        //if host accepts
+    
+
+
+
+        //if host declines
     }
 
     protected void editprofile_Click(object sender, EventArgs e)
@@ -325,95 +490,95 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void Property1Image_Click(object sender, ImageClickEventArgs e)
     {
-        //cn.Open();
-        //string sql = "Select PropertyID,ImagePath from [ImagePath]";
-        //SqlCommand search = new SqlCommand(sql, cn);
-        //SqlDataReader reader = search.ExecuteReader();
+        cn.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, cn);
+        SqlDataReader reader = search.ExecuteReader();
 
-        //if (reader.HasRows)
-        //{
-        //    while (reader.Read())
-        //    {
-        //        byte[] images = (byte[])reader[1];
-        //        int PropertyID = reader.GetInt32(0);
-        //        if (images == null)
-        //        {
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
-        //            if (CmprImageURL == Property1Image.ImageUrl)
-        //            {
-        //                Session["ResultPropertyID"] = PropertyID;
-        //            }
-        //        }
-        //    }
-        //}
-        //cn.Close();
-        //Response.Redirect("ManageSearchProperties.aspx");
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[1];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property1Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+                }
+            }
+        }
+        cn.Close();
+        Response.Redirect("PropertyInfo.aspx");
     }
 
     protected void Property2Image_Click(object sender, ImageClickEventArgs e)
     {
-        //cn.Open();
-        //string sql = "Select PropertyID,ImagePath from [ImagePath]";
-        //SqlCommand search = new SqlCommand(sql, cn);
-        //SqlDataReader reader = search.ExecuteReader();
+        cn.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, cn);
+        SqlDataReader reader = search.ExecuteReader();
 
-        //if (reader.HasRows)
-        //{
-        //    while (reader.Read())
-        //    {
-        //        byte[] images = (byte[])reader[1];
-        //        int PropertyID = reader.GetInt32(0);
-        //        if (images == null)
-        //        {
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
-        //            if (CmprImageURL == Property2Image.ImageUrl)
-        //            {
-        //                Session["ResultPropertyID"] = PropertyID;
-        //            }
-        //        }
-        //    }
-        //}
-        //cn.Close();
-        //Response.Redirect("ManageSearchProperties.aspx");
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[1];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property2Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+                }
+            }
+        }
+        cn.Close();
+        Response.Redirect("PropertyInfo.aspx");
     }
 
     protected void Property3Image_Click(object sender, ImageClickEventArgs e)
     {
-        //cn.Open();
-        //string sql = "Select PropertyID,ImagePath from [ImagePath]";
-        //SqlCommand search = new SqlCommand(sql, cn);
-        //SqlDataReader reader = search.ExecuteReader();
+        cn.Open();
+        string sql = "Select PropertyID,ImagePath from [ImagePath]";
+        SqlCommand search = new SqlCommand(sql, cn);
+        SqlDataReader reader = search.ExecuteReader();
 
-        //if (reader.HasRows)
-        //{
-        //    while (reader.Read())
-        //    {
-        //        byte[] images = (byte[])reader[1];
-        //        int PropertyID = reader.GetInt32(0);
-        //        if (images == null)
-        //        {
-        //            return;
-        //        }
-        //        else
-        //        {
-        //            string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
-        //            if (CmprImageURL == Property3Image.ImageUrl)
-        //            {
-        //                Session["ResultPropertyID"] = PropertyID;
-        //            }
-        //        }
-        //    }
-        //}
-        //cn.Close();
-        //Response.Redirect("ManageSearchProperties.aspx");
+        if (reader.HasRows)
+        {
+            while (reader.Read())
+            {
+                byte[] images = (byte[])reader[1];
+                int PropertyID = reader.GetInt32(0);
+                if (images == null)
+                {
+                    return;
+                }
+                else
+                {
+                    string CmprImageURL = "data:image;base64," + Convert.ToBase64String(images);
+                    if (CmprImageURL == Property3Image.ImageUrl)
+                    {
+                        Session["ResultPropertyID"] = PropertyID;
+                    }
+                }
+            }
+        }
+        cn.Close();
+        Response.Redirect("PropertyInfo.aspx");
     }
 
 
@@ -476,5 +641,301 @@ public partial class WebPages_Host : System.Web.UI.Page
         }
         cn.Close();
         Response.Redirect("UpdateProperty.aspx");
+    }
+
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string SenderID2 = Session["UserID"].ToString();
+        int ConversationID = -1;
+        string tempName = RenterNames.SelectedItem.ToString();
+        RenterReceiverID = Int32.Parse(RenterNames.SelectedValue);
+        string sql2 = "Select ConversationID FROM Conversations where SenderID=" + RenterReceiverID + "And ReceiverID=" + SenderID2;
+        SqlCommand sqlCommand2 = new SqlCommand(sql2, cn);
+        SqlDataReader reader = sqlCommand2.ExecuteReader();
+        if (reader.Read())
+        {
+            ConversationID = reader.GetInt32(0);
+        }
+        reader.Close();
+        string Sendername = Session["FullName"].ToString();
+        string message = txtsend.Text;
+        string my = Sendername + ":" + message;
+        string sql = "Insert into Message(ConversationID,MessageContent,LastUpdated,LastUpdatedBy) values (@ConversationID,@MessageContent,@LastUpdated,@LastUpdatedBy)";
+        SqlCommand command = new SqlCommand(sql, cn);
+        command.Parameters.AddWithValue("@ConversationID", ConversationID);
+        command.Parameters.AddWithValue("@MessageContent", my);
+        command.Parameters.AddWithValue("@LastUpdated", DateTime.Now);
+        command.Parameters.AddWithValue("@LastUpdatedBy", Sendername);
+        command.ExecuteNonQuery();
+
+        string sql4 = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+       " where (SenderID = " + RenterNames.SelectedValue + ") and (ReceiverID = " + Session["UserID"].ToString() + ")";
+        SqlCommand sqlCommand = new SqlCommand(sql4, cn);
+        SqlDataReader reader4 = sqlCommand.ExecuteReader();
+        Messages.Text = String.Empty;
+        if (reader4.HasRows)
+        {
+            while (reader4.Read())
+            {
+                Messages.Text += reader4.GetString(0) + Environment.NewLine;
+            }
+        }
+        txtsend.Text = String.Empty;
+    }
+    public void FillDropDown(ArrayList ReceiverIDs)
+    {
+        if (RenterNames.Items.Count != ReceiverIDs.Count + 1)
+        {
+            cn.Open();
+            for (int i = 0; i < ReceiverIDs.Count; i++)
+            {
+                string sql = "Select FirstName, LastName from Users WHERE UserID=" + ReceiverIDs[i].ToString();
+                SqlCommand sqlCommand = new SqlCommand(sql, cn);
+                SqlDataReader reader3 = sqlCommand.ExecuteReader();
+                if (reader3.HasRows)
+                {
+                    while (reader3.Read())
+                    {
+                        RenterNames.Items.Add(new ListItem((reader3.GetString(0) + " " + reader3.GetString(1)), ReceiverIDs[i].ToString()));
+                    }
+                }
+            }
+            cn.Close();
+        }
+    }
+
+    protected void RenterNames_TextChanged(object sender, EventArgs e)
+    {
+        if (RenterNames.SelectedValue != "No One")
+        {
+            Messages.Text = String.Empty;
+            string sql = "Select messageContent from Conversations inner join Message on Conversations.ConversationID = Message.ConversationID" +
+                " where (SenderID = " + RenterNames.SelectedValue + ") and (ReceiverID = " + Session["UserID"].ToString() + ")";
+            cn.Open();
+            SqlCommand sqlCommand = new SqlCommand(sql, cn);
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Messages.Text += reader.GetString(0) + Environment.NewLine;
+                }
+            }
+            cn.Close();
+        }
+    }
+
+    protected void AcceptButton1_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        RenterEmails = (ArrayList)ViewState["RenterEmails"];
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID",RequestIDs[0].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept",status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[0].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+        
+    }
+
+    protected void DeclineButton1_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        RenterEmails = (ArrayList)ViewState["RenterEmails"];
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[0].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[0].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void AcceptButton2_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[1].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[1].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void DeclineButton2_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[1].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[1].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void AcceptButton3_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[2].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[2].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void DeclineButton3_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[2].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[2].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void AcceptButton4_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[3].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[3].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void DeclineButton4_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[3].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[3].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void AcceptButton5_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        cn.Open();
+        string status = "Accepted";
+        string accept = "Update Requests Set RequestStatus= @Accept where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[4].ToString());
+        sqlCommand.Parameters.AddWithValue("@Accept", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[4].ToString();
+        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
+    }
+
+    protected void DeclineButton5_Click(object sender, EventArgs e)
+    {
+        RequestIDs = (ArrayList)ViewState["RequestIDarray"];
+        cn.Open();
+        string status = "Declined";
+        string accept = "Update Requests Set RequestStatus= @Declined where RequestID = @RequestID";
+        SqlCommand sqlCommand = new SqlCommand(accept, cn);
+        sqlCommand.Parameters.AddWithValue("@RequestID", RequestIDs[4].ToString());
+        sqlCommand.Parameters.AddWithValue("@Declined", status);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        string EmailAddress = RenterEmails[4].ToString();
+        string EmailBody = "One of your request has Declined by the Host";
+        EmailSender emailSender = new EmailSender();
+        // uncomment this when hosting to aws
+        //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
+
+        request1.Visible = false;
     }
 }

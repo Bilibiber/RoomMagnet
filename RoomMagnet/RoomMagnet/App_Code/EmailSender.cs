@@ -68,6 +68,36 @@ public class EmailSender
         smtpClient.EnableSsl = true;
         smtpClient.Send(mail);
     }
+    public void SendAcceptEmail(string EnteredEmailAddress, string emailbody)
+    {
+        mail.From = new MailAddress(FromEmailAddress);
+        // where we send out the email
+        mail.To.Add(EnteredEmailAddress);
+        //email subject
+        mail.Subject = "Request Accepted";
+        // email body, html tag friendly
+        mail.IsBodyHtml = true;
+        mail.Body = emailbody;
+
+        smtpClient.Credentials = new System.Net.NetworkCredential(FromEmailAddress, FromEmailPassword);
+        smtpClient.EnableSsl = true;
+        smtpClient.Send(mail);
+    }
+    public void SendDeclinedEmail(string EnteredEmailAddress, string emailbody)
+    {
+        mail.From = new MailAddress(FromEmailAddress);
+        // where we send out the email
+        mail.To.Add(EnteredEmailAddress);
+        //email subject
+        mail.Subject = "Request Declined";
+        // email body, html tag friendly
+        mail.IsBodyHtml = true;
+        mail.Body = emailbody;
+
+        smtpClient.Credentials = new System.Net.NetworkCredential(FromEmailAddress, FromEmailPassword);
+        smtpClient.EnableSsl = true;
+        smtpClient.Send(mail);
+    }
     // to be continue........
     //Fan Guo
 }

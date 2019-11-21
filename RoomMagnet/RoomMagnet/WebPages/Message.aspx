@@ -5,49 +5,42 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-        <table>
-            <tr>
-                <td colspan="2">
-                    <asp:image id="Image1" runat="server" imageurl="~/img/roommagnet-text.png" />
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 100px; text-align: right"></td>
-                
-                <td style="width: 94px; text-align: center">
-                <asp:label id="ReceiverLbl" runat="server" text="You are sending message to : UserName"></asp:label>
-            </tr>
-            <tr>
-                <td style="width: 100px; height: 260px"></td>
-                <td style="width: 94px; height: 260px">
-                    <asp:textbox id="txtmsg" runat="server" height="250px" textmode="MultiLine" width="472px" ReadOnly="true"></asp:textbox>
-                </td>
-                
-            </tr>
-            <tr>
-                <td style="width: 100px; height: 77px;"></td>
-                <td style="width: 94px; height: 77px;">
-                    <table style="width: 480px">
-                        <tr>
-                            <td style="width: 100px; height: 50px;">
-                                <asp:textbox id="txtsend" runat="server" height="40px" textmode="MultiLine" width="384px"></asp:textbox>
-                            </td>
-                            <td style="width: 100px; height: 50px;">
-                                <asp:button id="Button1" runat="server" height="47px" onclick="Button1_Click" text="Send"
-                                    width="72px" font-bold="True" />
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:button ID="BN" runat="server" text="Clear" onclick="Clear_Click"/>
-                </td>
-            </tr>
-        </table>
-    <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" Height="134px" Width="538px"></asp:TextBox>
-    <asp:DropDownList ID="RenterNames" runat="server" AutoPostBack="true" OnTextChanged="RenterNames_TextChanged" Visible="false">
-        <asp:ListItem ></asp:ListItem>
-                </asp:DropDownList>
+    <section class="section-bg">
+        <div class="container">
+            <div class="col-md-12 mx-auto">
+                <h1 class="update-title">Messages</h1>
+
+                <div class="row">
+                    <div class="col-md-12 no-padding">
+                        <div class="form-group">
+                            <asp:DropDownList ID="RenterNames" runat="server" AutoPostBack="true" OnTextChanged="RenterNames_TextChanged" Visible="false" CssClass="form-control">
+                                <asp:ListItem Value="No One">Select Contacts</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:Label ID="ReceiverLbl" runat="server" Text="You are sending message to : UserName"></asp:Label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container p-bottom-30">
+                        <div class="col-md-12">
+                            <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" CssClass="form-control" ReadOnly="true" Width="1070px" Height="250px"></asp:TextBox>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="type_msg">
+                        <div class="input_msg_write">
+                            <div class="input-group">
+                                <asp:TextBox ID="txtsend" runat="server" CssClass="form-control" placeholder="Type a message" Width="500px"></asp:TextBox>
+                                <div class="atbd_submit_btn input-group-append searchtxt-padding">
+                                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Send" Font-Bold="True" CssClass="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-bottom-30">
+        </div>
+    </section>
 </asp:Content>

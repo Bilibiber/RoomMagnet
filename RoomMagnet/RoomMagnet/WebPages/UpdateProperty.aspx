@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="UpdateProperty.aspx.cs" Inherits="WebPages_AddProperty" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RoomMagnet.master" AutoEventWireup="true" CodeFile="UpdateProperty.aspx.cs" Inherits="WebPages_UpdateProperty" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="Server">
 </asp:Content>
@@ -8,148 +8,21 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
-
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-    <%--    <style>
-        /*upload images*/
-        .preview-images-zone {
-            width: 72%;
-            border: 1px solid #ddd;
-            min-height: 180px;
-            /* display: flex; */
-            padding: 5px 5px 0px 5px;
-            position: relative;
-            overflow: auto;
-            top: 0px;
-            left: 0px;
-        }
-
-            .preview-images-zone > .preview-image:first-child {
-                height: 185px;
-                width: 185px;
-                position: relative;
-                margin-right: 5px;
-            }
-
-            .preview-images-zone > .preview-image {
-                height: 90px;
-                width: 90px;
-                position: relative;
-                margin-right: 5px;
-                float: left;
-                margin-bottom: 5px;
-            }
-
-                .preview-images-zone > .preview-image > .image-zone {
-                    width: 100%;
-                    height: 100%;
-                }
-
-                    .preview-images-zone > .preview-image > .image-zone > img {
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                .preview-images-zone > .preview-image > .tools-edit-image {
-                    position: absolute;
-                    z-index: 100;
-                    color: #fff;
-                    bottom: 0;
-                    width: 100%;
-                    text-align: center;
-                    margin-bottom: 10px;
-                    display: none;
-                }
-
-                .preview-images-zone > .preview-image > .image-cancel {
-                    font-size: 18px;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    font-weight: bold;
-                    margin-right: 10px;
-                    cursor: pointer;
-                    display: none;
-                    z-index: 100;
-                }
-
-        .preview-image:hover > .image-zone {
-            cursor: move;
-            opacity: .5;
-        }
-
-        .preview-image:hover > .tools-edit-image,
-        .preview-image:hover > .image-cancel {
-            display: block;
-        }
-
-        .ui-sortable-helper {
-            width: 90px !important;
-            height: 90px !important;
-        }
-
-        .container {
-            padding-top: 50px;
-        }
-
+    <style type="text/css">
         .auto-style1 {
-            height: 28px;
+            left: 0px;
+            top: 1px;
         }
     </style>
-
-    <script>
-        $(document).ready(function () {
-            document.getElementById('pro-image').addEventListener('change', readImage, false);
-
-            $(".preview-images-zone").sortable();
-
-            $(document).on('click', '.image-cancel', function () {
-                let no = $(this).data('no');
-                $(".preview-image.preview-show-" + no).remove();
-            });
-        });
-
-        var num = 4;
-        function readImage() {
-            if (window.File && window.FileList && window.FileReader) {
-                var files = event.target.files; //FileList object
-                var output = $(".preview-images-zone");
-
-                for (let i = 0; i < files.length; i++) {
-                    var file = files[i];
-                    if (!file.type.match('image')) continue;
-
-                    var picReader = new FileReader();
-
-                    picReader.addEventListener('load', function (event) {
-                        var picFile = event.target;
-                        var html = '<div class="preview-image preview-show-' + num + '">' +
-                            '<div class="image-cancel" data-no="' + num + '">x</div>' +
-                            '<div class="image-zone"><img id="pro-img-' + num + '" src="' + picFile.result + '"></div>' +
-                            '<div class="tools-edit-image"><a href="javascript:void(0)" data-no="' + num + '" class="btn btn-light btn-edit-image">edit</a></div>' +
-                            '</div>';
-
-                        output.append(html);
-                        num = num + 1;
-                    });
-
-                    picReader.readAsDataURL(file);
-                }
-                $("#pro-image").val('');
-            } else {
-                console.log('Browser not support');
-            }
-        }
-    </script>--%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
+    <%-- <asp:Button ID="MasterPageLogIn" runat="server" Text="Sign In" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" data-toggle="modal" data-target="#Updatenotification" data-dismiss="modal" OnClientClick="return false" />--%>
     <section class="add-listing-wrapper border-bottom section-bg ">
-
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center settings-title">
-                    <h1>Add Property</h1>
+                    <h1>Update Property</h1>
                 </div>
             </div>
         </div>
@@ -160,8 +33,7 @@
                     <div class="atbd_content_module">
                         <div class="atbd_content_module__tittle_area">
                             <div class="atbd_area_title">
-                                <h4><span class="la la-home"></span>Property Information&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <asp:Label ID="updatepropertyid" runat="server" Text="Label"></asp:Label>
+                                <h4><span class="la la-home"></span>Property Information
                                 </h4>
                             </div>
                         </div>
@@ -260,6 +132,17 @@
                                     <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="addZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
                                 </div>
 
+                                <div class="form-group ">
+                                    <asp:Label runat="server" class="form-label " Text="Home Type"></asp:Label>
+                                    <asp:DropDownList runat="server" ID="addType" class="form-control">
+                                        <asp:ListItem Value=""></asp:ListItem>
+                                        <asp:ListItem Value="Appartment">Appartment</asp:ListItem>
+                                        <asp:ListItem Value="TownHouse">Town house</asp:ListItem>
+                                        <asp:ListItem Value="Home">Home</asp:ListItem>
+                                        </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="addType" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                </div>
+
                                 <div class="form-group">
                                     <asp:Label runat="server" Text="Square Footage of House" class="form-label"></asp:Label>
 
@@ -308,6 +191,13 @@
                                     <table>
                                         <tr>
                                             <td>
+                                                <asp:Label runat="server" Text="Room Name" class="form-label"></asp:Label>
+                                                <asp:TextBox ID="Room1Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="Room1Requiredfieldvalidator" runat="server" ControlToValidate="Room1Name" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator><br />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                                 <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
                                                 <div class="pricing-option-inputs">
                                                     <asp:TextBox ID="roomprice1" runat="server" class="form-control" placeholder="Rent Price/Month"></asp:TextBox>
@@ -332,13 +222,15 @@
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addstartdate1" runat="server" class="form-control" onfocus="(this.type='date')"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requirestart1" runat="server" ControlToValidate="addstartdate1" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Comparestart1" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate1" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addenddate1" runat="server" onfocus="(this.type='date')" class="form-control" ></asp:TextBox>
+                                                    <asp:TextBox ID="addenddate1" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requireend1" runat="server" ControlToValidate="addenddate1" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Compareend1" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addenddate1" ValidateEmptyText="True" ValidationGroup="addproperty" Text="End date should be greater than start day!" ForeColor="Red" ControlToCompare="addstartdate1"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                         </tr>
@@ -348,6 +240,13 @@
                                     <br />
                                     <asp:Label runat="server" Text="Room 2 information" class="form-label"></asp:Label>
                                     <table>
+                                        <tr>
+                                            <td>
+                                                <asp:Label runat="server" Text="Room Name" class="form-label"></asp:Label>
+                                                <asp:TextBox ID="Room2Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="Room2Name" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator><br />
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>
                                                 <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
@@ -374,6 +273,7 @@
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addstartdate2" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requirestart2" runat="server" ControlToValidate="addstartdate2" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Comparestart2" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate2" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -381,6 +281,7 @@
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addenddate2" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="requireend2" runat="server" ControlToValidate="addenddate2" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Compareend2" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addenddate2" ValidateEmptyText="True" ValidationGroup="addproperty" Text="End date should be greater than start day!" ForeColor="Red" ControlToCompare="addstartdate2"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                         </tr>
@@ -390,6 +291,13 @@
                                     <br />
                                     <asp:Label runat="server" Text="Room 3 information" class="form-label"></asp:Label>
                                     <table>
+                                        <tr>
+                                            <td>
+                                                <asp:Label runat="server" Text="Room Name" class="form-label"></asp:Label>
+                                                <asp:TextBox ID="Room3Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="Room3Name" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator><br />
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>
                                                 <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
@@ -416,6 +324,7 @@
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addstartdate3" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator3" runat="server" ControlToValidate="addstartdate3" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Comparestart3" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate3" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -423,6 +332,7 @@
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addenddate3" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator4" runat="server" ControlToValidate="addenddate3" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Compareend3" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addenddate3" ValidateEmptyText="True" ValidationGroup="addproperty" Text="End date should be greater than start day!" ForeColor="Red" ControlToCompare="addstartdate3"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                         </tr>
@@ -432,6 +342,13 @@
                                     <br />
                                     <asp:Label runat="server" Text="Room 4 information" class="form-label"></asp:Label>
                                     <table>
+                                        <tr>
+                                            <td>
+                                                <asp:Label runat="server" Text="Room Name" class="form-label"></asp:Label>
+                                                <asp:TextBox ID="Room4Name" runat="server" class="form-control" placeholder="Enter Room Name"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="Room4Name" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator><br />
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>
                                                 <asp:Label runat="server" Text="Rent Price/Month" class="form-label"></asp:Label>
@@ -456,8 +373,9 @@
                                             <td>
                                                 <div class="form-group">
                                                     <asp:Label runat="server" Text="Available Date" class="form-label"></asp:Label>
-                                                    <asp:TextBox ID="addstartdate4" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="addstartdate4" runat="server" onfocus="(this.type='date')" class="form-control" Width="284px"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator7" runat="server" ControlToValidate="addstartdate4" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Comparestart4" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addstartdate4" ValidateEmptyText="True" Text="Start date can't be less than today" ValidationGroup="addproperty" ForeColor="Red"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                             <td>
@@ -465,6 +383,7 @@
                                                     <asp:Label runat="server" Text="End Date" class="form-label"></asp:Label>
                                                     <asp:TextBox ID="addenddate4" runat="server" onfocus="(this.type='date')" class="form-control"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="Requiredfieldvalidator8" runat="server" ControlToValidate="addenddate4" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
+                                                    <asp:CompareValidator ID="Compareend4" runat="server" Operator="GreaterThan" Type="Date" ControlToValidate="addenddate4" ValidateEmptyText="True" ValidationGroup="addproperty" Text="End date should be greater than start day!" ForeColor="Red" ControlToCompare="addstartdate4"></asp:CompareValidator>
                                                 </div>
                                             </td>
                                         </tr>
@@ -481,11 +400,11 @@
                                                 <h4><span class="la la-thumbs-up"></span>Amenities (Check all that apply)</h4>
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group">
                                             <div class="col-lg-10 amenities-checks">
                                                 <div class="form-check">
-                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" />
-                                                    <br />
+                                                    <asp:CheckBox ID="checkcondition" runat="server" class="form-check-input" Text="  Air Conditioning" style="padding-right:100px" />
                                                 </div>
                                                 <div class="form-check">
                                                     <asp:CheckBox ID="checkheating" runat="server" class="form-check-input" Text="  Heating" />
@@ -549,6 +468,23 @@
                 <!-- ends: .atbd_content_module -->
             </div>
             <!-- ends: .col-lg-10 -->
+            <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 offset-lg-1" style="left: 0px; top: 0px">
+                                    <div class="atbd_content_module">
+                                        <div class="atbd_content_module__tittle_area">
+                                            <div class="atbd_area_title">
+                                                <h4>Property Descriptions</h4>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:TextBox runat="server" ID="propertydes" placeholder="Description" class="form-control" TextMode="MultiLine" Height="200px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="requireddes" runat="server" ErrorMessage="RequiredFieldValidator" Text="Required" ControlToValidate="propertydes" ForeColor="Red"></asp:RequiredFieldValidator>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
             <div class="container">
                 <div class="row">
@@ -562,11 +498,15 @@
                                 <br />
                                 <br />
                                 <br />
-                                <div id="showimage">
+                                <%--<div id="showimage">
                                     <asp:Image ID="imgpreview" runat="server" Height="150" Width="150" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px;" />
-                                </div>
+                                </div>--%>
                                 <asp:FileUpload ID="FileUpload1" multiple="multiple" runat="server" AllowMultiple="true" />
+                                <asp:RequiredFieldValidator ID="requireimg" runat="server" ErrorMessage="RequiredFieldValidator" Text="Required" ValidationGroup="img" ControlToValidate="FileUpload1" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <%-- <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />--%>
+                                <br />
+                                <br />
+                                <asp:Button ID="updateimg" class="btn btn-primary" runat="server" Text="Insert more images" ValidationGroup="img" OnClick="updateimg_Click"/>
                                 <br />
                                 <br />
                             </div>

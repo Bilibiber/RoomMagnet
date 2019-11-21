@@ -6,11 +6,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-<%--        <script type="text/javascript">
-        function openResultModal() {
-            $('#no_result_notification').modal({ show: true });
-        }
-    </script>--%>
     <asp:ScriptManager ID="ScriptManager1"
         EnablePageMethods="true"
         EnablePartialRendering="true" runat="server" />
@@ -20,7 +15,7 @@
     <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
 
     <script src="GoogleMap.js"></script>
-    <section class="all-listing-wrapper section-bg results-pad">
+    <section class="all-listing-wrapper section-bg results-pad" id="hideall" runat="server" visible="true">
         <div class="row">
             <div class="col-lg-12">
                 <div class="atbd_generic_header">
@@ -28,10 +23,13 @@
                         <div class="atbd_seach_fields_wrapper input-group">
                             <div class="single_search_field search_query">
                                 <asp:TextBox ID="address" runat="server" CssClass="form-control search_fields Searchtxt-width inputgroup-height" type="textbox" ClientIDMode="Static" placeholder="Enter a city or zip code"></asp:TextBox>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorHomePageSearchText" runat="server" ErrorMessage="Special characters are not allowed. For example:% & ; = $" ValidationExpression="[^%&;>=$]+" ControlToValidate="address" Display="Dynamic" ValidationGroup="ResultPageSearch"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ValidationGroup="ResultPageSearch" ControlToValidate="address" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="City and State should separate by a comma. For example Harrisonburg,VA" ValidationGroup="ResultPageSearch" ControlToValidate="address" Display="Dynamic" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                             </div>
 
                             <div class="atbd_submit_btn input-group-append searchtxt-padding">
-                                <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" CssClass="btn btn-primary inputgroup-height textcenter" OnClick="SearchResultButton_Click" />
+                                <asp:Button ID="search" runat="server" Text="Search" ClientIDMode="Static" CssClass="btn btn-primary inputgroup-height textcenter" OnClick="SearchResultButton_Click" ValidationGroup="ResultPageSearch" />
                             </div>
                         </div>
                     </div>
@@ -69,7 +67,7 @@
                 <!-- ends: .col-lg-4 -->
                 <div class="col-lg-6 order-0 order-lg-1">
                     <div class="row searchtxt-padding">
-                        <h4>Search Result</h4>
+                        <h4>Search Results</h4>
                     </div>
                     <div class="row searchtxt-padding">
                         <p>
@@ -97,7 +95,8 @@
                                             </div>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">
-                                                    <asp:Label ID="Property1Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                    <asp:Label ID="Property1Rating" runat="server" Text="4.5"></asp:Label>
+                                                    <i class="la la-star"></i></span>
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
@@ -150,7 +149,8 @@
                                             </div>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">
-                                                    <asp:Label ID="Property2Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                    <asp:Label ID="Property2Rating" runat="server" Text="4.5"></asp:Label>
+                                                    <i class="la la-star"></i></span>
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
@@ -208,7 +208,8 @@
                                             </div>
                                             <div class="atbd_listing_meta">
                                                 <span class="atbd_meta atbd_listing_rating">
-                                                    <asp:Label ID="Property3Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                    <asp:Label ID="Property3Rating" runat="server" Text="4.5"></asp:Label>
+                                                    <i class="la la-star"></i></span>
                                             </div>
                                             <!-- End atbd listing meta -->
                                             <div class="atbd_listing_data_list">
@@ -263,7 +264,8 @@
                                         </div>
                                         <div class="atbd_listing_meta">
                                             <span class="atbd_meta atbd_listing_rating">
-                                                <asp:Label ID="Property4Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                <asp:Label ID="Property4Rating" runat="server" Text="4.5"></asp:Label>
+                                                <i class="la la-star"></i></span>
                                         </div>
                                         <!-- End atbd listing meta -->
                                         <div class="atbd_listing_data_list">
@@ -320,7 +322,8 @@
                                         </div>
                                         <div class="atbd_listing_meta">
                                             <span class="atbd_meta atbd_listing_rating">
-                                                <asp:Label ID="Property5Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                                <asp:Label ID="Property5Rating" runat="server" Text="4.5"></asp:Label>
+                                                <i class="la la-star"></i></span>
                                         </div>
                                         <!-- End atbd listing meta -->
                                         <div class="atbd_listing_data_list">
@@ -373,11 +376,7 @@
                 </div>
             </div>
         </div>
-        <!-- ends: .col-lg-8 -->
-
-        <!-- ends: .listing-items -->
     </section>
-
     <div class="modal fade" id="Filters" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -389,11 +388,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <asp:TextBox ID="SearchResultMinPrice" runat="server" CssClass="form-control" placeHolder="Min Price"></asp:TextBox>
+                        <asp:TextBox ID="SearchResultMinPrice" runat="server" CssClass="form-control" placeholder="Min Price"></asp:TextBox>
                         <asp:CompareValidator ID="SearchResultsMinPriceValidator" ControlToValidate="SearchResultMinPrice" Operator="DataTypeCheck" Type="Currency" runat="server" Text="Invalid Price" Display="Dynamic"></asp:CompareValidator>
                     </div>
                     <div class="form-group">
-                        <asp:TextBox ID="SearchResultMaxPrice" runat="server" CssClass="form-control" placeHolder="Max Price"></asp:TextBox>
+                        <asp:TextBox ID="SearchResultMaxPrice" runat="server" CssClass="form-control" placeholder="Max Price"></asp:TextBox>
                         <asp:CompareValidator ID="SearchResultsMaxPriceValidator" ControlToValidate="SearchResultMaxPrice" runat="server" Operator="DataTypeCheck" Type="Currency" Text="Invalid Price" Display="Dynamic"></asp:CompareValidator>
                     </div>
                     <div class="form-group">
@@ -420,39 +419,16 @@
                             <asp:ListItem>House</asp:ListItem>
                         </asp:DropDownList>
                     </div>
+                    <small>*Please enter a location before you apply filters</small>
                 </div>
                 <div class="modal-footer mx-auto">
                     <div class="form-excerpts">
                         <ul class="list-unstyled">
                             <li>
                                 <asp:Button ID="FiltersButton" runat="server" Text="Apply" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="ApplyButton_Click" />
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="no_result_notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <asp:Image ID="Image2" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <asp:Image ID="Image3" runat="server" ImageUrl="~/img/icons8-broken-robot-96.png" />
-                    <h3>No Result Found</h3>
-                </div>
-                <div class="modal-footer mx-auto">
-                    <div class="form-excerpts">                      
-                        <ul class="list-unstyled">
-                            <li>
-                                <asp:Button ID="Button2" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" Text="Become First Host!" CssClass="btn btn-xs btn-gradient btn-gradient-two access-link" />
+                                <div class="row text-center">
+                                    <asp:Label ID="FilterLbl" runat="server" Text="Label" Visible="false" ForeColor="Red"></asp:Label>
+                                </div>
                             </li>
                         </ul>
                     </div>
