@@ -213,7 +213,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property1RentPrice.Visible = true;
                     Property1CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
                     Property1CityState.Visible = true;
-                    Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                    Property1Bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
                     Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property1StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property1EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
@@ -246,7 +246,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property2RentPrice.Visible = true;
                     Property2CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
                     Property2CityState.Visible = true;
-                    Property2Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                    Property2Bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
                     Property2Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property2StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property2EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
@@ -277,7 +277,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property3RentPrice.Visible = true;
                     Property3CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
                     Property3CityState.Visible = true;
-                    Property3Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                    Property3Bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
                     Property3Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property3StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property3EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
@@ -373,8 +373,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request1.Visible = true;
                         StriptPay1.Visible = true;
-                        request1des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
-                        RequestedRoomPrice1.Text = reader.GetDecimal(1).ToString();
+                        request1des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved.";
+                        decimal x = reader.GetDecimal(1);
+                        RequestedRoomPrice1.Text= "$" +  String.Format("{0:0.##}", x) + "/Month";
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
                         {
@@ -386,8 +387,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request2.Visible = true;
                         StriptPay2.Visible = true;
-                        request2des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
-                        RequestedRoomPrice2.Text = reader.GetDecimal(1).ToString();
+                        request2des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved.";
+                        decimal x = reader.GetDecimal(1);
+                        RequestedRoomPrice2.Text = "$" +  String.Format("{0:0.##}", x) + "/Month";
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
                         {
@@ -399,8 +401,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request3.Visible = true;
                         StriptPay3.Visible = true;
-                        request3des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
-                        RequestedRoomPrice3.Text = reader.GetDecimal(1).ToString();
+                        request3des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved.";
+                        decimal x = reader.GetDecimal(1);
+                        RequestedRoomPrice3.Text = "$" + String.Format("{0:0.##}", x) + "/Month";
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
                         {
@@ -412,8 +415,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request4.Visible = true;
                         StriptPay4.Visible = true;
-                        request4des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
-                        RequestedRoomPrice4.Text = reader.GetDecimal(1).ToString();
+                        request4des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved.";
+                        decimal x = reader.GetDecimal(1);
+                        RequestedRoomPrice4.Text = "$" + String.Format("{0:0.##}", x) + "/Month";
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
                         {
@@ -425,8 +429,9 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request5.Visible = true;
                         StriptPay5.Visible = true;
-                        request5des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
-                        RequestedRoomPrice5.Text = reader.GetDecimal(1).ToString();
+                        request5des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved.";
+                        decimal x = reader.GetDecimal(1);
+                        RequestedRoomPrice5.Text = "$" + String.Format("{0:0.##}", x) + "/Month";
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
                         {
@@ -439,9 +444,10 @@ public partial class WebPages_Renter : System.Web.UI.Page
                 {
                     if (requestcount == 0)
                     {
+                        
                         request1.Visible = true;
                         StriptPay1.Visible = false;
-                        request1des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " is pending";
+                        request1des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " is pending.";
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
                         {
@@ -453,7 +459,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request2.Visible = true;
                         StriptPay2.Visible = true;
-                        request2des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        request2des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " is pending.";
                         RequestedRoomPrice2.Text = reader.GetDecimal(1).ToString();
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
@@ -466,7 +472,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request3.Visible = true;
                         StriptPay3.Visible = true;
-                        request3des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        request3des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " is pending.";
                         RequestedRoomPrice3.Text = reader.GetDecimal(1).ToString();
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
@@ -479,7 +485,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request4.Visible = true;
                         StriptPay4.Visible = true;
-                        request4des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        request4des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " is pending.";
                         RequestedRoomPrice4.Text = reader.GetDecimal(1).ToString();
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
@@ -492,7 +498,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request5.Visible = true;
                         StriptPay5.Visible = true;
-                        request5des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        request5des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " is pending.";
                         RequestedRoomPrice5.Text = reader.GetDecimal(1).ToString();
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
@@ -506,6 +512,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
 
             }
         }
+        ViewState["RequestIDs"] = RequestIDs;
         reader.Close();
         cn.Close();
     }
@@ -918,7 +925,8 @@ public partial class WebPages_Renter : System.Web.UI.Page
     }
     protected void DeleteButton1_Click(object sender, EventArgs e)
     {
-        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[0].ToString();
+        RequestIDs = (ArrayList)ViewState["RequestIDs"];
+        string sql = "Delete from Requests WHERE RequestID= " + RequestIDs[0].ToString();
         cn.Open();
         SqlCommand sqlCommand = new SqlCommand(sql, cn);
         sqlCommand.ExecuteNonQuery();
@@ -928,7 +936,8 @@ public partial class WebPages_Renter : System.Web.UI.Page
     }
     protected void DeleteButton2_Click(object sender, EventArgs e)
     {
-        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[1].ToString();
+        RequestIDs = (ArrayList)ViewState["RequestIDs"];
+        string sql = "Delete from Requests WHERE RequestID= " + RequestIDs[1].ToString();
         cn.Open();
         SqlCommand sqlCommand = new SqlCommand(sql, cn);
         sqlCommand.ExecuteNonQuery();
@@ -938,7 +947,8 @@ public partial class WebPages_Renter : System.Web.UI.Page
     }
     protected void DeleteButton3_Click(object sender, EventArgs e)
     {
-        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[2].ToString();
+        RequestIDs = (ArrayList)ViewState["RequestIDs"];
+        string sql = "Delete from Requests WHERE RequestID= " + RequestIDs[2].ToString();
         cn.Open();
         SqlCommand sqlCommand = new SqlCommand(sql, cn);
         sqlCommand.ExecuteNonQuery();
@@ -948,7 +958,8 @@ public partial class WebPages_Renter : System.Web.UI.Page
     }
     protected void DeleteButton4_Click(object sender, EventArgs e)
     {
-        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[3].ToString();
+        RequestIDs = (ArrayList)ViewState["RequestIDs"];
+        string sql = "Delete from Requests WHERE RequestID= " + RequestIDs[3].ToString();
         cn.Open();
         SqlCommand sqlCommand = new SqlCommand(sql, cn);
         sqlCommand.ExecuteNonQuery();
@@ -958,7 +969,8 @@ public partial class WebPages_Renter : System.Web.UI.Page
     }
     protected void DeleteButton5_Click(object sender, EventArgs e)
     {
-        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[4].ToString();
+        RequestIDs = (ArrayList)ViewState["RequestIDs"];
+        string sql = "Delete from Requests WHERE RequestID= " + RequestIDs[4].ToString();
         cn.Open();
         SqlCommand sqlCommand = new SqlCommand(sql, cn);
         sqlCommand.ExecuteNonQuery();

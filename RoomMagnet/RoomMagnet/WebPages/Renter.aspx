@@ -430,7 +430,7 @@
                                                             <div class="col-md-9 left_col-1">
                                                                 <p class="card-text">
                                                                     <asp:Label ID="request1des" runat="server" Text="Label"></asp:Label>
-                                                                    <asp:Label ID="RequestedRoomPrice1" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="RequestedRoomPrice1" runat="server" Visible="false" Text="Label"></asp:Label>
                                                                 </p>
                                                             </div>
                                                             <div class="col-md-3 right_col-1">
@@ -447,8 +447,9 @@
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
                                                                     </script>
-                                                                    <asp:Button ID="DeleteButton1" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton1_Click" />
+                                                                    
                                                                 </div>
+                                                                <asp:Button ID="DeleteButton1" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton1_Click" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -464,7 +465,7 @@
                                                             <div class="col-md-9 left_col-1">
                                                                 <p class="card-text">
                                                                     <asp:Label ID="request2des" runat="server" Text="Label"></asp:Label>
-                                                                    <asp:Label ID="RequestedRoomPrice2" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="RequestedRoomPrice2" runat="server" Visible="false" Text="Label"></asp:Label>
                                                                 </p>
                                                             </div>
                                                             <div class="col-md-3 right_col-1">
@@ -481,8 +482,9 @@
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
                                                                     </script>
-                                                                    <asp:Button ID="DeleteButton2" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton2_Click" />
+                                                                    
                                                                 </div>
+                                                                <asp:Button ID="DeleteButton2" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton2_Click" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -498,7 +500,7 @@
                                                             <div class="col-md-9 left_col-1">
                                                                 <p class="card-text">
                                                                     <asp:Label ID="request3des" runat="server" Text="Label"></asp:Label>
-                                                                    <asp:Label ID="RequestedRoomPrice3" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="RequestedRoomPrice3" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                 </p>
                                                             </div>
                                                             <div class="col-md-3 right_col-1">
@@ -515,8 +517,9 @@
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
                                                                     </script>
-                                                                    <asp:Button ID="DeleteButton3" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton3_Click" />
+                                                                    
                                                                 </div>
+                                                                <asp:Button ID="DeleteButton3" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton3_Click" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -532,7 +535,7 @@
                                                             <div class="col-md-9 left_col-1">
                                                                 <p class="card-text">
                                                                     <asp:Label ID="request4des" runat="server" Text="Label"></asp:Label>
-                                                                    <asp:Label ID="RequestedRoomPrice4" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="RequestedRoomPrice4" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                 </p>
                                                             </div>
                                                             <div class="col-md-3 right_col-1">
@@ -549,8 +552,9 @@
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
                                                                     </script>
-                                                                    <asp:Button ID="DeleteButton4" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton4_Click" />
+                                                                    
                                                                 </div>
+                                                                <asp:Button ID="DeleteButton4" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton4_Click" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -566,7 +570,7 @@
                                                             <div class="col-md-9 left_col-1">
                                                                 <p class="card-text">
                                                                     <asp:Label ID="request5des" runat="server" Text="Label"></asp:Label>
-                                                                    <asp:Label ID="RequestedRoomPrice5" runat="server" Text="Label"></asp:Label>
+                                                                    <asp:Label ID="RequestedRoomPrice5" Visible="false" runat="server" Text="Label"></asp:Label>
                                                                 </p>
                                                             </div>
                                                             <div class="col-md-3 right_col-1">
@@ -583,8 +587,9 @@
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
                                                                     </script>
-                                                                    <asp:Button ID="DeleteButton5" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton5_Click" />
+                                                                    
                                                                 </div>
+                                                                <asp:Button ID="DeleteButton5" runat="server" Text="Delete" CssClass="btn btn-secondary inline" OnClick="DeleteButton5_Click" />
                                                             </div>
                                                         </div>
                                                     </div>
