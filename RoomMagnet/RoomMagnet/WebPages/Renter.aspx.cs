@@ -359,7 +359,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             " FROM Requests INNER JOIN" +
             " PropertyRoom ON Requests.PropertyRoomID = PropertyRoom.RoomID INNER JOIN" +
             " Property ON PropertyRoom.PropertyID = Property.PropertyID Inner JOIN Users ON Property.HostID = Users.UserID" +
-            " Where Requests.RoomRenterID = @RenterID and RequestStatus= \'Declined\'";
+            " Where Requests.RoomRenterID = @RenterID and (RequestStatus= \'Accepted\' OR RequestStatus= \'Pending\')";
         SqlCommand command = new SqlCommand(Rentersql, cn);
         command.Parameters.AddWithValue("@RenterID", userid);
         SqlDataReader reader = command.ExecuteReader();
@@ -373,8 +373,60 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     {
                         request1.Visible = true;
                         StriptPay1.Visible = true;
-                        request1des.Text = "Your Request for" + reader.GetString(9) + " in " + reader.GetString(2) + reader.GetString(3) + reader.GetString(4) + reader.GetString(6) + reader.GetString(5) + "has been approved";
+                        request1des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
                         RequestedRoomPrice1.Text = reader.GetDecimal(1).ToString();
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
+                    }
+                    if (requestcount == 1)
+                    {
+                        request2.Visible = true;
+                        StriptPay2.Visible = true;
+                        request2des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        RequestedRoomPrice2.Text = reader.GetDecimal(1).ToString();
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
+                    }
+                    if (requestcount == 2)
+                    {
+                        request3.Visible = true;
+                        StriptPay3.Visible = true;
+                        request3des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        RequestedRoomPrice3.Text = reader.GetDecimal(1).ToString();
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
+                    }
+                    if (requestcount == 3)
+                    {
+                        request4.Visible = true;
+                        StriptPay4.Visible = true;
+                        request4des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        RequestedRoomPrice4.Text = reader.GetDecimal(1).ToString();
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
+                    }
+                    if (requestcount == 4)
+                    {
+                        request5.Visible = true;
+                        StriptPay5.Visible = true;
+                        request5des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        RequestedRoomPrice5.Text = reader.GetDecimal(1).ToString();
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
                         {
@@ -385,17 +437,73 @@ public partial class WebPages_Renter : System.Web.UI.Page
                 }
                 else if (reader.GetString(8) == "Pending")
                 {
-                    request1.Visible = true;
-                    StriptPay1.Visible = false;
-                    request1des.Text = "Your Request for" + reader.GetString(9) + " in " + reader.GetString(2) + reader.GetString(3) + reader.GetString(4) + reader.GetString(6) + reader.GetString(5) + "is pending";
-                    int temRquestID = reader.GetInt32(0);
-                    if (RequestIDs.Contains(temRquestID) == false)
+                    if (requestcount == 0)
                     {
-                        RequestIDs.Add(reader.GetInt32(0));
-                        HostEmails.Add(reader.GetString(7));
+                        request1.Visible = true;
+                        StriptPay1.Visible = false;
+                        request1des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " is pending";
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
+                    }
+                    if (requestcount == 1)
+                    {
+                        request2.Visible = true;
+                        StriptPay2.Visible = true;
+                        request2des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        RequestedRoomPrice2.Text = reader.GetDecimal(1).ToString();
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
+                    }
+                    if (requestcount == 2)
+                    {
+                        request3.Visible = true;
+                        StriptPay3.Visible = true;
+                        request3des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        RequestedRoomPrice3.Text = reader.GetDecimal(1).ToString();
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
+                    }
+                    if (requestcount == 3)
+                    {
+                        request4.Visible = true;
+                        StriptPay4.Visible = true;
+                        request4des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        RequestedRoomPrice4.Text = reader.GetDecimal(1).ToString();
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
+                    }
+                    if (requestcount == 4)
+                    {
+                        request5.Visible = true;
+                        StriptPay5.Visible = true;
+                        request5des.Text = "Your Request for " + reader.GetString(9) + " of " + reader.GetString(2) + " located in " + reader.GetString(3) + ", " + reader.GetString(4) + " has been approved";
+                        RequestedRoomPrice5.Text = reader.GetDecimal(1).ToString();
+                        int temRquestID = reader.GetInt32(0);
+                        if (RequestIDs.Contains(temRquestID) == false)
+                        {
+                            RequestIDs.Add(reader.GetInt32(0));
+                            HostEmails.Add(reader.GetString(7));
+                        }
                     }
                 }
                 requestcount++;
+
             }
         }
         reader.Close();
@@ -810,23 +918,53 @@ public partial class WebPages_Renter : System.Web.UI.Page
     }
     protected void DeleteButton1_Click(object sender, EventArgs e)
     {
-
+        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[0].ToString();
+        cn.Open();
+        SqlCommand sqlCommand = new SqlCommand(sql, cn);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+        request1.Visible = false;
+        StriptPay1.Visible = false;
     }
     protected void DeleteButton2_Click(object sender, EventArgs e)
     {
-
+        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[1].ToString();
+        cn.Open();
+        SqlCommand sqlCommand = new SqlCommand(sql, cn);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+        request2.Visible = false;
+        StriptPay2.Visible = false;
     }
     protected void DeleteButton3_Click(object sender, EventArgs e)
     {
-
+        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[2].ToString();
+        cn.Open();
+        SqlCommand sqlCommand = new SqlCommand(sql, cn);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+        request3.Visible = false;
+        StriptPay3.Visible = false;
     }
     protected void DeleteButton4_Click(object sender, EventArgs e)
     {
-
+        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[3].ToString();
+        cn.Open();
+        SqlCommand sqlCommand = new SqlCommand(sql, cn);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+        request4.Visible = false;
+        StriptPay4.Visible = false;
     }
     protected void DeleteButton5_Click(object sender, EventArgs e)
     {
-
+        string sql = "Delete from Requests WHERE RequestIDs= " + RequestIDs[4].ToString();
+        cn.Open();
+        SqlCommand sqlCommand = new SqlCommand(sql, cn);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+        request4.Visible = false;
+        StriptPay4.Visible = false;
     }
 
 
