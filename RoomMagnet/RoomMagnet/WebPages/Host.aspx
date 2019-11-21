@@ -5,33 +5,33 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <section class="section-bg p-bottom-70">
+    <section class="section-bg">
         <div class="row">
             <div class="col-md-2 no-padding">
                 <div id="sidebar-wrapper">
 
                     <div class="profile-userpic admin-pic text-center">
-                        <asp:Image ID="imgpreview" runat="server" Height="120" Width="120" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px; border-radius: 50%;" />
+                        <asp:image id="imgpreview" runat="server" height="120" width="120" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px; border-radius: 50%;" />
                         <br />
-                        <asp:Label ID="userstatus" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="X-Large" ForeColor="White" Style="text-align: center; width: 150px;"></asp:Label>
 
-                        <div class="">
-                            <asp:Label ID="hellow" runat="server" Text="Hello, world" Font-Size="2em" Font-Bold="True" ForeColor="White"></asp:Label>
+                        <div class="" style="padding-bottom: 20px;">
+                            <asp:label id="hellow" runat="server" text="Hello, world" font-size="2em" font-bold="True" forecolor="White"></asp:label>
                             <p class="">Host<span><i class="icon-space"></i></span></p>
+                            <asp:label id="userstatus" runat="server" backcolor="#CC3300" borderstyle="None" font-size="X-Large" forecolor="White" style="text-align: center; width: 150px; border-radius:100px;"></asp:label>
                         </div>
 
                         <ul class="sidebar-nav list-unstyled">
                             <li class="nav-item">
-                                <asp:LinkButton ID="hostprofile" runat="server" Style="font-size: 1.5em;" OnClick="hostProfile_Click"> <i class="la la-user icon-space" style="font-size:1em;"></i>My Profile</asp:LinkButton>
+                                <asp:linkbutton id="hostprofile" runat="server" style="font-size: 1.5em;" onclick="hostProfile_Click"> <i class="la la-user icon-space" style="font-size:1em;"></i>My Profile</asp:linkbutton>
                             </li>
                             <li class="nav-item">
-                                <asp:LinkButton ID="hostproperty" runat="server" Style="font-size: 1.5em;" OnClick="hostproperty_Click"><i class="la la-home icon-space" style="font-size:1em;"></i>Manage Property</asp:LinkButton>
+                                <asp:linkbutton id="hostproperty" runat="server" style="font-size: 1.5em;" onclick="hostproperty_Click"><i class="la la-home icon-space" style="font-size:1em;"></i>Manage Property</asp:linkbutton>
                             </li>
                             <li class="nav-item" style="margin-top: 0px">
-                                <asp:LinkButton ID="hostConnections" runat="server" Style="font-size: 1.5em;" OnClick="hostConnections_Click"><i class="la la-users icon-space" style="font-size:1em;"></i>Connections</asp:LinkButton>
+                                <asp:linkbutton id="hostConnections" runat="server" style="font-size: 1.5em;" onclick="hostConnections_Click"><i class="la la-users icon-space" style="font-size:1em;"></i>Connections</asp:linkbutton>
                             </li>
                             <li class="nav-item">
-                                <asp:LinkButton ID="hostMessage" runat="server" Style="font-size: 1.5em;" OnClick="hostMessage_Click"><i class="la la-comments icon-space" style="font-size:1em;"></i>Messages</asp:LinkButton>
+                                <asp:linkbutton id="hostMessage" runat="server" style="font-size: 1.5em;" onclick="hostMessage_Click"><i class="la la-comments icon-space" style="font-size:1em;"></i>Messages</asp:linkbutton>
                             </li>
                         </ul>
                     </div>
@@ -43,10 +43,10 @@
                 <!-- /#sidebar-wrapper -->
             </div>
 
-            <div class="col-md-9 mx-auto ">
+            <div class="col-md-9 mx-auto dashboard-padding">
 
                 <%--renter profile--%>
-                <asp:Panel ID="panelprofile" runat="server">
+                <asp:panel id="panelprofile" runat="server">
                     <h1 class="update-title">My Profile
                         <asp:Button ID="editprofile" runat="server" Text="Edit" class="btn btn-primary" OnClick="editprofile_Click" Style="float: right;" /></h1>
 
@@ -80,18 +80,16 @@
                             </div>
                         </div>
                     </div>
-                </asp:Panel>
+                </asp:panel>
 
                 <%--host property--%>
-                <asp:Panel ID="panelfavorites" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
+                <asp:panel id="panelfavorites" runat="server" visible="False">
+                    <div class="col-md-12 mx-auto ">
                         <h1 class="update-title">Manage property
                             <asp:Button ID="addproperty" runat="server" Text="+Add" class="btn btn-primary" OnClick="addproperty_Click" Style="float: right;" />
                         </h1>
-
                         <div class="atbd_author_module">
                             <div class="atbd_content_module">
-
                                 <div class="atbdb_content_module_contents">
                                     <div class="user_info_wrap">
                                         <div class="row">
@@ -100,7 +98,7 @@
                                                     <article class="atbd_single_listing_wrapper">
                                                         <figure class="atbd_listing_thumbnail_area">
                                                             <div class="atbd_listing_image fill">
-                                                                <asp:ImageButton ID="Property1Image" OnClick="Property1Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="350" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
+                                                                <asp:ImageButton ID="Property1Image" OnClick="Property1Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="300" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
                                                             </div>
                                                             <!-- ends: .atbd_listing_image -->
                                                         </figure>
@@ -113,7 +111,7 @@
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="Property1CityState" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta" style="float: right;">
+                                                                <div class="atbd_listing_meta" style="float: right;" runat="server" id="rating1" visible="false">
                                                                     <span class="atbd_meta atbd_listing_rating">
                                                                         <asp:Label ID="Property1Rating" runat="server" Text="4.5" Style="float: right;"></asp:Label><i class="la la-star"></i></span>
                                                                 </div>
@@ -153,7 +151,7 @@
                                                     <article class="atbd_single_listing_wrapper">
                                                         <figure class="atbd_listing_thumbnail_area">
                                                             <div class="atbd_listing_image fill">
-                                                                <asp:ImageButton ID="Property2Image" OnClick="Property2Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="350" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
+                                                                <asp:ImageButton ID="Property2Image" OnClick="Property2Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="300" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
                                                             </div>
                                                             <!-- ends: .atbd_listing_image -->
                                                         </figure>
@@ -166,7 +164,7 @@
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="Property2CityState" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta" style="float: right;">
+                                                                <div class="atbd_listing_meta" style="float: right;" runat="server" id="rating2">
                                                                     <span class="atbd_meta atbd_listing_rating">
                                                                         <asp:Label ID="Property2Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
                                                                 </div>
@@ -206,7 +204,7 @@
                                                     <article class="atbd_single_listing_wrapper">
                                                         <figure class="atbd_listing_thumbnail_area">
                                                             <div class="atbd_listing_image fill">
-                                                                <asp:ImageButton ID="Property3Image" OnClick="Property3Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="350" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
+                                                                <asp:ImageButton ID="Property3Image" OnClick="Property3Image_Click" runat="server" CssClass="imgfill" Height="220px" Width="300" BorderColor="Silver" BorderStyle="Solid" BorderWidth="2px" />
                                                             </div>
                                                             <!-- ends: .atbd_listing_image -->
                                                         </figure>
@@ -219,7 +217,7 @@
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="Property3CityState" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta" style="float: right;">
+                                                                <div class="atbd_listing_meta" style="float: right;" runat="server" id="rating3" visible="false">
                                                                     <span class="atbd_meta atbd_listing_rating">
                                                                         <asp:Label ID="Property3Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
                                                                 </div>
@@ -260,43 +258,149 @@
                             </div>
                         </div>
                     </div>
-                </asp:Panel>
+                </asp:panel>
 
                 <%--host connections--%>
-                <asp:Panel ID="panelconnections" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
-                        <h1 class="update-title">Connections</h1>
-
-                        <div class="atbd_author_module">
-                            <div class="atbd_content_module">
-
-                                <div class="atbdb_content_module_contents">
-                                    <div class="user_info_wrap">
-                                        <div class="row">
+                <asp:panel id="panelconnections" runat="server" visible="False">
+                    <div class="col-md-12 mx-auto">
+                        <h1 class="update-title">
+                            <asp:Label ID="RequestHeader" runat="server" Text="Renter Requests"></asp:Label>
+                        </h1>
+                        <div class="container">
+                            <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request1" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request1des" runat="server" Text="Label"></asp:Label></p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <asp:Button ID="AcceptButton1" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton1_Click" />
+                                                <asp:Button ID="DeclineButton1" runat="server" Text="Decline" CssClass="btn btn-secondary inline"  OnClick="DeclineButton1_Click" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request2" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1 ">
+                                                <p class="card-text"> <asp:Label ID="request2des" runat="server" Text="Label"></asp:Label>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-3  right_col-1">
+                                               <asp:Button ID="AcceptButton2" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton2_Click" />
+                                               <asp:Button ID="DeclineButton2" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton2_Click" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request3" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request3des" runat="server" Text="Label"></asp:Label></p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <asp:Button ID="AcceptButton3" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton3_Click" />
+                                                <asp:Button ID="DeclineButton3" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton3_Click" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request4" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request4des" runat="server" Text="Label"></asp:Label></p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <asp:Button ID="AcceptButton4" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton4_Click" />
+                                                <asp:Button ID="DeclineButton4" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton4_Click" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-md-12">
+                                <div class=" p-bottom-25">
+                                    <div class="card border" id="request5" runat="server" visible="false">
+                                        <div class="card-header">
+                                            Request Application
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="col-md-9 left_col-1">
+                                                <p class="card-text">
+                                                    <asp:Label ID="request5des" runat="server" Text="Label"></asp:Label></p>
+                                            </div>
+                                            <div class="col-md-3 right_col-1">
+                                                <asp:Button ID="AcceptButton5" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton5_Click" />
+                                                <asp:Button ID="DeclineButton5" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton5_Click" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </asp:Panel>
+                </asp:panel>
 
                 <%--renter message--%>
-                <asp:Panel ID="panelmessage" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
-                        <h1 class="update-title">Messages</h1>
-                        <div class="atbd_author_module">
-                            <div class="atbd_content_module">
-
-                                <div class="atbdb_content_module_contents">
-                                    <div class="user_info_wrap">
-                                        <div class="row">
+                <asp:panel id="panelmessage" runat="server" visible="False">
+                    <div class="col-md-12 mx-auto">
+                        <h1 class="update-title">Messages<asp:Label ID="errorLabel" Visible="false" runat="server" Text="Label"></asp:Label>
+                        </h1>
+                        <div class="row">
+                            <div class="col-md-9 no-padding">
+                                <div class="form-group">
+                                    <asp:DropDownList ID="RenterNames" runat="server" AutoPostBack="true" OnTextChanged="RenterNames_TextChanged" Visible="false" CssClass="form-control">
+                                        <asp:ListItem Value="No One">Select Contact</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="p-bottom-30">
+                                <div class="col-md-12">
+                                    <asp:TextBox ID="Messages" TextMode="MultiLine" runat="server" CssClass="form-control" ReadOnly="true" Width="1050px" Height="250px"></asp:TextBox>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="type_msg">
+                                <div class="input_msg_write">
+                                    <div class="input-group">
+                                        <asp:TextBox ID="txtsend" runat="server" CssClass="form-control" placeholder="Type a message" Width="500px"></asp:TextBox>
+                                        <div class="atbd_submit_btn input-group-append searchtxt-padding">
+                                            <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Send" Font-Bold="True" CssClass="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </asp:Panel>
+                </asp:panel>
+            </div>
+        </div>
     </section>
 </asp:Content>

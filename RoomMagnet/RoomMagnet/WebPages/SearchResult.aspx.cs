@@ -44,7 +44,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
             SearchResultButton_Click(sender, e);
             Session["HomePageSearchContent"] = null;
         }
-        
+        SearchResultMinPrice.Text = string.Empty;
+        SearchResultMaxPrice.Text = string.Empty;
     }
 
     protected void ApplyButton_Click(object sender, EventArgs e)
@@ -57,6 +58,7 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
         else
         {
             SearchResultButton_Click(sender, e);
+
         }
     }
 
@@ -149,7 +151,8 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                 sql += " Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, ImagePath, AvailableBathrooms, PropertyID  from cte_Property where row_num >" + RowCount;
                 sql2 = tempsql + " Select Max(row_num) from cte_Property";
             }
-
+            SearchResultMinPrice.Text = string.Empty;
+            SearchResultMaxPrice.Text = string.Empty;
             OrderBy = String.Empty;
             if (address.Text != String.Empty)
             {
