@@ -393,7 +393,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         int requestcount = 0;
         string requestsql = "SELECT        Requests.RequestStatus, Requests.Request, Requests.RequestID, Users.Email FROM Users " +
             "INNER JOIN Requests ON Users.UserID = Requests.RoomRenterID" +
-            " Where Requests.PropertyHostID = @HostID";
+            " Where Requests.PropertyHostID = @HostID and (RequestStatus= \'Pending\')";
         SqlCommand requestsqlcommand = new SqlCommand(requestsql, cn);
         requestsqlcommand.Parameters.AddWithValue("@HostID", userid);
         SqlDataReader requestReader = requestsqlcommand.ExecuteReader();
@@ -402,9 +402,6 @@ public partial class WebPages_Host : System.Web.UI.Page
         {
             while (requestReader.Read())
             {
-                //add if == accepted
-                if (requestReader.GetString(0) == "Pending")
-                {
                     if (requestcount == 0)
                     {
                         request1.Visible = true;
@@ -440,11 +437,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                         RequestIDs.Add(requestReader.GetInt32(2));
                         RenterEmails.Add(requestReader.GetString(3));
                     }
-                }
-                else
-                {
-                    RequestHeader.Text = "No Pending Request";
-                }
+                
                 requestcount++;
             }
         }
@@ -460,7 +453,6 @@ public partial class WebPages_Host : System.Web.UI.Page
 
     protected void hostMessage_Click(object sender, EventArgs e)
     {
-        string request = "";
         panelprofile.Visible = false;
         panelfavorites.Visible = false;
         panelconnections.Visible = false;
@@ -469,13 +461,6 @@ public partial class WebPages_Host : System.Web.UI.Page
         hostproperty.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         hostConnections.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         hostMessage.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
-
-        //if host accepts
-    
-
-
-
-        //if host declines
     }
 
     protected void editprofile_Click(object sender, EventArgs e)
@@ -737,10 +722,11 @@ public partial class WebPages_Host : System.Web.UI.Page
         sqlCommand.Parameters.AddWithValue("@RequestID",RequestIDs[0].ToString());
         sqlCommand.Parameters.AddWithValue("@Accept",status);
         sqlCommand.ExecuteNonQuery();
+
         cn.Close();
 
         string EmailAddress = RenterEmails[0].ToString();
-        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        string EmailBody = "One of your requests has been accepted by a Host, please login to our website and make a payment.";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
@@ -763,7 +749,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[0].ToString();
-        string EmailBody = "One of your request has Declined by the Host";
+        string EmailBody = "One of your requests has been declined by a Host.";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
@@ -784,7 +770,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[1].ToString();
-        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        string EmailBody = "One of your requests has been accepted by a Host please login to our website and make a payment";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
@@ -805,7 +791,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[1].ToString();
-        string EmailBody = "One of your request has Declined by the Host";
+        string EmailBody = "One of your requests has been declined by the Host";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
@@ -826,7 +812,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[2].ToString();
-        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        string EmailBody = "One of your requests has been accepted by the Host, please login to our website and make a payment";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
@@ -847,7 +833,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[2].ToString();
-        string EmailBody = "One of your request has Declined by the Host";
+        string EmailBody = "One of your requests has been declined by a Host";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
@@ -868,7 +854,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[3].ToString();
-        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        string EmailBody = "One of your requests has been accepted by a Host, please login to our website and make a payment";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
@@ -889,7 +875,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[3].ToString();
-        string EmailBody = "One of your request has Declined by the Host";
+        string EmailBody = "One of your requests has been declined by a Host";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
@@ -910,7 +896,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[4].ToString();
-        string EmailBody = "One of your request has accepted by the Host please log in to our website to make a payment";
+        string EmailBody = "One of your requests has been accepted by a Host please login to our website and make a payment";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
