@@ -441,7 +441,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterHistory.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
 
-        string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, AvailableBathrooms,PropertyID,PropertyID from[Property] WHERE propertyid = 1003";
+        string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, AvailableBathrooms,PropertyID,PropertyID from[Property] WHERE propertyid = 1049";
         cn.Open();
         SqlCommand search = new SqlCommand(sql, cn);
         SqlDataReader reader = search.ExecuteReader();
