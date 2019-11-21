@@ -155,7 +155,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
-    <section class="section-bg p-bottom-70">
+    <section class="section-bg">
         <div class="row no-padding">
             <div class="col-md-2 no-padding ">
                 <div id="sidebar-wrapper">
@@ -163,10 +163,10 @@
                     <div class="profile-userpic admin-pic text-center">
                         <asp:Image ID="imgpreview" runat="server" Height="120" Width="120" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px; border-radius: 50%;" />
                         <br />
-                        <asp:Label ID="userstatus" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="X-Large" ForeColor="White" Style="text-align: center; width: 150px;"></asp:Label>
-                        <div class="">
+                        <div class="" style="padding-bottom:20px;">
                             <asp:Label ID="hellow" runat="server" Text="Hello, world" Font-Size="2em" Font-Bold="True" ForeColor="White"></asp:Label>
                             <p class="">Renter<span><i class="icon-space"></i></span></p>
+                            <asp:Label ID="userstatus" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="X-Large" ForeColor="White" Style="text-align: center; width: 150px; border-radius: 100px;"></asp:Label><br />
                         </div>
 
                         <ul class="sidebar-nav list-unstyled">
@@ -415,9 +415,9 @@
                         <h1 class="update-title">
                             <asp:Label ID="RequestHeader" runat="server" Text="Renter Requests"></asp:Label>
                         </h1>
-                        <div class="container">
-                            <div class="col-md-12">
-                                <div class=" p-bottom-25">
+
+                            <div class="">
+                                <div class="p-bottom-25">
                                     <div class="card border" id="request1" runat="server">
                                         <div class="card-header">
                                             Request Application
@@ -450,7 +450,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
                     </div>
                 </asp:Panel>
 
@@ -491,7 +491,6 @@
 
                 <%--history--%>
                 <asp:Panel ID="panelhistory" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
                         <h1 class="update-title">Rent History
                         </h1>
 
@@ -663,7 +662,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </asp:Panel>
     </section>
 
