@@ -211,10 +211,10 @@
                         <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
-                                <li>Not a member?
-                                    <asp:LinkButton ID="SignUpLinkButton" runat="server" data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" data-dismiss="modal">Sign Up</asp:LinkButton></li>
+                                <li>Not a member ?
+                                    <asp:LinkButton ID="SignUpLinkButton" runat="server" data-toggle="modal" data-target="#signup_modal" OnClientClick="return false" data-dismiss="modal" ForeColor="CornflowerBlue">Sign Up</asp:LinkButton></li>
                                 <li>
-                                    <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/WebPages/RecoverPassword.aspx">Recover Password</asp:LinkButton></li>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/WebPages/RecoverPassword.aspx" ForeColor="CornflowerBlue">Recover Password</asp:LinkButton></li>
                             </ul>
                         </div>
                     </div>
@@ -251,11 +251,11 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Confirmation Password Required" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Password Does Not Match" ControlToCompare="MasterPagePassword" ControlToValidate="MasterPageComfirmPassword" ValidationGroup="SignUp" Display="Dynamic"></asp:CompareValidator>
                         <asp:DropDownList ID="MasterPageAgeRangeDropDownList" runat="server" CssClass="form-control">
-                            <asp:ListItem Value="">Please Select Your age Range</asp:ListItem>
+                            <asp:ListItem Value="">Please Select Your Age Range</asp:ListItem>
                             <asp:ListItem Value="18-24"> 18 - 24 </asp:ListItem>
                             <asp:ListItem Value="25-35"> 25 - 35 </asp:ListItem>
                             <asp:ListItem Value="36-50"> 36 - 50 </asp:ListItem>
-                            <asp:ListItem Value=">50"> 50 and Older</asp:ListItem>
+                            <asp:ListItem Value=">50"> 50 Plus </asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Age Range Required" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp"></asp:RequiredFieldValidator>
                         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please select an age range" ControlToValidate="MasterPageAgeRangeDropDownList" Display="Dynamic" ValidationGroup="SignUp" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
@@ -277,12 +277,12 @@
 
                         <div class="form-excerpts">
                             <ul class="list-unstyled">
-                                <li>Already a member?<asp:LinkButton ID="SignInLinkButton" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false">Sign In</asp:LinkButton>
+                                <li>Already a member ?<asp:LinkButton ID="SignInLinkButton" runat="server" data-toggle="modal" data-target="#login_modal" data-dismiss="modal" OnClientClick="return false" ForeColor="CornflowerBlue"> Sign In</asp:LinkButton>
                                 </li>
                             </ul>
 
                             <div class="social-login">
-                                <span>Or Signup with</span>
+                                <span>Or Sign Up With: </span>
                                 <p>
                                     <asp:ImageButton ID="ImageButton2" runat="server" CssClass="btn" ImageUrl="~/img/btn_google_signin_dark_focus_web.png" OnClick="GmailSignIn_Click" UseSubmitBehavior="False" />
                                 </p>
