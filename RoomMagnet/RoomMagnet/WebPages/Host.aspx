@@ -18,7 +18,7 @@
                         <div class="" style="padding-bottom: 20px;">
                             <asp:label id="hellow" runat="server" text="Hello, world" font-size="2em" font-bold="True" forecolor="White"></asp:label>
                             <p class="">Host<span><i class="icon-space"></i></span></p>
-                            <asp:label id="userstatus" runat="server" backcolor="#CC3300" borderstyle="None" font-size="X-Large" forecolor="White" style="text-align: center; width: 150px; border-radius:100px;"></asp:label>
+                            <asp:label id="userstatus" runat="server" backcolor="#bd2026" borderstyle="None" font-size="X-Large" forecolor="White" style="text-align: center; width: 150px; border-radius:100px;"></asp:label>
                         </div>
 
                         <ul class="sidebar-nav list-unstyled">

@@ -77,6 +77,7 @@ public partial class WebPages_Host : System.Web.UI.Page
                     imgpreview.ImageUrl = "http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg";
                 }
             }
+
             getimg.Close();
             cn.Close();
         }
@@ -93,7 +94,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         }
         else
         {
-            userstatus.BackColor = System.Drawing.Color.Red;
+            userstatus.BackColor = System.Drawing.Color.FromArgb(189, 32, 38);
         }
 
         if (!IsPostBack)

@@ -167,7 +167,7 @@
                         <div class="" style="padding-bottom: 20px;">
                             <asp:Label ID="hellow" runat="server" Text="Hello, world" Font-Size="2em" Font-Bold="True" ForeColor="White"></asp:Label>
                             <p class="">Renter<span><i class="icon-space"></i></span></p>
-                            <asp:Label ID="userstatus" runat="server" BackColor="#CC3300" BorderStyle="None" Font-Size="X-Large" ForeColor="White" Style="text-align: center; width: 150px; border-radius: 100px;"></asp:Label>
+                            <asp:Label ID="userstatus" runat="server" BackColor="#bd2026" BorderStyle="None" Font-Size="X-Large" ForeColor="White" Style="text-align: center; width: 150px; border-radius: 100px;"></asp:Label>
                         </div>
 
                         <ul class="sidebar-nav list-unstyled">

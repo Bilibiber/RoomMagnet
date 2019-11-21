@@ -87,7 +87,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         }
         else
         {
-            userstatus.BackColor = System.Drawing.Color.Red;
+            userstatus.BackColor = System.Drawing.Color.FromArgb(189, 32, 38);
         }
 
         if (!IsPostBack)

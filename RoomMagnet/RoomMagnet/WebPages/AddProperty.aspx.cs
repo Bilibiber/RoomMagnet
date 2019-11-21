@@ -159,6 +159,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room1.Parameters.AddWithValue("@Bathroom", roombath1.SelectedValue);
             room1.Parameters.AddWithValue("@roomname", Room1Name.Text);
             room1.ExecuteNonQuery();
+            added.Visible = true;
         }
         else if (Int32.Parse(addBedrooms.SelectedValue) == 2)
         {
@@ -171,6 +172,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room1.Parameters.AddWithValue("@Bathroom", roombath1.SelectedValue);
             room1.Parameters.AddWithValue("@roomname", Room1Name.Text);
             room1.ExecuteNonQuery();
+            added.Visible = true;
 
             string insertroom2 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room2 = new SqlCommand(insertroom2, cn);
@@ -181,6 +183,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room2.Parameters.AddWithValue("@Bathroom", roombath2.SelectedValue);
             room2.Parameters.AddWithValue("@roomname", Room2Name.Text);
             room2.ExecuteNonQuery();
+            added.Visible = true;
         }
         else if (Int32.Parse(addBedrooms.SelectedValue) == 3)
         {
@@ -193,6 +196,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room1.Parameters.AddWithValue("@Bathroom", roombath1.SelectedValue);
             room1.Parameters.AddWithValue("@roomname", Room1Name.Text);
             room1.ExecuteNonQuery();
+            added.Visible = true;
 
             string insertroom2 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room2 = new SqlCommand(insertroom2, cn);
@@ -203,6 +207,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room2.Parameters.AddWithValue("@Bathroom", roombath2.SelectedValue);
             room2.Parameters.AddWithValue("@roomname", Room2Name.Text);
             room2.ExecuteNonQuery();
+            added.Visible = true;
 
             string insertroom3 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room3 = new SqlCommand(insertroom3, cn);
@@ -213,6 +218,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room3.Parameters.AddWithValue("@Bathroom", roombath3.SelectedValue);
             room3.Parameters.AddWithValue("@roomname", Room3Name.Text);
             room3.ExecuteNonQuery();
+            added.Visible = true;
         }
         else if (Int32.Parse(addBedrooms.SelectedValue) == 4)
         {
@@ -225,6 +231,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room1.Parameters.AddWithValue("@Bathroom", roombath1.SelectedValue);
             room1.Parameters.AddWithValue("@roomname", Room1Name.Text);
             room1.ExecuteNonQuery();
+            added.Visible = true;
 
             string insertroom2 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room2 = new SqlCommand(insertroom2, cn);
@@ -235,6 +242,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room2.Parameters.AddWithValue("@Bathroom", roombath2.SelectedValue);
             room2.Parameters.AddWithValue("@roomname", Room2Name.Text);
             room2.ExecuteNonQuery();
+            added.Visible = true;
 
             string insertroom3 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room3 = new SqlCommand(insertroom3, cn);
@@ -245,6 +253,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room3.Parameters.AddWithValue("@Bathroom", roombath3.SelectedValue);
             room3.Parameters.AddWithValue("@roomname", Room3Name.Text);
             room3.ExecuteNonQuery();
+            added.Visible = true;
 
             string insertroom4 = "INSERT INTO[dbo].[PropertyRoom]([StartDate],[EndDate],[RentPrice],[Bathroom],[PropertyID],[PropertyRoomName]) VALUES(@StartDate,@EndDate,@RentPrice,@Bathroom,@PropertyID,@roomname)";
             SqlCommand room4 = new SqlCommand(insertroom4, cn);
@@ -255,6 +264,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room4.Parameters.AddWithValue("@Bathroom", roombath4.SelectedValue);
             room4.Parameters.AddWithValue("@roomname", Room4Name.Text);
             room4.ExecuteNonQuery();
+            added.Visible = true;
         }
 
         //upload images
