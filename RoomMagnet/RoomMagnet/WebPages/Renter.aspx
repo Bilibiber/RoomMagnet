@@ -263,7 +263,7 @@
                                                             <div class="mt-0 form-label">
                                                                 <asp:Label ID="Property1CityState" runat="server" Text="Label"></asp:Label>
                                                             </div>
-                                                            <div class="atbd_listing_meta" style="float: right;">
+                                                            <div class="atbd_listing_meta" style="float: right;" runat="server" visible="false" id="rating1">
                                                                 <span class="atbd_meta atbd_listing_rating">
                                                                     <asp:Label ID="Property1Rating" runat="server" Text="4.5" Style="float: right;"></asp:Label><i class="la la-star"></i></span>
                                                             </div>
@@ -315,7 +315,7 @@
                                                             <div class="mt-0 form-label">
                                                                 <asp:Label ID="Property2CityState" runat="server" Text="Label"></asp:Label>
                                                             </div>
-                                                            <div class="atbd_listing_meta" style="float: right;">
+                                                            <div class="atbd_listing_meta" style="float: right;" runat="server" visible="false" id="rating2">
                                                                 <span class="atbd_meta atbd_listing_rating">
                                                                     <asp:Label ID="Property2Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
                                                             </div>
@@ -367,7 +367,7 @@
                                                             <div class="mt-0 form-label">
                                                                 <asp:Label ID="Property3CityState" runat="server" Text="Label"></asp:Label>
                                                             </div>
-                                                            <div class="atbd_listing_meta" style="float: right;">
+                                                            <div class="atbd_listing_meta" style="float: right;" runat="server" visible="false" id="rating3">
                                                                 <span class="atbd_meta atbd_listing_rating">
                                                                     <asp:Label ID="Property3Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
                                                             </div>
@@ -667,7 +667,7 @@
                                                             <div class="mt-0 form-label">
                                                                 <asp:Label ID="history1city" runat="server" Text="Label"></asp:Label>
                                                             </div>
-                                                            <div class="atbd_listing_meta" style="float: right;">
+                                                            <div class="atbd_listing_meta" style="float: right;" runat="server" visible="false" id="ratinghis">
                                                                 <span class="atbd_meta atbd_listing_rating">
                                                                     <asp:Label ID="history1rating" runat="server" Text="4.5" Style="float: right;"></asp:Label><i class="la la-star"></i></span>
                                                             </div>

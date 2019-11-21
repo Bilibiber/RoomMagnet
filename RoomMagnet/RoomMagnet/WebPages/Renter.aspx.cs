@@ -322,15 +322,30 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    rating1.Visible = true;
+                }
+
             }
             if (RatingCount == 1)
             {
-                Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    rating2.Visible = true;
+                }
+
             }
             if (RatingCount == 2)
             {
-                Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    rating3.Visible = true;
+                }
+
             }
             RatingCount++;
             readers.Close();
@@ -635,7 +650,12 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                history1rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    history1rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    ratinghis.Visible = true;
+                }
+                
             }
             if (RatingCount == 1)
             {
@@ -792,7 +812,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         review.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
         review.Parameters.Add(new SqlParameter("@LastUpdatedBy", Session["FullName"].ToString()));
         review.Parameters.Add(new SqlParameter("@RenterID", Int32.Parse(Session["UserID"].ToString())));
-        review.Parameters.Add(new SqlParameter("@PropertyID", 1003));
+        review.Parameters.Add(new SqlParameter("@PropertyID", 1049));
         review.ExecuteNonQuery();
         cn.Close();
 

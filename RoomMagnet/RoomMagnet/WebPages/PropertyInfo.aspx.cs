@@ -345,7 +345,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         if (RatingCount != 0)
         {
             PropertyReviewCount.Text = "Review: " + RatingCount.ToString();
-            numStarsLbl.Text = (RatingSum / RatingCount).ToString();
+            numStarsLbl.Text = Math.Round((RatingSum / RatingCount), 1).ToString();
             numStarsLbl.Visible = true;
             star.Visible = true;
         }
