@@ -87,6 +87,14 @@ public partial class WebPages_Host : System.Web.UI.Page
        
         string status = Session["Verified"].ToString().ToUpper();
         userstatus.Text = status;
+        if (status.ToString() == "VERIFIED")
+        {
+            userstatus.BackColor = System.Drawing.Color.Green;
+        }
+        else
+        {
+            userstatus.BackColor = System.Drawing.Color.Red;
+        }
 
         if (!IsPostBack)
         {

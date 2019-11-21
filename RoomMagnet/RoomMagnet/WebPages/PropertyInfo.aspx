@@ -126,7 +126,7 @@
                         </div>
                         <div class="atbdb_content_module_contents">
                             <div id="client_review_list">
-                                <div class="atbd_single_review atbdp_static">
+                                <div class="atbd_single_review atbdp_static" id="Review1" visible="false" runat="server">
                                     <div class="atbd_review_top">
                                         <div class="atbd_avatar_wrapper">
 
@@ -274,7 +274,7 @@
                             <h4><span class="la la-bookmark"></span>Property Details: </h4>
                             <div class="atbd_listing_meta" style="float: right;">
                                 <span class="atbd_meta atbd_listing_rating">
-                                    <asp:Label ID="numStarsLbl" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
+                                    <asp:Label ID="numStarsLbl" runat="server" Text="4.5"></asp:Label><i class="la la-star" runat="server" id="star"></i></span>
                             </div>
                         </div>
                         <!-- ends: /.atbd_widget_title -->
@@ -389,15 +389,6 @@
                         <!-- ends: .atbdp -->
                     </div>
                     <!-- ends: .widget -->
-                    <div class="widget atbd_widget widget-card">
-                        <div class="atbd_widget_title">
-                            <h4><span class="la la-map-marker"></span>Location</h4>
-                        </div>
-                        <!-- ends: .atbd_widget_title -->
-                        <div class="widget-body atbdb_content_module_contents">
-                            <div class="map" id="map-two"></div>
-                        </div>
-                    </div>
 
                     <!-- ends: widget -->
                 </div>
