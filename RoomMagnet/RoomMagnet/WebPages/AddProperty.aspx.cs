@@ -282,6 +282,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
         Session["Roles"] = "Host";
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModal();", true);
+        added.Visible = true;
     }
 
     protected void goDashboard_Click(object sender, EventArgs e)
