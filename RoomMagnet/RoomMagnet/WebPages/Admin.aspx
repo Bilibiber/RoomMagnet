@@ -172,7 +172,7 @@
             <div id="sidebar-wrapper" style="background-color:slategray">
 
               <div class="profile-userpic admin-pic text-center">
-                  <img class="mx-auto d-block admin-img" src="../img/rm/two-people.jpg" alt="" >
+                  <img class="mx-auto d-block admin-img" src="../img/mason-user.png" alt="" >
                   <div>
                     <h4 class="admin-space">
                         <asp:Label ID="WelcomeMessage" runat="server" Text="" ForeColor="White" Font-Size="Small" Font-Bold="True"></asp:Label>
