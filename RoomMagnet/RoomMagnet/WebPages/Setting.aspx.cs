@@ -51,6 +51,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
         }
         if (Session["SignInEmail"] == null)
         {
+            Response.Redirect("Home.aspx");
         }
         else
         {

@@ -35,7 +35,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         errorLabel.Visible = false;
         if (Session["SignInEmail"] == null)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            Response.Redirect("Home.aspx");
         }
         else
         {

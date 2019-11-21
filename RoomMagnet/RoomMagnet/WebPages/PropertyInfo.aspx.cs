@@ -32,16 +32,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         {
             saveto.Visible = true;
         }
-        if (Session["SignInEmail"] == null)
-        {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
-        }
-        else
-        {
-            var master = Master as RoomMagnet;
-            master.AfterLogin();
-        }
-        //set all amentities labels to visible = false;
+        
 
 
          

@@ -31,9 +31,8 @@ public partial class WebPages_Host : System.Web.UI.Page
     {
         errorLabel.Visible = false;
         if (Session["SignInEmail"] == null)
-        {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
-            //ScriptManager.RegisterStartupScript(Master, Master.GetType(), "Pop", "openLoginModal();",true);
+        {            
+            Response.Redirect("Home.aspx");
         }
         else
         {
@@ -580,9 +579,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
         Response.Redirect("PropertyInfo.aspx");
     }
-
-
-
+    
     protected void updateproperty1_Click(object sender, EventArgs e)
     {
         cn.Open();

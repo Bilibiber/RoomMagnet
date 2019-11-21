@@ -24,7 +24,7 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
 
         if (Session["SignInEmail"] == null)
         {
-            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+            Response.Redirect("Home.aspx");
         }
         else
         {
