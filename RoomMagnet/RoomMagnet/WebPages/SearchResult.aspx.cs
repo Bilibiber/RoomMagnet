@@ -21,6 +21,10 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (RowMinus == 0)
+        {
+            ResultPg1.Visible = false;
+        }
         SearchResultCount.Text = "Total Property Found: " + resultCount.ToString();
         Property1Space.Visible = false;
         Property2Space.Visible = false;
@@ -345,6 +349,10 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                 Resultreader.Close();
                 RowMinus = RowMinus + RowNum;
                 SearchResultCount.Text = "Total Properties Found: " + RowMinus.ToString();
+                if (RowMinus == 0)
+                {
+                    ResultPg1.Visible = false;
+                }
                 if (RowMinus > 5)
                 {
                     ResultPg2.Visible = true;

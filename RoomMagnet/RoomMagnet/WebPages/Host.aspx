@@ -17,7 +17,7 @@
                         <div class="" style="padding-bottom: 20px;">
                             <asp:label id="hellow" runat="server" text="Hello, world" font-size="2em" font-bold="True" forecolor="White"></asp:label>
                             <p class="">Host<span><i class="icon-space"></i></span></p>
-                            <asp:label id="userstatus" runat="server" backcolor="#CC3300" borderstyle="None" font-size="X-Large" forecolor="White" style="text-align: center; width: 150px; border-radius:100px;"></asp:label>
+                            <asp:label id="userstatus" runat="server" backcolor="#bd2026" borderstyle="None" font-size="X-Large" forecolor="White" style="text-align: center; width: 150px; border-radius:100px;"></asp:label>
                         </div>
 
                         <ul class="sidebar-nav list-unstyled">
@@ -28,7 +28,7 @@
                                 <asp:linkbutton id="hostproperty" runat="server" style="font-size: 1.5em;" onclick="hostproperty_Click"><i class="la la-home icon-space" style="font-size:1em;"></i>Manage Property</asp:linkbutton>
                             </li>
                             <li class="nav-item" style="margin-top: 0px">
-                                <asp:linkbutton id="hostConnections" runat="server" style="font-size: 1.5em;" onclick="hostConnections_Click"><i class="la la-users icon-space" style="font-size:1em;"></i>Connections</asp:linkbutton>
+                                <asp:linkbutton id="hostConnections" runat="server" style="font-size: 1.5em;" onclick="hostConnections_Click"><i class="la la-users icon-space" style="font-size:1em;"></i>Requests</asp:linkbutton>
                             </li>
                             <li class="nav-item">
                                 <asp:linkbutton id="hostMessage" runat="server" style="font-size: 1.5em;" onclick="hostMessage_Click"><i class="la la-comments icon-space" style="font-size:1em;"></i>Messages</asp:linkbutton>
