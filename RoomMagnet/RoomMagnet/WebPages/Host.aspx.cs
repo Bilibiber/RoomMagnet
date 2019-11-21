@@ -443,7 +443,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         }
         else
         {
-            RequestHeader.Text = "No Pending Request";
+            RequestHeader.Text = "No Pending Requests";
         }
         ViewState["RequestIDarray"] = RequestIDs;
         ViewState["RenterEmails"] = RenterEmails;
@@ -791,7 +791,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[1].ToString();
-        string EmailBody = "One of your requests has been declined by the Host";
+        string EmailBody = "One of your requests has been declined by a Host";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);
@@ -812,7 +812,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[2].ToString();
-        string EmailBody = "One of your requests has been accepted by the Host, please login to our website and make a payment";
+        string EmailBody = "One of your requests has been accepted by a Host, please login to our website and make a payment";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendAcceptEmail(EmailAddress, EmailBody);
@@ -917,7 +917,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         cn.Close();
 
         string EmailAddress = RenterEmails[4].ToString();
-        string EmailBody = "One of your request has Declined by the Host";
+        string EmailBody = "One of your request has declined by the Host";
         EmailSender emailSender = new EmailSender();
         // uncomment this when hosting to aws
         //emailSender.SendDeclinedEmail(EmailAddress, EmailBody);

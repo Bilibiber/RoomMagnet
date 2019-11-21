@@ -375,7 +375,7 @@
                             <div class="col-md-9 no-padding">
                                 <div class="form-group">
                                     <asp:DropDownList ID="RenterNames" runat="server" AutoPostBack="true" OnTextChanged="RenterNames_TextChanged" Visible="false" CssClass="form-control">
-                                        <asp:ListItem Value="No One">Select Contacts</asp:ListItem>
+                                        <asp:ListItem Value="No One">Select Contact</asp:ListItem>
                                     </asp:DropDownList>
                                     
                                 </div>
