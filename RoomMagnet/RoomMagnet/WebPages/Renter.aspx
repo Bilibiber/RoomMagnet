@@ -443,7 +443,7 @@
                                                                         data-amount="50000.00"
                                                                         data-name="RoomMagnet"
                                                                         data-description="Rent"
-                                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                                        data-image="https://cis366fanguo.s3.amazonaws.com/magnet-2.png"
                                                                         data-locale="auto"
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
@@ -478,7 +478,7 @@
                                                                         data-amount="50000.00"
                                                                         data-name="RoomMagnet"
                                                                         data-description="Rent"
-                                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                                        data-image="https://cis366fanguo.s3.amazonaws.com/magnet-2.png"
                                                                         data-locale="auto"
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
@@ -513,7 +513,7 @@
                                                                         data-amount="50000.00"
                                                                         data-name="RoomMagnet"
                                                                         data-description="Rent"
-                                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                                        data-image="https://cis366fanguo.s3.amazonaws.com/magnet-2.png"
                                                                         data-locale="auto"
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
@@ -548,7 +548,7 @@
                                                                         data-amount="50000.00"
                                                                         data-name="RoomMagnet"
                                                                         data-description="Rent"
-                                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                                        data-image="https://cis366fanguo.s3.amazonaws.com/magnet-2.png"
                                                                         data-locale="auto"
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
@@ -583,7 +583,7 @@
                                                                         data-amount="50000.00"
                                                                         data-name="RoomMagnet"
                                                                         data-description="Rent"
-                                                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                                        data-image="https://cis366fanguo.s3.amazonaws.com/magnet-2.png"
                                                                         data-locale="auto"
                                                                         data-zip-code="true"
                                                                         data-currency="usd">
