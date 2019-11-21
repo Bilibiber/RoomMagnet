@@ -18,6 +18,7 @@
                             <asp:Label ID="cityLbl" runat="server" Text="PropertyCity"></asp:Label>
                             <asp:Label ID="homeStateLbl" runat="server" Text="PropertyState"></asp:Label>
                             <asp:Label ID="zipCodeLbl" runat="server" Text="ZipCode"></asp:Label>
+                            <asp:Label ID="notifLbl" runat="server" Text="Label"></asp:Label>
                         </p>
                         <div class="atbd_listing_bottom_content">
                             <div class="atbd_content_left">
