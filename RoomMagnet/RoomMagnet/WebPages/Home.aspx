@@ -35,9 +35,9 @@
                                     <div class="atbd_seach_fields_wrapper no-padding">
                                         <div class="single_search_field search_query">
                                             <asp:TextBox ID="HomePageSearchText" runat="server" CssClass="form-control search_fields border rounded-pill-left border-right-0" type="text" placeholder="Enter a city or zip code"></asp:TextBox>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorHomePageSearchText" runat="server" ErrorMessage="Special characters are not allowed. For example:% & ; = $" ValidationExpression="[^%&;>=$]+" ControlToValidate="HomePageSearchText" Display="Dynamic" ValidationGroup="HomePageSearch"></asp:RegularExpressionValidator>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic"></asp:RequiredFieldValidator>
-                                            <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="City and State should separate by a comma. For example Harrisonburg,VA" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic" OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidatorHomePageSearchText" runat="server" ErrorMessage="Special characters are not allowed. For example:% & ; = $ <" ValidationExpression="[^%&;>=$]+" ControlToValidate="HomePageSearchText" Display="Dynamic" ValidationGroup="HomePageSearch" ForeColor="Red"></asp:RegularExpressionValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                            <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="City and State should separate by a comma. For example Harrisonburg,VA" ValidationGroup="HomePageSearch" ControlToValidate="HomePageSearchText" Display="Dynamic" OnServerValidate="CustomValidator1_ServerValidate" ForeColor="Red"></asp:CustomValidator>
                                         </div>
 
                                         <div class="atbd_submit_btn">
