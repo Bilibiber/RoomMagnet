@@ -366,7 +366,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                         request1.Visible = true;
                         StriptPay1.Visible = true;
                         request1des.Text = "Your Request for" + reader.GetString(9) + " in " + reader.GetString(2) + reader.GetString(3) + reader.GetString(4) + reader.GetString(6) + reader.GetString(5) + "has been approved";
-                        RequestedRoomPrice.Text = reader.GetDecimal(1).ToString();
+                        RequestedRoomPrice1.Text = reader.GetDecimal(1).ToString();
                         int temRquestID = reader.GetInt32(0);
                         if (RequestIDs.Contains(temRquestID) == false)
                         {
@@ -800,4 +800,32 @@ public partial class WebPages_Renter : System.Web.UI.Page
             cn.Close();
         }
     }
+    protected void DeleteButton1_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void DeleteButton2_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void DeleteButton3_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void DeleteButton4_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void DeleteButton5_Click(object sender, EventArgs e)
+    {
+
+    }
+
+
+
+
+
+
+
+
 }
