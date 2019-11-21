@@ -14,7 +14,7 @@
     data-amount="50000.00"
     data-name="RoomMagnet"
     data-description="You are paying to roommagnet"
-    data-image="https://cis366fanguo.s3.amazonaws.com/magnet-small.png"
+    data-image="https://cis366fanguo.s3.amazonaws.com/magnet-2.png"
     data-locale="auto"
     data-zip-code="true"
     data-currency="usd">
