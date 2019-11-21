@@ -344,55 +344,43 @@
                         <div class="widget-body atbdp-widget-categories">
                             <ul class="atbdp_parent_category">
                                 <li runat="server" id="AirConditioningIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="airConditioningLbl" runat="server" Text="Air Conditioning"></asp:Label>
                                 </li>
                                 <li runat="server" id="HeatingIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="heatingLbl" runat="server" Text="Heating"></asp:Label>
                                 </li>
 
                                 <li runat="server" id="onSiteLaundryIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="onSiteLaundryLbl" runat="server" Text="On Site Laundry"></asp:Label>
                                 </li>
                                 <li runat="server" id="parkingIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="parkingLbl" runat="server" Text="Parking "></asp:Label>
                                 </li>
                                 <li runat="server" id="furnishedIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="furnishedLbl" runat="server" Text="Furnished "></asp:Label>
                                 </li>
 
                                 <li runat="server" id="petFriendlyIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="petFriendlyLbl" runat="server" Text="Pet Friendly "></asp:Label>
                                 </li>
                                 <li runat="server" id="carbonMonoxideDetectorIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="carbonMonoxideDetectorLbl" runat="server" Text="Carbon Monoxide Detector"></asp:Label>
                                 </li>
                                 <li runat="server" id="smokeDetectorIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="smokeDetectorLbl" runat="server" Text="Smoke Detector "></asp:Label>
                                 </li>
 
                                 <li runat="server" id="seperateEntranceIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="seperateEntranceLbl" runat="server" Text="Separate Entrance "></asp:Label>
                                 </li>
                                 <li runat="server" id="wifiIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="wifiLbl" runat="server" Text="WiFi "></asp:Label>
                                 </li>
                                 <li runat="server" id="tvIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="tvLbl" runat="server" Text="TV "></asp:Label>
                                 </li>
 
                                 <li runat="server" id="seperateBathroomIcon" visible="false">
-                                    <span class="la la-wifi icon-space"></span>
                                     <asp:Label ID="seperateBathroomLbl" runat="server" Text="Separate Bathroom "></asp:Label>
                                 </li>
                             </ul>
