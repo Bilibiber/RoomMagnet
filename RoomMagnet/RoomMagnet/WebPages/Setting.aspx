@@ -88,7 +88,7 @@
 
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <asp:Label runat="server" Text="First Name" class="not_empty" Font-Bold="true"></asp:Label>
+                                                <asp:Label runat="server" Text="First Name*" class="not_empty" Font-Bold="true"></asp:Label>
                                                 <asp:TextBox ID="setfirstname" runat="server" MaxLength="20" class="form-control" placeholder="First Name"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="Requiredfirstname" runat="server" ErrorMessage="Required" ControlToValidate="setfirstname" ForeColor="Red" ValidationGroup="settings" OnDataBinding="updateusersetting_Click" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                             </div>
@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <asp:Label runat="server" Text="Last Name" class="not_empty" Font-Bold="true"></asp:Label>
+                                                <asp:Label runat="server" Text="Last Name*" class="not_empty" Font-Bold="true"></asp:Label>
                                                 <asp:TextBox ID="setlastname" runat="server" MaxLength="20" class="form-control" placeholder="Last Name"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="Requiredlastname" runat="server" ErrorMessage="Required" ControlToValidate="setlastname" ForeColor="Red" ValidationGroup="settings" OnDataBinding="updateusersetting_Click" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                             </div>

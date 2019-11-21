@@ -177,7 +177,7 @@
                                 <asp:LinkButton ID="renterFavorites" runat="server" Style="font-size: 1.5em;" OnClick="renterFavorites_Click"><i class="la la-home icon-space" style="font-size:1em;"></i>My Favorites</asp:LinkButton>
                             </li>
                             <li class="nav-item">
-                                <asp:LinkButton ID="renterConnections" runat="server" Style="font-size: 1.5em;" OnClick="renterConnections_Click"><i class="la la-users icon-space" style="font-size:1em;"></i>Connections</asp:LinkButton>
+                                <asp:LinkButton ID="renterConnections" runat="server" Style="font-size: 1.5em;" OnClick="renterConnections_Click"><i class="la la-users icon-space" style="font-size:1em;"></i>Requests</asp:LinkButton>
                             </li>
                             <li class="nav-item">
                                 <asp:LinkButton ID="renterMessage" runat="server" Style="font-size: 1.5em;" OnClick="renterMessage_Click"><i class="la la-comments icon-space" style="font-size:1em;"></i>Messages</asp:LinkButton>
@@ -234,9 +234,8 @@
                 </asp:Panel>
 
                 <%--renter favorites--%>
-
                 <asp:Panel ID="panelfavorites" runat="server" Visible="False">
-                    <div class="col-md-9 mx-auto ">
+                    
                         <h1 class="update-title">My Favorites
                         </h1>
 
@@ -246,7 +245,7 @@
                                 <div class="atbdb_content_module_contents">
                                     <div class="user_info_wrap">
                                         <div class="row">
-                                            <div id="Property1Space" runat="server" class="col-lg-12">
+                                            <div id="Property1Space" runat="server">
                                                 <div class="atbd_single_listing atbd_listing_list">
                                                     <article class="atbd_single_listing_wrapper">
                                                         <figure class="atbd_listing_thumbnail_area">
@@ -407,7 +406,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </asp:Panel>
 
                 <%--renter connections--%>
