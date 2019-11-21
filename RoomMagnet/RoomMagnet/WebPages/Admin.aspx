@@ -398,7 +398,7 @@
             <asp:Panel runat="server" ID="adminEmployeesPanel" Visible="False">
                 <section class="section-bg">
                 <div class="col-md-16 mx-auto" style="padding-left:15px;">
-                    <h1 class="update-title">Add Employee</h1>
+                    <h1 class="update-title">Update Employee</h1>
                     <div class="atbd_author_module">
                         <div class="atbd_content_module">
                             <div class="atbdb_content_module_contents">
