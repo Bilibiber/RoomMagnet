@@ -368,15 +368,30 @@ public partial class WebPages_Host : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    rating1.Visible = true;
+                }
+                
             }
             if (RatingCount == 1)
             {
-                Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    rating2.Visible = true;
+                }
+
             }
             if (RatingCount == 2)
             {
-                Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    rating3.Visible = true;
+                }
+
             }
             RatingCount++;
             readers.Close();

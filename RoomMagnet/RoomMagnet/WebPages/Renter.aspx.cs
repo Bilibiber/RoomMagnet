@@ -213,7 +213,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property1RentPrice.Visible = true;
                     Property1CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
                     Property1CityState.Visible = true;
-                    Property1Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                    Property1Bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
                     Property1Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property1StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property1EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
@@ -246,7 +246,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property2RentPrice.Visible = true;
                     Property2CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
                     Property2CityState.Visible = true;
-                    Property2Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                    Property2Bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
                     Property2Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property2StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property2EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
@@ -277,7 +277,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     Property3RentPrice.Visible = true;
                     Property3CityState.Text = reader.GetString(1) + "," + reader.GetString(2);
                     Property3CityState.Visible = true;
-                    Property3Bath.Text = reader.GetInt32(9).ToString() + " Bathroom";
+                    Property3Bath.Text = reader.GetInt32(8).ToString() + " Bathroom";
                     Property3Bed.Text = reader.GetInt32(4).ToString() + " Bed";
                     Property3StartDate.Text = "Start Date: " + reader.GetDateTime(6).ToShortDateString();
                     Property3EndDate.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
@@ -322,15 +322,30 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    rating1.Visible = true;
+                }
+
             }
             if (RatingCount == 1)
             {
-                Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    rating2.Visible = true;
+                }
+
             }
             if (RatingCount == 2)
             {
-                Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    rating3.Visible = true;
+                }
+
             }
             RatingCount++;
             readers.Close();
@@ -628,7 +643,12 @@ public partial class WebPages_Renter : System.Web.UI.Page
             }
             if (RatingCount == 0)
             {
-                history1rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                {
+                    history1rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                    ratinghis.Visible = true;
+                }
+                
             }
             if (RatingCount == 1)
             {
@@ -785,7 +805,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         review.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
         review.Parameters.Add(new SqlParameter("@LastUpdatedBy", Session["FullName"].ToString()));
         review.Parameters.Add(new SqlParameter("@RenterID", Int32.Parse(Session["UserID"].ToString())));
-        review.Parameters.Add(new SqlParameter("@PropertyID", 1003));
+        review.Parameters.Add(new SqlParameter("@PropertyID", 1049));
         review.ExecuteNonQuery();
         cn.Close();
 
