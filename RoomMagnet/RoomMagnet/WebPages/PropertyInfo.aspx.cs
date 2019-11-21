@@ -401,6 +401,8 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             int userId = pullUserID(userSignInEmail);
             int propertyId = (int)Session["ResultPropertyID"];
             addPropertytoUserFav(userId, propertyId);
+            notifLbl.Text = "Property has been added to Favorites";
+            notifLbl.Visible = true;
         }
     }
 
@@ -450,6 +452,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
 
     protected void Unnamed_Click(object sender, EventArgs e)
     {
+        notifLbl.Visible = false; ;
         if (Session["SignInEmail"] == null)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -467,6 +470,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
     }
     protected void Reserve_Click(object sender, EventArgs e)
     {
+        notifLbl.Visible = false;
         if (Session["SignInEmail"] == null)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
@@ -480,7 +484,7 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
         else
         {
             string status = "Pending";
-            string Request = Session["FullName"].ToString() + ",  is interested in renting your" + Rooms.SelectedItem + "in " + titleLbl.Text +   ", Would you like to accept their request?";
+            string Request = Session["FullName"].ToString() + ",  is interested in renting " + Rooms.SelectedItem + " in your home titled " + titleLbl.Text +   ". Would you like to accept their request?";
             string sql = "INSERT INTO Requests (PropertyHostID, PropertyID, PropertyRoomID, RoomRenterID, Request, RequestStatus) VALUES (@PropertyHostID, @PropertyID, @PropertyRoomID, @RoomRenterID, @Request,@RequestStatus)";
             connection.Open();
 
@@ -494,6 +498,8 @@ public partial class WebPages_PropertyInfo : System.Web.UI.Page
             cmd.ExecuteNonQuery();
             connection.Close();
         }
+        notifLbl.Text = "A reserve request has been sent";
+        notifLbl.Visible = true;
     }
 
     protected void Rooms_SelectedIndexChanged(object sender, EventArgs e)
