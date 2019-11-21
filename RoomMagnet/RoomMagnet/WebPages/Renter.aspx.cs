@@ -579,7 +579,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         renterMessage.BackColor = System.Drawing.Color.FromArgb(51, 51, 51);
         renterHistory.BackColor = System.Drawing.Color.FromArgb(84, 84, 84);
 
-        string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, AvailableBathrooms,PropertyID,PropertyID from[Property] WHERE propertyid = 1049";
+        string sql = "Select Title, City, HomeState, ZipCode, AvailableBedrooms, RentPrice, StartDate, EndDate, AvailableBathrooms,PropertyID,PropertyID from [Property]";
         cn.Open();
         SqlCommand search = new SqlCommand(sql, cn);
         SqlDataReader reader = search.ExecuteReader();
@@ -608,9 +608,10 @@ public partial class WebPages_Renter : System.Web.UI.Page
                     history1end.Text = "End Date: " + reader.GetDateTime(7).ToShortDateString();
 
                     int pid = reader.GetInt32(10);
+                    Session["rating"] = pid;
                     System.Data.SqlClient.SqlCommand selectimg = new System.Data.SqlClient.SqlCommand();
                     selectimg.Connection = cn;
-                    selectimg.CommandText = "Select ImagePath from [ImagePath] WHERE PropertyID = 1049";
+                    selectimg.CommandText = "Select ImagePath from [ImagePath] WHERE PropertyID = @pid";
                     selectimg.Parameters.Add(new SqlParameter("@pid", pid));
                     SqlDataReader getinfor = selectimg.ExecuteReader();
                     while (getinfor.Read())
@@ -802,6 +803,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
 
     protected void submitReview_Click(object sender, EventArgs e)
     {
+        int pid = Int32.Parse(Session["rating"].ToString());
         cn.Open();
         System.Data.SqlClient.SqlCommand review = new System.Data.SqlClient.SqlCommand();
         review.Connection = cn;
@@ -812,7 +814,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
         review.Parameters.Add(new SqlParameter("@LastUpdated", DateTime.Now));
         review.Parameters.Add(new SqlParameter("@LastUpdatedBy", Session["FullName"].ToString()));
         review.Parameters.Add(new SqlParameter("@RenterID", Int32.Parse(Session["UserID"].ToString())));
-        review.Parameters.Add(new SqlParameter("@PropertyID", 1049));
+        review.Parameters.Add(new SqlParameter("@PropertyID", pid));
         review.ExecuteNonQuery();
         cn.Close();
 

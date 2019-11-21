@@ -39,7 +39,7 @@ function addressmap(response) {
         streetViewControl: false,
         disableDefaultUI: true
     });
-    var opt = { minZoom: 5, maxZoom: 15 };
+    var opt = { minZoom: 5, maxZoom: 14 };
     map.setOptions(opt);
     var latlng = new google.maps.LatLng(38.4495688, -78.8689156);
     map.setCenter(latlng);

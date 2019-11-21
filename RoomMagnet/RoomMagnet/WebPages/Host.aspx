@@ -164,7 +164,7 @@
                                                                 <div class="mt-0 form-label">
                                                                     <asp:Label ID="Property2CityState" runat="server" Text="Label"></asp:Label>
                                                                 </div>
-                                                                <div class="atbd_listing_meta" style="float: right;" runat="server" id="rating2">
+                                                                <div class="atbd_listing_meta" style="float: right;" runat="server" id="rating2" visible="false">
                                                                     <span class="atbd_meta atbd_listing_rating">
                                                                         <asp:Label ID="Property2Rating" runat="server" Text="4.5"></asp:Label><i class="la la-star"></i></span>
                                                                 </div>
@@ -369,7 +369,8 @@
                 <%--renter message--%>
                 <asp:panel id="panelmessage" runat="server" visible="False">
                     <div class="col-md-12 mx-auto">
-                        <h1 class="update-title">Messages<asp:Label ID="errorLabel" Visible="false" runat="server" Text="Label"></asp:Label>
+                        <h1 class="update-title">
+                            <asp:Label ID="Label1" runat="server" Text="Messages" Visible="false"></asp:Label><asp:Label ID="errorLabel" Visible="false" runat="server" Text="Label"></asp:Label>
                         </h1>
                         <div class="row">
                             <div class="col-md-9 no-padding">

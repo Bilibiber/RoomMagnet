@@ -400,23 +400,46 @@ public partial class WebPages_SearchResult : System.Web.UI.Page
                     }
                     if (RatingCount == 0)
                     {
-                        Property1Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                        if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                        {
+                            Property1Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                            rating1.Visible = true;
+                        }
+
                     }
                     if (RatingCount == 1)
                     {
-                        Property2Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                        if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                        {
+                            Property2Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                            rating2.Visible = true;
+                        }
+
                     }
                     if (RatingCount == 2)
                     {
-                        Property3Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                        if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                        {
+                            Property3Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                            rating3.Visible = true;
+                        }
+
                     }
                     if (RatingCount == 3)
                     {
-                        Property4Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                        if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                        {
+                            Property4Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                            rating4.Visible = true;
+                        }
                     }
                     if (RatingCount == 4)
                     {
-                        Property5Rating.Text = (RatingSum / RatingRecordCount).ToString();
+                        if (Math.Round((RatingSum / RatingRecordCount), 1) != 0)
+                        {
+                            Property5Rating.Text = Math.Round((RatingSum / RatingRecordCount), 1).ToString();
+                            rating5.Visible = true;
+                        }
                     }
                   
                         RatingCount++;
