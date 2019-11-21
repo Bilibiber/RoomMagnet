@@ -46,7 +46,8 @@
                 <div class="col-lg-12 text-center settings-title">
                     <h1>Add Property</h1>
                     <br />
-                    <asp:label runat="server" text="Successful Added!" visible="False" ID="added" ForeColor="Red"></asp:label>
+                    <asp:Label runat="server" Text="Successful Added!" Visible="False" ID="added" ForeColor="Red"></asp:Label>
+                    <asp:Button runat="server" class="btn btn-xs btn-gradient btn-gradient-two access-link m-right-10" Text="Populate" ID="Populate" OnClick="Populate_Click"></asp:Button>
                 </div>
             </div>
         </div>
@@ -161,7 +162,7 @@
                                         <asp:ListItem Value="Appartment">Appartment</asp:ListItem>
                                         <asp:ListItem Value="TownHouse">Town House</asp:ListItem>
                                         <asp:ListItem Value="Home">Home</asp:ListItem>
-                                        </asp:DropDownList>
+                                    </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="addType" ErrorMessage="Required" ForeColor="Red" ValidationGroup="addproperty" Display="Dynamic">Required</asp:RequiredFieldValidator>
                                 </div>
 
@@ -566,7 +567,7 @@
                             <%--<div id="showimage">
                                     <asp:image id="imgpreview" runat="server" height="150" width="150" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px;" />
                                 </div>--%>
-                            <asp:FileUpload ID="FileUpload1" multiple="multiple" runat="server" AllowMultiple="true"/>
+                            <asp:FileUpload ID="FileUpload1" multiple="multiple" runat="server" AllowMultiple="true" />
                             <br />
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="RequiredFieldValidator" Text="Please upload images for your property!" ControlToValidate="FileUpload1" ValidationGroup="addproperty" ForeColor="Red"></asp:RequiredFieldValidator>
                             <%-- <asp:Button ID="Upload" runat="server" Text="Upload New Image" class="btn btn-sm btn-secondary form-control-file" OnClick="Upload_Click" />--%>

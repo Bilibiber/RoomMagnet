@@ -280,4 +280,17 @@ public partial class WebPages_Setting : System.Web.UI.Page
         t.Start();
         t.Join();
     }
+
+    protected void Populate_Click(object sender, EventArgs e)
+    {
+        setOccupation.Text = "Student";
+        setgender.SelectedValue = "male";
+        setdescription.Text = "I am a student from James Madison University with a major in " +
+            "Computer Information Systems. I just looking for a place to live.";
+        setStreet.Text = "1130 meridian cicle";
+        setCity.Text = "Harrisonburg";
+        setCountry.SelectedValue = "United States";
+        setState.SelectedValue = "VA";
+        setZip.Text = "22801";
+    }
 }

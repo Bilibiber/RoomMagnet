@@ -325,4 +325,35 @@ public partial class WebPages_AddProperty : System.Web.UI.Page
             room4.Visible = true;
         }
     }
+
+    protected void Populate_Click(object sender, EventArgs e)
+    {
+        addtitle.Text = "SouthView 1 Bedroom Apartment";
+        addStreet.Text = "1457 Devon Lane APT A";
+        addCity.Text = "Harrisonburg";
+        addCountry.SelectedValue = "United States";
+        replacestate.Visible = false;
+        addState.Visible = true;
+        addState.SelectedValue = "VA";
+        addZip.Text = "22801";
+        addType.SelectedValue = "Appartment";
+        addSquare.Text = "1230";
+        addPrice.Text = "599";
+        addbath.SelectedValue = "1";
+        addBedrooms.SelectedValue = "1";
+        room1.Visible = true;
+        Room1Name.Text = "Room 1";
+        roombath1.SelectedValue = "Y";
+        roomprice1.Text = "599";
+        addstartdate1.Text = "2019-12-12";
+        addenddate1.Text = "2020-03-12";
+        checkcarbondetector.Checked = true;
+        checkcondition.Checked = true;
+        checkFurnished.Checked = true;
+        checkLaundry.Checked = true;
+        checkspebath.Checked = true;
+        propertydes.Text = "Beautiful place with plenty of natural light throughout the home's open, airy layout. Other special highlights" +
+            " include: a charming gas fireplace, rich exposed brick, chic recessed lighting, +ceiling fans, a Kenmore Elite washer/dryer, marble baths, tons of storage" +
+            " space, and ready-for-cable wiring in the room.";
+    }
 }
