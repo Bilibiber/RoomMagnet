@@ -8475,3 +8475,6 @@ hr.style-six {
 .card-text {
     color: #333;
 }
+.buttonspace {
+    padding-right:20px !important;
+}

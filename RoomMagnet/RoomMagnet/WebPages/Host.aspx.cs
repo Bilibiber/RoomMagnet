@@ -34,6 +34,7 @@ public partial class WebPages_Host : System.Web.UI.Page
         {
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
             //ScriptManager.RegisterStartupScript(Master, Master.GetType(), "Pop", "openLoginModal();",true);
+            Response.Redirect("Home.aspx");
         }
         else
         {
@@ -103,23 +104,19 @@ public partial class WebPages_Host : System.Web.UI.Page
             db.Open();
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
             selectuser.Connection = db;         
-            selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectuser.CommandText = "select [FirstName], [Occupation], [Description] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getinfor = selectuser.ExecuteReader();
             while (getinfor.Read())
             {
-                hellow.Text = "Hello, " + getinfor.GetString(0);
+                hellow.Text = "Hello, " + getinfor.GetString(0);              
                 if (!getinfor.IsDBNull(1))
                 {
-                    userGender.Text = getinfor.GetString(1);
+                    userOccu.Text = getinfor.GetString(1);
                 }
                 if (!getinfor.IsDBNull(2))
                 {
-                    userOccu.Text = getinfor.GetString(2);
-                }
-                if (!getinfor.IsDBNull(3))
-                {
-                    userDes.Text = getinfor.GetString(3);
+                    userDes.Text = getinfor.GetString(2);
                 }
             }
             getinfor.Close();

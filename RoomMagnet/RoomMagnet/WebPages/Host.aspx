@@ -4,6 +4,8 @@
     Host DashBoard
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+    <style>
+    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Body" runat="Server">
     <section class="section-bg">
@@ -12,27 +14,27 @@
                 <div id="sidebar-wrapper">
 
                     <div class="profile-userpic admin-pic text-center">
-                        <asp:image id="imgpreview" runat="server" height="120" width="120" imageurl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" style="border-width: 0px; border-radius: 50%;" />
+                        <asp:Image ID="imgpreview" runat="server" Height="120" Width="120" ImageUrl="http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" Style="border-width: 0px; border-radius: 50%;" />
                         <br />
 
                         <div class="" style="padding-bottom: 20px;">
-                            <asp:label id="hellow" runat="server" text="Hello, world" font-size="2em" font-bold="True" forecolor="White"></asp:label>
+                            <asp:Label ID="hellow" runat="server" Text="Hello, world" Font-Size="2em" Font-Bold="True" ForeColor="White"></asp:Label>
                             <p class="">Host<span><i class="icon-space"></i></span></p>
-                            <asp:label id="userstatus" runat="server" backcolor="#bd2026" borderstyle="None" font-size="X-Large" forecolor="White" style="text-align: center; width: 150px; border-radius:100px;"></asp:label>
+                            <asp:Label ID="userstatus" runat="server" BackColor="#bd2026" BorderStyle="None" Font-Size="X-Large" ForeColor="White" Style="text-align: center; width: 150px; border-radius: 100px;"></asp:Label>
                         </div>
 
                         <ul class="sidebar-nav list-unstyled">
                             <li class="nav-item">
-                                <asp:linkbutton id="hostprofile" runat="server" style="font-size: 1.5em;" onclick="hostProfile_Click"> <i class="la la-user icon-space" style="font-size:1em;"></i>My Profile</asp:linkbutton>
+                                <asp:LinkButton ID="hostprofile" runat="server" Style="font-size: 1.5em;" OnClick="hostProfile_Click"> <i class="la la-user icon-space" style="font-size:1em;"></i>My Profile</asp:LinkButton>
                             </li>
                             <li class="nav-item">
-                                <asp:linkbutton id="hostproperty" runat="server" style="font-size: 1.5em;" onclick="hostproperty_Click"><i class="la la-home icon-space" style="font-size:1em;"></i>Manage Property</asp:linkbutton>
+                                <asp:LinkButton ID="hostproperty" runat="server" Style="font-size: 1.5em;" OnClick="hostproperty_Click"><i class="la la-home icon-space" style="font-size:1em;"></i>Manage Property</asp:LinkButton>
                             </li>
                             <li class="nav-item" style="margin-top: 0px">
-                                <asp:linkbutton id="hostConnections" runat="server" style="font-size: 1.5em;" onclick="hostConnections_Click"><i class="la la-users icon-space" style="font-size:1em;"></i>Requests</asp:linkbutton>
+                                <asp:LinkButton ID="hostConnections" runat="server" Style="font-size: 1.5em;" OnClick="hostConnections_Click"><i class="la la-users icon-space" style="font-size:1em;"></i>Requests</asp:LinkButton>
                             </li>
                             <li class="nav-item">
-                                <asp:linkbutton id="hostMessage" runat="server" style="font-size: 1.5em;" onclick="hostMessage_Click"><i class="la la-comments icon-space" style="font-size:1em;"></i>Messages</asp:linkbutton>
+                                <asp:LinkButton ID="hostMessage" runat="server" Style="font-size: 1.5em;" OnClick="hostMessage_Click"><i class="la la-comments icon-space" style="font-size:1em;"></i>Messages</asp:LinkButton>
                             </li>
                         </ul>
                     </div>
@@ -47,7 +49,7 @@
             <div class="col-md-9 mx-auto dashboard-padding">
 
                 <%--renter profile--%>
-                <asp:panel id="panelprofile" runat="server">
+                <asp:Panel ID="panelprofile" runat="server">
                     <h1 class="update-title">My Profile
                         <asp:Button ID="editprofile" runat="server" Text="Edit" class="btn btn-primary" OnClick="editprofile_Click" Style="float: right;" /></h1>
 
@@ -81,10 +83,10 @@
                             </div>
                         </div>
                     </div>
-                </asp:panel>
+                </asp:Panel>
 
                 <%--host property--%>
-                <asp:panel id="panelfavorites" runat="server" visible="False">
+                <asp:Panel ID="panelfavorites" runat="server" Visible="False">
                     <div class="col-md-12 mx-auto ">
                         <h1 class="update-title">Manage property
                             <asp:Button ID="addproperty" runat="server" Text="+Add" class="btn btn-primary" OnClick="addproperty_Click" Style="float: right;" />
@@ -259,10 +261,10 @@
                             </div>
                         </div>
                     </div>
-                </asp:panel>
+                </asp:Panel>
 
                 <%--host connections--%>
-                <asp:panel id="panelconnections" runat="server" visible="False">
+                <asp:Panel ID="panelconnections" runat="server" Visible="False">
                     <div class="col-md-12 mx-auto">
                         <h1 class="update-title">
                             <asp:Label ID="RequestHeader" runat="server" Text="Renter Requests"></asp:Label>
@@ -277,11 +279,12 @@
                                         <div class="card-body">
                                             <div class="col-md-9 left_col-1">
                                                 <p class="card-text">
-                                                    <asp:Label ID="request1des" runat="server" Text="Label"></asp:Label></p>
+                                                    <asp:Label ID="request1des" runat="server" Text="Label"></asp:Label>
+                                                </p>
                                             </div>
                                             <div class="col-md-3 right_col-1">
                                                 <asp:Button ID="AcceptButton1" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton1_Click" />
-                                                <asp:Button ID="DeclineButton1" runat="server" Text="Decline" CssClass="btn btn-secondary inline"  OnClick="DeclineButton1_Click" />
+                                                <asp:Button ID="DeclineButton1" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton1_Click" />
                                             </div>
                                         </div>
                                     </div>
@@ -295,18 +298,19 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="col-md-9 left_col-1 ">
-                                                <p class="card-text"> <asp:Label ID="request2des" runat="server" Text="Label"></asp:Label>
+                                                <p class="card-text">
+                                                    <asp:Label ID="request2des" runat="server" Text="Label"></asp:Label>
                                                 </p>
                                             </div>
                                             <div class="col-md-3  right_col-1">
-                                               <asp:Button ID="AcceptButton2" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton2_Click" />
-                                               <asp:Button ID="DeclineButton2" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton2_Click" />
+                                                <asp:Button ID="AcceptButton2" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton2_Click" />
+                                                <asp:Button ID="DeclineButton2" runat="server" Text="Decline" CssClass="btn btn-secondary inline" OnClick="DeclineButton2_Click" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                              <div class="col-md-12">
+                            <div class="col-md-12">
                                 <div class=" p-bottom-25">
                                     <div class="card border" id="request3" runat="server" visible="false">
                                         <div class="card-header">
@@ -315,7 +319,8 @@
                                         <div class="card-body">
                                             <div class="col-md-9 left_col-1">
                                                 <p class="card-text">
-                                                    <asp:Label ID="request3des" runat="server" Text="Label"></asp:Label></p>
+                                                    <asp:Label ID="request3des" runat="server" Text="Label"></asp:Label>
+                                                </p>
                                             </div>
                                             <div class="col-md-3 right_col-1">
                                                 <asp:Button ID="AcceptButton3" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton3_Click" />
@@ -325,7 +330,7 @@
                                     </div>
                                 </div>
                             </div>
-                              <div class="col-md-12">
+                            <div class="col-md-12">
                                 <div class=" p-bottom-25">
                                     <div class="card border" id="request4" runat="server" visible="false">
                                         <div class="card-header">
@@ -334,7 +339,8 @@
                                         <div class="card-body">
                                             <div class="col-md-9 left_col-1">
                                                 <p class="card-text">
-                                                    <asp:Label ID="request4des" runat="server" Text="Label"></asp:Label></p>
+                                                    <asp:Label ID="request4des" runat="server" Text="Label"></asp:Label>
+                                                </p>
                                             </div>
                                             <div class="col-md-3 right_col-1">
                                                 <asp:Button ID="AcceptButton4" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton4_Click" />
@@ -344,7 +350,7 @@
                                     </div>
                                 </div>
                             </div>
-                              <div class="col-md-12">
+                            <div class="col-md-12">
                                 <div class=" p-bottom-25">
                                     <div class="card border" id="request5" runat="server" visible="false">
                                         <div class="card-header">
@@ -353,7 +359,8 @@
                                         <div class="card-body">
                                             <div class="col-md-9 left_col-1">
                                                 <p class="card-text">
-                                                    <asp:Label ID="request5des" runat="server" Text="Label"></asp:Label></p>
+                                                    <asp:Label ID="request5des" runat="server" Text="Label"></asp:Label>
+                                                </p>
                                             </div>
                                             <div class="col-md-3 right_col-1">
                                                 <asp:Button ID="AcceptButton5" runat="server" Text="Accept" CssClass="btn btn-secondary requests-btn inline" OnClick="AcceptButton5_Click" />
@@ -365,10 +372,10 @@
                             </div>
                         </div>
                     </div>
-                </asp:panel>
+                </asp:Panel>
 
                 <%--renter message--%>
-                <asp:panel id="panelmessage" runat="server" visible="False">
+                <asp:Panel ID="panelmessage" runat="server" Visible="False">
                     <div class="col-md-12 mx-auto">
                         <h1 class="update-title">
                             <asp:Label ID="Label1" runat="server" Text="Messages" Visible="false"></asp:Label><asp:Label ID="errorLabel" Visible="false" runat="server" Text="Label"></asp:Label>
@@ -396,12 +403,15 @@
                                         <div class="atbd_submit_btn input-group-append searchtxt-padding">
                                             <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Send" Font-Bold="True" CssClass="btn btn-primary" />
                                         </div>
+                                        <div class="atbd_submit_btn input-group-append searchtxt-padding">
+                                            <asp:Button ID="SkypeButton" runat="server" Text="Skype" CssClass="btn btn-primary" PostBackUrl="https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1576017549&rver=7.1.6819.0&wp=MBI_SSL&wreply=https%3A%2F%2Flw.skype.com%2Flogin%2Foauth%2Fproxy%3Fclient_id%3D360605%26redirect_uri%3Dhttps%253A%252F%252Fsecure.skype.com%252Fportal%252Flogin%253Freturn_url%253Dhttps%25253A%25252F%25252Fsecure.skype.com%25252Fportal%25252Foverview%26response_type%3Dpostgrant%26state%3D63fc25257b83bc128cb53cbf%26site_name%3Dlw.skype.com&lc=1033&id=293290&mkt=en-US&psi=skype&lw=1&cobrandid=2befc4b5-19e3-46e8-8347-77317a16a5a5&client_flight=ReservedFlight33%2CReservedFlight67" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </asp:panel>
+                </asp:Panel>
             </div>
         </div>
     </section>
