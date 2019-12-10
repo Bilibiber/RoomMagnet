@@ -97,7 +97,7 @@ public partial class WebPages_Renter : System.Web.UI.Page
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
             selectuser.Connection = db;
             int userid = Convert.ToInt32(Session["UserID"]);
-            selectuser.CommandText = "select [FirstName], [Gender], [Occupation], [Description]from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectuser.CommandText = "select [FirstName], [Occupation], [Description]from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getinfor = selectuser.ExecuteReader();
             while (getinfor.Read())
@@ -105,15 +105,11 @@ public partial class WebPages_Renter : System.Web.UI.Page
                 hellow.Text = "Hello, " + getinfor.GetString(0);
                 if (!getinfor.IsDBNull(1))
                 {
-                    userGender.Text = getinfor.GetString(1);
+                    userOccu.Text = getinfor.GetString(1);
                 }
                 if (!getinfor.IsDBNull(2))
                 {
-                    userOccu.Text = getinfor.GetString(2);
-                }
-                if (!getinfor.IsDBNull(3))
-                {
-                    userDes.Text = getinfor.GetString(3);
+                    userDes.Text = getinfor.GetString(2);
                 }
             }
             if (ReceiverIDs.Count > 0)

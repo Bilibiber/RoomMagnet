@@ -117,11 +117,11 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" runat="server" visible="false">
                                             <div class="form-group">
                                                 <asp:Label runat="server" Text="Gender" class="not_empty" Font-Bold="true"></asp:Label>
 
-                                                <asp:DropDownList ID="setgender" runat="server" class="form-control">
+                                                <asp:DropDownList ID="setgender" runat="server" class="form-control" >
                                                     <asp:ListItem Value=""></asp:ListItem>
                                                     <asp:ListItem Value="male">Male</asp:ListItem>
                                                     <asp:ListItem Value="female">Female</asp:ListItem>

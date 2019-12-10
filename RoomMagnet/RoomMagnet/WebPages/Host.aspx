@@ -67,7 +67,7 @@
                                                 <br />
                                                 <br />
                                             </div>
-                                            <div>
+                                            <div runat="server" visible="false"> 
                                                 <h5 style="display: inline">Gender</h5>
                                                 <asp:Label ID="userGender" runat="server" Text="" Style="display: inline"></asp:Label>
                                                 <br />

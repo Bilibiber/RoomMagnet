@@ -70,7 +70,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
             System.Data.SqlClient.SqlCommand selectuser = new System.Data.SqlClient.SqlCommand();
             selectuser.Connection = db;
             int userid = Convert.ToInt32(Session["UserID"]);
-            selectuser.CommandText = "select [FirstName], [MiddleName], [LastName], [Gender], [Occupation], [Description], [StreetAddress],[City],[HomeState],[ZipCode],[Country] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
+            selectuser.CommandText = "select [FirstName], [MiddleName], [LastName], [Occupation], [Occupation], [Description], [StreetAddress],[City],[HomeState],[ZipCode],[Country] from [RoomMagnet].[dbo].[Users] where [UserID] =@UserID";
             selectuser.Parameters.Add(new SqlParameter("@UserID", userid));
             SqlDataReader getinfor = selectuser.ExecuteReader();
             while (getinfor.Read())
@@ -83,7 +83,7 @@ public partial class WebPages_Setting : System.Web.UI.Page
                 setlastname.Text = getinfor.GetString(2);
                 if (!getinfor.IsDBNull(3))
                 {
-                    setgender.SelectedValue = getinfor.GetString(3);
+                    setgender.SelectedValue = "male";
                 }
                 if (!getinfor.IsDBNull(4))
                 {
@@ -148,14 +148,13 @@ public partial class WebPages_Setting : System.Web.UI.Page
             int usersid = Convert.ToInt32(Session["UserID"]);
             if (setconfirmpass.Text == "")
             {
-                updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender," +
-                    "Occupation = @Occupation, Description = @Description,StreetAddress=@StreetAddress,City=@City,Country=@Country,HomeState=@HomeState,ZipCode=@ZipCode,LastUpdated=@LastUpdated," +
+                updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Occupation = @Occupation, " +
+                    "Description = @Description,StreetAddress=@StreetAddress,City=@City,Country=@Country,HomeState=@HomeState,ZipCode=@ZipCode,LastUpdated=@LastUpdated," +
                     "LastUpdatedBy=@LastUpdatedBy WHERE [UserID] = @UserID";
 
                 updateusers.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
                 updateusers.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
                 updateusers.Parameters.Add(new SqlParameter("@LastName", setlastname.Text));
-                updateusers.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
                 updateusers.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
                 updateusers.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
                 updateusers.Parameters.Add(new SqlParameter("@StreetAddress", setStreet.Text));
@@ -172,14 +171,14 @@ public partial class WebPages_Setting : System.Web.UI.Page
             }
             else
             {
-                updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, Gender = @Gender, " +
+                updateusers.CommandText = "UPDATE [dbo].[Users] SET [FirstName] = @FirstName , [LastName] = @LastName , [MiddleName] = @MiddleName, " +
                  "Occupation = @Occupation, Description=@Description,[StreetAddress]=@[StreetAddress],[City]=@[City],Country=@Country,[HomeState]=@[HomeState],[ZipCode]=@[ZipCode]," +
                  "LastUpdated=@LastUpdated, LastUpdatedBy=@LastUpdatedBy, Password=@Password WHERE [UserID] = @UserID";
 
                 updateusers.Parameters.Add(new SqlParameter("@FirstName", setfirstname.Text));
                 updateusers.Parameters.Add(new SqlParameter("@MiddleName", setmiddlename.Text));
                 updateusers.Parameters.Add(new SqlParameter("@LastName", setlastname.Text));
-                updateusers.Parameters.Add(new SqlParameter("@Gender", setgender.Text));
+
                 updateusers.Parameters.Add(new SqlParameter("@Occupation", setOccupation.Text));
                 updateusers.Parameters.Add(new SqlParameter("@Description", setdescription.Text));
                 updateusers.Parameters.Add(new SqlParameter("@StreetAddress", setStreet.Text));
