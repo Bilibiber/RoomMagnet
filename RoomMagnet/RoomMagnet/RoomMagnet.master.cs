@@ -114,10 +114,11 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
 
     protected void MasterPageSignIn_Click(object sender, EventArgs e)
     {
-        string sql = "Select Password from Users where Email = @Email ";
+        string sql = "Select Password, AccountStatus from Users where Email = @Email ";
         try
         {
             string storedHash;
+            string account="";
             if (cn.State == System.Data.ConnectionState.Closed)
             {
                 cn.Open();
@@ -130,18 +131,28 @@ public partial class RoomMagnet : System.Web.UI.MasterPage
                 if (reader.Read())
                 {
                     storedHash = reader["Password"].ToString();
+                    account = reader.GetString(1);
                     reader.Close();
-                    if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
+                    if (account == "Deactived")
                     {
-                        Session["SignInEmail"] = SignInEmail.Text;
-                        GetUserInfo();
-                        AfterLogin();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+                        SignInErrorLbl.Visible = true;
+                        SignInErrorLbl.Text = "Your account has been deactived by RoomMagnet, please contact us regarding this issue";
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
-                        PasswordErrorLbl.Visible = true;
-                        PasswordErrorLbl.Text = "Invaild Password";
+                        if (PasswordHash.ValidatePassword(SignInPassword.Text, storedHash))
+                        {
+                            Session["SignInEmail"] = SignInEmail.Text;
+                            GetUserInfo();
+                            AfterLogin();
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openLoginModal();", true);
+                            PasswordErrorLbl.Visible = true;
+                            PasswordErrorLbl.Text = "Invaild Password";
+                        }
                     }
                 }
             }

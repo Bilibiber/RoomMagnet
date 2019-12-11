@@ -208,7 +208,7 @@
                         <asp:TextBox ID="SignInPassword" type="Password" PlaceHolder="Password" runat="server" CssClass="form-control"></asp:TextBox>
                         <asp:Label ID="PasswordErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <asp:Button ID="SignInLogIn" runat="server" type="button" Text="Sign In" CssClass="btn btn-block btn-lg btn-gradient btn-gradient-two" ValidationGroup="SignIn" UseSubmitBehavior="false" OnClick="MasterPageSignIn_Click" />
-                        <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false"></asp:Label>
+                        <asp:Label ID="SignInErrorLbl" runat="server" Text="Label" Visible="false" ForeColor="IndianRed"></asp:Label>
                         <asp:Label ID="SignInLbl" runat="server" Text="Label" Visible="false"></asp:Label>
                         <div class="form-excerpts">
                             <ul class="list-unstyled">

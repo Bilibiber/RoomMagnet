@@ -233,35 +233,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <asp:Label runat="server" Text="Zip Code" class="not_empty" Font-Bold="true"></asp:Label>
-                                                <asp:TextBox ID="setZip" runat="server" class="form-control" MaxLength="10" ControlToValidate="setZip" ViewStateMode="Inherit"></asp:TextBox>
-                                                <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid" ControlToValidate="setZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
+                                                <asp:TextBox ID="setZip" runat="server" class="form-control" MaxLength="10" ControlToValidate="setZip" ViewStateMode="Inherit" ValidationGroup="settings"></asp:TextBox>
+                                                <asp:CompareValidator ID="CompareZip" runat="server" ErrorMessage="Invalid" Text="Invalid ZipCode" ControlToValidate="setZip" Display="Dynamic" ForeColor="Red" Operator="DataTypeCheck" Type="Integer" ValidationGroup="settings"></asp:CompareValidator>
                                             </div>
                                         </div>
                                     </div>
                                     <!--ends social info .row-->
                                     <asp:Button ID="updateusersetting" runat="server" class="btn btn-primary" data-toggle="modal" data-target="#myModal" Text="Update" OnClick="updateusersetting_Click" ValidationGroup="settings" />
-
-                                    <%--modal--%>
-                                    <%--<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <asp:Image ID="ModalImage" runat="server" ImageUrl="~/img/roommagnet-text.png" CssClass="mx-auto image-padding" />
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span></button>
-                                                </div>
-                                                <div class="modal-body text-center">
-                                                    <asp:Label ID="lblMessage" runat="server" Text="Changes Saved" />
-                                                </div>
-                                                <div class="modal-footer" style="align-content:center; margin:auto; ">
-                                                    <asp:Button runat="server" Text="Dashboard" class="btn btn-xs btn-gradient btn-gradient-two access-link" OnClick="goDashboard_Click" />
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>--%>
-                                    <!-- /.modal -->
 
                                     <div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">

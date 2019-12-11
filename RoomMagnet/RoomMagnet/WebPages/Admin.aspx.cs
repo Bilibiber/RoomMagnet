@@ -14,6 +14,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
     private SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnectionString"].ToString());
     protected void Page_Load(object sender, EventArgs e)
     {
+        
         WelcomeMessage.Text = "Hello, " + Session["FullName"];
         if (IsPostBack.Equals(false))
         {
@@ -33,6 +34,7 @@ public partial class WebPages_Admin : System.Web.UI.Page
 
                 }
             }
+
             cn.Close();
         }
         if (IsPostBack.Equals(false))
@@ -50,6 +52,35 @@ public partial class WebPages_Admin : System.Web.UI.Page
 
                 }
             }
+            selectEmployeesDA.Close();
+            // fill UserDropDown
+            string AllUsers = "Select Email from Users where UserRole='Host' or UserRole='Renter' and AccountStatus='Actived'";
+            SqlCommand command = new SqlCommand(AllUsers,cn);
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    UserDropDown.Items.Add(new ListItem((reader.GetString(0))));
+                }
+            }
+            reader.Close();
+            // fill deactived userdropdown
+            string DeactivedUser = "Select Email from Users where AccountStatus='Deactived'";
+            SqlCommand sql = new SqlCommand(DeactivedUser, cn);
+            SqlDataReader reader2 = sql.ExecuteReader();
+            if (reader2.HasRows)
+            {
+                while (reader2.Read())
+                {
+                    DeavtivedUserDropDownList.Items.Add(new ListItem((reader2.GetString(0))));
+                }
+            }
+            else
+            {
+                DeactivedLbl.Visible = true;
+            }
+            reader2.Close();
             cn.Close();
         }
             
@@ -303,5 +334,31 @@ public partial class WebPages_Admin : System.Web.UI.Page
         {
             args.IsValid = true;
         }
+    }
+
+    protected void Deactive_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string deactive = "Update Users Set AccountStatus='Deactived' where Email=@Email";
+        SqlCommand sqlCommand = new SqlCommand(deactive,cn);
+        sqlCommand.Parameters.AddWithValue("@Email",UserDropDown.SelectedValue);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        UserDropDown.Items.Remove(UserDropDown.Items.FindByValue(UserDropDown.SelectedValue));
+        //DeavtivedUserDropDownList.Items.Add(UserDropDown.Items.FindByValue(UserDropDown.SelectedValue));
+    }
+
+    protected void Active_Click(object sender, EventArgs e)
+    {
+        cn.Open();
+        string active = "Update Users Set AccountStatus='Actived' where Email=@Email";
+        SqlCommand sqlCommand = new SqlCommand(active, cn);
+        sqlCommand.Parameters.AddWithValue("@Email", DeavtivedUserDropDownList.SelectedValue);
+        sqlCommand.ExecuteNonQuery();
+        cn.Close();
+
+        DeavtivedUserDropDownList.Items.Remove(DeavtivedUserDropDownList.Items.FindByValue(DeavtivedUserDropDownList.SelectedValue));
+        //UserDropDown.Items.Add(DeavtivedUserDropDownList.Items.FindByValue(DeavtivedUserDropDownList.SelectedValue));
     }
 }
